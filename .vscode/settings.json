@@ -1,0 +1,32 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "eslint.lintTask.enable": true,
+  "eslint.packageManager": "yarn",
+  "eslint.run": "onSave",
+  "files.associations": {
+    "*rc$": "json"
+  },
+  "files.autoSave": "onFocusChange",
+  "files.exclude": {
+    "**/*.js": {
+      "when": "$(basename).ts"
+    }
+  },
+  "javascript.suggest.autoImports": true,
+  "npm.packageManager": "yarn",
+  "prettier.enable": true,
+  "prettier.endOfLine": "auto",
+  "prettier.packageManager": "yarn",
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "yaml.schemas": {
+    "https://yarnpkg.com/configuration/yarnrc.json": [
+      ".yarnrc.yml"
+    ],
+    "https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json": [
+      "docker-compose.yml"
+    ]
+  }
+}

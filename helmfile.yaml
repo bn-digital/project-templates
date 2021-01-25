@@ -1,0 +1,37 @@
+repositories:
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+releases:
+  - name: app
+    namespace: nymcard
+    chart: charts/nodejs
+    values:
+      - image:
+          repository: harbor.bndigital.co/web
+          tag: latest
+          pullPolicy: Always
+        imagePullSecret: harbor-registry-credentials
+        app:
+          port: 3000
+          env:
+            REACT_APP_PUBLIC_URL: https://web.demo.bndigital.co
+            REACT_APP_API_URL: https://api.demo.bndigital.co
+        ingress:
+          enabled: true
+          host: web.demo.bndigital.co
+          tls: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            kubernetes.io/tls-acme: "true"
+
+  - name: api
+    namespace: demo
+    chart: packages/api
+    values:
+      - ingress:
+          enabled: true
+          tls: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            kubernetes.io/tls-acme: "true"
+          host: api.demo.bndigital.co

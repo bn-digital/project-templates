@@ -1,3 +1,6 @@
+# macOS
+.DS_Store
+
 # Logs
 logs
 *.log
@@ -65,8 +68,13 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
-# Yarn Integrity file
+# Yarn
 .yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+!.yarn/releases/yarn-berry.cjs
 
 # dotenv environment variables file
 .env
@@ -102,3 +110,5 @@ dist
 
 # TernJS port file
 .tern-port
+
+.idea

@@ -1,0 +1,31 @@
+apiVersion: skaffold/v2beta10
+kind: Config
+metadata:
+  name: nymcard
+build:
+  tagPolicy:
+    sha256: { }
+  local:
+    push: false
+    useBuildkit: true
+  artifacts:
+    - image: web
+deploy:
+  helm:
+    flags:
+      upgrade: [ '--install' ]
+    releases:
+      - name: web
+        chartPath: charts/web
+        overrides:
+          image:
+            repository: website
+profiles:
+  - name: ci
+    activation:
+      - env: CI=true
+    build:
+      local:
+        useBuildkit: true
+        push: true
+

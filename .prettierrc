@@ -1,0 +1,32 @@
+{
+  "arrowParens": "avoid",
+  "endOfLine": "auto",
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": true,
+  "printWidth": 120,
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "useTabs": false,
+  "overrides": [
+    {
+      "files": "*.less",
+      "options": {
+        "parser": "less"
+      }
+    },
+    {
+      "files": "*.jsonschema",
+      "options": {
+        "parser": "json"
+      }
+    },
+    {
+      "files": "*.svg",
+      "options": {
+        "parser": "html"
+      }
+    }
+  ]
+}
