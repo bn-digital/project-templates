@@ -1,2 +1,1 @@
-# rc
-NodeJS &amp; TypeScript project workspace starter
+# BN Digital NodeJS Fullstack Toolchain
