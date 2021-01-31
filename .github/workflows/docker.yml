@@ -8,6 +8,8 @@ on:
       - yarn.lock
       - .yarnrc.yml
       - Dockerfile
+env:
+  DOCKER_BUILDKIT: 1
 jobs:
   build:
     name: Docker image build
@@ -26,4 +28,19 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: bndigital/nodejs:latest
+          pull: true
+          tags: |
+            bndigital/nodejs:15
+            bndigital/nodejs:latest
+          build-args: |
+            version=15
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          pull: true
+          build-args: |
+            version=14
+          tags: |
+            bndigital/nodejs:14
+            bndigital/nodejs:lts
