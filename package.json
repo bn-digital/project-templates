@@ -29,7 +29,6 @@
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.2.1",
     "serve": "^11.3.2",
-    "sqlite3": "^5.0.1",
     "ts-node": "^9.1.1"
   },
   "scripts": {
