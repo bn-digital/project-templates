@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nodejs.fullname" . }}
+  labels: {{ include "nodejs.labels" . | nindent 4 }}
+spec: {{ if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }} {{ end }}
+  selector:
+    matchLabels: {{ include "nodejs.selectorLabels" . | nindent 6 }}
+  template:
+    metadata: {{ with .Values.podAnnotations }}
+      annotations: {{ toYaml . | nindent 8 }}
+        app.kubernetes.io/version: {{ $.Chart.AppVersion }} {{ end }}
+      labels: {{ include "nodejs.selectorLabels" . | nindent 8 }}
+    spec: {{ with $secret := .Values.imagePullSecrets }}
+      imagePullSecrets: {{ range $secret }}
+        - name: {{ printf "%s-%s" $.Release.Name .name | quote }} {{ end }} {{ end }}
+      volumes: {{ if .Values.persistence.enabled }}
+        - name: {{ .Chart.Name }}
+          emptyDir: { } {{ end }}
+      securityContext: {{ toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext: {{ toYaml .Values.securityContext | nindent 12 }}
+          volumeMounts: {{ if .Values.persistence.enabled }}
+            - mountPath: {{ .Values.app.workingDir }}
+              name: {{ .Chart.Name }} {{ end }}
+          image: {{ printf "%s:%s" .Values.image.repository ( .Values.image.tag | default .Chart.AppVersion) | quote }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.app.port }}
+              protocol: TCP
+          livenessProbe:
+            initialDelaySeconds: {{ .Values.app.initialDelay }}
+            httpGet:
+              path: /
+              port: {{ .Values.app.port }} {{ with .Values.app.env }}
+          env: {{ range $name,$value := .}}
+            - name: {{ $name }}
+              value: {{  $value | quote }} {{ end }} {{ end }}
+          readinessProbe:
+            initialDelaySeconds: {{ .Values.app.initialDelay }}
+            httpGet:
+              path: /
+              port: {{ .Values.app.port }}
+          resources: {{ toYaml .Values.resources | nindent 12 }} {{ with .Values.nodeSelector }}
+      nodeSelector: {{ toYaml . | nindent 8 }} {{ end }} {{ with .Values.affinity }}
+      affinity: {{ toYaml . | nindent 8 }} {{ end }} {{ with .Values.tolerations }}
+      tolerations: {{ toYaml . | nindent 8 }} {{ end }}

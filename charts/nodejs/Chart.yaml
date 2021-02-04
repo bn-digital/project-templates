@@ -1,0 +1,6 @@
+apiVersion: v2
+name: nodejs
+description: NodeJS applications Helm Chart
+type: application
+version: 15.7.0
+appVersion: 1.0.0
