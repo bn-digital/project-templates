@@ -1,8 +1,8 @@
-name: Docker
+name: Containers
 on:
   push:
     paths:
-      - .github/workflows/docker.yml
+      - .github/workflows/containers.yml
       - lerna.json
       - package.json
       - yarn.lock

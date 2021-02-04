@@ -4,6 +4,7 @@ on:
     branches:
       - latest
     paths:
+      - .github/workflows/charts.yml
       - charts/**/*
 jobs:
   release:
