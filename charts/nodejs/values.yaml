@@ -20,7 +20,7 @@ imagePullSecrets:
 #      email: username@docker.io
 
 podAnnotations:
-  app.kubernetes.io/env: development
+  app.kubernetes.io/env: production
 
 podSecurityContext: {}
 # fsGroup: 2000
@@ -74,7 +74,7 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
 
 nodeSelector: {}
 
