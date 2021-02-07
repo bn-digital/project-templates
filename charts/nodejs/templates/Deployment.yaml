@@ -3,10 +3,10 @@ kind: Deployment
 metadata:
   name: {{ include "nodejs.fullname" . }}
   labels: {{ include "nodejs.labels" . | nindent 4 }}
-spec: {{ if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.autoscaling.minReplicas }} {{ end }}
+spec:
+  replicas: {{ if not .Values.autoscaling.enabled }} 1 {{ else }} {{ .Values.autoscaling.minReplicas }} {{ end }}
   strategy:
-    type: {{ if not .Values.autoscaling.enabled }} Recreate  {{ else }} RollingUpdate
+    type: {{ if not .Values.autoscaling.enabled }} Recreate {{ else }} RollingUpdate
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 1 {{ end }}
