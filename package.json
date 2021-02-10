@@ -2,10 +2,12 @@
   "name": "bn-digital",
   "description": "Includes all required tools and packages to bootstrap app development using NodeJS stack",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
-  "engineStrict": false,
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "templates/*"
+    ]
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
@@ -31,7 +33,7 @@
     "start": "yarn workspaces foreach run start",
     "test": "yarn workspaces foreach run test",
     "build": "yarn workspaces foreach run build",
-    "brand-new:website": "yarn dlx create-react-app --template file:templates/react packages/website",
+    "brand-new:website": "yarn dlx create-react-app --template=file:templates/react bn-digital/website",
     "brand-new:api": "yarn dlx create-strapi-app packages/api",
     "brand-new:mobile": "yarn dlx create-react-native-app --template=with-typescript packages/mobile",
     "brand-new:desktop": "yarn dlx nativefier http://localhost:3000",
