@@ -1,7 +1,12 @@
-build
 .git*
+.idea
 node_modules
-coverage
-.yarn
+build
 public
+.yarn
+properties
+obj
+coverage
+.gradle
 charts
+.yarn/build

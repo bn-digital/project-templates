@@ -14,5 +14,3 @@ Dockerfile
 build
 coverage
 public
-node_modules
-.eslintcache
