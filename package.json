@@ -26,12 +26,12 @@
     "typescript": "^4.1.4"
   },
   "scripts": {
-    "brand-new:website": "yarn dlx create-react-app --template file:templates/react packages/website",
     "fix": "prettier --write packages/*/src && eslint --fix packages/*/src && stylelint --fix packages/*/src",
     "lint": "prettier --check packages/*/src && eslint packages/*/src && stylelint packages/*/src",
     "start": "yarn workspaces foreach run start",
     "test": "yarn workspaces foreach run test",
     "build": "yarn workspaces foreach run build",
+    "brand-new:website": "yarn dlx create-react-app --template file:templates/react packages/website",
     "brand-new:api": "yarn dlx create-strapi-app packages/api",
     "brand-new:mobile": "yarn dlx create-react-native-app --template=with-typescript packages/mobile",
     "brand-new:desktop": "yarn dlx nativefier http://localhost:3000",
