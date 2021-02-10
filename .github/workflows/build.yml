@@ -28,7 +28,7 @@ jobs:
           node-version: '15'
       - name: Install Yarn
         run: npm install --global yarn
-      - uses: actions/cache@v2
+      - uses: actions/cache@v2.1.4
         with:
           path: ${{ steps.yarn-cache-dir.outputs.path }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
