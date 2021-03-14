@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '15'
       - name: Upgrade package versions
-        run: yarn up *
+        run: yarn up '*'
       - name: Create pull request
         uses: peter-evans/create-pull-request@v3
         with:
