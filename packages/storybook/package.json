@@ -9,7 +9,7 @@
   "dependencies": {
     "@app/website": "workspace:packages/website",
     "history": "^5.0.0",
-    "react-router-dom": "^6.0.0-beta.0"
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@etchteam/storybook-addon-status": "^2.1.0",
@@ -26,8 +26,8 @@
     "@types/react": "^17.0.3",
     "@whitespace/storybook-addon-html": "^4.2.0",
     "chromatic": "^5.7.0",
-    "less-loader": "^6.0.0",
-    "storybook-addon-designs": "^6.0.0-alpha.3",
+    "less-loader": "^8.0.0",
+    "storybook-addon-designs": "^5.4.5",
     "storybook-addon-performance": "^0.14.0",
     "typescript": "^4.2.3"
   }
