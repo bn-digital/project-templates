@@ -1,0 +1,40 @@
+{
+  "name": "@app/cms",
+  "description": "A Strapi application",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "strapi build",
+    "configure": "strapi configuration:restore --file=strapi.json",
+    "dump": "strapi configuration:dump --file=strapi.json --pretty",
+    "fake": "graphql-faker fake.graphql",
+    "graphql": "graphql-codegen",
+    "mongodb": "nodemon src/mongodb.ts",
+    "run": "strapi start",
+    "start": "strapi develop",
+    "watch": "concurrently \"yarn:mongodb\" \"yarn:start\""
+  },
+  "dependencies": {
+    "strapi": "^3.5.3",
+    "strapi-admin": "^3.5.3",
+    "strapi-connector-mongoose": "^3.5.3",
+    "strapi-plugin-content-manager": "^3.5.3",
+    "strapi-plugin-content-type-builder": "^3.5.3",
+    "strapi-plugin-email": "^3.5.3",
+    "strapi-plugin-graphql": "^3.5.3",
+    "strapi-plugin-upload": "^3.5.3",
+    "strapi-plugin-users-permissions": "^3.5.3",
+    "strapi-provider-upload-aws-s3": "^3.5.3",
+    "strapi-utils": "^3.5.3"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.10.3",
+    "concurrently": "^6.0.0",
+    "dotenv": "^8.2.0",
+    "graphql-faker": "^2.0.0-rc.23",
+    "mongodb-memory-server": "^7.0.0-beta.30",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}

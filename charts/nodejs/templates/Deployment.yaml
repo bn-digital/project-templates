@@ -15,40 +15,71 @@ spec:
   template:
     metadata: {{ with .Values.podAnnotations }}
       annotations: {{ toYaml . | nindent 8 }}
-        app.kubernetes.io/version: {{ $.Chart.AppVersion }} {{ end }}
+        app.kubernetes.io/version: {{ now | date "20060102150405" | quote }} {{ end }}
       labels: {{ include "nodejs.selectorLabels" . | nindent 8 }}
     spec: {{ with $secret := .Values.imagePullSecrets }}
       imagePullSecrets: {{ range $secret }}
-        - name: {{ printf "%s-%s" $.Release.Name .name | quote }} {{ end }} {{ end }}
-      volumes: {{ if .Values.persistence.enabled }}
-        - name: {{ .Chart.Name }}
-          emptyDir: { } {{ end }}
-      securityContext: {{ toYaml .Values.podSecurityContext | nindent 8 }}
-      containers:
-        - name: {{ .Chart.Name }}
-          securityContext: {{ toYaml .Values.securityContext | nindent 12 }}
-          volumeMounts: {{ if .Values.persistence.enabled }}
-            - mountPath: {{ .Values.app.workingDir }}
-              name: {{ .Chart.Name }} {{ end }}
-          image: {{ printf "%s:%s" .Values.image.repository ( .Values.image.tag | default .Chart.AppVersion) | quote }}
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - containerPort: {{ .Values.app.port }}
-              protocol: TCP
-          livenessProbe:
-            initialDelaySeconds: {{ .Values.app.initialDelay }}
-            httpGet:
-              path: /
-              port: {{ .Values.app.port }} {{ with .Values.app.env }}
-          env: {{ range $name,$value := .}}
-            - name: {{ $name }}
-              value: {{  $value | quote }} {{ end }} {{ end }}
-          readinessProbe:
-            initialDelaySeconds: {{ .Values.app.initialDelay }}
-            httpGet:
-              path: /
-              port: {{ .Values.app.port }}
-          resources: {{ toYaml .Values.resources | nindent 12 }} {{ with .Values.nodeSelector }}
+        - name: {{ printf "%s-%s" $.Release.Name . | quote }} {{ end }} {{ end }} {{ if .Values.backend.persistence.enabled }}
+      volumes: {{ range  .Values.backend.persistence.volumes }}
+        - name: {{ .name }}
+          persistentVolumeClaim:
+            claimName: {{ printf "%s-%s" $.Release.Name .name }} {{ end }} {{ end }}
+      securityContext: {{ toYaml .Values.podSecurityContext | nindent 8 }} {{ with .Values.nodeSelector }}
       nodeSelector: {{ toYaml . | nindent 8 }} {{ end }} {{ with .Values.affinity }}
       affinity: {{ toYaml . | nindent 8 }} {{ end }} {{ with .Values.tolerations }}
       tolerations: {{ toYaml . | nindent 8 }} {{ end }}
+      containers:
+        - name: frontend
+          securityContext: {{ toYaml .Values.securityContext | nindent 12 }}
+          image: {{ printf "%s/%s:%s" .Values.image.repository .Values.frontend.image ( .Values.image.tag | default .Chart.AppVersion) | quote }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.frontend.port }}
+              protocol: TCP
+          livenessProbe:
+            initialDelaySeconds: {{ .Values.frontend.initialDelay }}
+            httpGet:
+              path: /
+              port: {{ .Values.frontend.port }}
+          readinessProbe:
+            initialDelaySeconds: {{ .Values.frontend.initialDelay }}
+            httpGet:
+              path: /
+              port: {{ .Values.frontend.port }} {{ with .Values.frontend.envSecrets }}
+          envFrom: {{ range $name := . }}
+            - secretRef:
+                name: {{ printf "%s-%s" $.Release.Name $name }} {{ end }} {{ end }}
+          env: {{ with .Values.frontend.fileSecrets }} {{ range $name,$value := . }}
+            - name: {{ $name }}
+              value: {{  $value | quote }} {{ end }} {{ end }} {{ with .Values.frontend.env }} {{ range $name,$value := . }}
+            - name: {{ $name }}
+              value: {{ $value }} {{ end }} {{ end }}
+
+          resources: {{ toYaml .Values.resources | nindent 12 }} {{ if .Values.backend.enabled }}
+        - name: backend
+          securityContext: {{ toYaml .Values.securityContext | nindent 12 }}
+          image: {{ printf "%s/%s:%s" .Values.image.repository .Values.backend.image ( .Values.image.tag | default .Chart.AppVersion) | quote }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.frontend.port }}
+              protocol: TCP
+          livenessProbe:
+            initialDelaySeconds: {{ .Values.frontend.initialDelay }}
+            httpGet:
+              path: {{ .Values.backend.path }}
+              port: {{ .Values.backend.port }}
+          readinessProbe:
+            initialDelaySeconds: {{ .Values.backend.initialDelay }}
+            httpGet:
+              path: {{ .Values.backend.path }}
+              port: {{ .Values.backend.port }} {{ with .Values.backend.envSecrets }}
+          envFrom: {{ range $name := . }}
+            - secretRef:
+                name: {{ printf "%s-%s" $.Release.Name $name }} {{ end }} {{ end }}
+          env: {{ with .Values.backend.fileSecrets }} {{ range $name,$value := . }}
+            - name: {{ $name }}
+              value: {{  $value | quote }} {{ end }} {{ end }} {{ with .Values.backend.env }} {{ range $name,$value := . }}
+            - name: {{ $name }}
+              value: {{ $value }} {{ end }} {{ end }}
+          resources: {{ toYaml .Values.resources | nindent 12 }} {{ if .Values.backend.enabled }} {{ end }} {{ end }}
+

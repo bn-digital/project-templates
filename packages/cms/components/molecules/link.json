@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_molecules_links",
+  "info": {
+    "name": "Link",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    },
+    "icon": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": ["images"],
+      "plugin": "upload",
+      "required": false
+    },
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.text"
+    },
+    "role": {
+      "type": "enumeration",
+      "enum": ["DesignSystem", "BugTracker", "SourceCode"]
+    }
+  }
+}

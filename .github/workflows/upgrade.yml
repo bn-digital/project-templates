@@ -9,7 +9,7 @@ on:
 jobs:
   upgrade:
     name: Upgrade dependencies
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -22,9 +22,9 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v3
         with:
-          commit-message: Update all dependencies
+          commit-message: Update NPM dependencies
           branch: dependency-update
-          title: Update all dependencies
-          body: An updated update of all NPM dependencies.
-          labels: auto-merge,dependencies
+          title: Update NPM dependencies
+          body: Updated package.json with latest versions
+          labels: auto-merge,dependency
           reviewers: vladyslavvolkov

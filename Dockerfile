@@ -1,5 +1,5 @@
-ARG version=15.7
-FROM node:${version}-alpine
+ARG version=15.9
+FROM node:${version}-alpine AS base
 ENV HUSKY_SKIP_INSTALL=true \
     SKIP_PREFLIGHT_CHECK=true \
     CI=true
@@ -11,3 +11,7 @@ RUN yarn
 COPY . .
 RUN yarn rebuild
 ENTRYPOINT ["yarn"]
+
+
+FROM base AS strapi
+RUN yarn dlx strapi

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_atoms_texts",
+  "info": {
+    "name": "Text",
+    "icon": "align-justify",
+    "description": "Text node"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "properties": {
+      "type": "json"
+    }
+  }
+}

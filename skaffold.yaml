@@ -1,31 +1,38 @@
-apiVersion: skaffold/v2beta11
+apiVersion: skaffold/v2beta12
 kind: Config
 metadata:
   name: nymcard
 build:
+  artifacts:
+  - image: cms
+    context: .
+    docker:
+      dockerfile: packages/cms/Dockerfile
+  - image: website
+    context: .
+    docker:
+      dockerfile: packages/website/Dockerfile
   tagPolicy:
-    sha256: { }
+    sha256: {}
   local:
     push: false
     useBuildkit: true
-  artifacts:
-    - image: web
 deploy:
   helm:
-    flags:
-      upgrade: [ '--install' ]
     releases:
-      - name: web
-        chartPath: charts/web
-        overrides:
-          image:
-            repository: website
+    - name: web
+      chartPath: charts/web
+      overrides:
+        image:
+          repository: website
+    flags:
+      upgrade:
+      - --install
 profiles:
-  - name: ci
-    activation:
-      - env: CI=true
-    build:
-      local:
-        useBuildkit: true
-        push: true
-
+- name: ci
+  activation:
+  - env: CI=true
+  build:
+    local:
+      push: true
+      useBuildkit: true

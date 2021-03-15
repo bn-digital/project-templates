@@ -1,0 +1,6 @@
+{
+  "watch": ["src", "docker-entrypoint-initdb.d"],
+  "verbose": false,
+  "ext": "ts,json",
+  "exec": "node --no-warnings -r ts-node/register"
+}

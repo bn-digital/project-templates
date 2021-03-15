@@ -1,0 +1,54 @@
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+}
+
+
+type ContactFormRequest {
+  id: ID!
+  createdAt: DateTime!
+  email: String!
+  message: String
+  name: String!
+}
+
+type ContactFormRequestAggregator {
+  count: Int
+  totalCount: Int
+}
+
+
+input ContactFormRequestInput {
+  email: String!
+  message: String
+  name: String!
+  created_by: ID
+  updated_by: ID
+}
+
+input createContactFormRequestInput {
+  data: ContactFormRequestInput
+}
+
+type createContactFormRequestPayload {
+  contactFormRequest: ContactFormRequest
+}
+
+
+type Query {
+  me: UsersPermissionsMe
+}
+
+type Mutation {
+  createContactFormRequest(input: createContactFormRequestInput): createContactFormRequestPayload
+}
+
+scalar JSON
+scalar DateTime
+scalar Time
+scalar Date
+scalar Long
+scalar Upload

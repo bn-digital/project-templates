@@ -6,7 +6,12 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.app.port }}
-      protocol: TCP
+    - name: frontend
+      port: {{ .Values.service.port.frontend }}
+      targetPort: {{ .Values.frontend.port }}
+      protocol: TCP {{ if .Values.backend.enabled }}
+    - name: backend
+      port: {{ .Values.service.port.backend }}
+      targetPort: {{ .Values.backend.port }}
+      protocol: TCP {{ end }}
   selector: {{ include "nodejs.selectorLabels" . | nindent 4 }}

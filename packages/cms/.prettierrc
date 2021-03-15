@@ -1,0 +1,26 @@
+{
+  "arrowParens": "avoid",
+  "endOfLine": "auto",
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": true,
+  "printWidth": 120,
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "useTabs": false,
+  "overrides": [
+    {
+      "files": "*.jsonschema",
+      "options": {
+        "parser": "json"
+      }
+    },
+    {
+      "files": "*.graphql",
+      "options": {
+        "parser": "graphql"
+      }
+    }
+  ]
+}

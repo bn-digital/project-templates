@@ -1,0 +1,24 @@
+{
+  "name": "CMS",
+  "schemaPath": "./exports/graphql/schema.graphql",
+  "includes": [
+    "./exports/graphql/fragments/*.graphql",
+    "./exports/graphql/operations/*.graphql"
+  ],
+  "extensions": {
+    "endpoints": {
+      "development": {
+        "url": "http://localhost:1337/graphql"
+      },
+      "fake": {
+        "url": "http://localhost:9002/graphql"
+      },
+      "staging": {
+        "url": "https://bndigital.dev/graphql"
+      },
+      "prodiction": {
+        "url": "https://bndigital.co/graphql"
+      }
+    }
+  }
+}

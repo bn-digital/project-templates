@@ -21,4 +21,11 @@ spec: {{ if .Values.ingress.tls }}
               service:
                 name: {{ $fullName }}
                 port:
-                  number: {{ $.Values.service.port }} {{ end }}
+                  name: frontend {{ if .Values.backend.enabled }}
+          - path: {{ .Values.backend.path | quote }}
+            pathType: 'Prefix'
+            backend:
+              service:
+                name: {{ $fullName }}
+                port:
+                  name: backend {{ end }} {{ end }}

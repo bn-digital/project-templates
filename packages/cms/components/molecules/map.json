@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_molecules_maps",
+  "info": {
+    "name": "Map",
+    "icon": "project-diagram",
+    "description": "Collection<Entry>"
+  },
+  "options": {},
+  "attributes": {
+    "children": {
+      "type": "component",
+      "repeatable": true,
+      "component": "atoms.entry"
+    }
+  }
+}

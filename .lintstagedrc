@@ -1,11 +1,11 @@
 {
-  "*.ts,tsx,js,jsx": [
+  "**/*.{ts,tsx,js,jsx}": [
     "eslint --fix"
   ],
-  "*.less,sass,scss,css": [
+  "**/*.{less,sass,scss,css}": [
     "stylelint --fix"
   ],
-  "*.{js,jsx,ts,tsx,md,html,css,less,scss,sass}": [
+  "**/*.{js,jsx,ts,tsx,md,html,css,less,scss,sass}": [
     "prettier --write"
   ]
 }

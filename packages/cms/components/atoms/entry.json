@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_atoms_entries",
+  "info": {
+    "name": "Entry",
+    "icon": "th-list",
+    "description": "Key-Value entry"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

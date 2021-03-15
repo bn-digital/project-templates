@@ -1,0 +1,21 @@
+schema:
+  - exports/graphql/schema.graphql
+generates:
+  client/graphql/index.d.ts:
+    plugins:
+      - typescript:
+          scalars:
+            Date: Date
+            Time: Date
+            JSON: Record<string, any>
+            Long: number
+            DateTime: Date
+          enumsAsTypes: true
+          maybeValue: T | null
+          avoidOptionals: false
+          noExport: true
+          skipTypename: true
+hooks:
+  afterOneFileWrite:
+    - yarn prettier --fix
+    - yarn tsc

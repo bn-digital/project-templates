@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_molecules_paragraphs",
+  "info": {
+    "name": "Paragraph",
+    "icon": "align-left",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "children": {
+      "type": "component",
+      "repeatable": true,
+      "component": "atoms.text"
+    }
+  }
+}

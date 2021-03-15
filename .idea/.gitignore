@@ -2,14 +2,11 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/dataSources/
+/../../../../../:\github.com\bn-digital\app\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-/aws.xml
-/google-java-format.xml
-/php.xml
 /python-terminal.xml
-/azureSettings.xml
-/misc.xml
-/sonarIssues.xml
+/php.xml
+/google-java-format.xml
+/aws.xml

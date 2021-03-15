@@ -1,0 +1,34 @@
+{
+  "name": "@app/storybook",
+  "private": true,
+  "scripts": {
+    "start": "start-storybook --port=6006",
+    "build": "build-storybook --output-dir=build",
+    "run": "chromatic --project-token krr27yy9bhq --output-dir=build --allow-console-errors"
+  },
+  "dependencies": {
+    "@app/website": "workspace:packages/website",
+    "history": "^5.0.0",
+    "react-router-dom": "^6.0.0-beta.0"
+  },
+  "devDependencies": {
+    "@etchteam/storybook-addon-status": "^2.1.0",
+    "@figspec/components": "^0.1.6",
+    "@figspec/react": "^0.1.5",
+    "@storybook/addon-docs": "^6.2.0-beta.14",
+    "@storybook/addon-essentials": "^6.2.0-beta.14",
+    "@storybook/addon-jest": "^6.2.0-beta.14",
+    "@storybook/addon-links": "^6.2.0-beta.14",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addons": "^6.2.0-beta.14",
+    "@storybook/react": "^6.2.0-beta.14",
+    "@storybook/ui": "^6.2.0-beta.14",
+    "@types/react": "^17.0.3",
+    "@whitespace/storybook-addon-html": "^4.2.0",
+    "chromatic": "^5.7.0",
+    "less-loader": "^6.0.0",
+    "storybook-addon-designs": "^6.0.0-alpha.3",
+    "storybook-addon-performance": "^0.14.0",
+    "typescript": "^4.2.3"
+  }
+}

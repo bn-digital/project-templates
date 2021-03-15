@@ -49,20 +49,3 @@ Selector labels
 app.kubernetes.io/name: {{ include "nodejs.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "nodejs.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "nodejs.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}
-
-{{- define "imagePullSecret" }}
-{{- with .Values.imagePullSecrets }}
-{{- printf "{\"auths\":{\"%s\":{\"username\":\"%s\",\"password\":\"%s\",\"email\":\"%s\",\"auth\":\"%s\"}}}" .registry .username .password .email (printf "%s:%s" .username .password | b64enc) | b64enc }}
-{{- end }}
-{{- end }}

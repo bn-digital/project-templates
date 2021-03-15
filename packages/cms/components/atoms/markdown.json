@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_atoms_markdowns",
+  "info": {
+    "name": "markdown",
+    "icon": "code",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "richtext"
+    },
+    "properties": {
+      "type": "json"
+    }
+  }
+}

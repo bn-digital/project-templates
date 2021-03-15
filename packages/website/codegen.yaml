@@ -1,0 +1,35 @@
+schema:
+  - src/graphql/schema.graphqls
+generates:
+  src/graphql/index.tsx:
+    plugins:
+      - typescript:
+          scalars:
+            Date: Date
+            Time: Date
+            JSON: Record<string, any>
+            Long: number
+            DateTime: Date
+          enumsAsTypes: true
+          maybeValue: T | null
+          avoidOptionals: false
+          skipTypename: true
+      - typescript-operations:
+          avoidOptionals: true
+          skipTypename: true
+          skipTypeNameForRoot: true
+      - typescript-react-apollo:
+          reactApolloVersion: 3
+          withHOC: true
+          nonOptionalTypename: true
+          withResultType: true
+          addDocBlocks: true
+          withHooks: true
+          skipTypename: true
+    documents:
+      - src/graphql/**/*.graphql
+watch:
+  - src/graphql/**/*.graphql
+hooks:
+  afterOneFileWrite:
+    - yarn prettier --write
