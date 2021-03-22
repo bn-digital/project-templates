@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_types",
+  "info": {
+    "name": "Type",
+    "icon": "tag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "contact": {
+      "type": "enumeration",
+      "enum": [
+        "BusinessEmail",
+        "PersonalEmail",
+        "ContactEmail",
+        "CareersEmail",
+        "BusinessAddress",
+        "PersonalAddress",
+        "MobilePhone",
+        "PersonalPhone",
+        "BusinessPhone"
+      ],
+      "required": false,
+      "enumName": "ContactType"
+    }
+  }
+}

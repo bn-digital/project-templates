@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_call_to_actions",
+  "info": {
+    "name": "CallToAction",
+    "icon": "exclamation-triangle"
+  },
+  "options": {},
+  "attributes": {
+    "parent": {
+      "type": "component",
+      "repeatable": false,
+      "component": "organisms.section",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.button",
+      "required": true
+    }
+  }
+}

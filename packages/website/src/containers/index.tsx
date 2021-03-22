@@ -4,8 +4,9 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { UI } from './UI'
 import { API } from './API'
 import { Routing } from './Routing'
+import { CMS } from './CMS'
 
-const Loader: FC = () => (
+export const Loader: FC = () => (
   <Row justify={'center'} style={{ minHeight: '100vh' }} align={'middle'}>
     <Spin />
   </Row>
@@ -13,13 +14,15 @@ const Loader: FC = () => (
 
 const App: FC = ({ children }) => (
   <API>
-    <UI>
-      <Router>
-        <Suspense fallback={<Loader />}>
-          <Routing>{children}</Routing>
-        </Suspense>
-      </Router>
-    </UI>
+    <CMS>
+      <UI>
+        <Router>
+          <Suspense fallback={<Loader />}>
+            <Routing>{children}</Routing>
+          </Suspense>
+        </Router>
+      </UI>
+    </CMS>
   </API>
 )
 

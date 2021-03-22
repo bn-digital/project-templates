@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_metrics",
+  "info": {
+    "name": "Metric",
+    "icon": "superscript",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.numeric",
+      "required": true
+    },
+    "entry": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.entry",
+      "required": true
+    }
+  }
+}

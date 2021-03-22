@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_articles",
+  "info": {
+    "name": "Article",
+    "icon": "newspaper"
+  },
+  "options": {},
+  "attributes": {
+    "parent": {
+      "type": "component",
+      "repeatable": false,
+      "component": "organisms.section"
+    }
+  }
+}

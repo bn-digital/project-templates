@@ -9,22 +9,6 @@ module.exports = ({ env }) => ({
       tracing: env('NODE_ENV', 'development') === 'development',
     },
   },
-  documentation: {
-    servers: [
-      {
-        url: 'http://localhost:1337',
-        description: 'Development server',
-      },
-      {
-        url: 'https://bndigital.dev',
-        description: 'Staging server',
-      },
-      {
-        url: 'https://bndigital.co',
-        description: 'Production server',
-      },
-    ],
-  },
   upload: {
     provider: env('NODE_ENV', 'development') === 'development' ? 'local' : 'aws-s3',
     providerOptions:

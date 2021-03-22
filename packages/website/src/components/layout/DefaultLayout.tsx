@@ -18,7 +18,7 @@ const DefaultLayout: FC = () => (
       </Breadcrumb>
       <Outlet />
     </Layout.Content>
-    <Layout.Footer style={{ textAlign: 'center' }}>App ©{new Date().getFullYear()} Created by BN Digital</Layout.Footer>
+    <Layout.Footer style={{ textAlign: 'center' }}>App ©{new Date().getFullYear()}</Layout.Footer>
   </Layout>
 )
 

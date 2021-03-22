@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_links",
+  "info": {
+    "name": "Link",
+    "icon": "external-link-alt"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "private": false,
+      "required": true
+    },
+    "url": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "component",
+      "repeatable": true,
+      "component": "atoms.image"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+fragment Card on ComponentMoleculesCard {
+  id
+  title
+  description
+  image {
+    id
+    image {
+      id
+      url
+      alternativeText
+      caption
+      name
+    }
+    background
+  }
+}

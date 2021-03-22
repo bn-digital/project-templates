@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections",
+  "info": {
+    "name": "Section",
+    "icon": "ad",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "subTitle": {
+      "type": "text"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "hidden": {
+      "type": "boolean",
+      "default": false
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

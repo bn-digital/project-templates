@@ -43,12 +43,10 @@ type UserPermissionsPasswordPayload {
 
 type ContactFormRequest {
   id: ID!
-  _id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
   email: String!
+  subject: String
+  name: String
   message: String
-  name: String!
 }
 
 type ContactFormRequestConnection {
@@ -64,31 +62,14 @@ type ContactFormRequestAggregator {
 
 type ContactFormRequestGroupBy {
   id: [ContactFormRequestConnectionId]
-  _id: [ContactFormRequestConnection_id]
-  createdAt: [ContactFormRequestConnectionCreatedAt]
-  updatedAt: [ContactFormRequestConnectionUpdatedAt]
   email: [ContactFormRequestConnectionEmail]
-  message: [ContactFormRequestConnectionMessage]
+  subject: [ContactFormRequestConnectionSubject]
   name: [ContactFormRequestConnectionName]
+  message: [ContactFormRequestConnectionMessage]
 }
 
 type ContactFormRequestConnectionId {
   key: ID
-  connection: ContactFormRequestConnection
-}
-
-type ContactFormRequestConnection_id {
-  key: ID
-  connection: ContactFormRequestConnection
-}
-
-type ContactFormRequestConnectionCreatedAt {
-  key: DateTime
-  connection: ContactFormRequestConnection
-}
-
-type ContactFormRequestConnectionUpdatedAt {
-  key: DateTime
   connection: ContactFormRequestConnection
 }
 
@@ -97,7 +78,7 @@ type ContactFormRequestConnectionEmail {
   connection: ContactFormRequestConnection
 }
 
-type ContactFormRequestConnectionMessage {
+type ContactFormRequestConnectionSubject {
   key: String
   connection: ContactFormRequestConnection
 }
@@ -107,18 +88,25 @@ type ContactFormRequestConnectionName {
   connection: ContactFormRequestConnection
 }
 
+type ContactFormRequestConnectionMessage {
+  key: String
+  connection: ContactFormRequestConnection
+}
+
 input ContactFormRequestInput {
   email: String!
+  subject: String
+  name: String
   message: String
-  name: String!
   created_by: ID
   updated_by: ID
 }
 
 input editContactFormRequestInput {
   email: String
-  message: String
+  subject: String
   name: String
+  message: String
   created_by: ID
   updated_by: ID
 }
@@ -148,11 +136,53 @@ type deleteContactFormRequestPayload {
   contactFormRequest: ContactFormRequest
 }
 
+union WebsiteSectionsDynamicZone = ComponentOrganismsCallToAction | ComponentOrganismsHero | ComponentOrganismsArticle
+
+"""Input type for dynamic zone sections of Website"""
+scalar WebsiteSectionsDynamicZoneInput
+
+type Website {
+  id: ID!
+  sections: [WebsiteSectionsDynamicZone]
+  navigation: [ComponentMoleculesMenu]
+  pages: [ComponentOrganismsPage]
+  slides: [ComponentMoleculesSlider]
+}
+
+input WebsiteInput {
+  sections: [WebsiteSectionsDynamicZoneInput!]
+  navigation: [ComponentMoleculesMenuInput]
+  pages: [ComponentOrganismsPageInput]
+  slides: [ComponentMoleculesSliderInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input editWebsiteInput {
+  sections: [WebsiteSectionsDynamicZoneInput!]
+  navigation: [editComponentMoleculesMenuInput]
+  pages: [editComponentOrganismsPageInput]
+  slides: [editComponentMoleculesSliderInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input updateWebsiteInput {
+  data: editWebsiteInput
+}
+
+type updateWebsitePayload {
+  website: Website
+}
+
+type deleteWebsitePayload {
+  website: Website
+}
+
 type UploadFile {
   id: ID!
-  _id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   name: String!
   alternativeText: String
   caption: String
@@ -211,9 +241,8 @@ type UploadFileAggregatorMax {
 
 type UploadFileGroupBy {
   id: [UploadFileConnectionId]
-  _id: [UploadFileConnection_id]
-  createdAt: [UploadFileConnectionCreatedAt]
-  updatedAt: [UploadFileConnectionUpdatedAt]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
   name: [UploadFileConnectionName]
   alternativeText: [UploadFileConnectionAlternativeText]
   caption: [UploadFileConnectionCaption]
@@ -235,17 +264,12 @@ type UploadFileConnectionId {
   connection: UploadFileConnection
 }
 
-type UploadFileConnection_id {
-  key: ID
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionCreatedAt {
+type UploadFileConnectionCreated_at {
   key: DateTime
   connection: UploadFileConnection
 }
 
-type UploadFileConnectionUpdatedAt {
+type UploadFileConnectionUpdated_at {
   key: DateTime
   connection: UploadFileConnection
 }
@@ -370,7 +394,6 @@ type deleteFilePayload {
 
 type UsersPermissionsPermission {
   id: ID!
-  _id: ID!
   type: String!
   controller: String!
   action: String!
@@ -381,7 +404,6 @@ type UsersPermissionsPermission {
 
 type UsersPermissionsRole {
   id: ID!
-  _id: ID!
   name: String!
   description: String
   type: String
@@ -402,18 +424,12 @@ type UsersPermissionsRoleAggregator {
 
 type UsersPermissionsRoleGroupBy {
   id: [UsersPermissionsRoleConnectionId]
-  _id: [UsersPermissionsRoleConnection_id]
   name: [UsersPermissionsRoleConnectionName]
   description: [UsersPermissionsRoleConnectionDescription]
   type: [UsersPermissionsRoleConnectionType]
 }
 
 type UsersPermissionsRoleConnectionId {
-  key: ID
-  connection: UsersPermissionsRoleConnection
-}
-
-type UsersPermissionsRoleConnection_id {
   key: ID
   connection: UsersPermissionsRoleConnection
 }
@@ -480,9 +496,8 @@ type deleteRolePayload {
 
 type UsersPermissionsUser {
   id: ID!
-  _id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
   username: String!
   email: String!
   role: UsersPermissionsRole
@@ -503,9 +518,8 @@ type UsersPermissionsUserAggregator {
 
 type UsersPermissionsUserGroupBy {
   id: [UsersPermissionsUserConnectionId]
-  _id: [UsersPermissionsUserConnection_id]
-  createdAt: [UsersPermissionsUserConnectionCreatedAt]
-  updatedAt: [UsersPermissionsUserConnectionUpdatedAt]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
   username: [UsersPermissionsUserConnectionUsername]
   email: [UsersPermissionsUserConnectionEmail]
   role: [UsersPermissionsUserConnectionRole]
@@ -518,17 +532,12 @@ type UsersPermissionsUserConnectionId {
   connection: UsersPermissionsUserConnection
 }
 
-type UsersPermissionsUserConnection_id {
-  key: ID
-  connection: UsersPermissionsUserConnection
-}
-
-type UsersPermissionsUserConnectionCreatedAt {
+type UsersPermissionsUserConnectionCreated_at {
   key: DateTime
   connection: UsersPermissionsUserConnection
 }
 
-type UsersPermissionsUserConnectionUpdatedAt {
+type UsersPermissionsUserConnectionUpdated_at {
   key: DateTime
   connection: UsersPermissionsUserConnection
 }
@@ -615,35 +624,67 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-type ComponentAtomsCover {
+type ComponentAtomsAddress {
   id: ID!
-  _id: ID!
-  image: UploadFile
-  backgroundColor: String!
+  lines: [ComponentAtomsText]
+  type: ComponentAtomsType
 }
 
-input ComponentAtomsCoverInput {
-  image: ID
-  backgroundColor: String!
+input ComponentAtomsAddressInput {
+  lines: [ComponentAtomsTextInput]
+  type: ComponentAtomsTypeInput!
 }
 
-input editComponentAtomsCoverInput {
+input editComponentAtomsAddressInput {
   id: ID
-  image: ID
-  backgroundColor: String
+  lines: [editComponentAtomsTextInput]
+  type: editComponentAtomsTypeInput
+}
+
+type ComponentAtomsButton {
+  id: ID!
+  title: String!
+  url: String
+}
+
+input ComponentAtomsButtonInput {
+  title: String!
+  url: String
+}
+
+input editComponentAtomsButtonInput {
+  id: ID
+  title: String
+  url: String
+}
+
+type ComponentAtomsEmail {
+  id: ID!
+  address: String!
+  type: ComponentAtomsType
+}
+
+input ComponentAtomsEmailInput {
+  address: String!
+  type: ComponentAtomsTypeInput!
+}
+
+input editComponentAtomsEmailInput {
+  id: ID
+  address: String
+  type: editComponentAtomsTypeInput
 }
 
 """Key-Value entry"""
 type ComponentAtomsEntry {
   id: ID!
-  _id: ID!
   key: String!
-  value: String!
+  value: String
 }
 
 input ComponentAtomsEntryInput {
   key: String!
-  value: String!
+  value: String
 }
 
 input editComponentAtomsEntryInput {
@@ -652,9 +693,45 @@ input editComponentAtomsEntryInput {
   value: String
 }
 
+type ComponentAtomsImage {
+  id: ID!
+  image: UploadFile
+  background: String
+}
+
+input ComponentAtomsImageInput {
+  image: ID
+  background: String
+}
+
+input editComponentAtomsImageInput {
+  id: ID
+  image: ID
+  background: String
+}
+
+type ComponentAtomsLink {
+  id: ID!
+  title: String!
+  url: String
+  icon: [ComponentAtomsImage]
+}
+
+input ComponentAtomsLinkInput {
+  title: String!
+  url: String
+  icon: [ComponentAtomsImageInput]
+}
+
+input editComponentAtomsLinkInput {
+  id: ID
+  title: String
+  url: String
+  icon: [editComponentAtomsImageInput]
+}
+
 type ComponentAtomsMarkdown {
   id: ID!
-  _id: ID!
   value: String
   properties: JSON
 }
@@ -670,59 +747,155 @@ input editComponentAtomsMarkdownInput {
   properties: JSON
 }
 
+type ComponentAtomsMedia {
+  id: ID!
+  properties: JSON
+  media(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input ComponentAtomsMediaInput {
+  media: [ID]
+  properties: JSON
+}
+
+input editComponentAtomsMediaInput {
+  id: ID
+  media: [ID]
+  properties: JSON
+}
+
+type ComponentAtomsNumeric {
+  id: ID!
+  value: Float!
+  unit: String
+}
+
+input ComponentAtomsNumericInput {
+  value: Float!
+  unit: String
+}
+
+input editComponentAtomsNumericInput {
+  id: ID
+  value: Float
+  unit: String
+}
+
+type ComponentAtomsParagraph {
+  id: ID!
+  children: [ComponentAtomsText]
+}
+
+input ComponentAtomsParagraphInput {
+  children: [ComponentAtomsTextInput]
+}
+
+input editComponentAtomsParagraphInput {
+  id: ID
+  children: [editComponentAtomsTextInput]
+}
+
+type ComponentAtomsPhone {
+  id: ID!
+  number: String!
+  type: ComponentAtomsType
+}
+
+input ComponentAtomsPhoneInput {
+  number: String!
+  type: ComponentAtomsTypeInput!
+}
+
+input editComponentAtomsPhoneInput {
+  id: ID
+  number: String
+  type: editComponentAtomsTypeInput
+}
+
 """Text node"""
 type ComponentAtomsText {
   id: ID!
-  _id: ID!
-  title: String!
+  value: String!
   properties: JSON
 }
 
 input ComponentAtomsTextInput {
-  title: String!
+  value: String!
   properties: JSON
 }
 
 input editComponentAtomsTextInput {
   id: ID
-  title: String
+  value: String
   properties: JSON
 }
 
-enum ENUM_COMPONENTMOLECULESLINK_ROLE {
-  DesignSystem
-  BugTracker
-  SourceCode
+enum ContactType {
+  BusinessEmail
+  PersonalEmail
+  ContactEmail
+  CareersEmail
+  BusinessAddress
+  PersonalAddress
+  MobilePhone
+  PersonalPhone
+  BusinessPhone
 }
 
-type ComponentMoleculesLink {
+type ComponentAtomsType {
   id: ID!
-  _id: ID!
-  url: String!
-  icon: UploadFile
-  title: ComponentAtomsText
-  role: ENUM_COMPONENTMOLECULESLINK_ROLE
+  contact: ContactType
 }
 
-input ComponentMoleculesLinkInput {
-  url: String!
-  icon: ID
-  title: ComponentAtomsTextInput
-  role: ENUM_COMPONENTMOLECULESLINK_ROLE
+input ComponentAtomsTypeInput {
+  contact: ContactType
 }
 
-input editComponentMoleculesLinkInput {
+input editComponentAtomsTypeInput {
   id: ID
-  url: String
-  icon: ID
-  title: editComponentAtomsTextInput
-  role: ENUM_COMPONENTMOLECULESLINK_ROLE
+  contact: ContactType
+}
+
+type ComponentAtomsValue {
+  id: ID!
+  value: String!
+  type: ComponentAtomsType
+}
+
+input ComponentAtomsValueInput {
+  value: String!
+  type: ComponentAtomsTypeInput
+}
+
+input editComponentAtomsValueInput {
+  id: ID
+  value: String
+  type: editComponentAtomsTypeInput
+}
+
+type ComponentMoleculesCard {
+  id: ID!
+  title: String
+  description: String
+  image: ComponentAtomsImage
+}
+
+input ComponentMoleculesCardInput {
+  title: String
+  description: String
+  image: ComponentAtomsImageInput
+}
+
+input editComponentMoleculesCardInput {
+  id: ID
+  title: String
+  description: String
+  image: editComponentAtomsImageInput
 }
 
 """Collection<Entry>"""
 type ComponentMoleculesMap {
   id: ID!
-  _id: ID!
   children: [ComponentAtomsEntry]
 }
 
@@ -735,22 +908,158 @@ input editComponentMoleculesMapInput {
   children: [editComponentAtomsEntryInput]
 }
 
-type ComponentMoleculesParagraph {
+type ComponentMoleculesMenu {
   id: ID!
-  _id: ID!
-  children: [ComponentAtomsText]
+  links: [ComponentAtomsLink]
+  slug: String!
 }
 
-input ComponentMoleculesParagraphInput {
-  children: [ComponentAtomsTextInput]
+input ComponentMoleculesMenuInput {
+  links: [ComponentAtomsLinkInput]
+  slug: String!
 }
 
-input editComponentMoleculesParagraphInput {
+input editComponentMoleculesMenuInput {
   id: ID
-  children: [editComponentAtomsTextInput]
+  links: [editComponentAtomsLinkInput]
+  slug: String
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | ContactFormRequest | ContactFormRequestConnection | ContactFormRequestAggregator | ContactFormRequestGroupBy | ContactFormRequestConnectionId | ContactFormRequestConnection_id | ContactFormRequestConnectionCreatedAt | ContactFormRequestConnectionUpdatedAt | ContactFormRequestConnectionEmail | ContactFormRequestConnectionMessage | ContactFormRequestConnectionName | createContactFormRequestPayload | updateContactFormRequestPayload | deleteContactFormRequestPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | createUserPayload | updateUserPayload | deleteUserPayload | ComponentAtomsCover | ComponentAtomsEntry | ComponentAtomsMarkdown | ComponentAtomsText | ComponentMoleculesLink | ComponentMoleculesMap | ComponentMoleculesParagraph
+type ComponentMoleculesSlider {
+  id: ID!
+  slides: [ComponentMoleculesCard]
+  slug: String!
+  hidden: Boolean
+}
+
+input ComponentMoleculesSliderInput {
+  slides: [ComponentMoleculesCardInput]
+  slug: String!
+  hidden: Boolean
+}
+
+input editComponentMoleculesSliderInput {
+  id: ID
+  slides: [editComponentMoleculesCardInput]
+  slug: String
+  hidden: Boolean
+}
+
+type ComponentOrganismsArticle {
+  id: ID!
+  parent: ComponentOrganismsSection
+}
+
+input ComponentOrganismsArticleInput {
+  parent: ComponentOrganismsSectionInput
+}
+
+input editComponentOrganismsArticleInput {
+  id: ID
+  parent: editComponentOrganismsSectionInput
+}
+
+type ComponentOrganismsCallToAction {
+  id: ID!
+  parent: ComponentOrganismsSection
+  button: ComponentAtomsButton
+}
+
+input ComponentOrganismsCallToActionInput {
+  parent: ComponentOrganismsSectionInput!
+  button: ComponentAtomsButtonInput!
+}
+
+input editComponentOrganismsCallToActionInput {
+  id: ID
+  parent: editComponentOrganismsSectionInput
+  button: editComponentAtomsButtonInput
+}
+
+type ComponentOrganismsHero {
+  id: ID!
+  parent: ComponentOrganismsSection
+  button: ComponentAtomsButton
+  cover: [ComponentAtomsMedia]
+}
+
+input ComponentOrganismsHeroInput {
+  parent: ComponentOrganismsSectionInput!
+  button: ComponentAtomsButtonInput
+  cover: [ComponentAtomsMediaInput!]
+}
+
+input editComponentOrganismsHeroInput {
+  id: ID
+  parent: editComponentOrganismsSectionInput
+  button: editComponentAtomsButtonInput
+  cover: [editComponentAtomsMediaInput]
+}
+
+type ComponentOrganismsMetric {
+  id: ID!
+  value: ComponentAtomsNumeric
+  entry: ComponentAtomsEntry
+}
+
+input ComponentOrganismsMetricInput {
+  value: ComponentAtomsNumericInput!
+  entry: ComponentAtomsEntryInput!
+}
+
+input editComponentOrganismsMetricInput {
+  id: ID
+  value: editComponentAtomsNumericInput
+  entry: editComponentAtomsEntryInput
+}
+
+type ComponentOrganismsPage {
+  id: ID!
+  meta: [ComponentAtomsEntry]
+  hidden: Boolean
+  slug: String!
+}
+
+input ComponentOrganismsPageInput {
+  meta: [ComponentAtomsEntryInput]
+  hidden: Boolean
+  slug: String!
+}
+
+input editComponentOrganismsPageInput {
+  id: ID
+  meta: [editComponentAtomsEntryInput]
+  hidden: Boolean
+  slug: String
+}
+
+type ComponentOrganismsSection {
+  id: ID!
+  title: String
+  subTitle: String
+  description: String
+  hidden: Boolean
+  slug: String!
+}
+
+input ComponentOrganismsSectionInput {
+  title: String
+  subTitle: String
+  description: String
+  hidden: Boolean
+  slug: String!
+}
+
+input editComponentOrganismsSectionInput {
+  id: ID
+  title: String
+  subTitle: String
+  description: String
+  hidden: Boolean
+  slug: String
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | ContactFormRequest | ContactFormRequestConnection | ContactFormRequestAggregator | ContactFormRequestGroupBy | ContactFormRequestConnectionId | ContactFormRequestConnectionEmail | ContactFormRequestConnectionSubject | ContactFormRequestConnectionName | ContactFormRequestConnectionMessage | createContactFormRequestPayload | updateContactFormRequestPayload | deleteContactFormRequestPayload | Website | updateWebsitePayload | deleteWebsitePayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | createUserPayload | updateUserPayload | deleteUserPayload | ComponentAtomsAddress | ComponentAtomsButton | ComponentAtomsEmail | ComponentAtomsEntry | ComponentAtomsImage | ComponentAtomsLink | ComponentAtomsMarkdown | ComponentAtomsMedia | ComponentAtomsNumeric | ComponentAtomsParagraph | ComponentAtomsPhone | ComponentAtomsText | ComponentAtomsType | ComponentAtomsValue | ComponentMoleculesCard | ComponentMoleculesMap | ComponentMoleculesMenu | ComponentMoleculesSlider | ComponentOrganismsArticle | ComponentOrganismsCallToAction | ComponentOrganismsHero | ComponentOrganismsMetric | ComponentOrganismsPage | ComponentOrganismsSection
 
 input InputID {
   id: ID!
@@ -772,6 +1081,7 @@ type Query {
   contactFormRequest(id: ID!, publicationState: PublicationState): ContactFormRequest
   contactFormRequests(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [ContactFormRequest]
   contactFormRequestsConnection(sort: String, limit: Int, start: Int, where: JSON): ContactFormRequestConnection
+  website(publicationState: PublicationState): Website
   files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
@@ -791,6 +1101,8 @@ type Mutation {
   createContactFormRequest(input: createContactFormRequestInput): createContactFormRequestPayload
   updateContactFormRequest(input: updateContactFormRequestInput): updateContactFormRequestPayload
   deleteContactFormRequest(input: deleteContactFormRequestInput): deleteContactFormRequestPayload
+  updateWebsite(input: updateWebsiteInput): updateWebsitePayload
+  deleteWebsite: deleteWebsitePayload
 
   """Delete one file"""
   deleteFile(input: deleteFileInput): deleteFilePayload

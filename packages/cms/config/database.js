@@ -2,18 +2,17 @@ module.exports = ({ env }) => ({
   defaultConnection: 'default',
   connections: {
     default: {
-      connector: 'mongoose',
+      connector: 'bookshelf',
       settings: {
-        host: env('MONGODB_HOST', 'localhost'),
-        srv: env.bool('MONGODB_SRV', false),
-        port: env.int('MONGODB_PORT', 27017),
-        database: env('MONGODB_DATABASE', 'strapi'),
-        username: env('MONGODB_USERNAME'),
-        password: env('MONGODB_PASSWORD'),
+        client: 'sqlite',
+        host: env('DATABASE_HOST', 'localhost'),
+        port: env.int('DATABASE_PORT', 3306),
+        database: env('DATABASE_NAME', 'strapi'),
+        username: env('DATABASE_USERNAME'),
+        password: env('DATABASE_PASSWORD'),
       },
       options: {
-        authenticationDatabase: env('AUTHENTICATION_DATABASE'),
-        ssl: env.bool('DATABASE_SSL', false),
+        useNullAsDefault: true,
       },
     },
   },

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_heroes",
+  "info": {
+    "name": "Hero",
+    "icon": "bullhorn",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "parent": {
+      "type": "component",
+      "repeatable": false,
+      "component": "organisms.section",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.button"
+    },
+    "cover": {
+      "type": "component",
+      "repeatable": true,
+      "component": "atoms.media",
+      "required": true
+    }
+  }
+}

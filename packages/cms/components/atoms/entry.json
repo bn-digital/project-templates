@@ -1,5 +1,5 @@
 {
-  "collectionName": "components_atoms_entries",
+  "collectionName": "components_entries",
   "info": {
     "name": "Entry",
     "icon": "th-list",
@@ -9,11 +9,12 @@
   "attributes": {
     "key": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": false
     },
     "value": {
-      "type": "string",
-      "required": true
+      "type": "text",
+      "required": false
     }
   }
 }

@@ -4,7 +4,6 @@ mutation createContactFormRequest($input: createContactFormRequestInput) {
       id
       name
       message
-      createdAt
     }
   }
 }

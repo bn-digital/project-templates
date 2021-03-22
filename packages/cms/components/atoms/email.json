@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_emails",
+  "info": {
+    "name": "Email",
+    "icon": "address-book",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "address": {
+      "type": "email",
+      "unique": false,
+      "required": true
+    },
+    "type": {
+      "type": "component",
+      "repeatable": false,
+      "required": true,
+      "component": "atoms.type"
+    }
+  }
+}

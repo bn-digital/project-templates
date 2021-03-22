@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_atoms_covers",
+  "collectionName": "components_images",
   "info": {
-    "name": "Cover",
+    "name": "Image",
     "icon": "image",
     "description": ""
   },
@@ -10,19 +10,13 @@
     "image": {
       "model": "file",
       "via": "related",
-      "allowedTypes": [
-        "files",
-        "images",
-        "videos"
-      ],
+      "allowedTypes": ["images"],
       "plugin": "upload",
       "required": true
     },
-    "backgroundColor": {
+    "background": {
       "type": "string",
-      "required": true,
-      "maxLength": 6,
-      "minLength": 3
+      "required": false
     }
   }
 }

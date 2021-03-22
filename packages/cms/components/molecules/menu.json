@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_menus",
+  "info": {
+    "name": "Menu",
+    "icon": "list-alt"
+  },
+  "options": { },
+  "attributes": {
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "atoms.link",
+      "required": false
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

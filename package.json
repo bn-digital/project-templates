@@ -8,8 +8,12 @@
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.15.2",
-    "@typescript-eslint/parser": "^4.15.2",
+    "@graphql-codegen/cli": "^1.21.2",
+    "@graphql-codegen/typescript": "^1.21.1",
+    "@graphql-codegen/typescript-operations": "^1.17.15",
+    "@graphql-codegen/typescript-react-apollo": "^2.2.2",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
     "concurrently": "^6.0.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
@@ -17,7 +21,8 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^5.1.3",
+    "graphql": "^15.5.0",
+    "husky": "^5.2.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "stylelint": "^13.12.0",
@@ -30,9 +35,10 @@
   "scripts": {
     "fix": "prettier --write packages/*/src && eslint --fix packages/*/src --no-ignore && stylelint --fix packages/*/src",
     "lint": "prettier --check packages/*/src && eslint packages/*/src && stylelint packages/*/src",
-    "start": "yarn workspaces foreach run start",
-    "test": "yarn workspaces foreach run test",
-    "build": "yarn workspaces foreach run build",
+    "cms": "yarn workspace @app/cms run all",
+    "website": "yarn workspace @app/website run all",
+    "start": "concurrently 'yarn:cms' 'yarn:website'",
+    "graphql": "graphql-codegen",
     "postinstall": "husky install",
     "brand-new:website": "yarn dlx create-react-app --template=file:templates/react bn-digital/website",
     "brand-new:api": "yarn dlx create-strapi-app packages/api",
@@ -42,8 +48,6 @@
     "brand-new:static": "yarn dlx create-gatsby packages/static",
     "brand-new:http": "yarn dlx serve --cors --single build",
     "brand-new:ca": "yarn dlx mkcert create-ca --organization=BNDigital --country-code=UA --state=Kyiv --locality=Kyiv --validity=365 --cert=.ssl/ca.crt --key=.ssl/ca.key",
-    "brand-new:cert": "yarn dlx mkcert create-cert --cert=.ssl/tls.crt --key=.ssl/tls.key --ca-cert=.ssl/ca.crt --ca-key=.ssl/ca.key --domains='localhost,127.0.0.1,::1,*.local,*.localhost,*.dev'",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "brand-new:cert": "yarn dlx mkcert create-cert --cert=.ssl/tls.crt --key=.ssl/tls.key --ca-cert=.ssl/ca.crt --ca-key=.ssl/ca.key --domains='localhost,127.0.0.1,::1,*.local,*.localhost,*.dev'"
   }
 }

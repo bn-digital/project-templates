@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "websites",
+  "info": {
+    "name": "Website",
+    "description": ""
+  },
+  "options": {
+    "populateCreatorFields": false,
+    "increments": false,
+    "timestamps": false,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "organisms.call-to-action",
+        "organisms.hero",
+        "organisms.article"
+      ]
+    },
+    "navigation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "molecules.menu"
+    },
+    "pages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "organisms.page",
+      "required": false
+    },
+    "slides": {
+      "type": "component",
+      "repeatable": true,
+      "component": "molecules.slider"
+    }
+  }
+}

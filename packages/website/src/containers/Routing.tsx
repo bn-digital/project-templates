@@ -1,4 +1,4 @@
-import React, { FC, lazy } from 'react'
+import { FC, lazy } from 'react'
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { DefaultLayout } from '../components/layout/DefaultLayout'
 import { Menu, MenuProps } from 'antd'

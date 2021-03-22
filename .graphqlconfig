@@ -1,0 +1,17 @@
+{
+  "name": "BN Digital",
+  "schemaPath": "./packages/cms/exports/graphql/schema.graphql",
+  "includes": [
+    "./packages/**/*/graphql/**/*.graphql"
+  ],
+  "extensions": {
+    "endpoints": {
+      "development": {
+        "url": "http://localhost:1337/graphql"
+      },
+      "staging": {
+        "url": "https://london-luxury.bndigital.dev/graphql"
+      }
+    }
+  }
+}

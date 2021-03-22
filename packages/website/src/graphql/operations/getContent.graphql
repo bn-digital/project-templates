@@ -1,0 +1,46 @@
+query getContent {
+  website {
+    id
+    pages {
+      id
+    }
+    slides {
+      ...Slider
+    }
+    sections {
+      ... on ComponentOrganismsArticle {
+        id
+        parent {
+          ...Section
+        }
+      }
+      ... on ComponentOrganismsHero {
+        id
+        button {
+          ...Button
+        }
+        parent {
+          ...Section
+        }
+      }
+      ... on ComponentOrganismsCallToAction {
+        id
+        button {
+          ...Button
+        }
+        parent {
+          ...Section
+        }
+      }
+    }
+    navigation {
+      id
+      slug
+      links {
+        id
+        title
+        url
+      }
+    }
+  }
+}

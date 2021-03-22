@@ -9,11 +9,12 @@ module.exports = {
   lifecycles: {
     async afterCreate(data) {
       console.log(data)
+      console.log(strapi.plugins['email'])
       await strapi.plugins['email'].services.email.send({
-        to: 'customers@my-store.io',
-        from: 'noreply@my-store.io',
-        subject: 'New contact form request',
-        text: 'Check out this amazing new product :)',
+        to: process.env.MAILGUN_MAIL_TO,
+        from: `${data.name} <${data.email}>`,
+        subject: `Contact form request from www.bndigital.co`,
+        text: `${data.message}`,
       })
     },
   },

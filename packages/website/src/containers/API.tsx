@@ -7,7 +7,7 @@ const API: FC = ({ children }) => {
     () =>
       new ApolloClient({
         uri,
-        cache: new InMemoryCache(),
+        cache: new InMemoryCache({ addTypename: true }),
         connectToDevTools: process.env.NODE_ENV !== 'production',
       }),
     [uri],

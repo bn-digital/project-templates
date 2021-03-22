@@ -4,20 +4,21 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "all": "concurrently 'yarn:start'",
     "build": "strapi build",
     "configure": "strapi configuration:restore --file=strapi.json",
     "dump": "strapi configuration:dump --file=strapi.json --pretty",
     "fake": "graphql-faker fake.graphql",
-    "graphql": "graphql-codegen",
-    "mongodb": "nodemon src/mongodb.ts",
     "run": "strapi start",
-    "start": "strapi develop",
-    "watch": "concurrently \"yarn:mongodb\" \"yarn:start\""
+    "start": "strapi develop"
   },
   "dependencies": {
+    "knex": "^0.95.2",
+    "pg": "^8.5.1",
     "strapi": "^3.5.3",
     "strapi-admin": "^3.5.3",
-    "strapi-connector-mongoose": "^3.5.3",
+    "strapi-connector-bookshelf": "^3.5.3",
+    "strapi-database": "^3.5.3",
     "strapi-plugin-content-manager": "^3.5.3",
     "strapi-plugin-content-type-builder": "^3.5.3",
     "strapi-plugin-email": "^3.5.3",
@@ -28,12 +29,12 @@
     "strapi-utils": "^3.5.3"
   },
   "devDependencies": {
-    "@types/mongoose": "^5.10.3",
     "concurrently": "^6.0.0",
     "dotenv": "^8.2.0",
     "graphql-faker": "^2.0.0-rc.23",
     "mongodb-memory-server": "^7.0.0-beta.30",
     "nodemon": "^2.0.7",
+    "sqlite3": "^5.0.2",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
   }

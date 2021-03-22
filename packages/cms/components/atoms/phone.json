@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_phones",
+  "info": {
+    "name": "Phone",
+    "icon": "mobile-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "string",
+      "required": true,
+      "minLength": 5
+    },
+    "type": {
+      "type": "component",
+      "repeatable": false,
+      "required": true,
+      "component": "atoms.type"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_values",
+  "info": {
+    "name": "Value",
+    "icon": "cube",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "type": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.type"
+    }
+  }
+}

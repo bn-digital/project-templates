@@ -2,25 +2,29 @@
   "kind": "collectionType",
   "collectionName": "contact_form_requests",
   "info": {
-    "name": "ContactFormRequest"
+    "name": "ContactFormRequest",
+    "description": ""
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
+    "populateCreatorFields": false,
+    "increments": false,
+    "timestamps": false,
     "draftAndPublish": false
   },
   "attributes": {
     "email": {
       "type": "email",
-      "required": true
+      "required": true,
+      "unique": false
     },
-    "message": {
-      "type": "text",
-      "required": false
+    "subject": {
+      "type": "string"
     },
     "name": {
-      "type": "string",
-      "required": true
+      "type": "string"
+    },
+    "message": {
+      "type": "text"
     }
   }
 }

@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sliders",
+  "info": {
+    "name": "slider",
+    "icon": "photo-video"
+  },
+  "options": {},
+  "attributes": {
+    "slides": {
+      "type": "component",
+      "repeatable": true,
+      "component": "molecules.card",
+      "required": false
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "hidden": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

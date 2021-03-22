@@ -1,0 +1,23 @@
+{
+  "data": {
+    "website": {
+      "id": "1",
+      "pages": [],
+      "slides": [],
+      "sections": [],
+      "navigation": [
+        {
+          "id": "1",
+          "slug": "/",
+          "links": [
+            {
+              "id": "1",
+              "title": "Home",
+              "url": "/"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

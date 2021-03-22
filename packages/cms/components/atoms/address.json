@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_addresses",
+  "info": {
+    "name": "Address",
+    "icon": "home",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "lines": {
+      "type": "component",
+      "repeatable": true,
+      "component": "atoms.text"
+    },
+    "type": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.type",
+      "required": true
+    }
+  }
+}

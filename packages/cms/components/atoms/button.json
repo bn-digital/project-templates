@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_buttons",
+  "info": {
+    "name": "Button",
+    "icon": "mouse-pointer"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

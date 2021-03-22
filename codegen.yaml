@@ -1,0 +1,31 @@
+schema:
+  - packages/cms/exports/graphql/schema.graphql
+watch:
+  - packages/cms/exports/graphql/schema.graphql
+  - packages/*/src/**/*.graphql
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+config:
+  typescript:
+    scalars:
+      Date: Date
+      Time: Date
+      JSON: Record<string, any>
+      Long: number
+      DateTime: Date
+  react-apollo:
+    reactApolloVersion: 3
+    withHOC: true
+    withResultType: true
+    addDocBlocks: true
+    withHooks: true
+generates:
+  packages/website/src/graphql/index.tsx:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    documents:
+      - packages/website/src/graphql/**/*.graphql
+

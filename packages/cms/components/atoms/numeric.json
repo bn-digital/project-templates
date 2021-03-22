@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_numerics",
+  "info": {
+    "name": "Numeric",
+    "icon": "drafting-compass",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "float",
+      "required": true
+    },
+    "unit": {
+      "type": "string"
+    }
+  }
+}
