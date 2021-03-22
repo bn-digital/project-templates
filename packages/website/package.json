@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@craco/craco": "^6.1.1",
-    "@graphql-codegen/cli": "^1.21.2",
+    "@graphql-codegen/cli": "^1.21.3",
     "@graphql-codegen/typescript": "^1.21.1",
     "@graphql-codegen/typescript-operations": "^1.17.15",
     "@graphql-codegen/typescript-react-apollo": "^2.2.2",
