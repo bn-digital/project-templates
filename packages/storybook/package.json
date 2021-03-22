@@ -15,7 +15,7 @@
     "@etchteam/storybook-addon-status": "^2.1.0",
     "@figspec/components": "^0.1.6",
     "@figspec/react": "^0.1.5",
-    "@storybook/addon-docs": "^6.2.0-beta.14",
+    "@storybook/addon-docs": "^6.2.0-rc.6",
     "@storybook/addon-essentials": "^6.2.0-beta.14",
     "@storybook/addon-jest": "^6.2.0-beta.14",
     "@storybook/addon-links": "^6.2.0-beta.14",
