@@ -2,7 +2,7 @@
   "name": "BN Digital",
   "schemaPath": "./packages/cms/exports/graphql/schema.graphql",
   "includes": [
-    "./packages/**/*/graphql/**/*.graphql"
+    "./packages/web/src/graphql/**/*.graphql"
   ],
   "extensions": {
     "endpoints": {
