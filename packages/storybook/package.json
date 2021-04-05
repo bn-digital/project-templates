@@ -22,7 +22,7 @@
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addons": "^6.2.0-beta.14",
     "@storybook/react": "^6.2.0-beta.14",
-    "@storybook/ui": "^6.2.0-beta.14",
+    "@storybook/ui": "^6.2.2",
     "@types/react": "^17.0.3",
     "@whitespace/storybook-addon-html": "^4.2.0",
     "chromatic": "^5.7.0",
