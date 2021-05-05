@@ -13,29 +13,29 @@
     "start": "strapi develop"
   },
   "dependencies": {
-    "knex": "^0.95.2",
-    "pg": "^8.5.1",
-    "strapi": "^3.5.3",
-    "strapi-admin": "^3.5.3",
-    "strapi-connector-bookshelf": "^3.5.3",
-    "strapi-database": "^3.5.3",
-    "strapi-plugin-content-manager": "^3.5.3",
-    "strapi-plugin-content-type-builder": "^3.5.3",
-    "strapi-plugin-email": "^3.5.3",
-    "strapi-plugin-graphql": "^3.5.3",
-    "strapi-plugin-upload": "^3.5.3",
-    "strapi-plugin-users-permissions": "^3.5.3",
-    "strapi-provider-upload-aws-s3": "^3.5.3",
-    "strapi-utils": "^3.5.3"
+    "knex": "^0.95.4",
+    "pg": "^8.6.0",
+    "strapi": "^3.6.1",
+    "strapi-admin": "^3.6.1",
+    "strapi-connector-bookshelf": "^3.6.1",
+    "strapi-database": "^3.6.1",
+    "strapi-plugin-content-manager": "^3.6.1",
+    "strapi-plugin-content-type-builder": "^3.6.1",
+    "strapi-plugin-email": "^3.6.1",
+    "strapi-plugin-graphql": "^3.6.1",
+    "strapi-plugin-upload": "^3.6.1",
+    "strapi-plugin-users-permissions": "^3.6.1",
+    "strapi-provider-upload-aws-s3": "^3.6.1",
+    "strapi-utils": "^3.6.1"
   },
   "devDependencies": {
-    "concurrently": "^6.0.0",
+    "concurrently": "^6.0.2",
     "dotenv": "^8.2.0",
-    "graphql-faker": "^2.0.0-rc.23",
-    "mongodb-memory-server": "^7.0.0-beta.30",
+    "graphql-faker": "^2.0.0-rc.24",
+    "mongodb-memory-server": "^6.9.6",
     "nodemon": "^2.0.7",
     "sqlite3": "^5.0.2",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.4"
   }
 }
