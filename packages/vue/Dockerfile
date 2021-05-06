@@ -1,0 +1,18 @@
+# syntax = docker/dockerfile:latest
+FROM node:15-alpine AS base
+WORKDIR /usr/local/src
+
+FROM base AS build
+COPY package.json .
+RUN yarn install \
+      --pure-lockfile \
+      --ignore-engines
+COPY . .
+RUN yarn build
+
+FROM base
+ENV NODE_ENV=production
+COPY --from=build /usr/local/src/build .
+RUN npm install -g serve
+ENTRYPOINT ["serve"]
+CMD ["--single", "."]

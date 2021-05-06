@@ -19,6 +19,17 @@ releases:
           tls: true
           host: app.bndigital.dev
 
+  - name: app-vue
+    namespace: staging
+    chart: bndigital/nodejs
+    values:
+      - image: dcr.bndigital.dev/app/vue:latest
+        imagePullSecrets: [ container-registry ]
+        ingress:
+          enabled: true
+          tls: true
+          host: vue.bndigital.dev
+
   - name: app-landing
     namespace: staging
     chart: bndigital/nodejs
