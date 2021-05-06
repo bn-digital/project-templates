@@ -28,6 +28,7 @@
     "node-gyp": "^8.0.0",
     "prettier": "^2.2.1",
     "semantic-release": "^17.4.2",
+    "stylelint": "^13.13.1",
     "typescript": "^4.2.4"
   },
   "scripts": {

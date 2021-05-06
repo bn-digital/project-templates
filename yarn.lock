@@ -244,7 +244,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@app/storybook@workspace:packages/storybook"
   dependencies:
-    "@app/website": "workspace:packages/website"
     "@etchteam/storybook-addon-status": ^3.0.1
     "@figspec/components": ^0.1.6
     "@figspec/react": ^0.1.5
@@ -8402,6 +8401,7 @@ __metadata:
     node-gyp: ^8.0.0
     prettier: ^2.2.1
     semantic-release: ^17.4.2
+    stylelint: ^13.13.1
     typescript: ^4.2.4
   languageName: unknown
   linkType: soft
