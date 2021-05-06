@@ -16,3 +16,4 @@ coverage
 public
 packages/website/src/graphql
 **/*.graphql
+node_modules

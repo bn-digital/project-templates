@@ -15,14 +15,12 @@ jobs:
   lint:
     name: Lint code
     runs-on: self-hosted
-    container:
-      image: bn-digital/nodejs:latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: yarn
+        run: yarn workspaces focus @app
 
       - name: Run linter
         run: yarn lint

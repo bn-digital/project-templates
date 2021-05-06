@@ -68,9 +68,6 @@ jobs:
 
   build-cms:
     name: Build Docker image
-    needs:
-      - lint
-      - analyze
     runs-on: self-hosted
     steps:
       - name: Setup builder
@@ -131,7 +128,6 @@ jobs:
 
   notify:
     name: Notify Slack
-    needs: [ test ]
     runs-on: self-hosted
     steps:
       - name: Slack Notification
