@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:latest
-FROM node:16-alpine AS base
+FROM node:15-alpine AS base
 WORKDIR /usr/local/src
 
 FROM base AS build

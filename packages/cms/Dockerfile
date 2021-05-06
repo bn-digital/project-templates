@@ -1,23 +1,18 @@
-# syntax = docker/dockerfile:1.2
-FROM node:alpine AS base-build
+# syntax = docker/dockerfile:latest
+FROM node:15-alpine AS base
 WORKDIR /usr/local/src
-ENV HUSKY=false
-COPY .yarn .yarn
-COPY package.json .yarnrc.yml yarn.lock *rc *ignore ./
-RUN yarn
 
-FROM base-build AS base-runtime
-EXPOSE 1337
-ENTRYPOINT ["yarn", "workspace", "@app/cms", "run"]
+FROM base AS build
+COPY package.json .
+RUN yarn install \
+      --pure-lockfile \
+      --ignore-engines \
+      --production
+COPY . .
+RUN yarn build \
+      --clean
 
-FROM base-build AS build
-WORKDIR /usr/local/src
-COPY packages/cms packages/cms
-RUN yarn workspaces focus @app/cms \
- && NODE_ENV=production yarn workspace @app/cms run build --clean
-
-FROM base-runtime
-COPY --from=build /usr/local/src/packages/cms packages/cms
+FROM base
 ENV NODE_ENV=production \
     STRAPI_TELEMETRY_DISABLED=true \
     STRAPI_LOG_LEVEL=warn \
@@ -25,4 +20,6 @@ ENV NODE_ENV=production \
     STRAPI_DISABLE_EE=true \
     STRAPI_DISABLE_UPDATE_NOTIFICATION=true \
     STRAPI_SHOW_TUTORIALS=false
-CMD ["run"]
+COPY --from=build /usr/local/src .
+ENTRYPOINT ["yarn"]
+CMD ["strapi", "start"]

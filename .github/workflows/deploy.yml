@@ -13,7 +13,7 @@ env:
 
 jobs:
   build-website:
-    name: Build Docker image
+    name: Build Website
     runs-on: self-hosted
     steps:
       - name: Setup builder
@@ -40,7 +40,7 @@ jobs:
           tags: ${{ env.docker_repository }}/website:latest
 
   build-landing:
-    name: Build Docker image
+    name: Build Landing
     runs-on: self-hosted
     steps:
       - name: Setup builder
@@ -67,7 +67,7 @@ jobs:
           tags: ${{ env.docker_repository }}/landing:latest
 
   build-cms:
-    name: Build Docker image
+    name: Build CMS
     runs-on: self-hosted
     steps:
       - name: Setup builder
