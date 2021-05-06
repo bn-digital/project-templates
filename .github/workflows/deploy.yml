@@ -4,6 +4,9 @@ on:
     paths:
       - .github/workflows/deploy.yml
       - packages/*/src/**/*
+      - packages/cms/api/**/*
+      - packages/cms/componets/**/*
+      - packages/cms/config/**/*
     branches:
       - latest
 
