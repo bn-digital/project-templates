@@ -24,6 +24,6 @@ To use content from API, use hook
 import { useContent } from 'packages/website/src/containers/CMS'
 
 const {
-  website: { navigation, sections, sliders, pages },
+  website: { navigation, sections, pages },
 } = useContent()
 ```

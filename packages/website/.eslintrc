@@ -14,11 +14,15 @@
   "env": {
     "browser": true,
     "es6": true,
-    "jest": true,
     "node": true,
     "worker": true
   },
-  "plugins": ["prettier", "@typescript-eslint"],
+  "plugins": [
+    "prettier",
+    "react",
+    "react-hooks",
+    "@typescript-eslint"
+  ],
   "overrides": [
     {
       "files": "src/graphql/**/*.tsx",
