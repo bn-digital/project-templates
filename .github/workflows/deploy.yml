@@ -96,7 +96,9 @@ jobs:
   deploy:
     name: Release Helm chart
     needs:
-      - build
+      - build-website
+      - build-landing
+      - build-cms
     runs-on: self-hosted
     steps:
       - name: Checkout sources
@@ -129,6 +131,7 @@ jobs:
   notify:
     name: Notify Slack
     runs-on: self-hosted
+    needs: [ deploy ]
     steps:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
