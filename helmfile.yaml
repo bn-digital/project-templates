@@ -36,6 +36,10 @@ releases:
     values:
       - image: dcr.bndigital.dev/app/cms:latest
         imagePullSecrets: [ container-registry ]
+        envSecrets: [ backend-services ]
+        configMapsSecrets: [ backend-services ]
+        app:
+          port: 1337
         ingress:
           enabled: true
           tls: true
