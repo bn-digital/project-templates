@@ -1,8 +1,0 @@
-fragment Slider on ComponentMoleculesSlider {
-  id
-  hidden
-  slug
-  slides {
-    ...Card
-  }
-}

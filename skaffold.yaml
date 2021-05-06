@@ -1,13 +1,9 @@
-apiVersion: skaffold/v2beta13
+apiVersion: skaffold/v2beta14
 kind: Config
 metadata:
   name: nymcard
 build:
   artifacts:
-  - image: cms
-    context: .
-    docker:
-      dockerfile: packages/cms/Dockerfile
   - image: website
     context: .
     docker:

@@ -1,12 +1,12 @@
 {
-  "collectionName": "components_call_to_actions",
+  "collectionName": "components_organisms_call_to_actions",
   "info": {
     "name": "CallToAction",
     "icon": "exclamation-triangle"
   },
   "options": {},
   "attributes": {
-    "parent": {
+    "section": {
       "type": "component",
       "repeatable": false,
       "component": "organisms.section",

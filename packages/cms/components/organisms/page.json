@@ -1,5 +1,5 @@
 {
-  "collectionName": "components_pages",
+  "collectionName": "components_organisms_pages",
   "info": {
     "name": "Page",
     "icon": "scroll"
@@ -11,9 +11,9 @@
       "repeatable": true,
       "component": "atoms.entry"
     },
-    "hidden": {
+    "active": {
       "type": "boolean",
-      "default": false
+      "default": true
     },
     "slug": {
       "type": "string",

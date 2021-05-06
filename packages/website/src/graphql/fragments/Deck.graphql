@@ -1,0 +1,8 @@
+fragment Deck on ComponentOrganismsDeck {
+  id
+  active
+  slug
+  cards {
+    ...Card
+  }
+}

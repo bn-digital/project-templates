@@ -17,14 +17,20 @@
       "required": true,
       "unique": false
     },
-    "subject": {
-      "type": "string"
+    "firstName": {
+      "type": "string",
+      "required": true
     },
-    "name": {
-      "type": "string"
+    "lastName": {
+      "type": "string",
+      "required": true
     },
-    "message": {
-      "type": "text"
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "country": {
+      "model": "country"
     }
   }
 }

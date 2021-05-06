@@ -1,16 +1,25 @@
-query getContent {
-  website {
+query getContent($id: ID!) {
+  website(id: $id) {
     id
     pages {
       id
     }
-    slides {
-      ...Slider
-    }
     sections {
+      ... on ComponentOrganismsDeck {
+        id
+        cards {
+          ...Card
+        }
+      }
       ... on ComponentOrganismsArticle {
         id
-        parent {
+        section {
+          ...Section
+        }
+      }
+      ... on ComponentOrganismsArticle {
+        id
+        section {
           ...Section
         }
       }
@@ -19,7 +28,7 @@ query getContent {
         button {
           ...Button
         }
-        parent {
+        section {
           ...Section
         }
       }
@@ -28,7 +37,7 @@ query getContent {
         button {
           ...Button
         }
-        parent {
+        section {
           ...Section
         }
       }

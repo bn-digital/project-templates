@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/app.iml" filepath="$PROJECT_DIR$/.idea/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/cms/cms.iml" filepath="$PROJECT_DIR$/packages/cms/cms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/landing/landing.iml" filepath="$PROJECT_DIR$/packages/landing/landing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/storybook/storybook.iml" filepath="$PROJECT_DIR$/packages/storybook/storybook.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/website/website.iml" filepath="$PROJECT_DIR$/packages/website/website.iml" />
     </modules>
   </component>

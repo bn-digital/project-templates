@@ -1,4 +1,24 @@
 {
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true,
+    "node": true,
+    "worker": true
+  },
+  "plugins": ["prettier", "@typescript-eslint"],
   "overrides": [
     {
       "files": "src/graphql/**/*.tsx",

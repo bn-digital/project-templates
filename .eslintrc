@@ -1,56 +1,7 @@
 {
-  "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 2021,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "env": {
-    "browser": true,
-    "es6": true,
-    "jest": true,
-    "node": true,
-    "worker": true
-  },
-  "overrides": [
-    {
-      "files": [
-        "**/*.stories.tsx"
-      ],
-      "rules": {
-        "react/react-in-jsx-scope": "off",
-        "import/no-anonymous-default-export": "off"
-      }
-    },
-    {
-      "files": "**/*/src/graphql/**/*.tsx",
-      "rules": {
-        "@typescript-eslint/ban-types": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/explicit-module-boundary-types": "off"
-      }
-    }
-  ],
   "root": true,
   "plugins": [
-    "@typescript-eslint",
-    "react",
-    "react-hooks"
-  ],
-  "rules": {
-    "@typescript-eslint/member-delimiter-style": "off",
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  }
+    "workspaces",
+    "prettier"
+  ]
 }

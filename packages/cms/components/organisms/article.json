@@ -1,12 +1,12 @@
 {
-  "collectionName": "components_articles",
+  "collectionName": "components_organisms_articles",
   "info": {
     "name": "Article",
     "icon": "newspaper"
   },
   "options": {},
   "attributes": {
-    "parent": {
+    "section": {
       "type": "component",
       "repeatable": false,
       "component": "organisms.section"

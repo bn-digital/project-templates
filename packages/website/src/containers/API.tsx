@@ -2,7 +2,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { FC, useMemo } from 'react'
 
 const API: FC = ({ children }) => {
-  const uri = process.env.REACT_APP_API_URL ?? 'http://localhost:1337/graphql'
+  const uri = process.env.REACT_APP_API_URL ?? '/graphql'
   const client = useMemo(
     () =>
       new ApolloClient({

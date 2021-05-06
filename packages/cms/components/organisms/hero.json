@@ -1,5 +1,5 @@
 {
-  "collectionName": "components_heroes",
+  "collectionName": "components_organisms_heroes",
   "info": {
     "name": "Hero",
     "icon": "bullhorn",
@@ -7,7 +7,7 @@
   },
   "options": {},
   "attributes": {
-    "parent": {
+    "section": {
       "type": "component",
       "repeatable": false,
       "component": "organisms.section",
@@ -18,10 +18,15 @@
       "repeatable": false,
       "component": "atoms.button"
     },
-    "cover": {
-      "type": "component",
-      "repeatable": true,
-      "component": "atoms.media",
+    "media": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
       "required": true
     }
   }

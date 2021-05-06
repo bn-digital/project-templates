@@ -1,5 +1,5 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "websites",
   "info": {
     "name": "Website",
@@ -17,6 +17,7 @@
       "components": [
         "organisms.call-to-action",
         "organisms.hero",
+        "organisms.deck",
         "organisms.article"
       ]
     },
@@ -31,10 +32,10 @@
       "component": "organisms.page",
       "required": false
     },
-    "slides": {
-      "type": "component",
-      "repeatable": true,
-      "component": "molecules.slider"
+    "slug": {
+      "type": "uid",
+      "private": false,
+      "required": true
     }
   }
 }

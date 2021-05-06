@@ -1,5 +1,5 @@
 {
-  "collectionName": "components_sections",
+  "collectionName": "components_organisms_sections",
   "info": {
     "name": "Section",
     "icon": "ad",
@@ -16,9 +16,9 @@
     "description": {
       "type": "richtext"
     },
-    "hidden": {
+    "active": {
       "type": "boolean",
-      "default": false
+      "default": true
     },
     "slug": {
       "type": "string",

@@ -1,7 +1,7 @@
 schema:
   - packages/cms/exports/graphql/schema.graphql
 watch:
-  - packages/cms/exports/graphql/schema.graphql
+  - packages/cms/exports/**/*.graphql
   - packages/*/src/**/*.graphql
 hooks:
   afterAllFileWrite:
@@ -14,18 +14,19 @@ config:
       JSON: Record<string, any>
       Long: number
       DateTime: Date
-  react-apollo:
-    reactApolloVersion: 3
-    withHOC: true
-    withResultType: true
-    addDocBlocks: true
-    withHooks: true
 generates:
   packages/website/src/graphql/index.tsx:
     plugins:
       - typescript
       - typescript-operations
-      - typescript-react-apollo
+      - typescript-react-apollo:
+          reactApolloVersion: 3
+          withHOC: true
+          withResultType: true
+          addDocBlocks: true
+          withHooks: true
+          withComponent: true
     documents:
       - packages/website/src/graphql/**/*.graphql
-
+      - packages/cms/exports/graphql/fragments/*.graphql
+      - packages/cms/exports/graphql/extensions/*.graphql

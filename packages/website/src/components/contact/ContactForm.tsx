@@ -14,7 +14,7 @@ const validateMessages: ValidateMessages = {
     email: '${label} is not a valid email!',
   },
 }
-type ContactFormValues = Pick<ContactFormRequest, 'name' | 'email' | 'message'>
+type ContactFormValues = Pick<ContactFormRequest, 'firstName' | 'lastName' | 'email' | 'city'>
 const ContactForm: FC = () => {
   const [createContactFormRequest] = useCreateContactFormRequestMutation()
   const messageKey = 'request'
@@ -34,7 +34,7 @@ const ContactForm: FC = () => {
               result?.data &&
               message.success(
                 {
-                  content: `Thanks for your interest, ${result.data.createContactFormRequest.contactFormRequest.name}! Your message received, ${result.data.createContactFormRequest.contactFormRequest.name}`,
+                  content: `Thanks for your interest, ${result.data.createContactFormRequest.contactFormRequest.firstName}! Your message received, ${result.data.createContactFormRequest.contactFormRequest.email}`,
                   key: messageKey,
                 },
                 2000,
@@ -55,14 +55,14 @@ const ContactForm: FC = () => {
 
   return (
     <Form {...formProps} name='nest-messages' onFinish={onFinish} validateMessages={validateMessages}>
-      <Form.Item name={'name'} label='Name'>
+      <Form.Item name={'firstName'} label='First Name'>
+        <Input />
+      </Form.Item>
+      <Form.Item name={'lastName'} label='Last Name'>
         <Input />
       </Form.Item>
       <Form.Item name={'email'} label='Email' rules={[{ required: true, type: 'email' }]}>
         <Input />
-      </Form.Item>
-      <Form.Item name={'message'} label='Your message'>
-        <Input.TextArea />
       </Form.Item>
       <Form.Item wrapperCol={{ ...formProps.wrapperCol, offset: 8 }}>
         <Button type='primary' htmlType='submit'>

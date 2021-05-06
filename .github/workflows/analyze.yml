@@ -1,0 +1,41 @@
+name: Code analysis
+on:
+  push:
+    paths:
+      - .github/workflows/continuous-delivery.yml
+      - packages/*/src/**/*
+    branches:
+      - latest
+
+env:
+  docker_buildkit: 1
+  docker_repository: ${{ secrets.docker_registry }}/app
+
+jobs:
+  lint:
+    name: Lint code
+    runs-on: self-hosted
+    container:
+      image: bn-digital/nodejs:latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run linter
+        run: yarn lint
+
+  analyze:
+    name: Analyze code
+    runs-on: self-hosted
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Run Sonar scanner
+        uses: kitabisa/sonarqube-action@master
+        with:
+          host: ${{ secrets.SONARQUBE_HOST }}
+          login: ${{ secrets.SONARQUBE_TOKEN }}

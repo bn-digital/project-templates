@@ -1,0 +1,53 @@
+repositories:
+  - name: bndigital
+    url: https://dcr.bndigital.dev/chartrepo/library
+
+helmDefaults:
+  kubeContext: do-fra1-bndigital
+  createNamespace: true
+  cleanupOnFail: true
+
+releases:
+  - name: app-website
+    namespace: staging
+    chart: bndigital/nodejs
+    values:
+      - image: dcr.bndigital.dev/app/website:latest
+        imagePullSecrets: [ container-registry ]
+        ingress:
+          enabled: true
+          tls: true
+          host: app.bndigital.dev
+
+  - name: app-landing
+    namespace: staging
+    chart: bndigital/nodejs
+    values:
+      - image: dcr.bndigital.dev/app/landing:latest
+        imagePullSecrets: [ container-registry ]
+        ingress:
+          enabled: true
+          tls: true
+          host: landing.app.bndigital.dev
+
+  - name: app-cms
+    namespace: staging
+    chart: bndigital/nodejs
+    values:
+      - image: dcr.bndigital.dev/app/cms:latest
+        imagePullSecrets: [ container-registry ]
+        ingress:
+          enabled: true
+          tls: true
+          host: cms.app.bndigital.dev
+
+  - name: app-storybook
+    namespace: staging
+    chart: bndigital/nodejs
+    values:
+      - image: dcr.bndigital.dev/app/storybook:latest
+        imagePullSecrets: [ container-registry ]
+        ingress:
+          enabled: true
+          tls: true
+          host: storybook.app.bndigital.dev

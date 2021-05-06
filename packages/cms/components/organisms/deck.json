@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_organisms_decks",
+  "info": {
+    "name": "deck",
+    "icon": "photo-video"
+  },
+  "options": {},
+  "attributes": {
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "molecules.card",
+      "required": false
+    },
+    "section": {
+      "type": "component",
+      "repeatable": false,
+      "component": "organisms.section",
+      "required": false
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

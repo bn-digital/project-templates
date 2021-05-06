@@ -4,5 +4,5 @@ fragment Section on ComponentOrganismsSection {
   title
   subTitle
   description
-  hidden
+  active
 }

@@ -1,0 +1,24 @@
+name: Test
+on:
+  workflow_run:
+    types:
+      - completed
+    workflows:
+      - Deploy
+jobs:
+  smoke-test:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    name: Smoke Test
+    runs-on: self-hosted
+    container:
+      image: blazemeter/taurus:latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '14'
+      - name: Test application
+        run: bzt .bzt/config.yaml
