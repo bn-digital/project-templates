@@ -38,11 +38,11 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          context: packages/website
-          file: packages/website/Dockerfile
-          cache-from: type=registry,ref=${{ env.docker_repository }}/website:latest
+          context: packages/react
+          file: packages/react/Dockerfile
+          cache-from: type=registry,ref=${{ env.docker_repository }}/react:latest
           cache-to: type=inline
-          tags: ${{ env.docker_repository }}/website:latest
+          tags: ${{ env.docker_repository }}/react:latest
 
   build-vue:
     name: Build Vue
@@ -67,8 +67,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          context: packages/website
-          file: packages/website/Dockerfile
+          context: packages/vue
+          file: packages/vue/Dockerfile
           cache-from: type=registry,ref=${{ env.docker_repository }}/vue:latest
           cache-to: type=inline
           tags: ${{ env.docker_repository }}/vue:latest

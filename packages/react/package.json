@@ -1,5 +1,5 @@
 {
-  "name": "@app/website",
+  "name": "@app/react",
   "private": true,
   "scripts": {
     "build": "craco build",

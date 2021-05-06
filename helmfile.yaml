@@ -8,16 +8,16 @@ helmDefaults:
   cleanupOnFail: true
 
 releases:
-  - name: app-website
+  - name: app-react
     namespace: staging
     chart: bndigital/nodejs
     values:
-      - image: dcr.bndigital.dev/app/website:latest
+      - image: dcr.bndigital.dev/app/react:latest
         imagePullSecrets: [ container-registry ]
         ingress:
           enabled: true
           tls: true
-          host: app.bndigital.dev
+          host: react.bndigital.dev
 
   - name: app-vue
     namespace: staging

@@ -41,7 +41,7 @@
     "website": "yarn workspace @app/website run start",
     "landing": "yarn workspace @app/landing run start",
     "storybook": "yarn workspace @app/storybook run start",
-    "fix": "prettier --write packages/*/src && eslint --fix packages/*/src --no-ignore && stylelint --fix packages/*/src/**/*.less",
+    "fix": "prettier --write packages/*/src && eslint --fix packages/*/src --no-ignore && stylelint --fix packages/*/src/**/*.{vue,less}",
     "lint": "prettier --check packages/*/src && eslint packages/*/src --no-ignore && stylelint --fix packages/*/src/**/*.less",
     "start": "concurrently 'yarn:cms' 'yarn:website' 'yarn:graphql'"
   }

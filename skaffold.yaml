@@ -4,10 +4,10 @@ metadata:
   name: nymcard
 build:
   artifacts:
-  - image: website
-    context: .
-    docker:
-      dockerfile: packages/website/Dockerfile
+  - image: vue
+    context: packages/vue
+  - image: react
+    context: packages/react
   tagPolicy:
     sha256: {}
   local:

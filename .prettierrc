@@ -17,6 +17,12 @@
       }
     },
     {
+      "files": "*.vue",
+      "options": {
+        "parser": "vue"
+      }
+    },
+    {
       "files": "*.jsonschema",
       "options": {
         "parser": "json"
