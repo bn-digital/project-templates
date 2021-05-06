@@ -43,6 +43,7 @@ releases:
 
   - name: app-storybook
     namespace: staging
+    installed: false
     chart: bndigital/nodejs
     values:
       - image: dcr.bndigital.dev/app/storybook:latest
