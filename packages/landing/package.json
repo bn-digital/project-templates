@@ -2,7 +2,7 @@
   "name": "@app/landing",
   "private": true,
   "scripts": {
-    "build": "parcel build --no-minify --no-content-hash --no-source-maps src/index.html",
+    "build": "parcel build --out-dir=build --no-minify --no-content-hash --no-source-maps src/index.html",
     "start": "parcel src/index.html"
   },
   "devDependencies": {

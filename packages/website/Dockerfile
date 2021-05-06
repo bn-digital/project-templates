@@ -12,7 +12,7 @@ RUN yarn build
 
 FROM base
 ENV NODE_ENV=production
-COPY --from=build /usr/local/src/dist .
+COPY --from=build /usr/local/src/build .
 RUN npm install -g serve
 ENTRYPOINT ["serve"]
 CMD ["--single", "."]
