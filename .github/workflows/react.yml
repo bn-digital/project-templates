@@ -1,4 +1,4 @@
-name: Build React
+name: React
 on:
   push:
     branches:
@@ -13,8 +13,8 @@ env:
   docker_image: react
 
 jobs:
-  docker:
-    name: Build Strapi image
+  build:
+    name: Build Docker image
     runs-on: self-hosted
     steps:
       - name: Setup builder
@@ -39,3 +39,35 @@ jobs:
           cache-from: type=registry,ref=${{ env.docker_repository }}/${{ env.docker_image }}
           cache-to: type=inline
           tags: ${{ env.docker_repository }}/${{ env.docker_image }}:latest
+
+  deploy:
+    name: Deploy Helm chart
+    needs: [ build ]
+    runs-on: self-hosted
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Setup doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.digitalocean_token }}
+
+      - name: Save K8S config
+        run: doctl kubernetes cluster kubeconfig save ${{ secrets.kubernetes_cluster }} --set-current-context
+
+      - name: Setup helmfile
+        uses: mamezou-tech/setup-helmfile@v0.8.0
+
+      - name: Setup Helm diff
+        run: helm plugin install https://github.com/databus23/helm-diff
+
+      - name: Get Time
+        id: time
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: 2
+          format: 'YYYY-MM-DD-HH-mm-ss'
+
+      - name: Helmfile apply
+        run: helmfile apply --environment=staging --label=app=${{ env.docker_image }} --set podAnnotations.timestamp=${{ steps.time.outputs.time }}
