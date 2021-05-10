@@ -9,7 +9,7 @@
     "@apollo/client": "^3.3.16",
     "@sentry/react": "^6.3.5",
     "@sentry/tracing": "^6.3.5",
-    "ahooks": "^2.10.2",
+    "ahooks": "^2.10.3",
     "antd": "^4.15.4",
     "graphql": "^15.5.0",
     "history": "^5.0.0",
@@ -22,7 +22,7 @@
     "react-responsive": "^8.2.0",
     "react-router-dom": "^6.0.0-beta.0",
     "react-scripts": "^4.0.3",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^1.1.2"
   },
   "devDependencies": {
     "@craco/craco": "^6.1.2",
@@ -35,12 +35,9 @@
     "@typescript-eslint/parser": "^4.22.1",
     "craco-less": "^1.17.1",
     "eslint": "^7.25.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.2.1",
+    "react-google-login": "^5.2.2",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-rational-order": "^0.1.2",

@@ -1,0 +1,39 @@
+{
+  "name": "@app/strapi",
+  "description": "A Strapi application",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "strapi build --clean",
+    "prestart": "strapi configuration:restore --file=strapi.json",
+    "postrun": "strapi configuration:restore --file=strapi.json",
+    "prestop": "strapi configuration:dump --file=strapi.json --pretty",
+    "fake": "graphql-faker exports/fake/schema.graphql",
+    "run": "strapi start",
+    "start": "strapi develop"
+  },
+  "dependencies": {
+    "knex": "^0.95.4",
+    "pg": "^8.6.0",
+    "pg-pool": "^3.3.0",
+    "strapi": "^3.6.1",
+    "strapi-admin": "^3.6.1",
+    "strapi-connector-bookshelf": "^3.6.1",
+    "strapi-database": "^3.6.1",
+    "strapi-plugin-content-manager": "^3.6.1",
+    "strapi-plugin-content-type-builder": "^3.6.1",
+    "strapi-plugin-email": "^3.6.1",
+    "strapi-plugin-email-designer": "^0.4.1",
+    "strapi-plugin-graphql": "^3.6.1",
+    "strapi-plugin-i18n": "^3.6.1",
+    "strapi-plugin-upload": "^3.6.1",
+    "strapi-plugin-users-permissions": "^3.6.1",
+    "strapi-provider-email-mailgun": "^3.6.1",
+    "strapi-provider-upload-aws-s3": "^3.6.1",
+    "strapi-utils": "^3.6.1"
+  },
+  "devDependencies": {
+    "graphql-faker": "^2.0.0-rc.24",
+    "sqlite3": "^5.0.2"
+  }
+}

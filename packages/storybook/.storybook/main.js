@@ -22,7 +22,6 @@ module.exports = {
   addons: [
     '@storybook/react',
     '@storybook/addon-essentials',
-    '@storybook/addon-postcss/register',
     '@storybook/addon-links',
     '@storybook/addon-jest',
     'storybook-addon-designs',

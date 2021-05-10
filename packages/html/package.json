@@ -1,0 +1,18 @@
+{
+  "name": "@app/html",
+  "private": true,
+  "version": "1.0.0",
+  "readme": "README",
+  "scripts": {
+    "build": "parcel build --out-dir=build --no-minify --no-content-hash --no-source-maps src/index.html",
+    "start": "parcel src/index.html"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
+    "eslint": "^7.26.0",
+    "less": "^4.1.1",
+    "parcel-bundler": "^1.12.5",
+    "typescript": "^4.2.4"
+  }
+}

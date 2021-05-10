@@ -1,0 +1,9 @@
+*.md
+*.js
+*.ts
+*.tsx
+*.json
+*.yaml
+*.yml
+*.properties
+*.gotmpl

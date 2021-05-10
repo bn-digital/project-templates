@@ -1,7 +1,7 @@
 schema:
-  - packages/cms/exports/graphql/schema.graphql
+  - packages/strapi/exports/graphql/schema.graphql
 watch:
-  - packages/cms/exports/**/*.graphql
+  - packages/strapi/exports/**/*.graphql
   - packages/*/src/**/*.graphql
 hooks:
   afterAllFileWrite:
@@ -15,7 +15,7 @@ config:
       Long: number
       DateTime: Date
 generates:
-  packages/website/src/graphql/index.tsx:
+  packages/react/src/graphql/index.tsx:
     plugins:
       - typescript
       - typescript-operations
@@ -27,6 +27,6 @@ generates:
           withHooks: true
           withComponent: true
     documents:
-      - packages/website/src/graphql/**/*.graphql
-      - packages/cms/exports/graphql/fragments/*.graphql
-      - packages/cms/exports/graphql/extensions/*.graphql
+      - packages/react/src/graphql/**/*.graphql
+      - packages/strapi/exports/graphql/fragments/*.graphql
+      - packages/strapi/exports/graphql/extensions/*.graphql

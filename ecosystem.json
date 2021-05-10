@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "strapi",
+      "script": ".yarn/releases/yarn-berry.cjs",
+      "args": [
+        "strapi",
+        "start"
+      ],
+      "log_type": "json",
+      "exec_mode": "fork",
+      "watch": true,
+      "output": ".logs/out.log"
+    }
+  ]
+}

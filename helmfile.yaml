@@ -7,63 +7,61 @@ helmDefaults:
   createNamespace: true
   cleanupOnFail: true
 
+environments:
+  staging:
+    values: []
+
 releases:
   - name: app-react
-    namespace: staging
+    namespace: '{{ .Environment.Name }}'
     chart: bndigital/nodejs
+    labels:
+      app: react
     values:
-      - image: dcr.bndigital.dev/app/react:latest
-        imagePullSecrets: [ container-registry ]
-        ingress:
-          enabled: true
-          tls: true
-          host: react.bndigital.dev
+      - 'values.{{ .Environment.Name }}.gotmpl'
 
   - name: app-vue
-    namespace: staging
+    namespace: '{{ .Environment.Name }}'
     chart: bndigital/nodejs
+    labels:
+      app: vue
     values:
-      - image: dcr.bndigital.dev/app/vue:latest
-        imagePullSecrets: [ container-registry ]
-        ingress:
-          enabled: true
-          tls: true
-          host: vue.bndigital.dev
+      - 'values.{{ .Environment.Name }}.gotmpl'
 
-  - name: app-landing
-    namespace: staging
+  - name: app-html
+    namespace: '{{ .Environment.Name }}'
     chart: bndigital/nodejs
+    labels:
+      app: html
     values:
-      - image: dcr.bndigital.dev/app/landing:latest
-        imagePullSecrets: [ container-registry ]
-        ingress:
-          enabled: true
-          tls: true
-          host: landing.app.bndigital.dev
+      - 'values.{{ .Environment.Name }}.gotmpl'
 
-  - name: app-cms
-    namespace: staging
+  - name: app-strapi
+    namespace: '{{ .Environment.Name }}'
     chart: bndigital/nodejs
+    labels:
+      app: cms
     values:
-      - image: dcr.bndigital.dev/app/cms:latest
-        imagePullSecrets: [ container-registry ]
-        envSecrets: [ backend-services ]
+      - 'values.{{ .Environment.Name }}.gotmpl'
+      - envSecrets: [ backend-services ]
         configMapsSecrets: [ backend-services ]
+
+  - name: app-graphql
+    namespace: '{{ .Environment.Name }}'
+    chart: bndigital/nodejs
+    labels:
+      app: graphql
+    values:
+      - 'values.{{ .Environment.Name }}.gotmpl'
+      - image: apisguru/graphql-faker
         app:
-          port: 1337
-        ingress:
-          enabled: true
-          tls: true
-          host: cms.app.bndigital.dev
+          port: 9092
 
   - name: app-storybook
-    namespace: staging
-    installed: false
+    namespace: '{{ .Environment.Name }}'
     chart: bndigital/nodejs
+    labels:
+      app: storybook
+    installed: false
     values:
-      - image: dcr.bndigital.dev/app/storybook:latest
-        imagePullSecrets: [ container-registry ]
-        ingress:
-          enabled: true
-          tls: true
-          host: storybook.app.bndigital.dev
+      - 'values.{{ .Environment.Name }}.gotmpl'

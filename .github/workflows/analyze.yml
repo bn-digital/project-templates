@@ -1,4 +1,4 @@
-name: Code analysis
+name: Analyze
 on:
   push:
     paths:
@@ -7,22 +7,21 @@ on:
     branches:
       - latest
 
-env:
-  docker_buildkit: 1
-  docker_repository: ${{ secrets.docker_registry }}/app
-
 jobs:
   lint:
     name: Lint code
     runs-on: self-hosted
-    container:
-      image: dcr.bndigital.dev/library/nodejs:latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: yarn workspaces focus app
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: '15'
+
+      - name: Install Yarn
+        run: npm i -g yarn
 
       - name: Run linter
         run: yarn lint

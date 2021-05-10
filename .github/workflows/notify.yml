@@ -1,0 +1,25 @@
+name: Notify
+on:
+  workflow_run:
+    types:
+      - completed
+    workflows:
+      - Deploy
+jobs:
+  slack:
+    name: Notify in Slack
+    runs-on: self-hosted
+    needs: [ deploy ]
+    steps:
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: Build pipeline completed
+          SLACK_USERNAME: Github Bot
+          SLACK_CHANNEL: chatops
+          SLACK_ICON: https://cdn.bndigital.co/images/logo.png
+          SLACK_MESSAGE: |
+            Staging environment updated.
+            See latest builds on https://app.bndigital.dev. Code analysis report: https://sonarqube.bndigital.dev
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_FOOTER: ''

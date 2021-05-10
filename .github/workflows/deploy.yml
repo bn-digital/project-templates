@@ -18,8 +18,6 @@ jobs:
   build-react:
     name: Build React
     runs-on: self-hosted
-    container:
-      image: dcr.bndigital.dev/library/nodejs:latest
     steps:
       - name: Setup builder
         uses: docker/setup-buildx-action@v1
@@ -47,8 +45,6 @@ jobs:
   build-vue:
     name: Build Vue
     runs-on: self-hosted
-    container:
-      image: dcr.bndigital.dev/library/nodejs:latest
     steps:
       - name: Setup builder
         uses: docker/setup-buildx-action@v1
@@ -76,8 +72,6 @@ jobs:
   build-landing:
     name: Build Landing
     runs-on: self-hosted
-    container:
-      image: dcr.bndigital.dev/library/nodejs:latest
     steps:
       - name: Setup builder
         uses: docker/setup-buildx-action@v1
@@ -102,34 +96,7 @@ jobs:
           cache-to: type=inline
           tags: ${{ env.docker_repository }}/landing:latest
 
-  build-cms:
-    name: Build CMS
-    runs-on: self-hosted
-    container:
-      image: dcr.bndigital.dev/library/nodejs:latest
-    steps:
-      - name: Setup builder
-        uses: docker/setup-buildx-action@v1
 
-      - name: Login to registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ secrets.docker_registry }}
-          username: ${{ secrets.docker_username }}
-          password: ${{ secrets.docker_password }}
-
-      - name: Checkout sources
-        uses: actions/checkout@v2
-
-      - name: Build image
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          context: packages/cms
-          file: packages/cms/Dockerfile
-          cache-from: type=registry,ref=${{ env.docker_repository }}/cms:latest
-          cache-to: type=inline
-          tags: ${{ env.docker_repository }}/cms:latest
 
   deploy:
     name: Release Helm chart
@@ -167,20 +134,3 @@ jobs:
       - name: Helmfile apply
         run: helmfile apply --set podAnnotations.timestamp=${{ steps.time.outputs.time }}
 
-  notify:
-    name: Notify Slack
-    runs-on: self-hosted
-    needs: [ deploy ]
-    steps:
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_TITLE: Build pipeline completed
-          SLACK_USERNAME: Github Bot
-          SLACK_CHANNEL: chatops
-          SLACK_ICON: https://cdn.bndigital.co/images/logo.png
-          SLACK_MESSAGE: |
-            Staging environment updated.
-            See latest builds on https://app.bndigital.dev. Code analysis report: https://sonarqube.bndigital.dev
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_FOOTER: ''

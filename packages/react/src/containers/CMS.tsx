@@ -1,13 +1,13 @@
 import { FC, createContext, useContext } from 'react'
-import { GetContentQuery, useGetContentQuery } from '../graphql'
 import { Loader } from './index'
 import fallback from '../graphql/fallback.json'
+import { ContentQuery, useContentQuery } from '../graphql'
 
-const Content = createContext<GetContentQuery>({ website: null })
+const Content = createContext(undefined)
 
 const CMS: FC = ({ children }) => {
-  const { data, loading } = useGetContentQuery({ variables: { id: '1' } })
+  const { data, loading } = useContentQuery({ variables: { criteria: { slug: 'app' } } })
   return loading ? <Loader /> : <Content.Provider value={data ?? fallback.data}>{children}</Content.Provider>
 }
-const useContent: () => GetContentQuery = () => useContext(Content)
+const useContent: () => ContentQuery = () => useContext(Content)
 export { CMS, useContent }

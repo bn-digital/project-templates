@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
-import * as Apollo from '@apollo/client'
 import * as React from 'react'
+import * as Apollo from '@apollo/client'
 import * as ApolloReactComponents from '@apollo/client/react/components'
 import * as ApolloReactHoc from '@apollo/client/react/hoc'
 export type Maybe<T> = T | null
@@ -1874,6 +1874,59 @@ export type SectionFragment = { __typename?: 'ComponentOrganismsSection' } & Pic
   'id' | 'slug' | 'title' | 'subTitle' | 'description' | 'active'
 >
 
+export type ContentQueryVariables = Exact<{
+  criteria: Scalars['JSON']
+}>
+
+export type ContentQuery = { __typename?: 'Query' } & {
+  websites?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Website' } & Pick<Website, 'id'> & {
+            pages?: Maybe<Array<Maybe<{ __typename?: 'ComponentOrganismsPage' } & Pick<ComponentOrganismsPage, 'id'>>>>
+            sections?: Maybe<
+              Array<
+                Maybe<
+                  | ({ __typename?: 'ComponentOrganismsArticle' } & Pick<ComponentOrganismsArticle, 'id'> & {
+                        section?: Maybe<
+                          { __typename?: 'ComponentOrganismsSection' } & SectionFragment & SectionFragment
+                        >
+                      })
+                  | ({ __typename?: 'ComponentOrganismsCallToAction' } & Pick<ComponentOrganismsCallToAction, 'id'> & {
+                        button?: Maybe<{ __typename?: 'ComponentAtomsButton' } & ButtonFragment>
+                        section?: Maybe<{ __typename?: 'ComponentOrganismsSection' } & SectionFragment>
+                      })
+                  | ({ __typename?: 'ComponentOrganismsDeck' } & Pick<ComponentOrganismsDeck, 'id'> & {
+                        cards?: Maybe<Array<Maybe<{ __typename?: 'ComponentMoleculesCard' } & CardFragment>>>
+                      })
+                  | ({ __typename?: 'ComponentOrganismsHero' } & Pick<ComponentOrganismsHero, 'id'> & {
+                        button?: Maybe<{ __typename?: 'ComponentAtomsButton' } & ButtonFragment>
+                        section?: Maybe<{ __typename?: 'ComponentOrganismsSection' } & SectionFragment>
+                      })
+                >
+              >
+            >
+            navigation?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'ComponentMoleculesMenu' } & Pick<ComponentMoleculesMenu, 'id' | 'slug'> & {
+                      links?: Maybe<
+                        Array<
+                          Maybe<
+                            { __typename?: 'ComponentAtomsLink' } & Pick<ComponentAtomsLink, 'id' | 'title' | 'url'>
+                          >
+                        >
+                      >
+                    }
+                >
+              >
+            >
+          }
+      >
+    >
+  >
+}
+
 export type CreateContactFormRequestMutationVariables = Exact<{
   input?: Maybe<CreateContactFormRequestInput>
 }>
@@ -1891,49 +1944,22 @@ export type CreateContactFormRequestMutation = { __typename?: 'Mutation' } & {
   >
 }
 
-export type GetContentQueryVariables = Exact<{
-  id: Scalars['ID']
+export type LoginMutationVariables = Exact<{
+  credentials: UsersPermissionsLoginInput
 }>
 
-export type GetContentQuery = { __typename?: 'Query' } & {
-  website?: Maybe<
-    { __typename?: 'Website' } & Pick<Website, 'id'> & {
-        pages?: Maybe<Array<Maybe<{ __typename?: 'ComponentOrganismsPage' } & Pick<ComponentOrganismsPage, 'id'>>>>
-        sections?: Maybe<
-          Array<
-            Maybe<
-              | ({ __typename?: 'ComponentOrganismsArticle' } & Pick<ComponentOrganismsArticle, 'id'> & {
-                    section?: Maybe<{ __typename?: 'ComponentOrganismsSection' } & SectionFragment>
-                  })
-              | ({ __typename?: 'ComponentOrganismsCallToAction' } & Pick<ComponentOrganismsCallToAction, 'id'> & {
-                    button?: Maybe<{ __typename?: 'ComponentAtomsButton' } & ButtonFragment>
-                    section?: Maybe<{ __typename?: 'ComponentOrganismsSection' } & SectionFragment>
-                  })
-              | ({ __typename?: 'ComponentOrganismsDeck' } & Pick<ComponentOrganismsDeck, 'id'> & {
-                    cards?: Maybe<Array<Maybe<{ __typename?: 'ComponentMoleculesCard' } & CardFragment>>>
-                  })
-              | ({ __typename?: 'ComponentOrganismsHero' } & Pick<ComponentOrganismsHero, 'id'> & {
-                    button?: Maybe<{ __typename?: 'ComponentAtomsButton' } & ButtonFragment>
-                    section?: Maybe<{ __typename?: 'ComponentOrganismsSection' } & SectionFragment>
-                  })
-            >
-          >
-        >
-        navigation?: Maybe<
-          Array<
-            Maybe<
-              { __typename?: 'ComponentMoleculesMenu' } & Pick<ComponentMoleculesMenu, 'id' | 'slug'> & {
-                  links?: Maybe<
-                    Array<
-                      Maybe<{ __typename?: 'ComponentAtomsLink' } & Pick<ComponentAtomsLink, 'id' | 'title' | 'url'>>
-                    >
-                  >
-                }
-            >
-          >
-        >
-      }
-  >
+export type LoginMutation = { __typename?: 'Mutation' } & {
+  login: { __typename?: 'UsersPermissionsLoginPayload' } & Pick<UsersPermissionsLoginPayload, 'jwt'>
+}
+
+export type RegisterMutationVariables = Exact<{
+  user: UsersPermissionsRegisterInput
+}>
+
+export type RegisterMutation = { __typename?: 'Mutation' } & {
+  register: { __typename?: 'UsersPermissionsLoginPayload' } & {
+    user: { __typename?: 'UsersPermissionsMe' } & Pick<UsersPermissionsMe, 'id' | 'email' | 'username'>
+  }
 }
 
 export const ButtonFragmentDoc = gql`
@@ -1982,6 +2008,125 @@ export const SectionFragmentDoc = gql`
     active
   }
 `
+export const ContentDocument = gql`
+  query content($criteria: JSON!) {
+    websites(where: $criteria) {
+      id
+      pages {
+        id
+      }
+      sections {
+        ... on ComponentOrganismsDeck {
+          id
+          cards {
+            ...Card
+          }
+        }
+        ... on ComponentOrganismsArticle {
+          id
+          section {
+            ...Section
+            ...Section
+          }
+        }
+        ... on ComponentOrganismsArticle {
+          id
+          section {
+            ...Section
+          }
+        }
+        ... on ComponentOrganismsHero {
+          id
+          button {
+            ...Button
+          }
+          section {
+            ...Section
+          }
+        }
+        ... on ComponentOrganismsCallToAction {
+          id
+          button {
+            ...Button
+          }
+          section {
+            ...Section
+          }
+        }
+      }
+      navigation {
+        id
+        slug
+        links {
+          id
+          title
+          url
+        }
+      }
+    }
+  }
+  ${CardFragmentDoc}
+  ${SectionFragmentDoc}
+  ${ButtonFragmentDoc}
+`
+export type ContentComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<ContentQuery, ContentQueryVariables>,
+  'query'
+> &
+  ({ variables: ContentQueryVariables; skip?: boolean } | { skip: boolean })
+
+export const ContentComponent = (props: ContentComponentProps) => (
+  <ApolloReactComponents.Query<ContentQuery, ContentQueryVariables> query={ContentDocument} {...props} />
+)
+
+export type ContentProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<ContentQuery, ContentQueryVariables>
+} &
+  TChildProps
+export function withContent<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    ContentQuery,
+    ContentQueryVariables,
+    ContentProps<TChildProps, TDataName>
+  >,
+) {
+  return ApolloReactHoc.withQuery<TProps, ContentQuery, ContentQueryVariables, ContentProps<TChildProps, TDataName>>(
+    ContentDocument,
+    {
+      alias: 'content',
+      ...operationOptions,
+    },
+  )
+}
+
+/**
+ * __useContentQuery__
+ *
+ * To run a query within a React component, call `useContentQuery` and pass it any options that fit your needs.
+ * When your component renders, `useContentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useContentQuery({
+ *   variables: {
+ *      criteria: // value for 'criteria'
+ *   },
+ * });
+ */
+export function useContentQuery(baseOptions: Apollo.QueryHookOptions<ContentQuery, ContentQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ContentQuery, ContentQueryVariables>(ContentDocument, options)
+}
+export function useContentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ContentQuery, ContentQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ContentQuery, ContentQueryVariables>(ContentDocument, options)
+}
+export type ContentQueryHookResult = ReturnType<typeof useContentQuery>
+export type ContentLazyQueryHookResult = ReturnType<typeof useContentLazyQuery>
+export type ContentQueryResult = Apollo.QueryResult<ContentQuery, ContentQueryVariables>
 export const CreateContactFormRequestDocument = gql`
   mutation createContactFormRequest($input: createContactFormRequestInput) {
     createContactFormRequest(input: $input) {
@@ -2072,126 +2217,135 @@ export type CreateContactFormRequestMutationOptions = Apollo.BaseMutationOptions
   CreateContactFormRequestMutation,
   CreateContactFormRequestMutationVariables
 >
-export const GetContentDocument = gql`
-  query getContent($id: ID!) {
-    website(id: $id) {
-      id
-      pages {
+export const LoginDocument = gql`
+  mutation login($credentials: UsersPermissionsLoginInput!) {
+    login(input: $credentials) {
+      jwt
+    }
+  }
+`
+export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>
+export type LoginComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<LoginMutation, LoginMutationVariables>,
+  'mutation'
+>
+
+export const LoginComponent = (props: LoginComponentProps) => (
+  <ApolloReactComponents.Mutation<LoginMutation, LoginMutationVariables> mutation={LoginDocument} {...props} />
+)
+
+export type LoginProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<LoginMutation, LoginMutationVariables>
+} &
+  TChildProps
+export function withLogin<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    LoginMutation,
+    LoginMutationVariables,
+    LoginProps<TChildProps, TDataName>
+  >,
+) {
+  return ApolloReactHoc.withMutation<TProps, LoginMutation, LoginMutationVariables, LoginProps<TChildProps, TDataName>>(
+    LoginDocument,
+    {
+      alias: 'login',
+      ...operationOptions,
+    },
+  )
+}
+
+/**
+ * __useLoginMutation__
+ *
+ * To run a mutation, you first call `useLoginMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLoginMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [loginMutation, { data, loading, error }] = useLoginMutation({
+ *   variables: {
+ *      credentials: // value for 'credentials'
+ *   },
+ * });
+ */
+export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options)
+}
+export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>
+export type LoginMutationResult = Apollo.MutationResult<LoginMutation>
+export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>
+export const RegisterDocument = gql`
+  mutation register($user: UsersPermissionsRegisterInput!) {
+    register(input: $user) {
+      user {
         id
-      }
-      sections {
-        ... on ComponentOrganismsDeck {
-          id
-          cards {
-            ...Card
-          }
-        }
-        ... on ComponentOrganismsArticle {
-          id
-          section {
-            ...Section
-            ...Section
-          }
-        }
-        ... on ComponentOrganismsArticle {
-          id
-          section {
-            ...Section
-          }
-        }
-        ... on ComponentOrganismsHero {
-          id
-          button {
-            ...Button
-          }
-          section {
-            ...Section
-          }
-        }
-        ... on ComponentOrganismsCallToAction {
-          id
-          button {
-            ...Button
-          }
-          section {
-            ...Section
-          }
-        }
-      }
-      navigation {
-        id
-        slug
-        links {
-          id
-          title
-          url
-        }
+        email
+        username
       }
     }
   }
-  ${CardFragmentDoc}
-  ${SectionFragmentDoc}
-  ${ButtonFragmentDoc}
 `
-export type GetContentComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<GetContentQuery, GetContentQueryVariables>,
-  'query'
-> &
-  ({ variables: GetContentQueryVariables; skip?: boolean } | { skip: boolean })
+export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, RegisterMutationVariables>
+export type RegisterComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<RegisterMutation, RegisterMutationVariables>,
+  'mutation'
+>
 
-export const GetContentComponent = (props: GetContentComponentProps) => (
-  <ApolloReactComponents.Query<GetContentQuery, GetContentQueryVariables> query={GetContentDocument} {...props} />
+export const RegisterComponent = (props: RegisterComponentProps) => (
+  <ApolloReactComponents.Mutation<RegisterMutation, RegisterMutationVariables> mutation={RegisterDocument} {...props} />
 )
 
-export type GetContentProps<TChildProps = {}, TDataName extends string = 'data'> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<GetContentQuery, GetContentQueryVariables>
+export type RegisterProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<RegisterMutation, RegisterMutationVariables>
 } &
   TChildProps
-export function withGetContent<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+export function withRegister<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
-    GetContentQuery,
-    GetContentQueryVariables,
-    GetContentProps<TChildProps, TDataName>
+    RegisterMutation,
+    RegisterMutationVariables,
+    RegisterProps<TChildProps, TDataName>
   >,
 ) {
-  return ApolloReactHoc.withQuery<
+  return ApolloReactHoc.withMutation<
     TProps,
-    GetContentQuery,
-    GetContentQueryVariables,
-    GetContentProps<TChildProps, TDataName>
-  >(GetContentDocument, {
-    alias: 'getContent',
+    RegisterMutation,
+    RegisterMutationVariables,
+    RegisterProps<TChildProps, TDataName>
+  >(RegisterDocument, {
+    alias: 'register',
     ...operationOptions,
   })
 }
 
 /**
- * __useGetContentQuery__
+ * __useRegisterMutation__
  *
- * To run a query within a React component, call `useGetContentQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetContentQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
+ * To run a mutation, you first call `useRegisterMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRegisterMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
  *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const { data, loading, error } = useGetContentQuery({
+ * const [registerMutation, { data, loading, error }] = useRegisterMutation({
  *   variables: {
- *      id: // value for 'id'
+ *      user: // value for 'user'
  *   },
  * });
  */
-export function useGetContentQuery(baseOptions: Apollo.QueryHookOptions<GetContentQuery, GetContentQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetContentQuery, GetContentQueryVariables>(GetContentDocument, options)
-}
-export function useGetContentLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetContentQuery, GetContentQueryVariables>,
+export function useRegisterMutation(
+  baseOptions?: Apollo.MutationHookOptions<RegisterMutation, RegisterMutationVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetContentQuery, GetContentQueryVariables>(GetContentDocument, options)
+  return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, options)
 }
-export type GetContentQueryHookResult = ReturnType<typeof useGetContentQuery>
-export type GetContentLazyQueryHookResult = ReturnType<typeof useGetContentLazyQuery>
-export type GetContentQueryResult = Apollo.QueryResult<GetContentQuery, GetContentQueryVariables>
+export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>
+export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>
+export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>

@@ -1,5 +1,19 @@
 # Brand New App
 
+## Bootstrap
+
+### Create a repository from this template 
+
+- [ ] Click the big green button `Use this template` or [click here](https://github.com/bn-digital/app/generate)
+- [ ] Enter a Repository name and click `Create repository from template` 
+- [ ] Head over to the created repository and complete the setup. 
+
+### Complete setup 
+
+- [ ] In the a new repository, complete the project setup by editing the cookiecutter.json file. 
+- [ ] Hit `[⌘] + [S]` / `[Ctrl] + [S]` and then `[Enter]` to perform a commit (the commit message doesn't really matter). 
+- [ ] Wait Setup Repository Action to complete.
+
 ## Installation
 
 ### CMS

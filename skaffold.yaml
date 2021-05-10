@@ -1,34 +1,57 @@
 apiVersion: skaffold/v2beta14
 kind: Config
 metadata:
-  name: nymcard
+  name: app
 build:
   artifacts:
-  - image: vue
-    context: packages/vue
-  - image: react
-    context: packages/react
+    - image: vue
+      context: packages/vue
+    - image: html
+      context: packages/html
+    - image: react
+      context: packages/react
+    - image: strapi
+      context: packages/strapi
+    - image: storybook
+      context: packages/storybook
   tagPolicy:
-    sha256: {}
+    sha256: { }
   local:
+    concurrency: 0
     push: false
     useBuildkit: true
-deploy:
-  helm:
-    releases:
-    - name: web
-      chartPath: charts/web
-      overrides:
-        image:
-          repository: website
-    flags:
-      upgrade:
-      - --install
+test:
+  - image: vue
+    custom:
+      - command: hadolint packages/vue/Dockerfile
+    structureTests:
+      - container-structure-test.yaml
+  - image: react
+    custom:
+      - command: hadolint packages/vue/Dockerfile
+    structureTests:
+      - container-structure-test.yaml
+  - image: html
+    custom:
+      - command:
+          hadolint packages/vue/Dockerfile
+    structureTests:
+      - container-structure-test.yaml
+  - image: strapi
+    custom:
+      - command: hadolint packages/vue/Dockerfile
+    structureTests:
+      - container-structure-test.yaml
+  - image: storybook
+    custom:
+      - command: hadolint packages/vue/Dockerfile
+    structureTests:
+      - container-structure-test.yaml
 profiles:
-- name: ci
-  activation:
-  - env: CI=true
-  build:
-    local:
-      push: true
-      useBuildkit: true
+  - name: ci
+    activation:
+      - kubeContext: do-fra1-bndigital
+    build:
+      local:
+        push: false
+        useBuildkit: true

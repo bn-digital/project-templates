@@ -1,8 +1,8 @@
 {
-  "name": "BN Digital",
-  "schemaPath": "./packages/cms/exports/graphql/schema.graphql",
+  "name": "App",
+  "schemaPath": "./packages/strapi/exports/graphql/schema.graphql",
   "includes": [
-    "./packages/web/src/graphql/**/*.graphql"
+    "./packages/react/src/graphql/**/*.graphql"
   ],
   "extensions": {
     "endpoints": {

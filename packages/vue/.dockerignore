@@ -1,5 +1,5 @@
 *.iml
-.*ignore
+*ignore
 .DS_Store
 .cache
 .env*
@@ -11,3 +11,4 @@ build
 dist
 sonar-project.properties
 node_modules
+*.md
