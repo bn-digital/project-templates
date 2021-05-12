@@ -1,5 +1,7 @@
 name: Strapi
 on:
+  workflow_dispatch:
+    inputs: {}
   push:
     branches:
       - latest
