@@ -1,4 +1,4 @@
-# Brand New App
+# {{project.name}}
 
 ## Bootstrap
 
