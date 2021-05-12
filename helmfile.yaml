@@ -40,7 +40,7 @@ releases:
     namespace: '{{ .Environment.Name }}'
     chart: bndigital/nodejs
     labels:
-      app: cms
+      app: strapi
     values:
       - 'values.{{ .Environment.Name }}.gotmpl'
       - envSecrets: [ backend-services ]
