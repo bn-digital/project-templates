@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "outDir": "build",
+    "baseUrl": ".",
+    "jsx": "react-native",
+    "incremental": true,
+    "strict": true
+  }
+}
