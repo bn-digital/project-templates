@@ -2,7 +2,7 @@ provisioning: local
 settings:
   artifacts-dir: .bzt/reports
   env:
-    REACT_APP_PUBLIC_URL: https://app.bndigital.dev
+    REACT_APP_PUBLIC_URL: https://{{project.name}}.bndigital.dev
 
 execution:
   - executor: gatling

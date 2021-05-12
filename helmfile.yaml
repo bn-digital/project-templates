@@ -12,7 +12,7 @@ environments:
     values: []
 
 releases:
-  - name: app-react
+  - name: '{{project.name}}-react'
     namespace: '{{ .Environment.Name }}'
     chart: bndigital/nodejs
     labels:
@@ -20,7 +20,7 @@ releases:
     values:
       - 'values.{{ .Environment.Name }}.gotmpl'
 
-  - name: app-vue
+  - name: '{{project.name}}-vue'
     namespace: '{{ .Environment.Name }}'
     chart: bndigital/nodejs
     labels:
@@ -28,7 +28,7 @@ releases:
     values:
       - 'values.{{ .Environment.Name }}.gotmpl'
 
-  - name: app-html
+  - name: '{{project.name}}-html'
     namespace: '{{ .Environment.Name }}'
     chart: bndigital/nodejs
     labels:
@@ -36,7 +36,7 @@ releases:
     values:
       - 'values.{{ .Environment.Name }}.gotmpl'
 
-  - name: app-strapi
+  - name: '{{project.name}}-strapi'
     namespace: '{{ .Environment.Name }}'
     chart: bndigital/nodejs
     labels:
@@ -46,7 +46,7 @@ releases:
       - envSecrets: [ backend-services ]
         configMapsSecrets: [ backend-services ]
 
-  - name: app-graphql
+  - name: '{{project.name}}-{{packages.backend}}'
     namespace: '{{ .Environment.Name }}'
     chart: bndigital/nodejs
     labels:

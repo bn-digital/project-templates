@@ -1,5 +1,5 @@
 {
-  "name": "App",
+  "name": "{{project.name}}",
   "schemaPath": "./packages/strapi/exports/graphql/schema.graphql",
   "includes": [
     "./packages/react/src/graphql/**/*.graphql"
@@ -10,7 +10,7 @@
         "url": "http://localhost:1337/graphql"
       },
       "staging": {
-        "url": "https://app.bndigital.dev/graphql"
+        "url": "https://{{project.name}}.bndigital.dev/graphql"
       }
     }
   }

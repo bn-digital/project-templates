@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "{{project.name}}",
   "description": "Includes all required tools and packages to bootstrap app development using NodeJS stack",
   "version": "1.0.0",
   "private": true,
@@ -42,6 +42,7 @@
     "strapi": "yarn workspace @app/strapi run start",
     "react": "yarn workspace @app/react run start",
     "vue": "yarn workspace @app/vue run start",
+    "{{packages.backend}}": "yarn workspace @{{project.name}}/{{packages.backend}} run start",
     "html": "yarn workspace @app/html run start",
     "storybook": "yarn workspace @app/storybook run start",
     "fix": "prettier --write packages/*/src && eslint --fix packages/*/src && stylelint --fix packages/*/src/**/*.{vue,less}",

@@ -2,7 +2,7 @@ name: Bootstrap repository
 on:
   push:
     paths:
-      - cookicutter.json.disabled
+      - cookicutter.json
 jobs:
   setup:
     name: Reinitialize repository
