@@ -4,12 +4,12 @@ on:
     branches:
       - latest
     paths:
-      - .github/workflows/cms.yml
-      - packages/cms/api/**/*
-      - packages/cms/components/**/*
-      - packages/cms/config/**/*
-      - packages/cms/extensions/**/*
-      - packages/cms/package.json
+      - .github/workflows/strapi.yml
+      - packages/strapi/api/**/*
+      - packages/strapi/components/**/*
+      - packages/strapi/config/**/*
+      - packages/strapi/extensions/**/*
+      - packages/strapi/package.json
 
 env:
   docker_buildkit: 1
