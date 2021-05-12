@@ -4,6 +4,7 @@ on:
     branches:
       - latest
     paths:
+      - .github/workflows/cms.yml
       - packages/cms/api/**/*
       - packages/cms/components/**/*
       - packages/cms/config/**/*

@@ -15,7 +15,8 @@ const Home: FC = ({ children }) => {
 
   return (
     <Layout>
-      <GoogleLogin redirectUri={`${process.env.REACT_APP_API_URL}/auth/google/callback`}
+      <GoogleLogin
+        redirectUri={`${process.env.REACT_APP_API_URL}/auth/google/callback`}
         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
         buttonText='Login'
         onSuccess={response => responseGoogle(response as GoogleLoginResponse)}

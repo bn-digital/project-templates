@@ -12,8 +12,8 @@ module.exports = ({ env }) => ({
   upload: {
     provider: 'aws-s3',
     providerOptions: {
-      accessKeyId: env('AWS_ACCESS_KEY_ID'),
-      secretAccessKey: env('AWS_ACCESS_SECRET'),
+      accessKeyId: env('AWS_ACCESS_KEY_ID', ''),
+      secretAccessKey: env('AWS_ACCESS_SECRET', ''),
       region: env('AWS_REGION', 'fra1'),
       endpoint: env('AWS_S3_ENDPOINT', `fra1.digitaloceanspaces.com`),
       params: {
@@ -24,8 +24,8 @@ module.exports = ({ env }) => ({
   email: {
     provider: 'mailgun',
     providerOptions: {
-      apiKey: env('MAILGUN_API_KEY'),
-      domain: env('MAILGUN_DOMAIN'),
+      apiKey: env('MAILGUN_API_KEY', ''),
+      domain: env('MAILGUN_DOMAIN', ''),
       host: env('MAILGUN_HOST', 'api.eu.mailgun.net'),
     },
     settings: {
