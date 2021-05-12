@@ -71,4 +71,4 @@ jobs:
           format: 'YYYY-MM-DD-HH-mm-ss'
 
       - name: Helmfile apply
-        run: helmfile apply --environment=staging --label=app=${{ env.docker_image }} --set podAnnotations.timestamp=${{ steps.time.outputs.time }}
+        run: helmfile --environment=staging --selector=app=${{ env.docker_image }} apply --set podAnnotations.timestamp=${{ steps.time.outputs.time }}
