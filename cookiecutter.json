@@ -1,13 +1,21 @@
 {
   "template": "bn-app",
+  "environment": "staging",
   "project": {
     "name": "bn",
     "description": "Template PoC on real data sample"
   },
   "packages": {
-    "react": "website",
-    "apollo": "graphql",
-    "html": "tailwind",
-    "storybook": "storybook",
+    "react": "react",
+    "vue": "vue",
+    "apollo": "apollo",
+    "strapi": "strapi",
+    "backend": "backend",
+    "html": "html",
+    "storybook": "storybook"
+  },
+  "kubernetes": {
+    "namespace": "staging",
+    "domain": "bndigital.dev"
   }
 }
