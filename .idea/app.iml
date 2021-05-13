@@ -9,4 +9,21 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="TemplatesService">
+    <option name="templateFileTypes">
+      <list>
+        <option value="XML" />
+        <option value="XHTML" />
+        <option value="HTML" />
+        <option value="YAML" />
+        <option value="JSON" />
+      </list>
+    </option>
+    <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/{{cookiecutter.template}}" />
+      </list>
+    </option>
+  </component>
 </module>
