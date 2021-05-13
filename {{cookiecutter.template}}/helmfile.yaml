@@ -8,7 +8,7 @@ helmDefaults:
   cleanupOnFail: true
 
 environments:
-  '{{cookiecutter.environment}}':
+  {{cookiecutter.environment}}:
     values: [ ]
 
 releases:
@@ -20,8 +20,8 @@ releases:
     values:
       - "values.{{cookiecutter.environment}}.gotmpl"
 
-  - name: '{{cookiecutter.project.name}}-{{cookiecutter.packages.vue}}'
-    namespace: '{{cookiecutter.environment}}'
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.vue}}"
+    namespace: "{{cookiecutter.environment}}"
     chart: bndigital/nodejs
     labels:
       app: "{{cookiecutter.packages.vue}}"
@@ -34,7 +34,7 @@ releases:
     labels:
       app: "{{cookiecutter.packages.html}}"
     values:
-      - 'values.{{cookiecutter.environment}}.gotmpl'
+      - "values.{{cookiecutter.environment}}.gotmpl"
 
   - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.strapi}}"
     namespace: "{{cookiecutter.environment}}"
@@ -47,7 +47,7 @@ releases:
         configMapsSecrets: [ backend-services ]
 
   - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.apollo}}"
-    namespace: '{{cookiecutter.environment}}'
+    namespace: {{cookiecutter.environment}}
     chart: bndigital/nodejs
     labels:
       app: "{{cookiecutter.packages.apollo}}"

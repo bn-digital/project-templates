@@ -8,60 +8,84 @@ helmDefaults:
   cleanupOnFail: true
 
 environments:
-  staging:
-    values: []
+  {{cookiecutter.environment}}:
+  values: [ ]
 
 releases:
-  - name: '{{cookiecutter.project.name}}-react'
-    namespace: '{{ .Environment.Name }}'
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.react}}"
+    namespace: "{{cookiecutter.kubernetes.namespace}}"
     chart: bndigital/nodejs
     labels:
-      app: react
+      app: "{{cookiecutter.packages.react}}"
     values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
+      - "values.{{cookiecutter.environment}}.gotmpl"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.packages.react}}.{{cookiecutter.kubernetes.domain}}"
 
-  - name: '{{cookiecutter.project.name}}-vue'
-    namespace: '{{ .Environment.Name }}'
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.vue}}"
+    namespace: "{{cookiecutter.environment}}"
     chart: bndigital/nodejs
     labels:
-      app: vue
+      app: "{{cookiecutter.packages.vue}}"
     values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
+      - "values.{{cookiecutter.environment}}.gotmpl"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.packages.vue}}.{{cookiecutter.kubernetes.vue}}"
 
-  - name: '{{cookiecutter.project.name}}-html'
-    namespace: '{{ .Environment.Name }}'
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.html}}"
+    namespace: "{{cookiecutter.environment}}"
     chart: bndigital/nodejs
     labels:
-      app: html
+      app: "{{cookiecutter.packages.html}}"
     values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
+      - "values.{{cookiecutter.environment}}.gotmpl"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.packages.html}}.{{cookiecutter.kubernetes.domain}}"
 
-  - name: '{{cookiecutter.project.name}}-strapi'
-    namespace: '{{ .Environment.Name }}'
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.strapi}}"
+    namespace: "{{cookiecutter.environment}}"
     chart: bndigital/nodejs
     labels:
-      app: strapi
+      app: "{{cookiecutter.packages.strapi}}"
     values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
+      - "values.{{cookiecutter.environment}}.gotmpl"
       - envSecrets: [ backend-services ]
         configMapsSecrets: [ backend-services ]
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.packages.strapi}}.{{cookiecutter.kubernetes.domain}}"
 
-  - name: '{{cookiecutter.project.name}}-{{packages.backend}}'
-    namespace: '{{ .Environment.Name }}'
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.apollo}}"
+    namespace: {{cookiecutter.environment}}
     chart: bndigital/nodejs
     labels:
-      app: graphql
+      app: "{{cookiecutter.packages.apollo}}"
     values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
+      - "values.{{cookiecutter.environment}}.gotmpl"
       - image: apisguru/graphql-faker
         app:
           port: 9092
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.packages.apollo}}.{{cookiecutter.kubernetes.domain}}"
 
-  - name: app-storybook
-    namespace: '{{ .Environment.Name }}'
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.storybook}}"
+    namespace: "{{cookiecutter.environment}}"
     chart: bndigital/nodejs
     labels:
-      app: storybook
+      app: "{{cookiecutter.packages.storybook}}"
     installed: false
     values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
+      - "values.{{cookiecutter.environment}}.gotmpl"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.packages.storybook}}.{{cookiecutter.kubernetes.domain}}"

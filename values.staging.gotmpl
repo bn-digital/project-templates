@@ -1,6 +1,1 @@
-image: dcr.bndigital.dev/app/{{ .Release.Labels.app }}:latest
 imagePullSecrets: [ container-registry ]
-ingress:
-  enabled: true
-  tls: true
-  host: {{ .Release.Labels.app }}.bndigital.dev
