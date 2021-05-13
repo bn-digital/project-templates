@@ -2,10 +2,7 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/.yarn" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/react-native/.expo" />
-    </content>
+    <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
@@ -15,12 +12,12 @@
         <option value="XML" />
         <option value="XHTML" />
         <option value="HTML" />
+        <option value="YAML" />
+        <option value="JSON" />
+        <option value="Properties" />
+        <option value="Dockerfile" />
       </list>
     </option>
-    <option name="TEMPLATE_FOLDERS">
-      <list>
-        <option value="$MODULE_DIR$/{{cookiecutter.template}}" />
-      </list>
-    </option>
+    <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
   </component>
 </module>

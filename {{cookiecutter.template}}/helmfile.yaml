@@ -9,7 +9,7 @@ helmDefaults:
 
 environments:
   {{cookiecutter.environment}}:
-    values: [ ]
+  values: [ ]
 
 releases:
   - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.react}}"
@@ -18,7 +18,12 @@ releases:
     labels:
       app: "{{cookiecutter.packages.react}}"
     values:
-      - "values.{{cookiecutter.environment}}.gotmpl"
+      - imagePullSecrets: [ container-registry ]
+        image: "{{cookiecutter.project.name}}{{cookiecutter.packages.react}}:latest"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.packages.react}}.{{cookiecutter.kubernetes.domain}}"
 
   - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.vue}}"
     namespace: "{{cookiecutter.environment}}"
@@ -26,7 +31,12 @@ releases:
     labels:
       app: "{{cookiecutter.packages.vue}}"
     values:
-      - "values.{{cookiecutter.environment}}.gotmpl"
+      - imagePullSecrets: [ container-registry ]
+        image: "{{cookiecutter.project.name}}{{cookiecutter.packages.react}}:latest"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.packages.vue}}.{{cookiecutter.kubernetes.vue}}"
 
   - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.html}}"
     namespace: "{{cookiecutter.environment}}"
@@ -34,7 +44,12 @@ releases:
     labels:
       app: "{{cookiecutter.packages.html}}"
     values:
-      - "values.{{cookiecutter.environment}}.gotmpl"
+      - imagePullSecrets: [ container-registry ]
+        image: "{{cookiecutter.project.name}}{{cookiecutter.packages.react}}:latest"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.packages.html}}.{{cookiecutter.kubernetes.domain}}"
 
   - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.strapi}}"
     namespace: "{{cookiecutter.environment}}"
@@ -42,9 +57,14 @@ releases:
     labels:
       app: "{{cookiecutter.packages.strapi}}"
     values:
-      - "values.{{cookiecutter.environment}}.gotmpl"
-      - envSecrets: [ backend-services ]
+      - imagePullSecrets: [ container-registry ]
+        image: "{{cookiecutter.project.name}}{{cookiecutter.packages.react}}:latest"
+        envSecrets: [ backend-services ]
         configMapsSecrets: [ backend-services ]
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.packages.strapi}}.{{cookiecutter.kubernetes.domain}}"
 
   - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.apollo}}"
     namespace: {{cookiecutter.environment}}
@@ -52,10 +72,14 @@ releases:
     labels:
       app: "{{cookiecutter.packages.apollo}}"
     values:
-      - "values.{{cookiecutter.environment}}.gotmpl"
-      - image: apisguru/graphql-faker
+      - imagePullSecrets: [ container-registry ]
+        image: apisguru/graphql-faker
         app:
           port: 9092
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.packages.apollo}}.{{cookiecutter.kubernetes.domain}}"
 
   - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.storybook}}"
     namespace: "{{cookiecutter.environment}}"
@@ -64,4 +88,9 @@ releases:
       app: "{{cookiecutter.packages.storybook}}"
     installed: false
     values:
-      - "values.{{cookiecutter.environment}}.gotmpl"
+      - imagePullSecrets: [ container-registry ]
+        image: "{{cookiecutter.project.name}}{{cookiecutter.packages.react}}:latest"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.packages.storybook}}.{{cookiecutter.kubernetes.domain}}"

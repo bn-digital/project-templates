@@ -1,0 +1,8 @@
+{
+  "root": true,
+  "plugins": [
+    "workspaces",
+    "import",
+    "prettier"
+  ]
+}

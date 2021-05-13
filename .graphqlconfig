@@ -1,5 +1,5 @@
 {
-  "name": "{{cookiecutter.project.name}}",
+  "name": "app",
   "schemaPath": "./packages/strapi/exports/graphql/schema.graphql",
   "includes": [
     "./packages/react/src/graphql/**/*.graphql"
@@ -10,7 +10,7 @@
         "url": "http://localhost:1337/graphql"
       },
       "staging": {
-        "url": "https://{{cookiecutter.project.name}}.bndigital.dev/graphql"
+        "url": "https://app.bndigital.dev/graphql"
       }
     }
   }

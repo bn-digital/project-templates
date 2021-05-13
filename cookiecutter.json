@@ -14,6 +14,9 @@
     "html": "html",
     "storybook": "storybook"
   },
+  "versions": {
+    "node": "v16.0.0"
+  },
   "kubernetes": {
     "namespace": "staging",
     "domain": "bndigital.dev"

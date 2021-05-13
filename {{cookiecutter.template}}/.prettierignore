@@ -10,6 +10,7 @@ charts
 .yarn
 .ssl
 .terraform
+charts
 modules
 *ignore
-**/*/graphql/**/*
+src/graphql/**/*
