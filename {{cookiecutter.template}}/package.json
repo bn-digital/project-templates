@@ -38,13 +38,13 @@
     "typescript": "^4.2.4"
   },
   "scripts": {
-    "graphql": "graphql-codegen",
-    "strapi": "yarn workspace @{{cookiecutter.project.name}}/{{cookiecutter.packages.strapi}} run start",
-    "react": "yarn workspace @{{cookiecutter.project.name}}/{{cookiecutter.packages.react}} run start",
-    "vue": "yarn workspace @{{cookiecutter.project.name}}/{{cookiecutter.packages.vue}} run start",
+    "{{cookiecutter.packages.apollo}}": "graphql-codegen",
+    "{{cookiecutter.packages.strapi}}": "yarn workspace @{{cookiecutter.project.name}}/{{cookiecutter.packages.strapi}} run start",
+    "{{cookiecutter.packages.react}}": "yarn workspace @{{cookiecutter.project.name}}/{{cookiecutter.packages.react}} run start",
+    "{{cookiecutter.packages.vue}}": "yarn workspace @{{cookiecutter.project.name}}/{{cookiecutter.packages.vue}} run start",
     "{{cookiecutter.packages.backend}}": "yarn workspace @{{cookiecutter.project.name}}/{{cookiecutter.packages.backend}} run start",
-    "html": "yarn workspace @{{cookiecutter.project.name}}/{{cookiecutter.packages.html}} run start",
-    "storybook": "yarn workspace @app/storybook run start",
+    "{{cookiecutter.packages.html}}": "yarn workspace @{{cookiecutter.project.name}}/{{cookiecutter.packages.html}} run start",
+    "{{cookiecutter.packages.storybook}}": "yarn workspace @app/storybook run start",
     "fix": "prettier --write packages/*/src && eslint --fix packages/*/src && stylelint --fix packages/*/src/**/*.{vue,less}",
     "lint": "prettier --check packages/*/src && eslint packages/*/src && stylelint --fix packages/*/src/**/*.less",
     "start": "pm2 start ecosystem.json"
