@@ -5,11 +5,11 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/app.iml" filepath="$PROJECT_DIR$/.idea/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../get-recast/packages/cloud/cloud.iml" filepath="$PROJECT_DIR$/../get-recast/packages/cloud/cloud.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/html/html.iml" filepath="$PROJECT_DIR$/packages/html/html.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/react/react.iml" filepath="$PROJECT_DIR$/packages/react/react.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/react-native/react-native.iml" filepath="$PROJECT_DIR$/packages/react-native/react-native.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/storybook/storybook.iml" filepath="$PROJECT_DIR$/packages/storybook/storybook.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/strapi/strapi.iml" filepath="$PROJECT_DIR$/packages/strapi/strapi.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/vue/vue.iml" filepath="$PROJECT_DIR$/packages/vue/vue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/react/{{ cookiecutter.packages.react }}..iml" filepath="$PROJECT_DIR$/packages/react/{{ cookiecutter.packages.react }}..iml" />
       <module fileurl="file://$PROJECT_DIR$/{{cookiecutter.template}}/{{cookiecutter.template}}.iml" filepath="$PROJECT_DIR$/{{cookiecutter.template}}/{{cookiecutter.template}}.iml" />
     </modules>
   </component>

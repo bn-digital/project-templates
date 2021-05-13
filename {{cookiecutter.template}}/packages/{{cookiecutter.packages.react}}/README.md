@@ -1,1 +1,1 @@
-# React
+# {{ cookiecutter.packages.react }}

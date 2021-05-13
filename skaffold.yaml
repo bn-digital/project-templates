@@ -1,7 +1,7 @@
 apiVersion: skaffold/v2beta14
 kind: Config
 metadata:
-  name: '{{cookiecutter.project.name}}'
+  name: app
 build:
   artifacts:
     - image: vue
@@ -14,10 +14,8 @@ build:
       context: packages/strapi
     - image: storybook
       context: packages/storybook
-    - image: {{cookiecutter.packages.backend}}
-      context: packages/{{cookiecutter.packages.backend}}
   tagPolicy:
-    sha256: { }
+    sha256: {}
   local:
     concurrency: 0
     push: false
@@ -35,8 +33,7 @@ test:
       - container-structure-test.yaml
   - image: html
     custom:
-      - command:
-          hadolint packages/vue/Dockerfile
+      - command: hadolint packages/vue/Dockerfile
     structureTests:
       - container-structure-test.yaml
   - image: strapi

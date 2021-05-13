@@ -1,5 +1,5 @@
 {
-  "name": "@{{cookiecutter.project.name}}/{{cookiecutter.packages.react}}",
+  "name": "@{{ cookiecutter.project.name }}/{{ cookiecutter.packages.react }}",
   "private": true,
   "scripts": {
     "build": "craco build",

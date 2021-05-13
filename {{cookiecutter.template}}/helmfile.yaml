@@ -8,69 +8,69 @@ helmDefaults:
   cleanupOnFail: true
 
 environments:
-  {{cookiecutter.environment}}:
+  ? { { cookiecutter.environment } }
   values: [ ]
 
 releases:
-  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.react}}"
-    namespace: "{{cookiecutter.kubernetes.namespace}}"
+  - name: '{{ cookiecutter.project.name }}-{{ cookiecutter.packages.react }}'
+    namespace: '{{ cookiecutter.kubernetes.namespace }}'
     chart: bndigital/nodejs
     labels:
-      app: "{{cookiecutter.packages.react}}"
+      app: '{{ cookiecutter.packages.react }}'
     values:
       - imagePullSecrets: [ container-registry ]
-        image: "{{cookiecutter.project.name}}{{cookiecutter.packages.react}}:latest"
+        image: '{{ cookiecutter.project.name }}/{{ cookiecutter.packages.react }}:latest'
         ingress:
           enabled: true
           tls: true
-          host: "{{cookiecutter.packages.react}}.{{cookiecutter.kubernetes.domain}}"
+          host: '{{ cookiecutter.packages.react }}.{{ cookiecutter.kubernetes.domain }}'
 
-  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.vue}}"
-    namespace: "{{cookiecutter.environment}}"
+  - name: '{{ cookiecutter.project.name }}-{{ cookiecutter.packages.vue }}'
+    namespace: '{{ cookiecutter.environment }}'
     chart: bndigital/nodejs
     labels:
-      app: "{{cookiecutter.packages.vue}}"
+      app: '{{ cookiecutter.packages.vue }}'
     values:
       - imagePullSecrets: [ container-registry ]
-        image: "{{cookiecutter.project.name}}{{cookiecutter.packages.react}}:latest"
+        image: '{{ cookiecutter.project.name }}/{{ cookiecutter.packages.vue }}:latest'
         ingress:
           enabled: true
           tls: true
-          host: "{{cookiecutter.packages.vue}}.{{cookiecutter.kubernetes.vue}}"
+          host: '{{ cookiecutter.packages.vue }}.{{  cookiecutter.kubernetes.domain  }}'
 
-  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.html}}"
-    namespace: "{{cookiecutter.environment}}"
+  - name: '{{ cookiecutter.project.name }}-{{  cookiecutter.packages.html  }}'
+    namespace: '{{ cookiecutter.environment }}'
     chart: bndigital/nodejs
     labels:
-      app: "{{cookiecutter.packages.html}}"
+      app: '{{ cookiecutter.packages.html }}'
     values:
       - imagePullSecrets: [ container-registry ]
-        image: "{{cookiecutter.project.name}}{{cookiecutter.packages.react}}:latest"
+        image: '{{ cookiecutter.project.name }}/{{ cookiecutter.packages.react }}:latest'
         ingress:
           enabled: true
           tls: true
-          host: "{{cookiecutter.packages.html}}.{{cookiecutter.kubernetes.domain}}"
+          host: '{{ cookiecutter.packages.html }}.{{ cookiecutter.kubernetes.domain }}'
 
-  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.strapi}}"
-    namespace: "{{cookiecutter.environment}}"
+  - name: '{{ cookiecutter.project.name }}-{{ cookiecutter.packages.strapi }}'
+    namespace: '{{ cookiecutter.environment }}'
     chart: bndigital/nodejs
     labels:
-      app: "{{cookiecutter.packages.strapi}}"
+      app: '{{  cookiecutter.packages.strapi  }}'
     values:
       - imagePullSecrets: [ container-registry ]
-        image: "{{cookiecutter.project.name}}{{cookiecutter.packages.react}}:latest"
+        image: '{{ cookiecutter.project.name }}/{{ cookiecutter.packages.react }}:latest'
         envSecrets: [ backend-services ]
         configMapsSecrets: [ backend-services ]
         ingress:
           enabled: true
           tls: true
-          host: "{{cookiecutter.packages.strapi}}.{{cookiecutter.kubernetes.domain}}"
+          host: '{{ cookiecutter.packages.strapi }}.{{ cookiecutter.kubernetes.domain }}'
 
-  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.apollo}}"
-    namespace: {{cookiecutter.environment}}
+  - name: '{{ cookiecutter.project.name }}-{{ cookiecutter.packages.apollo }}'
+    namespace: '{{ cookiecutter.environment }}'
     chart: bndigital/nodejs
     labels:
-      app: "{{cookiecutter.packages.apollo}}"
+      app: '{{ cookiecutter.packages.apollo }}'
     values:
       - imagePullSecrets: [ container-registry ]
         image: apisguru/graphql-faker
@@ -79,18 +79,18 @@ releases:
         ingress:
           enabled: true
           tls: true
-          host: "{{cookiecutter.packages.apollo}}.{{cookiecutter.kubernetes.domain}}"
+          host: '{{ cookiecutter.packages.apollo }}.{{ cookiecutter.kubernetes.domain }}'
 
-  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.storybook}}"
-    namespace: "{{cookiecutter.environment}}"
+  - name: '{{ cookiecutter.project.name }}-{{ cookiecutter.packages.storybook }}'
+    namespace: '{{ cookiecutter.environment }}'
     chart: bndigital/nodejs
     labels:
-      app: "{{cookiecutter.packages.storybook}}"
+      app: '{{ cookiecutter.packages.storybook }}'
     installed: false
     values:
       - imagePullSecrets: [ container-registry ]
-        image: "{{cookiecutter.project.name}}{{cookiecutter.packages.react}}:latest"
+        image: '{{ cookiecutter.project.name }}/{{ cookiecutter.packages.react }}:latest'
         ingress:
           enabled: true
           tls: true
-          host: "{{cookiecutter.packages.storybook}}.{{cookiecutter.kubernetes.domain}}"
+          host: '{{ cookiecutter.packages.storybook }}.{{ cookiecutter.kubernetes.domain }}'

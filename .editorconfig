@@ -1,0 +1,9 @@
+root = true
+
+[*]
+indent_size = tab
+tab_width = 2
+
+[{*.yml,*.yaml}]
+ij_yaml_spaces_within_braces =  true
+ij_yaml_spaces_within_brackets = true
