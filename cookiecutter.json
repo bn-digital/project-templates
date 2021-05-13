@@ -1,9 +1,13 @@
 {
+  "template": "bn-app",
   "project": {
-    "name": "app",
+    "name": "bn",
     "description": "Template PoC on real data sample"
   },
   "packages": {
-    "backend": "apollo"
+    "react": "website",
+    "apollo": "graphql",
+    "html": "tailwind",
+    "storybook": "storybook",
   }
 }

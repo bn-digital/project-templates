@@ -2,7 +2,7 @@ name: Bootstrap repository
 on:
   push:
     paths:
-      - cookicutter.json
+      - cookiecutter.json
 jobs:
   setup:
     name: Reinitialize repository
@@ -49,7 +49,7 @@ jobs:
         #                 cookiecutter.json file content
         #
         # --output-dir    Where to output the generated project dir into
-        run: cookiecutter . --no-input --output-dir ./cookiecutter-temp
+        run: cookiecutter {{cookiecutter.template}} --no-input --output-dir ./cookiecutter-temp
 
       - name: Prepare root directory
         shell: bash

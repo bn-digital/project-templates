@@ -1,3 +1,0 @@
-{
-  "name": "@{{cookiecutter.project.name}}/{{cookiecutter.packages.backend}}"
-}

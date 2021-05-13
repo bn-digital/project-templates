@@ -1,0 +1,91 @@
+repositories:
+  - name: bndigital
+    url: https://dcr.bndigital.dev/chartrepo/library
+
+helmDefaults:
+  kubeContext: do-fra1-bndigital
+  createNamespace: true
+  cleanupOnFail: true
+
+environments:
+  default: [ ]
+  staging:
+    values: [ ]
+
+releases:
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.react}}"
+    namespace: '{{ .Environment.Name }}'
+    chart: bndigital/nodejs
+    labels:
+      app: "{{cookiecutter.packages.react}}"
+    values:
+      - image: "dcr.bndigital.dev/{{cookiecutter.project.name}}/{{cookiecutter.packages.react}}"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.project.name}}.bndigital.dev"
+
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.vue}}"
+    namespace: '{{ .Environment.Name }}'
+    chart: bndigital/nodejs
+    labels:
+      app: "{{cookiecutter.packages.react}}"
+    values:
+      - image: "dcr.bndigital.dev/{{cookiecutter.project.name}}/{{cookiecutter.packages.react}}"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.project.name}}.bndigital.dev"
+
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.html}}"
+    namespace: '{{ .Environment.Name }}'
+    chart: bndigital/nodejs
+    labels:
+      app: "{{cookiecutter.packages.html}}"
+    values:
+      - image: "dcr.bndigital.dev/{{cookiecutter.project.name}}/{{cookiecutter.packages.react}}"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.project.name}}.bndigital.dev"
+
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.strapi}}"
+    namespace: '{{ .Environment.Name }}'
+    chart: bndigital/nodejs
+    labels:
+      app: "{{cookiecutter.packages.strapi}}"
+    values:
+      - image: "dcr.bndigital.dev/{{cookiecutter.project.name}}/{{cookiecutter.packages.react}}"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.project.name}}.bndigital.dev"
+      - envSecrets: [ backend-services ]
+        configMapsSecrets: [ backend-services ]
+
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.apollo}}"
+    namespace: '{{ .Environment.Name }}'
+    chart: bndigital/nodejs
+    labels:
+      app: "{{cookiecutter.packages.apollo}}"
+    values:
+      - image: apisguru/graphql-faker
+      - ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.project.name}}.bndigital.dev"
+      - app:
+          port: 9092
+
+  - name: "{{cookiecutter.project.name}}-{{cookiecutter.packages.storybook}}"
+    namespace: '{{ .Environment.Name }}'
+    chart: bndigital/nodejs
+    labels:
+      app: "{{cookiecutter.packages.storybook}}"
+    installed: false
+    values:
+      - image: "dcr.bndigital.dev/{{cookiecutter.project.name}}/{{cookiecutter.packages.storybook}}"
+        ingress:
+          enabled: true
+          tls: true
+          host: "{{cookiecutter.project.name}}.bndigital.dev"
