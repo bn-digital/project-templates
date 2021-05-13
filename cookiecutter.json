@@ -1,6 +1,7 @@
 {
   "project": {
-    "name": "app"
+    "name": "app",
+    "description": "Template PoC on real data sample"
   },
   "packages": {
     "backend": "apollo"

@@ -1,7 +1,7 @@
 apiVersion: skaffold/v2beta14
 kind: Config
 metadata:
-  name: '{{project.name}}'
+  name: '{{cookiecutter.project.name}}'
 build:
   artifacts:
     - image: vue
@@ -14,8 +14,8 @@ build:
       context: packages/strapi
     - image: storybook
       context: packages/storybook
-    - image: {{packages.backend}}
-      context: packages/{{packages.backend}}
+    - image: {{cookiecutter.packages.backend}}
+      context: packages/{{cookiecutter.packages.backend}}
   tagPolicy:
     sha256: { }
   local:

@@ -1,4 +1,4 @@
-# {{project.name}}
+# {{cookiecutter.project.name}}
 
 ## Bootstrap
 
