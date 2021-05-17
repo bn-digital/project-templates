@@ -1,0 +1,8 @@
+{
+  "watch": [
+    "src"
+  ],
+  "verbose": true,
+  "ext": "ts,js,json",
+  "exec": "node -r ts-node/register"
+}

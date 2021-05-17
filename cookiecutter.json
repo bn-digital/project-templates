@@ -1,5 +1,12 @@
 {
-  "template": "bn-app",
+  "name": "app",
+  "_copy_without_render": [
+    "*.tsx",
+    "*.vue",
+    ".gitignore",
+    ".editorconfig",
+    ".yarn"
+  ],
   "environment": "staging",
   "project": {
     "name": "bn",

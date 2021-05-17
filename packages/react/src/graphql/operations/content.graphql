@@ -10,6 +10,9 @@ query content($criteria: JSON!) {
         cards {
           ...Card
         }
+        section {
+          ...Section
+        }
       }
       ... on ComponentOrganismsArticle {
         id

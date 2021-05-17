@@ -1,4 +1,0 @@
-{
-  "name": "@{{cookiecutter.project.name}}/{{cookiecutter.packages.apollo}}",
-  "description": "{{cookiecutter.project.description}}"
-}

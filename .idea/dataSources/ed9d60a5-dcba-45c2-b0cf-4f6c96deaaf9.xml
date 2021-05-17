@@ -3054,12 +3054,10 @@
     <column id="899" parent="225" name="firstName">
       <Position>11</Position>
       <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
     </column>
     <column id="900" parent="225" name="lastName">
       <Position>12</Position>
       <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
     </column>
     <column id="901" parent="225" name="created_by">
       <Position>13</Position>

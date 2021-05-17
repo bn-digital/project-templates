@@ -57,6 +57,17 @@ releases:
         app:
           port: 9092
 
+  - name: app-tailwind
+    namespace: '{{ .Environment.Name }}'
+    chart: bndigital/nodejs
+    labels:
+      app: graphql
+    values:
+      - 'values.{{ .Environment.Name }}.gotmpl'
+      - image: apisguru/graphql-faker
+        app:
+          port: 9092
+
   - name: app-storybook
     namespace: '{{ .Environment.Name }}'
     chart: bndigital/nodejs

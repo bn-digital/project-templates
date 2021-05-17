@@ -1,8 +1,0 @@
-fragment Section on ComponentOrganismsSection {
-  id
-  slug
-  title
-  subTitle
-  description
-  active
-}
