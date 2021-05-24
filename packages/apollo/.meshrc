@@ -1,0 +1,13 @@
+{
+  "sources": [
+    {
+      "name": "OpenAPI",
+      "handler": {
+        "openapi": {
+          "baseUrl": "https://petstore.swagger.io/v2",
+          "source": "https://petstore.swagger.io/v2/swagger.json"
+        }
+      }
+    }
+  ]
+}

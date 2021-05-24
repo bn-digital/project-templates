@@ -1,0 +1,7 @@
+fragment Map on ComponentMoleculesMap {
+  id
+  slug
+  entries {
+    ...Entry
+  }
+}

@@ -2,7 +2,9 @@
   "name": "app",
   "schemaPath": "./packages/strapi/exports/graphql/schema.graphql",
   "includes": [
-    "./packages/react/src/graphql/**/*.graphql"
+    "./packages/react/src/graphql/fragments/*.graphql",
+    "./packages/react/src/graphql/operations/*.graphql",
+    "./packages/strapi/exports/graphql/fragments/*.graphql"
   ],
   "extensions": {
     "endpoints": {

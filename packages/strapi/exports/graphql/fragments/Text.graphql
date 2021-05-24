@@ -1,0 +1,4 @@
+fragment Text on ComponentAtomsText {
+  id
+  value
+}

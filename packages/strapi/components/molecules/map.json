@@ -7,10 +7,16 @@
   },
   "options": {},
   "attributes": {
-    "children": {
+    "entries": {
       "type": "component",
       "repeatable": true,
-      "component": "atoms.entry"
+      "component": "atoms.entry",
+      "required": true,
+      "min": 2
+    },
+    "slug": {
+      "type": "string",
+      "required": true
     }
   }
 }

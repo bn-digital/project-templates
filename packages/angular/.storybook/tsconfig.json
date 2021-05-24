@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.storybook.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "exclude": ["../src/test.ts", "../src/**/*.spec.ts"],
+  "include": ["../src/**/*"],
+  "files": ["./typings.d.ts"]
+}

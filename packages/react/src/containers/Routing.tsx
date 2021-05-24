@@ -5,6 +5,7 @@ import { Menu, MenuProps } from 'antd'
 import { RoutesProps } from 'react-router'
 
 const Home = lazy(() => import('./../pages/home'))
+const Login = lazy(() => import('./../pages/login'))
 const ContactUs = lazy(() => import('../pages/contact-us'))
 
 type RouteNavigationMap = {
@@ -15,6 +16,10 @@ const routeMap: RouteNavigationMap = {
   '/': {
     component: Home,
     name: 'Home',
+  },
+  '/login': {
+    component: Login,
+    name: 'Login',
   },
   '/contact-us': {
     component: ContactUs,

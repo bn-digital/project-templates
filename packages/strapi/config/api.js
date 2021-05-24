@@ -1,5 +1,14 @@
 module.exports = () => ({
   responses: {
-    privateAttributes: ['created_by', 'updated_by', 'updatedAt', '__v', 'published_at'],
+    privateAttributes: [
+      'createdAt',
+      'created_by',
+      'created_at',
+      'updated_at',
+      'updated_by',
+      'updatedAt',
+      'published_at',
+      '__v',
+    ],
   },
 })

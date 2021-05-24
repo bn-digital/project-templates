@@ -1,5 +1,5 @@
 {
-  "collectionName": "components_atomstexts",
+  "collectionName": "components_atoms_texts",
   "info": {
     "name": "Text",
     "icon": "align-justify",
@@ -10,9 +10,6 @@
     "value": {
       "type": "string",
       "required": true
-    },
-    "properties": {
-      "type": "json"
     }
   }
 }

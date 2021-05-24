@@ -1,23 +1,25 @@
 {
-  "collectionName": "components_atomslinks",
+  "collectionName": "components_atoms_links",
   "info": {
     "name": "Link",
-    "icon": "external-link-alt"
+    "icon": "external-link-alt",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
       "private": false,
-      "required": true
+      "required": false
     },
     "url": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "icon": {
-      "type": "component",
-      "repeatable": true,
-      "component": "atoms.image"
+    "text": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
     }
   }
 }

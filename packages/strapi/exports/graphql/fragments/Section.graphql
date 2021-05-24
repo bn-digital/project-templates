@@ -1,0 +1,12 @@
+fragment Section on ComponentOrganismsSection {
+  id
+  title
+  subTitle
+  active
+  description
+  subDescription
+  backgroundColor
+  text
+  slug
+  media { ...File }
+}

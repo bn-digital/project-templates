@@ -8,7 +8,6 @@
     "prestart": "strapi configuration:restore --file=strapi.json",
     "postrun": "strapi configuration:restore --file=strapi.json",
     "prestop": "strapi configuration:dump --file=strapi.json --pretty",
-    "fake": "graphql-faker exports/fake/schema.graphql",
     "run": "strapi start",
     "start": "strapi develop"
   },
@@ -33,7 +32,6 @@
     "strapi-utils": "^3.6.2"
   },
   "devDependencies": {
-    "graphql-faker": "^2.0.0-rc.24",
     "sqlite3": "^5.0.2"
   }
 }

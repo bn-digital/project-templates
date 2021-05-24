@@ -2,15 +2,31 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/website",
+      "path": "/websites",
       "handler": "website.find",
       "config": {
         "policies": []
       }
     },
     {
+      "method": "GET",
+      "path": "/websites/:id",
+      "handler": "website.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/websites",
+      "handler": "website.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
-      "path": "/website",
+      "path": "/websites/:id",
       "handler": "website.update",
       "config": {
         "policies": []
@@ -18,7 +34,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/website",
+      "path": "/websites/:id",
       "handler": "website.delete",
       "config": {
         "policies": []

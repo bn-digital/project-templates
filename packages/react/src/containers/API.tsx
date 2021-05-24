@@ -1,8 +1,8 @@
-import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
+import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
 import { FC, useMemo } from 'react'
 import { setContext } from '@apollo/client/link/context'
 
-const API: FC = ({ children }) => {
+function useApolloClient(): ApolloClient<NormalizedCacheObject> {
   const httpLink = createHttpLink({
     uri: `${process.env.REACT_APP_API_URL ?? ''}/graphql`,
   })
@@ -15,15 +15,15 @@ const API: FC = ({ children }) => {
       },
     }
   })
-  const client = useMemo(
-    () =>
-      new ApolloClient({
-        link: authLink.concat(httpLink),
-        cache: new InMemoryCache({ addTypename: true }),
-        connectToDevTools: process.env.NODE_ENV !== 'production',
-      }),
-    [httpLink],
-  )
+  return new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache({ addTypename: true }),
+    connectToDevTools: process.env.NODE_ENV !== 'production',
+  })
+}
+
+const API: FC = ({ children }) => {
+  const client = useMemo(useApolloClient, [])
 
   return <ApolloProvider client={client}>{children}</ApolloProvider>
 }

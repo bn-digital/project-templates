@@ -16,6 +16,10 @@
     "node": true,
     "worker": true
   },
+  "globals": {
+    "process": "readonly",
+    "Promise": "off"
+  },
   "plugins": [
     "react",
     "react-hooks",
@@ -31,5 +35,10 @@
         "@typescript-eslint/explicit-module-boundary-types": "off"
       }
     }
-  ]
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

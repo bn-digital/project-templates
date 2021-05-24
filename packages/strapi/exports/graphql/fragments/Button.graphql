@@ -1,0 +1,7 @@
+fragment Button on ComponentAtomsButton {
+  id
+  link {
+    ...Link
+  }
+  simpleIcon
+}

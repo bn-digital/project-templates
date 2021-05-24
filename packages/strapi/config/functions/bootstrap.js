@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /**
  * An asynchronous bootstrap function that runs before
@@ -12,4 +12,4 @@
 // const { MongoMemoryServer} = require('mongodb-memory-server')
 // const mongod =new MongoMemoryServer()
 // console.log(mongod.getInstanceInfo())
-module.exports = () => {}
+module.exports = () => {};

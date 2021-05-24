@@ -1,0 +1,6 @@
+query website($where: JSON) {
+  websites(where: $where, limit: 1) {
+    id
+    ...Website
+  }
+}

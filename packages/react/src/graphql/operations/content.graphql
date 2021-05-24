@@ -1,58 +1,6 @@
-query content($criteria: JSON!) {
-  websites(where: $criteria) {
+query content($where: JSON) {
+  contentBlocks(where: $where, publicationState: LIVE) {
     id
-    pages {
-      id
-    }
-    sections {
-      ... on ComponentOrganismsDeck {
-        id
-        cards {
-          ...Card
-        }
-        section {
-          ...Section
-        }
-      }
-      ... on ComponentOrganismsArticle {
-        id
-        section {
-          ...Section
-        }
-      }
-      ... on ComponentOrganismsArticle {
-        id
-        section {
-          ...Section
-        }
-      }
-      ... on ComponentOrganismsHero {
-        id
-        button {
-          ...Button
-        }
-        section {
-          ...Section
-        }
-      }
-      ... on ComponentOrganismsCallToAction {
-        id
-        button {
-          ...Button
-        }
-        section {
-          ...Section
-        }
-      }
-    }
-    navigation {
-      id
-      slug
-      links {
-        id
-        title
-        url
-      }
-    }
+    ...Content
   }
 }

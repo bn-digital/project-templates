@@ -2,12 +2,14 @@ schema:
   - packages/strapi/exports/graphql/schema.graphql
 watch:
   - packages/strapi/exports/**/*.graphql
-  - packages/*/src/**/*.graphql
+  - packages/*/src/graphql/**/*.graphql
 hooks:
   afterAllFileWrite:
     - prettier --write
 config:
+  maybeValue: T
   typescript:
+    avoidOptionals: true
     scalars:
       Date: Date
       Time: Date
@@ -20,13 +22,10 @@ generates:
       - typescript
       - typescript-operations
       - typescript-react-apollo:
-          reactApolloVersion: 3
-          withHOC: true
-          withResultType: true
-          addDocBlocks: true
-          withHooks: true
           withComponent: true
+          withHooks: true
+          withResultType: true
     documents:
-      - packages/react/src/graphql/**/*.graphql
+      - packages/react/src/graphql/fragments/*.graphql
+      - packages/react/src/graphql/operations/*.graphql
       - packages/strapi/exports/graphql/fragments/*.graphql
-      - packages/strapi/exports/graphql/extensions/*.graphql

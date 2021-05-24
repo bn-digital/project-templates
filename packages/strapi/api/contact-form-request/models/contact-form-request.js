@@ -12,9 +12,9 @@ module.exports = {
       console.log(strapi.plugins['email'])
       await strapi.plugins['email'].services.email.send({
         to: process.env.MAILGUN_MAIL_TO,
-        from: `${data.firstName} ${data.lastName} <${data.email}>`,
+        from: `${data.name} <${data.email}>`,
         subject: `Contact form request from www.bndigital.co`,
-        text: `New Contact form requrest appeared on https://hop-capital.com`,
+        text: `${data.message}`,
       })
     },
   },

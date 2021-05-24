@@ -1,5 +1,0 @@
-fragment Button on ComponentAtomsButton {
-  id
-  title
-  url
-}

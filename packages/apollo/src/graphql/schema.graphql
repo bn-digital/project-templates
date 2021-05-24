@@ -8,4 +8,4 @@ type Query {
 }
 extend type UsersPermissionsUser {
   cart: Cart
-  }
+}

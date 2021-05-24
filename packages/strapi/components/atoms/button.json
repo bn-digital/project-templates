@@ -1,16 +1,19 @@
 {
-  "collectionName": "components_atomsbuttons",
+  "collectionName": "components_atoms_buttons",
   "info": {
     "name": "Button",
-    "icon": "mouse-pointer"
+    "icon": "mouse-pointer",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string",
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.link",
       "required": true
     },
-    "url": {
+    "simpleIcon": {
       "type": "string"
     }
   }

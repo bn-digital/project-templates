@@ -2,9 +2,10 @@
   "collectionName": "components_molecules_menus",
   "info": {
     "name": "Menu",
-    "icon": "list-alt"
+    "icon": "list-alt",
+    "description": ""
   },
-  "options": { },
+  "options": {},
   "attributes": {
     "links": {
       "type": "component",
@@ -14,8 +15,8 @@
     },
     "slug": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "default": "main-menu",
+      "required": true
     }
   }
 }

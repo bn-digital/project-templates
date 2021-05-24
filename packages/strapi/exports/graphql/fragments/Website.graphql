@@ -1,0 +1,19 @@
+fragment Website on Website {
+  id
+  domain
+  navigation {
+    id
+    slug
+    links {
+      ...Link
+    }
+  }
+  seo {
+    id
+    slug
+    entries {
+      id
+      ...Entry
+    }
+  }
+}

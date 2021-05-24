@@ -6,35 +6,28 @@
     "description": ""
   },
   "options": {
+    "idAttributeType": "uuid",
     "populateCreatorFields": false,
     "increments": false,
     "timestamps": false,
     "draftAndPublish": false
   },
   "attributes": {
-    "sections": {
-      "type": "dynamiczone",
-      "components": [
-        "organisms.call-to-action",
-        "organisms.hero",
-        "organisms.deck",
-        "organisms.article"
-      ]
-    },
     "navigation": {
       "type": "component",
       "repeatable": true,
       "component": "molecules.menu"
     },
-    "pages": {
+    "domain": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "seo": {
       "type": "component",
       "repeatable": true,
-      "component": "organisms.page",
-      "required": false
-    },
-    "slug": {
-      "type": "uid",
-      "private": false,
+      "component": "molecules.map",
+      "min": 1,
       "required": true
     }
   }

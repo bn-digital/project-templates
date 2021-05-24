@@ -14,16 +14,34 @@
       "type": "text"
     },
     "description": {
+      "type": "text"
+    },
+    "subDescription": {
+      "type": "text"
+    },
+    "text": {
       "type": "richtext"
+    },
+    "media": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     },
     "active": {
       "type": "boolean",
       "default": true
     },
-    "slug": {
+    "backgroundColor": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "maxLength": 25
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }

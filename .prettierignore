@@ -8,7 +8,7 @@ coverage
 .gradle
 charts
 .yarn
-.ssl
+.config
 .terraform
 modules
 *ignore

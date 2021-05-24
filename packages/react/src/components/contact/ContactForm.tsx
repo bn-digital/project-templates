@@ -14,7 +14,7 @@ const validateMessages: ValidateMessages = {
     email: '${label} is not a valid email!',
   },
 }
-type ContactFormValues = Pick<ContactFormRequest, 'firstName' | 'lastName' | 'email' | 'city'>
+type ContactFormValues = ContactFormRequest
 const ContactForm: FC = () => {
   const [createContactFormRequest] = useCreateContactFormRequestMutation()
   const messageKey = 'request'
@@ -34,7 +34,7 @@ const ContactForm: FC = () => {
               result?.data &&
               message.success(
                 {
-                  content: `Thanks for your interest, ${result.data.createContactFormRequest.contactFormRequest.firstName}! Your message received, ${result.data.createContactFormRequest.contactFormRequest.email}`,
+                  content: `Thanks for your interest, ${result?.data?.createContactFormRequest?.contactFormRequest?.name}! Your message received, ${result?.data.createContactFormRequest?.contactFormRequest?.email}`,
                   key: messageKey,
                 },
                 2000,

@@ -4,11 +4,11 @@ module.exports = ({ env }) => ({
     default: {
       connector: 'bookshelf',
       settings: {
-        client: process.env.NODE_ENV === 'production' ? 'pg' : 'sqlite',
+        client: env('NODE_ENV') === 'development' ? 'sqlite' : 'pg',
         host: env('DATABASE_HOST', 'bndigital.dev'),
+        schema: env.bool('DATABASE_SCHEMA', 'bndigital'),
         port: env.int('DATABASE_PORT', 5432),
         database: env('DATABASE_NAME', 'production'),
-        schema: env('DATABASE_SCHEMA', 'app'),
         username: env('DATABASE_USERNAME', 'bn'),
         password: env('DATABASE_PASSWORD'),
       },
