@@ -1,0 +1,18 @@
+fragment Content on Content {
+  id
+  title
+  description
+  slug
+  button {
+    ...Button
+  }
+  section {
+    ...Section
+  }
+  sections {
+    ...Section
+  }
+  table {
+    ...Map
+  }
+}

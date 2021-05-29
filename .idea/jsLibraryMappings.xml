@@ -2,10 +2,5 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/html" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/react" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/storybook" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/strapi" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/vue" libraries="{Node.js Core}" />
   </component>
 </project>

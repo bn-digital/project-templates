@@ -1,0 +1,8 @@
+api/**/*/documentation
+extensions/**/*/documentation
+extensions/**/*/public
+bin
+build
+.strapi-updater.json
+/.cache
+/plugins/content-import-export/.yarn

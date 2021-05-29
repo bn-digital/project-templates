@@ -1,0 +1,43 @@
+{
+  "name": "@brand-new/react-native-app",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^12.0.5",
+    "@react-native-community/masked-view": "0.1.10",
+    "@react-navigation/bottom-tabs": "^5.11.10",
+    "@react-navigation/native": "^5.9.4",
+    "@react-navigation/stack": "^5.14.4",
+    "antd-mobile": "^2.3.4",
+    "expo": "^41.0.1",
+    "expo-asset": "^8.3.2",
+    "expo-constants": "^10.1.3",
+    "expo-font": "^9.1.0",
+    "expo-linking": "^2.2.3",
+    "expo-splash-screen": "^0.10.2",
+    "expo-status-bar": "^1.0.4",
+    "expo-web-browser": "^9.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-native": "^0.64.1",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-reanimated": "^2.1.0",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "~3.0.0",
+    "react-native-web": "^0.16.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@types/react": "^17.0.5",
+    "@types/react-native": "^0.64.5",
+    "expo-cli": "^4.4.4",
+    "sharp-cli": "^1.15.0",
+    "typescript": "^4.2.4"
+  },
+  "private": true
+}

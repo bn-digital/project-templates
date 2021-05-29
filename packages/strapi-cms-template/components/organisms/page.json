@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_organisms_pages",
+  "info": {
+    "name": "Page",
+    "icon": "scroll",
+    "description": ""
+  },
+  "options": { },
+  "attributes": {
+    "meta": {
+      "type": "component",
+      "repeatable": true,
+      "component": "atoms.entry"
+    },
+    "uri": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 255
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_molecules_maps",
+  "info": {
+    "name": "Map",
+    "icon": "project-diagram",
+    "description": "Collection<Entry>"
+  },
+  "options": { },
+  "attributes": {
+    "entries": {
+      "type": "component",
+      "repeatable": true,
+      "component": "atoms.entry",
+      "required": false
+    },
+    "slug": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

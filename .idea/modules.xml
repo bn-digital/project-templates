@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/packages/angular/angular.iml" filepath="$PROJECT_DIR$/packages/angular/angular.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/apollo/apollo.iml" filepath="$PROJECT_DIR$/packages/apollo/apollo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/app.iml" filepath="$PROJECT_DIR$/.idea/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/html/html.iml" filepath="$PROJECT_DIR$/packages/html/html.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/react/react.iml" filepath="$PROJECT_DIR$/packages/react/react.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/react-native/react-native.iml" filepath="$PROJECT_DIR$/packages/react-native/react-native.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/storybook/storybook.iml" filepath="$PROJECT_DIR$/packages/storybook/storybook.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/strapi/strapi.iml" filepath="$PROJECT_DIR$/packages/strapi/strapi.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/tailwind/tailwind.iml" filepath="$PROJECT_DIR$/packages/tailwind/tailwind.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/vue/vue.iml" filepath="$PROJECT_DIR$/packages/vue/vue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/angular-template/angular-website-template.iml" filepath="$PROJECT_DIR$/packages/angular-template/angular-website-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/apollo/apollo-api-gateway-template.iml" filepath="$PROJECT_DIR$/packages/apollo/apollo-api-gateway-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/html/html-website-template.iml" filepath="$PROJECT_DIR$/packages/html/html-website-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/project-templates.iml" filepath="$PROJECT_DIR$/.idea/project-templates.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/react/react-antd-website-template.iml" filepath="$PROJECT_DIR$/packages/react/react-antd-website-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/react-native/react-native-app-template.iml" filepath="$PROJECT_DIR$/packages/react-native/react-native-app-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/storybook/react-storybook-template.iml" filepath="$PROJECT_DIR$/packages/storybook/react-storybook-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/tailwind/react-tailwind-website-template.iml" filepath="$PROJECT_DIR$/packages/tailwind/react-tailwind-website-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/strapi/strapi-cms-template.iml" filepath="$PROJECT_DIR$/packages/strapi/strapi-cms-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/vue/vue-website-template.iml" filepath="$PROJECT_DIR$/packages/vue/vue-website-template.iml" />
     </modules>
   </component>
 </project>

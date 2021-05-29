@@ -1,0 +1,25 @@
+fragment Website on Website {
+  id
+  domain
+  navigation {
+    id
+    slug
+    links {
+      ...Link
+    }
+  }
+  meta {
+    id
+    slug
+    entries {
+      ...Entry
+    }
+  }
+  redirects {
+    id
+    slug
+    entries {
+      ...Entry
+    }
+  }
+}

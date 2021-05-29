@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.yarn" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/react-native/.expo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/angular-template/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/angular-template/dist" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="TemplatesService">
+    <option name="templateFileTypes">
+      <list>
+        <option value="XML" />
+        <option value="XHTML" />
+        <option value="HTML" />
+      </list>
+    </option>
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/{{cookiecutter.template}}" />
+      </list>
+    </option>
+  </component>
+</module>

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_molecules_menus",
+  "info": {
+    "name": "Menu",
+    "icon": "list-alt",
+    "description": ""
+  },
+  "options": { },
+  "attributes": {
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "atoms.link",
+      "required": false
+    },
+    "slug": {
+      "type": "string",
+      "default": "main-menu",
+      "required": true
+    }
+  }
+}

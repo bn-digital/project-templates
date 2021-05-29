@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "websites",
+  "info": {
+    "name": "Website",
+    "description": ""
+  },
+  "options": {
+    "idAttributeType": "uuid",
+    "populateCreatorFields": false,
+    "increments": false,
+    "timestamps": false,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "navigation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "molecules.menu"
+    },
+    "domain": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "meta": {
+      "type": "component",
+      "repeatable": true,
+      "component": "molecules.map",
+      "min": 1,
+      "required": true
+    },
+    "redirects": {
+      "type": "component",
+      "repeatable": true,
+      "component": "molecules.map"
+    },
+    "googleAnalyticsCode": {
+      "type": "string",
+      "unique": true
+    }
+  }
+}

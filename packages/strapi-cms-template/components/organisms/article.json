@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_organisms_articles",
+  "info": {
+    "name": "Article",
+    "icon": "clone",
+    "description": "Content building block - defines section, slides, rows and columns and link or button"
+  },
+  "options": { },
+  "attributes": {
+    "section": {
+      "type": "component",
+      "repeatable": false,
+      "component": "organisms.section",
+      "required": true
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "organisms.section",
+      "required": true
+    },
+    "entries": {
+      "type": "component",
+      "repeatable": true,
+      "component": "atoms.entry"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.link"
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 20
+    }
+  }
+}

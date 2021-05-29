@@ -1,0 +1,2008 @@
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+type Employee {
+  id: ID!
+  firstName: String
+  lastName: String
+  occupation: String
+  photo: UploadFile
+}
+
+type Category {
+  id: ID!
+  name: String!
+  slug: String!
+  posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
+}
+
+type CategoryConnection {
+  values: [Category]
+  groupBy: CategoryGroupBy
+  aggregate: CategoryAggregator
+}
+
+type CategoryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CategoryGroupBy {
+  id: [CategoryConnectionId]
+  name: [CategoryConnectionName]
+  slug: [CategoryConnectionSlug]
+}
+
+type CategoryConnectionId {
+  key: ID
+  connection: CategoryConnection
+}
+
+type CategoryConnectionName {
+  key: String
+  connection: CategoryConnection
+}
+
+type CategoryConnectionSlug {
+  key: String
+  connection: CategoryConnection
+}
+
+input CategoryInput {
+  name: String!
+  posts: [ID]
+  slug: String!
+  created_by: ID
+  updated_by: ID
+}
+
+input editCategoryInput {
+  name: String
+  posts: [ID]
+  slug: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createCategoryInput {
+  data: CategoryInput
+}
+
+type createCategoryPayload {
+  category: Category
+}
+
+input updateCategoryInput {
+  where: InputID
+  data: editCategoryInput
+}
+
+type updateCategoryPayload {
+  category: Category
+}
+
+input deleteCategoryInput {
+  where: InputID
+}
+
+type deleteCategoryPayload {
+  category: Category
+}
+
+type ContactFormRequest {
+  id: ID!
+  email: String!
+  budget: String
+  name: String
+  message: String
+}
+
+type ContactFormRequestConnection {
+  values: [ContactFormRequest]
+  groupBy: ContactFormRequestGroupBy
+  aggregate: ContactFormRequestAggregator
+}
+
+type ContactFormRequestAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ContactFormRequestGroupBy {
+  id: [ContactFormRequestConnectionId]
+  email: [ContactFormRequestConnectionEmail]
+  budget: [ContactFormRequestConnectionBudget]
+  name: [ContactFormRequestConnectionName]
+  message: [ContactFormRequestConnectionMessage]
+}
+
+type ContactFormRequestConnectionId {
+  key: ID
+  connection: ContactFormRequestConnection
+}
+
+type ContactFormRequestConnectionEmail {
+  key: String
+  connection: ContactFormRequestConnection
+}
+
+type ContactFormRequestConnectionBudget {
+  key: String
+  connection: ContactFormRequestConnection
+}
+
+type ContactFormRequestConnectionName {
+  key: String
+  connection: ContactFormRequestConnection
+}
+
+type ContactFormRequestConnectionMessage {
+  key: String
+  connection: ContactFormRequestConnection
+}
+
+input ContactFormRequestInput {
+  email: String!
+  budget: String
+  name: String
+  message: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editContactFormRequestInput {
+  email: String
+  budget: String
+  name: String
+  message: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createContactFormRequestInput {
+  data: ContactFormRequestInput
+}
+
+type createContactFormRequestPayload {
+  contactFormRequest: ContactFormRequest
+}
+
+input updateContactFormRequestInput {
+  where: InputID
+  data: editContactFormRequestInput
+}
+
+type updateContactFormRequestPayload {
+  contactFormRequest: ContactFormRequest
+}
+
+input deleteContactFormRequestInput {
+  where: InputID
+}
+
+type deleteContactFormRequestPayload {
+  contactFormRequest: ContactFormRequest
+}
+
+type Content {
+  id: ID!
+  title: String!
+  description: String
+  sections: [ComponentOrganismsSection]
+  table: [ComponentMoleculesMap]
+  button: ComponentAtomsButton
+  slug: String!
+  locale: String
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Content]
+  section: ComponentOrganismsSection
+}
+
+type ContentConnection {
+  values: [Content]
+  groupBy: ContentGroupBy
+  aggregate: ContentAggregator
+}
+
+type ContentAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ContentGroupBy {
+  id: [ContentConnectionId]
+  title: [ContentConnectionTitle]
+  description: [ContentConnectionDescription]
+  button: [ContentConnectionButton]
+  slug: [ContentConnectionSlug]
+  locale: [ContentConnectionLocale]
+}
+
+type ContentConnectionId {
+  key: ID
+  connection: ContentConnection
+}
+
+type ContentConnectionTitle {
+  key: String
+  connection: ContentConnection
+}
+
+type ContentConnectionDescription {
+  key: String
+  connection: ContentConnection
+}
+
+type ContentConnectionButton {
+  key: ID
+  connection: ContentConnection
+}
+
+type ContentConnectionSlug {
+  key: String
+  connection: ContentConnection
+}
+
+type ContentConnectionLocale {
+  key: String
+  connection: ContentConnection
+}
+
+input ContentInput {
+  title: String
+  description: String
+  sections: [ComponentOrganismsSectionInput]
+  table: [ComponentMoleculesMapInput]
+  button: ComponentAtomsButtonInput
+  slug: String!
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editContentInput {
+  title: String
+  description: String
+  sections: [editComponentOrganismsSectionInput]
+  table: [editComponentMoleculesMapInput]
+  button: editComponentAtomsButtonInput
+  slug: String
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createContentInput {
+  data: ContentInput
+}
+
+type createContentPayload {
+  content: Content
+}
+
+input updateContentInput {
+  where: InputID
+  data: editContentInput
+}
+
+type updateContentPayload {
+  content: Content
+}
+
+input deleteContentInput {
+  where: InputID
+}
+
+type deleteContentPayload {
+  content: Content
+}
+
+type Country {
+  id: ID!
+  name: String!
+  code: String!
+}
+
+type CountryConnection {
+  values: [Country]
+  groupBy: CountryGroupBy
+  aggregate: CountryAggregator
+}
+
+type CountryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CountryGroupBy {
+  id: [CountryConnectionId]
+  name: [CountryConnectionName]
+  code: [CountryConnectionCode]
+}
+
+type CountryConnectionId {
+  key: ID
+  connection: CountryConnection
+}
+
+type CountryConnectionName {
+  key: String
+  connection: CountryConnection
+}
+
+type CountryConnectionCode {
+  key: String
+  connection: CountryConnection
+}
+
+input CountryInput {
+  name: String!
+  code: String!
+  created_by: ID
+  updated_by: ID
+}
+
+input editCountryInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createCountryInput {
+  data: CountryInput
+}
+
+type createCountryPayload {
+  country: Country
+}
+
+input updateCountryInput {
+  where: InputID
+  data: editCountryInput
+}
+
+type updateCountryPayload {
+  country: Country
+}
+
+input deleteCountryInput {
+  where: InputID
+}
+
+type deleteCountryPayload {
+  country: Country
+}
+
+type Customer {
+  id: ID!
+  name: String!
+  description: String
+  country: Country
+  entries: [ComponentMoleculesMap]
+  portfolios(sort: String, limit: Int, start: Int, where: JSON): [Portfolio]
+}
+
+type CustomerConnection {
+  values: [Customer]
+  groupBy: CustomerGroupBy
+  aggregate: CustomerAggregator
+}
+
+type CustomerAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CustomerGroupBy {
+  id: [CustomerConnectionId]
+  name: [CustomerConnectionName]
+  description: [CustomerConnectionDescription]
+  country: [CustomerConnectionCountry]
+}
+
+type CustomerConnectionId {
+  key: ID
+  connection: CustomerConnection
+}
+
+type CustomerConnectionName {
+  key: String
+  connection: CustomerConnection
+}
+
+type CustomerConnectionDescription {
+  key: String
+  connection: CustomerConnection
+}
+
+type CustomerConnectionCountry {
+  key: ID
+  connection: CustomerConnection
+}
+
+input CustomerInput {
+  name: String!
+  description: String
+  country: ID
+  portfolios: [ID]
+  entries: [ComponentMoleculesMapInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input editCustomerInput {
+  name: String
+  description: String
+  country: ID
+  portfolios: [ID]
+  entries: [editComponentMoleculesMapInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input createCustomerInput {
+  data: CustomerInput
+}
+
+type createCustomerPayload {
+  customer: Customer
+}
+
+input updateCustomerInput {
+  where: InputID
+  data: editCustomerInput
+}
+
+type updateCustomerPayload {
+  customer: Customer
+}
+
+input deleteCustomerInput {
+  where: InputID
+}
+
+type deleteCustomerPayload {
+  customer: Customer
+}
+
+type Occupation {
+  id: ID!
+  name: String!
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type OccupationConnection {
+  values: [Occupation]
+  groupBy: OccupationGroupBy
+  aggregate: OccupationAggregator
+}
+
+type OccupationAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type OccupationGroupBy {
+  id: [OccupationConnectionId]
+  name: [OccupationConnectionName]
+}
+
+type OccupationConnectionId {
+  key: ID
+  connection: OccupationConnection
+}
+
+type OccupationConnectionName {
+  key: String
+  connection: OccupationConnection
+}
+
+input OccupationInput {
+  name: String!
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editOccupationInput {
+  name: String
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createOccupationInput {
+  data: OccupationInput
+}
+
+type createOccupationPayload {
+  occupation: Occupation
+}
+
+input updateOccupationInput {
+  where: InputID
+  data: editOccupationInput
+}
+
+type updateOccupationPayload {
+  occupation: Occupation
+}
+
+input deleteOccupationInput {
+  where: InputID
+}
+
+type deleteOccupationPayload {
+  occupation: Occupation
+}
+
+type Portfolio {
+  id: ID!
+  name: String!
+  description: String
+  customer: Customer
+  owner: UsersPermissionsUser
+  projects(sort: String, limit: Int, start: Int, where: JSON): [Project]
+  tags(sort: String, limit: Int, start: Int, where: JSON): [Tag]
+}
+
+type PortfolioConnection {
+  values: [Portfolio]
+  groupBy: PortfolioGroupBy
+  aggregate: PortfolioAggregator
+}
+
+type PortfolioAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PortfolioGroupBy {
+  id: [PortfolioConnectionId]
+  name: [PortfolioConnectionName]
+  description: [PortfolioConnectionDescription]
+  customer: [PortfolioConnectionCustomer]
+  owner: [PortfolioConnectionOwner]
+}
+
+type PortfolioConnectionId {
+  key: ID
+  connection: PortfolioConnection
+}
+
+type PortfolioConnectionName {
+  key: String
+  connection: PortfolioConnection
+}
+
+type PortfolioConnectionDescription {
+  key: String
+  connection: PortfolioConnection
+}
+
+type PortfolioConnectionCustomer {
+  key: ID
+  connection: PortfolioConnection
+}
+
+type PortfolioConnectionOwner {
+  key: ID
+  connection: PortfolioConnection
+}
+
+input PortfolioInput {
+  name: String!
+  description: String
+  projects: [ID]
+  customer: ID
+  owner: ID
+  tags: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editPortfolioInput {
+  name: String
+  description: String
+  projects: [ID]
+  customer: ID
+  owner: ID
+  tags: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createPortfolioInput {
+  data: PortfolioInput
+}
+
+type createPortfolioPayload {
+  portfolio: Portfolio
+}
+
+input updatePortfolioInput {
+  where: InputID
+  data: editPortfolioInput
+}
+
+type updatePortfolioPayload {
+  portfolio: Portfolio
+}
+
+input deletePortfolioInput {
+  where: InputID
+}
+
+type deletePortfolioPayload {
+  portfolio: Portfolio
+}
+
+type Post {
+  id: ID!
+  category: Category
+  slug: String!
+  seo: ComponentOrganismsPage
+  section: ComponentOrganismsSection
+  previewHorizontal: UploadFile
+  previewVertical: UploadFile
+}
+
+type PostConnection {
+  values: [Post]
+  groupBy: PostGroupBy
+  aggregate: PostAggregator
+}
+
+type PostAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PostGroupBy {
+  id: [PostConnectionId]
+  category: [PostConnectionCategory]
+  slug: [PostConnectionSlug]
+  seo: [PostConnectionSeo]
+  section: [PostConnectionSection]
+  previewHorizontal: [PostConnectionPreviewHorizontal]
+  previewVertical: [PostConnectionPreviewVertical]
+}
+
+type PostConnectionId {
+  key: ID
+  connection: PostConnection
+}
+
+type PostConnectionCategory {
+  key: ID
+  connection: PostConnection
+}
+
+type PostConnectionSlug {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionSeo {
+  key: ID
+  connection: PostConnection
+}
+
+type PostConnectionSection {
+  key: ID
+  connection: PostConnection
+}
+
+type PostConnectionPreviewHorizontal {
+  key: ID
+  connection: PostConnection
+}
+
+type PostConnectionPreviewVertical {
+  key: ID
+  connection: PostConnection
+}
+
+input PostInput {
+  category: ID
+  author: ID
+  slug: String!
+  seo: ComponentOrganismsPageInput
+  section: ComponentOrganismsSectionInput!
+  previewHorizontal: ID
+  previewVertical: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editPostInput {
+  category: ID
+  author: ID
+  slug: String
+  seo: editComponentOrganismsPageInput
+  section: editComponentOrganismsSectionInput
+  previewHorizontal: ID
+  previewVertical: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createPostInput {
+  data: PostInput
+}
+
+type createPostPayload {
+  post: Post
+}
+
+input updatePostInput {
+  where: InputID
+  data: editPostInput
+}
+
+type updatePostPayload {
+  post: Post
+}
+
+input deletePostInput {
+  where: InputID
+}
+
+type deletePostPayload {
+  post: Post
+}
+
+enum ProjectStatus {
+  Estimate
+  Progress
+  Completed
+  Hold
+  Escalate
+}
+
+type Project {
+  id: ID!
+  name: String!
+  portfolio: Portfolio
+  status: ProjectStatus!
+  startDate: Date
+  endDate: Date
+  deadline: DateTime
+  links: [ComponentAtomsButton]
+  members(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  tags(sort: String, limit: Int, start: Int, where: JSON): [Tag]
+}
+
+type ProjectConnection {
+  values: [Project]
+  groupBy: ProjectGroupBy
+  aggregate: ProjectAggregator
+}
+
+type ProjectAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ProjectGroupBy {
+  id: [ProjectConnectionId]
+  name: [ProjectConnectionName]
+  portfolio: [ProjectConnectionPortfolio]
+  status: [ProjectConnectionStatus]
+  startDate: [ProjectConnectionStartDate]
+  endDate: [ProjectConnectionEndDate]
+  deadline: [ProjectConnectionDeadline]
+}
+
+type ProjectConnectionId {
+  key: ID
+  connection: ProjectConnection
+}
+
+type ProjectConnectionName {
+  key: String
+  connection: ProjectConnection
+}
+
+type ProjectConnectionPortfolio {
+  key: ID
+  connection: ProjectConnection
+}
+
+type ProjectConnectionStatus {
+  key: String
+  connection: ProjectConnection
+}
+
+type ProjectConnectionStartDate {
+  key: ID
+  connection: ProjectConnection
+}
+
+type ProjectConnectionEndDate {
+  key: ID
+  connection: ProjectConnection
+}
+
+type ProjectConnectionDeadline {
+  key: DateTime
+  connection: ProjectConnection
+}
+
+input ProjectInput {
+  name: String!
+  portfolio: ID
+  status: ProjectStatus
+  startDate: Date
+  endDate: Date
+  deadline: DateTime
+  members: [ID]
+  links: [ComponentAtomsButtonInput]
+  tags: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editProjectInput {
+  name: String
+  portfolio: ID
+  status: ProjectStatus
+  startDate: Date
+  endDate: Date
+  deadline: DateTime
+  members: [ID]
+  links: [editComponentAtomsButtonInput]
+  tags: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createProjectInput {
+  data: ProjectInput
+}
+
+type createProjectPayload {
+  project: Project
+}
+
+input updateProjectInput {
+  where: InputID
+  data: editProjectInput
+}
+
+type updateProjectPayload {
+  project: Project
+}
+
+input deleteProjectInput {
+  where: InputID
+}
+
+type deleteProjectPayload {
+  project: Project
+}
+
+enum TagType {
+  Industry
+  Platform
+  ProjectStatus
+  ProjectCompliance
+  Service
+  Other
+}
+
+type Tag {
+  id: ID!
+  name: String!
+  color: String!
+  type: TagType!
+  projects(sort: String, limit: Int, start: Int, where: JSON): [Project]
+  portfolios(sort: String, limit: Int, start: Int, where: JSON): [Portfolio]
+}
+
+type TagConnection {
+  values: [Tag]
+  groupBy: TagGroupBy
+  aggregate: TagAggregator
+}
+
+type TagAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type TagGroupBy {
+  id: [TagConnectionId]
+  name: [TagConnectionName]
+  color: [TagConnectionColor]
+  type: [TagConnectionType]
+}
+
+type TagConnectionId {
+  key: ID
+  connection: TagConnection
+}
+
+type TagConnectionName {
+  key: String
+  connection: TagConnection
+}
+
+type TagConnectionColor {
+  key: String
+  connection: TagConnection
+}
+
+type TagConnectionType {
+  key: String
+  connection: TagConnection
+}
+
+input TagInput {
+  name: String!
+  color: String
+  type: TagType
+  projects: [ID]
+  portfolios: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editTagInput {
+  name: String
+  color: String
+  type: TagType
+  projects: [ID]
+  portfolios: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createTagInput {
+  data: TagInput
+}
+
+type createTagPayload {
+  tag: Tag
+}
+
+input updateTagInput {
+  where: InputID
+  data: editTagInput
+}
+
+type updateTagPayload {
+  tag: Tag
+}
+
+input deleteTagInput {
+  where: InputID
+}
+
+type deleteTagPayload {
+  tag: Tag
+}
+
+type Website {
+  id: ID!
+  navigation: [ComponentMoleculesMenu]
+  domain: String!
+  meta: [ComponentMoleculesMap]
+  redirects: [ComponentMoleculesMap]
+  googleAnalyticsCode: String
+}
+
+type WebsiteConnection {
+  values: [Website]
+  groupBy: WebsiteGroupBy
+  aggregate: WebsiteAggregator
+}
+
+type WebsiteAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type WebsiteGroupBy {
+  id: [WebsiteConnectionId]
+  domain: [WebsiteConnectionDomain]
+  googleAnalyticsCode: [WebsiteConnectionGoogleAnalyticsCode]
+}
+
+type WebsiteConnectionId {
+  key: ID
+  connection: WebsiteConnection
+}
+
+type WebsiteConnectionDomain {
+  key: String
+  connection: WebsiteConnection
+}
+
+type WebsiteConnectionGoogleAnalyticsCode {
+  key: String
+  connection: WebsiteConnection
+}
+
+input WebsiteInput {
+  navigation: [ComponentMoleculesMenuInput]
+  domain: String!
+  meta: [ComponentMoleculesMapInput!]
+  redirects: [ComponentMoleculesMapInput]
+  googleAnalyticsCode: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editWebsiteInput {
+  navigation: [editComponentMoleculesMenuInput]
+  domain: String
+  meta: [editComponentMoleculesMapInput]
+  redirects: [editComponentMoleculesMapInput]
+  googleAnalyticsCode: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createWebsiteInput {
+  data: WebsiteInput
+}
+
+type createWebsitePayload {
+  website: Website
+}
+
+input updateWebsiteInput {
+  where: InputID
+  data: editWebsiteInput
+}
+
+type updateWebsitePayload {
+  website: Website
+}
+
+input deleteWebsiteInput {
+  where: InputID
+}
+
+type deleteWebsitePayload {
+  website: Website
+}
+
+type EmailDesignerEmailTemplate {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  enabled: Boolean
+  tags: JSON
+}
+
+input EmailTemplateInput {
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  enabled: Boolean
+  tags: JSON
+  created_by: ID
+  updated_by: ID
+}
+
+input editEmailTemplateInput {
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  enabled: Boolean
+  tags: JSON
+  created_by: ID
+  updated_by: ID
+}
+
+type I18NLocale {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  code: String
+}
+
+input LocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editLocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input deleteFileInput {
+  where: InputID
+}
+
+type deleteFilePayload {
+  file: UploadFile
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  username: String!
+  email: String!
+  role: UsersPermissionsRole
+  firstName: String
+  lastName: String
+  occupation: Occupation
+  photo: UploadFile
+  projects(sort: String, limit: Int, start: Int, where: JSON): [Project]
+  portfolios(sort: String, limit: Int, start: Int, where: JSON): [Portfolio]
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  role: [UsersPermissionsUserConnectionRole]
+  firstName: [UsersPermissionsUserConnectionFirstName]
+  lastName: [UsersPermissionsUserConnectionLastName]
+  occupation: [UsersPermissionsUserConnectionOccupation]
+  photo: [UsersPermissionsUserConnectionPhoto]
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionFirstName {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionLastName {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionOccupation {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionPhoto {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+input UserInput {
+  username: String!
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  password: String
+  email: String!
+  provider: String
+  blocked: Boolean
+  role: ID
+  firstName: String
+  lastName: String
+  occupation: ID
+  photo: ID
+  projects: [ID]
+  portfolios: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserInput {
+  username: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  password: String
+  email: String
+  provider: String
+  blocked: Boolean
+  role: ID
+  firstName: String
+  lastName: String
+  occupation: ID
+  photo: ID
+  projects: [ID]
+  portfolios: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+type ComponentAtomsButton {
+  id: ID!
+  link: ComponentAtomsLink
+  simpleIcon: String
+}
+
+input ComponentAtomsButtonInput {
+  link: ComponentAtomsLinkInput!
+  simpleIcon: String
+}
+
+input editComponentAtomsButtonInput {
+  id: ID
+  link: editComponentAtomsLinkInput
+  simpleIcon: String
+}
+
+"""Key-Value entry"""
+type ComponentAtomsEntry {
+  id: ID!
+  key: String!
+  value: String
+}
+
+input ComponentAtomsEntryInput {
+  key: String!
+  value: String
+}
+
+input editComponentAtomsEntryInput {
+  id: ID
+  key: String
+  value: String
+}
+
+type ComponentAtomsLink {
+  id: ID!
+  extra: String
+  url: String!
+  text: String!
+}
+
+input ComponentAtomsLinkInput {
+  extra: String
+  url: String!
+  text: String!
+}
+
+input editComponentAtomsLinkInput {
+  id: ID
+  extra: String
+  url: String
+  text: String
+}
+
+type ComponentAtomsNumeric {
+  id: ID!
+  value: Float!
+  unit: String
+}
+
+input ComponentAtomsNumericInput {
+  value: Float!
+  unit: String
+}
+
+input editComponentAtomsNumericInput {
+  id: ID
+  value: Float
+  unit: String
+}
+
+type ComponentAtomsParagraph {
+  id: ID!
+  lines: [ComponentAtomsText]
+}
+
+input ComponentAtomsParagraphInput {
+  lines: [ComponentAtomsTextInput]
+}
+
+input editComponentAtomsParagraphInput {
+  id: ID
+  lines: [editComponentAtomsTextInput]
+}
+
+"""Text node"""
+type ComponentAtomsText {
+  id: ID!
+  value: String!
+}
+
+input ComponentAtomsTextInput {
+  value: String!
+}
+
+input editComponentAtomsTextInput {
+  id: ID
+  value: String
+}
+
+"""Collection<Entry>"""
+type ComponentMoleculesMap {
+  id: ID!
+  entries: [ComponentAtomsEntry]
+  slug: String!
+}
+
+input ComponentMoleculesMapInput {
+  entries: [ComponentAtomsEntryInput]
+  slug: String!
+}
+
+input editComponentMoleculesMapInput {
+  id: ID
+  entries: [editComponentAtomsEntryInput]
+  slug: String
+}
+
+type ComponentMoleculesMenu {
+  id: ID!
+  links: [ComponentAtomsLink]
+  slug: String!
+}
+
+input ComponentMoleculesMenuInput {
+  links: [ComponentAtomsLinkInput]
+  slug: String
+}
+
+input editComponentMoleculesMenuInput {
+  id: ID
+  links: [editComponentAtomsLinkInput]
+  slug: String
+}
+
+"""
+Content building block - defines section, slides, rows and columns and link or button
+"""
+type ComponentOrganismsArticle {
+  id: ID!
+  section: ComponentOrganismsSection
+  cards: [ComponentOrganismsSection]
+  entries: [ComponentAtomsEntry]
+  link: ComponentAtomsLink
+  slug: String!
+}
+
+input ComponentOrganismsArticleInput {
+  section: ComponentOrganismsSectionInput!
+  cards: [ComponentOrganismsSectionInput!]
+  entries: [ComponentAtomsEntryInput]
+  link: ComponentAtomsLinkInput
+  slug: String!
+}
+
+input editComponentOrganismsArticleInput {
+  id: ID
+  section: editComponentOrganismsSectionInput
+  cards: [editComponentOrganismsSectionInput]
+  entries: [editComponentAtomsEntryInput]
+  link: editComponentAtomsLinkInput
+  slug: String
+}
+
+type ComponentOrganismsPage {
+  id: ID!
+  meta: [ComponentAtomsEntry]
+  uri: String!
+}
+
+input ComponentOrganismsPageInput {
+  meta: [ComponentAtomsEntryInput]
+  uri: String!
+}
+
+input editComponentOrganismsPageInput {
+  id: ID
+  meta: [editComponentAtomsEntryInput]
+  uri: String
+}
+
+type ComponentOrganismsSection {
+  id: ID!
+  title: String
+  subTitle: String
+  description: String
+  extra: String
+  text: String
+  media: UploadFile
+  active: Boolean
+  backgroundColor: String
+  slug: String
+}
+
+input ComponentOrganismsSectionInput {
+  title: String
+  subTitle: String
+  description: String
+  extra: String
+  text: String
+  media: ID
+  active: Boolean
+  backgroundColor: String
+  slug: String
+}
+
+input editComponentOrganismsSectionInput {
+  id: ID
+  title: String
+  subTitle: String
+  description: String
+  extra: String
+  text: String
+  media: ID
+  active: Boolean
+  backgroundColor: String
+  slug: String
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Employee | Category | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnectionId | CategoryConnectionName | CategoryConnectionSlug | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | ContactFormRequest | ContactFormRequestConnection | ContactFormRequestAggregator | ContactFormRequestGroupBy | ContactFormRequestConnectionId | ContactFormRequestConnectionEmail | ContactFormRequestConnectionBudget | ContactFormRequestConnectionName | ContactFormRequestConnectionMessage | createContactFormRequestPayload | updateContactFormRequestPayload | deleteContactFormRequestPayload | Content | ContentConnection | ContentAggregator | ContentGroupBy | ContentConnectionId | ContentConnectionTitle | ContentConnectionDescription | ContentConnectionButton | ContentConnectionSlug | ContentConnectionLocale | createContentPayload | updateContentPayload | deleteContentPayload | Country | CountryConnection | CountryAggregator | CountryGroupBy | CountryConnectionId | CountryConnectionName | CountryConnectionCode | createCountryPayload | updateCountryPayload | deleteCountryPayload | Customer | CustomerConnection | CustomerAggregator | CustomerGroupBy | CustomerConnectionId | CustomerConnectionName | CustomerConnectionDescription | CustomerConnectionCountry | createCustomerPayload | updateCustomerPayload | deleteCustomerPayload | Occupation | OccupationConnection | OccupationAggregator | OccupationGroupBy | OccupationConnectionId | OccupationConnectionName | createOccupationPayload | updateOccupationPayload | deleteOccupationPayload | Portfolio | PortfolioConnection | PortfolioAggregator | PortfolioGroupBy | PortfolioConnectionId | PortfolioConnectionName | PortfolioConnectionDescription | PortfolioConnectionCustomer | PortfolioConnectionOwner | createPortfolioPayload | updatePortfolioPayload | deletePortfolioPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnectionCategory | PostConnectionSlug | PostConnectionSeo | PostConnectionSection | PostConnectionPreviewHorizontal | PostConnectionPreviewVertical | createPostPayload | updatePostPayload | deletePostPayload | Project | ProjectConnection | ProjectAggregator | ProjectGroupBy | ProjectConnectionId | ProjectConnectionName | ProjectConnectionPortfolio | ProjectConnectionStatus | ProjectConnectionStartDate | ProjectConnectionEndDate | ProjectConnectionDeadline | createProjectPayload | updateProjectPayload | deleteProjectPayload | Tag | TagConnection | TagAggregator | TagGroupBy | TagConnectionId | TagConnectionName | TagConnectionColor | TagConnectionType | createTagPayload | updateTagPayload | deleteTagPayload | Website | WebsiteConnection | WebsiteAggregator | WebsiteGroupBy | WebsiteConnectionId | WebsiteConnectionDomain | WebsiteConnectionGoogleAnalyticsCode | createWebsitePayload | updateWebsitePayload | deleteWebsitePayload | EmailDesignerEmailTemplate | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionOccupation | UsersPermissionsUserConnectionPhoto | createUserPayload | updateUserPayload | deleteUserPayload | ComponentAtomsButton | ComponentAtomsEntry | ComponentAtomsLink | ComponentAtomsNumeric | ComponentAtomsParagraph | ComponentAtomsText | ComponentMoleculesMap | ComponentMoleculesMenu | ComponentOrganismsArticle | ComponentOrganismsPage | ComponentOrganismsSection
+
+input InputID {
+  id: ID!
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+type AdminUser {
+  id: ID!
+  username: String
+  firstname: String!
+  lastname: String!
+}
+
+type Query {
+  category(id: ID!, publicationState: PublicationState): Category
+  categories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Category]
+  categoriesConnection(sort: String, limit: Int, start: Int, where: JSON): CategoryConnection
+  contactFormRequest(id: ID!, publicationState: PublicationState): ContactFormRequest
+  contactFormRequests(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [ContactFormRequest]
+  contactFormRequestsConnection(sort: String, limit: Int, start: Int, where: JSON): ContactFormRequestConnection
+  content(id: ID!, publicationState: PublicationState): Content
+  contents(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Content]
+  contentsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): ContentConnection
+  country(id: ID!, publicationState: PublicationState): Country
+  countries(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Country]
+  countriesConnection(sort: String, limit: Int, start: Int, where: JSON): CountryConnection
+  customer(id: ID!, publicationState: PublicationState): Customer
+  customers(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Customer]
+  customersConnection(sort: String, limit: Int, start: Int, where: JSON): CustomerConnection
+  occupation(id: ID!, publicationState: PublicationState): Occupation
+  occupations(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Occupation]
+  occupationsConnection(sort: String, limit: Int, start: Int, where: JSON): OccupationConnection
+  portfolio(id: ID!, publicationState: PublicationState): Portfolio
+  portfolios(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Portfolio]
+  portfoliosConnection(sort: String, limit: Int, start: Int, where: JSON): PortfolioConnection
+  post(id: ID!, publicationState: PublicationState): Post
+  posts(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Post]
+  postsConnection(sort: String, limit: Int, start: Int, where: JSON): PostConnection
+  project(id: ID!, publicationState: PublicationState): Project
+  projects(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Project]
+  projectsConnection(sort: String, limit: Int, start: Int, where: JSON): ProjectConnection
+  tag(id: ID!, publicationState: PublicationState): Tag
+  tags(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Tag]
+  tagsConnection(sort: String, limit: Int, start: Int, where: JSON): TagConnection
+  website(id: ID!, publicationState: PublicationState): Website
+  websites(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Website]
+  websitesConnection(sort: String, limit: Int, start: Int, where: JSON): WebsiteConnection
+  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+  employees: [Employee]!
+}
+
+type Mutation {
+  createCategory(input: createCategoryInput): createCategoryPayload
+  updateCategory(input: updateCategoryInput): updateCategoryPayload
+  deleteCategory(input: deleteCategoryInput): deleteCategoryPayload
+  createContactFormRequest(input: createContactFormRequestInput): createContactFormRequestPayload
+  updateContactFormRequest(input: updateContactFormRequestInput): updateContactFormRequestPayload
+  deleteContactFormRequest(input: deleteContactFormRequestInput): deleteContactFormRequestPayload
+  createContent(input: createContentInput): createContentPayload
+  updateContent(input: updateContentInput): updateContentPayload
+  deleteContent(input: deleteContentInput): deleteContentPayload
+  createCountry(input: createCountryInput): createCountryPayload
+  updateCountry(input: updateCountryInput): updateCountryPayload
+  deleteCountry(input: deleteCountryInput): deleteCountryPayload
+  createCustomer(input: createCustomerInput): createCustomerPayload
+  updateCustomer(input: updateCustomerInput): updateCustomerPayload
+  deleteCustomer(input: deleteCustomerInput): deleteCustomerPayload
+  createOccupation(input: createOccupationInput): createOccupationPayload
+  updateOccupation(input: updateOccupationInput): updateOccupationPayload
+  deleteOccupation(input: deleteOccupationInput): deleteOccupationPayload
+  createPortfolio(input: createPortfolioInput): createPortfolioPayload
+  updatePortfolio(input: updatePortfolioInput): updatePortfolioPayload
+  deletePortfolio(input: deletePortfolioInput): deletePortfolioPayload
+  createPost(input: createPostInput): createPostPayload
+  updatePost(input: updatePostInput): updatePostPayload
+  deletePost(input: deletePostInput): deletePostPayload
+  createProject(input: createProjectInput): createProjectPayload
+  updateProject(input: updateProjectInput): updateProjectPayload
+  deleteProject(input: deleteProjectInput): deleteProjectPayload
+  createTag(input: createTagInput): createTagPayload
+  updateTag(input: updateTagInput): updateTagPayload
+  deleteTag(input: deleteTagInput): deleteTagPayload
+  createWebsite(input: createWebsiteInput): createWebsitePayload
+  updateWebsite(input: updateWebsiteInput): updateWebsitePayload
+  deleteWebsite(input: deleteWebsiteInput): deleteWebsitePayload
+
+  """Delete one file"""
+  deleteFile(input: deleteFileInput): deleteFilePayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  createContentLocalization(input: updateContentInput!): Content!
+  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload

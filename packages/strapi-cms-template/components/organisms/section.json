@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_organisms_sections",
+  "info": {
+    "name": "Section",
+    "icon": "ad",
+    "description": ""
+  },
+  "options": { },
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "subTitle": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "extra": {
+      "type": "text"
+    },
+    "text": {
+      "type": "richtext"
+    },
+    "media": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": { }
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
+    },
+    "backgroundColor": {
+      "type": "string",
+      "maxLength": 25
+    },
+    "slug": {
+      "type": "string"
+    }
+  }
+}
