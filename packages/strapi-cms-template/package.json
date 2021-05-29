@@ -8,7 +8,7 @@
     "build": "strapi build --clean",
     "fake": "graphql-faker exports/fake/schema.graphql",
     "run": "strapi start",
-    "start": "strapi develop --typescript"
+    "start": "strapi develop"
   },
   "dependencies": {
     "knex": "^0.95.6",
