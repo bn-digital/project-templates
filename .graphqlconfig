@@ -8,11 +8,14 @@
   ],
   "extensions": {
     "endpoints": {
-      "development": {
-        "url": "http://localhost:1337/graphql"
+      "faker": {
+        "url": "http://localhost:9002/graphql"
       },
-      "staging": {
-        "url": "https://app.bndigital.dev/graphql"
+      "apollo": {
+        "url": "http://localhost:4000"
+      },
+      "strapi": {
+        "url": "http://localhost:1337/graphql"
       }
     }
   }

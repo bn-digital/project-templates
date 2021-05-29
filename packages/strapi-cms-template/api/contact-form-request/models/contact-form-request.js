@@ -8,14 +8,25 @@
 module.exports = {
   lifecycles: {
     async afterCreate(data) {
-      console.log(data)
-      console.log(strapi.plugins['email'])
-      await strapi.plugins['email'].services.email.send({
-        to: process.env.MAILGUN_MAIL_TO,
-        from: `${data.name} <${data.email}>`,
-        subject: `Contact form request from www.bndigital.co`,
-        text: `${data.message}`,
-      })
+      try {
+        await strapi.plugins['email-designer'].services.email.sendTemplatedEmail(
+          {
+            to: data.email, // required
+            from: strapi.plugins['email'].settings.defaultFrom,
+            replyTo: strapi.plugins['email'].settings.defaultReplyTo,
+          },
+          {
+            templateId: 1,
+          },
+          {
+            firstName: data.firstName,
+            lastName: data.lastName,
+          },
+        )
+      } catch (err) {
+        strapi.log.debug('📺: ', err)
+        return ctx.badRequest(null, err)
+      }
     },
   },
 }

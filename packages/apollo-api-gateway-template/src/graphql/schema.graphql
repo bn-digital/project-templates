@@ -6,6 +6,4 @@ type Query {
   proxy: String
   cart: Cart!
 }
-extend type UsersPermissionsUser {
-  cart: Cart
-}
+

@@ -1,10 +1,11 @@
-import { ApolloServer, gql } from 'apollo-server'
+import { ApolloServer, gql, IResolvers } from 'apollo-server'
 import { buildFederatedSchema } from '@apollo/federation'
 import { readFileSync } from 'fs'
 import { InMemoryLRUCache } from 'apollo-server-caching'
 import { StrapiEndpoint, TestEndpoint } from './endpoint'
 import { context } from './context'
 import { ApolloGateway } from '@apollo/gateway'
+import { GraphQLResolverMap } from 'apollo-graphql/src/schema/resolverMap'
 
 const typeDefs = gql`
   ${readFileSync(__dirname + '/graphql/schema.graphql')}
@@ -22,16 +23,11 @@ type Context = {
 }
 
 const gateway = new ApolloGateway({
-  serviceList: [
-    { name: 'app', url: 'http://localhost:4001' },
-    { name: '' },
-    // Define additional services here
-  ],
+  serviceList: [{ name: 'faker', url: 'http://localhost:9002' }],
 })
-const resolvers = {
-  Query: { proxy: () => services.app.proxy(), cart: () => ({ id: 'blah', total: 100.0 }) },
+const resolvers: GraphQLResolverMap<any> = {
+  Query: {  },
   Mutation: {},
-  UserPermissionsUsers: {cart: services.app.proxy()}
 }
 
 const cache = new InMemoryLRUCache()
@@ -49,12 +45,14 @@ const server: ApolloServer = new ApolloServer({
   cors: true,
   engine: false,
   dataSources,
-  schema: buildFederatedSchema([{ typeDefs, resolvers }, { typeDefs, resolvers }]),
+  schema: buildFederatedSchema([
+    { typeDefs, resolvers },
+  ]),
   context,
   persistedQueries: { cache },
 })
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 4000
 
 server.listen(PORT).then(info => {
   console.log(`🚀 Apollo Gateway ready at ${info.url}`)

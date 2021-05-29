@@ -1,0 +1,8 @@
+type Product {
+  id: ID! @fake(type: uuid)
+  price: Float! @fake(type: money)
+}
+type Query {
+  products: [Product]! @listLength(min: 0, max: 15)
+}
+

@@ -22,7 +22,7 @@ module.exports = ({ env }) => ({
       region: env('S3_REGION', 'fra1'),
       endpoint: env('S3_ENDPOINT', `fra1.digitaloceanspaces.com`),
       params: {
-        Bucket: `${env('S3_BUCKET', 'bn-dev/bndigital')}/uploads`,
+        Bucket: `${env('S3_BUCKET', 'bn-dev/app')}/uploads`,
       },
     },
   },
@@ -30,12 +30,12 @@ module.exports = ({ env }) => ({
     provider: 'mailgun',
     providerOptions: {
       apiKey: env('MAILGUN_API_KEY'),
-      domain: env('MAILGUN_DOMAIN'),
+      domain: env('MAILGUN_DOMAIN', 'mg.bndigital.dev'),
       host: env('MAILGUN_HOST', 'api.eu.mailgun.net'),
     },
     settings: {
-      defaultFrom: env('MAILGUN_MAIL_FROM', 'dev@bndigital.co'),
-      defaultReplyTo: env('MAILGUN_MAIL_TO', 'dev@bndigital.co'),
+      defaultFrom: env('MAILGUN_MAIL_FROM', `support@${env('MAILGUN_DOMAIN', 'mg.bndigital.dev')}`),
+      defaultReplyTo: env('MAILGUN_MAIL_TO', `no-reply@${env('MAILGUN_DOMAIN', 'mg.bndigital.dev')}`),
     },
   },
 })
