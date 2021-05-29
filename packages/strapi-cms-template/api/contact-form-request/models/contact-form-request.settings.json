@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "contact_form_requests",
   "info": {
-    "name": "ContactFormRequest"
+    "name": "ContactFormRequest",
+    "description": ""
   },
   "options": {
     "populateCreatorFields": false,
@@ -16,14 +17,17 @@
       "required": true,
       "unique": false
     },
-    "budget": {
+    "firstName": {
       "type": "string"
     },
-    "name": {
+    "lastName": {
       "type": "string"
+    },
+    "country": {
+      "model": "country"
     },
     "message": {
-      "type": "text"
+      "type": "richtext"
     }
   }
 }

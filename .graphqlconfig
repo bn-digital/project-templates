@@ -1,10 +1,10 @@
 {
-  "name": "app",
-  "schemaPath": "./packages/strapi/exports/graphql/schema.graphql",
+  "name": "API Service Mesh",
+  "schemaPath": "./packages/strapi-cms-template/exports/graphql/schema.graphql",
   "includes": [
-    "./packages/react/src/graphql/fragments/*.graphql",
-    "./packages/react/src/graphql/operations/*.graphql",
-    "./packages/strapi/exports/graphql/fragments/*.graphql"
+    "./packages/react-antd-website-template/src/graphql/fragments/*.graphql",
+    "./packages/react-antd-website-template/src/graphql/operations/*.graphql",
+    "./packages/strapi-cms-template/exports/graphql/fragments/*.graphql"
   ],
   "extensions": {
     "endpoints": {

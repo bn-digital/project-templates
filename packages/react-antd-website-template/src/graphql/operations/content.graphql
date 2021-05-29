@@ -1,5 +1,5 @@
 query content($where: JSON) {
-  contentBlocks(where: $where, publicationState: LIVE) {
+  contents(where: $where, publicationState: LIVE) {
     id
     ...Content
   }

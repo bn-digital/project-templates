@@ -3,7 +3,6 @@ var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 var path = require("path");
 var webpack_1 = require("webpack");
-var fs = require("fs");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var clean_webpack_plugin_1 = require("clean-webpack-plugin");
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -28,11 +27,6 @@ var config = {
         minimizer: [new TerserPlugin()],
     },
     devServer: {
-        http2: true,
-        https: {
-            key: fs.readFileSync(path.resolve(__dirname, '../../.config/certs/localhost.key')),
-            cert: fs.readFileSync(path.resolve(__dirname, '../../.config/certs/localhost.crt')),
-        },
         historyApiFallback: true,
         open: true,
         compress: true,

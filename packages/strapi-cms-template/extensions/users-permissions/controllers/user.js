@@ -7,7 +7,6 @@ module.exports = {
       id: it.id,
       firstName: it.firstName,
       lastName: it.lastName,
-      occupation: it.occupation.name,
       photo: it.photo,
     }))
   },

@@ -3,8 +3,13 @@ mutation createContactFormRequest($input: createContactFormRequestInput) {
     contactFormRequest {
       id
       email
-      name
-      budget
+      country {
+        id
+        name
+        code
+      }
+      firstName
+      lastName
       message
     }
   }

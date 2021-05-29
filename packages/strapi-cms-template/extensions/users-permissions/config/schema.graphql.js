@@ -4,7 +4,6 @@ module.exports = {
       id: ID!
       firstName: String
       lastName: String
-      occupation: String
       photo: UploadFile
     }
     extend type Query {

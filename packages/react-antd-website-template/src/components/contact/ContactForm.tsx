@@ -1,7 +1,9 @@
 import { FC } from 'react'
-import { Button, Form, FormProps, Input, message } from 'antd'
+import { Button, Form, FormProps, Input, message, Select } from 'antd'
 import { ValidateMessages } from 'rc-field-form/lib/interface'
-import { useCreateContactFormRequestMutation, ContactFormRequest } from '../../graphql'
+import { useCreateContactFormRequestMutation, useCountriesQuery, ContactFormRequestInput } from '../../graphql'
+import { Option } from 'antd/lib/mentions'
+import TextArea from 'antd/lib/input/TextArea'
 
 const formProps: FormProps = {
   labelCol: { span: 8 },
@@ -14,11 +16,11 @@ const validateMessages: ValidateMessages = {
     email: '${label} is not a valid email!',
   },
 }
-type ContactFormValues = ContactFormRequest
 const ContactForm: FC = () => {
+  const { data, loading } = useCountriesQuery()
   const [createContactFormRequest] = useCreateContactFormRequestMutation()
   const messageKey = 'request'
-  const onFinish = (data: ContactFormValues) => {
+  const onFinish = (data: ContactFormRequestInput) => {
     message
       .loading(
         {
@@ -34,7 +36,7 @@ const ContactForm: FC = () => {
               result?.data &&
               message.success(
                 {
-                  content: `Thanks for your interest, ${result?.data?.createContactFormRequest?.contactFormRequest?.name}! Your message received, ${result?.data.createContactFormRequest?.contactFormRequest?.email}`,
+                  content: `Thanks for your interest, ${result?.data?.createContactFormRequest?.contactFormRequest?.firstName}! Your message received, ${result?.data.createContactFormRequest?.contactFormRequest?.email}`,
                   key: messageKey,
                 },
                 2000,
@@ -63,6 +65,26 @@ const ContactForm: FC = () => {
       </Form.Item>
       <Form.Item name={'email'} label='Email' rules={[{ required: true, type: 'email' }]}>
         <Input />
+      </Form.Item>
+      <Form.Item name={'country'} label='Email'>
+        <Select
+          showSearch
+          placeholder='Search to Select'
+          optionFilterProp='children'
+          filterOption={(input, option) => option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+          filterSort={(optionA, optionB) =>
+            optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+          }
+        >
+          {data?.countries?.map(it => (
+            <Option key={it.id} value={it.id}>
+              {it.name}
+            </Option>
+          ))}
+        </Select>
+      </Form.Item>
+      <Form.Item name={'message'} label='Message' rules={[{ required: false, type: 'string' }]}>
+        <TextArea style={{width: '100%'}} />
       </Form.Item>
       <Form.Item wrapperCol={{ ...formProps.wrapperCol, offset: 8 }}>
         <Button type='primary' htmlType='submit'>

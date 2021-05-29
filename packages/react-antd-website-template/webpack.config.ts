@@ -27,11 +27,6 @@ const config: Configuration & { devServer: DevServerConfiguration } = {
     minimizer: [new TerserPlugin()],
   },
   devServer: {
-    http2: true,
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname, '../../.config/certs/localhost.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, '../../.config/certs/localhost.crt')),
-    },
     historyApiFallback: true,
     open: true,
     compress: true,
