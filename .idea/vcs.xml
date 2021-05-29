@@ -9,6 +9,5 @@
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/packages/strapi-cms-template/plugins/content-export-import" vcs="Git" />
   </component>
 </project>
