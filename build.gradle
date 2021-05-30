@@ -1,0 +1,17 @@
+plugins {
+  id("java-base")
+  id("idea")
+}
+idea {
+  module {
+    buildDir "build"
+    excludeDirs += files(".gradle", "gradle", ".yarn", ".bzt/reports")
+  }
+}
+allprojects {
+  idea {
+    module {
+      buildDir "build"
+    }
+  }
+}

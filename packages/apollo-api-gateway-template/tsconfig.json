@@ -4,7 +4,7 @@
     "module": "commonjs",
     "lib": ["ESNext"],
     "outDir": "build",
-    "rootDir": "src",
+    "rootDir": ".",
     "removeComments": true,
     "strict": true,
     "esModuleInterop": true,

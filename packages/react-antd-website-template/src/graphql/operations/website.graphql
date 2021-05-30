@@ -1,6 +1,5 @@
-query website($where: JSON) {
-  websites(where: $where, limit: 1) {
-    id
+query website($domain: ID!) {
+  website(id: $domain) {
     ...Website
   }
 }

@@ -21,6 +21,4 @@ export class TestEndpoint extends ServiceEndpoint {
   }
 }
 
-export class StrapiEndpoint extends RemoteGraphQLDataSource {
-
-}
+export class StrapiEndpoint extends RemoteGraphQLDataSource {}

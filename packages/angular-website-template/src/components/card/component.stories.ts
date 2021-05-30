@@ -1,6 +1,6 @@
-import { Meta, Story } from '@storybook/angular';
-import { NzTypographyComponent } from 'ng-zorro-antd/typography';
-import { NzCardComponent, NzCardMetaComponent } from 'ng-zorro-antd/card';
+import { Meta, Story } from '@storybook/angular'
+import { NzTypographyComponent } from 'ng-zorro-antd/typography'
+import { NzCardComponent, NzCardMetaComponent } from 'ng-zorro-antd/card'
 
 export default {
   title: 'WebCore/Card',
@@ -9,9 +9,9 @@ export default {
     nzLoading: { name: 'Loading', control: { type: 'boolean' } },
     nzBordered: { name: 'Bordered', control: { type: 'boolean' } },
   },
-} as Meta;
+} as Meta
 
-const Template: Story<NzCardComponent> = (args) => ({
+const Template: Story<NzCardComponent> = args => ({
   props: args,
   template: `
  <nz-card  [nzTitle]="cardTitle" [nzCover]="coverTemplate">
@@ -25,7 +25,7 @@ const Template: Story<NzCardComponent> = (args) => ({
   moduleMetadata: {
     declarations: [NzCardComponent],
   },
-});
+})
 
-export const Default = Template.bind({});
-Default.args = { nzBordered: true };
+export const Default = Template.bind({})
+Default.args = { nzBordered: true }

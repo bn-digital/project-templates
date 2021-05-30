@@ -135,6 +135,8 @@ type ContactFormRequest {
   lastName: String
   country: Country
   message: String
+  rating: Float
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 type ContactFormRequestConnection {
@@ -146,6 +148,26 @@ type ContactFormRequestConnection {
 type ContactFormRequestAggregator {
   count: Int
   totalCount: Int
+  sum: ContactFormRequestAggregatorSum
+  avg: ContactFormRequestAggregatorAvg
+  min: ContactFormRequestAggregatorMin
+  max: ContactFormRequestAggregatorMax
+}
+
+type ContactFormRequestAggregatorSum {
+  rating: Float
+}
+
+type ContactFormRequestAggregatorAvg {
+  rating: Float
+}
+
+type ContactFormRequestAggregatorMin {
+  rating: Float
+}
+
+type ContactFormRequestAggregatorMax {
+  rating: Float
 }
 
 type ContactFormRequestGroupBy {
@@ -155,6 +177,7 @@ type ContactFormRequestGroupBy {
   lastName: [ContactFormRequestConnectionLastName]
   country: [ContactFormRequestConnectionCountry]
   message: [ContactFormRequestConnectionMessage]
+  rating: [ContactFormRequestConnectionRating]
 }
 
 type ContactFormRequestConnectionId {
@@ -187,12 +210,19 @@ type ContactFormRequestConnectionMessage {
   connection: ContactFormRequestConnection
 }
 
+type ContactFormRequestConnectionRating {
+  key: Float
+  connection: ContactFormRequestConnection
+}
+
 input ContactFormRequestInput {
   email: String!
   firstName: String
   lastName: String
   country: ID
   message: String
+  files: [ID]
+  rating: Float
   created_by: ID
   updated_by: ID
 }
@@ -203,6 +233,8 @@ input editContactFormRequestInput {
   lastName: String
   country: ID
   message: String
+  files: [ID]
+  rating: Float
   created_by: ID
   updated_by: ID
 }
@@ -1347,7 +1379,7 @@ input editComponentOrganismsSectionInput {
   slug: String
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Employee | Category | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnectionId | CategoryConnectionName | CategoryConnectionSlug | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | ContactFormRequest | ContactFormRequestConnection | ContactFormRequestAggregator | ContactFormRequestGroupBy | ContactFormRequestConnectionId | ContactFormRequestConnectionEmail | ContactFormRequestConnectionFirstName | ContactFormRequestConnectionLastName | ContactFormRequestConnectionCountry | ContactFormRequestConnectionMessage | createContactFormRequestPayload | updateContactFormRequestPayload | deleteContactFormRequestPayload | Content | ContentConnection | ContentAggregator | ContentGroupBy | ContentConnectionId | ContentConnectionTitle | ContentConnectionDescription | ContentConnectionButton | ContentConnectionSlug | ContentConnectionLocale | createContentPayload | updateContentPayload | deleteContentPayload | Country | CountryConnection | CountryAggregator | CountryGroupBy | CountryConnectionId | CountryConnectionName | CountryConnectionCode | createCountryPayload | updateCountryPayload | deleteCountryPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnectionCategory | PostConnectionSlug | PostConnectionSeo | PostConnectionSection | PostConnectionPreviewHorizontal | PostConnectionPreviewVertical | createPostPayload | updatePostPayload | deletePostPayload | Website | WebsiteConnection | WebsiteAggregator | WebsiteGroupBy | WebsiteConnectionId | WebsiteConnectionDomain | WebsiteConnectionGoogleAnalyticsCode | createWebsitePayload | updateWebsitePayload | deleteWebsitePayload | EmailDesignerEmailTemplate | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionPhoto | createUserPayload | updateUserPayload | deleteUserPayload | ComponentAtomsButton | ComponentAtomsEntry | ComponentAtomsLink | ComponentAtomsNumeric | ComponentAtomsParagraph | ComponentAtomsText | ComponentMoleculesMap | ComponentMoleculesMenu | ComponentOrganismsArticle | ComponentOrganismsPage | ComponentOrganismsSection
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Employee | Category | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnectionId | CategoryConnectionName | CategoryConnectionSlug | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | ContactFormRequest | ContactFormRequestConnection | ContactFormRequestAggregator | ContactFormRequestAggregatorSum | ContactFormRequestAggregatorAvg | ContactFormRequestAggregatorMin | ContactFormRequestAggregatorMax | ContactFormRequestGroupBy | ContactFormRequestConnectionId | ContactFormRequestConnectionEmail | ContactFormRequestConnectionFirstName | ContactFormRequestConnectionLastName | ContactFormRequestConnectionCountry | ContactFormRequestConnectionMessage | ContactFormRequestConnectionRating | createContactFormRequestPayload | updateContactFormRequestPayload | deleteContactFormRequestPayload | Content | ContentConnection | ContentAggregator | ContentGroupBy | ContentConnectionId | ContentConnectionTitle | ContentConnectionDescription | ContentConnectionButton | ContentConnectionSlug | ContentConnectionLocale | createContentPayload | updateContentPayload | deleteContentPayload | Country | CountryConnection | CountryAggregator | CountryGroupBy | CountryConnectionId | CountryConnectionName | CountryConnectionCode | createCountryPayload | updateCountryPayload | deleteCountryPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnectionCategory | PostConnectionSlug | PostConnectionSeo | PostConnectionSection | PostConnectionPreviewHorizontal | PostConnectionPreviewVertical | createPostPayload | updatePostPayload | deletePostPayload | Website | WebsiteConnection | WebsiteAggregator | WebsiteGroupBy | WebsiteConnectionId | WebsiteConnectionDomain | WebsiteConnectionGoogleAnalyticsCode | createWebsitePayload | updateWebsitePayload | deleteWebsitePayload | EmailDesignerEmailTemplate | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionPhoto | createUserPayload | updateUserPayload | deleteUserPayload | ComponentAtomsButton | ComponentAtomsEntry | ComponentAtomsLink | ComponentAtomsNumeric | ComponentAtomsParagraph | ComponentAtomsText | ComponentMoleculesMap | ComponentMoleculesMenu | ComponentOrganismsArticle | ComponentOrganismsPage | ComponentOrganismsSection
 
 input InputID {
   id: ID!

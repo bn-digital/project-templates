@@ -5,7 +5,7 @@
   "private": true,
   "license": "proprietary",
   "scripts": {
-    "build": "strapi build --clean",
+    "build": "tsc && strapi build --clean",
     "fake": "graphql-faker exports/fake/schema.graphql",
     "run": "strapi start",
     "start": "strapi develop"

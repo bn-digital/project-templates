@@ -1,6 +1,7 @@
 fragment Website on Website {
   id
   domain
+  googleAnalyticsCode
   navigation {
     id
     slug

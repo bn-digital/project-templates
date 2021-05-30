@@ -11,9 +11,7 @@ module.exports = {
       try {
         await strapi.plugins['email-designer'].services.email.sendTemplatedEmail(
           {
-            to: data.email, // required
-            from: strapi.plugins['email'].settings.defaultFrom,
-            replyTo: strapi.plugins['email'].settings.defaultReplyTo,
+            to: data.email
           },
           {
             templateId: 1,
@@ -25,7 +23,6 @@ module.exports = {
         )
       } catch (err) {
         strapi.log.debug('📺: ', err)
-        return ctx.badRequest(null, err)
       }
     },
   },

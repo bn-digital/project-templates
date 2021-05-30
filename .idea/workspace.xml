@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="30f6aead-82db-4395-b46d-25cc4c222fb4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/google-java-format.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/packages/angular-website-template/project-templates.packages.angular-website-template.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/packages/apollo-api-gateway-template/project-templates.packages.apollo-api-gateway-template.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/packages/html-website-template/project-templates.packages.html-website-template.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/packages/project-templates.packages.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/packages/react-antd-website-template/project-templates.packages.react-antd-website-template.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/packages/react-native-app-template/project-templates.packages.react-native-app-template.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/packages/react-storybook-template/project-templates.packages.react-storybook-template.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/packages/react-tailwind-website-template/project-templates.packages.react-tailwind-website-template.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/packages/strapi-cms-template/project-templates.packages.strapi-cms-template.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/packages/vue-website-template/project-templates.packages.vue-website-template.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/project-templates.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.yarn/releases/yarn-sources.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/apollo-api-gateway-template/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/apollo-api-gateway-template/src/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/apollo-api-gateway-template/src/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/.solidarity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/BUCK" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/build_defs.bzl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/debug.keystore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/debug/java/com/app/ReactNativeFlipper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/java/com/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/java/com/app/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/java/com/app/MainApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/android/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/app.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/auto-image/auto-image.story.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/auto-image/auto-image.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/bullet-item/bullet-item.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/button/button.presets.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/button/button.props.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/button/button.story.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/button/button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/checkbox/checkbox.props.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/checkbox/checkbox.story.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/checkbox/checkbox.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/form-row/form-row.presets.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/form-row/form-row.props.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/form-row/form-row.story.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/form-row/form-row.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/header/header.props.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/header/header.story.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/header/header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/icon/icon.props.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/icon/icon.story.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/icon/icon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/icon/icons/arrow-left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/icon/icons/arrow-left@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/icon/icons/bullet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/icon/icons/bullet@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/icon/icons/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/screen/screen.presets.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/screen/screen.props.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/screen/screen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/switch/switch.props.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/switch/switch.story.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/switch/switch.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/text-field/text-field.story.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/text-field/text-field.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/text/text.presets.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/text/text.props.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/text/text.story.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/text/text.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/wallpaper/bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/wallpaper/bg@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/wallpaper/wallpaper.presets.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/wallpaper/wallpaper.props.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/wallpaper/wallpaper.story.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/components/wallpaper/wallpaper.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/config/env.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/i18n/en.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/i18n/i18n.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/i18n/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/i18n/ja.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/i18n/translate.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/models/character-store/character-store.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/models/character-store/character-store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/models/character/character.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/models/character/character.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/models/environment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/models/extensions/with-environment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/models/extensions/with-root-store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/models/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/models/root-store/root-store-context.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/models/root-store/root-store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/models/root-store/setup-root-store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/navigators/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/navigators/main-navigator.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/navigators/navigation-utilities.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/navigators/root-navigator.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/screens/demo/demo-list-screen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/screens/demo/demo-screen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/screens/demo/heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/screens/demo/heart@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/screens/demo/logo-ignite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/screens/demo/logo-ignite@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/screens/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/screens/welcome/bowser.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/screens/welcome/bowser@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/screens/welcome/welcome-screen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/services/api/api-config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/services/api/api-problem.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/services/api/api-problem.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/services/api/api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/services/api/api.types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/services/api/character-api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/services/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/services/reactotron/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/services/reactotron/reactotron-config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/services/reactotron/reactotron.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/services/reactotron/tron.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/services/reactotron/tron.web.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/theme/color.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/theme/fonts/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/theme/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/theme/palette.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/theme/spacing.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/theme/timing.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/theme/typography.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/utils/delay.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/utils/ignore-warnings.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/utils/keychain.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/utils/storage/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/utils/storage/storage.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/utils/storage/storage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/app/utils/validate.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/assets/fonts/custom-fonts.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/bin/postInstall" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/bin/setup" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/e2e/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/e2e/config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/e2e/firstTest.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/e2e/init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/e2e/reload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ignite/templates/component/NAME.story.tsx.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ignite/templates/component/NAME.tsx.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ignite/templates/model/NAME.test.ts.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ignite/templates/model/NAME.ts.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ignite/templates/navigator/NAME-navigator.tsx.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ignite/templates/screen/NAME-screen.tsx.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/Podfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/Podfile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app.xcodeproj/project.pbxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app.xcodeproj/xcshareddata/xcschemes/app.xcscheme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app/AppDelegate.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app/AppDelegate.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app/Images.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app/Images.xcassets/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app/LaunchScreen.storyboard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/app/main.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/appTests/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/ios/appTests/appTests.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/react-native.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/storybook/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/storybook/storybook-registry.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/storybook/storybook.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/storybook/toggle-storybook.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/storybook/toggle-storybook.web.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/storybook/views/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/storybook/views/story-screen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/storybook/views/story.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/storybook/views/use-case.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/test/i18n.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/test/mock-async-storage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/test/mock-file.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/test/mock-i18n.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/test/mock-react-native-image.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/test/mock-reactotron.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/test/setup.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/react-native-app-template/test/storyshots.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/strapi-cms-template/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/strapi-cms-template/tsconfig.tsbuildinfo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/azure/azureSettings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ed9d60a5-dcba-45c2-b0cf-4f6c96deaaf9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsonSchemas.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project-templates.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/angular.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/api_gateway.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/graphql.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/react.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/strapi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/strapi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/scopes/Components.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/scopes/Dependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.meshrc" beforeDir="false" afterPath="$PROJECT_DIR$/.meshrc.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.yarn/releases/yarn-berry.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.yarnrc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.yarnrc.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecosystem.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/angular-template.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/components/button/component.stles.less" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/components/button/component.stles.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/components/button/component.stories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/components/button/component.stories.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/components/card/component.stories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/components/card/component.stories.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/components/typography/component.stories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/components/typography/component.stories.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/components/typography/component.styles.less" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/components/typography/component.styles.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/polyfills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/polyfills.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/styles.less" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/styles.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/src/test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/angular-website-template/src/test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/angular-website-template/storybook.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/apollo-api-gateway-template/apollo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/apollo-api-gateway-template/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apollo-api-gateway-template/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/apollo-api-gateway-template/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apollo-api-gateway-template/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/apollo-api-gateway-template/src/endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apollo-api-gateway-template/src/endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/apollo-api-gateway-template/src/graphql/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apollo-api-gateway-template/src/graphql/schema.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/apollo-api-gateway-template/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/apollo-api-gateway-template/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/html-website-template/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/packages/html-website-template/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/html-website-template/html.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/html-website-template/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/html-website-template/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/html-website-template/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/html-website-template/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/html-website-template/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/html-website-template/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/html-website-template/src/styles.less" beforeDir="false" afterPath="$PROJECT_DIR$/packages/html-website-template/src/styles.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/html-website-template/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/html-website-template/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-antd-website-template/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-antd-website-template/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-antd-website-template/src/components/contact/ContactForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-antd-website-template/src/components/contact/ContactForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-antd-website-template/src/components/layout/DefaultLayout.less" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-antd-website-template/src/components/layout/DefaultLayout.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-antd-website-template/src/containers/API.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-antd-website-template/src/containers/API.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-antd-website-template/src/containers/CMS.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-antd-website-template/src/containers/CMS.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-antd-website-template/src/graphql/fallback.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-antd-website-template/src/graphql/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-antd-website-template/src/graphql/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-antd-website-template/src/graphql/operations/countries.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-antd-website-template/src/graphql/operations/countries.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-antd-website-template/src/graphql/operations/createContactFormRequest.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-antd-website-template/src/graphql/operations/createContactFormRequest.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-antd-website-template/src/graphql/operations/website.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-antd-website-template/src/graphql/operations/website.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-antd-website-template/webpack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-antd-website-template/webpack.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-antd-website-template/website.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/.expo-shared/assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-native-app-template/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/.nvmrc" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-native-app-template/.nvmrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/App.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-native-app-template/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/assets/fonts/SpaceMono-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/components/EditScreenInfo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/components/StyledText.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/components/Themed.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/constants/Colors.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/constants/Layout.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/hooks/useCachedResources.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/hooks/useColorScheme.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/navigation/BottomTabNavigator.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/navigation/LinkingConfiguration.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/navigation/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-native-app-template/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/react-native.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/screens/NotFoundScreen.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/screens/TabOneScreen.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/screens/TabTwoScreen.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-native-app-template/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-native-app-template/types.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-storybook-template/storybook.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-tailwind-website-template/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-tailwind-website-template/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-tailwind-website-template/tailwind.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/strapi-cms-template/.tmp/data.db" beforeDir="false" afterPath="$PROJECT_DIR$/packages/strapi-cms-template/.tmp/data.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/strapi-cms-template/api/contact-form-request/models/contact-form-request.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/strapi-cms-template/api/contact-form-request/models/contact-form-request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/strapi-cms-template/api/contact-form-request/models/contact-form-request.settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/strapi-cms-template/api/contact-form-request/models/contact-form-request.settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/strapi-cms-template/cms.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/strapi-cms-template/config/middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/strapi-cms-template/config/middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/strapi-cms-template/exports/graphql/fragments/Website.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/packages/strapi-cms-template/exports/graphql/fragments/Website.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/strapi-cms-template/exports/graphql/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/packages/strapi-cms-template/exports/graphql/schema.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/strapi-cms-template/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/strapi-cms-template/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/strapi-cms-template/strapi.json" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/vue-website-template/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/vue-website-template/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/vue-website-template/vue.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skaffold.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/skaffold.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sonar-project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/sonar-project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/packages/angular-website-template">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/packages/apollo-api-gateway-template">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/packages/react-antd-website-template">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/packages/react-native-app-template/android">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="project-templates" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="bbc78221-8d7d-4883-8866-052704157b8c" />
+  </component>
+  <component name="KubernetesApiPersistence">
+    <option name="context" value="do-fra1-superslim" />
+    <option name="namespace" value="default" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1tEFyFR4d4Dsi7zv32ap6vYsg37" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="compactDirectories" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ACTIVE_CLOUD_PROJECT_ACCOUNT" value="vlad.volkov@bndigital.co" />
+    <property name="ACTIVE_CLOUD_PROJECT_ID" value="bndigital-dev" />
+    <property name="ACTIVE_CLOUD_PROJECT_NAME" value="BNDigital" />
+    <property name="ACTIVE_CLOUD_PROJECT_NUMBER" value="497910686001" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.google.cloudcode.ide_session_index" value="20210530_0006" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="javascript.nodejs.core.library.configured.version" value="16.2.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="15.6.1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/packages/apollo-api-gateway-template/src" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="A:\usr\src\github.com\bn-digital\project-templates\node_modules\prettier" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.1477105" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="ts.external.directory.path" value="A:\usr\src\github.com\bn-digital\project-templates\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="A:\usr\src\github.com\bn-digital\project-templates\packages\apollo-api-gateway-template\src" />
+      <recent name="A:\usr\src\github.com\bn-digital\project-templates\packages\apollo-api-gateway-template" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="A:\usr\src\github.com\bn-digital\project-templates\packages\html-website-template\src" />
+      <recent name="A:\usr\src\github.com\bn-digital\project-templates\packages\html-website-template\public" />
+    </key>
+  </component>
+  <component name="RubyModuleManagerSettings">
+    <option name="blackListedRootsPaths">
+      <list>
+        <option value="$PROJECT_DIR$/packages/react-native-app-template/android" />
+      </list>
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="js.build_tools.npm" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.fix">
+    <configuration name="Develop on Kubernetes" type="google-container-tools-skaffold-run-config" factoryName="google-container-tools-skaffold-run-config-dev" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="buildEnvironment" />
+      <option name="builders" />
+      <option name="cleanupDeployments" value="true" />
+      <option name="deployToCurrentContext" value="false" />
+      <option name="deployToMinikube" value="false" />
+      <option name="envVariables" />
+      <option name="imageRepositoryOverride" />
+      <option name="kubernetesContext" />
+      <option name="mappings">
+        <list />
+      </option>
+      <option name="projectPathOnTarget" />
+      <option name="redeployOnChanges" value="true" />
+      <option name="resourceDeletionTimeoutMins" value="2" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="skaffoldConfigurationFilePath" value="$PROJECT_DIR$/skaffold.yaml" />
+      <option name="skaffoldNamespace" />
+      <option name="skaffoldProfile" />
+      <option name="statusCheck" value="true" />
+      <option name="verbosity" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Run on Kubernetes" type="google-container-tools-skaffold-run-config" factoryName="google-container-tools-skaffold-run-config-dev" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="buildEnvironment" />
+      <option name="builders" />
+      <option name="cleanupDeployments" value="true" />
+      <option name="deployToCurrentContext" value="false" />
+      <option name="deployToMinikube" value="false" />
+      <option name="envVariables" />
+      <option name="imageRepositoryOverride" />
+      <option name="kubernetesContext" />
+      <option name="mappings">
+        <list />
+      </option>
+      <option name="projectPathOnTarget" />
+      <option name="redeployOnChanges" value="false" />
+      <option name="resourceDeletionTimeoutMins" value="2" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="skaffoldConfigurationFilePath" value="$PROJECT_DIR$/skaffold.yaml" />
+      <option name="skaffoldNamespace" />
+      <option name="skaffoldProfile" />
+      <option name="statusCheck" value="true" />
+      <option name="verbosity" />
+      <method v="2" />
+    </configuration>
+    <configuration name="fix" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="fix" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="generate" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="generate" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="react" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="react" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start (3)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/packages/react-native-app-template/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.fix" />
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.generate" />
+        <item itemvalue="npm.react" />
+        <item itemvalue="npm.strapi" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="30f6aead-82db-4395-b46d-25cc4c222fb4" name="Default Changelist" comment="" />
+      <created>1622326599042</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622326599042</updated>
+      <workItem from="1622326603677" duration="747000" />
+      <workItem from="1622330653936" duration="3644000" />
+      <workItem from="1622334344898" duration="10363000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/packages/react-antd-website-template/webpack.config.js" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

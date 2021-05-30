@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NzLayoutComponent } from 'ng-zorro-antd/layout';
+import { Component } from '@angular/core'
+import { NzLayoutComponent } from 'ng-zorro-antd/layout'
 
 @Component({
   providers: [],
@@ -8,5 +8,5 @@ import { NzLayoutComponent } from 'ng-zorro-antd/layout';
   styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
-  title = 'storybook';
+  title = 'storybook'
 }

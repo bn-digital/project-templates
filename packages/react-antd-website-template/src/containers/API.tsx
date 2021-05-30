@@ -17,7 +17,7 @@ function useApolloClient(): ApolloClient<NormalizedCacheObject> {
   })
   return new ApolloClient({
     link: authLink.concat(httpLink),
-    cache: new InMemoryCache({ addTypename: true }),
+    cache: new InMemoryCache({ addTypename: true, resultCaching: process.env.NODE_ENV === 'production' }),
     connectToDevTools: process.env.NODE_ENV !== 'production',
   })
 }

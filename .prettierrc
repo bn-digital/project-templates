@@ -11,25 +11,45 @@
   "useTabs": false,
   "overrides": [
     {
-      "files": "*.less",
+      "files": [
+        "*.less"
+      ],
       "options": {
         "parser": "less"
       }
     },
     {
-      "files": "*.vue",
+      "files": [
+        "*.graphql"
+      ],
+      "options": {
+        "parser": "graphql"
+      }
+    },
+    {
+      "files": [
+        "*.vue"
+      ],
       "options": {
         "parser": "vue"
       }
     },
     {
-      "files": "*.jsonschema",
+      "files": [
+        "*.jsonschema",
+        "*rc",
+        "json"
+      ],
       "options": {
         "parser": "json"
       }
     },
     {
-      "files": "*.svg",
+      "files": [
+        "*.svg",
+        "*.html",
+        "*.ejs"
+      ],
       "options": {
         "parser": "html"
       }

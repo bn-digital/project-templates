@@ -1,9 +1,8 @@
-import { FC } from 'react'
-import { Button, Form, FormProps, Input, message, Select } from 'antd'
+import { FC, useState } from 'react'
+import { Button, Form, FormProps, Input, message, Rate, Select, Typography } from 'antd'
 import { ValidateMessages } from 'rc-field-form/lib/interface'
 import { useCreateContactFormRequestMutation, useCountriesQuery, ContactFormRequestInput } from '../../graphql'
-import { Option } from 'antd/lib/mentions'
-import TextArea from 'antd/lib/input/TextArea'
+import Dragger, { UploadChangeParam } from 'antd/lib/upload'
 
 const formProps: FormProps = {
   labelCol: { span: 8 },
@@ -16,12 +15,29 @@ const validateMessages: ValidateMessages = {
     email: '${label} is not a valid email!',
   },
 }
+
 const ContactForm: FC = () => {
   const { data, loading } = useCountriesQuery()
   const [createContactFormRequest] = useCreateContactFormRequestMutation()
   const messageKey = 'request'
+  const [messageApi, context] = message.useMessage()
+  const [rating, setRating] = useState(0)
+  const onUpload = (info: UploadChangeParam) => {
+    {
+      const { status, error } = info.file
+      if (status !== 'uploading') {
+        messageApi.loading({ content: `${info.file.name} is uploading`, key: messageKey })
+      }
+      if (status === 'done') {
+        return messageApi.success({ content: `${info.file.name} file uploaded successfully.`, key: messageKey })
+      } else if (status === 'error') {
+        return messageApi.error({ content: `${info.file.name} file upload failed: ${error}`, key: messageKey })
+      }
+    }
+  }
+
   const onFinish = (data: ContactFormRequestInput) => {
-    message
+    messageApi
       .loading(
         {
           content: 'Send your request ...',
@@ -43,20 +59,20 @@ const ContactForm: FC = () => {
               ),
           )
           .catch(reason =>
-            message.error(
+            messageApi.error(
               {
                 content: `Error sending your request: ${reason}`,
                 key: messageKey,
               },
               2000,
             ),
-          )
-          .finally(() => message.destroy(messageKey)),
+          ),
       )
   }
 
   return (
-    <Form {...formProps} name='nest-messages' onFinish={onFinish} validateMessages={validateMessages}>
+    <Form {...formProps} onFinish={onFinish} validateMessages={validateMessages}>
+      {context}
       <Form.Item name={'firstName'} label='First Name'>
         <Input />
       </Form.Item>
@@ -77,14 +93,26 @@ const ContactForm: FC = () => {
           }
         >
           {data?.countries?.map(it => (
-            <Option key={it.id} value={it.id}>
+            <Select.Option key={it.id} value={it.id}>
               {it.name}
-            </Option>
+            </Select.Option>
           ))}
         </Select>
       </Form.Item>
       <Form.Item name={'message'} label='Message' rules={[{ required: false, type: 'string' }]}>
-        <TextArea style={{width: '100%'}} />
+        <Input.TextArea style={{ width: '100%' }} />
+      </Form.Item>
+      <Form.Item name={'files'} label={'Attachment'}>
+        <Dragger onChange={onUpload} name={'files'} action={'http://localhost:1337/upload'} multiple>
+          <Typography.Paragraph>Click or drag file to this area to upload</Typography.Paragraph>
+          <Typography.Paragraph type={'secondary'}>
+            Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files
+          </Typography.Paragraph>
+        </Dragger>
+      </Form.Item>
+      <Form.Item name={'rating'} label={'Rating'}>
+        <Rate value={rating} onChange={setRating} />
+        <Input type={'hidden'} value={rating} />
       </Form.Item>
       <Form.Item wrapperCol={{ ...formProps.wrapperCol, offset: 8 }}>
         <Button type='primary' htmlType='submit'>

@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "incremental": true,
+    "target": "ES5"
+  },
+  "include": ["config"]
+}

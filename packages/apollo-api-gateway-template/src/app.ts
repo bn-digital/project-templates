@@ -5,7 +5,8 @@ import { InMemoryLRUCache } from 'apollo-server-caching'
 import { StrapiEndpoint, TestEndpoint } from './endpoint'
 import { context } from './context'
 import { ApolloGateway } from '@apollo/gateway'
-import { GraphQLResolverMap } from 'apollo-graphql/src/schema/resolverMap'
+import { GraphQLResolverMap } from 'apollo-graphql'
+import { v4 } from 'uuid'
 
 const typeDefs = gql`
   ${readFileSync(__dirname + '/graphql/schema.graphql')}
@@ -25,8 +26,9 @@ type Context = {
 const gateway = new ApolloGateway({
   serviceList: [{ name: 'faker', url: 'http://localhost:9002' }],
 })
+
 const resolvers: GraphQLResolverMap<any> = {
-  Query: {  },
+  Query: { cart: () => ({ id: v4(), total: 100.5 }) },
   Mutation: {},
 }
 
@@ -45,9 +47,7 @@ const server: ApolloServer = new ApolloServer({
   cors: true,
   engine: false,
   dataSources,
-  schema: buildFederatedSchema([
-    { typeDefs, resolvers },
-  ]),
+  schema: buildFederatedSchema([{ typeDefs, resolvers }]),
   context,
   persistedQueries: { cache },
 })

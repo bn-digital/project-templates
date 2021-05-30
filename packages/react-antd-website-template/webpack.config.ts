@@ -7,6 +7,7 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import * as TerserPlugin from 'terser-webpack-plugin'
 import * as autoprefixer from 'autoprefixer'
+import * as DotEnv from 'dotenv-webpack'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const WebpackBarPlugin = require('webpackbar')
 
@@ -31,7 +32,11 @@ const config: Configuration & { devServer: DevServerConfiguration } = {
     open: true,
     compress: true,
     hot: true,
-    proxy: { '/graphql': 'http://localhost:1337' },
+    proxy: {
+      '/graphql': 'http://localhost:1337',
+      '/upload': 'http://localhost:1337',
+      '/uploads': 'http://localhost:1337',
+    },
     port: 3000,
   },
   module: {
@@ -78,6 +83,7 @@ const config: Configuration & { devServer: DevServerConfiguration } = {
     ],
   },
   plugins: [
+    new DotEnv(),
     new WebpackBarPlugin({ fancy: true, profile: true }),
     new ProvidePlugin({
       process: 'process/browser',

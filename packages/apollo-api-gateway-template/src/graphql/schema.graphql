@@ -3,7 +3,6 @@ type Cart {
   total: Float!
 }
 type Query {
-  proxy: String
   cart: Cart!
 }
 

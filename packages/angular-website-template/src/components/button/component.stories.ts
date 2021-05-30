@@ -1,6 +1,6 @@
-import { Meta, Story } from '@storybook/angular';
-import { NzButtonComponent, NzButtonType } from 'ng-zorro-antd/button';
-import { NzIconDirective } from 'ng-zorro-antd/icon/icon.directive';
+import { Meta, Story } from '@storybook/angular'
+import { NzButtonComponent, NzButtonType } from 'ng-zorro-antd/button'
+import { NzIconDirective } from 'ng-zorro-antd/icon/icon.directive'
 
 export default {
   title: 'WebCore/Button',
@@ -31,21 +31,21 @@ export default {
       },
     },
   },
-} as Meta;
+} as Meta
 
-const Template: Story<NzButtonComponent> = (args) => ({
+const Template: Story<NzButtonComponent> = args => ({
   props: args,
   template: '<button nz-button nzBlock>Click Me!</button>',
   moduleMetadata: {
     declarations: [NzButtonComponent],
   },
-});
+})
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 Default.args = {
   nzType: 'default',
   disabled: false,
   nzLoading: false,
-};
-export const PrimaryLargeRounded = Template.bind({});
-PrimaryLargeRounded.args = { nzType: 'primary', nzShape: 'round', nzSize: 'large' };
+}
+export const PrimaryLargeRounded = Template.bind({})
+PrimaryLargeRounded.args = { nzType: 'primary', nzShape: 'round', nzSize: 'large' }

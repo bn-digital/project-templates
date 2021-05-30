@@ -28,6 +28,23 @@
     },
     "message": {
       "type": "richtext"
+    },
+    "files": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "rating": {
+      "type": "decimal",
+      "max": 5,
+      "min": 1
     }
   }
 }

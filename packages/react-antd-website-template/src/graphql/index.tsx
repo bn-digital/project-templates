@@ -261,12 +261,46 @@ export type ContactFormRequest = {
   lastName?: Maybe<Scalars['String']>;
   country?: Maybe<Country>;
   message?: Maybe<Scalars['String']>;
+  rating?: Maybe<Scalars['Float']>;
+  attachment?: Maybe<Array<Maybe<UploadFile>>>;
+};
+
+
+export type ContactFormRequestAttachmentArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 export type ContactFormRequestAggregator = {
   __typename?: 'ContactFormRequestAggregator';
   count?: Maybe<Scalars['Int']>;
   totalCount?: Maybe<Scalars['Int']>;
+  sum?: Maybe<ContactFormRequestAggregatorSum>;
+  avg?: Maybe<ContactFormRequestAggregatorAvg>;
+  min?: Maybe<ContactFormRequestAggregatorMin>;
+  max?: Maybe<ContactFormRequestAggregatorMax>;
+};
+
+export type ContactFormRequestAggregatorAvg = {
+  __typename?: 'ContactFormRequestAggregatorAvg';
+  rating?: Maybe<Scalars['Float']>;
+};
+
+export type ContactFormRequestAggregatorMax = {
+  __typename?: 'ContactFormRequestAggregatorMax';
+  rating?: Maybe<Scalars['Float']>;
+};
+
+export type ContactFormRequestAggregatorMin = {
+  __typename?: 'ContactFormRequestAggregatorMin';
+  rating?: Maybe<Scalars['Float']>;
+};
+
+export type ContactFormRequestAggregatorSum = {
+  __typename?: 'ContactFormRequestAggregatorSum';
+  rating?: Maybe<Scalars['Float']>;
 };
 
 export type ContactFormRequestConnection = {
@@ -312,6 +346,12 @@ export type ContactFormRequestConnectionMessage = {
   connection?: Maybe<ContactFormRequestConnection>;
 };
 
+export type ContactFormRequestConnectionRating = {
+  __typename?: 'ContactFormRequestConnectionRating';
+  key?: Maybe<Scalars['Float']>;
+  connection?: Maybe<ContactFormRequestConnection>;
+};
+
 export type ContactFormRequestGroupBy = {
   __typename?: 'ContactFormRequestGroupBy';
   id?: Maybe<Array<Maybe<ContactFormRequestConnectionId>>>;
@@ -320,6 +360,7 @@ export type ContactFormRequestGroupBy = {
   lastName?: Maybe<Array<Maybe<ContactFormRequestConnectionLastName>>>;
   country?: Maybe<Array<Maybe<ContactFormRequestConnectionCountry>>>;
   message?: Maybe<Array<Maybe<ContactFormRequestConnectionMessage>>>;
+  rating?: Maybe<Array<Maybe<ContactFormRequestConnectionRating>>>;
 };
 
 export type ContactFormRequestInput = {
@@ -328,6 +369,8 @@ export type ContactFormRequestInput = {
   lastName?: Maybe<Scalars['String']>;
   country?: Maybe<Scalars['ID']>;
   message?: Maybe<Scalars['String']>;
+  attachment?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  rating?: Maybe<Scalars['Float']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -563,7 +606,7 @@ export type LocaleInput = {
 };
 
 
-export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Employee | Category | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnectionId | CategoryConnectionName | CategoryConnectionSlug | CreateCategoryPayload | UpdateCategoryPayload | DeleteCategoryPayload | ContactFormRequest | ContactFormRequestConnection | ContactFormRequestAggregator | ContactFormRequestGroupBy | ContactFormRequestConnectionId | ContactFormRequestConnectionEmail | ContactFormRequestConnectionFirstName | ContactFormRequestConnectionLastName | ContactFormRequestConnectionCountry | ContactFormRequestConnectionMessage | CreateContactFormRequestPayload | UpdateContactFormRequestPayload | DeleteContactFormRequestPayload | Content | ContentConnection | ContentAggregator | ContentGroupBy | ContentConnectionId | ContentConnectionTitle | ContentConnectionDescription | ContentConnectionButton | ContentConnectionSlug | ContentConnectionLocale | CreateContentPayload | UpdateContentPayload | DeleteContentPayload | Country | CountryConnection | CountryAggregator | CountryGroupBy | CountryConnectionId | CountryConnectionName | CountryConnectionCode | CreateCountryPayload | UpdateCountryPayload | DeleteCountryPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnectionCategory | PostConnectionSlug | PostConnectionSeo | PostConnectionSection | PostConnectionPreviewHorizontal | PostConnectionPreviewVertical | CreatePostPayload | UpdatePostPayload | DeletePostPayload | Website | WebsiteConnection | WebsiteAggregator | WebsiteGroupBy | WebsiteConnectionId | WebsiteConnectionDomain | WebsiteConnectionGoogleAnalyticsCode | CreateWebsitePayload | UpdateWebsitePayload | DeleteWebsitePayload | EmailDesignerEmailTemplate | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_At | UploadFileConnectionUpdated_At | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionPhoto | CreateUserPayload | UpdateUserPayload | DeleteUserPayload | ComponentAtomsButton | ComponentAtomsEntry | ComponentAtomsLink | ComponentAtomsNumeric | ComponentAtomsParagraph | ComponentAtomsText | ComponentMoleculesMap | ComponentMoleculesMenu | ComponentOrganismsArticle | ComponentOrganismsPage | ComponentOrganismsSection;
+export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Employee | Category | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnectionId | CategoryConnectionName | CategoryConnectionSlug | CreateCategoryPayload | UpdateCategoryPayload | DeleteCategoryPayload | ContactFormRequest | ContactFormRequestConnection | ContactFormRequestAggregator | ContactFormRequestAggregatorSum | ContactFormRequestAggregatorAvg | ContactFormRequestAggregatorMin | ContactFormRequestAggregatorMax | ContactFormRequestGroupBy | ContactFormRequestConnectionId | ContactFormRequestConnectionEmail | ContactFormRequestConnectionFirstName | ContactFormRequestConnectionLastName | ContactFormRequestConnectionCountry | ContactFormRequestConnectionMessage | ContactFormRequestConnectionRating | CreateContactFormRequestPayload | UpdateContactFormRequestPayload | DeleteContactFormRequestPayload | Content | ContentConnection | ContentAggregator | ContentGroupBy | ContentConnectionId | ContentConnectionTitle | ContentConnectionDescription | ContentConnectionButton | ContentConnectionSlug | ContentConnectionLocale | CreateContentPayload | UpdateContentPayload | DeleteContentPayload | Country | CountryConnection | CountryAggregator | CountryGroupBy | CountryConnectionId | CountryConnectionName | CountryConnectionCode | CreateCountryPayload | UpdateCountryPayload | DeleteCountryPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnectionCategory | PostConnectionSlug | PostConnectionSeo | PostConnectionSection | PostConnectionPreviewHorizontal | PostConnectionPreviewVertical | CreatePostPayload | UpdatePostPayload | DeletePostPayload | Website | WebsiteConnection | WebsiteAggregator | WebsiteGroupBy | WebsiteConnectionId | WebsiteConnectionDomain | WebsiteConnectionGoogleAnalyticsCode | CreateWebsitePayload | UpdateWebsitePayload | DeleteWebsitePayload | EmailDesignerEmailTemplate | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_At | UploadFileConnectionUpdated_At | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionPhoto | CreateUserPayload | UpdateUserPayload | DeleteUserPayload | ComponentAtomsButton | ComponentAtomsEntry | ComponentAtomsLink | ComponentAtomsNumeric | ComponentAtomsParagraph | ComponentAtomsText | ComponentMoleculesMap | ComponentMoleculesMenu | ComponentOrganismsArticle | ComponentOrganismsPage | ComponentOrganismsSection;
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -1850,6 +1893,8 @@ export type EditContactFormRequestInput = {
   lastName?: Maybe<Scalars['String']>;
   country?: Maybe<Scalars['ID']>;
   message?: Maybe<Scalars['String']>;
+  attachment?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  rating?: Maybe<Scalars['Float']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -2080,11 +2125,14 @@ export type CreateContactFormRequestMutation = (
     { __typename?: 'createContactFormRequestPayload' }
     & { contactFormRequest?: Maybe<(
       { __typename?: 'ContactFormRequest' }
-      & Pick<ContactFormRequest, 'id' | 'email' | 'firstName' | 'lastName' | 'message'>
+      & Pick<ContactFormRequest, 'id' | 'email' | 'rating' | 'firstName' | 'lastName' | 'message'>
       & { country?: Maybe<(
         { __typename?: 'Country' }
         & Pick<Country, 'id' | 'name' | 'code'>
-      )> }
+      )>, attachment?: Maybe<Array<Maybe<(
+        { __typename?: 'UploadFile' }
+        & FileFragment
+      )>>> }
     )> }
   )> }
 );
@@ -2119,17 +2167,16 @@ export type RegisterMutation = (
 );
 
 export type WebsiteQueryVariables = Exact<{
-  where?: Maybe<Scalars['JSON']>;
+  domain: Scalars['ID'];
 }>;
 
 
 export type WebsiteQuery = (
   { __typename?: 'Query' }
-  & { websites?: Maybe<Array<Maybe<(
+  & { website?: Maybe<(
     { __typename?: 'Website' }
-    & Pick<Website, 'id'>
     & WebsiteFragment
-  )>>> }
+  )> }
 );
 
 export type ButtonFragment = (
@@ -2209,7 +2256,7 @@ export type TextFragment = (
 
 export type WebsiteFragment = (
   { __typename?: 'Website' }
-  & Pick<Website, 'id' | 'domain'>
+  & Pick<Website, 'id' | 'domain' | 'googleAnalyticsCode'>
   & { navigation?: Maybe<Array<Maybe<(
     { __typename?: 'ComponentMoleculesMenu' }
     & Pick<ComponentMoleculesMenu, 'id' | 'slug'>
@@ -2342,6 +2389,7 @@ export const WebsiteFragmentDoc = gql`
     fragment Website on Website {
   id
   domain
+  googleAnalyticsCode
   navigation {
     id
     slug
@@ -2410,7 +2458,7 @@ export type ContentLazyQueryHookResult = ReturnType<typeof useContentLazyQuery>;
 export type ContentQueryResult = Apollo.QueryResult<ContentQuery, ContentQueryVariables>;
 export const CountriesDocument = gql`
     query countries {
-  countries {
+  countries(limit: 250) {
     id
     name
     code
@@ -2461,13 +2509,17 @@ export const CreateContactFormRequestDocument = gql`
         name
         code
       }
+      attachment {
+        ...File
+      }
+      rating
       firstName
       lastName
       message
     }
   }
 }
-    `;
+    ${FileFragmentDoc}`;
 export type CreateContactFormRequestMutationFn = Apollo.MutationFunction<CreateContactFormRequestMutation, CreateContactFormRequestMutationVariables>;
 export type CreateContactFormRequestComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<CreateContactFormRequestMutation, CreateContactFormRequestMutationVariables>, 'mutation'>;
 
@@ -2583,14 +2635,13 @@ export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>;
 export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
 export const WebsiteDocument = gql`
-    query website($where: JSON) {
-  websites(where: $where, limit: 1) {
-    id
+    query website($domain: ID!) {
+  website(id: $domain) {
     ...Website
   }
 }
     ${WebsiteFragmentDoc}`;
-export type WebsiteComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<WebsiteQuery, WebsiteQueryVariables>, 'query'>;
+export type WebsiteComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<WebsiteQuery, WebsiteQueryVariables>, 'query'> & ({ variables: WebsiteQueryVariables; skip?: boolean; } | { skip: boolean; });
 
     export const WebsiteComponent = (props: WebsiteComponentProps) => (
       <ApolloReactComponents.Query<WebsiteQuery, WebsiteQueryVariables> query={WebsiteDocument} {...props} />
@@ -2609,11 +2660,11 @@ export type WebsiteComponentProps = Omit<ApolloReactComponents.QueryComponentOpt
  * @example
  * const { data, loading, error } = useWebsiteQuery({
  *   variables: {
- *      where: // value for 'where'
+ *      domain: // value for 'domain'
  *   },
  * });
  */
-export function useWebsiteQuery(baseOptions?: Apollo.QueryHookOptions<WebsiteQuery, WebsiteQueryVariables>) {
+export function useWebsiteQuery(baseOptions: Apollo.QueryHookOptions<WebsiteQuery, WebsiteQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<WebsiteQuery, WebsiteQueryVariables>(WebsiteDocument, options);
       }
