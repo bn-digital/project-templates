@@ -13,6 +13,7 @@
       true,
       {
         "ignoreAtRules": [
+          "layer",
           "tailwind",
           "apply",
           "variants",

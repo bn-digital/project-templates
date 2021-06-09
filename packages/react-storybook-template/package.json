@@ -1,5 +1,5 @@
 {
-  "name": "@brand-new/react-storybook",
+  "name": "@template/react-storybook",
   "private": true,
   "scripts": {
     "start": "start-storybook --port=6006",

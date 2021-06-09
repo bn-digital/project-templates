@@ -1,9 +1,9 @@
 {
-  "name": "@brand-new/react-antd-website",
+  "name": "@template/react-antd-website",
   "private": true,
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server --open"
+    "start": "webpack serve --mode=development"
   },
   "dependencies": {
     "@apollo/client": "^3.3.19",

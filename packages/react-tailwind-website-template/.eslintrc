@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "extends": ["plugin:@typescript-eslint/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2021,
@@ -13,23 +11,44 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true,
-    "worker": true
+    "node": true
   },
-  "plugins": [
-    "react",
-    "react-hooks",
-    "@typescript-eslint"
-  ],
+  "plugins": ["react", "react-hooks", "tailwindcss", "unicorn", "babel", "@typescript-eslint"],
+  "rules": {
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "pascalCase": true
+        }
+      }
+    ]
+  },
   "overrides": [
     {
-      "files": "src/graphql/**/*.tsx",
+      "files": ["**/*.ts"],
       "rules": {
-        "@typescript-eslint/ban-types": "off",
-        "@typescript-eslint/no-extra-semi": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/explicit-module-boundary-types": "off"
+        "unicorn/filename-case": [
+          "error",
+          {
+            "cases": {
+              "camelCase": true,
+              "kebabCase": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "files": ["src/components/icon/index.tsx"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
       }
     }
-  ]
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

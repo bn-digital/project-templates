@@ -4,18 +4,20 @@ const { DefinePlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const tailwindcss = require('tailwindcss')
+const DotEnvWebpack = require('dotenv-webpack')
+const tailwindcss = require('@tailwindcss/jit')
 const autoprefixer = require('autoprefixer')
 
 module.exports = {
   entry: './src/index.tsx',
   target: 'web',
-  devtool: 'inline-source-map',
   mode: process.env.NODE_ENV ?? 'development',
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
   },
+  stats: 'errors-warnings',
+  devtool: 'eval',
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
   },
@@ -33,52 +35,82 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-react', '@babel/preset-env'],
+        },
+      },
+      {
         test: /\.tsx?$/,
         use: 'awesome-typescript-loader',
       },
       {
         test: /\.(css|scss|sass)$/,
+        exclude: /\.module\.(scss|sass)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
+            loader: require.resolve('css-loader'),
             options: {
-              sourceMap: true,
+              modules: {
+                compileType: 'icss',
+              },
+              importLoaders: 3,
             },
           },
           {
-            loader: "sass-loader",
-            options: {
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'postcss-loader',
+            loader: require.resolve('postcss-loader'),
             options: {
               postcssOptions: {
-                ident: 'postcss',
                 plugins: [tailwindcss, autoprefixer],
               },
             },
           },
+          { loader: 'sass-loader' },
         ],
       },
       {
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        test: /\.module\.(scss|sass)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              modules: {
+                auto: true,
+                exportLocalsConvention: 'camelCase',
+                compileType: 'module',
+              },
+              importLoaders: 3,
+            },
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              postcssOptions: {
+                plugins: [tailwindcss, autoprefixer],
+              },
+            },
+          },
+          { loader: require.resolve('sass-loader') },
+        ],
+      },
+      {
+        test: /\.(jpg|png|svg)$/i,
+        loader: 'url-loader',
       },
     ],
   },
   plugins: [
-    new DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-    }),
+    new DotEnvWebpack(),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html'),
     }),
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].[contenthash].css',
+      filename: '[name].[contenthash].css',
       chunkFilename: '[id].[contenthash].css',
     }),
   ],

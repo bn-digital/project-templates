@@ -1,5 +1,5 @@
 {
-  "name": "@brand-new/vue-website",
+  "name": "@template/vue-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -27,6 +27,7 @@
     "@vue/compiler-sfc": "^3.0.11",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
+    "eslint": "^7.27.0",
     "eslint-plugin-vue": "^7.10.0",
     "less": "^4.1.1",
     "less-loader": "^7.3.0",

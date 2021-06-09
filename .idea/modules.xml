@@ -2,18 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/project-templates.iml" filepath="$PROJECT_DIR$/.idea/modules/project-templates.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/packages/project-templates.packages.iml" filepath="$PROJECT_DIR$/.idea/modules/packages/project-templates.packages.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/packages/angular-website-template/project-templates.packages.angular-website-template.iml" filepath="$PROJECT_DIR$/.idea/modules/packages/angular-website-template/project-templates.packages.angular-website-template.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/packages/apollo-api-gateway-template/project-templates.packages.apollo-api-gateway-template.iml" filepath="$PROJECT_DIR$/.idea/modules/packages/apollo-api-gateway-template/project-templates.packages.apollo-api-gateway-template.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/packages/html-website-template/project-templates.packages.html-website-template.iml" filepath="$PROJECT_DIR$/.idea/modules/packages/html-website-template/project-templates.packages.html-website-template.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/packages/react-antd-website-template/project-templates.packages.react-antd-website-template.iml" filepath="$PROJECT_DIR$/.idea/modules/packages/react-antd-website-template/project-templates.packages.react-antd-website-template.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/packages/react-native-app-template/project-templates.packages.react-native-app-template.iml" filepath="$PROJECT_DIR$/.idea/modules/packages/react-native-app-template/project-templates.packages.react-native-app-template.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/packages/react-native-app-template/android/project-templates.packages.react-native-app-template.android.iml" filepath="$PROJECT_DIR$/.idea/modules/packages/react-native-app-template/android/project-templates.packages.react-native-app-template.android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/packages/react-storybook-template/project-templates.packages.react-storybook-template.iml" filepath="$PROJECT_DIR$/.idea/modules/packages/react-storybook-template/project-templates.packages.react-storybook-template.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/packages/react-tailwind-website-template/project-templates.packages.react-tailwind-website-template.iml" filepath="$PROJECT_DIR$/.idea/modules/packages/react-tailwind-website-template/project-templates.packages.react-tailwind-website-template.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/packages/strapi-cms-template/project-templates.packages.strapi-cms-template.iml" filepath="$PROJECT_DIR$/.idea/modules/packages/strapi-cms-template/project-templates.packages.strapi-cms-template.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/packages/vue-website-template/project-templates.packages.vue-website-template.iml" filepath="$PROJECT_DIR$/.idea/modules/packages/vue-website-template/project-templates.packages.vue-website-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/angular-website-template/angular-website-template.iml" filepath="$PROJECT_DIR$/packages/angular-website-template/angular-website-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/apollo-api-gateway-template/apollo-api-gateway-template.iml" filepath="$PROJECT_DIR$/packages/apollo-api-gateway-template/apollo-api-gateway-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/html-website-template/html-website-template.iml" filepath="$PROJECT_DIR$/packages/html-website-template/html-website-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/project-templates.iml" filepath="$PROJECT_DIR$/.idea/project-templates.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/react-antd-website-template/react-antd-website-template.iml" filepath="$PROJECT_DIR$/packages/react-antd-website-template/react-antd-website-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/react-storybook-template/react-storybook-template.iml" filepath="$PROJECT_DIR$/packages/react-storybook-template/react-storybook-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/react-tailwind-website-template/react-tailwind-website-template.iml" filepath="$PROJECT_DIR$/packages/react-tailwind-website-template/react-tailwind-website-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/react-website-template/react-website-template.iml" filepath="$PROJECT_DIR$/packages/react-website-template/react-website-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/strapi-cms-template/strapi-cms-template.iml" filepath="$PROJECT_DIR$/packages/strapi-cms-template/strapi-cms-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/vue-website-template/vue-website-template.iml" filepath="$PROJECT_DIR$/packages/vue-website-template/vue-website-template.iml" />
     </modules>
   </component>
 </project>

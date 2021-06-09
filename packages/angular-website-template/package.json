@@ -1,5 +1,5 @@
 {
-  "name": "@brand-new/angular-website",
+  "name": "@template/angular-website",
   "private": true,
   "scripts": {
     "start": "ng serve",

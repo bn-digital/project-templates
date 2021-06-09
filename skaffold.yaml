@@ -7,10 +7,12 @@ build:
   artifacts:
   - image: vue
     context: packages/vue-website-template
-  - image: html
-    context: packages/html-website-template
   - image: react
     context: packages/react-antd-website-template
+  - image: angular
+    context: packages/angular-website-template
+  - image: html
+    context: packages/html-website-template
   - image: strapi
     context: packages/strapi-cms-template
   - image: tailwind

@@ -1,13 +1,20 @@
-const colors = require('tailwindcss/colors')
-
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  mode: 'jit',
+  purge: ['./src/**/*.{scss,tsx}', './public/index.html'],
   darkMode: false,
   theme: {
-    extend: colors,
+    extend: {
+      fontFamily: {
+        main: ['Roboto', 'sans-serif'],
+      },
+      colors: {},
+      gridTemplateColumns: {},
+      height: {},
+      width: {},
+    },
   },
   variants: {
-    extend: {},
+    extend: { },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 }

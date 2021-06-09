@@ -1,7 +1,0 @@
-rootProject.name = "project-templates"
-
-file("packages").eachDir { dir ->
-  if (dir.name.endsWith('-template')) {
-    include ":packages:${dir.name}"
-  }
-}

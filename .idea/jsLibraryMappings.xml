@@ -2,15 +2,7 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/angular-website-template" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/apollo-api-gateway-template" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/html-website-template" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/react-antd-website-template" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/react-native-app-template" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/react-storybook-template" libraries="{Node.js Core}" />
     <file url="file://$PROJECT_DIR$/packages/react-tailwind-website-template" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/strapi-cms-template" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/packages/vue-website-template" libraries="{Node.js Core}" />
+    <file url="file://$PROJECT_DIR$/packages/react-website-template" libraries="{Node.js Core}" />
   </component>
 </project>

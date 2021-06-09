@@ -17,7 +17,9 @@ Run corresponding command from root [package.json](package.json) script.
 | App | Command | Endpoint | 
 | --- | --- | --- |
 | ![Strapi](https://simpleicons.org/icons/strapi.svg) | `yarn strapi` | http://localhost:1337 |
-| ![React](https://simpleicons.org/icons/react.svg) | `yarn react` | http://localhost:3000 |
+| ![React](https://simpleicons.org/icons/react.svg) | `yarn react`| http://localhost:3000 |
+| ![Ant Design](https://simpleicons.org/icons/antdesign.svg) | `yarn antd`| http://localhost:3000 |
+| ![Tailwind](https://simpleicons.org/icons/tailwindcss.svg) | `yarn tailwind`| http://localhost:3000 |
 | ![Angular](https://simpleicons.org/icons/angular.svg) | `yarn angular` | http://localhost:4200 |
 | ![HTML](https://simpleicons.org/icons/html5.svg) | `yarn html` | http://localhost:5000 |
 | ![Apollo](https://simpleicons.org/icons/apollographql.svg) | `yarn apollo` | http://localhost:4000 http://localhost:9002/editor |
