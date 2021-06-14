@@ -23,9 +23,6 @@
     "lastName": {
       "type": "string"
     },
-    "country": {
-      "model": "country"
-    },
     "message": {
       "type": "richtext"
     },

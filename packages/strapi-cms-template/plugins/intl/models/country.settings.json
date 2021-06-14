@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "intl_countries",
+  "info": {
+    "name": "Country",
+    "description": ""
+  },
+  "options": {
+    "populateCreatorFields": false,
+    "increments": false,
+    "timestamps": false,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 255
+    },
+    "code": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 2,
+      "minLength": 2
+    }
+  }
+}

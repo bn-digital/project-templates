@@ -1,5 +1,5 @@
 import { render } from 'react-dom'
-import { App } from './containers'
+import App from './containers'
 import reportWebVitals from './reportWebVitals'
 import { init } from '@sentry/react'
 

@@ -9,7 +9,7 @@ const config = {
   entry: './src/index.ts',
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build'),
     filename: '[name].[contenthash].js',
   },
   devServer: {

@@ -37,7 +37,7 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
+        use: 'babel-loader',
         options: {
           presets: ['@babel/preset-react', '@babel/preset-env'],
         },

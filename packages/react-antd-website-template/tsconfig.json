@@ -10,19 +10,23 @@
     "importHelpers": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "module": "ESNext",
     "moduleResolution": "Node",
-    "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "outDir": "build",
     "skipLibCheck": true,
     "checkJs": false,
     "strictNullChecks": true,
-    "sourceMap": true,
     "strict": true,
     "target": "ESNext",
     "resolveJsonModule": true
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

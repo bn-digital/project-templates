@@ -22,19 +22,7 @@ const ContactForm: FC = () => {
   const messageKey = 'request'
   const [messageApi, context] = message.useMessage()
   const [rating, setRating] = useState(0)
-  const onUpload = (info: UploadChangeParam) => {
-    {
-      const { status, error } = info.file
-      if (status !== 'uploading') {
-        messageApi.loading({ content: `${info.file.name} is uploading`, key: messageKey })
-      }
-      if (status === 'done') {
-        return messageApi.success({ content: `${info.file.name} file uploaded successfully.`, key: messageKey })
-      } else if (status === 'error') {
-        return messageApi.error({ content: `${info.file.name} file upload failed: ${error}`, key: messageKey })
-      }
-    }
-  }
+
 
   const onFinish = (data: ContactFormRequestInput) => {
     messageApi
@@ -87,7 +75,7 @@ const ContactForm: FC = () => {
           showSearch
           placeholder='Search to Select'
           optionFilterProp='children'
-          filterOption={(input, option) => option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+          filterOption={(input, option) => option?.children?.toLowerCase().indexOf(input.toLowerCase()) >= 0}
           filterSort={(optionA, optionB) =>
             optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
           }
@@ -101,18 +89,6 @@ const ContactForm: FC = () => {
       </Form.Item>
       <Form.Item name={'message'} label='Message' rules={[{ required: false, type: 'string' }]}>
         <Input.TextArea style={{ width: '100%' }} />
-      </Form.Item>
-      <Form.Item name={'files'} label={'Attachment'}>
-        <Dragger onChange={onUpload} name={'files'} action={'http://localhost:1337/upload'} multiple>
-          <Typography.Paragraph>Click or drag file to this area to upload</Typography.Paragraph>
-          <Typography.Paragraph type={'secondary'}>
-            Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files
-          </Typography.Paragraph>
-        </Dragger>
-      </Form.Item>
-      <Form.Item name={'rating'} label={'Rating'}>
-        <Rate value={rating} onChange={setRating} />
-        <Input type={'hidden'} value={rating} />
       </Form.Item>
       <Form.Item wrapperCol={{ ...formProps.wrapperCol, offset: 8 }}>
         <Button type='primary' htmlType='submit'>

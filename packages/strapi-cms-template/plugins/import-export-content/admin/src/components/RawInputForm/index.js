@@ -1,0 +1,63 @@
+import React, { memo, useState } from 'react'
+import PropTypes from 'prop-types'
+import { EditorWrapper } from './styles'
+import Editor from 'react-simple-code-editor'
+import { Button, Label, Select } from '@buffetjs/core'
+import { Row } from '../../components/common'
+import FORMATS from '../../constants/formats'
+
+const fortmatsOptions = FORMATS.map(({ name, mimeType }) => ({
+  label: name,
+  value: mimeType,
+}))
+
+function RawInputForm({ onSubmit }) {
+  const [rawText, setRawText] = useState('')
+  const [rawFormat, setRawFormat] = useState(FORMATS[0].mimeType || '')
+
+  const handleSubmit = ev => {
+    ev.preventDefault()
+    onSubmit({
+      data: rawText,
+      type: rawFormat,
+    })
+  }
+
+  return (
+    <form className='col-12' onSubmit={handleSubmit}>
+      <Row>
+        <Label message='Data Format' htmlFor='dataFormats' />
+        <Select
+          name='dataFormats'
+          options={fortmatsOptions}
+          value={rawFormat}
+          onChange={({ target: { value } }) => setRawFormat(value)}
+        />
+      </Row>
+      <Row>
+        <EditorWrapper>
+          <Editor
+            className='editor'
+            highlight={code => code}
+            value={rawText}
+            onValueChange={value => setRawText(value)}
+            padding={10}
+          />
+        </EditorWrapper>
+      </Row>
+      <Row>
+        <Button type='submit' label={'Analyze'} disabled={rawText === ''} />
+      </Row>
+    </form>
+  )
+}
+
+RawInputForm.defaultProps = {
+  onSubmit: () => {},
+}
+
+RawInputForm.propTypes = {
+  onSubmit: PropTypes.func,
+}
+
+export default memo(RawInputForm)

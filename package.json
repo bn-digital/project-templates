@@ -47,7 +47,6 @@
     "eslint-plugin-workspaces": "^0.6.2",
     "graphql": "^15.5.0",
     "node-gyp": "^8.1.0",
-    "pm2": "^5.0.4",
     "prettier": "^2.3.1",
     "rimraf": "^3.0.2",
     "semantic-release": "^17.4.3",
@@ -70,6 +69,7 @@
     "vue": "yarn workspace @template/vue-website run start",
     "html": "yarn workspace @template/html-website run start",
     "storybook": "yarn workspace @template/react-storybook run start",
+    "upgrade": "yarn up '*'",
     "fix": "prettier --write packages/*/src && eslint --fix packages/*/src && stylelint --fix packages/*/src/**/*.{vue,less}",
     "lint": "prettier --check packages/*/src && eslint packages/*/src && stylelint --fix packages/*/src/**/*.less",
     "start": "concurrently 'yarn:generate' 'yarn:strapi' 'yarn:react'"

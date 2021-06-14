@@ -11,6 +11,8 @@
     "start": "strapi develop"
   },
   "dependencies": {
+    "csv-parse": "^4.16.0",
+    "csv-string": "^4.0.1",
     "knex": "^0.95.6",
     "pg": "^8.6.0",
     "slugify": "^1.5.3",
@@ -20,7 +22,7 @@
     "strapi-plugin-content-manager": "^3.6.3",
     "strapi-plugin-content-type-builder": "^3.6.3",
     "strapi-plugin-email": "^3.6.3",
-    "strapi-plugin-email-designer": "^0.4.1",
+    "strapi-plugin-email-designer": "^1.0.1",
     "strapi-plugin-entity-relationship-chart": "^3.1.0",
     "strapi-plugin-graphql": "^3.6.3",
     "strapi-plugin-i18n": "^3.6.3",

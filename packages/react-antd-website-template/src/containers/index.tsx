@@ -26,4 +26,4 @@ const App: FC = ({ children }) => (
   </API>
 )
 
-export { App }
+export default  App

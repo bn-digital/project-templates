@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/packages/angular-website-template/angular-website-template.iml" filepath="$PROJECT_DIR$/packages/angular-website-template/angular-website-template.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/apollo-api-gateway-template/apollo-api-gateway-template.iml" filepath="$PROJECT_DIR$/packages/apollo-api-gateway-template/apollo-api-gateway-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/react-native-app-template/android/app/src/debug/debug.iml" filepath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/debug/debug.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/html-website-template/html-website-template.iml" filepath="$PROJECT_DIR$/packages/html-website-template/html-website-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/main.iml" filepath="$PROJECT_DIR$/packages/react-native-app-template/android/app/src/main/main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/project-templates.iml" filepath="$PROJECT_DIR$/.idea/project-templates.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/react-antd-website-template/react-antd-website-template.iml" filepath="$PROJECT_DIR$/packages/react-antd-website-template/react-antd-website-template.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/react-storybook-template/react-storybook-template.iml" filepath="$PROJECT_DIR$/packages/react-storybook-template/react-storybook-template.iml" />

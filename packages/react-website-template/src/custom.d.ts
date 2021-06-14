@@ -4,3 +4,7 @@ declare module '*.svg' {
   const value: SvgrComponent
   export default value
 }
+
+declare module '*.jpg'
+
+declare module '*.png'
