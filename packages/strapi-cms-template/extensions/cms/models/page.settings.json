@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cms_pages",
+  "info": {
+    "name": "Page",
+    "description": ""
+  },
+  "options": {
+    "increments": false,
+    "timestamps": false,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "richtext",
+      "required": true
+    },
+    "cover": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "slug": {
+      "required": true,
+      "type": "uid",
+      "targetField": "name"
+    },
+    "categories": {
+      "plugin": "cms",
+      "via": "pages",
+      "collection": "category"
+    },
+    "meta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "organisms.meta"
+    }
+  }
+}

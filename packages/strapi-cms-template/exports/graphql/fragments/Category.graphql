@@ -1,0 +1,8 @@
+fragment Category on CmsCategory {
+  id
+  slug
+  name
+  pages {
+    ...Page
+  }
+}

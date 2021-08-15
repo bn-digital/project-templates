@@ -1,0 +1,14 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/contact",
+      "handler": "feedback.contact.create",
+      "config": {
+        "policies": [
+          "plugins::users-permissions.ratelimit"
+        ]
+      }
+    }
+  ]
+}

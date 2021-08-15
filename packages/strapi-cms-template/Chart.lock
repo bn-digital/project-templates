@@ -1,0 +1,9 @@
+dependencies:
+- name: nodejs
+  repository: https://dcr.bndigital.dev/chartrepo/library
+  version: 1.1.0
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 10.9.2
+digest: sha256:922d54309a16bc8d19e6c6f27fea8532d445fc57a12a395a4f223c305353da9f
+generated: "2021-08-16T00:18:46.2118234+03:00"

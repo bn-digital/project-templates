@@ -1,0 +1,8 @@
+query categories($where: JSON) {
+  categories(where: $where, publicationState: LIVE) {
+    ...Category
+    children {
+      ...Category
+    }
+  }
+}

@@ -1,0 +1,8 @@
+query pages($where: JSON) {
+  pages(where: $where, publicationState: LIVE) {
+    ...Page
+    categories {
+      ...Category
+    }
+  }
+}

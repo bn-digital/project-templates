@@ -1,0 +1,16 @@
+*.ico
+*.json
+*.md
+*env*
+*ignore
+*rc
+*file
+admin
+api
+components
+config
+exports
+extensions
+node_modules
+plugins
+public

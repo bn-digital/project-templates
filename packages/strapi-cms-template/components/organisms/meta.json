@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_organisms_metas",
+  "info": {
+    "name": "Meta",
+    "icon": "search",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "component",
+      "repeatable": true,
+      "component": "atoms.text"
+    }
+  }
+}

@@ -1,5 +1,5 @@
-query section($slug: String!) {
-  sectionBySlug(slug: $slug) {
-    ...Section
+query website($domain: String!) {
+  websiteByDomain(domain: $domain) {
+    ...Website
   }
 }

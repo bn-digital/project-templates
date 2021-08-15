@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cms_section",
+  "info": {
+    "name": "Section",
+    "description": ""
+  },
+  "options": {
+    "increments": false,
+    "timestamps": false,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "-"
+    },
+    "description": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "maxLength": 255
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "organisms.card"
+    },
+    "records": {
+      "type": "component",
+      "repeatable": true,
+      "component": "molecules.record"
+    }
+  }
+}
