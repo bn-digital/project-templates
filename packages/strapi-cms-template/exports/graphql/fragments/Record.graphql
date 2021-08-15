@@ -1,0 +1,7 @@
+fragment Record on ComponentMoleculesRecord {
+  id
+  slug
+  entries {
+    ...Entry
+  }
+}

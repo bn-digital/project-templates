@@ -1,5 +1,0 @@
-fragment Country on Country {
-  id
-  name
-  code
-}

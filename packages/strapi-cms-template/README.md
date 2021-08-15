@@ -1,5 +1,14 @@
 # Strapi
 
+## Plugins
+
+- Users/Permissions
+- Import/Export Content
+- Internationalization
+- Sitemap
+- Email Designer
+- Uploads
+
 ## Administration
 
 ```shell

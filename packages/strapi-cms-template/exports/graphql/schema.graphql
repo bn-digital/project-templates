@@ -41,625 +41,6 @@ type UserPermissionsPasswordPayload {
   ok: Boolean!
 }
 
-type Employee {
-  id: ID!
-  firstName: String
-  lastName: String
-  photo: UploadFile
-}
-
-type Category {
-  id: ID!
-  name: String!
-  slug: String!
-  posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
-}
-
-type CategoryConnection {
-  values: [Category]
-  groupBy: CategoryGroupBy
-  aggregate: CategoryAggregator
-}
-
-type CategoryAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type CategoryGroupBy {
-  id: [CategoryConnectionId]
-  name: [CategoryConnectionName]
-  slug: [CategoryConnectionSlug]
-}
-
-type CategoryConnectionId {
-  key: ID
-  connection: CategoryConnection
-}
-
-type CategoryConnectionName {
-  key: String
-  connection: CategoryConnection
-}
-
-type CategoryConnectionSlug {
-  key: String
-  connection: CategoryConnection
-}
-
-input CategoryInput {
-  name: String!
-  posts: [ID]
-  slug: String!
-  created_by: ID
-  updated_by: ID
-}
-
-input editCategoryInput {
-  name: String
-  posts: [ID]
-  slug: String
-  created_by: ID
-  updated_by: ID
-}
-
-input createCategoryInput {
-  data: CategoryInput
-}
-
-type createCategoryPayload {
-  category: Category
-}
-
-input updateCategoryInput {
-  where: InputID
-  data: editCategoryInput
-}
-
-type updateCategoryPayload {
-  category: Category
-}
-
-input deleteCategoryInput {
-  where: InputID
-}
-
-type deleteCategoryPayload {
-  category: Category
-}
-
-type ContactFormRequest {
-  id: ID!
-  email: String!
-  firstName: String
-  lastName: String
-  country: Country
-  message: String
-  rating: Float
-  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-}
-
-type ContactFormRequestConnection {
-  values: [ContactFormRequest]
-  groupBy: ContactFormRequestGroupBy
-  aggregate: ContactFormRequestAggregator
-}
-
-type ContactFormRequestAggregator {
-  count: Int
-  totalCount: Int
-  sum: ContactFormRequestAggregatorSum
-  avg: ContactFormRequestAggregatorAvg
-  min: ContactFormRequestAggregatorMin
-  max: ContactFormRequestAggregatorMax
-}
-
-type ContactFormRequestAggregatorSum {
-  rating: Float
-}
-
-type ContactFormRequestAggregatorAvg {
-  rating: Float
-}
-
-type ContactFormRequestAggregatorMin {
-  rating: Float
-}
-
-type ContactFormRequestAggregatorMax {
-  rating: Float
-}
-
-type ContactFormRequestGroupBy {
-  id: [ContactFormRequestConnectionId]
-  email: [ContactFormRequestConnectionEmail]
-  firstName: [ContactFormRequestConnectionFirstName]
-  lastName: [ContactFormRequestConnectionLastName]
-  country: [ContactFormRequestConnectionCountry]
-  message: [ContactFormRequestConnectionMessage]
-  rating: [ContactFormRequestConnectionRating]
-}
-
-type ContactFormRequestConnectionId {
-  key: ID
-  connection: ContactFormRequestConnection
-}
-
-type ContactFormRequestConnectionEmail {
-  key: String
-  connection: ContactFormRequestConnection
-}
-
-type ContactFormRequestConnectionFirstName {
-  key: String
-  connection: ContactFormRequestConnection
-}
-
-type ContactFormRequestConnectionLastName {
-  key: String
-  connection: ContactFormRequestConnection
-}
-
-type ContactFormRequestConnectionCountry {
-  key: ID
-  connection: ContactFormRequestConnection
-}
-
-type ContactFormRequestConnectionMessage {
-  key: String
-  connection: ContactFormRequestConnection
-}
-
-type ContactFormRequestConnectionRating {
-  key: Float
-  connection: ContactFormRequestConnection
-}
-
-input ContactFormRequestInput {
-  email: String!
-  firstName: String
-  lastName: String
-  country: ID
-  message: String
-  files: [ID]
-  rating: Float
-  created_by: ID
-  updated_by: ID
-}
-
-input editContactFormRequestInput {
-  email: String
-  firstName: String
-  lastName: String
-  country: ID
-  message: String
-  files: [ID]
-  rating: Float
-  created_by: ID
-  updated_by: ID
-}
-
-input createContactFormRequestInput {
-  data: ContactFormRequestInput
-}
-
-type createContactFormRequestPayload {
-  contactFormRequest: ContactFormRequest
-}
-
-input updateContactFormRequestInput {
-  where: InputID
-  data: editContactFormRequestInput
-}
-
-type updateContactFormRequestPayload {
-  contactFormRequest: ContactFormRequest
-}
-
-input deleteContactFormRequestInput {
-  where: InputID
-}
-
-type deleteContactFormRequestPayload {
-  contactFormRequest: ContactFormRequest
-}
-
-type Content {
-  id: ID!
-  title: String!
-  description: String
-  sections: [ComponentOrganismsSection]
-  table: [ComponentMoleculesMap]
-  button: ComponentAtomsButton
-  slug: String!
-  locale: String
-  localizations(sort: String, limit: Int, start: Int, where: JSON): [Content]
-  section: ComponentOrganismsSection
-}
-
-type ContentConnection {
-  values: [Content]
-  groupBy: ContentGroupBy
-  aggregate: ContentAggregator
-}
-
-type ContentAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type ContentGroupBy {
-  id: [ContentConnectionId]
-  title: [ContentConnectionTitle]
-  description: [ContentConnectionDescription]
-  button: [ContentConnectionButton]
-  slug: [ContentConnectionSlug]
-  locale: [ContentConnectionLocale]
-}
-
-type ContentConnectionId {
-  key: ID
-  connection: ContentConnection
-}
-
-type ContentConnectionTitle {
-  key: String
-  connection: ContentConnection
-}
-
-type ContentConnectionDescription {
-  key: String
-  connection: ContentConnection
-}
-
-type ContentConnectionButton {
-  key: ID
-  connection: ContentConnection
-}
-
-type ContentConnectionSlug {
-  key: String
-  connection: ContentConnection
-}
-
-type ContentConnectionLocale {
-  key: String
-  connection: ContentConnection
-}
-
-input ContentInput {
-  title: String
-  description: String
-  sections: [ComponentOrganismsSectionInput]
-  table: [ComponentMoleculesMapInput]
-  button: ComponentAtomsButtonInput
-  slug: String!
-  localizations: [ID]
-  locale: String
-  published_at: DateTime
-  created_by: ID
-  updated_by: ID
-}
-
-input editContentInput {
-  title: String
-  description: String
-  sections: [editComponentOrganismsSectionInput]
-  table: [editComponentMoleculesMapInput]
-  button: editComponentAtomsButtonInput
-  slug: String
-  localizations: [ID]
-  locale: String
-  published_at: DateTime
-  created_by: ID
-  updated_by: ID
-}
-
-input createContentInput {
-  data: ContentInput
-}
-
-type createContentPayload {
-  content: Content
-}
-
-input updateContentInput {
-  where: InputID
-  data: editContentInput
-}
-
-type updateContentPayload {
-  content: Content
-}
-
-input deleteContentInput {
-  where: InputID
-}
-
-type deleteContentPayload {
-  content: Content
-}
-
-type Country {
-  id: ID!
-  name: String!
-  code: String!
-}
-
-type CountryConnection {
-  values: [Country]
-  groupBy: CountryGroupBy
-  aggregate: CountryAggregator
-}
-
-type CountryAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type CountryGroupBy {
-  id: [CountryConnectionId]
-  name: [CountryConnectionName]
-  code: [CountryConnectionCode]
-}
-
-type CountryConnectionId {
-  key: ID
-  connection: CountryConnection
-}
-
-type CountryConnectionName {
-  key: String
-  connection: CountryConnection
-}
-
-type CountryConnectionCode {
-  key: String
-  connection: CountryConnection
-}
-
-input CountryInput {
-  name: String!
-  code: String!
-  created_by: ID
-  updated_by: ID
-}
-
-input editCountryInput {
-  name: String
-  code: String
-  created_by: ID
-  updated_by: ID
-}
-
-input createCountryInput {
-  data: CountryInput
-}
-
-type createCountryPayload {
-  country: Country
-}
-
-input updateCountryInput {
-  where: InputID
-  data: editCountryInput
-}
-
-type updateCountryPayload {
-  country: Country
-}
-
-input deleteCountryInput {
-  where: InputID
-}
-
-type deleteCountryPayload {
-  country: Country
-}
-
-type Post {
-  id: ID!
-  category: Category
-  slug: String!
-  seo: ComponentOrganismsPage
-  section: ComponentOrganismsSection
-  previewHorizontal: UploadFile
-  previewVertical: UploadFile
-}
-
-type PostConnection {
-  values: [Post]
-  groupBy: PostGroupBy
-  aggregate: PostAggregator
-}
-
-type PostAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type PostGroupBy {
-  id: [PostConnectionId]
-  category: [PostConnectionCategory]
-  slug: [PostConnectionSlug]
-  seo: [PostConnectionSeo]
-  section: [PostConnectionSection]
-  previewHorizontal: [PostConnectionPreviewHorizontal]
-  previewVertical: [PostConnectionPreviewVertical]
-}
-
-type PostConnectionId {
-  key: ID
-  connection: PostConnection
-}
-
-type PostConnectionCategory {
-  key: ID
-  connection: PostConnection
-}
-
-type PostConnectionSlug {
-  key: String
-  connection: PostConnection
-}
-
-type PostConnectionSeo {
-  key: ID
-  connection: PostConnection
-}
-
-type PostConnectionSection {
-  key: ID
-  connection: PostConnection
-}
-
-type PostConnectionPreviewHorizontal {
-  key: ID
-  connection: PostConnection
-}
-
-type PostConnectionPreviewVertical {
-  key: ID
-  connection: PostConnection
-}
-
-input PostInput {
-  category: ID
-  author: ID
-  slug: String!
-  seo: ComponentOrganismsPageInput
-  section: ComponentOrganismsSectionInput!
-  previewHorizontal: ID
-  previewVertical: ID
-  published_at: DateTime
-  created_by: ID
-  updated_by: ID
-}
-
-input editPostInput {
-  category: ID
-  author: ID
-  slug: String
-  seo: editComponentOrganismsPageInput
-  section: editComponentOrganismsSectionInput
-  previewHorizontal: ID
-  previewVertical: ID
-  published_at: DateTime
-  created_by: ID
-  updated_by: ID
-}
-
-input createPostInput {
-  data: PostInput
-}
-
-type createPostPayload {
-  post: Post
-}
-
-input updatePostInput {
-  where: InputID
-  data: editPostInput
-}
-
-type updatePostPayload {
-  post: Post
-}
-
-input deletePostInput {
-  where: InputID
-}
-
-type deletePostPayload {
-  post: Post
-}
-
-type Website {
-  id: ID!
-  navigation: [ComponentMoleculesMenu]
-  domain: String!
-  meta: [ComponentMoleculesMap]
-  redirects: [ComponentMoleculesMap]
-  googleAnalyticsCode: String
-}
-
-type WebsiteConnection {
-  values: [Website]
-  groupBy: WebsiteGroupBy
-  aggregate: WebsiteAggregator
-}
-
-type WebsiteAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type WebsiteGroupBy {
-  id: [WebsiteConnectionId]
-  domain: [WebsiteConnectionDomain]
-  googleAnalyticsCode: [WebsiteConnectionGoogleAnalyticsCode]
-}
-
-type WebsiteConnectionId {
-  key: ID
-  connection: WebsiteConnection
-}
-
-type WebsiteConnectionDomain {
-  key: String
-  connection: WebsiteConnection
-}
-
-type WebsiteConnectionGoogleAnalyticsCode {
-  key: String
-  connection: WebsiteConnection
-}
-
-input WebsiteInput {
-  navigation: [ComponentMoleculesMenuInput]
-  domain: String!
-  meta: [ComponentMoleculesMapInput!]
-  redirects: [ComponentMoleculesMapInput]
-  googleAnalyticsCode: String
-  created_by: ID
-  updated_by: ID
-}
-
-input editWebsiteInput {
-  navigation: [editComponentMoleculesMenuInput]
-  domain: String
-  meta: [editComponentMoleculesMapInput]
-  redirects: [editComponentMoleculesMapInput]
-  googleAnalyticsCode: String
-  created_by: ID
-  updated_by: ID
-}
-
-input createWebsiteInput {
-  data: WebsiteInput
-}
-
-type createWebsitePayload {
-  website: Website
-}
-
-input updateWebsiteInput {
-  where: InputID
-  data: editWebsiteInput
-}
-
-type updateWebsitePayload {
-  website: Website
-}
-
-input deleteWebsiteInput {
-  where: InputID
-}
-
-type deleteWebsitePayload {
-  website: Website
-}
-
 type EmailDesignerEmailTemplate {
   id: ID!
   created_at: DateTime!
@@ -1159,21 +540,277 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-type ComponentAtomsButton {
+type CmsCategory {
   id: ID!
-  link: ComponentAtomsLink
-  simpleIcon: String
+  name: String!
+  slug: String!
+  pages(sort: String, limit: Int, start: Int, where: JSON): [CmsPage]
+  parent(sort: String, limit: Int, start: Int, where: JSON): [CmsCategory]
+  children(sort: String, limit: Int, start: Int, where: JSON): [CmsCategory]
 }
 
-input ComponentAtomsButtonInput {
-  link: ComponentAtomsLinkInput!
-  simpleIcon: String
+type CmsCategoryConnection {
+  values: [CmsCategory]
+  groupBy: CmsCategoryGroupBy
+  aggregate: CmsCategoryAggregator
 }
 
-input editComponentAtomsButtonInput {
-  id: ID
-  link: editComponentAtomsLinkInput
-  simpleIcon: String
+type CmsCategoryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CmsCategoryGroupBy {
+  id: [CmsCategoryConnectionId]
+  name: [CmsCategoryConnectionName]
+  slug: [CmsCategoryConnectionSlug]
+}
+
+type CmsCategoryConnectionId {
+  key: ID
+  connection: CmsCategoryConnection
+}
+
+type CmsCategoryConnectionName {
+  key: String
+  connection: CmsCategoryConnection
+}
+
+type CmsCategoryConnectionSlug {
+  key: String
+  connection: CmsCategoryConnection
+}
+
+input CategoryInput {
+  name: String!
+  pages: [ID]
+  parent: [ID]
+  children: [ID]
+  slug: String!
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editCategoryInput {
+  name: String
+  pages: [ID]
+  parent: [ID]
+  children: [ID]
+  slug: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+type CmsPage {
+  id: ID!
+  name: String!
+  text: String!
+  slug: String!
+  meta: ComponentOrganismsMeta
+  cover(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  categories(sort: String, limit: Int, start: Int, where: JSON): [CmsCategory]
+}
+
+type CmsPageConnection {
+  values: [CmsPage]
+  groupBy: CmsPageGroupBy
+  aggregate: CmsPageAggregator
+}
+
+type CmsPageAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CmsPageGroupBy {
+  id: [CmsPageConnectionId]
+  name: [CmsPageConnectionName]
+  text: [CmsPageConnectionText]
+  slug: [CmsPageConnectionSlug]
+  meta: [CmsPageConnectionMeta]
+}
+
+type CmsPageConnectionId {
+  key: ID
+  connection: CmsPageConnection
+}
+
+type CmsPageConnectionName {
+  key: String
+  connection: CmsPageConnection
+}
+
+type CmsPageConnectionText {
+  key: String
+  connection: CmsPageConnection
+}
+
+type CmsPageConnectionSlug {
+  key: String
+  connection: CmsPageConnection
+}
+
+type CmsPageConnectionMeta {
+  key: ID
+  connection: CmsPageConnection
+}
+
+input PageInput {
+  name: String!
+  text: String!
+  cover: [ID]
+  slug: String!
+  categories: [ID]
+  meta: ComponentOrganismsMetaInput
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editPageInput {
+  name: String
+  text: String
+  cover: [ID]
+  slug: String
+  categories: [ID]
+  meta: editComponentOrganismsMetaInput
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+type CmsSection {
+  id: ID!
+  title: String!
+  description: String
+  slug: String!
+  cards: [ComponentOrganismsCard]
+  records: [ComponentMoleculesRecord]
+  card: ComponentOrganismsCard
+}
+
+type CmsSectionConnection {
+  values: [CmsSection]
+  groupBy: CmsSectionGroupBy
+  aggregate: CmsSectionAggregator
+}
+
+type CmsSectionAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CmsSectionGroupBy {
+  id: [CmsSectionConnectionId]
+  title: [CmsSectionConnectionTitle]
+  description: [CmsSectionConnectionDescription]
+  slug: [CmsSectionConnectionSlug]
+}
+
+type CmsSectionConnectionId {
+  key: ID
+  connection: CmsSectionConnection
+}
+
+type CmsSectionConnectionTitle {
+  key: String
+  connection: CmsSectionConnection
+}
+
+type CmsSectionConnectionDescription {
+  key: String
+  connection: CmsSectionConnection
+}
+
+type CmsSectionConnectionSlug {
+  key: String
+  connection: CmsSectionConnection
+}
+
+input SectionInput {
+  title: String
+  description: String
+  slug: String!
+  cards: [ComponentOrganismsCardInput]
+  records: [ComponentMoleculesRecordInput]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editSectionInput {
+  title: String
+  description: String
+  slug: String
+  cards: [editComponentOrganismsCardInput]
+  records: [editComponentMoleculesRecordInput]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+type CmsWebsite {
+  id: ID!
+  domain: String!
+  googleAnalyticsCode: String
+  googleTagManagerCode: String
+  menu: [ComponentMoleculesMenu]
+  logo(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input WebsiteInput {
+  domain: String!
+  logo: [ID]
+  googleAnalyticsCode: String
+  googleTagManagerCode: String
+  menu: [ComponentMoleculesMenuInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input editWebsiteInput {
+  domain: String
+  logo: [ID]
+  googleAnalyticsCode: String
+  googleTagManagerCode: String
+  menu: [editComponentMoleculesMenuInput]
+  created_by: ID
+  updated_by: ID
+}
+
+type FeedbackContact {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  email: String!
+  name: String
+  message: String
+}
+
+input ContactInput {
+  email: String!
+  name: String
+  message: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editContactInput {
+  email: String
+  name: String
+  message: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createContactInput {
+  data: ContactInput
+}
+
+type createContactPayload {
+  contact: FeedbackContact
 }
 
 """Key-Value entry"""
@@ -1196,53 +833,45 @@ input editComponentAtomsEntryInput {
 
 type ComponentAtomsLink {
   id: ID!
-  extra: String
+  text: String
   url: String!
-  text: String!
+  extra: String
 }
 
 input ComponentAtomsLinkInput {
-  extra: String
+  text: String
   url: String!
-  text: String!
+  extra: String
 }
 
 input editComponentAtomsLinkInput {
   id: ID
-  extra: String
-  url: String
   text: String
+  url: String
+  extra: String
 }
 
 type ComponentAtomsNumeric {
   id: ID!
   value: Float!
   unit: String
+  min: Float!
+  max: Float!
 }
 
 input ComponentAtomsNumericInput {
   value: Float!
   unit: String
+  min: Float
+  max: Float
 }
 
 input editComponentAtomsNumericInput {
   id: ID
   value: Float
   unit: String
-}
-
-type ComponentAtomsParagraph {
-  id: ID!
-  lines: [ComponentAtomsText]
-}
-
-input ComponentAtomsParagraphInput {
-  lines: [ComponentAtomsTextInput]
-}
-
-input editComponentAtomsParagraphInput {
-  id: ID
-  lines: [editComponentAtomsTextInput]
+  min: Float
+  max: Float
 }
 
 """Text node"""
@@ -1258,24 +887,6 @@ input ComponentAtomsTextInput {
 input editComponentAtomsTextInput {
   id: ID
   value: String
-}
-
-"""Collection<Entry>"""
-type ComponentMoleculesMap {
-  id: ID!
-  entries: [ComponentAtomsEntry]
-  slug: String!
-}
-
-input ComponentMoleculesMapInput {
-  entries: [ComponentAtomsEntryInput]
-  slug: String!
-}
-
-input editComponentMoleculesMapInput {
-  id: ID
-  entries: [editComponentAtomsEntryInput]
-  slug: String
 }
 
 type ComponentMoleculesMenu {
@@ -1295,53 +906,24 @@ input editComponentMoleculesMenuInput {
   slug: String
 }
 
-"""
-Content building block - defines section, slides, rows and columns and link or button
-"""
-type ComponentOrganismsArticle {
+type ComponentMoleculesRecord {
   id: ID!
-  section: ComponentOrganismsSection
-  cards: [ComponentOrganismsSection]
   entries: [ComponentAtomsEntry]
-  link: ComponentAtomsLink
   slug: String!
 }
 
-input ComponentOrganismsArticleInput {
-  section: ComponentOrganismsSectionInput!
-  cards: [ComponentOrganismsSectionInput!]
-  entries: [ComponentAtomsEntryInput]
-  link: ComponentAtomsLinkInput
-  slug: String!
-}
-
-input editComponentOrganismsArticleInput {
-  id: ID
-  section: editComponentOrganismsSectionInput
-  cards: [editComponentOrganismsSectionInput]
-  entries: [editComponentAtomsEntryInput]
-  link: editComponentAtomsLinkInput
+input ComponentMoleculesRecordInput {
+  entries: [ComponentAtomsEntryInput!]
   slug: String
 }
 
-type ComponentOrganismsPage {
-  id: ID!
-  meta: [ComponentAtomsEntry]
-  uri: String!
-}
-
-input ComponentOrganismsPageInput {
-  meta: [ComponentAtomsEntryInput]
-  uri: String!
-}
-
-input editComponentOrganismsPageInput {
+input editComponentMoleculesRecordInput {
   id: ID
-  meta: [editComponentAtomsEntryInput]
-  uri: String
+  entries: [editComponentAtomsEntryInput]
+  slug: String
 }
 
-type ComponentOrganismsSection {
+type ComponentOrganismsCard {
   id: ID!
   title: String
   subTitle: String
@@ -1351,10 +933,11 @@ type ComponentOrganismsSection {
   media: UploadFile
   active: Boolean
   backgroundColor: String
+  link: ComponentAtomsLink
   slug: String
 }
 
-input ComponentOrganismsSectionInput {
+input ComponentOrganismsCardInput {
   title: String
   subTitle: String
   description: String
@@ -1363,10 +946,11 @@ input ComponentOrganismsSectionInput {
   media: ID
   active: Boolean
   backgroundColor: String
+  link: ComponentAtomsLinkInput
   slug: String
 }
 
-input editComponentOrganismsSectionInput {
+input editComponentOrganismsCardInput {
   id: ID
   title: String
   subTitle: String
@@ -1376,10 +960,31 @@ input editComponentOrganismsSectionInput {
   media: ID
   active: Boolean
   backgroundColor: String
+  link: editComponentAtomsLinkInput
   slug: String
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Employee | Category | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnectionId | CategoryConnectionName | CategoryConnectionSlug | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | ContactFormRequest | ContactFormRequestConnection | ContactFormRequestAggregator | ContactFormRequestAggregatorSum | ContactFormRequestAggregatorAvg | ContactFormRequestAggregatorMin | ContactFormRequestAggregatorMax | ContactFormRequestGroupBy | ContactFormRequestConnectionId | ContactFormRequestConnectionEmail | ContactFormRequestConnectionFirstName | ContactFormRequestConnectionLastName | ContactFormRequestConnectionCountry | ContactFormRequestConnectionMessage | ContactFormRequestConnectionRating | createContactFormRequestPayload | updateContactFormRequestPayload | deleteContactFormRequestPayload | Content | ContentConnection | ContentAggregator | ContentGroupBy | ContentConnectionId | ContentConnectionTitle | ContentConnectionDescription | ContentConnectionButton | ContentConnectionSlug | ContentConnectionLocale | createContentPayload | updateContentPayload | deleteContentPayload | Country | CountryConnection | CountryAggregator | CountryGroupBy | CountryConnectionId | CountryConnectionName | CountryConnectionCode | createCountryPayload | updateCountryPayload | deleteCountryPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnectionCategory | PostConnectionSlug | PostConnectionSeo | PostConnectionSection | PostConnectionPreviewHorizontal | PostConnectionPreviewVertical | createPostPayload | updatePostPayload | deletePostPayload | Website | WebsiteConnection | WebsiteAggregator | WebsiteGroupBy | WebsiteConnectionId | WebsiteConnectionDomain | WebsiteConnectionGoogleAnalyticsCode | createWebsitePayload | updateWebsitePayload | deleteWebsitePayload | EmailDesignerEmailTemplate | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionPhoto | createUserPayload | updateUserPayload | deleteUserPayload | ComponentAtomsButton | ComponentAtomsEntry | ComponentAtomsLink | ComponentAtomsNumeric | ComponentAtomsParagraph | ComponentAtomsText | ComponentMoleculesMap | ComponentMoleculesMenu | ComponentOrganismsArticle | ComponentOrganismsPage | ComponentOrganismsSection
+type ComponentOrganismsMeta {
+  id: ID!
+  title: String
+  description: String
+  keywords: [ComponentAtomsText]
+}
+
+input ComponentOrganismsMetaInput {
+  title: String
+  description: String
+  keywords: [ComponentAtomsTextInput]
+}
+
+input editComponentOrganismsMetaInput {
+  id: ID
+  title: String
+  description: String
+  keywords: [editComponentAtomsTextInput]
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | EmailDesignerEmailTemplate | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionPhoto | createUserPayload | updateUserPayload | deleteUserPayload | CmsCategory | CmsCategoryConnection | CmsCategoryAggregator | CmsCategoryGroupBy | CmsCategoryConnectionId | CmsCategoryConnectionName | CmsCategoryConnectionSlug | CmsPage | CmsPageConnection | CmsPageAggregator | CmsPageGroupBy | CmsPageConnectionId | CmsPageConnectionName | CmsPageConnectionText | CmsPageConnectionSlug | CmsPageConnectionMeta | CmsSection | CmsSectionConnection | CmsSectionAggregator | CmsSectionGroupBy | CmsSectionConnectionId | CmsSectionConnectionTitle | CmsSectionConnectionDescription | CmsSectionConnectionSlug | CmsWebsite | FeedbackContact | createContactPayload | ComponentAtomsEntry | ComponentAtomsLink | ComponentAtomsNumeric | ComponentAtomsText | ComponentMoleculesMenu | ComponentMoleculesRecord | ComponentOrganismsCard | ComponentOrganismsMeta
 
 input InputID {
   id: ID!
@@ -1398,24 +1003,6 @@ type AdminUser {
 }
 
 type Query {
-  category(id: ID!, publicationState: PublicationState): Category
-  categories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Category]
-  categoriesConnection(sort: String, limit: Int, start: Int, where: JSON): CategoryConnection
-  contactFormRequest(id: ID!, publicationState: PublicationState): ContactFormRequest
-  contactFormRequests(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [ContactFormRequest]
-  contactFormRequestsConnection(sort: String, limit: Int, start: Int, where: JSON): ContactFormRequestConnection
-  content(id: ID!, publicationState: PublicationState): Content
-  contents(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Content]
-  contentsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): ContentConnection
-  country(id: ID!, publicationState: PublicationState): Country
-  countries(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Country]
-  countriesConnection(sort: String, limit: Int, start: Int, where: JSON): CountryConnection
-  post(id: ID!, publicationState: PublicationState): Post
-  posts(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Post]
-  postsConnection(sort: String, limit: Int, start: Int, where: JSON): PostConnection
-  website(id: ID!, publicationState: PublicationState): Website
-  websites(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Website]
-  websitesConnection(sort: String, limit: Int, start: Int, where: JSON): WebsiteConnection
   files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
@@ -1428,30 +1015,22 @@ type Query {
   user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
   users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
   usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  category(id: ID!, publicationState: PublicationState): CmsCategory
+  categories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [CmsCategory]
+  categoriesConnection(sort: String, limit: Int, start: Int, where: JSON): CmsCategoryConnection
+  page(id: ID!, publicationState: PublicationState): CmsPage
+  pages(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [CmsPage]
+  pagesConnection(sort: String, limit: Int, start: Int, where: JSON): CmsPageConnection
+  sections(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [CmsSection]
+  sectionsConnection(sort: String, limit: Int, start: Int, where: JSON): CmsSectionConnection
   me: UsersPermissionsMe
-  employees: [Employee]!
+  websiteByDomain(domain: String!): CmsWebsite
+  pageBySlug(slug: String!): CmsPage
+  sectionBySlug(slug: String!): CmsSection
+  categoryBySlug(slug: String!): CmsCategory
 }
 
 type Mutation {
-  createCategory(input: createCategoryInput): createCategoryPayload
-  updateCategory(input: updateCategoryInput): updateCategoryPayload
-  deleteCategory(input: deleteCategoryInput): deleteCategoryPayload
-  createContactFormRequest(input: createContactFormRequestInput): createContactFormRequestPayload
-  updateContactFormRequest(input: updateContactFormRequestInput): updateContactFormRequestPayload
-  deleteContactFormRequest(input: deleteContactFormRequestInput): deleteContactFormRequestPayload
-  createContent(input: createContentInput): createContentPayload
-  updateContent(input: updateContentInput): updateContentPayload
-  deleteContent(input: deleteContentInput): deleteContentPayload
-  createCountry(input: createCountryInput): createCountryPayload
-  updateCountry(input: updateCountryInput): updateCountryPayload
-  deleteCountry(input: deleteCountryInput): deleteCountryPayload
-  createPost(input: createPostInput): createPostPayload
-  updatePost(input: updatePostInput): updatePostPayload
-  deletePost(input: deletePostInput): deletePostPayload
-  createWebsite(input: createWebsiteInput): createWebsitePayload
-  updateWebsite(input: updateWebsiteInput): updateWebsitePayload
-  deleteWebsite(input: deleteWebsiteInput): deleteWebsitePayload
-
   """Delete one file"""
   deleteFile(input: deleteFileInput): deleteFilePayload
 
@@ -1472,7 +1051,7 @@ type Mutation {
 
   """Delete an existing user"""
   deleteUser(input: deleteUserInput): deleteUserPayload
-  createContentLocalization(input: updateContentInput!): Content!
+  createContact(input: createContactInput): createContactPayload
   upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
   multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
   updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!

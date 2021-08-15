@@ -13,6 +13,18 @@
     },
     "unit": {
       "type": "string"
+    },
+    "min": {
+      "type": "float",
+      "min": 0,
+      "required": true,
+      "default": 0
+    },
+    "max": {
+      "type": "float",
+      "required": true,
+      "default": 0,
+      "min": 0
     }
   }
 }

@@ -5,6 +5,7 @@ module.exports = {
       origin: ['*'],
       headers: ['*'],
     },
+    cache: { enabled: true },
     poweredBy: { enabled: false },
     responseTime: { enabled: false },
   },

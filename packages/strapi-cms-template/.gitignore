@@ -6,3 +6,4 @@ build
 .strapi-updater.json
 /.cache
 /plugins/content-import-export/.yarn
+charts

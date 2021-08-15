@@ -1,3 +1,5 @@
+const name = require('./name')
+
 module.exports = ({ env }) => ({
   graphql: {
     endpoint: '/graphql',
@@ -9,11 +11,6 @@ module.exports = ({ env }) => ({
       tracing: env('NODE_ENV', 'development') === 'development',
     },
   },
-  sentry: {
-    dsn: env('SENTRY_DSN'),
-    sendMetadata: true,
-    init: {},
-  },
   upload: {
     provider: 'aws-s3',
     providerOptions: {
@@ -22,20 +19,15 @@ module.exports = ({ env }) => ({
       region: env('S3_REGION', 'fra1'),
       endpoint: env('S3_ENDPOINT', `fra1.digitaloceanspaces.com`),
       params: {
-        Bucket: `${env('S3_BUCKET', 'bn-dev/app')}/uploads`,
+        Bucket: `${env('S3_BUCKET', `bn-dev/${name}`)}/uploads`,
       },
     },
   },
   email: {
-    provider: 'mailgun',
-    providerOptions: {
-      apiKey: env('MAILGUN_API_KEY'),
-      domain: env('MAILGUN_DOMAIN', 'mg.bndigital.dev'),
-      host: env('MAILGUN_HOST', 'api.eu.mailgun.net'),
-    },
+    provider: 'sendmail',
     settings: {
-      defaultFrom: env('MAILGUN_MAIL_FROM', `support@${env('MAILGUN_DOMAIN', 'mg.bndigital.dev')}`),
-      defaultReplyTo: env('MAILGUN_MAIL_TO', `no-reply@${env('MAILGUN_DOMAIN', 'mg.bndigital.dev')}`),
+      defaultFrom: env('MAIL_FROM', `no-reply@${env('DOMAIN', 'mg.bndigital.dev')}`),
+      defaultReplyTo: env('MAIL_TO', `no-reply@${env('DOMAIN', 'mg.bndigital.dev')}`),
     },
   },
 })

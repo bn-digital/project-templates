@@ -5,9 +5,9 @@
     "icon": "external-link-alt",
     "description": ""
   },
-  "options": { },
+  "options": {},
   "attributes": {
-    "extra": {
+    "text": {
       "type": "string",
       "private": false,
       "required": false
@@ -16,9 +16,9 @@
       "type": "string",
       "required": true
     },
-    "text": {
+    "extra": {
       "type": "string",
-      "required": true
+      "required": false
     }
   }
 }

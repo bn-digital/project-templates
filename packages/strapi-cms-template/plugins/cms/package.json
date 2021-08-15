@@ -1,0 +1,31 @@
+{
+  "name": "@bn-digital/strapi-plugin-cms",
+  "version": "1.0.0",
+  "description": "Strapi CMS plugin.",
+  "strapi": {
+    "name": "CMS",
+    "icon": "plug",
+    "description": "Description of CMS plugin."
+  },
+  "dependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "lodash": "^4.17.21",
+    "strapi-plugin-i18n": "^3.6.6",
+    "strapi-utils": "^3.6.6",
+    "strapi-helper-plugin": "^3.6.6"
+  },
+  "author": {
+    "name": "Vlad Volkov",
+    "email": "vlad.volkov@bndigital.co",
+    "url": "https://github.com/vladyslavvolkov"
+  },
+  "maintainers": [
+    {
+      "name": "Vlad Volkov",
+      "email": "vlad.volkov@bndigital.co",
+      "url": "https://github.com/vladyslavvolkov"
+    }
+  ],
+  "license": "MIT"
+}

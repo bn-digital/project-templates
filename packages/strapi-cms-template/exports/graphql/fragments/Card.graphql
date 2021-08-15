@@ -1,0 +1,15 @@
+fragment Card on ComponentOrganismsCard {
+  id
+  active
+  title
+  subTitle
+  description
+  extra
+  text
+  link {
+    ...Link
+  }
+  media {
+    ...File
+  }
+}

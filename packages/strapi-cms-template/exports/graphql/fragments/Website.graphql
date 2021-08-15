@@ -1,26 +1,12 @@
-fragment Website on Website {
+fragment Website on CmsWebsite {
   id
   domain
   googleAnalyticsCode
-  navigation {
-    id
-    slug
-    links {
-      ...Link
-    }
+  googleTagManagerCode
+  logo {
+    ...File
   }
-  meta {
-    id
-    slug
-    entries {
-      ...Entry
-    }
-  }
-  redirects {
-    id
-    slug
-    entries {
-      ...Entry
-    }
+  menu {
+    ...Menu
   }
 }

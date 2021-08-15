@@ -1,0 +1,7 @@
+fragment Menu on ComponentMoleculesMenu {
+  id
+  slug
+  links {
+    ...Link
+  }
+}

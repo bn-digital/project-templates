@@ -1,12 +1,12 @@
-fragment Section on ComponentOrganismsSection {
+fragment Section on CmsSection {
   id
   title
-  subTitle
-  active
   description
-  extra
-  backgroundColor
-  text
   slug
-  media { ...File }
+  cards {
+    ...Card
+  }
+  records {
+    ...Record
+  }
 }

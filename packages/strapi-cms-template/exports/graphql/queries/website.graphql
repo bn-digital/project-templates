@@ -1,0 +1,5 @@
+query section($slug: String!) {
+  sectionBySlug(slug: $slug) {
+    ...Section
+  }
+}

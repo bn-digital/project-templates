@@ -1,0 +1,40 @@
+{
+  "uid": "website",
+  "kind": "collectionType",
+  "collectionName": "cms_websites",
+  "info": {
+    "name": "Website",
+    "description": ""
+  },
+  "options": {
+    "populateCreatorFields": false,
+    "increments": false,
+    "timestamps": false,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "domain": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "logo": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "googleAnalyticsCode": {
+      "type": "string",
+      "unique": true
+    },
+    "googleTagManagerCode": {
+      "type": "string",
+      "unique": true
+    }
+  }
+}

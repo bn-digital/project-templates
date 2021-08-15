@@ -1,0 +1,5 @@
+cms:
+  image: dcr.bndigital.dev/library/http:latest
+
+postgresql:
+  enabled: false
