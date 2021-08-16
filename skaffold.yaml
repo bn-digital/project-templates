@@ -1,26 +1,13 @@
-# nonk8s
-apiVersion: skaffold/v2beta16
+apiVersion: skaffold/v2beta19
 kind: Config
 metadata:
   name: app
 build:
   artifacts:
-  - image: vue
-    context: packages/vue-website-template
-  - image: react
-    context: packages/react-antd-website-template
-  - image: angular
-    context: packages/angular-website-template
-  - image: html
-    context: packages/html-website-template
-  - image: strapi
-    context: packages/strapi-cms-template
-  - image: tailwind
-    context: packages/react-tailwind-website-template
-  - image: storybook
-    context: packages/react-storybook-template
-  - image: apollo
-    context: packages/apollo-api-gateway-template
+  - image: cms
+    context: packages/cms
+  - image: website
+    context: packages/website
   tagPolicy:
     sha256: {}
   local:

@@ -8,7 +8,13 @@ function withHelmet(Wrapped: typeof Helmet): FC {
   return ({ children }) => (
     <HelmetProvider context={helmetContext}>
       <MetaComponent variables={{ slug: window.location.pathname }}>
-        {({ data, loading }) => <Wrapped>{!loading && data?.meta?.title && <title>{data.meta?.title}</title>}</Wrapped>}
+        {({ data, loading }) =>
+          !loading && data?.meta?.title ? (
+            <Wrapped>
+              <title>{data.meta?.title}</title>
+            </Wrapped>
+          ) : null
+        }
       </MetaComponent>
       {children}
     </HelmetProvider>

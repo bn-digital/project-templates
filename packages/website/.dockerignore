@@ -8,7 +8,6 @@
 .tmp
 Dockerfile
 build
-dist
 sonar-project.properties
 node_modules
 *.md

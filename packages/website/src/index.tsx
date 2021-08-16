@@ -3,8 +3,7 @@ import reportWebVitals from './reportWebVitals'
 import { init } from '@sentry/react'
 import { StrictMode, FC } from 'react'
 import { ApiProvider, RoutingProvider, ViewProvider, MetaProvider } from './components/app'
-import { routes } from './pages'
-import './index.less'
+import { routeMap } from './pages'
 
 const dsn = process.env.REACT_APP_SENTRY_DSN ?? undefined
 dsn &&
@@ -18,7 +17,7 @@ const App: FC = ({ children }) => (
     <ApiProvider>
       <MetaProvider>
         <ViewProvider>
-          <RoutingProvider routes={routes}>{children}</RoutingProvider>
+          <RoutingProvider routeMap={routeMap}>{children}</RoutingProvider>
         </ViewProvider>
       </MetaProvider>
     </ApiProvider>

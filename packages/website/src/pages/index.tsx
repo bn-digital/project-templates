@@ -2,7 +2,7 @@ import { RouteMap } from '../components/app/Routing'
 import DefaultLayout from '../components/layout'
 import { lazy } from 'react'
 
-export const routes: RouteMap = {
+export const routeMap: RouteMap = {
   '/*': {
     layout: DefaultLayout,
     routes: {

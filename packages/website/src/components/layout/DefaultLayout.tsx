@@ -9,7 +9,7 @@ const DefaultLayout: VFC = () => (
   <Layout style={{ minHeight: '100vh', width: '100%' }}>
     <WebsiteComponent variables={{ slug: window.location.hostname }}>
       {({ data, loading }) => (
-        <Skeleton paragraph={false} avatar={false} loading={loading}>
+        <Skeleton title={false} paragraph={false} avatar={false} loading={loading}>
           <Layout.Header>
             <Row align={'bottom'} wrap={false}>
               <Col>
@@ -26,7 +26,7 @@ const DefaultLayout: VFC = () => (
           <Layout.Footer style={{ textAlign: 'center' }}>App ©{new Date().getFullYear()}</Layout.Footer>
         </Skeleton>
       )}
-    </WebsiteComponent>{' '}
+    </WebsiteComponent>
   </Layout>
 )
 

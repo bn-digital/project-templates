@@ -34,10 +34,10 @@ type BrowserRouterProps = { loader: ReactNode } & RoutingProviderProps
  * @return {FC}
  */
 function withBrowserRouter(Wrapped: FC<RoutingProviderProps>): FC<Partial<BrowserRouterProps>> {
-  return ({ routes = {}, loader, children }) => (
+  return ({ routeMap = {}, loader, children }) => (
     <BrowserRouter>
       <Suspense fallback={loader ?? <Spinner />}>
-        <Wrapped routes={routes}>{children}</Wrapped>
+        <Wrapped routeMap={routeMap}>{children}</Wrapped>
       </Suspense>
     </BrowserRouter>
   )
