@@ -1,10 +1,10 @@
 helmDefaults:
   createNamespace: true
   cleanupOnFail: true
-
+  kubeContext: do-fra1-bndigital
+  
 environments:
   staging:
-    kubeContext: do-fra1-bndigital
     values: [ ]
 
 releases:
