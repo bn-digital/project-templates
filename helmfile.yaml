@@ -1,6 +1,8 @@
 repositories:
-  - name: bndigital
-    url: https://dcr.bndigital.dev/chartrepo/library
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+  - name: bitnami
+    url: https://bitnami/chartrepo/library
     
 helmDefaults:
   createNamespace: true
