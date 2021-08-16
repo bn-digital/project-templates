@@ -17,4 +17,4 @@ ENV STRAPI_TELEMETRY_DISABLED=true \
 WORKDIR /usr/local/src
 COPY --from=build /runner .
 ENTRYPOINT ["yarn"]
-CMD ["strapi", "start"]
+CMD ["start"]
