@@ -1,13 +1,10 @@
-cms:
+website:
   image: dcr.bndigital.dev/app/website:latest
   imagePullSecrets: [ container-registry ]
   ingress:
-    host: workchew.bndigital.dev
+    host: app.bndigital.dev
     proxy:
       enabled: true
       path: /(admin|auth|import-export-content|callback|connect|content-manager|content-type-builder|email|email-designer|entity-relationship-chart|i18n|graphql|register|responsive-image|users-permissions|upload|uploads)(.*)
-        backend:
+      backend:
         service: app-cms-nodejs
-
-postgresql:
-  enabled: false

@@ -1,5 +1,6 @@
 name: Website
 on:
+  workflow_dispatch: {}
   push:
     branches:
       - latest
@@ -64,6 +65,6 @@ jobs:
       - name: Setup Helm diff
         run: helm plugin install https://github.com/databus23/helm-diff
         continue-on-error: true
-
+        
       - name: Helmfile apply
         run: helmfile --environment=staging --selector=app=${{ env.docker_image }} apply

@@ -1,23 +1,25 @@
+repositories:
+  - name: bndigital
+    url: https://dcr.bndigital.dev/chartrepo/library
+    
 helmDefaults:
   createNamespace: true
   cleanupOnFail: true
-
+  kubeContext: do-fra1-bndigital
+  
 environments:
   staging:
-    kubeContext: do-fra1-bndigital
     values: [ ]
 
 releases:
   - name: app-website
     namespace: '{{ .Environment.Name }}'
-    installed: false
     chart: packages/website
     labels:
       app: website
 
   - name: app-cms
     namespace: '{{ .Environment.Name }}'
-    installed: true
     chart: packages/cms
     labels:
       app: cms
