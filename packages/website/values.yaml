@@ -6,8 +6,5 @@ cms:
     proxy:
       enabled: true
       path: /(admin|auth|import-export-content|callback|connect|content-manager|content-type-builder|email|email-designer|entity-relationship-chart|i18n|graphql|register|responsive-image|users-permissions|upload|uploads)(.*)
-        backend:
+      backend:
         service: app-cms-nodejs
-
-postgresql:
-  enabled: false
