@@ -1,6 +1,7 @@
 # syntax = docker/dockerfile:latest
 FROM dcr.bndigital.dev/library/nodejs:latest AS build
-COPY package.json .nvmrc ./
+WORKDIR /runner
+COPY package.json .
 RUN yarn
 COPY . .
 RUN yarn build

@@ -5,17 +5,17 @@ import { Spinner } from '../loader/Spinner'
 
 export type RouteMap = { [key: string]: { layout: FC; routes: { [key: string]: FC } } }
 
-type RoutingProviderProps = { routes: RouteMap }
+type RoutingProviderProps = { routeMap: RouteMap }
 
 /**
- * @param {RouteMap} children List of routes, require authentication
+ * @param {RouteMap}
  */
-const RoutingProvider: FC<RoutingProviderProps> = ({ routes = {} }) => {
-  const children = Object.entries(routes)
-    .map(([path, { layout, routes }]) => {
+const RoutingProvider: FC<RoutingProviderProps> = ({ routeMap }) => {
+  const children = Object.entries(routeMap)
+    .map(([baseUrl, { layout, routes }]) => {
       const LayoutOutlet = layout
       return {
-        path,
+        path: baseUrl,
         element: <LayoutOutlet />,
         children: Object.entries(routes).map(([path, Component]) => (
           <Route key={path} path={path} element={<Component />} />

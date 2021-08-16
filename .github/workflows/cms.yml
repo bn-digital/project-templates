@@ -12,6 +12,7 @@ on:
       - packages/cms/config/**/*
       - packages/cms/extensions/**/*
       - packages/cms/package.json
+      - packages/cms/Dockerfile
 
 env:
   docker_buildkit: 1

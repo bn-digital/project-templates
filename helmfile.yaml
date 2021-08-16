@@ -17,8 +17,8 @@ releases:
 
   - name: app-cms
     namespace: '{{ .Environment.Name }}'
-    installed: false
+    installed: true
     chart: packages/cms
     labels:
       app: cms
-    
+
