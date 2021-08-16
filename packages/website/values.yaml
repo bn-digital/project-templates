@@ -1,4 +1,4 @@
-cms:
+website:
   image: dcr.bndigital.dev/app/website:latest
   imagePullSecrets: [ container-registry ]
   ingress:
