@@ -1,17 +1,17 @@
-name: HTML
+name: React
 on:
   push:
     branches:
       - latest
     paths:
-      - .github/workflows/html.yml
-      - packages/html/src/**/*
-      - packages/html/src/package.json
+      - .github/workflows/website.yml
+      - packages/website/src/**/*
+      - packages/website/src/package.json
 
 env:
   docker_buildkit: 1
   docker_repository: ${{ secrets.docker_registry }}/app
-  docker_image: html
+  docker_image: website
 
 jobs:
   build:
@@ -63,12 +63,5 @@ jobs:
       - name: Setup Helm diff
         run: helm plugin install https://github.com/databus23/helm-diff
 
-      - name: Get Time
-        id: time
-        uses: nanzm/get-time-action@v1.1
-        with:
-          timeZone: 2
-          format: 'YYYY-MM-DD-HH-mm-ss'
-
       - name: Helmfile apply
-        run: helmfile --environment=staging --selector=app=${{ env.docker_image }} apply --set podAnnotations.timestamp=${{ steps.time.outputs.time }}
+        run: helmfile --environment=staging --selector=app=${{ env.docker_image }} apply
