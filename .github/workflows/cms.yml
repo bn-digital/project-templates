@@ -22,7 +22,7 @@ env:
 jobs:
   build:
     name: Build Docker image
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Setup builder
         uses: docker/setup-buildx-action@v1
