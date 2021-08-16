@@ -70,4 +70,4 @@ jobs:
         run: helm plugin install https://github.com/databus23/helm-diff
 
       - name: Helmfile apply
-        run: helmfile --environment=staging staging --selector apply
+        run: helmfile --environment=staging --selector=app=${{ env.docker_image }} apply
