@@ -1,31 +1,42 @@
 schema:
-  - packages/strapi-cms-template/exports/graphql/schema.graphql
-watch:
-  - packages/strapi-cms-template/exports/**/*.graphql
-  - packages/*/src/graphql/**/*.graphql
+  - packages/cms/exports/graphql/schema.graphql
+watch: true
+documents:
+  - packages/cms/exports/graphql/**/*.graphql
+  - packages/website/src/graphql/**/*.graphql
 hooks:
   afterAllFileWrite:
     - prettier --write
-config:
-  maybeValue: T
-  typescript:
-    avoidOptionals: true
-    scalars:
-      Date: Date
-      Time: Date
-      JSON: Record<string, any>
-      Long: number
-      DateTime: Date
 generates:
-  packages/react-antd-website-template/src/graphql/index.tsx:
+  packages/website/src/graphql/index.tsx:
     plugins:
-      - typescript
-      - typescript-operations
+      - typescript:
+          allowEnumStringTypes: true
+          avoidOptionals: true
+          dedupeFragments: true
+          scalars:
+            Upload: unknown
+            Date: Date
+            Time: Date
+            JSON: Record<string, unknown>
+            Long: number
+            DateTime: Date
+          strictScalars: true
+          declarationKind:
+            interface: interface
+            type: interface
+            scalar: type
+            arguments: type
+            input: type
+          defaultScalarType: unknown
+      - typescript-operations:
+          preResolveTypes: true
+          avoidOptionals: true
       - typescript-react-apollo:
           withComponent: true
           withHooks: true
           withResultType: true
-    documents:
-      - packages/react-antd-website-template/src/graphql/fragments/*.graphql
-      - packages/react-antd-website-template/src/graphql/operations/*.graphql
-      - packages/strapi-cms-template/exports/graphql/fragments/*.graphql
+          withRefetchFn: true
+          optimizeDocumentNode: true
+          addDocBlocks: true
+          reactApolloVersion: 3

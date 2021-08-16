@@ -1,5 +1,0 @@
-query website($domain: String!) {
-  websiteByDomain(domain: $domain) {
-    ...Website
-  }
-}

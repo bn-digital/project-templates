@@ -1,0 +1,37 @@
+{
+  "name": "@template/website",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode=production",
+    "start": "webpack serve --mode=development"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.3.20",
+    "@bn-digital/webpack": "^1.8.14-12.24",
+    "@sentry/react": "^6.6.0",
+    "@sentry/tracing": "^6.6.0",
+    "antd": "^4.16.11",
+    "graphql": "^15.5.1",
+    "history": "^5.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-ga": "^3.3.0",
+    "react-helmet-async": "^1.0.9",
+    "react-intl": "^5.20.8",
+    "react-markdown": "^7.0.0",
+    "react-responsive": "^9.0.0-beta.3",
+    "react-router": "^6.0.0-beta.1",
+    "react-router-dom": "^6.0.0-beta.1",
+    "web-vitals": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.6.1",
+    "@types/react": "^17.0.18",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-responsive": "^8.0.3",
+    "postcss": "^8.3.6",
+    "postcss-loader": "^6.1.1",
+    "typescript": "^4.3.5",
+    "webpack": "^5.50.0"
+  }
+}

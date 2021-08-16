@@ -1,8 +1,0 @@
-query page($slug: String!) {
-  pageBySlug(slug: $slug) {
-    ...Page
-    categories {
-      ...Category
-    }
-  }
-}

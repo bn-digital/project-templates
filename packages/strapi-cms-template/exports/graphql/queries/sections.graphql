@@ -1,5 +1,0 @@
-query section($where: JSON) {
-  sections(where: $where, publicationState: LIVE) {
-    ...Section
-  }
-}

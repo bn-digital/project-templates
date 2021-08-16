@@ -1,0 +1,5 @@
+query meta($slug: ID!) {
+  meta(id: $slug, publicationState: LIVE) {
+    ...Meta
+  }
+}

@@ -1,0 +1,5 @@
+query section($slug: ID!) {
+  section(id: $slug, publicationState: LIVE) {
+    ...Section
+  }
+}

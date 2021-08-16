@@ -1,8 +1,0 @@
-type Cart {
-  id: ID!
-  total: Float!
-}
-type Query {
-  cart: Cart!
-}
-

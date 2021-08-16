@@ -1,19 +1,16 @@
 {
-  "name": "API Service Mesh",
-  "schemaPath": "./packages/strapi-cms-template/exports/graphql/schema.graphql",
+  "name": "CMS",
+  "schemaPath": "./packages/cms/exports/graphql/schema.graphql",
   "includes": [
-    "./packages/react-antd-website-template/src/graphql/fragments/*.graphql",
-    "./packages/react-antd-website-template/src/graphql/operations/*.graphql",
-    "./packages/strapi-cms-template/exports/graphql/fragments/*.graphql"
+    "./packages/cms/exports/graphql/queries/*.graphql",
+    "./packages/cms/exports/graphql/mutations/*.graphql",
+    "./packages/cms/exports/graphql/fragments/*.graphql",
+    "./packages/website/src/graphql/queries/*.graphql",
+    "./packages/website/src/graphql/mutations/*.graphql",
+    "./packages/website/src/graphql/fragments/*.graphql"
   ],
   "extensions": {
     "endpoints": {
-      "faker": {
-        "url": "http://localhost:9002/graphql"
-      },
-      "apollo": {
-        "url": "http://localhost:4000"
-      },
       "strapi": {
         "url": "http://localhost:1337/graphql"
       }

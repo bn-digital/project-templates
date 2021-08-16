@@ -1,9 +1,0 @@
-mutation register($user: UsersPermissionsRegisterInput!) {
-  register(input: $user) {
-    user {
-      id
-      email
-      username
-    }
-  }
-}

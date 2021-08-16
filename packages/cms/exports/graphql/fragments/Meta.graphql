@@ -1,0 +1,7 @@
+fragment Meta on CmsMeta {
+  id
+  slug
+  title
+  description
+  keywords
+}

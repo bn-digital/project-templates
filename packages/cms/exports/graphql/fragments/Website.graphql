@@ -1,0 +1,12 @@
+fragment Website on CmsWebsite {
+  id
+  googleAnalyticsCode
+  googleTagManagerCode
+  name
+  logo {
+    ...File
+  }
+  menu {
+    ...Menu
+  }
+}

@@ -1,0 +1,14 @@
+*.ico
+*.json
+*.md
+*env*
+*ignore
+*rc
+*.js
+*.properties
+*file
+admin
+src
+build
+node_modules
+public

@@ -1,6 +1,0 @@
-query content($where: JSON) {
-  contents(where: $where, publicationState: LIVE) {
-    id
-    ...Content
-  }
-}

@@ -1,78 +1,24 @@
-repositories:
-  - name: bndigital
-    url: https://dcr.bndigital.dev/chartrepo/library
-
 helmDefaults:
-  kubeContext: do-fra1-bndigital
   createNamespace: true
   cleanupOnFail: true
 
 environments:
   staging:
+    kubeContext: do-fra1-bndigital
     values: [ ]
 
 releases:
-  - name: app-react
+  - name: app-website
     namespace: '{{ .Environment.Name }}'
-    chart: bndigital/nodejs
-    labels:
-      app: react
-    values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
-
-  - name: app-vue
-    namespace: '{{ .Environment.Name }}'
-    chart: bndigital/nodejs
-    labels:
-      app: vue
-    values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
-
-  - name: app-html
-    namespace: '{{ .Environment.Name }}'
-    chart: bndigital/nodejs
-    labels:
-      app: html
-    values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
-
-  - name: app-strapi
-    namespace: '{{ .Environment.Name }}'
-    chart: bndigital/nodejs
-    labels:
-      app: strapi
-    values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
-      - envSecrets: [ backend-services ]
-        configMapsSecrets: [ backend-services ]
-
-  - name: app-graphql
-    namespace: '{{ .Environment.Name }}'
-    chart: bndigital/nodejs
-    labels:
-      app: graphql
-    values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
-      - image: apisguru/graphql-faker
-        app:
-          port: 9092
-
-  - name: app-tailwind
-    namespace: '{{ .Environment.Name }}'
-    chart: bndigital/nodejs
-    labels:
-      app: graphql
-    values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
-      - image: apisguru/graphql-faker
-        app:
-          port: 9092
-
-  - name: app-storybook
-    namespace: '{{ .Environment.Name }}'
-    chart: bndigital/nodejs
-    labels:
-      app: storybook
     installed: false
-    values:
-      - 'values.{{ .Environment.Name }}.gotmpl'
+    chart: packages/website
+    labels:
+      app: website
+
+  - name: app-cms
+    namespace: '{{ .Environment.Name }}'
+    installed: false
+    chart: packages/cms
+    labels:
+      app: cms
+    

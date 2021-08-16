@@ -1,8 +1,0 @@
-query category($slug: String!) {
-  categoryBySlug(slug: $slug) {
-    ...Category
-    children {
-      ...Category
-    }
-  }
-}

@@ -1,0 +1,5 @@
+query metas($where: JSON) {
+  metas(where: $where, publicationState: LIVE) {
+    ...Meta
+  }
+}
