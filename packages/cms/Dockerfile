@@ -13,7 +13,7 @@ ENV STRAPI_TELEMETRY_DISABLED=true \
     STRAPI_DISABLE_EE=true \
     STRAPI_DISABLE_UPDATE_NOTIFICATION=true \
     STRAPI_SHOW_TUTORIALS=false \
-    NODE_ENV=production
+    NODE_ENV=development
 WORKDIR /usr/local/src
 COPY --from=build /runner .
 ENTRYPOINT ["yarn"]
