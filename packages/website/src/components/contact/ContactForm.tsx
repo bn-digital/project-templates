@@ -62,7 +62,7 @@ const ContactForm: FC = () => {
       <Form.Item name={'email'} label='Your Email' rules={[{ required: true, type: 'email' }]}>
         <Input />
       </Form.Item>
-      <Form.Item name={'subject'} label='Subject' rules={[{ required: true, type: 'email' }]}>
+      <Form.Item name={'subject'} label='Subject' rules={[{ required: true }]}>
         <Input />
       </Form.Item>
       <Form.Item name={'message'} label='Message' rules={[{ required: false, type: 'string' }]}>

@@ -1,28 +1,39 @@
 repositories:
-  - name: bitnami
-    url: https://charts.bitnami.com/bitnami
   - name: bndigital
     url: https://dcr.bndigital.dev/chartrepo/library
-    
+
 helmDefaults:
   createNamespace: true
   cleanupOnFail: true
-  kubeContext: do-fra1-bndigital
-  
+
 environments:
-  staging:
-    values: [ ]
+  staging: { }
+  production: { }
 
 releases:
   - name: app-website
     namespace: '{{ .Environment.Name }}'
-    chart: packages/website
+    chart: bndigital/app
+    version: 1.00.0
     labels:
-      app: website
+      component: project
+    values:
+      - image: '{{ env "SKAFFOLD_DEFAULT_REPO | default "dcr.bndigital.dev/app" }}/website:{{ env "IMAGE_TAG" | default "latest" }}'
+        imagePullSecrets: [ container-registry ]
+        ingress:
+          host: '{{ env "DOMAIN" | default "app.bndigital.dev" }}'
+          proxy:
+            enabled: true
+            template: strapi
 
   - name: app-cms
     namespace: '{{ .Environment.Name }}'
-    chart: packages/cms
+    chart: bndigital/app
+    version: 1.0.0
     labels:
-      app: cms
-
+      component: project
+    values:
+      - image: '{{ env "SKAFFOLD_DEFAULT_REPO | default "dcr.bndigital.dev/app" }}/cms:{{ env "IMAGE_TAG" | default "latest" }}'
+        imagePullSecrets: [ container-registry ]
+        configMaps: [ backend-services ]
+        secrets: [ backend-services ]

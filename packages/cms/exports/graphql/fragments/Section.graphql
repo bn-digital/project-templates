@@ -3,6 +3,9 @@ fragment Section on CmsSection {
   title
   description
   slug
+  card {
+    ...Card
+  }
   cards {
     ...Card
   }

@@ -29,360 +29,360 @@ export type Scalars = {
   Upload: unknown
 }
 
-export interface AdminUser {
+export type AdminUser = {
   __typename?: 'AdminUser'
   id: Scalars['ID']
-  username: Maybe<Scalars['String']>
+  username?: Maybe<Scalars['String']>
   firstname: Scalars['String']
   lastname: Scalars['String']
 }
 
 export type CategoryInput = {
   name: Scalars['String']
-  pages: Maybe<Array<Maybe<Scalars['ID']>>>
-  parent: Maybe<Array<Maybe<Scalars['ID']>>>
-  children: Maybe<Array<Maybe<Scalars['ID']>>>
+  pages?: Maybe<Array<Maybe<Scalars['ID']>>>
+  parent?: Maybe<Array<Maybe<Scalars['ID']>>>
+  children?: Maybe<Array<Maybe<Scalars['ID']>>>
   slug: Scalars['String']
-  published_at: Maybe<Scalars['DateTime']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  published_at?: Maybe<Scalars['DateTime']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
-export interface CmsCategory {
+export type CmsCategory = {
   __typename?: 'CmsCategory'
   id: Scalars['ID']
   name: Scalars['String']
   slug: Scalars['String']
-  pages: Maybe<Array<Maybe<CmsPage>>>
-  parent: Maybe<Array<Maybe<CmsCategory>>>
-  children: Maybe<Array<Maybe<CmsCategory>>>
+  pages?: Maybe<Array<Maybe<CmsPage>>>
+  parent?: Maybe<Array<Maybe<CmsCategory>>>
+  children?: Maybe<Array<Maybe<CmsCategory>>>
 }
 
 export type CmsCategoryPagesArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
 export type CmsCategoryParentArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
 export type CmsCategoryChildrenArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
-export interface CmsCategoryAggregator {
+export type CmsCategoryAggregator = {
   __typename?: 'CmsCategoryAggregator'
-  count: Maybe<Scalars['Int']>
-  totalCount: Maybe<Scalars['Int']>
+  count?: Maybe<Scalars['Int']>
+  totalCount?: Maybe<Scalars['Int']>
 }
 
-export interface CmsCategoryConnection {
+export type CmsCategoryConnection = {
   __typename?: 'CmsCategoryConnection'
-  values: Maybe<Array<Maybe<CmsCategory>>>
-  groupBy: Maybe<CmsCategoryGroupBy>
-  aggregate: Maybe<CmsCategoryAggregator>
+  values?: Maybe<Array<Maybe<CmsCategory>>>
+  groupBy?: Maybe<CmsCategoryGroupBy>
+  aggregate?: Maybe<CmsCategoryAggregator>
 }
 
-export interface CmsCategoryConnectionId {
+export type CmsCategoryConnectionId = {
   __typename?: 'CmsCategoryConnectionId'
-  key: Maybe<Scalars['ID']>
-  connection: Maybe<CmsCategoryConnection>
+  key?: Maybe<Scalars['ID']>
+  connection?: Maybe<CmsCategoryConnection>
 }
 
-export interface CmsCategoryConnectionName {
+export type CmsCategoryConnectionName = {
   __typename?: 'CmsCategoryConnectionName'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<CmsCategoryConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<CmsCategoryConnection>
 }
 
-export interface CmsCategoryConnectionSlug {
+export type CmsCategoryConnectionSlug = {
   __typename?: 'CmsCategoryConnectionSlug'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<CmsCategoryConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<CmsCategoryConnection>
 }
 
-export interface CmsCategoryGroupBy {
+export type CmsCategoryGroupBy = {
   __typename?: 'CmsCategoryGroupBy'
-  id: Maybe<Array<Maybe<CmsCategoryConnectionId>>>
-  name: Maybe<Array<Maybe<CmsCategoryConnectionName>>>
-  slug: Maybe<Array<Maybe<CmsCategoryConnectionSlug>>>
+  id?: Maybe<Array<Maybe<CmsCategoryConnectionId>>>
+  name?: Maybe<Array<Maybe<CmsCategoryConnectionName>>>
+  slug?: Maybe<Array<Maybe<CmsCategoryConnectionSlug>>>
 }
 
-export interface CmsMeta {
+export type CmsMeta = {
   __typename?: 'CmsMeta'
   id: Scalars['ID']
   created_at: Scalars['DateTime']
   updated_at: Scalars['DateTime']
   slug: Scalars['String']
-  title: Maybe<Scalars['String']>
-  description: Maybe<Scalars['String']>
-  keywords: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  keywords?: Maybe<Scalars['String']>
 }
 
-export interface CmsMetaAggregator {
+export type CmsMetaAggregator = {
   __typename?: 'CmsMetaAggregator'
-  count: Maybe<Scalars['Int']>
-  totalCount: Maybe<Scalars['Int']>
+  count?: Maybe<Scalars['Int']>
+  totalCount?: Maybe<Scalars['Int']>
 }
 
-export interface CmsMetaConnection {
+export type CmsMetaConnection = {
   __typename?: 'CmsMetaConnection'
-  values: Maybe<Array<Maybe<CmsMeta>>>
-  groupBy: Maybe<CmsMetaGroupBy>
-  aggregate: Maybe<CmsMetaAggregator>
+  values?: Maybe<Array<Maybe<CmsMeta>>>
+  groupBy?: Maybe<CmsMetaGroupBy>
+  aggregate?: Maybe<CmsMetaAggregator>
 }
 
-export interface CmsMetaConnectionCreated_At {
+export type CmsMetaConnectionCreated_At = {
   __typename?: 'CmsMetaConnectionCreated_at'
-  key: Maybe<Scalars['DateTime']>
-  connection: Maybe<CmsMetaConnection>
+  key?: Maybe<Scalars['DateTime']>
+  connection?: Maybe<CmsMetaConnection>
 }
 
-export interface CmsMetaConnectionDescription {
+export type CmsMetaConnectionDescription = {
   __typename?: 'CmsMetaConnectionDescription'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<CmsMetaConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<CmsMetaConnection>
 }
 
-export interface CmsMetaConnectionId {
+export type CmsMetaConnectionId = {
   __typename?: 'CmsMetaConnectionId'
-  key: Maybe<Scalars['ID']>
-  connection: Maybe<CmsMetaConnection>
+  key?: Maybe<Scalars['ID']>
+  connection?: Maybe<CmsMetaConnection>
 }
 
-export interface CmsMetaConnectionKeywords {
+export type CmsMetaConnectionKeywords = {
   __typename?: 'CmsMetaConnectionKeywords'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<CmsMetaConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<CmsMetaConnection>
 }
 
-export interface CmsMetaConnectionSlug {
+export type CmsMetaConnectionSlug = {
   __typename?: 'CmsMetaConnectionSlug'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<CmsMetaConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<CmsMetaConnection>
 }
 
-export interface CmsMetaConnectionTitle {
+export type CmsMetaConnectionTitle = {
   __typename?: 'CmsMetaConnectionTitle'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<CmsMetaConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<CmsMetaConnection>
 }
 
-export interface CmsMetaConnectionUpdated_At {
+export type CmsMetaConnectionUpdated_At = {
   __typename?: 'CmsMetaConnectionUpdated_at'
-  key: Maybe<Scalars['DateTime']>
-  connection: Maybe<CmsMetaConnection>
+  key?: Maybe<Scalars['DateTime']>
+  connection?: Maybe<CmsMetaConnection>
 }
 
-export interface CmsMetaGroupBy {
+export type CmsMetaGroupBy = {
   __typename?: 'CmsMetaGroupBy'
-  id: Maybe<Array<Maybe<CmsMetaConnectionId>>>
-  created_at: Maybe<Array<Maybe<CmsMetaConnectionCreated_At>>>
-  updated_at: Maybe<Array<Maybe<CmsMetaConnectionUpdated_At>>>
-  slug: Maybe<Array<Maybe<CmsMetaConnectionSlug>>>
-  title: Maybe<Array<Maybe<CmsMetaConnectionTitle>>>
-  description: Maybe<Array<Maybe<CmsMetaConnectionDescription>>>
-  keywords: Maybe<Array<Maybe<CmsMetaConnectionKeywords>>>
+  id?: Maybe<Array<Maybe<CmsMetaConnectionId>>>
+  created_at?: Maybe<Array<Maybe<CmsMetaConnectionCreated_At>>>
+  updated_at?: Maybe<Array<Maybe<CmsMetaConnectionUpdated_At>>>
+  slug?: Maybe<Array<Maybe<CmsMetaConnectionSlug>>>
+  title?: Maybe<Array<Maybe<CmsMetaConnectionTitle>>>
+  description?: Maybe<Array<Maybe<CmsMetaConnectionDescription>>>
+  keywords?: Maybe<Array<Maybe<CmsMetaConnectionKeywords>>>
 }
 
-export interface CmsPage {
+export type CmsPage = {
   __typename?: 'CmsPage'
   id: Scalars['ID']
   name: Scalars['String']
   text: Scalars['String']
   slug: Scalars['String']
-  meta: Maybe<ComponentOrganismsMeta>
-  cover: Maybe<Array<Maybe<UploadFile>>>
-  categories: Maybe<Array<Maybe<CmsCategory>>>
+  meta?: Maybe<ComponentOrganismsMeta>
+  cover?: Maybe<Array<Maybe<UploadFile>>>
+  categories?: Maybe<Array<Maybe<CmsCategory>>>
 }
 
 export type CmsPageCoverArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
 export type CmsPageCategoriesArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
-export interface CmsPageAggregator {
+export type CmsPageAggregator = {
   __typename?: 'CmsPageAggregator'
-  count: Maybe<Scalars['Int']>
-  totalCount: Maybe<Scalars['Int']>
+  count?: Maybe<Scalars['Int']>
+  totalCount?: Maybe<Scalars['Int']>
 }
 
-export interface CmsPageConnection {
+export type CmsPageConnection = {
   __typename?: 'CmsPageConnection'
-  values: Maybe<Array<Maybe<CmsPage>>>
-  groupBy: Maybe<CmsPageGroupBy>
-  aggregate: Maybe<CmsPageAggregator>
+  values?: Maybe<Array<Maybe<CmsPage>>>
+  groupBy?: Maybe<CmsPageGroupBy>
+  aggregate?: Maybe<CmsPageAggregator>
 }
 
-export interface CmsPageConnectionId {
+export type CmsPageConnectionId = {
   __typename?: 'CmsPageConnectionId'
-  key: Maybe<Scalars['ID']>
-  connection: Maybe<CmsPageConnection>
+  key?: Maybe<Scalars['ID']>
+  connection?: Maybe<CmsPageConnection>
 }
 
-export interface CmsPageConnectionMeta {
+export type CmsPageConnectionMeta = {
   __typename?: 'CmsPageConnectionMeta'
-  key: Maybe<Scalars['ID']>
-  connection: Maybe<CmsPageConnection>
+  key?: Maybe<Scalars['ID']>
+  connection?: Maybe<CmsPageConnection>
 }
 
-export interface CmsPageConnectionName {
+export type CmsPageConnectionName = {
   __typename?: 'CmsPageConnectionName'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<CmsPageConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<CmsPageConnection>
 }
 
-export interface CmsPageConnectionSlug {
+export type CmsPageConnectionSlug = {
   __typename?: 'CmsPageConnectionSlug'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<CmsPageConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<CmsPageConnection>
 }
 
-export interface CmsPageConnectionText {
+export type CmsPageConnectionText = {
   __typename?: 'CmsPageConnectionText'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<CmsPageConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<CmsPageConnection>
 }
 
-export interface CmsPageGroupBy {
+export type CmsPageGroupBy = {
   __typename?: 'CmsPageGroupBy'
-  id: Maybe<Array<Maybe<CmsPageConnectionId>>>
-  name: Maybe<Array<Maybe<CmsPageConnectionName>>>
-  text: Maybe<Array<Maybe<CmsPageConnectionText>>>
-  slug: Maybe<Array<Maybe<CmsPageConnectionSlug>>>
-  meta: Maybe<Array<Maybe<CmsPageConnectionMeta>>>
+  id?: Maybe<Array<Maybe<CmsPageConnectionId>>>
+  name?: Maybe<Array<Maybe<CmsPageConnectionName>>>
+  text?: Maybe<Array<Maybe<CmsPageConnectionText>>>
+  slug?: Maybe<Array<Maybe<CmsPageConnectionSlug>>>
+  meta?: Maybe<Array<Maybe<CmsPageConnectionMeta>>>
 }
 
-export interface CmsSection {
+export type CmsSection = {
   __typename?: 'CmsSection'
   id: Scalars['ID']
   title: Scalars['String']
-  description: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
   slug: Scalars['String']
-  cards: Maybe<Array<Maybe<ComponentOrganismsCard>>>
-  records: Maybe<Array<Maybe<ComponentMoleculesRecord>>>
-  card: Maybe<ComponentOrganismsCard>
+  cards?: Maybe<Array<Maybe<ComponentOrganismsCard>>>
+  records?: Maybe<Array<Maybe<ComponentMoleculesRecord>>>
+  card?: Maybe<ComponentOrganismsCard>
 }
 
-export interface CmsSectionAggregator {
+export type CmsSectionAggregator = {
   __typename?: 'CmsSectionAggregator'
-  count: Maybe<Scalars['Int']>
-  totalCount: Maybe<Scalars['Int']>
+  count?: Maybe<Scalars['Int']>
+  totalCount?: Maybe<Scalars['Int']>
 }
 
-export interface CmsSectionConnection {
+export type CmsSectionConnection = {
   __typename?: 'CmsSectionConnection'
-  values: Maybe<Array<Maybe<CmsSection>>>
-  groupBy: Maybe<CmsSectionGroupBy>
-  aggregate: Maybe<CmsSectionAggregator>
+  values?: Maybe<Array<Maybe<CmsSection>>>
+  groupBy?: Maybe<CmsSectionGroupBy>
+  aggregate?: Maybe<CmsSectionAggregator>
 }
 
-export interface CmsSectionConnectionDescription {
+export type CmsSectionConnectionDescription = {
   __typename?: 'CmsSectionConnectionDescription'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<CmsSectionConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<CmsSectionConnection>
 }
 
-export interface CmsSectionConnectionId {
+export type CmsSectionConnectionId = {
   __typename?: 'CmsSectionConnectionId'
-  key: Maybe<Scalars['ID']>
-  connection: Maybe<CmsSectionConnection>
+  key?: Maybe<Scalars['ID']>
+  connection?: Maybe<CmsSectionConnection>
 }
 
-export interface CmsSectionConnectionSlug {
+export type CmsSectionConnectionSlug = {
   __typename?: 'CmsSectionConnectionSlug'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<CmsSectionConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<CmsSectionConnection>
 }
 
-export interface CmsSectionConnectionTitle {
+export type CmsSectionConnectionTitle = {
   __typename?: 'CmsSectionConnectionTitle'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<CmsSectionConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<CmsSectionConnection>
 }
 
-export interface CmsSectionGroupBy {
+export type CmsSectionGroupBy = {
   __typename?: 'CmsSectionGroupBy'
-  id: Maybe<Array<Maybe<CmsSectionConnectionId>>>
-  title: Maybe<Array<Maybe<CmsSectionConnectionTitle>>>
-  description: Maybe<Array<Maybe<CmsSectionConnectionDescription>>>
-  slug: Maybe<Array<Maybe<CmsSectionConnectionSlug>>>
+  id?: Maybe<Array<Maybe<CmsSectionConnectionId>>>
+  title?: Maybe<Array<Maybe<CmsSectionConnectionTitle>>>
+  description?: Maybe<Array<Maybe<CmsSectionConnectionDescription>>>
+  slug?: Maybe<Array<Maybe<CmsSectionConnectionSlug>>>
 }
 
-export interface CmsWebsite {
+export type CmsWebsite = {
   __typename?: 'CmsWebsite'
   id: Scalars['ID']
-  name: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
   slug: Scalars['String']
-  logo: Maybe<UploadFile>
-  googleAnalyticsCode: Maybe<Scalars['String']>
-  googleTagManagerCode: Maybe<Scalars['String']>
-  menu: Maybe<Array<Maybe<ComponentMoleculesMenu>>>
+  logo?: Maybe<UploadFile>
+  googleAnalyticsCode?: Maybe<Scalars['String']>
+  googleTagManagerCode?: Maybe<Scalars['String']>
+  menu?: Maybe<Array<Maybe<ComponentMoleculesMenu>>>
 }
 
 /** Key-Value entry */
-export interface ComponentAtomsEntry {
+export type ComponentAtomsEntry = {
   __typename?: 'ComponentAtomsEntry'
   id: Scalars['ID']
   key: Scalars['String']
-  value: Maybe<Scalars['String']>
+  value?: Maybe<Scalars['String']>
 }
 
 export type ComponentAtomsEntryInput = {
   key: Scalars['String']
-  value: Maybe<Scalars['String']>
+  value?: Maybe<Scalars['String']>
 }
 
-export interface ComponentAtomsLink {
+export type ComponentAtomsLink = {
   __typename?: 'ComponentAtomsLink'
   id: Scalars['ID']
-  text: Maybe<Scalars['String']>
+  text?: Maybe<Scalars['String']>
   url: Scalars['String']
-  extra: Maybe<Scalars['String']>
+  extra?: Maybe<Scalars['String']>
 }
 
 export type ComponentAtomsLinkInput = {
-  text: Maybe<Scalars['String']>
+  text?: Maybe<Scalars['String']>
   url: Scalars['String']
-  extra: Maybe<Scalars['String']>
+  extra?: Maybe<Scalars['String']>
 }
 
-export interface ComponentAtomsNumeric {
+export type ComponentAtomsNumeric = {
   __typename?: 'ComponentAtomsNumeric'
   id: Scalars['ID']
   value: Scalars['Float']
-  unit: Maybe<Scalars['String']>
+  unit?: Maybe<Scalars['String']>
   min: Scalars['Float']
   max: Scalars['Float']
 }
 
 export type ComponentAtomsNumericInput = {
   value: Scalars['Float']
-  unit: Maybe<Scalars['String']>
-  min: Maybe<Scalars['Float']>
-  max: Maybe<Scalars['Float']>
+  unit?: Maybe<Scalars['String']>
+  min?: Maybe<Scalars['Float']>
+  max?: Maybe<Scalars['Float']>
 }
 
 /** Text node */
-export interface ComponentAtomsText {
+export type ComponentAtomsText = {
   __typename?: 'ComponentAtomsText'
   id: Scalars['ID']
   value: Scalars['String']
@@ -392,149 +392,151 @@ export type ComponentAtomsTextInput = {
   value: Scalars['String']
 }
 
-export interface ComponentMoleculesMenu {
+export type ComponentMoleculesMenu = {
   __typename?: 'ComponentMoleculesMenu'
   id: Scalars['ID']
-  links: Maybe<Array<Maybe<ComponentAtomsLink>>>
+  links?: Maybe<Array<Maybe<ComponentAtomsLink>>>
   slug: Scalars['String']
 }
 
 export type ComponentMoleculesMenuInput = {
-  links: Maybe<Array<Maybe<ComponentAtomsLinkInput>>>
-  slug: Maybe<Scalars['String']>
+  links?: Maybe<Array<Maybe<ComponentAtomsLinkInput>>>
+  slug?: Maybe<Scalars['String']>
 }
 
-export interface ComponentMoleculesRecord {
+export type ComponentMoleculesRecord = {
   __typename?: 'ComponentMoleculesRecord'
   id: Scalars['ID']
-  entries: Maybe<Array<Maybe<ComponentAtomsEntry>>>
+  entries?: Maybe<Array<Maybe<ComponentAtomsEntry>>>
   slug: Scalars['String']
 }
 
 export type ComponentMoleculesRecordInput = {
-  entries: Maybe<Array<ComponentAtomsEntryInput>>
-  slug: Maybe<Scalars['String']>
+  entries?: Maybe<Array<ComponentAtomsEntryInput>>
+  slug?: Maybe<Scalars['String']>
 }
 
-export interface ComponentOrganismsCard {
+export type ComponentOrganismsCard = {
   __typename?: 'ComponentOrganismsCard'
   id: Scalars['ID']
-  title: Maybe<Scalars['String']>
-  subTitle: Maybe<Scalars['String']>
-  description: Maybe<Scalars['String']>
-  extra: Maybe<Scalars['String']>
-  text: Maybe<Scalars['String']>
-  media: Maybe<UploadFile>
-  active: Maybe<Scalars['Boolean']>
-  backgroundColor: Maybe<Scalars['String']>
-  link: Maybe<ComponentAtomsLink>
-  slug: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  subTitle?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  extra?: Maybe<Scalars['String']>
+  text?: Maybe<Scalars['String']>
+  media?: Maybe<UploadFile>
+  active?: Maybe<Scalars['Boolean']>
+  backgroundColor?: Maybe<Scalars['String']>
+  link?: Maybe<ComponentAtomsLink>
+  slug?: Maybe<Scalars['String']>
 }
 
 export type ComponentOrganismsCardInput = {
-  title: Maybe<Scalars['String']>
-  subTitle: Maybe<Scalars['String']>
-  description: Maybe<Scalars['String']>
-  extra: Maybe<Scalars['String']>
-  text: Maybe<Scalars['String']>
-  media: Maybe<Scalars['ID']>
-  active: Maybe<Scalars['Boolean']>
-  backgroundColor: Maybe<Scalars['String']>
-  link: Maybe<ComponentAtomsLinkInput>
-  slug: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  subTitle?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  extra?: Maybe<Scalars['String']>
+  text?: Maybe<Scalars['String']>
+  media?: Maybe<Scalars['ID']>
+  active?: Maybe<Scalars['Boolean']>
+  backgroundColor?: Maybe<Scalars['String']>
+  link?: Maybe<ComponentAtomsLinkInput>
+  slug?: Maybe<Scalars['String']>
 }
 
-export interface ComponentOrganismsMeta {
+export type ComponentOrganismsMeta = {
   __typename?: 'ComponentOrganismsMeta'
   id: Scalars['ID']
-  title: Maybe<Scalars['String']>
-  description: Maybe<Scalars['String']>
-  keywords: Maybe<Array<Maybe<ComponentAtomsText>>>
+  title?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  keywords?: Maybe<Array<Maybe<ComponentAtomsText>>>
 }
 
 export type ComponentOrganismsMetaInput = {
-  title: Maybe<Scalars['String']>
-  description: Maybe<Scalars['String']>
-  keywords: Maybe<Array<Maybe<ComponentAtomsTextInput>>>
+  title?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  keywords?: Maybe<Array<Maybe<ComponentAtomsTextInput>>>
 }
 
 export type ContactInput = {
   email: Scalars['String']
   name: Scalars['String']
-  subject: Maybe<Scalars['String']>
-  message: Maybe<Scalars['String']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  subject?: Maybe<Scalars['String']>
+  message?: Maybe<Scalars['String']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
-export interface EmailDesignerEmailTemplate {
+export type EmailDesignerEmailTemplate = {
   __typename?: 'EmailDesignerEmailTemplate'
   id: Scalars['ID']
   created_at: Scalars['DateTime']
   updated_at: Scalars['DateTime']
-  design: Maybe<Scalars['JSON']>
-  name: Maybe<Scalars['String']>
-  subject: Maybe<Scalars['String']>
-  bodyHtml: Maybe<Scalars['String']>
-  bodyText: Maybe<Scalars['String']>
-  enabled: Maybe<Scalars['Boolean']>
-  tags: Maybe<Scalars['JSON']>
+  sourceCodeToTemplateId?: Maybe<Scalars['Int']>
+  design?: Maybe<Scalars['JSON']>
+  name?: Maybe<Scalars['String']>
+  subject?: Maybe<Scalars['String']>
+  bodyHtml?: Maybe<Scalars['String']>
+  bodyText?: Maybe<Scalars['String']>
+  enabled?: Maybe<Scalars['Boolean']>
+  tags?: Maybe<Scalars['JSON']>
 }
 
 export type EmailTemplateInput = {
-  design: Maybe<Scalars['JSON']>
-  name: Maybe<Scalars['String']>
-  subject: Maybe<Scalars['String']>
-  bodyHtml: Maybe<Scalars['String']>
-  bodyText: Maybe<Scalars['String']>
-  enabled: Maybe<Scalars['Boolean']>
-  tags: Maybe<Scalars['JSON']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  sourceCodeToTemplateId?: Maybe<Scalars['Int']>
+  design?: Maybe<Scalars['JSON']>
+  name?: Maybe<Scalars['String']>
+  subject?: Maybe<Scalars['String']>
+  bodyHtml?: Maybe<Scalars['String']>
+  bodyText?: Maybe<Scalars['String']>
+  enabled?: Maybe<Scalars['Boolean']>
+  tags?: Maybe<Scalars['JSON']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
-export interface FeedbackContact {
+export type FeedbackContact = {
   __typename?: 'FeedbackContact'
   id: Scalars['ID']
   email: Scalars['String']
   name: Scalars['String']
-  subject: Maybe<Scalars['String']>
-  message: Maybe<Scalars['String']>
+  subject?: Maybe<Scalars['String']>
+  message?: Maybe<Scalars['String']>
 }
 
 export type FileInfoInput = {
-  name: Maybe<Scalars['String']>
-  alternativeText: Maybe<Scalars['String']>
-  caption: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
+  alternativeText?: Maybe<Scalars['String']>
+  caption?: Maybe<Scalars['String']>
 }
 
 export type FileInput = {
   name: Scalars['String']
-  alternativeText: Maybe<Scalars['String']>
-  caption: Maybe<Scalars['String']>
-  width: Maybe<Scalars['Int']>
-  height: Maybe<Scalars['Int']>
-  formats: Maybe<Scalars['JSON']>
+  alternativeText?: Maybe<Scalars['String']>
+  caption?: Maybe<Scalars['String']>
+  width?: Maybe<Scalars['Int']>
+  height?: Maybe<Scalars['Int']>
+  formats?: Maybe<Scalars['JSON']>
   hash: Scalars['String']
-  ext: Maybe<Scalars['String']>
+  ext?: Maybe<Scalars['String']>
   mime: Scalars['String']
   size: Scalars['Float']
   url: Scalars['String']
-  previewUrl: Maybe<Scalars['String']>
+  previewUrl?: Maybe<Scalars['String']>
   provider: Scalars['String']
-  provider_metadata: Maybe<Scalars['JSON']>
-  related: Maybe<Array<Maybe<Scalars['ID']>>>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  provider_metadata?: Maybe<Scalars['JSON']>
+  related?: Maybe<Array<Maybe<Scalars['ID']>>>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
-export interface I18NLocale {
+export type I18NLocale = {
   __typename?: 'I18NLocale'
   id: Scalars['ID']
   created_at: Scalars['DateTime']
   updated_at: Scalars['DateTime']
-  name: Maybe<Scalars['String']>
-  code: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
+  code?: Maybe<Scalars['String']>
 }
 
 export type InputId = {
@@ -542,20 +544,20 @@ export type InputId = {
 }
 
 export type LocaleInput = {
-  name: Maybe<Scalars['String']>
-  code: Maybe<Scalars['String']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  name?: Maybe<Scalars['String']>
+  code?: Maybe<Scalars['String']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type MetaInput = {
-  slug: Maybe<Scalars['String']>
-  title: Maybe<Scalars['String']>
-  description: Maybe<Scalars['String']>
-  keywords: Maybe<Scalars['String']>
-  published_at: Maybe<Scalars['DateTime']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  slug?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  keywords?: Maybe<Scalars['String']>
+  published_at?: Maybe<Scalars['DateTime']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type Morph =
@@ -664,79 +666,79 @@ export type Morph =
   | ComponentOrganismsCard
   | ComponentOrganismsMeta
 
-export interface Mutation {
+export type Mutation = {
   __typename?: 'Mutation'
   /** Delete one file */
-  deleteFile: Maybe<DeleteFilePayload>
+  deleteFile?: Maybe<DeleteFilePayload>
   /** Create a new role */
-  createRole: Maybe<CreateRolePayload>
+  createRole?: Maybe<CreateRolePayload>
   /** Update an existing role */
-  updateRole: Maybe<UpdateRolePayload>
+  updateRole?: Maybe<UpdateRolePayload>
   /** Delete an existing role */
-  deleteRole: Maybe<DeleteRolePayload>
+  deleteRole?: Maybe<DeleteRolePayload>
   /** Create a new user */
-  createUser: Maybe<CreateUserPayload>
+  createUser?: Maybe<CreateUserPayload>
   /** Update an existing user */
-  updateUser: Maybe<UpdateUserPayload>
+  updateUser?: Maybe<UpdateUserPayload>
   /** Delete an existing user */
-  deleteUser: Maybe<DeleteUserPayload>
-  createContact: Maybe<CreateContactPayload>
+  deleteUser?: Maybe<DeleteUserPayload>
+  createContact?: Maybe<CreateContactPayload>
   upload: UploadFile
   multipleUpload: Array<Maybe<UploadFile>>
   updateFileInfo: UploadFile
   login: UsersPermissionsLoginPayload
   register: UsersPermissionsLoginPayload
-  forgotPassword: Maybe<UserPermissionsPasswordPayload>
-  resetPassword: Maybe<UsersPermissionsLoginPayload>
-  emailConfirmation: Maybe<UsersPermissionsLoginPayload>
+  forgotPassword?: Maybe<UserPermissionsPasswordPayload>
+  resetPassword?: Maybe<UsersPermissionsLoginPayload>
+  emailConfirmation?: Maybe<UsersPermissionsLoginPayload>
 }
 
 export type MutationDeleteFileArgs = {
-  input: Maybe<DeleteFileInput>
+  input?: Maybe<DeleteFileInput>
 }
 
 export type MutationCreateRoleArgs = {
-  input: Maybe<CreateRoleInput>
+  input?: Maybe<CreateRoleInput>
 }
 
 export type MutationUpdateRoleArgs = {
-  input: Maybe<UpdateRoleInput>
+  input?: Maybe<UpdateRoleInput>
 }
 
 export type MutationDeleteRoleArgs = {
-  input: Maybe<DeleteRoleInput>
+  input?: Maybe<DeleteRoleInput>
 }
 
 export type MutationCreateUserArgs = {
-  input: Maybe<CreateUserInput>
+  input?: Maybe<CreateUserInput>
 }
 
 export type MutationUpdateUserArgs = {
-  input: Maybe<UpdateUserInput>
+  input?: Maybe<UpdateUserInput>
 }
 
 export type MutationDeleteUserArgs = {
-  input: Maybe<DeleteUserInput>
+  input?: Maybe<DeleteUserInput>
 }
 
 export type MutationCreateContactArgs = {
-  input: Maybe<CreateContactInput>
+  input?: Maybe<CreateContactInput>
 }
 
 export type MutationUploadArgs = {
-  refId: Maybe<Scalars['ID']>
-  ref: Maybe<Scalars['String']>
-  field: Maybe<Scalars['String']>
-  source: Maybe<Scalars['String']>
-  info: Maybe<FileInfoInput>
+  refId?: Maybe<Scalars['ID']>
+  ref?: Maybe<Scalars['String']>
+  field?: Maybe<Scalars['String']>
+  source?: Maybe<Scalars['String']>
+  info?: Maybe<FileInfoInput>
   file: Scalars['Upload']
 }
 
 export type MutationMultipleUploadArgs = {
-  refId: Maybe<Scalars['ID']>
-  ref: Maybe<Scalars['String']>
-  field: Maybe<Scalars['String']>
-  source: Maybe<Scalars['String']>
+  refId?: Maybe<Scalars['ID']>
+  ref?: Maybe<Scalars['String']>
+  field?: Maybe<Scalars['String']>
+  source?: Maybe<Scalars['String']>
   files: Array<Maybe<Scalars['Upload']>>
 }
 
@@ -770,13 +772,13 @@ export type MutationEmailConfirmationArgs = {
 export type PageInput = {
   name: Scalars['String']
   text: Scalars['String']
-  cover: Maybe<Array<Maybe<Scalars['ID']>>>
+  cover?: Maybe<Array<Maybe<Scalars['ID']>>>
   slug: Scalars['String']
-  categories: Maybe<Array<Maybe<Scalars['ID']>>>
-  meta: Maybe<ComponentOrganismsMetaInput>
-  published_at: Maybe<Scalars['DateTime']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  categories?: Maybe<Array<Maybe<Scalars['ID']>>>
+  meta?: Maybe<ComponentOrganismsMetaInput>
+  published_at?: Maybe<Scalars['DateTime']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export enum PublicationState {
@@ -784,409 +786,409 @@ export enum PublicationState {
   Preview = 'PREVIEW',
 }
 
-export interface Query {
+export type Query = {
   __typename?: 'Query'
-  files: Maybe<Array<Maybe<UploadFile>>>
-  filesConnection: Maybe<UploadFileConnection>
-  role: Maybe<UsersPermissionsRole>
+  files?: Maybe<Array<Maybe<UploadFile>>>
+  filesConnection?: Maybe<UploadFileConnection>
+  role?: Maybe<UsersPermissionsRole>
   /** Retrieve all the existing roles. You can't apply filters on this query. */
-  roles: Maybe<Array<Maybe<UsersPermissionsRole>>>
-  rolesConnection: Maybe<UsersPermissionsRoleConnection>
-  user: Maybe<UsersPermissionsUser>
-  users: Maybe<Array<Maybe<UsersPermissionsUser>>>
-  usersConnection: Maybe<UsersPermissionsUserConnection>
-  category: Maybe<CmsCategory>
-  categories: Maybe<Array<Maybe<CmsCategory>>>
-  categoriesConnection: Maybe<CmsCategoryConnection>
-  meta: Maybe<CmsMeta>
-  metas: Maybe<Array<Maybe<CmsMeta>>>
-  metasConnection: Maybe<CmsMetaConnection>
-  page: Maybe<CmsPage>
-  pages: Maybe<Array<Maybe<CmsPage>>>
-  pagesConnection: Maybe<CmsPageConnection>
-  section: Maybe<CmsSection>
-  sections: Maybe<Array<Maybe<CmsSection>>>
-  sectionsConnection: Maybe<CmsSectionConnection>
-  website: Maybe<CmsWebsite>
-  me: Maybe<UsersPermissionsMe>
+  roles?: Maybe<Array<Maybe<UsersPermissionsRole>>>
+  rolesConnection?: Maybe<UsersPermissionsRoleConnection>
+  user?: Maybe<UsersPermissionsUser>
+  users?: Maybe<Array<Maybe<UsersPermissionsUser>>>
+  usersConnection?: Maybe<UsersPermissionsUserConnection>
+  category?: Maybe<CmsCategory>
+  categories?: Maybe<Array<Maybe<CmsCategory>>>
+  categoriesConnection?: Maybe<CmsCategoryConnection>
+  meta?: Maybe<CmsMeta>
+  metas?: Maybe<Array<Maybe<CmsMeta>>>
+  metasConnection?: Maybe<CmsMetaConnection>
+  page?: Maybe<CmsPage>
+  pages?: Maybe<Array<Maybe<CmsPage>>>
+  pagesConnection?: Maybe<CmsPageConnection>
+  section?: Maybe<CmsSection>
+  sections?: Maybe<Array<Maybe<CmsSection>>>
+  sectionsConnection?: Maybe<CmsSectionConnection>
+  website?: Maybe<CmsWebsite>
+  me?: Maybe<UsersPermissionsMe>
 }
 
 export type QueryFilesArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
-  publicationState: Maybe<PublicationState>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QueryFilesConnectionArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
 export type QueryRoleArgs = {
   id: Scalars['ID']
-  publicationState: Maybe<PublicationState>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QueryRolesArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
-  publicationState: Maybe<PublicationState>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QueryRolesConnectionArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
 export type QueryUserArgs = {
   id: Scalars['ID']
-  publicationState: Maybe<PublicationState>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QueryUsersArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
-  publicationState: Maybe<PublicationState>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QueryUsersConnectionArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
 export type QueryCategoryArgs = {
   id: Scalars['ID']
-  publicationState: Maybe<PublicationState>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QueryCategoriesArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
-  publicationState: Maybe<PublicationState>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QueryCategoriesConnectionArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
 export type QueryMetaArgs = {
   id: Scalars['ID']
-  publicationState: Maybe<PublicationState>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QueryMetasArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
-  publicationState: Maybe<PublicationState>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QueryMetasConnectionArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
 export type QueryPageArgs = {
   id: Scalars['ID']
-  publicationState: Maybe<PublicationState>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QueryPagesArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
-  publicationState: Maybe<PublicationState>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QueryPagesConnectionArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
 export type QuerySectionArgs = {
   id: Scalars['ID']
-  publicationState: Maybe<PublicationState>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QuerySectionsArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
-  publicationState: Maybe<PublicationState>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type QuerySectionsConnectionArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
 export type QueryWebsiteArgs = {
   id: Scalars['ID']
-  publicationState: Maybe<PublicationState>
+  publicationState?: Maybe<PublicationState>
 }
 
 export type RoleInput = {
   name: Scalars['String']
-  description: Maybe<Scalars['String']>
-  type: Maybe<Scalars['String']>
-  permissions: Maybe<Array<Maybe<Scalars['ID']>>>
-  users: Maybe<Array<Maybe<Scalars['ID']>>>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  description?: Maybe<Scalars['String']>
+  type?: Maybe<Scalars['String']>
+  permissions?: Maybe<Array<Maybe<Scalars['ID']>>>
+  users?: Maybe<Array<Maybe<Scalars['ID']>>>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type SectionInput = {
-  title: Maybe<Scalars['String']>
-  description: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
   slug: Scalars['String']
-  cards: Maybe<Array<Maybe<ComponentOrganismsCardInput>>>
-  records: Maybe<Array<Maybe<ComponentMoleculesRecordInput>>>
-  published_at: Maybe<Scalars['DateTime']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  cards?: Maybe<Array<Maybe<ComponentOrganismsCardInput>>>
+  records?: Maybe<Array<Maybe<ComponentMoleculesRecordInput>>>
+  published_at?: Maybe<Scalars['DateTime']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
-export interface UploadFile {
+export type UploadFile = {
   __typename?: 'UploadFile'
   id: Scalars['ID']
   created_at: Scalars['DateTime']
   updated_at: Scalars['DateTime']
   name: Scalars['String']
-  alternativeText: Maybe<Scalars['String']>
-  caption: Maybe<Scalars['String']>
-  width: Maybe<Scalars['Int']>
-  height: Maybe<Scalars['Int']>
-  formats: Maybe<Scalars['JSON']>
+  alternativeText?: Maybe<Scalars['String']>
+  caption?: Maybe<Scalars['String']>
+  width?: Maybe<Scalars['Int']>
+  height?: Maybe<Scalars['Int']>
+  formats?: Maybe<Scalars['JSON']>
   hash: Scalars['String']
-  ext: Maybe<Scalars['String']>
+  ext?: Maybe<Scalars['String']>
   mime: Scalars['String']
   size: Scalars['Float']
   url: Scalars['String']
-  previewUrl: Maybe<Scalars['String']>
+  previewUrl?: Maybe<Scalars['String']>
   provider: Scalars['String']
-  provider_metadata: Maybe<Scalars['JSON']>
-  related: Maybe<Array<Maybe<Morph>>>
+  provider_metadata?: Maybe<Scalars['JSON']>
+  related?: Maybe<Array<Maybe<Morph>>>
 }
 
 export type UploadFileRelatedArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
-export interface UploadFileAggregator {
+export type UploadFileAggregator = {
   __typename?: 'UploadFileAggregator'
-  count: Maybe<Scalars['Int']>
-  totalCount: Maybe<Scalars['Int']>
-  sum: Maybe<UploadFileAggregatorSum>
-  avg: Maybe<UploadFileAggregatorAvg>
-  min: Maybe<UploadFileAggregatorMin>
-  max: Maybe<UploadFileAggregatorMax>
+  count?: Maybe<Scalars['Int']>
+  totalCount?: Maybe<Scalars['Int']>
+  sum?: Maybe<UploadFileAggregatorSum>
+  avg?: Maybe<UploadFileAggregatorAvg>
+  min?: Maybe<UploadFileAggregatorMin>
+  max?: Maybe<UploadFileAggregatorMax>
 }
 
-export interface UploadFileAggregatorAvg {
+export type UploadFileAggregatorAvg = {
   __typename?: 'UploadFileAggregatorAvg'
-  width: Maybe<Scalars['Float']>
-  height: Maybe<Scalars['Float']>
-  size: Maybe<Scalars['Float']>
+  width?: Maybe<Scalars['Float']>
+  height?: Maybe<Scalars['Float']>
+  size?: Maybe<Scalars['Float']>
 }
 
-export interface UploadFileAggregatorMax {
+export type UploadFileAggregatorMax = {
   __typename?: 'UploadFileAggregatorMax'
-  width: Maybe<Scalars['Float']>
-  height: Maybe<Scalars['Float']>
-  size: Maybe<Scalars['Float']>
+  width?: Maybe<Scalars['Float']>
+  height?: Maybe<Scalars['Float']>
+  size?: Maybe<Scalars['Float']>
 }
 
-export interface UploadFileAggregatorMin {
+export type UploadFileAggregatorMin = {
   __typename?: 'UploadFileAggregatorMin'
-  width: Maybe<Scalars['Float']>
-  height: Maybe<Scalars['Float']>
-  size: Maybe<Scalars['Float']>
+  width?: Maybe<Scalars['Float']>
+  height?: Maybe<Scalars['Float']>
+  size?: Maybe<Scalars['Float']>
 }
 
-export interface UploadFileAggregatorSum {
+export type UploadFileAggregatorSum = {
   __typename?: 'UploadFileAggregatorSum'
-  width: Maybe<Scalars['Float']>
-  height: Maybe<Scalars['Float']>
-  size: Maybe<Scalars['Float']>
+  width?: Maybe<Scalars['Float']>
+  height?: Maybe<Scalars['Float']>
+  size?: Maybe<Scalars['Float']>
 }
 
-export interface UploadFileConnection {
+export type UploadFileConnection = {
   __typename?: 'UploadFileConnection'
-  values: Maybe<Array<Maybe<UploadFile>>>
-  groupBy: Maybe<UploadFileGroupBy>
-  aggregate: Maybe<UploadFileAggregator>
+  values?: Maybe<Array<Maybe<UploadFile>>>
+  groupBy?: Maybe<UploadFileGroupBy>
+  aggregate?: Maybe<UploadFileAggregator>
 }
 
-export interface UploadFileConnectionAlternativeText {
+export type UploadFileConnectionAlternativeText = {
   __typename?: 'UploadFileConnectionAlternativeText'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionCaption {
+export type UploadFileConnectionCaption = {
   __typename?: 'UploadFileConnectionCaption'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionCreated_At {
+export type UploadFileConnectionCreated_At = {
   __typename?: 'UploadFileConnectionCreated_at'
-  key: Maybe<Scalars['DateTime']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['DateTime']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionExt {
+export type UploadFileConnectionExt = {
   __typename?: 'UploadFileConnectionExt'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionFormats {
+export type UploadFileConnectionFormats = {
   __typename?: 'UploadFileConnectionFormats'
-  key: Maybe<Scalars['JSON']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['JSON']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionHash {
+export type UploadFileConnectionHash = {
   __typename?: 'UploadFileConnectionHash'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionHeight {
+export type UploadFileConnectionHeight = {
   __typename?: 'UploadFileConnectionHeight'
-  key: Maybe<Scalars['Int']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['Int']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionId {
+export type UploadFileConnectionId = {
   __typename?: 'UploadFileConnectionId'
-  key: Maybe<Scalars['ID']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['ID']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionMime {
+export type UploadFileConnectionMime = {
   __typename?: 'UploadFileConnectionMime'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionName {
+export type UploadFileConnectionName = {
   __typename?: 'UploadFileConnectionName'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionPreviewUrl {
+export type UploadFileConnectionPreviewUrl = {
   __typename?: 'UploadFileConnectionPreviewUrl'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionProvider {
+export type UploadFileConnectionProvider = {
   __typename?: 'UploadFileConnectionProvider'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionProvider_Metadata {
+export type UploadFileConnectionProvider_Metadata = {
   __typename?: 'UploadFileConnectionProvider_metadata'
-  key: Maybe<Scalars['JSON']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['JSON']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionSize {
+export type UploadFileConnectionSize = {
   __typename?: 'UploadFileConnectionSize'
-  key: Maybe<Scalars['Float']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['Float']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionUpdated_At {
+export type UploadFileConnectionUpdated_At = {
   __typename?: 'UploadFileConnectionUpdated_at'
-  key: Maybe<Scalars['DateTime']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['DateTime']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionUrl {
+export type UploadFileConnectionUrl = {
   __typename?: 'UploadFileConnectionUrl'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileConnectionWidth {
+export type UploadFileConnectionWidth = {
   __typename?: 'UploadFileConnectionWidth'
-  key: Maybe<Scalars['Int']>
-  connection: Maybe<UploadFileConnection>
+  key?: Maybe<Scalars['Int']>
+  connection?: Maybe<UploadFileConnection>
 }
 
-export interface UploadFileGroupBy {
+export type UploadFileGroupBy = {
   __typename?: 'UploadFileGroupBy'
-  id: Maybe<Array<Maybe<UploadFileConnectionId>>>
-  created_at: Maybe<Array<Maybe<UploadFileConnectionCreated_At>>>
-  updated_at: Maybe<Array<Maybe<UploadFileConnectionUpdated_At>>>
-  name: Maybe<Array<Maybe<UploadFileConnectionName>>>
-  alternativeText: Maybe<Array<Maybe<UploadFileConnectionAlternativeText>>>
-  caption: Maybe<Array<Maybe<UploadFileConnectionCaption>>>
-  width: Maybe<Array<Maybe<UploadFileConnectionWidth>>>
-  height: Maybe<Array<Maybe<UploadFileConnectionHeight>>>
-  formats: Maybe<Array<Maybe<UploadFileConnectionFormats>>>
-  hash: Maybe<Array<Maybe<UploadFileConnectionHash>>>
-  ext: Maybe<Array<Maybe<UploadFileConnectionExt>>>
-  mime: Maybe<Array<Maybe<UploadFileConnectionMime>>>
-  size: Maybe<Array<Maybe<UploadFileConnectionSize>>>
-  url: Maybe<Array<Maybe<UploadFileConnectionUrl>>>
-  previewUrl: Maybe<Array<Maybe<UploadFileConnectionPreviewUrl>>>
-  provider: Maybe<Array<Maybe<UploadFileConnectionProvider>>>
-  provider_metadata: Maybe<Array<Maybe<UploadFileConnectionProvider_Metadata>>>
+  id?: Maybe<Array<Maybe<UploadFileConnectionId>>>
+  created_at?: Maybe<Array<Maybe<UploadFileConnectionCreated_At>>>
+  updated_at?: Maybe<Array<Maybe<UploadFileConnectionUpdated_At>>>
+  name?: Maybe<Array<Maybe<UploadFileConnectionName>>>
+  alternativeText?: Maybe<Array<Maybe<UploadFileConnectionAlternativeText>>>
+  caption?: Maybe<Array<Maybe<UploadFileConnectionCaption>>>
+  width?: Maybe<Array<Maybe<UploadFileConnectionWidth>>>
+  height?: Maybe<Array<Maybe<UploadFileConnectionHeight>>>
+  formats?: Maybe<Array<Maybe<UploadFileConnectionFormats>>>
+  hash?: Maybe<Array<Maybe<UploadFileConnectionHash>>>
+  ext?: Maybe<Array<Maybe<UploadFileConnectionExt>>>
+  mime?: Maybe<Array<Maybe<UploadFileConnectionMime>>>
+  size?: Maybe<Array<Maybe<UploadFileConnectionSize>>>
+  url?: Maybe<Array<Maybe<UploadFileConnectionUrl>>>
+  previewUrl?: Maybe<Array<Maybe<UploadFileConnectionPreviewUrl>>>
+  provider?: Maybe<Array<Maybe<UploadFileConnectionProvider>>>
+  provider_metadata?: Maybe<Array<Maybe<UploadFileConnectionProvider_Metadata>>>
 }
 
 export type UserInput = {
   username: Scalars['String']
-  resetPasswordToken: Maybe<Scalars['String']>
-  confirmationToken: Maybe<Scalars['String']>
-  confirmed: Maybe<Scalars['Boolean']>
-  password: Maybe<Scalars['String']>
+  resetPasswordToken?: Maybe<Scalars['String']>
+  confirmationToken?: Maybe<Scalars['String']>
+  confirmed?: Maybe<Scalars['Boolean']>
+  password?: Maybe<Scalars['String']>
   email: Scalars['String']
-  provider: Maybe<Scalars['String']>
-  blocked: Maybe<Scalars['Boolean']>
-  role: Maybe<Scalars['ID']>
-  firstName: Maybe<Scalars['String']>
-  lastName: Maybe<Scalars['String']>
-  photo: Maybe<Scalars['ID']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  provider?: Maybe<Scalars['String']>
+  blocked?: Maybe<Scalars['Boolean']>
+  role?: Maybe<Scalars['ID']>
+  firstName?: Maybe<Scalars['String']>
+  lastName?: Maybe<Scalars['String']>
+  photo?: Maybe<Scalars['ID']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
-export interface UserPermissionsPasswordPayload {
+export type UserPermissionsPasswordPayload = {
   __typename?: 'UserPermissionsPasswordPayload'
   ok: Scalars['Boolean']
 }
@@ -1194,42 +1196,42 @@ export interface UserPermissionsPasswordPayload {
 export type UsersPermissionsLoginInput = {
   identifier: Scalars['String']
   password: Scalars['String']
-  provider: Maybe<Scalars['String']>
+  provider?: Maybe<Scalars['String']>
 }
 
-export interface UsersPermissionsLoginPayload {
+export type UsersPermissionsLoginPayload = {
   __typename?: 'UsersPermissionsLoginPayload'
-  jwt: Maybe<Scalars['String']>
+  jwt?: Maybe<Scalars['String']>
   user: UsersPermissionsMe
 }
 
-export interface UsersPermissionsMe {
+export type UsersPermissionsMe = {
   __typename?: 'UsersPermissionsMe'
   id: Scalars['ID']
   username: Scalars['String']
   email: Scalars['String']
-  confirmed: Maybe<Scalars['Boolean']>
-  blocked: Maybe<Scalars['Boolean']>
-  role: Maybe<UsersPermissionsMeRole>
+  confirmed?: Maybe<Scalars['Boolean']>
+  blocked?: Maybe<Scalars['Boolean']>
+  role?: Maybe<UsersPermissionsMeRole>
 }
 
-export interface UsersPermissionsMeRole {
+export type UsersPermissionsMeRole = {
   __typename?: 'UsersPermissionsMeRole'
   id: Scalars['ID']
   name: Scalars['String']
-  description: Maybe<Scalars['String']>
-  type: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  type?: Maybe<Scalars['String']>
 }
 
-export interface UsersPermissionsPermission {
+export type UsersPermissionsPermission = {
   __typename?: 'UsersPermissionsPermission'
   id: Scalars['ID']
   type: Scalars['String']
   controller: Scalars['String']
   action: Scalars['String']
   enabled: Scalars['Boolean']
-  policy: Maybe<Scalars['String']>
-  role: Maybe<UsersPermissionsRole>
+  policy?: Maybe<Scalars['String']>
+  role?: Maybe<UsersPermissionsRole>
 }
 
 export type UsersPermissionsRegisterInput = {
@@ -1238,447 +1240,448 @@ export type UsersPermissionsRegisterInput = {
   password: Scalars['String']
 }
 
-export interface UsersPermissionsRole {
+export type UsersPermissionsRole = {
   __typename?: 'UsersPermissionsRole'
   id: Scalars['ID']
   name: Scalars['String']
-  description: Maybe<Scalars['String']>
-  type: Maybe<Scalars['String']>
-  permissions: Maybe<Array<Maybe<UsersPermissionsPermission>>>
-  users: Maybe<Array<Maybe<UsersPermissionsUser>>>
+  description?: Maybe<Scalars['String']>
+  type?: Maybe<Scalars['String']>
+  permissions?: Maybe<Array<Maybe<UsersPermissionsPermission>>>
+  users?: Maybe<Array<Maybe<UsersPermissionsUser>>>
 }
 
 export type UsersPermissionsRolePermissionsArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
 export type UsersPermissionsRoleUsersArgs = {
-  sort: Maybe<Scalars['String']>
-  limit: Maybe<Scalars['Int']>
-  start: Maybe<Scalars['Int']>
-  where: Maybe<Scalars['JSON']>
+  sort?: Maybe<Scalars['String']>
+  limit?: Maybe<Scalars['Int']>
+  start?: Maybe<Scalars['Int']>
+  where?: Maybe<Scalars['JSON']>
 }
 
-export interface UsersPermissionsRoleAggregator {
+export type UsersPermissionsRoleAggregator = {
   __typename?: 'UsersPermissionsRoleAggregator'
-  count: Maybe<Scalars['Int']>
-  totalCount: Maybe<Scalars['Int']>
+  count?: Maybe<Scalars['Int']>
+  totalCount?: Maybe<Scalars['Int']>
 }
 
-export interface UsersPermissionsRoleConnection {
+export type UsersPermissionsRoleConnection = {
   __typename?: 'UsersPermissionsRoleConnection'
-  values: Maybe<Array<Maybe<UsersPermissionsRole>>>
-  groupBy: Maybe<UsersPermissionsRoleGroupBy>
-  aggregate: Maybe<UsersPermissionsRoleAggregator>
+  values?: Maybe<Array<Maybe<UsersPermissionsRole>>>
+  groupBy?: Maybe<UsersPermissionsRoleGroupBy>
+  aggregate?: Maybe<UsersPermissionsRoleAggregator>
 }
 
-export interface UsersPermissionsRoleConnectionDescription {
+export type UsersPermissionsRoleConnectionDescription = {
   __typename?: 'UsersPermissionsRoleConnectionDescription'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UsersPermissionsRoleConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UsersPermissionsRoleConnection>
 }
 
-export interface UsersPermissionsRoleConnectionId {
+export type UsersPermissionsRoleConnectionId = {
   __typename?: 'UsersPermissionsRoleConnectionId'
-  key: Maybe<Scalars['ID']>
-  connection: Maybe<UsersPermissionsRoleConnection>
+  key?: Maybe<Scalars['ID']>
+  connection?: Maybe<UsersPermissionsRoleConnection>
 }
 
-export interface UsersPermissionsRoleConnectionName {
+export type UsersPermissionsRoleConnectionName = {
   __typename?: 'UsersPermissionsRoleConnectionName'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UsersPermissionsRoleConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UsersPermissionsRoleConnection>
 }
 
-export interface UsersPermissionsRoleConnectionType {
+export type UsersPermissionsRoleConnectionType = {
   __typename?: 'UsersPermissionsRoleConnectionType'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UsersPermissionsRoleConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UsersPermissionsRoleConnection>
 }
 
-export interface UsersPermissionsRoleGroupBy {
+export type UsersPermissionsRoleGroupBy = {
   __typename?: 'UsersPermissionsRoleGroupBy'
-  id: Maybe<Array<Maybe<UsersPermissionsRoleConnectionId>>>
-  name: Maybe<Array<Maybe<UsersPermissionsRoleConnectionName>>>
-  description: Maybe<Array<Maybe<UsersPermissionsRoleConnectionDescription>>>
-  type: Maybe<Array<Maybe<UsersPermissionsRoleConnectionType>>>
+  id?: Maybe<Array<Maybe<UsersPermissionsRoleConnectionId>>>
+  name?: Maybe<Array<Maybe<UsersPermissionsRoleConnectionName>>>
+  description?: Maybe<Array<Maybe<UsersPermissionsRoleConnectionDescription>>>
+  type?: Maybe<Array<Maybe<UsersPermissionsRoleConnectionType>>>
 }
 
-export interface UsersPermissionsUser {
+export type UsersPermissionsUser = {
   __typename?: 'UsersPermissionsUser'
   id: Scalars['ID']
   username: Scalars['String']
   email: Scalars['String']
-  role: Maybe<UsersPermissionsRole>
-  firstName: Maybe<Scalars['String']>
-  lastName: Maybe<Scalars['String']>
-  photo: Maybe<UploadFile>
+  role?: Maybe<UsersPermissionsRole>
+  firstName?: Maybe<Scalars['String']>
+  lastName?: Maybe<Scalars['String']>
+  photo?: Maybe<UploadFile>
 }
 
-export interface UsersPermissionsUserAggregator {
+export type UsersPermissionsUserAggregator = {
   __typename?: 'UsersPermissionsUserAggregator'
-  count: Maybe<Scalars['Int']>
-  totalCount: Maybe<Scalars['Int']>
+  count?: Maybe<Scalars['Int']>
+  totalCount?: Maybe<Scalars['Int']>
 }
 
-export interface UsersPermissionsUserConnection {
+export type UsersPermissionsUserConnection = {
   __typename?: 'UsersPermissionsUserConnection'
-  values: Maybe<Array<Maybe<UsersPermissionsUser>>>
-  groupBy: Maybe<UsersPermissionsUserGroupBy>
-  aggregate: Maybe<UsersPermissionsUserAggregator>
+  values?: Maybe<Array<Maybe<UsersPermissionsUser>>>
+  groupBy?: Maybe<UsersPermissionsUserGroupBy>
+  aggregate?: Maybe<UsersPermissionsUserAggregator>
 }
 
-export interface UsersPermissionsUserConnectionEmail {
+export type UsersPermissionsUserConnectionEmail = {
   __typename?: 'UsersPermissionsUserConnectionEmail'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UsersPermissionsUserConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UsersPermissionsUserConnection>
 }
 
-export interface UsersPermissionsUserConnectionFirstName {
+export type UsersPermissionsUserConnectionFirstName = {
   __typename?: 'UsersPermissionsUserConnectionFirstName'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UsersPermissionsUserConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UsersPermissionsUserConnection>
 }
 
-export interface UsersPermissionsUserConnectionId {
+export type UsersPermissionsUserConnectionId = {
   __typename?: 'UsersPermissionsUserConnectionId'
-  key: Maybe<Scalars['ID']>
-  connection: Maybe<UsersPermissionsUserConnection>
+  key?: Maybe<Scalars['ID']>
+  connection?: Maybe<UsersPermissionsUserConnection>
 }
 
-export interface UsersPermissionsUserConnectionLastName {
+export type UsersPermissionsUserConnectionLastName = {
   __typename?: 'UsersPermissionsUserConnectionLastName'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UsersPermissionsUserConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UsersPermissionsUserConnection>
 }
 
-export interface UsersPermissionsUserConnectionPhoto {
+export type UsersPermissionsUserConnectionPhoto = {
   __typename?: 'UsersPermissionsUserConnectionPhoto'
-  key: Maybe<Scalars['ID']>
-  connection: Maybe<UsersPermissionsUserConnection>
+  key?: Maybe<Scalars['ID']>
+  connection?: Maybe<UsersPermissionsUserConnection>
 }
 
-export interface UsersPermissionsUserConnectionRole {
+export type UsersPermissionsUserConnectionRole = {
   __typename?: 'UsersPermissionsUserConnectionRole'
-  key: Maybe<Scalars['ID']>
-  connection: Maybe<UsersPermissionsUserConnection>
+  key?: Maybe<Scalars['ID']>
+  connection?: Maybe<UsersPermissionsUserConnection>
 }
 
-export interface UsersPermissionsUserConnectionUsername {
+export type UsersPermissionsUserConnectionUsername = {
   __typename?: 'UsersPermissionsUserConnectionUsername'
-  key: Maybe<Scalars['String']>
-  connection: Maybe<UsersPermissionsUserConnection>
+  key?: Maybe<Scalars['String']>
+  connection?: Maybe<UsersPermissionsUserConnection>
 }
 
-export interface UsersPermissionsUserGroupBy {
+export type UsersPermissionsUserGroupBy = {
   __typename?: 'UsersPermissionsUserGroupBy'
-  id: Maybe<Array<Maybe<UsersPermissionsUserConnectionId>>>
-  username: Maybe<Array<Maybe<UsersPermissionsUserConnectionUsername>>>
-  email: Maybe<Array<Maybe<UsersPermissionsUserConnectionEmail>>>
-  role: Maybe<Array<Maybe<UsersPermissionsUserConnectionRole>>>
-  firstName: Maybe<Array<Maybe<UsersPermissionsUserConnectionFirstName>>>
-  lastName: Maybe<Array<Maybe<UsersPermissionsUserConnectionLastName>>>
-  photo: Maybe<Array<Maybe<UsersPermissionsUserConnectionPhoto>>>
+  id?: Maybe<Array<Maybe<UsersPermissionsUserConnectionId>>>
+  username?: Maybe<Array<Maybe<UsersPermissionsUserConnectionUsername>>>
+  email?: Maybe<Array<Maybe<UsersPermissionsUserConnectionEmail>>>
+  role?: Maybe<Array<Maybe<UsersPermissionsUserConnectionRole>>>
+  firstName?: Maybe<Array<Maybe<UsersPermissionsUserConnectionFirstName>>>
+  lastName?: Maybe<Array<Maybe<UsersPermissionsUserConnectionLastName>>>
+  photo?: Maybe<Array<Maybe<UsersPermissionsUserConnectionPhoto>>>
 }
 
 export type WebsiteInput = {
-  name: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
   slug: Scalars['String']
-  logo: Maybe<Scalars['ID']>
-  googleAnalyticsCode: Maybe<Scalars['String']>
-  googleTagManagerCode: Maybe<Scalars['String']>
-  menu: Maybe<Array<Maybe<ComponentMoleculesMenuInput>>>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  logo?: Maybe<Scalars['ID']>
+  googleAnalyticsCode?: Maybe<Scalars['String']>
+  googleTagManagerCode?: Maybe<Scalars['String']>
+  menu?: Maybe<Array<Maybe<ComponentMoleculesMenuInput>>>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type CreateContactInput = {
-  data: Maybe<ContactInput>
+  data?: Maybe<ContactInput>
 }
 
-export interface CreateContactPayload {
+export type CreateContactPayload = {
   __typename?: 'createContactPayload'
-  contact: Maybe<FeedbackContact>
+  contact?: Maybe<FeedbackContact>
 }
 
 export type CreateRoleInput = {
-  data: Maybe<RoleInput>
+  data?: Maybe<RoleInput>
 }
 
-export interface CreateRolePayload {
+export type CreateRolePayload = {
   __typename?: 'createRolePayload'
-  role: Maybe<UsersPermissionsRole>
+  role?: Maybe<UsersPermissionsRole>
 }
 
 export type CreateUserInput = {
-  data: Maybe<UserInput>
+  data?: Maybe<UserInput>
 }
 
-export interface CreateUserPayload {
+export type CreateUserPayload = {
   __typename?: 'createUserPayload'
-  user: Maybe<UsersPermissionsUser>
+  user?: Maybe<UsersPermissionsUser>
 }
 
 export type DeleteFileInput = {
-  where: Maybe<InputId>
+  where?: Maybe<InputId>
 }
 
-export interface DeleteFilePayload {
+export type DeleteFilePayload = {
   __typename?: 'deleteFilePayload'
-  file: Maybe<UploadFile>
+  file?: Maybe<UploadFile>
 }
 
 export type DeleteRoleInput = {
-  where: Maybe<InputId>
+  where?: Maybe<InputId>
 }
 
-export interface DeleteRolePayload {
+export type DeleteRolePayload = {
   __typename?: 'deleteRolePayload'
-  role: Maybe<UsersPermissionsRole>
+  role?: Maybe<UsersPermissionsRole>
 }
 
 export type DeleteUserInput = {
-  where: Maybe<InputId>
+  where?: Maybe<InputId>
 }
 
-export interface DeleteUserPayload {
+export type DeleteUserPayload = {
   __typename?: 'deleteUserPayload'
-  user: Maybe<UsersPermissionsUser>
+  user?: Maybe<UsersPermissionsUser>
 }
 
 export type EditCategoryInput = {
-  name: Maybe<Scalars['String']>
-  pages: Maybe<Array<Maybe<Scalars['ID']>>>
-  parent: Maybe<Array<Maybe<Scalars['ID']>>>
-  children: Maybe<Array<Maybe<Scalars['ID']>>>
-  slug: Maybe<Scalars['String']>
-  published_at: Maybe<Scalars['DateTime']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  name?: Maybe<Scalars['String']>
+  pages?: Maybe<Array<Maybe<Scalars['ID']>>>
+  parent?: Maybe<Array<Maybe<Scalars['ID']>>>
+  children?: Maybe<Array<Maybe<Scalars['ID']>>>
+  slug?: Maybe<Scalars['String']>
+  published_at?: Maybe<Scalars['DateTime']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type EditComponentAtomsEntryInput = {
-  id: Maybe<Scalars['ID']>
-  key: Maybe<Scalars['String']>
-  value: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['ID']>
+  key?: Maybe<Scalars['String']>
+  value?: Maybe<Scalars['String']>
 }
 
 export type EditComponentAtomsLinkInput = {
-  id: Maybe<Scalars['ID']>
-  text: Maybe<Scalars['String']>
-  url: Maybe<Scalars['String']>
-  extra: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['ID']>
+  text?: Maybe<Scalars['String']>
+  url?: Maybe<Scalars['String']>
+  extra?: Maybe<Scalars['String']>
 }
 
 export type EditComponentAtomsNumericInput = {
-  id: Maybe<Scalars['ID']>
-  value: Maybe<Scalars['Float']>
-  unit: Maybe<Scalars['String']>
-  min: Maybe<Scalars['Float']>
-  max: Maybe<Scalars['Float']>
+  id?: Maybe<Scalars['ID']>
+  value?: Maybe<Scalars['Float']>
+  unit?: Maybe<Scalars['String']>
+  min?: Maybe<Scalars['Float']>
+  max?: Maybe<Scalars['Float']>
 }
 
 export type EditComponentAtomsTextInput = {
-  id: Maybe<Scalars['ID']>
-  value: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['ID']>
+  value?: Maybe<Scalars['String']>
 }
 
 export type EditComponentMoleculesMenuInput = {
-  id: Maybe<Scalars['ID']>
-  links: Maybe<Array<Maybe<EditComponentAtomsLinkInput>>>
-  slug: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['ID']>
+  links?: Maybe<Array<Maybe<EditComponentAtomsLinkInput>>>
+  slug?: Maybe<Scalars['String']>
 }
 
 export type EditComponentMoleculesRecordInput = {
-  id: Maybe<Scalars['ID']>
-  entries: Maybe<Array<Maybe<EditComponentAtomsEntryInput>>>
-  slug: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['ID']>
+  entries?: Maybe<Array<Maybe<EditComponentAtomsEntryInput>>>
+  slug?: Maybe<Scalars['String']>
 }
 
 export type EditComponentOrganismsCardInput = {
-  id: Maybe<Scalars['ID']>
-  title: Maybe<Scalars['String']>
-  subTitle: Maybe<Scalars['String']>
-  description: Maybe<Scalars['String']>
-  extra: Maybe<Scalars['String']>
-  text: Maybe<Scalars['String']>
-  media: Maybe<Scalars['ID']>
-  active: Maybe<Scalars['Boolean']>
-  backgroundColor: Maybe<Scalars['String']>
-  link: Maybe<EditComponentAtomsLinkInput>
-  slug: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['ID']>
+  title?: Maybe<Scalars['String']>
+  subTitle?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  extra?: Maybe<Scalars['String']>
+  text?: Maybe<Scalars['String']>
+  media?: Maybe<Scalars['ID']>
+  active?: Maybe<Scalars['Boolean']>
+  backgroundColor?: Maybe<Scalars['String']>
+  link?: Maybe<EditComponentAtomsLinkInput>
+  slug?: Maybe<Scalars['String']>
 }
 
 export type EditComponentOrganismsMetaInput = {
-  id: Maybe<Scalars['ID']>
-  title: Maybe<Scalars['String']>
-  description: Maybe<Scalars['String']>
-  keywords: Maybe<Array<Maybe<EditComponentAtomsTextInput>>>
+  id?: Maybe<Scalars['ID']>
+  title?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  keywords?: Maybe<Array<Maybe<EditComponentAtomsTextInput>>>
 }
 
 export type EditContactInput = {
-  email: Maybe<Scalars['String']>
-  name: Maybe<Scalars['String']>
-  subject: Maybe<Scalars['String']>
-  message: Maybe<Scalars['String']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  email?: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
+  subject?: Maybe<Scalars['String']>
+  message?: Maybe<Scalars['String']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type EditEmailTemplateInput = {
-  design: Maybe<Scalars['JSON']>
-  name: Maybe<Scalars['String']>
-  subject: Maybe<Scalars['String']>
-  bodyHtml: Maybe<Scalars['String']>
-  bodyText: Maybe<Scalars['String']>
-  enabled: Maybe<Scalars['Boolean']>
-  tags: Maybe<Scalars['JSON']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  sourceCodeToTemplateId?: Maybe<Scalars['Int']>
+  design?: Maybe<Scalars['JSON']>
+  name?: Maybe<Scalars['String']>
+  subject?: Maybe<Scalars['String']>
+  bodyHtml?: Maybe<Scalars['String']>
+  bodyText?: Maybe<Scalars['String']>
+  enabled?: Maybe<Scalars['Boolean']>
+  tags?: Maybe<Scalars['JSON']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type EditFileInput = {
-  name: Maybe<Scalars['String']>
-  alternativeText: Maybe<Scalars['String']>
-  caption: Maybe<Scalars['String']>
-  width: Maybe<Scalars['Int']>
-  height: Maybe<Scalars['Int']>
-  formats: Maybe<Scalars['JSON']>
-  hash: Maybe<Scalars['String']>
-  ext: Maybe<Scalars['String']>
-  mime: Maybe<Scalars['String']>
-  size: Maybe<Scalars['Float']>
-  url: Maybe<Scalars['String']>
-  previewUrl: Maybe<Scalars['String']>
-  provider: Maybe<Scalars['String']>
-  provider_metadata: Maybe<Scalars['JSON']>
-  related: Maybe<Array<Maybe<Scalars['ID']>>>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  name?: Maybe<Scalars['String']>
+  alternativeText?: Maybe<Scalars['String']>
+  caption?: Maybe<Scalars['String']>
+  width?: Maybe<Scalars['Int']>
+  height?: Maybe<Scalars['Int']>
+  formats?: Maybe<Scalars['JSON']>
+  hash?: Maybe<Scalars['String']>
+  ext?: Maybe<Scalars['String']>
+  mime?: Maybe<Scalars['String']>
+  size?: Maybe<Scalars['Float']>
+  url?: Maybe<Scalars['String']>
+  previewUrl?: Maybe<Scalars['String']>
+  provider?: Maybe<Scalars['String']>
+  provider_metadata?: Maybe<Scalars['JSON']>
+  related?: Maybe<Array<Maybe<Scalars['ID']>>>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type EditLocaleInput = {
-  name: Maybe<Scalars['String']>
-  code: Maybe<Scalars['String']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  name?: Maybe<Scalars['String']>
+  code?: Maybe<Scalars['String']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type EditMetaInput = {
-  slug: Maybe<Scalars['String']>
-  title: Maybe<Scalars['String']>
-  description: Maybe<Scalars['String']>
-  keywords: Maybe<Scalars['String']>
-  published_at: Maybe<Scalars['DateTime']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  slug?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  keywords?: Maybe<Scalars['String']>
+  published_at?: Maybe<Scalars['DateTime']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type EditPageInput = {
-  name: Maybe<Scalars['String']>
-  text: Maybe<Scalars['String']>
-  cover: Maybe<Array<Maybe<Scalars['ID']>>>
-  slug: Maybe<Scalars['String']>
-  categories: Maybe<Array<Maybe<Scalars['ID']>>>
-  meta: Maybe<EditComponentOrganismsMetaInput>
-  published_at: Maybe<Scalars['DateTime']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  name?: Maybe<Scalars['String']>
+  text?: Maybe<Scalars['String']>
+  cover?: Maybe<Array<Maybe<Scalars['ID']>>>
+  slug?: Maybe<Scalars['String']>
+  categories?: Maybe<Array<Maybe<Scalars['ID']>>>
+  meta?: Maybe<EditComponentOrganismsMetaInput>
+  published_at?: Maybe<Scalars['DateTime']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type EditRoleInput = {
-  name: Maybe<Scalars['String']>
-  description: Maybe<Scalars['String']>
-  type: Maybe<Scalars['String']>
-  permissions: Maybe<Array<Maybe<Scalars['ID']>>>
-  users: Maybe<Array<Maybe<Scalars['ID']>>>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  name?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  type?: Maybe<Scalars['String']>
+  permissions?: Maybe<Array<Maybe<Scalars['ID']>>>
+  users?: Maybe<Array<Maybe<Scalars['ID']>>>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type EditSectionInput = {
-  title: Maybe<Scalars['String']>
-  description: Maybe<Scalars['String']>
-  slug: Maybe<Scalars['String']>
-  cards: Maybe<Array<Maybe<EditComponentOrganismsCardInput>>>
-  records: Maybe<Array<Maybe<EditComponentMoleculesRecordInput>>>
-  published_at: Maybe<Scalars['DateTime']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  title?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  slug?: Maybe<Scalars['String']>
+  cards?: Maybe<Array<Maybe<EditComponentOrganismsCardInput>>>
+  records?: Maybe<Array<Maybe<EditComponentMoleculesRecordInput>>>
+  published_at?: Maybe<Scalars['DateTime']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type EditUserInput = {
-  username: Maybe<Scalars['String']>
-  resetPasswordToken: Maybe<Scalars['String']>
-  confirmationToken: Maybe<Scalars['String']>
-  confirmed: Maybe<Scalars['Boolean']>
-  password: Maybe<Scalars['String']>
-  email: Maybe<Scalars['String']>
-  provider: Maybe<Scalars['String']>
-  blocked: Maybe<Scalars['Boolean']>
-  role: Maybe<Scalars['ID']>
-  firstName: Maybe<Scalars['String']>
-  lastName: Maybe<Scalars['String']>
-  photo: Maybe<Scalars['ID']>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  username?: Maybe<Scalars['String']>
+  resetPasswordToken?: Maybe<Scalars['String']>
+  confirmationToken?: Maybe<Scalars['String']>
+  confirmed?: Maybe<Scalars['Boolean']>
+  password?: Maybe<Scalars['String']>
+  email?: Maybe<Scalars['String']>
+  provider?: Maybe<Scalars['String']>
+  blocked?: Maybe<Scalars['Boolean']>
+  role?: Maybe<Scalars['ID']>
+  firstName?: Maybe<Scalars['String']>
+  lastName?: Maybe<Scalars['String']>
+  photo?: Maybe<Scalars['ID']>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type EditWebsiteInput = {
-  name: Maybe<Scalars['String']>
-  slug: Maybe<Scalars['String']>
-  logo: Maybe<Scalars['ID']>
-  googleAnalyticsCode: Maybe<Scalars['String']>
-  googleTagManagerCode: Maybe<Scalars['String']>
-  menu: Maybe<Array<Maybe<EditComponentMoleculesMenuInput>>>
-  created_by: Maybe<Scalars['ID']>
-  updated_by: Maybe<Scalars['ID']>
+  name?: Maybe<Scalars['String']>
+  slug?: Maybe<Scalars['String']>
+  logo?: Maybe<Scalars['ID']>
+  googleAnalyticsCode?: Maybe<Scalars['String']>
+  googleTagManagerCode?: Maybe<Scalars['String']>
+  menu?: Maybe<Array<Maybe<EditComponentMoleculesMenuInput>>>
+  created_by?: Maybe<Scalars['ID']>
+  updated_by?: Maybe<Scalars['ID']>
 }
 
 export type UpdateRoleInput = {
-  where: Maybe<InputId>
-  data: Maybe<EditRoleInput>
+  where?: Maybe<InputId>
+  data?: Maybe<EditRoleInput>
 }
 
-export interface UpdateRolePayload {
+export type UpdateRolePayload = {
   __typename?: 'updateRolePayload'
-  role: Maybe<UsersPermissionsRole>
+  role?: Maybe<UsersPermissionsRole>
 }
 
 export type UpdateUserInput = {
-  where: Maybe<InputId>
-  data: Maybe<EditUserInput>
+  where?: Maybe<InputId>
+  data?: Maybe<EditUserInput>
 }
 
-export interface UpdateUserPayload {
+export type UpdateUserPayload = {
   __typename?: 'updateUserPayload'
-  user: Maybe<UsersPermissionsUser>
+  user?: Maybe<UsersPermissionsUser>
 }
 
 export type CardFragment = {
   __typename?: 'ComponentOrganismsCard'
   id: string
-  active: Maybe<boolean>
-  title: Maybe<string>
-  subTitle: Maybe<string>
-  description: Maybe<string>
-  extra: Maybe<string>
-  text: Maybe<string>
-  link: Maybe<{ __typename?: 'ComponentAtomsLink'; id: string; text: Maybe<string>; extra: Maybe<string>; url: string }>
-  media: Maybe<{
+  active?: Maybe<boolean>
+  title?: Maybe<string>
+  subTitle?: Maybe<string>
+  description?: Maybe<string>
+  extra?: Maybe<string>
+  text?: Maybe<string>
+  link?: Maybe<{ __typename?: 'ComponentAtomsLink'; id: string; text?: Maybe<string>; extra?: Maybe<string>; url: string }>
+  media?: Maybe<{
     __typename?: 'UploadFile'
     id: string
-    alternativeText: Maybe<string>
-    caption: Maybe<string>
+    alternativeText?: Maybe<string>
+    caption?: Maybe<string>
     name: string
-    previewUrl: Maybe<string>
+    previewUrl?: Maybe<string>
     size: number
     url: string
-    height: Maybe<number>
-    width: Maybe<number>
+    height?: Maybe<number>
+    width?: Maybe<number>
   }>
 }
 
@@ -1687,26 +1690,26 @@ export type CategoryFragment = {
   id: string
   slug: string
   name: string
-  pages: Maybe<
+  pages?: Maybe<
     Array<
       Maybe<{
         __typename?: 'CmsPage'
         id: string
         slug: string
         name: string
-        cover: Maybe<
+        cover?: Maybe<
           Array<
             Maybe<{
               __typename?: 'UploadFile'
               id: string
-              alternativeText: Maybe<string>
-              caption: Maybe<string>
+              alternativeText?: Maybe<string>
+              caption?: Maybe<string>
               name: string
-              previewUrl: Maybe<string>
+              previewUrl?: Maybe<string>
               size: number
               url: string
-              height: Maybe<number>
-              width: Maybe<number>
+              height?: Maybe<number>
+              width?: Maybe<number>
             }>
           >
         >
@@ -1715,47 +1718,37 @@ export type CategoryFragment = {
   >
 }
 
-export type EntryFragment = { __typename?: 'ComponentAtomsEntry'; id: string; key: string; value: Maybe<string> }
+export type EntryFragment = { __typename?: 'ComponentAtomsEntry'; id: string; key: string; value?: Maybe<string> }
 
 export type FileFragment = {
   __typename?: 'UploadFile'
   id: string
-  alternativeText: Maybe<string>
-  caption: Maybe<string>
+  alternativeText?: Maybe<string>
+  caption?: Maybe<string>
   name: string
-  previewUrl: Maybe<string>
+  previewUrl?: Maybe<string>
   size: number
   url: string
-  height: Maybe<number>
-  width: Maybe<number>
+  height?: Maybe<number>
+  width?: Maybe<number>
 }
 
-export type LinkFragment = {
-  __typename?: 'ComponentAtomsLink'
-  id: string
-  text: Maybe<string>
-  extra: Maybe<string>
-  url: string
-}
+export type LinkFragment = { __typename?: 'ComponentAtomsLink'; id: string; text?: Maybe<string>; extra?: Maybe<string>; url: string }
 
 export type MenuFragment = {
   __typename?: 'ComponentMoleculesMenu'
   id: string
   slug: string
-  links: Maybe<
-    Array<
-      Maybe<{ __typename?: 'ComponentAtomsLink'; id: string; text: Maybe<string>; extra: Maybe<string>; url: string }>
-    >
-  >
+  links?: Maybe<Array<Maybe<{ __typename?: 'ComponentAtomsLink'; id: string; text?: Maybe<string>; extra?: Maybe<string>; url: string }>>>
 }
 
 export type MetaFragment = {
   __typename?: 'CmsMeta'
   id: string
   slug: string
-  title: Maybe<string>
-  description: Maybe<string>
-  keywords: Maybe<string>
+  title?: Maybe<string>
+  description?: Maybe<string>
+  keywords?: Maybe<string>
 }
 
 export type NumericFragment = {
@@ -1764,7 +1757,7 @@ export type NumericFragment = {
   value: number
   min: number
   max: number
-  unit: Maybe<string>
+  unit?: Maybe<string>
 }
 
 export type PageFragment = {
@@ -1772,19 +1765,19 @@ export type PageFragment = {
   id: string
   slug: string
   name: string
-  cover: Maybe<
+  cover?: Maybe<
     Array<
       Maybe<{
         __typename?: 'UploadFile'
         id: string
-        alternativeText: Maybe<string>
-        caption: Maybe<string>
+        alternativeText?: Maybe<string>
+        caption?: Maybe<string>
         name: string
-        previewUrl: Maybe<string>
+        previewUrl?: Maybe<string>
         size: number
         url: string
-        height: Maybe<number>
-        width: Maybe<number>
+        height?: Maybe<number>
+        width?: Maybe<number>
       }>
     >
   >
@@ -1794,57 +1787,72 @@ export type RecordFragment = {
   __typename?: 'ComponentMoleculesRecord'
   id: string
   slug: string
-  entries: Maybe<Array<Maybe<{ __typename?: 'ComponentAtomsEntry'; id: string; key: string; value: Maybe<string> }>>>
+  entries?: Maybe<Array<Maybe<{ __typename?: 'ComponentAtomsEntry'; id: string; key: string; value?: Maybe<string> }>>>
 }
 
 export type SectionFragment = {
   __typename?: 'CmsSection'
   id: string
   title: string
-  description: Maybe<string>
+  description?: Maybe<string>
   slug: string
-  cards: Maybe<
+  card?: Maybe<{
+    __typename?: 'ComponentOrganismsCard'
+    id: string
+    active?: Maybe<boolean>
+    title?: Maybe<string>
+    subTitle?: Maybe<string>
+    description?: Maybe<string>
+    extra?: Maybe<string>
+    text?: Maybe<string>
+    link?: Maybe<{ __typename?: 'ComponentAtomsLink'; id: string; text?: Maybe<string>; extra?: Maybe<string>; url: string }>
+    media?: Maybe<{
+      __typename?: 'UploadFile'
+      id: string
+      alternativeText?: Maybe<string>
+      caption?: Maybe<string>
+      name: string
+      previewUrl?: Maybe<string>
+      size: number
+      url: string
+      height?: Maybe<number>
+      width?: Maybe<number>
+    }>
+  }>
+  cards?: Maybe<
     Array<
       Maybe<{
         __typename?: 'ComponentOrganismsCard'
         id: string
-        active: Maybe<boolean>
-        title: Maybe<string>
-        subTitle: Maybe<string>
-        description: Maybe<string>
-        extra: Maybe<string>
-        text: Maybe<string>
-        link: Maybe<{
-          __typename?: 'ComponentAtomsLink'
-          id: string
-          text: Maybe<string>
-          extra: Maybe<string>
-          url: string
-        }>
-        media: Maybe<{
+        active?: Maybe<boolean>
+        title?: Maybe<string>
+        subTitle?: Maybe<string>
+        description?: Maybe<string>
+        extra?: Maybe<string>
+        text?: Maybe<string>
+        link?: Maybe<{ __typename?: 'ComponentAtomsLink'; id: string; text?: Maybe<string>; extra?: Maybe<string>; url: string }>
+        media?: Maybe<{
           __typename?: 'UploadFile'
           id: string
-          alternativeText: Maybe<string>
-          caption: Maybe<string>
+          alternativeText?: Maybe<string>
+          caption?: Maybe<string>
           name: string
-          previewUrl: Maybe<string>
+          previewUrl?: Maybe<string>
           size: number
           url: string
-          height: Maybe<number>
-          width: Maybe<number>
+          height?: Maybe<number>
+          width?: Maybe<number>
         }>
       }>
     >
   >
-  records: Maybe<
+  records?: Maybe<
     Array<
       Maybe<{
         __typename?: 'ComponentMoleculesRecord'
         id: string
         slug: string
-        entries: Maybe<
-          Array<Maybe<{ __typename?: 'ComponentAtomsEntry'; id: string; key: string; value: Maybe<string> }>>
-        >
+        entries?: Maybe<Array<Maybe<{ __typename?: 'ComponentAtomsEntry'; id: string; key: string; value?: Maybe<string> }>>>
       }>
     >
   >
@@ -1855,37 +1863,29 @@ export type TextFragment = { __typename?: 'ComponentAtomsText'; id: string; valu
 export type WebsiteFragment = {
   __typename?: 'CmsWebsite'
   id: string
-  googleAnalyticsCode: Maybe<string>
-  googleTagManagerCode: Maybe<string>
-  name: Maybe<string>
-  logo: Maybe<{
+  googleAnalyticsCode?: Maybe<string>
+  googleTagManagerCode?: Maybe<string>
+  name?: Maybe<string>
+  logo?: Maybe<{
     __typename?: 'UploadFile'
     id: string
-    alternativeText: Maybe<string>
-    caption: Maybe<string>
+    alternativeText?: Maybe<string>
+    caption?: Maybe<string>
     name: string
-    previewUrl: Maybe<string>
+    previewUrl?: Maybe<string>
     size: number
     url: string
-    height: Maybe<number>
-    width: Maybe<number>
+    height?: Maybe<number>
+    width?: Maybe<number>
   }>
-  menu: Maybe<
+  menu?: Maybe<
     Array<
       Maybe<{
         __typename?: 'ComponentMoleculesMenu'
         id: string
         slug: string
-        links: Maybe<
-          Array<
-            Maybe<{
-              __typename?: 'ComponentAtomsLink'
-              id: string
-              text: Maybe<string>
-              extra: Maybe<string>
-              url: string
-            }>
-          >
+        links?: Maybe<
+          Array<Maybe<{ __typename?: 'ComponentAtomsLink'; id: string; text?: Maybe<string>; extra?: Maybe<string>; url: string }>>
         >
       }>
     >
@@ -1893,14 +1893,14 @@ export type WebsiteFragment = {
 }
 
 export type ContactMutationVariables = Exact<{
-  input: Maybe<CreateContactInput>
+  input?: Maybe<CreateContactInput>
 }>
 
 export type ContactMutation = {
   __typename?: 'Mutation'
-  createContact: Maybe<{
+  createContact?: Maybe<{
     __typename?: 'createContactPayload'
-    contact: Maybe<{ __typename?: 'FeedbackContact'; id: string; name: string; email: string }>
+    contact?: Maybe<{ __typename?: 'FeedbackContact'; id: string; name: string; email: string }>
   }>
 }
 
@@ -1912,56 +1912,56 @@ export type LoginMutation = {
   __typename?: 'Mutation'
   login: {
     __typename?: 'UsersPermissionsLoginPayload'
-    jwt: Maybe<string>
+    jwt?: Maybe<string>
     user: {
       __typename?: 'UsersPermissionsMe'
       id: string
       email: string
-      role: Maybe<{ __typename?: 'UsersPermissionsMeRole'; id: string; type: Maybe<string> }>
+      role?: Maybe<{ __typename?: 'UsersPermissionsMeRole'; id: string; type?: Maybe<string> }>
     }
   }
 }
 
 export type CategoriesQueryVariables = Exact<{
-  where: Maybe<Scalars['JSON']>
+  where?: Maybe<Scalars['JSON']>
 }>
 
 export type CategoriesQuery = {
   __typename?: 'Query'
-  categories: Maybe<
+  categories?: Maybe<
     Array<
       Maybe<{
         __typename?: 'CmsCategory'
         id: string
         slug: string
         name: string
-        children: Maybe<
+        children?: Maybe<
           Array<
             Maybe<{
               __typename?: 'CmsCategory'
               id: string
               slug: string
               name: string
-              pages: Maybe<
+              pages?: Maybe<
                 Array<
                   Maybe<{
                     __typename?: 'CmsPage'
                     id: string
                     slug: string
                     name: string
-                    cover: Maybe<
+                    cover?: Maybe<
                       Array<
                         Maybe<{
                           __typename?: 'UploadFile'
                           id: string
-                          alternativeText: Maybe<string>
-                          caption: Maybe<string>
+                          alternativeText?: Maybe<string>
+                          caption?: Maybe<string>
                           name: string
-                          previewUrl: Maybe<string>
+                          previewUrl?: Maybe<string>
                           size: number
                           url: string
-                          height: Maybe<number>
-                          width: Maybe<number>
+                          height?: Maybe<number>
+                          width?: Maybe<number>
                         }>
                       >
                     >
@@ -1971,26 +1971,26 @@ export type CategoriesQuery = {
             }>
           >
         >
-        pages: Maybe<
+        pages?: Maybe<
           Array<
             Maybe<{
               __typename?: 'CmsPage'
               id: string
               slug: string
               name: string
-              cover: Maybe<
+              cover?: Maybe<
                 Array<
                   Maybe<{
                     __typename?: 'UploadFile'
                     id: string
-                    alternativeText: Maybe<string>
-                    caption: Maybe<string>
+                    alternativeText?: Maybe<string>
+                    caption?: Maybe<string>
                     name: string
-                    previewUrl: Maybe<string>
+                    previewUrl?: Maybe<string>
                     size: number
                     url: string
-                    height: Maybe<number>
-                    width: Maybe<number>
+                    height?: Maybe<number>
+                    width?: Maybe<number>
                   }>
                 >
               >
@@ -2008,38 +2008,38 @@ export type CategoryQueryVariables = Exact<{
 
 export type CategoryQuery = {
   __typename?: 'Query'
-  category: Maybe<{
+  category?: Maybe<{
     __typename?: 'CmsCategory'
     id: string
     slug: string
     name: string
-    children: Maybe<
+    children?: Maybe<
       Array<
         Maybe<{
           __typename?: 'CmsCategory'
           id: string
           slug: string
           name: string
-          pages: Maybe<
+          pages?: Maybe<
             Array<
               Maybe<{
                 __typename?: 'CmsPage'
                 id: string
                 slug: string
                 name: string
-                cover: Maybe<
+                cover?: Maybe<
                   Array<
                     Maybe<{
                       __typename?: 'UploadFile'
                       id: string
-                      alternativeText: Maybe<string>
-                      caption: Maybe<string>
+                      alternativeText?: Maybe<string>
+                      caption?: Maybe<string>
                       name: string
-                      previewUrl: Maybe<string>
+                      previewUrl?: Maybe<string>
                       size: number
                       url: string
-                      height: Maybe<number>
-                      width: Maybe<number>
+                      height?: Maybe<number>
+                      width?: Maybe<number>
                     }>
                   >
                 >
@@ -2049,26 +2049,26 @@ export type CategoryQuery = {
         }>
       >
     >
-    pages: Maybe<
+    pages?: Maybe<
       Array<
         Maybe<{
           __typename?: 'CmsPage'
           id: string
           slug: string
           name: string
-          cover: Maybe<
+          cover?: Maybe<
             Array<
               Maybe<{
                 __typename?: 'UploadFile'
                 id: string
-                alternativeText: Maybe<string>
-                caption: Maybe<string>
+                alternativeText?: Maybe<string>
+                caption?: Maybe<string>
                 name: string
-                previewUrl: Maybe<string>
+                previewUrl?: Maybe<string>
                 size: number
                 url: string
-                height: Maybe<number>
-                width: Maybe<number>
+                height?: Maybe<number>
+                width?: Maybe<number>
               }>
             >
           >
@@ -2084,31 +2084,31 @@ export type MetaQueryVariables = Exact<{
 
 export type MetaQuery = {
   __typename?: 'Query'
-  meta: Maybe<{
+  meta?: Maybe<{
     __typename?: 'CmsMeta'
     id: string
     slug: string
-    title: Maybe<string>
-    description: Maybe<string>
-    keywords: Maybe<string>
+    title?: Maybe<string>
+    description?: Maybe<string>
+    keywords?: Maybe<string>
   }>
 }
 
 export type MetasQueryVariables = Exact<{
-  where: Maybe<Scalars['JSON']>
+  where?: Maybe<Scalars['JSON']>
 }>
 
 export type MetasQuery = {
   __typename?: 'Query'
-  metas: Maybe<
+  metas?: Maybe<
     Array<
       Maybe<{
         __typename?: 'CmsMeta'
         id: string
         slug: string
-        title: Maybe<string>
-        description: Maybe<string>
-        keywords: Maybe<string>
+        title?: Maybe<string>
+        description?: Maybe<string>
+        keywords?: Maybe<string>
       }>
     >
   >
@@ -2120,38 +2120,38 @@ export type PageQueryVariables = Exact<{
 
 export type PageQuery = {
   __typename?: 'Query'
-  page: Maybe<{
+  page?: Maybe<{
     __typename?: 'CmsPage'
     id: string
     slug: string
     name: string
-    categories: Maybe<
+    categories?: Maybe<
       Array<
         Maybe<{
           __typename?: 'CmsCategory'
           id: string
           slug: string
           name: string
-          pages: Maybe<
+          pages?: Maybe<
             Array<
               Maybe<{
                 __typename?: 'CmsPage'
                 id: string
                 slug: string
                 name: string
-                cover: Maybe<
+                cover?: Maybe<
                   Array<
                     Maybe<{
                       __typename?: 'UploadFile'
                       id: string
-                      alternativeText: Maybe<string>
-                      caption: Maybe<string>
+                      alternativeText?: Maybe<string>
+                      caption?: Maybe<string>
                       name: string
-                      previewUrl: Maybe<string>
+                      previewUrl?: Maybe<string>
                       size: number
                       url: string
-                      height: Maybe<number>
-                      width: Maybe<number>
+                      height?: Maybe<number>
+                      width?: Maybe<number>
                     }>
                   >
                 >
@@ -2161,19 +2161,19 @@ export type PageQuery = {
         }>
       >
     >
-    cover: Maybe<
+    cover?: Maybe<
       Array<
         Maybe<{
           __typename?: 'UploadFile'
           id: string
-          alternativeText: Maybe<string>
-          caption: Maybe<string>
+          alternativeText?: Maybe<string>
+          caption?: Maybe<string>
           name: string
-          previewUrl: Maybe<string>
+          previewUrl?: Maybe<string>
           size: number
           url: string
-          height: Maybe<number>
-          width: Maybe<number>
+          height?: Maybe<number>
+          width?: Maybe<number>
         }>
       >
     >
@@ -2181,45 +2181,45 @@ export type PageQuery = {
 }
 
 export type PagesQueryVariables = Exact<{
-  where: Maybe<Scalars['JSON']>
+  where?: Maybe<Scalars['JSON']>
 }>
 
 export type PagesQuery = {
   __typename?: 'Query'
-  pages: Maybe<
+  pages?: Maybe<
     Array<
       Maybe<{
         __typename?: 'CmsPage'
         id: string
         slug: string
         name: string
-        categories: Maybe<
+        categories?: Maybe<
           Array<
             Maybe<{
               __typename?: 'CmsCategory'
               id: string
               slug: string
               name: string
-              pages: Maybe<
+              pages?: Maybe<
                 Array<
                   Maybe<{
                     __typename?: 'CmsPage'
                     id: string
                     slug: string
                     name: string
-                    cover: Maybe<
+                    cover?: Maybe<
                       Array<
                         Maybe<{
                           __typename?: 'UploadFile'
                           id: string
-                          alternativeText: Maybe<string>
-                          caption: Maybe<string>
+                          alternativeText?: Maybe<string>
+                          caption?: Maybe<string>
                           name: string
-                          previewUrl: Maybe<string>
+                          previewUrl?: Maybe<string>
                           size: number
                           url: string
-                          height: Maybe<number>
-                          width: Maybe<number>
+                          height?: Maybe<number>
+                          width?: Maybe<number>
                         }>
                       >
                     >
@@ -2229,19 +2229,19 @@ export type PagesQuery = {
             }>
           >
         >
-        cover: Maybe<
+        cover?: Maybe<
           Array<
             Maybe<{
               __typename?: 'UploadFile'
               id: string
-              alternativeText: Maybe<string>
-              caption: Maybe<string>
+              alternativeText?: Maybe<string>
+              caption?: Maybe<string>
               name: string
-              previewUrl: Maybe<string>
+              previewUrl?: Maybe<string>
               size: number
               url: string
-              height: Maybe<number>
-              width: Maybe<number>
+              height?: Maybe<number>
+              width?: Maybe<number>
             }>
           >
         >
@@ -2256,54 +2256,69 @@ export type SectionQueryVariables = Exact<{
 
 export type SectionQuery = {
   __typename?: 'Query'
-  section: Maybe<{
+  section?: Maybe<{
     __typename?: 'CmsSection'
     id: string
     title: string
-    description: Maybe<string>
+    description?: Maybe<string>
     slug: string
-    cards: Maybe<
+    card?: Maybe<{
+      __typename?: 'ComponentOrganismsCard'
+      id: string
+      active?: Maybe<boolean>
+      title?: Maybe<string>
+      subTitle?: Maybe<string>
+      description?: Maybe<string>
+      extra?: Maybe<string>
+      text?: Maybe<string>
+      link?: Maybe<{ __typename?: 'ComponentAtomsLink'; id: string; text?: Maybe<string>; extra?: Maybe<string>; url: string }>
+      media?: Maybe<{
+        __typename?: 'UploadFile'
+        id: string
+        alternativeText?: Maybe<string>
+        caption?: Maybe<string>
+        name: string
+        previewUrl?: Maybe<string>
+        size: number
+        url: string
+        height?: Maybe<number>
+        width?: Maybe<number>
+      }>
+    }>
+    cards?: Maybe<
       Array<
         Maybe<{
           __typename?: 'ComponentOrganismsCard'
           id: string
-          active: Maybe<boolean>
-          title: Maybe<string>
-          subTitle: Maybe<string>
-          description: Maybe<string>
-          extra: Maybe<string>
-          text: Maybe<string>
-          link: Maybe<{
-            __typename?: 'ComponentAtomsLink'
-            id: string
-            text: Maybe<string>
-            extra: Maybe<string>
-            url: string
-          }>
-          media: Maybe<{
+          active?: Maybe<boolean>
+          title?: Maybe<string>
+          subTitle?: Maybe<string>
+          description?: Maybe<string>
+          extra?: Maybe<string>
+          text?: Maybe<string>
+          link?: Maybe<{ __typename?: 'ComponentAtomsLink'; id: string; text?: Maybe<string>; extra?: Maybe<string>; url: string }>
+          media?: Maybe<{
             __typename?: 'UploadFile'
             id: string
-            alternativeText: Maybe<string>
-            caption: Maybe<string>
+            alternativeText?: Maybe<string>
+            caption?: Maybe<string>
             name: string
-            previewUrl: Maybe<string>
+            previewUrl?: Maybe<string>
             size: number
             url: string
-            height: Maybe<number>
-            width: Maybe<number>
+            height?: Maybe<number>
+            width?: Maybe<number>
           }>
         }>
       >
     >
-    records: Maybe<
+    records?: Maybe<
       Array<
         Maybe<{
           __typename?: 'ComponentMoleculesRecord'
           id: string
           slug: string
-          entries: Maybe<
-            Array<Maybe<{ __typename?: 'ComponentAtomsEntry'; id: string; key: string; value: Maybe<string> }>>
-          >
+          entries?: Maybe<Array<Maybe<{ __typename?: 'ComponentAtomsEntry'; id: string; key: string; value?: Maybe<string> }>>>
         }>
       >
     >
@@ -2311,61 +2326,76 @@ export type SectionQuery = {
 }
 
 export type SectionsQueryVariables = Exact<{
-  where: Maybe<Scalars['JSON']>
+  where?: Maybe<Scalars['JSON']>
 }>
 
 export type SectionsQuery = {
   __typename?: 'Query'
-  sections: Maybe<
+  sections?: Maybe<
     Array<
       Maybe<{
         __typename?: 'CmsSection'
         id: string
         title: string
-        description: Maybe<string>
+        description?: Maybe<string>
         slug: string
-        cards: Maybe<
+        card?: Maybe<{
+          __typename?: 'ComponentOrganismsCard'
+          id: string
+          active?: Maybe<boolean>
+          title?: Maybe<string>
+          subTitle?: Maybe<string>
+          description?: Maybe<string>
+          extra?: Maybe<string>
+          text?: Maybe<string>
+          link?: Maybe<{ __typename?: 'ComponentAtomsLink'; id: string; text?: Maybe<string>; extra?: Maybe<string>; url: string }>
+          media?: Maybe<{
+            __typename?: 'UploadFile'
+            id: string
+            alternativeText?: Maybe<string>
+            caption?: Maybe<string>
+            name: string
+            previewUrl?: Maybe<string>
+            size: number
+            url: string
+            height?: Maybe<number>
+            width?: Maybe<number>
+          }>
+        }>
+        cards?: Maybe<
           Array<
             Maybe<{
               __typename?: 'ComponentOrganismsCard'
               id: string
-              active: Maybe<boolean>
-              title: Maybe<string>
-              subTitle: Maybe<string>
-              description: Maybe<string>
-              extra: Maybe<string>
-              text: Maybe<string>
-              link: Maybe<{
-                __typename?: 'ComponentAtomsLink'
-                id: string
-                text: Maybe<string>
-                extra: Maybe<string>
-                url: string
-              }>
-              media: Maybe<{
+              active?: Maybe<boolean>
+              title?: Maybe<string>
+              subTitle?: Maybe<string>
+              description?: Maybe<string>
+              extra?: Maybe<string>
+              text?: Maybe<string>
+              link?: Maybe<{ __typename?: 'ComponentAtomsLink'; id: string; text?: Maybe<string>; extra?: Maybe<string>; url: string }>
+              media?: Maybe<{
                 __typename?: 'UploadFile'
                 id: string
-                alternativeText: Maybe<string>
-                caption: Maybe<string>
+                alternativeText?: Maybe<string>
+                caption?: Maybe<string>
                 name: string
-                previewUrl: Maybe<string>
+                previewUrl?: Maybe<string>
                 size: number
                 url: string
-                height: Maybe<number>
-                width: Maybe<number>
+                height?: Maybe<number>
+                width?: Maybe<number>
               }>
             }>
           >
         >
-        records: Maybe<
+        records?: Maybe<
           Array<
             Maybe<{
               __typename?: 'ComponentMoleculesRecord'
               id: string
               slug: string
-              entries: Maybe<
-                Array<Maybe<{ __typename?: 'ComponentAtomsEntry'; id: string; key: string; value: Maybe<string> }>>
-              >
+              entries?: Maybe<Array<Maybe<{ __typename?: 'ComponentAtomsEntry'; id: string; key: string; value?: Maybe<string> }>>>
             }>
           >
         >
@@ -2380,40 +2410,32 @@ export type WebsiteQueryVariables = Exact<{
 
 export type WebsiteQuery = {
   __typename?: 'Query'
-  website: Maybe<{
+  website?: Maybe<{
     __typename?: 'CmsWebsite'
     id: string
-    googleAnalyticsCode: Maybe<string>
-    googleTagManagerCode: Maybe<string>
-    name: Maybe<string>
-    logo: Maybe<{
+    googleAnalyticsCode?: Maybe<string>
+    googleTagManagerCode?: Maybe<string>
+    name?: Maybe<string>
+    logo?: Maybe<{
       __typename?: 'UploadFile'
       id: string
-      alternativeText: Maybe<string>
-      caption: Maybe<string>
+      alternativeText?: Maybe<string>
+      caption?: Maybe<string>
       name: string
-      previewUrl: Maybe<string>
+      previewUrl?: Maybe<string>
       size: number
       url: string
-      height: Maybe<number>
-      width: Maybe<number>
+      height?: Maybe<number>
+      width?: Maybe<number>
     }>
-    menu: Maybe<
+    menu?: Maybe<
       Array<
         Maybe<{
           __typename?: 'ComponentMoleculesMenu'
           id: string
           slug: string
-          links: Maybe<
-            Array<
-              Maybe<{
-                __typename?: 'ComponentAtomsLink'
-                id: string
-                text: Maybe<string>
-                extra: Maybe<string>
-                url: string
-              }>
-            >
+          links?: Maybe<
+            Array<Maybe<{ __typename?: 'ComponentAtomsLink'; id: string; text?: Maybe<string>; extra?: Maybe<string>; url: string }>>
           >
         }>
       >
@@ -2524,6 +2546,9 @@ export const SectionFragmentDoc = gql`
     title
     description
     slug
+    card {
+      ...Card
+    }
     cards {
       ...Card
     }
@@ -2604,9 +2629,7 @@ export const ContactComponent = (props: ContactComponentProps) => (
  *   },
  * });
  */
-export function useContactMutation(
-  baseOptions?: Apollo.MutationHookOptions<ContactMutation, ContactMutationVariables>,
-) {
+export function useContactMutation(baseOptions?: Apollo.MutationHookOptions<ContactMutation, ContactMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<ContactMutation, ContactMutationVariables>(ContactDocument, options)
 }
@@ -2629,10 +2652,7 @@ export const LoginDocument = gql`
   }
 `
 export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>
-export type LoginComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<LoginMutation, LoginMutationVariables>,
-  'mutation'
->
+export type LoginComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<LoginMutation, LoginMutationVariables>, 'mutation'>
 
 export const LoginComponent = (props: LoginComponentProps) => (
   <ApolloReactComponents.Mutation<LoginMutation, LoginMutationVariables> mutation={LoginDocument} {...props} />
@@ -2673,10 +2693,7 @@ export const CategoriesDocument = gql`
   }
   ${CategoryFragmentDoc}
 `
-export type CategoriesComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<CategoriesQuery, CategoriesQueryVariables>,
-  'query'
->
+export type CategoriesComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<CategoriesQuery, CategoriesQueryVariables>, 'query'>
 
 export const CategoriesComponent = (props: CategoriesComponentProps) => (
   <ApolloReactComponents.Query<CategoriesQuery, CategoriesQueryVariables> query={CategoriesDocument} {...props} />
@@ -2702,18 +2719,13 @@ export function useCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<Categor
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options)
 }
-export function useCategoriesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<CategoriesQuery, CategoriesQueryVariables>,
-) {
+export function useCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options)
 }
 export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>
 export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>
 export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>
-export function refetchCategoriesQuery(variables?: CategoriesQueryVariables) {
-  return { query: CategoriesDocument, variables: variables }
-}
 export const CategoryDocument = gql`
   query category($slug: ID!) {
     category(id: $slug, publicationState: LIVE) {
@@ -2725,10 +2737,7 @@ export const CategoryDocument = gql`
   }
   ${CategoryFragmentDoc}
 `
-export type CategoryComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<CategoryQuery, CategoryQueryVariables>,
-  'query'
-> &
+export type CategoryComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<CategoryQuery, CategoryQueryVariables>, 'query'> &
   ({ variables: CategoryQueryVariables; skip?: boolean } | { skip: boolean })
 
 export const CategoryComponent = (props: CategoryComponentProps) => (
@@ -2762,9 +2771,6 @@ export function useCategoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<C
 export type CategoryQueryHookResult = ReturnType<typeof useCategoryQuery>
 export type CategoryLazyQueryHookResult = ReturnType<typeof useCategoryLazyQuery>
 export type CategoryQueryResult = Apollo.QueryResult<CategoryQuery, CategoryQueryVariables>
-export function refetchCategoryQuery(variables?: CategoryQueryVariables) {
-  return { query: CategoryDocument, variables: variables }
-}
 export const MetaDocument = gql`
   query meta($slug: ID!) {
     meta(id: $slug, publicationState: LIVE) {
@@ -2773,10 +2779,7 @@ export const MetaDocument = gql`
   }
   ${MetaFragmentDoc}
 `
-export type MetaComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<MetaQuery, MetaQueryVariables>,
-  'query'
-> &
+export type MetaComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MetaQuery, MetaQueryVariables>, 'query'> &
   ({ variables: MetaQueryVariables; skip?: boolean } | { skip: boolean })
 
 export const MetaComponent = (props: MetaComponentProps) => (
@@ -2810,9 +2813,6 @@ export function useMetaLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MetaQ
 export type MetaQueryHookResult = ReturnType<typeof useMetaQuery>
 export type MetaLazyQueryHookResult = ReturnType<typeof useMetaLazyQuery>
 export type MetaQueryResult = Apollo.QueryResult<MetaQuery, MetaQueryVariables>
-export function refetchMetaQuery(variables?: MetaQueryVariables) {
-  return { query: MetaDocument, variables: variables }
-}
 export const MetasDocument = gql`
   query metas($where: JSON) {
     metas(where: $where, publicationState: LIVE) {
@@ -2821,10 +2821,7 @@ export const MetasDocument = gql`
   }
   ${MetaFragmentDoc}
 `
-export type MetasComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<MetasQuery, MetasQueryVariables>,
-  'query'
->
+export type MetasComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MetasQuery, MetasQueryVariables>, 'query'>
 
 export const MetasComponent = (props: MetasComponentProps) => (
   <ApolloReactComponents.Query<MetasQuery, MetasQueryVariables> query={MetasDocument} {...props} />
@@ -2857,9 +2854,6 @@ export function useMetasLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Meta
 export type MetasQueryHookResult = ReturnType<typeof useMetasQuery>
 export type MetasLazyQueryHookResult = ReturnType<typeof useMetasLazyQuery>
 export type MetasQueryResult = Apollo.QueryResult<MetasQuery, MetasQueryVariables>
-export function refetchMetasQuery(variables?: MetasQueryVariables) {
-  return { query: MetasDocument, variables: variables }
-}
 export const PageDocument = gql`
   query page($slug: ID!) {
     page(id: $slug, publicationState: LIVE) {
@@ -2872,10 +2866,7 @@ export const PageDocument = gql`
   ${PageFragmentDoc}
   ${CategoryFragmentDoc}
 `
-export type PageComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<PageQuery, PageQueryVariables>,
-  'query'
-> &
+export type PageComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<PageQuery, PageQueryVariables>, 'query'> &
   ({ variables: PageQueryVariables; skip?: boolean } | { skip: boolean })
 
 export const PageComponent = (props: PageComponentProps) => (
@@ -2909,9 +2900,6 @@ export function usePageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PageQ
 export type PageQueryHookResult = ReturnType<typeof usePageQuery>
 export type PageLazyQueryHookResult = ReturnType<typeof usePageLazyQuery>
 export type PageQueryResult = Apollo.QueryResult<PageQuery, PageQueryVariables>
-export function refetchPageQuery(variables?: PageQueryVariables) {
-  return { query: PageDocument, variables: variables }
-}
 export const PagesDocument = gql`
   query pages($where: JSON) {
     pages(where: $where, publicationState: LIVE) {
@@ -2924,10 +2912,7 @@ export const PagesDocument = gql`
   ${PageFragmentDoc}
   ${CategoryFragmentDoc}
 `
-export type PagesComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<PagesQuery, PagesQueryVariables>,
-  'query'
->
+export type PagesComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<PagesQuery, PagesQueryVariables>, 'query'>
 
 export const PagesComponent = (props: PagesComponentProps) => (
   <ApolloReactComponents.Query<PagesQuery, PagesQueryVariables> query={PagesDocument} {...props} />
@@ -2960,9 +2945,6 @@ export function usePagesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Page
 export type PagesQueryHookResult = ReturnType<typeof usePagesQuery>
 export type PagesLazyQueryHookResult = ReturnType<typeof usePagesLazyQuery>
 export type PagesQueryResult = Apollo.QueryResult<PagesQuery, PagesQueryVariables>
-export function refetchPagesQuery(variables?: PagesQueryVariables) {
-  return { query: PagesDocument, variables: variables }
-}
 export const SectionDocument = gql`
   query section($slug: ID!) {
     section(id: $slug, publicationState: LIVE) {
@@ -2971,10 +2953,7 @@ export const SectionDocument = gql`
   }
   ${SectionFragmentDoc}
 `
-export type SectionComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<SectionQuery, SectionQueryVariables>,
-  'query'
-> &
+export type SectionComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<SectionQuery, SectionQueryVariables>, 'query'> &
   ({ variables: SectionQueryVariables; skip?: boolean } | { skip: boolean })
 
 export const SectionComponent = (props: SectionComponentProps) => (
@@ -3008,9 +2987,6 @@ export function useSectionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Se
 export type SectionQueryHookResult = ReturnType<typeof useSectionQuery>
 export type SectionLazyQueryHookResult = ReturnType<typeof useSectionLazyQuery>
 export type SectionQueryResult = Apollo.QueryResult<SectionQuery, SectionQueryVariables>
-export function refetchSectionQuery(variables?: SectionQueryVariables) {
-  return { query: SectionDocument, variables: variables }
-}
 export const SectionsDocument = gql`
   query sections($where: JSON) {
     sections(where: $where, publicationState: LIVE) {
@@ -3019,10 +2995,7 @@ export const SectionsDocument = gql`
   }
   ${SectionFragmentDoc}
 `
-export type SectionsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<SectionsQuery, SectionsQueryVariables>,
-  'query'
->
+export type SectionsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<SectionsQuery, SectionsQueryVariables>, 'query'>
 
 export const SectionsComponent = (props: SectionsComponentProps) => (
   <ApolloReactComponents.Query<SectionsQuery, SectionsQueryVariables> query={SectionsDocument} {...props} />
@@ -3055,9 +3028,6 @@ export function useSectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<S
 export type SectionsQueryHookResult = ReturnType<typeof useSectionsQuery>
 export type SectionsLazyQueryHookResult = ReturnType<typeof useSectionsLazyQuery>
 export type SectionsQueryResult = Apollo.QueryResult<SectionsQuery, SectionsQueryVariables>
-export function refetchSectionsQuery(variables?: SectionsQueryVariables) {
-  return { query: SectionsDocument, variables: variables }
-}
 export const WebsiteDocument = gql`
   query website($slug: ID!) {
     website(id: $slug, publicationState: LIVE) {
@@ -3066,10 +3036,7 @@ export const WebsiteDocument = gql`
   }
   ${WebsiteFragmentDoc}
 `
-export type WebsiteComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<WebsiteQuery, WebsiteQueryVariables>,
-  'query'
-> &
+export type WebsiteComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<WebsiteQuery, WebsiteQueryVariables>, 'query'> &
   ({ variables: WebsiteQueryVariables; skip?: boolean } | { skip: boolean })
 
 export const WebsiteComponent = (props: WebsiteComponentProps) => (
@@ -3103,6 +3070,3 @@ export function useWebsiteLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<We
 export type WebsiteQueryHookResult = ReturnType<typeof useWebsiteQuery>
 export type WebsiteLazyQueryHookResult = ReturnType<typeof useWebsiteLazyQuery>
 export type WebsiteQueryResult = Apollo.QueryResult<WebsiteQuery, WebsiteQueryVariables>
-export function refetchWebsiteQuery(variables?: WebsiteQueryVariables) {
-  return { query: WebsiteDocument, variables: variables }
-}

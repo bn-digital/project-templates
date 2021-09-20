@@ -10,4 +10,4 @@ const reportWebVitals = (onPerfEntry?: () => unknown): void => {
   }
 }
 
-export default reportWebVitals
+export { reportWebVitals }

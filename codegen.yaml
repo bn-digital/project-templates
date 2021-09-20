@@ -1,19 +1,19 @@
-schema:
-  - packages/cms/exports/graphql/schema.graphql
+schema: packages/cms/exports/graphql/schema.graphql
 watch: true
 documents:
   - packages/cms/exports/graphql/**/*.graphql
   - packages/website/src/graphql/**/*.graphql
 hooks:
   afterAllFileWrite:
+    - eslint --fix --quiet
     - prettier --write
 generates:
   packages/website/src/graphql/index.tsx:
     plugins:
       - typescript:
           allowEnumStringTypes: true
-          avoidOptionals: true
           dedupeFragments: true
+          avoidOptionals: false
           scalars:
             Upload: unknown
             Date: Date
@@ -22,21 +22,15 @@ generates:
             Long: number
             DateTime: Date
           strictScalars: true
-          declarationKind:
-            interface: interface
-            type: interface
-            scalar: type
-            arguments: type
-            input: type
           defaultScalarType: unknown
+          noExport: false
       - typescript-operations:
           preResolveTypes: true
-          avoidOptionals: true
+          avoidOptionals: false
+          dedupeFragments: true
       - typescript-react-apollo:
           withComponent: true
           withHooks: true
-          withResultType: true
-          withRefetchFn: true
           optimizeDocumentNode: true
           addDocBlocks: true
           reactApolloVersion: 3

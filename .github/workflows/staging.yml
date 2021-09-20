@@ -1,0 +1,78 @@
+name: Staging
+on:
+  workflow_dispatch: { }
+  push:
+    branches:
+      - latest
+    paths:
+      - '.github/workflows/staging.yml'
+      - 'helmfile.yaml'
+      - '**/*/Dockerfile'
+      - '**/*/package.json'
+      - 'packages/cms/api/**/*'
+      - 'packages/cms/components/**/*'
+      - 'packages/cms/config/**/*'
+      - 'packages/cms/extensions/**/*'
+      - 'packages/website/src/**/*'
+
+env:
+  SKAFFOLD_PROFILE: staging
+
+jobs:
+  deploy:
+    name: Deploy applications
+    environment: staging
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Import Vault secrets
+        uses: hashicorp/vault-action@v2.3.1
+        id: secrets
+        with:
+          url: ${{ secrets.vault_endpoint }}
+          method: github
+          githubToken: ${{ secrets.gh_token }}
+          secrets: |
+            infrastructure/data/bndigital/staging/kubernetes cluster | kubernetes_cluster ;
+            infrastructure/data/bndigital/staging/digitalocean/api token | digitalocean_api_token ;
+            infrastructure/data/bndigital/staging/registry docker-url | docker_url ;
+            infrastructure/data/bndigital/staging/registry docker-username | docker_username ;
+            infrastructure/data/bndigital/staging/registry docker-password | docker_password ;
+            infrastructure/data/bndigital/staging/sonarqube host | sonarqube_host ;
+            infrastructure/data/bndigital/staging/sonarqube token | sonarqube_token ;
+
+      - name: Run Sonar scanner
+        uses: kitabisa/sonarqube-action@master
+        with:
+          host: ${{ steps.secrets.outputs.sonarqube_host }}
+          login: ${{ steps.secrets.outputs.sonarqube_token }}
+
+      - name: Login Docker registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ steps.secrets.outputs.docker_url }}
+          username: ${{ steps.secrets.outputs.docker_username }}
+          password: ${{ steps.secrets.outputs.docker_password }}
+
+      - name: Setup DigitalOcean cli
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ steps.secrets.outputs.digitalocean_api_token }}
+
+      - name: Configure Kubernetes context
+        run: doctl kubernetes cluster kubeconfig save ${{ steps.secrets.outputs.kubernetes_cluster }} --set-current-context
+
+      - name: Build Skaffold artifacts
+        uses: hiberbee/github-action-skaffold@1.7.0
+        with:
+          command: build
+          default-repo: ${{ steps.secrets.outputs.docker_url }}/${{ github.event.repository.name }}
+
+      - name: Release Helm charts
+        uses: hiberbee/github-action-helm@1.4.0
+        with:
+          helmfile-command: apply
+          environment: ${{ env.SKAFFOLD_PROFILE }}

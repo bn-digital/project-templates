@@ -17,4 +17,4 @@ const Home: FC = ({ children }) => {
   )
 }
 
-export default Home
+export { Home as default }

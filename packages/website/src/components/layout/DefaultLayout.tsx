@@ -3,7 +3,7 @@ import { Col, Layout, Row, Skeleton } from 'antd'
 import { Logo } from '../logo/Logo'
 import { Navigation } from '../menu/Navigation'
 import { WebsiteComponent } from '../../graphql'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router'
 
 const DefaultLayout: VFC = () => (
   <Layout style={{ minHeight: '100vh', width: '100%' }}>
@@ -12,9 +12,7 @@ const DefaultLayout: VFC = () => (
         <Skeleton title={false} paragraph={false} avatar={false} loading={loading}>
           <Layout.Header>
             <Row align={'bottom'} wrap={false}>
-              <Col>
-                <Logo image={{ src: data?.website?.logo?.url, title: data?.website?.name ?? '' }} />
-              </Col>
+              <Col>{data?.website?.logo && <Logo image={{ src: data.website.logo.url, title: data?.website?.name ?? '' }} />}</Col>
               <Col flex={'auto'}>
                 <Navigation links={data?.website?.menu?.find(it => it?.slug === 'default')?.links ?? []} />
               </Col>

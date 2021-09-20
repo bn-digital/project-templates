@@ -1,5 +1,4 @@
-import { Route, Routes } from 'react-router'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { FC, ReactNode, Suspense } from 'react'
 import { Spinner } from '../loader/Spinner'
 
@@ -17,9 +16,7 @@ const RoutingProvider: FC<RoutingProviderProps> = ({ routeMap }) => {
       return {
         path: baseUrl,
         element: <LayoutOutlet />,
-        children: Object.entries(routes).map(([path, Component]) => (
-          <Route key={path} path={path} element={<Component />} />
-        )),
+        children: Object.entries(routes).map(([path, Component]) => <Route key={path} path={path} element={<Component />} />),
       }
     })
     .map(props => <Route key={props.path} {...props} />)

@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "app",
   "description": "Includes all required tools and packages to bootstrap full-stack app development using NodeJS stack",
   "version": "1.0.0",
   "private": true,
@@ -18,57 +18,46 @@
   },
   "workspaces": {
     "extends": "@bn-digital/eslint-config",
-    "packages": [
-      "packages/*"
-    ]
+    "packages": ["packages/*"]
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,less,graphql}": [
-      "prettier --write"
-    ],
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ],
-    "*.less": [
-      "stylelint --fix"
-    ]
+    "*.{js,jsx,ts,tsx,json,less,graphql}": ["prettier --write"],
+    "*.{js,jsx,ts,tsx}": ["eslint --fix"],
+    "*.less": ["stylelint --fix"]
   },
-  "eslintConfig": {
-    "extends": "@bn-digital/eslint-config",
-    "ignorePatterns": [
-      "*.js"
-    ]
-  },
+  "prettier": "@bn-digital/prettier-config",
   "stylelint": {
     "extends": "@bn-digital/stylelint-config"
   },
-  "dependencies": {
-    "@bn-digital/eslint-config": "^1.8.13-22.11",
-    "@bn-digital/prettier-config": "^1.8.13-22.8",
-    "@bn-digital/stylelint-config": "^1.8.13-23.31"
+  "eslintConfig": {
+    "extends": "@bn-digital/eslint-config/react"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^2.0.1",
-    "@graphql-codegen/typescript": "^2.0.0",
-    "@graphql-codegen/typescript-operations": "^2.0.1",
-    "@graphql-codegen/typescript-react-apollo": "^3.0.0",
-    "@types/node": "^16.6.1",
+    "@bn-digital/eslint-config": "^1.10.1",
+    "@bn-digital/prettier-config": "^1.10.0",
+    "@bn-digital/stylelint-config": "^1.10.0",
+    "@graphql-codegen/cli": "^2.2.0",
+    "@graphql-codegen/typescript": "^2.2.2",
+    "@graphql-codegen/typescript-operations": "^2.1.4",
+    "@graphql-codegen/typescript-react-apollo": "^3.1.4",
+    "@types/node": "^16.7.10",
     "concurrently": "^6.2.1",
     "eslint": "^7.32.0",
-    "graphql": "^15.5.1",
-    "husky": "^7.0.1",
+    "graphql": "^15.5.3",
+    "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
     "prettier": "^2.3.2",
     "stylelint": "^13.13.1",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.2"
   },
   "scripts": {
     "generate": "graphql-codegen",
-    "cms": "yarn workspace @template/cms run start",
+    "cms": "yarn workspace @app/cms run start",
     "website": "yarn workspace @template/website run start",
     "upgrade": "yarn up '*'",
-    "fix": "prettier --write packages/*/src && eslint --fix packages/*/src && stylelint --fix packages/*/src/**/*.less",
-    "lint": "prettier --check packages/*/src && eslint packages/*/src && stylelint --fix packages/*/src/**/*.less",
+    "fix": "prettier --write packages/*/src && eslint --fix packages/*/src/**/*.{ts,tsx,js,jsx} && stylelint --fix packages/*/src/**/*.{less,css,scss}",
+    "lint": "prettier --check packages/*/src && eslint packages/*/src/**/*.{ts,tsx,js,jsx} && stylelint --fix packages/*/src/**/*.{less,css,scss}",
     "start": "concurrently 'yarn:generate' 'yarn:cms' 'yarn:website'"
-  }
+  },
+  "packageManager": "yarn@3.0.2"
 }

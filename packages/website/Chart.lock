@@ -1,6 +1,0 @@
-dependencies:
-- name: nodejs
-  repository: https://dcr.bndigital.dev/chartrepo/library
-  version: 1.1.0
-digest: sha256:c20a885935dc5309e24990c6ef19e2d4862e952b174f30150afcc3a7f1afc5ae
-generated: "2021-08-16T08:40:07.6294612+03:00"

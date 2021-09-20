@@ -34,19 +34,17 @@ node_modules
 
 # Environmnet
 .env
-.env.*
-!.env.dist
 
-# Terraform
-.terraform
-*.auto.tfvars
-
-# Build artifacts
+# Strapi
 build
+.cache
+.strapi-updater.json
 
 # Gradle
 .gradle
 
-# Helm
+# SonarQube
+.scannerwork
 
-**/*/charts/*.tgz
+# Terraform
+.ter
