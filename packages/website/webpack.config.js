@@ -1,1 +1,1 @@
-module.exports = require('@bn-digital/webpack/react').mergeWithReact({})
+module.exports = require('@bn-digital/webpack/react').mergeWithReact()
