@@ -18,11 +18,13 @@ on:
 env:
   SKAFFOLD_PROFILE: staging
 
+permissions: read-all
+
 jobs:
   deploy:
     name: Deploy applications
     environment: staging
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout sources
@@ -34,7 +36,7 @@ jobs:
         with:
           url: ${{ secrets.vault_endpoint }}
           method: github
-          githubToken: ${{ secrets.gh_token }}
+          githubToken: ${{ github.token }}
           secrets: |
             infrastructure/data/bndigital/staging/kubernetes cluster | kubernetes_cluster ;
             infrastructure/data/bndigital/staging/digitalocean/api token | digitalocean_api_token ;
