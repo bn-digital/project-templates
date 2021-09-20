@@ -18,8 +18,6 @@ on:
 env:
   SKAFFOLD_PROFILE: staging
 
-permissions: read-all
-
 jobs:
   deploy:
     name: Deploy applications
@@ -36,7 +34,7 @@ jobs:
         with:
           url: ${{ secrets.vault_endpoint }}
           method: github
-          githubToken: ${{ github.token }}
+          githubToken: ${{ secrets.GH_TOKEN }}
           secrets: |
             infrastructure/data/bndigital/staging/kubernetes cluster | kubernetes_cluster ;
             infrastructure/data/bndigital/staging/digitalocean/api token | digitalocean_api_token ;
