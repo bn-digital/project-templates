@@ -3,10 +3,10 @@ import DefaultLayout from '../components/layout'
 import { lazy } from 'react'
 
 export const routeMap: RouteMap = {
-  '/*': {
+  '/': {
     layout: DefaultLayout,
     routes: {
-      '/': lazy(() => import('./home')),
+      '': lazy(() => import('./home')),
       '/contact-us': lazy(() => import('./contact-us')),
     },
   },

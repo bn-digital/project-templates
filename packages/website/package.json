@@ -5,26 +5,27 @@
     "build": "webpack --mode=production",
     "start": "webpack serve --mode=development"
   },
+  "proxy": "http://localhost:1337",
   "dependencies": {
-    "@apollo/client": "^3.4.12",
-    "@bn-digital/webpack": "^1.11.11",
+    "@apollo/client": "^3.4.15",
+    "@bn-digital/webpack": "^1.12.19",
     "antd": "^4.16.13",
-    "graphql": "^15.5.3",
+    "graphql": "^15.6.0",
     "history": "^5.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-ga": "^3.3.0",
     "react-helmet-async": "^1.1.2",
-    "react-intl": "^5.20.10",
+    "react-intl": "^5.20.12",
     "react-markdown": "^7.0.1",
     "react-responsive": "^9.0.0-beta.4",
-    "react-router-dom": "^6.0.0-beta.4",
+    "react-router-dom": "^6.0.0-beta.5",
     "web-vitals": "^2.1.0"
   },
   "devDependencies": {
-    "@types/react": "^17.0.22",
+    "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
     "typescript": "^4.4.3",
-    "webpack": "^5.53.0"
+    "webpack": "^5.54.0"
   }
 }

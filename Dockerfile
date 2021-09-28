@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:latest
 FROM ghcr.io/bn-digital/docker/yarn:1.0.0 AS build
 COPY . .
-ARG profile="staging"
+ARG profile="dist"
 ARG token=""
 ARG endpoint=""
 ENV VAULT_ENDPOINT=${endpoint}
@@ -10,7 +10,7 @@ RUN yarn \
  && yarn env --dist=".env.${profile}" \
  && yarn build
 
-FROM ghcr.io/bn-digital/docker/nodejs:1.0.0 AS cms
+FROM dcr.bndigital.dev/library/nodejs:1.0.0 AS cms
 COPY --from=build /usr/local/src/packages/cms .
 ENTRYPOINT ["yarn"]
 CMD ["strapi", "start"]

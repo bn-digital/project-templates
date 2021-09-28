@@ -1,12 +1,13 @@
-import { FC, Fragment, ImgHTMLAttributes } from 'react'
+import { FC, Fragment, SVGProps } from 'react'
 import { Link } from 'react-router-dom'
+import { ReactComponent as LogoImg } from './Logo.svg'
 
-type LogoProps = { image: ImgHTMLAttributes<HTMLImageElement>; name: string }
+type LogoProps = { image: SVGProps<SVGSVGElement>; name: string }
 
 const Logo: FC<Partial<LogoProps>> = ({ image }) => (
   <Fragment>
     <Link to={'/'}>
-      <img height={32} style={{ marginTop: -4 }} alt={image?.title} {...image} />
+      <LogoImg {...image} />
     </Link>
   </Fragment>
 )

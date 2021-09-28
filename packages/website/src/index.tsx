@@ -17,7 +17,7 @@ const App: FC = ({ children }) => (
 )
 
 const element = <App />
-const container = window.document.getElementById('root')
+const container = document.querySelector('#root')
 if (container) {
   render(element, container)
   reportWebVitals()

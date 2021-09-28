@@ -30,12 +30,12 @@
     "extends": "@bn-digital/stylelint-config"
   },
   "eslintConfig": {
-    "extends": "@bn-digital/eslint-config/react"
+    "extends": "@bn-digital/eslint-config"
   },
   "devDependencies": {
-    "@bn-digital/eslint-config": "^1.10.1",
-    "@bn-digital/prettier-config": "^1.10.0",
-    "@bn-digital/stylelint-config": "^1.10.0",
+    "@bn-digital/eslint-config": "^1.13.34",
+    "@bn-digital/prettier-config": "^1.10.5",
+    "@bn-digital/stylelint-config": "^1.10.5",
     "@graphql-codegen/cli": "^2.2.0",
     "@graphql-codegen/typescript": "^2.2.2",
     "@graphql-codegen/typescript-operations": "^2.1.4",

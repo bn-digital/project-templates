@@ -12,7 +12,9 @@ const DefaultLayout: VFC = () => (
         <Skeleton title={false} paragraph={false} avatar={false} loading={loading}>
           <Layout.Header>
             <Row align={'bottom'} wrap={false}>
-              <Col>{data?.website?.logo && <Logo image={{ src: data.website.logo.url, title: data?.website?.name ?? '' }} />}</Col>
+              <Col>
+                <Logo image={{ width: 32, height: 32, color: '#202123' }} />
+              </Col>
               <Col flex={'auto'}>
                 <Navigation links={data?.website?.menu?.find(it => it?.slug === 'default')?.links ?? []} />
               </Col>

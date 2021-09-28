@@ -1,0 +1,29 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    assignees:
+      - @bn-digital/developers
+    reviewers:
+      - @bn-digital/developers
+    directory: /
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: npm
+    assignees:
+      - @bn-digital/developers
+    reviewers:
+      - @bn-digital/developers
+    directory: /packages/cms
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: npm
+    assignees:
+      - @bn-digital/developers
+    reviewers:
+      - @bn-digital/developers
+    directory: /packages/website
+    schedule:
+      interval: weekly
