@@ -41,7 +41,7 @@
     "@graphql-codegen/typescript-operations": "^2.1.4",
     "@graphql-codegen/typescript-react-apollo": "^3.1.4",
     "@types/node": "^16.7.10",
-    "concurrently": "^6.2.1",
+    "concurrently": "^6.3.0",
     "eslint": "^7.32.0",
     "graphql": "^15.5.3",
     "husky": "^7.0.2",
