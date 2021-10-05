@@ -7,7 +7,7 @@
   },
   "proxy": "http://localhost:1337",
   "dependencies": {
-    "@apollo/client": "^3.4.15",
+    "@apollo/client": "^3.4.16",
     "@bn-digital/webpack": "^1.12.19",
     "antd": "^4.16.13",
     "graphql": "^15.6.0",
