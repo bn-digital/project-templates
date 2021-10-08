@@ -13,11 +13,4 @@ Dockerfile
 LICENSE
 codegen.yaml
 node_modules
-packages/**/*.iml
-packages/*/.cache
-packages/*/.env
-packages/*/.terraform
-packages/*/build
-packages/*/node_modules
-packages/*/strapi-updater.json
 sonar-project.properties

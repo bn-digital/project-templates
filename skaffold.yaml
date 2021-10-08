@@ -1,22 +1,14 @@
 # nonk8s
-apiVersion: skaffold/v2beta22
+apiVersion: skaffold/v2beta23
 kind: Config
 build:
   artifacts:
     - image: cms
       docker:
         target: cms
-        buildArgs:
-          profile: "{{ .SKAFFOLD_PROFILE }}"
-          token: "{{ .GITHUB_TOKEN }}"
-          endpoint: "{{ .VAULT_ENDPOINT }}"
     - image: website
       docker:
         target: website
-        buildArgs:
-          profile: "{{ .SKAFFOLD_PROFILE }}"
-          token: "{{ .GITHUB_TOKEN }}"
-          endpoint: "{{ .VAULT_ENDPOINT }}"
   tagPolicy:
     sha256: { }
   local:
@@ -25,6 +17,8 @@ build:
     useBuildkit: true
 profiles:
   - name: staging
+    activation:
+      - kubeContext: do-fra1-bndigital
     build:
       tagPolicy:
         gitCommit:

@@ -3,15 +3,10 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/packages/angular-website-template/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/angular-website-template/tmp" />
-      <excludeFolder url="file://$MODULE_DIR$/.yarn" />
-      <excludeFolder url="file://$MODULE_DIR$/node_modules" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/cms/.cache" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/cms/build" />
-      <excludeFolder url="file://$MODULE_DIR$/.husky" />
-      <excludeFolder url="file://$MODULE_DIR$/.config" />
       <excludeFolder url="file://$MODULE_DIR$/.bzt" />
+      <excludeFolder url="file://$MODULE_DIR$/.config" />
+      <excludeFolder url="file://$MODULE_DIR$/.husky" />
+      <excludeFolder url="file://$MODULE_DIR$/.yarn" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

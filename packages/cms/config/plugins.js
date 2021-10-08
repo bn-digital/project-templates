@@ -8,7 +8,7 @@ module.exports = ({ env }) => ({
     depthLimit: 7,
     amountLimit: 100,
     apolloServer: {
-      tracing: env('NODE_ENV', 'development') === 'development',
+      tracing: env('NODE_ENV', 'development') !== 'production',
     },
   },
   upload: {
@@ -17,17 +17,25 @@ module.exports = ({ env }) => ({
       accessKeyId: env('S3_ACCESS_KEY_ID'),
       secretAccessKey: env('S3_SECRET_ACCESS_KEY'),
       region: env('S3_REGION', 'fra1'),
-      endpoint: env('S3_ENDPOINT', `fra1.digitaloceanspaces.com`),
+      endpoint: env('S3_ENDPOINT', `${env('S3_REGION')}.digitaloceanspaces.com`),
       params: {
         Bucket: `${env('S3_BUCKET', `bn-dev/${name}`)}/uploads`,
       },
     },
   },
   email: {
-    provider: 'sendmail',
+    provider: 'nodemailer',
+    providerOptions: {
+      host: env('SMTP_HOST'),
+      port: env('SMTP_PORT'),
+      auth: {
+        user: env('SMTP_USERNAME', 'bn-digital'),
+        pass: env('SMTP_PASSWORD'),
+      },
+    },
     settings: {
-      defaultFrom: env('MAIL_FROM', `no-reply@${env('DOMAIN', 'mg.bndigital.dev')}`),
-      defaultReplyTo: env('MAIL_TO', `no-reply@${env('DOMAIN', 'mg.bndigital.dev')}`),
+      defaultFrom: env('MAIL_FROM', `no-reply@${env('DOMAIN', `${name}.bndigital.dev`)}`),
+      defaultReplyTo: env('MAIL_TO', `no-reply@${env('DOMAIN', `${name}.bndigital.dev`)}`),
     },
   },
 })

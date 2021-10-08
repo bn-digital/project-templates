@@ -1,8 +1,6 @@
 schema: packages/cms/exports/graphql/schema.graphql
-watch: true
 documents:
   - packages/cms/exports/graphql/**/*.graphql
-  - packages/website/src/graphql/**/*.graphql
 hooks:
   afterAllFileWrite:
     - eslint --fix --quiet

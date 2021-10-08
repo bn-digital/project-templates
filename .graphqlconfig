@@ -1,13 +1,9 @@
 {
-  "name": "CMS",
+  "name": "CMS GraphQL API",
   "schemaPath": "./packages/cms/exports/graphql/schema.graphql",
   "includes": [
-    "./packages/cms/exports/graphql/queries/*.graphql",
-    "./packages/cms/exports/graphql/mutations/*.graphql",
-    "./packages/cms/exports/graphql/fragments/*.graphql",
-    "./packages/website/src/graphql/queries/*.graphql",
-    "./packages/website/src/graphql/mutations/*.graphql",
-    "./packages/website/src/graphql/fragments/*.graphql"
+    "./packages/*/exports/graphql/*/*.graphql",
+    "./packages/*/src/graphql/*/*.graphql"
   ],
   "extensions": {
     "endpoints": {
