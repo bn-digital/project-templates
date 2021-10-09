@@ -3,7 +3,7 @@ on:
   workflow_dispatch: { }
   push:
     branches:
-      - latest
+      - main
     paths:
       - '.github/workflows/staging.yml'
       - 'helmfile.yaml'
@@ -21,8 +21,8 @@ env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
-  deploy:
-    name: Deploy applications
+  ci:
+    name: CI Pipeline
     environment: staging
     runs-on: self-hosted
 
@@ -31,8 +31,8 @@ jobs:
         uses: hashicorp/vault-action@v2.3.1
         id: secrets
         with:
-          url: ${{ env.VAULT_ENDPOINT }}
           method: github
+          url: ${{ env.VAULT_ENDPOINT }}
           githubToken: ${{ env.GITHUB_TOKEN }}
           secrets: |
             infrastructure/data/bndigital/${{ env.ENV }}/kubernetes cluster | kubernetes_cluster ;

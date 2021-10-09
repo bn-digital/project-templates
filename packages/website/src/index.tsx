@@ -17,10 +17,9 @@ const App: FC = ({ children }) => (
   </StrictMode>
 )
 
-const element = <App />
 const container = document.querySelector('#root')
 if (container) {
-  render(element, container)
+  render(<App />, container)
   reportWebVitals()
   process.env.NODE_ENV === 'production' ? register() : unregister()
 } else {

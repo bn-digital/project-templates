@@ -108,9 +108,7 @@ function checkValidServiceWorker(swUrl: string, config?: Config): void {
       if (response.status === 404 || (contentType != null && contentType.indexOf('javascript') === -1)) {
         // No service worker found. Probably a different app. Reload the page.
         navigator.serviceWorker.ready.then(registration => {
-          registration.unregister().then(() => {
-            window.location.reload()
-          })
+          registration.unregister().then(window.location.reload)
         })
       } else {
         // Service worker found. Proceed as normal.
@@ -125,9 +123,7 @@ function checkValidServiceWorker(swUrl: string, config?: Config): void {
 export function unregister(): void {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready
-      .then(registration => {
-        registration.unregister()
-      })
+      .then(registration => registration.unregister())
       .catch(error => {
         console.error(error.message)
       })
