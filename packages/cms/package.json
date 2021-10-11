@@ -13,7 +13,7 @@
   "dependencies": {
     "knex": "^0.95.11",
     "pg": "^8.7.1",
-    "slugify": "^1.6.0",
+    "slugify": "^1.6.1",
     "sqlite3": "^5.0.2",
     "strapi": "^3.6.8",
     "strapi-admin": "^3.6.8",
