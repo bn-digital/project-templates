@@ -20,7 +20,7 @@
     "react-markdown": "^7.0.1",
     "react-responsive": "^9.0.0-beta.4",
     "react-router-dom": "^6.0.0-beta.6",
-    "web-vitals": "^2.1.1",
+    "web-vitals": "^2.1.2",
     "workbox-core": "^6.3.0",
     "workbox-precaching": "^6.3.0",
     "workbox-routing": "^6.3.0",
