@@ -906,9 +906,7 @@ type createContactPayload {
   contact: FeedbackContact
 }
 
-"""
-Key-Value entry
-"""
+"""Key-Value entry"""
 type ComponentAtomsEntry {
   id: ID!
   key: String!
@@ -969,9 +967,7 @@ input editComponentAtomsNumericInput {
   max: Float
 }
 
-"""
-Text node
-"""
+"""Text node"""
 type ComponentAtomsText {
   id: ID!
   value: String!
@@ -1081,111 +1077,7 @@ input editComponentOrganismsMetaInput {
   keywords: [editComponentAtomsTextInput]
 }
 
-union Morph =
-    UsersPermissionsMe
-  | UsersPermissionsMeRole
-  | UsersPermissionsLoginPayload
-  | UserPermissionsPasswordPayload
-  | EmailDesignerEmailTemplate
-  | I18NLocale
-  | UploadFile
-  | UploadFileConnection
-  | UploadFileAggregator
-  | UploadFileAggregatorSum
-  | UploadFileAggregatorAvg
-  | UploadFileAggregatorMin
-  | UploadFileAggregatorMax
-  | UploadFileGroupBy
-  | UploadFileConnectionId
-  | UploadFileConnectionCreated_at
-  | UploadFileConnectionUpdated_at
-  | UploadFileConnectionName
-  | UploadFileConnectionAlternativeText
-  | UploadFileConnectionCaption
-  | UploadFileConnectionWidth
-  | UploadFileConnectionHeight
-  | UploadFileConnectionFormats
-  | UploadFileConnectionHash
-  | UploadFileConnectionExt
-  | UploadFileConnectionMime
-  | UploadFileConnectionSize
-  | UploadFileConnectionUrl
-  | UploadFileConnectionPreviewUrl
-  | UploadFileConnectionProvider
-  | UploadFileConnectionProvider_metadata
-  | deleteFilePayload
-  | UsersPermissionsPermission
-  | UsersPermissionsRole
-  | UsersPermissionsRoleConnection
-  | UsersPermissionsRoleAggregator
-  | UsersPermissionsRoleGroupBy
-  | UsersPermissionsRoleConnectionId
-  | UsersPermissionsRoleConnectionName
-  | UsersPermissionsRoleConnectionDescription
-  | UsersPermissionsRoleConnectionType
-  | createRolePayload
-  | updateRolePayload
-  | deleteRolePayload
-  | UsersPermissionsUser
-  | UsersPermissionsUserConnection
-  | UsersPermissionsUserAggregator
-  | UsersPermissionsUserGroupBy
-  | UsersPermissionsUserConnectionId
-  | UsersPermissionsUserConnectionUsername
-  | UsersPermissionsUserConnectionEmail
-  | UsersPermissionsUserConnectionRole
-  | UsersPermissionsUserConnectionFirstName
-  | UsersPermissionsUserConnectionLastName
-  | UsersPermissionsUserConnectionPhoto
-  | createUserPayload
-  | updateUserPayload
-  | deleteUserPayload
-  | CmsCategory
-  | CmsCategoryConnection
-  | CmsCategoryAggregator
-  | CmsCategoryGroupBy
-  | CmsCategoryConnectionId
-  | CmsCategoryConnectionName
-  | CmsCategoryConnectionSlug
-  | CmsMeta
-  | CmsMetaConnection
-  | CmsMetaAggregator
-  | CmsMetaGroupBy
-  | CmsMetaConnectionId
-  | CmsMetaConnectionCreated_at
-  | CmsMetaConnectionUpdated_at
-  | CmsMetaConnectionSlug
-  | CmsMetaConnectionTitle
-  | CmsMetaConnectionDescription
-  | CmsMetaConnectionKeywords
-  | CmsPage
-  | CmsPageConnection
-  | CmsPageAggregator
-  | CmsPageGroupBy
-  | CmsPageConnectionId
-  | CmsPageConnectionName
-  | CmsPageConnectionText
-  | CmsPageConnectionSlug
-  | CmsPageConnectionMeta
-  | CmsSection
-  | CmsSectionConnection
-  | CmsSectionAggregator
-  | CmsSectionGroupBy
-  | CmsSectionConnectionId
-  | CmsSectionConnectionTitle
-  | CmsSectionConnectionDescription
-  | CmsSectionConnectionSlug
-  | CmsWebsite
-  | FeedbackContact
-  | createContactPayload
-  | ComponentAtomsEntry
-  | ComponentAtomsLink
-  | ComponentAtomsNumeric
-  | ComponentAtomsText
-  | ComponentMoleculesMenu
-  | ComponentMoleculesRecord
-  | ComponentOrganismsCard
-  | ComponentOrganismsMeta
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | EmailDesignerEmailTemplate | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionPhoto | createUserPayload | updateUserPayload | deleteUserPayload | CmsCategory | CmsCategoryConnection | CmsCategoryAggregator | CmsCategoryGroupBy | CmsCategoryConnectionId | CmsCategoryConnectionName | CmsCategoryConnectionSlug | CmsMeta | CmsMetaConnection | CmsMetaAggregator | CmsMetaGroupBy | CmsMetaConnectionId | CmsMetaConnectionCreated_at | CmsMetaConnectionUpdated_at | CmsMetaConnectionSlug | CmsMetaConnectionTitle | CmsMetaConnectionDescription | CmsMetaConnectionKeywords | CmsPage | CmsPageConnection | CmsPageAggregator | CmsPageGroupBy | CmsPageConnectionId | CmsPageConnectionName | CmsPageConnectionText | CmsPageConnectionSlug | CmsPageConnectionMeta | CmsSection | CmsSectionConnection | CmsSectionAggregator | CmsSectionGroupBy | CmsSectionConnectionId | CmsSectionConnectionTitle | CmsSectionConnectionDescription | CmsSectionConnectionSlug | CmsWebsite | FeedbackContact | createContactPayload | ComponentAtomsEntry | ComponentAtomsLink | ComponentAtomsNumeric | ComponentAtomsText | ComponentMoleculesMenu | ComponentMoleculesRecord | ComponentOrganismsCard | ComponentOrganismsMeta
 
 input InputID {
   id: ID!
@@ -1233,39 +1125,25 @@ type Query {
 }
 
 type Mutation {
-  """
-  Delete one file
-  """
+  """Delete one file"""
   deleteFile(input: deleteFileInput): deleteFilePayload
 
-  """
-  Create a new role
-  """
+  """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
 
-  """
-  Update an existing role
-  """
+  """Update an existing role"""
   updateRole(input: updateRoleInput): updateRolePayload
 
-  """
-  Delete an existing role
-  """
+  """Delete an existing role"""
   deleteRole(input: deleteRoleInput): deleteRolePayload
 
-  """
-  Create a new user
-  """
+  """Create a new user"""
   createUser(input: createUserInput): createUserPayload
 
-  """
-  Update an existing user
-  """
+  """Update an existing user"""
   updateUser(input: updateUserInput): updateUserPayload
 
-  """
-  Delete an existing user
-  """
+  """Delete an existing user"""
   deleteUser(input: deleteUserInput): deleteUserPayload
   createContact(input: createContactInput): createContactPayload
   upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
@@ -1288,9 +1166,7 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTime
 
-"""
-A time string with format: HH:mm:ss.SSS
-"""
+"""A time string with format: HH:mm:ss.SSS"""
 scalar Time
 
 """
@@ -1298,12 +1174,8 @@ A date string, such as 2007-12-03, compliant with the `full-date` format outline
 """
 scalar Date
 
-"""
-The `Long` scalar type represents 52-bit integers
-"""
+"""The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-"""
-The `Upload` scalar type represents a file upload.
-"""
+"""The `Upload` scalar type represents a file upload."""
 scalar Upload
