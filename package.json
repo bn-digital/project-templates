@@ -42,7 +42,7 @@
     "@bn-digital/eslint-config": "^1.14.1",
     "@bn-digital/graphql-codegen": "^1.0.0",
     "@bn-digital/prettier-config": "^1.10.6",
-    "@bn-digital/stylelint-config": "1.11.0",
+    "@bn-digital/stylelint-config": "1.12.0",
     "@graphql-codegen/cli": "^2.2.0",
     "@types/node": "^16.10.3",
     "concurrently": "^6.3.0",
