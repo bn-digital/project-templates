@@ -16,7 +16,8 @@ on:
       - 'packages/website/src/**/*'
 
 env:
-  ENV: staging
+  SKAFFOLD_PROFILE: staging
+  SKAFFOLD_DEFAULT_REPO: dcr.bndigital.dev/${{ github.event.repository.name }}
   VAULT_ENDPOINT: ${{ secrets.VAULT_ENDPOINT }}
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
@@ -36,12 +37,12 @@ jobs:
           githubToken: ${{ env.GITHUB_TOKEN }}
           secrets: |
             infrastructure/data/bndigital/${{ env.ENV }}/kubernetes cluster | kubernetes_cluster ;
-            infrastructure/data/bndigital/${{ env.ENV }}/digitalocean/api token | digitalocean_api_token ;
+            infrastructure/data/bndigital/${{ env.ENV }}/digitalocean/api token | DIGITALOCEAN_TOKEN ;
             infrastructure/data/bndigital/${{ env.ENV }}/registry docker-url | docker_url ;
             infrastructure/data/bndigital/${{ env.ENV }}/registry docker-username | docker_username ;
             infrastructure/data/bndigital/${{ env.ENV }}/registry docker-password | docker_password ;
-            infrastructure/data/bndigital/${{ env.ENV }}/sonarqube host | sonarqube_host ;
-            infrastructure/data/bndigital/${{ env.ENV }}/sonarqube token | sonarqube_token ;
+            infrastructure/data/bndigital/${{ env.ENV }}/sonarqube host | SONAR_HOST_URL ;
+            infrastructure/data/bndigital/${{ env.ENV }}/sonarqube token | SONAR_TOKEN ;
 
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -59,33 +60,29 @@ jobs:
 
       - name: Run Sonar scanner
         uses: sonarsource/sonarqube-scan-action@v1.0.0
-        env:
-          SONAR_TOKEN: ${{ steps.secrets.outputs.sonarqube_token }}
-          SONAR_HOST_URL: ${{ steps.secrets.outputs.sonarqube_host }}
 
       - name: Login Docker registry
         uses: docker/login-action@v1
         with:
-          registry: ${{ steps.secrets.outputs.docker_url }}
-          username: ${{ steps.secrets.outputs.docker_username }}
-          password: ${{ steps.secrets.outputs.docker_password }}
+          registry: ${{ env.SKAFFOLD_DEFAULT_REPO }}
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ env.DOCKER_PASSWORD }}
 
       - name: Build Docker images
-        uses: hiberbee/github-action-skaffold@1.9.0
+        uses: hiberbee/github-action-skaffold@1.12.0
         with:
           command: build
-          repository: ${{ steps.secrets.outputs.docker_url }}/${{ github.event.repository.name }}
 
       - name: Setup DigitalOcean cli
         uses: digitalocean/action-doctl@v2
         with:
-          token: ${{ steps.secrets.outputs.digitalocean_api_token }}
+          token: ${{ env.DIGITALOCEAN_TOKEN }}
 
       - name: Configure Kubernetes context
         run: doctl kubernetes cluster kubeconfig save ${{ steps.secrets.outputs.kubernetes_cluster }} --set-current-context
 
       - name: Release Helm charts
-        uses: hiberbee/github-action-helm@1.5.0
+        uses: hiberbee/github-action-helm@1.7.1
         with:
           helmfile-command: apply
-          environment: ${{ env.ENV }}
+          environment: ${{ env.SKAFFOLD_PROFILE }}

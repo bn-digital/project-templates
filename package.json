@@ -16,14 +16,19 @@
     "email": "vlad.volkov@bndigital.co",
     "url": "https://github.com/vladyslavvolkov"
   },
-  "workspaces": {
-    "extends": "@bn-digital/eslint-config",
-    "packages": ["packages/*"]
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,less,graphql}": ["prettier --write"],
-    "*.{js,jsx,ts,tsx}": ["eslint --fix"],
-    "*.less": ["stylelint --fix"]
+    "*.{js,jsx,ts,tsx,json,less,graphql}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.less": [
+      "stylelint --fix"
+    ]
   },
   "prettier": "@bn-digital/prettier-config",
   "stylelint": {
@@ -34,10 +39,10 @@
   },
   "devDependencies": {
     "@bn-digital/commitlint-config": "^1.0.0",
-    "@bn-digital/eslint-config": "^1.13.36",
+    "@bn-digital/eslint-config": "^1.14.1",
     "@bn-digital/graphql-codegen": "^1.0.0",
     "@bn-digital/prettier-config": "^1.10.6",
-    "@bn-digital/stylelint-config": "^1.10.5",
+    "@bn-digital/stylelint-config": "1.11.0",
     "@graphql-codegen/cli": "^2.2.0",
     "@types/node": "^16.10.3",
     "concurrently": "^6.3.0",
@@ -53,9 +58,11 @@
     "cms": "yarn workspace @app/cms run start",
     "website": "yarn workspace @app/website run start",
     "upgrade": "yarn up '*'",
+    "build": "yarn workspaces foreach run build",
+    "env": "yarn workspaces foreach run env",
     "fix": "prettier --write packages/*/src && eslint --fix packages/*/src/**/*.{ts,tsx,js,jsx} && stylelint --fix packages/*/src/**/*.{less,css,scss}",
     "lint": "prettier --check packages/*/src && eslint packages/*/src/**/*.{ts,tsx,js,jsx} && stylelint --fix packages/*/src/**/*.{less,css,scss}",
     "start": "concurrently 'yarn:generate' 'yarn:cms' 'yarn:website'"
   },
-  "packageManager": "yarn@3.0.2"
+  "packageManager": "yarn@3.1.0"
 }

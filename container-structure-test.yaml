@@ -1,6 +1,0 @@
-schemaVersion: 2.0.0
-globalEnvVars:
-  - key: NODE_ENV
-    value: production
-  - key: PORT
-    value: '5000'
