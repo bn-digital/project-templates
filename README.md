@@ -12,16 +12,12 @@
 
 Run corresponding command from root [package.json](package.json) script.
 
-#### Apps
+### Required changes
 
-| App | Command | Endpoint | 
-| --- | --- | --- |
-| ![Strapi](https://simpleicons.org/icons/strapi.svg) | `yarn strapi` | http://localhost:1337 |
-| ![React](https://simpleicons.org/icons/react.svg) | `yarn react`| http://localhost:3000 |
-| ![Ant Design](https://simpleicons.org/icons/antdesign.svg) | `yarn antd`| http://localhost:3000 |
-| ![Tailwind](https://simpleicons.org/icons/tailwindcss.svg) | `yarn tailwind`| http://localhost:3000 |
-| ![Angular](https://simpleicons.org/icons/angular.svg) | `yarn angular` | http://localhost:4200 |
-| ![HTML](https://simpleicons.org/icons/html5.svg) | `yarn html` | http://localhost:5000 |
-| ![Apollo](https://simpleicons.org/icons/apollographql.svg) | `yarn apollo` | http://localhost:4000 http://localhost:9002/editor |
-| ![GraphQL Mesh](https://simpleicons.org/icons/graphql.svg) | `yarn graphql` | http://localhost:8080 |
-
+- [ ] sonar-project.properties -- change 'project-template' to 'your project name'
+- [ ] package.json -- change "name": "App" to "your project name",
+packaje.json -- config script from "start": "concurrently 'yarn:generate' 'yarn:cms' 'yarn:website'" to "start": "'yarn:website'" (optional)
+helmfile.yalm -- change releases:- name: app-website to releases:- name: your project name helmfile.yalm -- change chart: bndigital/app to
+chart: bndigital/your project name packages/website/package.json -- change "name": "@app/website", to "name": "@homli/website", (the same
+for cms folder)
+Run yarn install)

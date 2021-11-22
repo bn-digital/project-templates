@@ -1,8 +1,0 @@
-query category($slug: ID!) {
-  category(id: $slug, publicationState: LIVE) {
-    ...Category
-    children {
-      ...Category
-    }
-  }
-}

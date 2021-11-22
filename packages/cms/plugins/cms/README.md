@@ -1,2 +1,0 @@
-# Strapi Plugin CMS
- 

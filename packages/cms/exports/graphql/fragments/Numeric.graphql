@@ -1,7 +1,0 @@
-fragment Numeric on ComponentAtomsNumeric {
-  id
-  value
-  min
-  max
-  unit
-}

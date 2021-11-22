@@ -40,6 +40,9 @@ build
 .cache
 .strapi-updater.json
 
+# Generated
+**/*/types/graphql.d.ts
+
 # Gradle
 .gradle
 

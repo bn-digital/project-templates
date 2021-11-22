@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_ui_grids",
+  "info": {
+    "displayName": "Grid",
+    "icon": "table",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": ["faq"],
+      "required": true,
+      "enumName": "ContentGridType"
+    },
+    "visible": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "children": {
+      "type": "component",
+      "repeatable": true,
+      "component": "data.entry",
+      "required": true,
+      "min": 1
+    }
+  }
+}

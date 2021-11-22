@@ -1,13 +1,24 @@
-import { RouteMap } from '../components/app/Routing'
-import DefaultLayout from '../components/layout'
-import { lazy } from 'react'
+import { VFC } from 'react'
+import { BrowserRouter, useRoutes } from 'react-router-dom'
+import { mapToRoutes } from '../components/app/Routing'
+import { DefaultLayout } from '../components/layout'
 
-export const routeMap: RouteMap = {
-  '/': {
-    layout: DefaultLayout,
-    routes: {
-      '': lazy(() => import('./home')),
-      '/contact-us': lazy(() => import('./contact-us')),
-    },
-  },
-}
+const Routes: VFC = () =>
+  useRoutes(
+    mapToRoutes({
+      '': {
+        layout: DefaultLayout,
+        routes: {
+          '': () => import('./home'),
+        },
+      },
+    }),
+  )
+
+const Pages = () => (
+  <BrowserRouter>
+    <Routes />
+  </BrowserRouter>
+)
+
+export { Pages as default }

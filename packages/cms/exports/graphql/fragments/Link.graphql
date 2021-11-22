@@ -1,6 +1,0 @@
-fragment Link on ComponentAtomsLink {
-  id
-  text
-  extra
-  url
-}

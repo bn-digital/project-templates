@@ -1,43 +1,61 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { FC, ReactNode, Suspense } from 'react'
+import { RouteObject } from 'react-router'
+import { FC, lazy, Suspense } from 'react'
 import { Spinner } from '../loader/Spinner'
+import { ContentProvider } from './Content'
 
-export type RouteMap = { [key: string]: { layout: FC; routes: { [key: string]: FC } } }
+type LazyImport = () => Promise<{ default: FC }>
 
-type RoutingProviderProps = { routeMap: RouteMap }
+type NestedRouteMap = { layout: FC; routes: { [key: string]: LazyImport } }
 
-/**
- * @param {RouteMap}
- */
-const RoutingProvider: FC<RoutingProviderProps> = ({ routeMap }) => {
-  const children = Object.entries(routeMap)
-    .map(([baseUrl, { layout, routes }]) => {
-      const LayoutOutlet = layout
-      return {
-        path: baseUrl,
-        element: <LayoutOutlet />,
-        children: Object.entries(routes).map(([path, Component]) => <Route key={path} path={path} element={<Component />} />),
-      }
-    })
-    .map(props => <Route key={props.path} {...props} />)
-  return <Routes>{children}</Routes>
+type RouteMap = { [key: string]: NestedRouteMap }
+
+function entryToRouteObject(url: string, factory: LazyImport): RouteObject {
+  const Page: FC = lazy(factory)
+  return {
+    path: url,
+    index: url === '',
+    element: (
+      <Suspense fallback={<Spinner />}>
+        <ContentProvider pathname={url?.startsWith('/') ? url : '/'.concat(url)}>
+          <Page />
+        </ContentProvider>
+      </Suspense>
+    ),
+  }
 }
 
-type BrowserRouterProps = { loader: ReactNode } & RoutingProviderProps
+function childrenToRouteObject(url: string, children: NestedRouteMap): RouteObject {
+  const LayoutOutlet = children.layout
+  return {
+    path: url,
+    element: <LayoutOutlet />,
+    children: Object.entries(children.routes).map(([url, pathOrNested]) => entryToRouteObject(url, pathOrNested)),
+  }
+}
 
-/**
- *
- * @param Wrapped
- * @return {FC}
- */
-function withBrowserRouter(Wrapped: FC<RoutingProviderProps>): FC<Partial<BrowserRouterProps>> {
-  return ({ routeMap = {}, loader, children }) => (
-    <BrowserRouter>
-      <Suspense fallback={loader ?? <Spinner />}>
-        <Wrapped routeMap={routeMap}>{children}</Wrapped>
-      </Suspense>
-    </BrowserRouter>
+function mapToRoutes(entries: RouteMap): RouteObject[] {
+  return Object.entries(entries).map(([url, pathOrNested]) => {
+    if (typeof pathOrNested === 'object') {
+      const LayoutOutlet = pathOrNested.layout
+      return {
+        path: url,
+        element: <LayoutOutlet />,
+        children: Object.entries(pathOrNested.routes).map(([url, pathOrNested]) =>
+          typeof pathOrNested === 'object' ? childrenToRouteObject(url, pathOrNested) : entryToRouteObject(url, pathOrNested),
+        ),
+      }
+    } else {
+      return entryToRouteObject(url, pathOrNested)
+    }
+  })
+}
+
+function withRouter(Router: FC, Pages: FC): FC {
+  return () => (
+    <Router>
+      <Pages />
+    </Router>
   )
 }
 
-export default withBrowserRouter(RoutingProvider)
+export { mapToRoutes, withRouter }

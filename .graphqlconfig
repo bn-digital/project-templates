@@ -1,13 +1,12 @@
 {
   "name": "CMS GraphQL API",
-  "schemaPath": "./packages/cms/exports/graphql/schema.graphql",
+  "schemaPath": "./packages/cms/src/graphql/schema.graphql",
   "includes": [
-    "./packages/*/exports/graphql/*/*.graphql",
     "./packages/*/src/graphql/*/*.graphql"
   ],
   "extensions": {
     "endpoints": {
-      "strapi": {
+      "development": {
         "url": "http://localhost:1337/graphql"
       }
     }

@@ -1,6 +1,12 @@
 import ApiProvider from './Api'
 import ViewProvider from './View'
-import RoutingProvider from './Routing'
-import MetaProvider from './Meta'
+import { FC } from 'react'
+export { ViewProvider, ApiProvider }
 
-export { ViewProvider, ApiProvider, RoutingProvider, MetaProvider }
+const App: FC = ({ children }) => (
+  <ApiProvider>
+    <ViewProvider>{children}</ViewProvider>
+  </ApiProvider>
+)
+
+export { App as default }

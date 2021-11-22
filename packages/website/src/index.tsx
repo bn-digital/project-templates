@@ -1,25 +1,22 @@
+import { StrictMode, VFC } from 'react'
 import { render } from 'react-dom'
 import { reportWebVitals } from './reportWebVitals'
-import { FC, StrictMode } from 'react'
-import { ApiProvider, MetaProvider, RoutingProvider, ViewProvider } from './components/app'
-import { routeMap } from './pages'
 import { register, unregister } from './serviceWorkerRegistration'
+import App from './components/app'
+import Pages from './pages'
 
-const App: FC = ({ children }) => (
+const Root: VFC = () => (
   <StrictMode>
-    <ApiProvider>
-      <MetaProvider>
-        <ViewProvider>
-          <RoutingProvider routeMap={routeMap}>{children}</RoutingProvider>
-        </ViewProvider>
-      </MetaProvider>
-    </ApiProvider>
+    <App>
+      <Pages />
+    </App>
   </StrictMode>
 )
 
 const container = document.querySelector('#root')
+
 if (container) {
-  render(<App />, container)
+  render(<Root />, container)
   reportWebVitals()
   process.env.NODE_ENV === 'production' ? register() : unregister()
 } else {

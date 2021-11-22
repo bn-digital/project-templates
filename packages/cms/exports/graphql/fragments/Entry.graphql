@@ -1,5 +1,0 @@
-fragment Entry on ComponentAtomsEntry {
-  id
-  key
-  value
-}

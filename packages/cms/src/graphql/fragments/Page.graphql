@@ -1,0 +1,45 @@
+fragment Page on PageEntity {
+  id
+  attributes {
+    title
+    pathname
+    description
+    keywords
+    content {
+      __typename
+      ... on ComponentUiGrid {
+        id
+        visible
+        gridType: type
+        children {
+          ...Entry
+        }
+      }
+      ... on ComponentUiSection {
+        id
+        sectionType: type
+        visible
+        children {
+          ...Card
+        }
+      }
+      ... on ComponentUiText {
+        id
+        type
+        visible
+        textType: type
+        children {
+          ...Paragraph
+        }
+      }
+      ... on ComponentUiMenu {
+        id
+        menuType: type
+        visible
+        children {
+          ...Link
+        }
+      }
+    }
+  }
+}

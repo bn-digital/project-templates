@@ -1,15 +1,16 @@
-import { FC, Fragment, SVGProps } from 'react'
+import { VFC } from 'react'
 import { Link } from 'react-router-dom'
-import { ReactComponent as LogoImg } from './Logo.svg'
+import { SvgIcon } from '../icon'
+import { Space } from 'antd'
 
-type LogoProps = { image: SVGProps<SVGSVGElement>; name: string }
-
-const Logo: FC<Partial<LogoProps>> = ({ image }) => (
-  <Fragment>
-    <Link to={'/'}>
-      <LogoImg {...image} />
-    </Link>
-  </Fragment>
+const Logo: VFC = () => (
+  <Link to={'/'}>
+    <Space direction={'horizontal'}>
+      <SvgIcon fill={'#0170FE'} type={'ant'} />
+      <SvgIcon fill={'#61DAFB'} type={'react'} />
+      <SvgIcon fill={'2F2E8B'} type={'strapi'} />
+    </Space>
+  </Link>
 )
 
 export { Logo }

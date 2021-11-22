@@ -4,10 +4,10 @@
 
 Use this section to tell people about which versions of your project are currently being supported with security updates.
 
-| Library   | Version | Supported          |
-| --------- | ------- | ------------------ |
-| [React](https://github.com/facebook/react)     | 17.0    | :heavy_check_mark: |
-| [Strapi](https://github.com/strapi/strapi)    | 3.6     | :heavy_check_mark: |
+| Library                                    | Version | Supported          |
+|--------------------------------------------|---------|--------------------|
+| [React](https://github.com/facebook/react) | 17.0    | :heavy_check_mark: |
+| [Strapi](https://github.com/strapi/strapi) | 3.6     | :heavy_check_mark: |
 
 ## Reporting a Vulnerability
 

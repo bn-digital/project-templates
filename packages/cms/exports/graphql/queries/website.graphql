@@ -1,5 +1,0 @@
-query website($slug: ID!) {
-  website(id: $slug, publicationState: LIVE) {
-    ...Website
-  }
-}

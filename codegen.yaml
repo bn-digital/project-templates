@@ -1,34 +1,37 @@
-schema: packages/cms/exports/graphql/schema.graphql
+schema: packages/cms/src/graphql/schema.graphql
 documents:
-  - packages/cms/exports/graphql/**/*.graphql
+  - packages/cms/src/graphql/*/*.graphql
+  - packages/website/src/graphql/*/*.graphql
 hooks:
   afterAllFileWrite:
-    - eslint --fix --quiet
-    - prettier --write
+    - yarn eslint --fix --quiet
+    - yarn prettier --write
+config:
+  scalars:
+    Upload: unknown
+    Date: Date
+    Time: Date
+    JSON: Record<string, unknown>
+    Long: number
+    DateTime: Date
 generates:
   packages/website/src/graphql/index.tsx:
     plugins:
-      - typescript:
-          allowEnumStringTypes: true
-          dedupeFragments: true
-          avoidOptionals: false
-          scalars:
-            Upload: unknown
-            Date: Date
-            Time: Date
-            JSON: Record<string, unknown>
-            Long: number
-            DateTime: Date
-          strictScalars: true
-          defaultScalarType: unknown
-          noExport: false
       - typescript-operations:
-          preResolveTypes: true
-          avoidOptionals: false
+          inlineFragmentTypes: combine
+          avoidOptionals: true
+          noExport: true
           dedupeFragments: true
+          preResolveTypes: true
       - typescript-react-apollo:
+          dedupeFragments: true
+          inlineFragmentTypes: combine
           withComponent: true
           withHooks: true
-          optimizeDocumentNode: true
-          addDocBlocks: true
-          reactApolloVersion: 3
+  packages/website/src/types/graphql.d.ts:
+    plugins:
+      - typescript:
+          noExport: true
+          skipTypename: true
+          enumsAsTypes: true
+          avoidOptionals: true

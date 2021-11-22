@@ -1,0 +1,11 @@
+fragment Card on ComponentUiCard {
+  id
+  title
+  subtitle
+  description
+  media {
+    data {
+      ...File
+    }
+  }
+}

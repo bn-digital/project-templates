@@ -1,0 +1,7 @@
+fragment File on UploadFileEntity {
+  id
+  attributes {
+    previewUrl
+    url
+  }
+}

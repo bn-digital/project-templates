@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_ui_menus",
+  "info": {
+    "displayName": "Menu",
+    "icon": "bars",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "visible": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "children": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.link",
+      "required": true,
+      "min": 1
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["header", "footer", "socials", "cta"],
+      "required": true,
+      "enumName": "ContentMenuType"
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { ConfigProvider } from 'antd'
 import { IntlProvider } from 'react-intl'
 import { ConfigProviderProps } from 'antd/lib/config-provider'
+import './View.less'
 
 type ViewProps = { locale: string }
 

@@ -1,20 +1,12 @@
 import { FC } from 'react'
-import { Layout, Typography } from 'antd'
-import { useContent } from '../../components/app/Content'
+import { Layout } from 'antd'
+import { HeroSection } from '../../components/section'
+import { ContentProps, withContent } from '../../components/app/Content'
 
-const Home: FC = ({ children }) => {
-  const section = useContent('/#hero')
-  return (
-    <Layout>
-      {section && (
-        <Layout.Content>
-          <Typography.Title>{section.title}</Typography.Title>
-          <Typography.Paragraph>{section.description}</Typography.Paragraph>
-        </Layout.Content>
-      )}
-      <Layout.Content>{children}</Layout.Content>
-    </Layout>
-  )
-}
+const Home: FC<ContentProps> = ({ section, menu }) => (
+  <Layout.Content>
+    <HeroSection data={{ ...section.hero?.[0], button: menu.cta?.[0] }} />
+  </Layout.Content>
+)
 
-export { Home as default }
+export default withContent(Home)

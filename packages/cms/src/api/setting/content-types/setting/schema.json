@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "settings",
+  "info": {
+    "singularName": "setting",
+    "pluralName": "settings",
+    "displayName": "Settings",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hostname": {
+      "type": "string",
+      "required": true,
+      "default": "localhost"
+    },
+    "credentials": {
+      "type": "component",
+      "private": true,
+      "repeatable": true,
+      "component": "data.entry"
+    },
+    "theme": {
+      "type": "component",
+      "repeatable": true,
+      "component": "data.entry"
+    }
+  }
+}

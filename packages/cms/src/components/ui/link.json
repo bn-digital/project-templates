@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_ui_links",
+  "info": {
+    "displayName": "Link",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "protocol": {
+      "type": "enumeration",
+      "enum": ["geo", "skype", "tel", "mailto"]
+    },
+    "icon": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

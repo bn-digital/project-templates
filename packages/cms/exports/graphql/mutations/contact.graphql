@@ -1,9 +1,0 @@
-mutation contact($input: createContactInput) {
-  createContact(input: $input) {
-    contact {
-      id
-      name
-      email
-    }
-  }
-}

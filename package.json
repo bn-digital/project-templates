@@ -38,31 +38,32 @@
     "extends": "@bn-digital/eslint-config"
   },
   "devDependencies": {
-    "@bn-digital/commitlint-config": "^1.0.0",
-    "@bn-digital/eslint-config": "^1.14.1",
-    "@bn-digital/graphql-codegen": "^1.0.0",
-    "@bn-digital/prettier-config": "^1.10.6",
-    "@bn-digital/stylelint-config": "1.11.0",
-    "@graphql-codegen/cli": "^2.2.0",
-    "@types/node": "^16.10.3",
-    "concurrently": "^6.3.0",
-    "eslint": "^7.32.0",
-    "husky": "^7.0.2",
-    "lint-staged": "^11.2.0",
-    "prettier": "^2.4.1",
-    "stylelint": "^13.13.1",
-    "typescript": "^4.4.3"
+    "@bn-digital/commitlint-config": "^1.1.0",
+    "@bn-digital/eslint-config": "^1.16.1",
+    "@bn-digital/graphql-config": "^1.0.1",
+    "@bn-digital/prettier-config": "^1.12.1",
+    "@bn-digital/stylelint-config": "^1.13.3",
+    "@graphql-codegen/introspection": "^2.1.0",
+    "@types/node": "^16.11.9",
+    "concurrently": "^6.4.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "typescript": "^4.5.2"
   },
   "scripts": {
-    "generate": "graphql-codegen --watch",
+    "prettier": "node_modules/.bin/prettier",
+    "stylelint": "node_modules/.bin/stylelint",
+    "eslint": "node_modules/.bin/eslint",
+    "graphql-codegen": "node_modules/.bin/graphql-codegen",
+    "generate": "yarn graphql-codegen --watch",
     "cms": "yarn workspace @app/cms run start",
     "website": "yarn workspace @app/website run start",
     "upgrade": "yarn up '*'",
     "build": "yarn workspaces foreach run build",
     "env": "yarn workspaces foreach run env",
-    "fix": "prettier --write packages/*/src && eslint --fix packages/*/src/**/*.{ts,tsx,js,jsx} && stylelint --fix packages/*/src/**/*.{less,css,scss}",
-    "lint": "prettier --check packages/*/src && eslint packages/*/src/**/*.{ts,tsx,js,jsx} && stylelint --fix packages/*/src/**/*.{less,css,scss}",
-    "start": "concurrently 'yarn:generate' 'yarn:cms' 'yarn:website'"
+    "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src && yarn stylelint --fix packages/*/src/**/*.less",
+    "lint": "yarn prettier --check packages/*/src && yarn eslint packages/*/src && yarn stylelint packages/*/src/**/*.less",
+    "start": "yarn concurrently 'yarn:generate' 'yarn:cms' 'yarn:website'"
   },
   "packageManager": "yarn@3.1.0"
 }

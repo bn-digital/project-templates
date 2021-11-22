@@ -1,8 +1,0 @@
-fragment Page on CmsPage {
-  id
-  slug
-  name
-  cover {
-    ...File
-  }
-}

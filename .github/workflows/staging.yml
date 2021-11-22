@@ -3,7 +3,7 @@ on:
   workflow_dispatch: { }
   push:
     branches:
-      - main
+      - latest
     paths:
       - '.github/workflows/staging.yml'
       - 'helmfile.yaml'
@@ -38,9 +38,8 @@ jobs:
           secrets: |
             infrastructure/data/bndigital/${{ env.ENV }}/kubernetes cluster | kubernetes_cluster ;
             infrastructure/data/bndigital/${{ env.ENV }}/digitalocean/api token | DIGITALOCEAN_TOKEN ;
-            infrastructure/data/bndigital/${{ env.ENV }}/registry docker-url | docker_url ;
-            infrastructure/data/bndigital/${{ env.ENV }}/registry docker-username | docker_username ;
-            infrastructure/data/bndigital/${{ env.ENV }}/registry docker-password | docker_password ;
+            infrastructure/data/bndigital/${{ env.ENV }}/registry docker-username | DOCKER_USERNAME ;
+            infrastructure/data/bndigital/${{ env.ENV }}/registry docker-password | DOCKER_PASSWORD ;
             infrastructure/data/bndigital/${{ env.ENV }}/sonarqube host | SONAR_HOST_URL ;
             infrastructure/data/bndigital/${{ env.ENV }}/sonarqube token | SONAR_TOKEN ;
 
@@ -84,5 +83,5 @@ jobs:
       - name: Release Helm charts
         uses: hiberbee/github-action-helm@1.7.1
         with:
-          helmfile-command: apply
+          helmfile: apply
           environment: ${{ env.SKAFFOLD_PROFILE }}

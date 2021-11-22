@@ -1,37 +1,28 @@
 {
   "name": "@app/cms",
-  "description": "A Strapi application",
-  "version": "3.6.8",
   "private": true,
-  "license": "proprietary",
+  "version": "1.0.0",
+  "description": "A Strapi application",
   "scripts": {
-    "build": "strapi build --clean",
-    "run": "strapi start",
+    "start": "strapi develop",
     "env": "vault-env",
-    "start": "vault-env && strapi develop"
+    "build": "strapi build --clean"
+  },
+  "eslintConfig": {
+    "globals": {
+      "strapi": true
+    }
   },
   "dependencies": {
-    "knex": "^0.95.12",
-    "pg": "^8.7.1",
-    "slugify": "^1.6.1",
-    "sqlite3": "^5.0.2",
-    "strapi": "^3.6.8",
-    "strapi-admin": "^3.6.8",
-    "strapi-connector-bookshelf": "^3.6.8",
-    "strapi-middleware-cache": "^2.1.5",
-    "strapi-plugin-content-manager": "^3.6.8",
-    "strapi-plugin-content-type-builder": "^3.6.8",
-    "strapi-plugin-email": "^3.6.8",
-    "strapi-plugin-email-designer": "^1.1.7",
-    "strapi-plugin-graphql": "^3.6.8",
-    "strapi-plugin-i18n": "^3.6.8",
-    "strapi-plugin-import-export-content": "^0.4.1",
-    "strapi-plugin-sitemap": "^1.2.5",
-    "strapi-plugin-upload": "^3.6.8",
-    "strapi-plugin-users-permissions": "^3.6.8",
-    "strapi-provider-email-nodemailer": "^3.6.8",
-    "strapi-provider-upload-aws-s3": "^3.6.8",
-    "strapi-utils": "^3.6.8"
+    "@strapi/plugin-content-manager": "4.0.0-beta.14",
+    "@strapi/plugin-content-type-builder": "4.0.0-beta.14",
+    "@strapi/plugin-graphql": "4.0.0-beta.14",
+    "@strapi/plugin-i18n": "4.0.0-beta.14",
+    "@strapi/plugin-users-permissions": "4.0.0-beta.14",
+    "@strapi/provider-email-nodemailer": "4.0.0-beta.14",
+    "@strapi/provider-upload-aws-s3": "4.0.0-beta.14",
+    "@strapi/strapi": "4.0.0-beta.14",
+    "sqlite3": "5.0.2"
   },
   "devDependencies": {
     "@bn-digital/vault-env": "^1.4.0"

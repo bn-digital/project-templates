@@ -1,8 +1,0 @@
-query page($slug: ID!) {
-  page(id: $slug, publicationState: LIVE) {
-    ...Page
-    categories {
-      ...Category
-    }
-  }
-}

@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8ba46f02-2fc6-49fd-8645-6f7d03b22d5c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/033ea5f0-bb35-45cc-8b51-a7c0a591e98a.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/033ea5f0-bb35-45cc-8b51-a7c0a591e98a/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/website.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/config/admin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/config/middlewares.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/admin/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/admin/webpack.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/page/content-types/page/schema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/page/controllers/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/page/routes/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/page/services/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/setting/content-types/setting/schema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/setting/controllers/setting.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/setting/routes/setting.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/setting/services/setting.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/components/data/entry.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/components/data/money.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/components/ui/card.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/components/ui/grid.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/components/ui/link.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/components/ui/menu.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/components/ui/paragraph.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/components/ui/section.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/components/ui/text.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/graphql/fragments/Card.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/graphql/fragments/Entry.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/graphql/fragments/File.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/graphql/fragments/Link.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/graphql/fragments/Page.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/graphql/fragments/Paragraph.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/graphql/queries/page.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/graphql/schema.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/cms/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/website/public/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/website/src/components/icon/images/AntDesign.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/website/src/components/icon/images/React.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/website/src/components/icon/images/Strapi.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/website/src/components/icon/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/website/src/components/layout/DefaultLayout.module.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/website/src/components/menu/Navigation.module.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/website/src/components/section/HeroSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/website/src/components/section/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/website/src/types/cms.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.bzt/config.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.bzt/reports/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.config/certs/localhost.crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.config/certs/localhost.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/SECURITY.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/SECURITY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/staging.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/staging.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.graphqlconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.graphqlconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.husky/pre-commit" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsonSchemas.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kubernetes-settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/markdown.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.yarnrc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.yarnrc.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codegen.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/codegen.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/admin/src/components/GlobalStyle/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/admin/src/components/LeftMenu/LeftMenuHeader/Wrapper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/admin/src/components/LeftMenu/LeftMenuLinkSection/LeftMenuListLink.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/api/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/public/uploads/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/components/atoms/entry.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/components/atoms/link.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/components/atoms/numeric.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/components/atoms/text.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/src/components/data/set.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/components/molecules/menu.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/components/molecules/record.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/components/organisms/card.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/components/organisms/meta.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/config/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/config/functions/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/config/functions/cron.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/config/functions/responses/404.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/config/middleware.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/config/name.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/config/plugins.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/config/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/data/db/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/src/api/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/data/db/app.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/data/seed/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/src/extensions/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/Card.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/Category.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/Entry.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/File.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/Link.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/Menu.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/Meta.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/Numeric.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/Page.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/Record.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/Section.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/Text.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/fragments/Website.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/mutations/contact.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/mutations/login.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/queries/categories.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/queries/category.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/queries/meta.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/queries/metas.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/queries/page.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/queries/pages.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/queries/section.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/queries/sections.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/queries/website.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/exports/graphql/schema.graphql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/extensions/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/extensions/cms/models/category.settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/extensions/cms/models/page.settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/extensions/cms/models/section.settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/extensions/cms/models/website.settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/extensions/import-export-content/admin/src/hooks/useContentTypes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/extensions/users-permissions/config/jwt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/extensions/users-permissions/models/Role.settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/extensions/users-permissions/models/User.settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/containers/App/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/containers/HomePage/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/containers/Initializer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/lifecycles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/pluginId.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/ar.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/cs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/de.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/en.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/es.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/fr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/id.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/it.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/ko.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/ms.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/nl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/pl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/pt-BR.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/pt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/ru.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/sk.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/th.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/tr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/uk.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/vi.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/zh-Hans.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/translations/zh.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/admin/src/utils/getTrad.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/config/routes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/config/schema.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/controllers/category.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/controllers/cms.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/controllers/meta.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/controllers/page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/controllers/section.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/controllers/website.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/models/category.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/models/category.settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/models/meta.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/models/meta.settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/models/page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/models/page.settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/models/section.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/models/section.settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/models/website.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/models/website.settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/services/category.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/services/cms.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/services/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/services/meta.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/services/page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/services/section.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/cms/services/website.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/containers/App/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/containers/HomePage/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/containers/Initializer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/lifecycles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/pluginId.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/ar.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/cs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/de.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/en.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/es.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/fr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/id.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/it.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/ko.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/ms.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/nl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/pl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/pt-BR.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/pt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/ru.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/sk.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/th.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/tr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/uk.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/vi.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/zh-Hans.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/translations/zh.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/admin/src/utils/getTrad.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/config/routes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/config/schema.graphql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/controllers/contact.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/controllers/feedback.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/models/contact.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/models/contact.settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/services/contact.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/plugins/feedback/services/feedback.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/typings/strapi.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/app/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/app/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/app/Meta.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/app/Routing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/app/Routing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/app/View.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/app/View.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/app/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/contact/ContactForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/contact/ContactForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/layout/DefaultLayout.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/layout/DefaultLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/layout/DefaultLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/layout/index.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/layout/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/logo/Logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/logo/Logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/logo/Logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/logo/Logo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/components/menu/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/menu/Navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/graphql/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/graphql/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/app/View.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/pages/contact-us/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/pages/home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/pages/home/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/src/serviceWorkerRegistration.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/serviceWorkerRegistration.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/website.iml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/website.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-templates.iml" beforeDir="false" afterPath="$PROJECT_DIR$/project-templates.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/node_modules/@graphql-codegen/cli/bin.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/package.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packages/cms/src/api/page/content-types/page/schema.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packages/cms/src/admin/app.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/node_modules/@graphql-tools/url-loader/index.d.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.yarnrc.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packages/cms/src/index.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packages/cms/src/api/page/services/page.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packages/cms/src/admin/webpack.config.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packages/cms/src/graphql/schema.graphql" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.graphqlconfig" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packages/cms/config/server.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packages/cms/config/api.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packages/cms/config/database.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/codegen.yaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packages/cms/package.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packages/website/src/components/app/Content.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packages/website/src/pages/home/index.tsx" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="KubernetesApiPersistence">
+    <option name="context" value="do-fra1-bndigital" />
+    <option name="namespace" value="default" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="20piyG4U4q1LpOMJaL6mrQXgtjw" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="compactDirectories" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.formatter.settings.were.checked" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
+    <property name="javascript.nodejs.core.library.configured.version" value="16.13.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="16.11.9" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/packages/cms" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="$PROJECT_DIR$/../../../../bin/apps/nodejs-lts/current/node" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="A:\src\github.com\bn-digital\project-templates\node_modules\prettier" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="ts.external.directory.path" value="A:\src\github.com\bn-digital\project-templates\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="A:\src\github.com\bn-digital\project-templates\packages\cms" />
+      <recent name="A:\src\github.com\bn-digital\project-templates\packages\website\src\components\icon\images" />
+      <recent name="A:\src\github.com\bn-digital\project-templates\packages\website\src\pages\home\sections" />
+      <recent name="A:\src\github.com\bn-digital\project-templates\packages\website\public" />
+      <recent name="A:\src\github.com\bn-digital\project-templates\packages\cms\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="A:\src\github.com\bn-digital\project-templates\packages\cms\src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="js.build_tools.npm" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.build">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/packages/cms/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="cms" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="cms" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="env" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/packages/cms/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="env" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="fix" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="fix" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="generate" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="generate" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.cms" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.env" />
+        <item itemvalue="npm.generate" />
+        <item itemvalue="npm.fix" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8ba46f02-2fc6-49fd-8645-6f7d03b22d5c" name="Changes" comment="" />
+      <created>1636748183188</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1636748183188</updated>
+      <workItem from="1636748185163" duration="2332000" />
+      <workItem from="1636759697879" duration="13153000" />
+      <workItem from="1636957404935" duration="1791000" />
+      <workItem from="1637427723730" duration="116000" />
+      <workItem from="1637430889998" duration="39000" />
+      <workItem from="1637431390673" duration="20824000" />
+      <workItem from="1637456207825" duration="13822000" />
+      <workItem from="1637593608302" duration="916000" />
+      <workItem from="1637594978660" duration="377000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="99efe5c1-23ae-463f-8d7a-01826f34725b">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:A:/src/github.com/bn-digital/project-templates/packages/cms/config" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="99efe5c1-23ae-463f-8d7a-01826f34725b" value="TOOL_WINDOW" />
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
