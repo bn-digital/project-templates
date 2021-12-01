@@ -14,7 +14,7 @@ releases:
   - name: app-website
     namespace: '{{ .Environment.Name }}'
     chart: bndigital/app
-    version: 1.0.1
+    version: 1.1.4
     values:
       - image: '{{ env "SKAFFOLD_DEFAULT_REPO" | default "dcr.bndigital.dev/app" }}/website:{{ env "IMAGE_TAG" | default "latest" }}'
         serviceAccount:
@@ -22,15 +22,15 @@ releases:
         ingress:
           host: '{{ env "DOMAIN" | default "app.bndigital.dev" }}'
           proxy:
-            enabled: true
-            implementation: strapi
-            backend:
-              service: app-cms-app
+            paths:
+              - pathTemplate: strapi
+                service:
+                  name: app-cms-app
 
   - name: app-cms
     namespace: '{{ .Environment.Name }}'
     chart: bndigital/app
-    version: 1.0.1
+    version: 1.1.4
     values:
       - image: '{{ env "SKAFFOLD_DEFAULT_REPO" | default "dcr.bndigital.dev/app" }}/cms:{{ env "IMAGE_TAG" | default "latest" }}'
         serviceAccount:

@@ -11,18 +11,18 @@
     "defaults"
   ],
   "dependencies": {
-    "@apollo/client": "^3.5.4",
-    "@bn-digital/webpack": "^1.16.26",
-    "antd": "^4.17.0",
+    "@apollo/client": "^3.5.5",
+    "@bn-digital/webpack": "^1.17.8",
+    "antd": "^4.17.2",
     "graphql": "^16.0.1",
     "history": "^5.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-ga": "^3.3.0",
     "react-helmet-async": "^1.1.2",
-    "react-intl": "^5.21.2",
-    "react-markdown": "^7.0.1",
-    "react-responsive": "^9.0.0-beta.4",
+    "react-intl": "^5.23.0",
+    "react-markdown": "^7.1.1",
+    "react-responsive": "^9.0.0-beta.5",
     "react-router-dom": "^6.0.2",
     "web-vitals": "^2.1.2",
     "workbox-expiration": "^6.4.1",
@@ -30,7 +30,7 @@
     "workbox-routing": "^6.4.1"
   },
   "devDependencies": {
-    "@types/react": "^17.0.36",
+    "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "typescript": "^4.5.2"
   }

@@ -17,16 +17,8 @@
       "required": true,
       "default": "localhost"
     },
-    "credentials": {
-      "type": "component",
-      "private": true,
-      "repeatable": true,
-      "component": "data.entry"
-    },
-    "theme": {
-      "type": "component",
-      "repeatable": true,
-      "component": "data.entry"
+    "googleAnalyticsCode": {
+      "type": "password"
     }
   }
 }
