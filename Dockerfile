@@ -1,10 +1,10 @@
 # syntax = docker/dockerfile:latest
-FROM dcr.bndigital.dev/library/nodejs:1.0.0 AS nodejs
+FROM dcr.bndigital.dev/library/nodejs:1.0.1 AS nodejs
 
-FROM nodejs AS cms
-COPY packages/cms .
+FROM dcr.bndigital.dev/library/nodejs:1.0.1 AS cms
+COPY --chown=node packages/cms .
 ENTRYPOINT ["yarn"]
 CMD ["strapi", "start"]
 
-FROM nodejs AS website
-COPY packages/website/build .
+FROM dcr.bndigital.dev/library/nodejs:1.0.1 AS website
+COPY --chown=node packages/website/build .

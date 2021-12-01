@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ba46f02-2fc6-49fd-8645-6f7d03b22d5c" name="Changes" comment="Updated templates to strapi v4 antd 4.17">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.yarnrc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.yarnrc.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helmfile.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helmfile.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/api/setting/content-types/setting/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/src/api/setting/content-types/setting/schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +38,9 @@
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="4" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="74d201ba-ebdb-4d58-8a65-c43fd2d54d28" />
   </component>
   <component name="GoVcsConfiguration">
     <option name="GO_FMT" value="false" />
@@ -209,7 +202,7 @@
       <workItem from="1637606825064" duration="2332000" />
       <workItem from="1638178840696" duration="2016000" />
       <workItem from="1638268618455" duration="15000" />
-      <workItem from="1638385363256" duration="599000" />
+      <workItem from="1638385363256" duration="909000" />
     </task>
     <task id="LOCAL-00001" summary="Updated templates to strapi v4 antd 4.17">
       <created>1637595649734</created>
@@ -218,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637595649734</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Updated templates to strapi v4 antd 4.17">
+      <created>1638386173222</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1638386173222</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
