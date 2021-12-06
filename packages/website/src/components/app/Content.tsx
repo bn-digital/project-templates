@@ -1,7 +1,7 @@
-import { usePageQuery } from '../../graphql'
-import { createContext, FC, FunctionComponent, useCallback, useContext, useEffect, useState } from 'react'
-import { RouteMatch, useLocation } from 'react-router-dom'
-import { Path } from 'history'
+import {usePageQuery} from '../../graphql'
+import {createContext, FC, FunctionComponent, useCallback, useContext, useEffect, useState} from 'react'
+import {RouteMatch, useLocation} from 'react-router-dom'
+import {Path} from 'history'
 
 export interface ContentProps {
   grid: Partial<{ [key in ContentGridType]: ComponentDataEntry[] }>
@@ -27,7 +27,7 @@ type ComponentType = {
   children: Array<ContentComponentType>
 }
 
-const defaultValue = { section: {}, menu: {}, text: {}, grid: {} }
+const defaultValue = {section: {}, menu: {}, text: {}, grid: {}}
 
 const Content = createContext<ContentProps>(defaultValue)
 
@@ -49,17 +49,16 @@ function mapContent(data: ComponentType[]) {
     ?.filter(it => it.visible)
     .reduce((accumulator, component) => {
       const [type, key] = resolveContentType(component)
-      accumulator[type] = { [key]: component.children }
-      return accumulator
+      return {...accumulator, [type]: {...accumulator[type], ...{[key]: component.children}}}
     }, defaultValue)
 }
 
-const ContentProvider: FC<Pick<RouteMatch, 'pathname'>> = ({ pathname = '/', children }) => {
-  const { data } = usePageQuery({ variables: { pathname } })
+const ContentProvider: FC<Pick<RouteMatch, 'pathname'>> = ({pathname = '/', children}) => {
+  const {data} = usePageQuery({variables: {pathname}})
   const getContent = useCallback(mapContent, [pathname])
   const [value, setValue] = useState(defaultValue)
   useEffect(() => {
-    setValue(prevState => ({ ...prevState, ...getContent(data?.pages?.data[0].attributes?.content as ComponentType[]) }))
+    setValue(prevState => ({...prevState, ...getContent(data?.pages?.data[0].attributes?.content as ComponentType[])}))
   }, [data?.pages?.data, getContent])
 
   return <Content.Provider value={value}>{children}</Content.Provider>
@@ -75,4 +74,4 @@ function withContent(Wrapped: FC<ContentProps>, pathProvider: () => Pick<Path, '
 
 const useContent = () => useContext(Content)
 
-export { ContentProvider, withContent, useContent }
+export {ContentProvider, withContent, useContent}

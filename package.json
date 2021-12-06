@@ -38,13 +38,13 @@
     "extends": "@bn-digital/eslint-config"
   },
   "devDependencies": {
-    "@bn-digital/commitlint-config": "^1.1.0",
-    "@bn-digital/eslint-config": "^1.16.1",
-    "@bn-digital/graphql-config": "^1.0.1",
-    "@bn-digital/prettier-config": "^1.12.1",
-    "@bn-digital/stylelint-config": "^1.13.3",
+    "@bn-digital/commitlint-config": "^1.2.2",
+    "@bn-digital/eslint-config": "^1.17.4",
+    "@bn-digital/graphql-config": "^1.0.2",
+    "@bn-digital/prettier-config": "^1.13.0",
+    "@bn-digital/stylelint-config": "^1.13.4",
     "@graphql-codegen/introspection": "^2.1.0",
-    "@types/node": "^16.11.9",
+    "@types/node": "^16.11.11",
     "concurrently": "^6.4.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
@@ -55,7 +55,7 @@
     "stylelint": "node_modules/.bin/stylelint",
     "eslint": "node_modules/.bin/eslint",
     "graphql-codegen": "node_modules/.bin/graphql-codegen",
-    "generate": "yarn graphql-codegen --watch",
+    "generate": "yarn graphql-codegen --watch --schema=http://localhost:1337/graphql",
     "cms": "yarn workspace @app/cms run start",
     "website": "yarn workspace @app/website run start",
     "upgrade": "yarn up '*'",
@@ -65,5 +65,5 @@
     "lint": "yarn prettier --check packages/*/src && yarn eslint packages/*/src && yarn stylelint packages/*/src/**/*.less",
     "start": "yarn concurrently 'yarn:generate' 'yarn:cms' 'yarn:website'"
   },
-  "packageManager": "yarn@3.1.0"
+  "packageManager": "yarn@3.1.1"
 }

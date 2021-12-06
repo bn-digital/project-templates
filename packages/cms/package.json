@@ -1,5 +1,5 @@
 {
-  "name": "@pantram/cms",
+  "name": "@app/cms",
   "private": true,
   "version": "1.0.0",
   "description": "A Strapi application",

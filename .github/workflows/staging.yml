@@ -16,10 +16,10 @@ on:
       - 'packages/website/src/**/*'
 
 env:
-  SKAFFOLD_PROFILE: staging
   SKAFFOLD_DEFAULT_REPO: dcr.bndigital.dev/${{ github.event.repository.name }}
   VAULT_ENDPOINT: ${{ secrets.VAULT_ENDPOINT }}
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  APP_ENV: staging
 
 jobs:
   ci:
@@ -36,12 +36,12 @@ jobs:
           url: ${{ env.VAULT_ENDPOINT }}
           githubToken: ${{ env.GITHUB_TOKEN }}
           secrets: |
-            infrastructure/data/bndigital/${{ env.ENV }}/kubernetes cluster | kubernetes_cluster ;
-            infrastructure/data/bndigital/${{ env.ENV }}/digitalocean/api token | DIGITALOCEAN_TOKEN ;
-            infrastructure/data/bndigital/${{ env.ENV }}/registry docker-username | DOCKER_USERNAME ;
-            infrastructure/data/bndigital/${{ env.ENV }}/registry docker-password | DOCKER_PASSWORD ;
-            infrastructure/data/bndigital/${{ env.ENV }}/sonarqube host | SONAR_HOST_URL ;
-            infrastructure/data/bndigital/${{ env.ENV }}/sonarqube token | SONAR_TOKEN ;
+            infrastructure/data/bndigital/${{ env.APP_ENV }}/kubernetes cluster | KUBERNETES_CLUSTER ;
+            infrastructure/data/bndigital/${{ env.APP_ENV }}/digitalocean token | DIGITALOCEAN_TOKEN ;
+            infrastructure/data/bndigital/${{ env.APP_ENV }}/registry docker-username | DOCKER_USERNAME ;
+            infrastructure/data/bndigital/${{ env.APP_ENV }}/registry docker-password | DOCKER_PASSWORD ;
+            infrastructure/data/bndigital/${{ env.APP_ENV }}/sonarqube host | SONAR_HOST_URL ;
+            infrastructure/data/bndigital/${{ env.APP_ENV }}/sonarqube token | SONAR_TOKEN ;
 
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -52,7 +52,7 @@ jobs:
         run: yarn
 
       - name: Generate env files
-        run: yarn workspaces foreach run env --dist=.env.${{ env.SKAFFOLD_PROFILE }}
+        run: yarn workspaces foreach run env --dist=.env.${{ env.APP_ENV }}
 
       - name: Build packages
         run: yarn workspaces foreach run build
@@ -68,7 +68,7 @@ jobs:
           password: ${{ env.DOCKER_PASSWORD }}
 
       - name: Build Docker images
-        uses: hiberbee/github-action-skaffold@1.12.0
+        uses: hiberbee/github-action-skaffold@1.14.0
         with:
           command: build
 
@@ -78,10 +78,10 @@ jobs:
           token: ${{ env.DIGITALOCEAN_TOKEN }}
 
       - name: Configure Kubernetes context
-        run: doctl kubernetes cluster kubeconfig save ${{ steps.secrets.outputs.kubernetes_cluster }} --set-current-context
+        run: doctl kubernetes cluster kubeconfig save ${{ env.KUBERNETES_CLUSTER }} --set-current-context
 
       - name: Release Helm charts
-        uses: hiberbee/github-action-helm@1.7.1
+        uses: hiberbee/github-action-helm@1.9.1
         with:
           helmfile: apply
-          environment: ${{ env.SKAFFOLD_PROFILE }}
+          environment: ${{ env.APP_ENV }}
