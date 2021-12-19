@@ -4,11 +4,12 @@
   "version": "1.0.0",
   "description": "A Strapi application",
   "scripts": {
-    "start": "strapi develop",
+    "start": "yarn env && strapi develop",
     "env": "vault-env",
     "build": "strapi build --clean"
   },
   "dependencies": {
+    "@gravitybv/strapi-plugin-permissions": "^1.0.1",
     "@strapi/plugin-content-manager": "^4.0.0",
     "@strapi/plugin-content-type-builder": "^4.0.0",
     "@strapi/plugin-graphql": "^4.0.0",

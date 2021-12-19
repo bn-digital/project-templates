@@ -34,7 +34,7 @@ jobs:
         with:
           method: github
           url: ${{ env.VAULT_ENDPOINT }}
-          githubToken: ${{ env.GITHUB_TOKEN }}
+          githubToken: ${{ github.token }}
           secrets: |
             infrastructure/data/bndigital/${{ env.APP_ENV }}/kubernetes cluster | KUBERNETES_CLUSTER ;
             infrastructure/data/bndigital/${{ env.APP_ENV }}/digitalocean token | DIGITALOCEAN_TOKEN ;

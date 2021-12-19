@@ -1,952 +1,929 @@
-# This file was generated based on ".graphqlconfig". Do not edit manually.
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
 
-schema {
-    query: Query
-    mutation: Mutation
-}
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
 
-union GenericMorph = ComponentDataEntry | ComponentDataMoney | ComponentDataSet | ComponentUiCard | ComponentUiGrid | ComponentUiLink | ComponentUiMenu | ComponentUiParagraph | ComponentUiSection | ComponentUiText | I18NLocale | Page | Setting | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
-
-union PageContentDynamicZone = ComponentUiGrid | ComponentUiMenu | ComponentUiSection | ComponentUiText | Error
-
-type ComponentDataEntry {
-    id: ID!
-    key: String
-    value: String!
-}
-
-type ComponentDataMoney {
-    currency: CurrencyCode
-    id: ID!
-    value: Float!
-}
-
-type ComponentDataSet {
-    id: ID!
-    value: String!
-}
-
-type ComponentUiCard {
-    description: String
-    id: ID!
-    media: UploadFileEntityResponse
-    subtitle: String
-    title: String
-}
-
-type ComponentUiGrid {
-    children(filters: ComponentDataEntryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentDataEntry]!
-    id: ID!
-    type: ContentGridType!
-    visible: Boolean!
-}
-
-type ComponentUiLink {
-    icon: UploadFileEntityResponse
-    id: ID!
-    protocol: ENUM_COMPONENTUILINK_PROTOCOL
-    title: String
-    url: String!
-}
-
-type ComponentUiMenu {
-    children(filters: ComponentUiLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiLink]!
-    id: ID!
-    type: ContentMenuType!
-    visible: Boolean!
-}
-
-type ComponentUiParagraph {
-    id: ID!
-    value: String!
-}
-
-type ComponentUiSection {
-    children(filters: ComponentUiCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiCard]!
-    id: ID!
-    type: ContentSectionType!
-    visible: Boolean!
-}
-
-type ComponentUiText {
-    children(filters: ComponentUiParagraphFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiParagraph]!
-    id: ID!
-    type: ContentTextType!
-    visible: Boolean!
-}
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
 
 type Error {
-    code: String!
-    message: String
-}
-
-type I18NLocale {
-    code: String
-    createdAt: DateTime
-    name: String
-    updatedAt: DateTime
-}
-
-type I18NLocaleEntity {
-    attributes: I18NLocale
-    id: ID
-}
-
-type I18NLocaleEntityResponse {
-    data: I18NLocaleEntity
-}
-
-type I18NLocaleEntityResponseCollection {
-    data: [I18NLocaleEntity!]!
-    meta: ResponseCollectionMeta!
-}
-
-type Mutation {
-    createPage(data: PageInput!, locale: I18NLocaleCode): PageEntityResponse
-    createPageLocalization(data: PageInput, id: ID, locale: I18NLocaleCode): PageEntityResponse
-    createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
-    "Create a new role"
-    createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload
-    "Create a new user"
-    createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
-    deletePage(id: ID!, locale: I18NLocaleCode): PageEntityResponse
-    deleteSetting: SettingEntityResponse
-    deleteUploadFile(id: ID!): UploadFileEntityResponse
-    "Delete an existing role"
-    deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
-    "Update an existing user"
-    deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
-    "Confirm an email users email address"
-    emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
-    "Request a reset password token"
-    forgotPassword(email: String!): UsersPermissionsPasswordPayload
-    login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
-    multipleUpload(field: String, files: [Upload]!, ref: String, refId: ID): [UploadFileEntityResponse]!
-    "Register a user"
-    register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
-    removeFile(id: ID!): UploadFileEntityResponse
-    "Reset user password. Confirm with a code (resetToken from forgotPassword)"
-    resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
-    updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
-    updatePage(data: PageInput!, id: ID!, locale: I18NLocaleCode): PageEntityResponse
-    updateSetting(data: SettingInput!): SettingEntityResponse
-    updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
-    "Update an existing role"
-    updateUsersPermissionsRole(data: UsersPermissionsRoleInput!, id: ID!): UsersPermissionsUpdateRolePayload
-    "Update an existing user"
-    updateUsersPermissionsUser(data: UsersPermissionsUserInput!, id: ID!): UsersPermissionsUserEntityResponse!
-    upload(field: String, file: Upload!, info: FileInfoInput, ref: String, refId: ID): UploadFileEntityResponse!
-}
-
-type Page {
-    content: [PageContentDynamicZone]
-    createdAt: DateTime
-    description: String
-    keywords: String
-    locale: String
-    localizations(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
-    pathname: String!
-    publishedAt: DateTime
-    title: String
-    updatedAt: DateTime
-}
-
-type PageEntity {
-    attributes: Page
-    id: ID
-}
-
-type PageEntityResponse {
-    data: PageEntity
-}
-
-type PageEntityResponseCollection {
-    data: [PageEntity!]!
-    meta: ResponseCollectionMeta!
-}
-
-type PageRelationResponseCollection {
-    data: [PageEntity!]!
+  code: String!
+  message: String
 }
 
 type Pagination {
-    page: Int!
-    pageCount: Int!
-    pageSize: Int!
-    total: Int!
-}
-
-type Query {
-    i18NLocale(id: ID): I18NLocaleEntityResponse
-    i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
-    me: UsersPermissionsMe
-    page(id: ID, locale: I18NLocaleCode): PageEntityResponse
-    pages(filters: PageFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageEntityResponseCollection
-    setting: SettingEntityResponse
-    uploadFile(id: ID): UploadFileEntityResponse
-    uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
-    usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
-    usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
-    usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
-    usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  total: Int!
+  page: Int!
+  pageSize: Int!
+  pageCount: Int!
 }
 
 type ResponseCollectionMeta {
-    pagination: Pagination!
-}
-
-type Setting {
-    createdAt: DateTime
-    hostname: String!
-    theme(filters: ComponentDataEntryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentDataEntry]
-    updatedAt: DateTime
-}
-
-type SettingEntity {
-    attributes: Setting
-    id: ID
-}
-
-type SettingEntityResponse {
-    data: SettingEntity
-}
-
-type UploadFile {
-    alternativeText: String
-    caption: String
-    createdAt: DateTime
-    ext: String
-    formats: JSON
-    hash: String!
-    height: Int
-    mime: String!
-    name: String!
-    previewUrl: String
-    provider: String!
-    provider_metadata: JSON
-    related: [GenericMorph]
-    size: Float!
-    updatedAt: DateTime
-    url: String!
-    width: Int
-}
-
-type UploadFileEntity {
-    attributes: UploadFile
-    id: ID
-}
-
-type UploadFileEntityResponse {
-    data: UploadFileEntity
-}
-
-type UploadFileEntityResponseCollection {
-    data: [UploadFileEntity!]!
-    meta: ResponseCollectionMeta!
-}
-
-type UsersPermissionsCreateRolePayload {
-    ok: Boolean!
-}
-
-type UsersPermissionsDeleteRolePayload {
-    ok: Boolean!
-}
-
-type UsersPermissionsLoginPayload {
-    jwt: String
-    user: UsersPermissionsMe!
-}
-
-type UsersPermissionsMe {
-    blocked: Boolean
-    confirmed: Boolean
-    email: String
-    id: ID!
-    role: UsersPermissionsMeRole
-    username: String!
-}
-
-type UsersPermissionsMeRole {
-    description: String
-    id: ID!
-    name: String!
-    type: String
-}
-
-type UsersPermissionsPasswordPayload {
-    ok: Boolean!
-}
-
-type UsersPermissionsPermission {
-    action: String!
-    createdAt: DateTime
-    role: UsersPermissionsRoleEntityResponse
-    updatedAt: DateTime
-}
-
-type UsersPermissionsPermissionEntity {
-    attributes: UsersPermissionsPermission
-    id: ID
-}
-
-type UsersPermissionsPermissionRelationResponseCollection {
-    data: [UsersPermissionsPermissionEntity!]!
-}
-
-type UsersPermissionsRole {
-    createdAt: DateTime
-    description: String
-    name: String!
-    permissions(filters: UsersPermissionsPermissionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsPermissionRelationResponseCollection
-    type: String
-    updatedAt: DateTime
-    users(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserRelationResponseCollection
-}
-
-type UsersPermissionsRoleEntity {
-    attributes: UsersPermissionsRole
-    id: ID
-}
-
-type UsersPermissionsRoleEntityResponse {
-    data: UsersPermissionsRoleEntity
-}
-
-type UsersPermissionsRoleEntityResponseCollection {
-    data: [UsersPermissionsRoleEntity!]!
-    meta: ResponseCollectionMeta!
-}
-
-type UsersPermissionsUpdateRolePayload {
-    ok: Boolean!
-}
-
-type UsersPermissionsUser {
-    blocked: Boolean
-    confirmed: Boolean
-    createdAt: DateTime
-    email: String!
-    provider: String
-    role: UsersPermissionsRoleEntityResponse
-    updatedAt: DateTime
-    username: String!
-}
-
-type UsersPermissionsUserEntity {
-    attributes: UsersPermissionsUser
-    id: ID
-}
-
-type UsersPermissionsUserEntityResponse {
-    data: UsersPermissionsUserEntity
-}
-
-type UsersPermissionsUserEntityResponseCollection {
-    data: [UsersPermissionsUserEntity!]!
-    meta: ResponseCollectionMeta!
-}
-
-type UsersPermissionsUserRelationResponseCollection {
-    data: [UsersPermissionsUserEntity!]!
-}
-
-enum ContentGridType {
-    faq
-}
-
-enum ContentMenuType {
-    cta
-    footer
-    header
-    socials
-}
-
-enum ContentSectionType {
-    advantages
-    hero
-    team
-    testomonials
-}
-
-enum ContentTextType {
-    description
-}
-
-enum CurrencyCode {
-    AFN
-    ALL
-    AMD
-    ANG
-    AOA
-    ARS
-    AUD
-    AWG
-    AZN
-    BAM
-    BBD
-    BDT
-    BGN
-    BHD
-    BIF
-    BMD
-    BND
-    BOB
-    BOV
-    BRL
-    BSD
-    BTN
-    BWP
-    BYN
-    BZD
-    CAD
-    CDF
-    CHE
-    CHF
-    CHW
-    CLF
-    CLP
-    CNY
-    COP
-    COU
-    CRC
-    CUC
-    CUP
-    CVE
-    CZK
-    DJF
-    DKK
-    DOP
-    DZD
-    EGP
-    ERN
-    ETB
-    EUR
-    FJD
-    FKP
-    GBP
-    GEL
-    GHS
-    GIP
-    GMD
-    GNF
-    GTQ
-    GYD
-    HKD
-    HNL
-    HRK
-    HTG
-    HUF
-    IDR
-    ILS
-    INR
-    IQD
-    IRR
-    ISK
-    JMD
-    JOD
-    JPY
-    KES
-    KGS
-    KHR
-    KMF
-    KPW
-    KRW
-    KWD
-    KYD
-    KZT
-    LAK
-    LBP
-    LKR
-    LRD
-    LSL
-    LYD
-    MAD
-    MDL
-    MGA
-    MKD
-    MMK
-    MNT
-    MOP
-    MRU
-    MUR
-    MVR
-    MWK
-    MXN
-    MXV
-    MYR
-    MZN
-    NAD
-    NGN
-    NIO
-    NOK
-    NPR
-    NZD
-    OMR
-    PAB
-    PEN
-    PGK
-    PHP
-    PKR
-    PLN
-    PYG
-    QAR
-    RON
-    RSD
-    RUB
-    RWF
-    SAR
-    SBD
-    SCR
-    SDG
-    SEK
-    SGD
-    SHP
-    SLL
-    SOS
-    SRD
-    SSP
-    STN
-    SVC
-    SYP
-    SZL
-    THB
-    TJS
-    TMT
-    TND
-    TOP
-    TRY
-    TTD
-    TWD
-    TZS
-    UAH
-    UGX
-    USD
-    USN
-    UYI
-    UYU
-    UYW
-    UZS
-    VED
-    VES
-    VND
-    VUV
-    WST
-    XAF
-    XAG
-    XAU
-    XBA
-    XBB
-    XBC
-    XBD
-    XCD
-    XDR
-    XOF
-    XPD
-    XPF
-    XPT
-    XSU
-    XTS
-    XUA
-    XXX
-    YER
-    ZAR
-    ZMW
-    ZWL
-}
-
-enum ENUM_COMPONENTUILINK_PROTOCOL {
-    geo
-    mailto
-    skype
-    tel
+  pagination: Pagination!
 }
 
 enum PublicationState {
-    LIVE
-    PREVIEW
-}
-
-input BooleanFilterInput {
-    and: [Boolean]
-    between: [Boolean]
-    contains: Boolean
-    containsi: Boolean
-    endsWith: Boolean
-    eq: Boolean
-    gt: Boolean
-    gte: Boolean
-    in: [Boolean]
-    lt: Boolean
-    lte: Boolean
-    ne: Boolean
-    not: BooleanFilterInput
-    notContains: Boolean
-    notContainsi: Boolean
-    notIn: [Boolean]
-    notNull: Boolean
-    null: Boolean
-    or: [Boolean]
-    startsWith: Boolean
-}
-
-input ComponentDataEntryFiltersInput {
-    and: [ComponentDataEntryFiltersInput]
-    key: StringFilterInput
-    not: ComponentDataEntryFiltersInput
-    or: [ComponentDataEntryFiltersInput]
-    value: StringFilterInput
-}
-
-input ComponentDataEntryInput {
-    id: ID
-    key: String
-    value: String
-}
-
-input ComponentUiCardFiltersInput {
-    and: [ComponentUiCardFiltersInput]
-    description: StringFilterInput
-    not: ComponentUiCardFiltersInput
-    or: [ComponentUiCardFiltersInput]
-    subtitle: StringFilterInput
-    title: StringFilterInput
-}
-
-input ComponentUiLinkFiltersInput {
-    and: [ComponentUiLinkFiltersInput]
-    not: ComponentUiLinkFiltersInput
-    or: [ComponentUiLinkFiltersInput]
-    title: StringFilterInput
-    url: StringFilterInput
-}
-
-input ComponentUiParagraphFiltersInput {
-    and: [ComponentUiParagraphFiltersInput]
-    not: ComponentUiParagraphFiltersInput
-    or: [ComponentUiParagraphFiltersInput]
-    value: StringFilterInput
-}
-
-input DateTimeFilterInput {
-    and: [DateTime]
-    between: [DateTime]
-    contains: DateTime
-    containsi: DateTime
-    endsWith: DateTime
-    eq: DateTime
-    gt: DateTime
-    gte: DateTime
-    in: [DateTime]
-    lt: DateTime
-    lte: DateTime
-    ne: DateTime
-    not: DateTimeFilterInput
-    notContains: DateTime
-    notContainsi: DateTime
-    notIn: [DateTime]
-    notNull: Boolean
-    null: Boolean
-    or: [DateTime]
-    startsWith: DateTime
-}
-
-input FileInfoInput {
-    alternativeText: String
-    caption: String
-    name: String
-}
-
-input FloatFilterInput {
-    and: [Float]
-    between: [Float]
-    contains: Float
-    containsi: Float
-    endsWith: Float
-    eq: Float
-    gt: Float
-    gte: Float
-    in: [Float]
-    lt: Float
-    lte: Float
-    ne: Float
-    not: FloatFilterInput
-    notContains: Float
-    notContainsi: Float
-    notIn: [Float]
-    notNull: Boolean
-    null: Boolean
-    or: [Float]
-    startsWith: Float
-}
-
-input I18NLocaleFiltersInput {
-    and: [I18NLocaleFiltersInput]
-    code: StringFilterInput
-    createdAt: DateTimeFilterInput
-    id: IDFilterInput
-    name: StringFilterInput
-    not: I18NLocaleFiltersInput
-    or: [I18NLocaleFiltersInput]
-    updatedAt: DateTimeFilterInput
+  LIVE
+  PREVIEW
 }
 
 input IDFilterInput {
-    and: [ID]
-    between: [ID]
-    contains: ID
-    containsi: ID
-    endsWith: ID
-    eq: ID
-    gt: ID
-    gte: ID
-    in: [ID]
-    lt: ID
-    lte: ID
-    ne: ID
-    not: IDFilterInput
-    notContains: ID
-    notContainsi: ID
-    notIn: [ID]
-    notNull: Boolean
-    null: Boolean
-    or: [ID]
-    startsWith: ID
+  and: [ID]
+  or: [ID]
+  not: IDFilterInput
+  eq: ID
+  ne: ID
+  startsWith: ID
+  endsWith: ID
+  contains: ID
+  notContains: ID
+  containsi: ID
+  notContainsi: ID
+  gt: ID
+  gte: ID
+  lt: ID
+  lte: ID
+  null: Boolean
+  notNull: Boolean
+  in: [ID]
+  notIn: [ID]
+  between: [ID]
 }
 
-input IntFilterInput {
-    and: [Int]
-    between: [Int]
-    contains: Int
-    containsi: Int
-    endsWith: Int
-    eq: Int
-    gt: Int
-    gte: Int
-    in: [Int]
-    lt: Int
-    lte: Int
-    ne: Int
-    not: IntFilterInput
-    notContains: Int
-    notContainsi: Int
-    notIn: [Int]
-    notNull: Boolean
-    null: Boolean
-    or: [Int]
-    startsWith: Int
-}
-
-input JSONFilterInput {
-    and: [JSON]
-    between: [JSON]
-    contains: JSON
-    containsi: JSON
-    endsWith: JSON
-    eq: JSON
-    gt: JSON
-    gte: JSON
-    in: [JSON]
-    lt: JSON
-    lte: JSON
-    ne: JSON
-    not: JSONFilterInput
-    notContains: JSON
-    notContainsi: JSON
-    notIn: [JSON]
-    notNull: Boolean
-    null: Boolean
-    or: [JSON]
-    startsWith: JSON
-}
-
-input PageFiltersInput {
-    and: [PageFiltersInput]
-    createdAt: DateTimeFilterInput
-    description: StringFilterInput
-    id: IDFilterInput
-    keywords: StringFilterInput
-    locale: StringFilterInput
-    localizations: PageFiltersInput
-    not: PageFiltersInput
-    or: [PageFiltersInput]
-    pathname: StringFilterInput
-    publishedAt: DateTimeFilterInput
-    title: StringFilterInput
-    updatedAt: DateTimeFilterInput
-}
-
-input PageInput {
-    content: [PageContentDynamicZoneInput!]
-    description: String
-    keywords: String
-    pathname: String
-    publishedAt: DateTime
-    title: String
-}
-
-input PaginationArg {
-    limit: Int
-    page: Int
-    pageSize: Int
-    start: Int
-}
-
-input SettingInput {
-    credentials: [ComponentDataEntryInput]
-    hostname: String
-    theme: [ComponentDataEntryInput]
+input BooleanFilterInput {
+  and: [Boolean]
+  or: [Boolean]
+  not: BooleanFilterInput
+  eq: Boolean
+  ne: Boolean
+  startsWith: Boolean
+  endsWith: Boolean
+  contains: Boolean
+  notContains: Boolean
+  containsi: Boolean
+  notContainsi: Boolean
+  gt: Boolean
+  gte: Boolean
+  lt: Boolean
+  lte: Boolean
+  null: Boolean
+  notNull: Boolean
+  in: [Boolean]
+  notIn: [Boolean]
+  between: [Boolean]
 }
 
 input StringFilterInput {
-    and: [String]
-    between: [String]
-    contains: String
-    containsi: String
-    endsWith: String
-    eq: String
-    gt: String
-    gte: String
-    in: [String]
-    lt: String
-    lte: String
-    ne: String
-    not: StringFilterInput
-    notContains: String
-    notContainsi: String
-    notIn: [String]
-    notNull: Boolean
-    null: Boolean
-    or: [String]
-    startsWith: String
+  and: [String]
+  or: [String]
+  not: StringFilterInput
+  eq: String
+  ne: String
+  startsWith: String
+  endsWith: String
+  contains: String
+  notContains: String
+  containsi: String
+  notContainsi: String
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  null: Boolean
+  notNull: Boolean
+  in: [String]
+  notIn: [String]
+  between: [String]
+}
+
+input IntFilterInput {
+  and: [Int]
+  or: [Int]
+  not: IntFilterInput
+  eq: Int
+  ne: Int
+  startsWith: Int
+  endsWith: Int
+  contains: Int
+  notContains: Int
+  containsi: Int
+  notContainsi: Int
+  gt: Int
+  gte: Int
+  lt: Int
+  lte: Int
+  null: Boolean
+  notNull: Boolean
+  in: [Int]
+  notIn: [Int]
+  between: [Int]
+}
+
+input FloatFilterInput {
+  and: [Float]
+  or: [Float]
+  not: FloatFilterInput
+  eq: Float
+  ne: Float
+  startsWith: Float
+  endsWith: Float
+  contains: Float
+  notContains: Float
+  containsi: Float
+  notContainsi: Float
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  null: Boolean
+  notNull: Boolean
+  in: [Float]
+  notIn: [Float]
+  between: [Float]
+}
+
+input DateTimeFilterInput {
+  and: [DateTime]
+  or: [DateTime]
+  not: DateTimeFilterInput
+  eq: DateTime
+  ne: DateTime
+  startsWith: DateTime
+  endsWith: DateTime
+  contains: DateTime
+  notContains: DateTime
+  containsi: DateTime
+  notContainsi: DateTime
+  gt: DateTime
+  gte: DateTime
+  lt: DateTime
+  lte: DateTime
+  null: Boolean
+  notNull: Boolean
+  in: [DateTime]
+  notIn: [DateTime]
+  between: [DateTime]
+}
+
+input JSONFilterInput {
+  and: [JSON]
+  or: [JSON]
+  not: JSONFilterInput
+  eq: JSON
+  ne: JSON
+  startsWith: JSON
+  endsWith: JSON
+  contains: JSON
+  notContains: JSON
+  containsi: JSON
+  notContainsi: JSON
+  gt: JSON
+  gte: JSON
+  lt: JSON
+  lte: JSON
+  null: Boolean
+  notNull: Boolean
+  in: [JSON]
+  notIn: [JSON]
+  between: [JSON]
+}
+
+input ComponentDataEntryFiltersInput {
+  key: StringFilterInput
+  value: StringFilterInput
+  and: [ComponentDataEntryFiltersInput]
+  or: [ComponentDataEntryFiltersInput]
+  not: ComponentDataEntryFiltersInput
+}
+
+type ComponentDataEntry {
+  id: ID!
+  key: String
+  value: String!
+}
+
+enum CurrencyCode {
+  AFN
+  ALL
+  AMD
+  ANG
+  AOA
+  ARS
+  AUD
+  AWG
+  AZN
+  BAM
+  BBD
+  BDT
+  BGN
+  BHD
+  BIF
+  BMD
+  BND
+  BOB
+  BOV
+  BRL
+  BSD
+  BTN
+  BWP
+  BYN
+  BZD
+  CAD
+  CDF
+  CHE
+  CHF
+  CHW
+  CLF
+  CLP
+  CNY
+  COP
+  COU
+  CRC
+  CUC
+  CUP
+  CVE
+  CZK
+  DJF
+  DKK
+  DOP
+  DZD
+  EGP
+  ERN
+  ETB
+  EUR
+  FJD
+  FKP
+  GBP
+  GEL
+  GHS
+  GIP
+  GMD
+  GNF
+  GTQ
+  GYD
+  HKD
+  HNL
+  HRK
+  HTG
+  HUF
+  IDR
+  ILS
+  INR
+  IQD
+  IRR
+  ISK
+  JMD
+  JOD
+  JPY
+  KES
+  KGS
+  KHR
+  KMF
+  KPW
+  KRW
+  KWD
+  KYD
+  KZT
+  LAK
+  LBP
+  LKR
+  LRD
+  LSL
+  LYD
+  MAD
+  MDL
+  MGA
+  MKD
+  MMK
+  MNT
+  MOP
+  MRU
+  MUR
+  MVR
+  MWK
+  MXN
+  MXV
+  MYR
+  MZN
+  NAD
+  NGN
+  NIO
+  NOK
+  NPR
+  NZD
+  OMR
+  PAB
+  PEN
+  PGK
+  PHP
+  PKR
+  PLN
+  PYG
+  QAR
+  RON
+  RSD
+  RUB
+  RWF
+  SAR
+  SBD
+  SCR
+  SDG
+  SEK
+  SGD
+  SHP
+  SLL
+  SOS
+  SRD
+  SSP
+  STN
+  SVC
+  SYP
+  SZL
+  THB
+  TJS
+  TMT
+  TND
+  TOP
+  TRY
+  TTD
+  TWD
+  TZS
+  UAH
+  UGX
+  USD
+  USN
+  UYI
+  UYU
+  UYW
+  UZS
+  VED
+  VES
+  VND
+  VUV
+  WST
+  XAF
+  XAG
+  XAU
+  XBA
+  XBB
+  XBC
+  XBD
+  XCD
+  XDR
+  XOF
+  XPD
+  XPF
+  XPT
+  XSU
+  XTS
+  XUA
+  XXX
+  YER
+  ZAR
+  ZMW
+  ZWL
+}
+
+type ComponentDataMoney {
+  id: ID!
+  value: Float!
+  currency: CurrencyCode
+}
+
+type ComponentDataSet {
+  id: ID!
+  value: String!
+}
+
+input ComponentUiCardFiltersInput {
+  title: StringFilterInput
+  subtitle: StringFilterInput
+  description: StringFilterInput
+  and: [ComponentUiCardFiltersInput]
+  or: [ComponentUiCardFiltersInput]
+  not: ComponentUiCardFiltersInput
+}
+
+type ComponentUiCard {
+  id: ID!
+  title: String
+  subtitle: String
+  description: String
+  media: UploadFileEntityResponse
+}
+
+enum ContentGridType {
+  faq
+}
+
+type ComponentUiGrid {
+  id: ID!
+  type: ContentGridType!
+  visible: Boolean!
+  children(filters: ComponentDataEntryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentDataEntry]!
+}
+
+enum ENUM_COMPONENTUILINK_PROTOCOL {
+  geo
+  skype
+  tel
+  mailto
+}
+
+input ComponentUiLinkFiltersInput {
+  url: StringFilterInput
+  title: StringFilterInput
+  and: [ComponentUiLinkFiltersInput]
+  or: [ComponentUiLinkFiltersInput]
+  not: ComponentUiLinkFiltersInput
+}
+
+type ComponentUiLink {
+  id: ID!
+  url: String!
+  title: String
+  protocol: ENUM_COMPONENTUILINK_PROTOCOL
+  icon: UploadFileEntityResponse
+}
+
+enum ContentMenuType {
+  header
+  footer
+  socials
+  cta
+}
+
+type ComponentUiMenu {
+  id: ID!
+  visible: Boolean!
+  children(filters: ComponentUiLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiLink]!
+  type: ContentMenuType!
+}
+
+input ComponentUiParagraphFiltersInput {
+  value: StringFilterInput
+  and: [ComponentUiParagraphFiltersInput]
+  or: [ComponentUiParagraphFiltersInput]
+  not: ComponentUiParagraphFiltersInput
+}
+
+type ComponentUiParagraph {
+  id: ID!
+  value: String!
+}
+
+enum ContentSectionType {
+  hero
+  advantages
+  testomonials
+  team
+}
+
+type ComponentUiSection {
+  id: ID!
+  visible: Boolean!
+  children(filters: ComponentUiCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiCard]!
+  type: ContentSectionType!
+}
+
+enum ContentTextType {
+  description
+}
+
+type ComponentUiText {
+  id: ID!
+  visible: Boolean!
+  children(filters: ComponentUiParagraphFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiParagraph]!
+  type: ContentTextType!
 }
 
 input UploadFileFiltersInput {
-    alternativeText: StringFilterInput
-    and: [UploadFileFiltersInput]
-    caption: StringFilterInput
-    createdAt: DateTimeFilterInput
-    ext: StringFilterInput
-    formats: JSONFilterInput
-    hash: StringFilterInput
-    height: IntFilterInput
-    id: IDFilterInput
-    mime: StringFilterInput
-    name: StringFilterInput
-    not: UploadFileFiltersInput
-    or: [UploadFileFiltersInput]
-    previewUrl: StringFilterInput
-    provider: StringFilterInput
-    provider_metadata: JSONFilterInput
-    size: FloatFilterInput
-    updatedAt: DateTimeFilterInput
-    url: StringFilterInput
-    width: IntFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  alternativeText: StringFilterInput
+  caption: StringFilterInput
+  width: IntFilterInput
+  height: IntFilterInput
+  formats: JSONFilterInput
+  hash: StringFilterInput
+  ext: StringFilterInput
+  mime: StringFilterInput
+  size: FloatFilterInput
+  url: StringFilterInput
+  previewUrl: StringFilterInput
+  provider: StringFilterInput
+  provider_metadata: JSONFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UploadFileFiltersInput]
+  or: [UploadFileFiltersInput]
+  not: UploadFileFiltersInput
 }
 
 input UploadFileInput {
-    alternativeText: String
-    caption: String
-    ext: String
-    formats: JSON
-    hash: String
-    height: Int
-    mime: String
-    name: String
-    previewUrl: String
-    provider: String
-    provider_metadata: JSON
-    size: Float
-    url: String
-    width: Int
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
 }
 
-input UsersPermissionsLoginInput {
-    identifier: String!
-    password: String!
-    provider: String! = "local"
+type UploadFile {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [GenericMorph]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UploadFileEntity {
+  id: ID
+  attributes: UploadFile
+}
+
+type UploadFileEntityResponse {
+  data: UploadFileEntity
+}
+
+type UploadFileEntityResponseCollection {
+  data: [UploadFileEntity!]!
+  meta: ResponseCollectionMeta!
 }
 
 input UsersPermissionsPermissionFiltersInput {
-    action: StringFilterInput
-    and: [UsersPermissionsPermissionFiltersInput]
-    createdAt: DateTimeFilterInput
-    id: IDFilterInput
-    not: UsersPermissionsPermissionFiltersInput
-    or: [UsersPermissionsPermissionFiltersInput]
-    role: UsersPermissionsRoleFiltersInput
-    updatedAt: DateTimeFilterInput
+  id: IDFilterInput
+  action: StringFilterInput
+  role: UsersPermissionsRoleFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UsersPermissionsPermissionFiltersInput]
+  or: [UsersPermissionsPermissionFiltersInput]
+  not: UsersPermissionsPermissionFiltersInput
 }
 
-input UsersPermissionsRegisterInput {
-    email: String!
-    password: String!
-    username: String!
+type UsersPermissionsPermission {
+  action: String!
+  role: UsersPermissionsRoleEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UsersPermissionsPermissionEntity {
+  id: ID
+  attributes: UsersPermissionsPermission
+}
+
+type UsersPermissionsPermissionRelationResponseCollection {
+  data: [UsersPermissionsPermissionEntity!]!
 }
 
 input UsersPermissionsRoleFiltersInput {
-    and: [UsersPermissionsRoleFiltersInput]
-    createdAt: DateTimeFilterInput
-    description: StringFilterInput
-    id: IDFilterInput
-    name: StringFilterInput
-    not: UsersPermissionsRoleFiltersInput
-    or: [UsersPermissionsRoleFiltersInput]
-    permissions: UsersPermissionsPermissionFiltersInput
-    type: StringFilterInput
-    updatedAt: DateTimeFilterInput
-    users: UsersPermissionsUserFiltersInput
+  id: IDFilterInput
+  name: StringFilterInput
+  description: StringFilterInput
+  type: StringFilterInput
+  permissions: UsersPermissionsPermissionFiltersInput
+  users: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UsersPermissionsRoleFiltersInput]
+  or: [UsersPermissionsRoleFiltersInput]
+  not: UsersPermissionsRoleFiltersInput
 }
 
 input UsersPermissionsRoleInput {
-    description: String
-    name: String
-    permissions: [ID]
-    type: String
-    users: [ID]
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+type UsersPermissionsRole {
+  name: String!
+  description: String
+  type: String
+  permissions(filters: UsersPermissionsPermissionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsPermissionRelationResponseCollection
+  users(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UsersPermissionsRoleEntity {
+  id: ID
+  attributes: UsersPermissionsRole
+}
+
+type UsersPermissionsRoleEntityResponse {
+  data: UsersPermissionsRoleEntity
+}
+
+type UsersPermissionsRoleEntityResponseCollection {
+  data: [UsersPermissionsRoleEntity!]!
+  meta: ResponseCollectionMeta!
 }
 
 input UsersPermissionsUserFiltersInput {
-    and: [UsersPermissionsUserFiltersInput]
-    blocked: BooleanFilterInput
-    confirmationToken: StringFilterInput
-    confirmed: BooleanFilterInput
-    createdAt: DateTimeFilterInput
-    email: StringFilterInput
-    id: IDFilterInput
-    not: UsersPermissionsUserFiltersInput
-    or: [UsersPermissionsUserFiltersInput]
-    password: StringFilterInput
-    provider: StringFilterInput
-    resetPasswordToken: StringFilterInput
-    role: UsersPermissionsRoleFiltersInput
-    updatedAt: DateTimeFilterInput
-    username: StringFilterInput
+  id: IDFilterInput
+  username: StringFilterInput
+  email: StringFilterInput
+  provider: StringFilterInput
+  password: StringFilterInput
+  resetPasswordToken: StringFilterInput
+  confirmationToken: StringFilterInput
+  confirmed: BooleanFilterInput
+  blocked: BooleanFilterInput
+  role: UsersPermissionsRoleFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UsersPermissionsUserFiltersInput]
+  or: [UsersPermissionsUserFiltersInput]
+  not: UsersPermissionsUserFiltersInput
 }
 
 input UsersPermissionsUserInput {
-    blocked: Boolean
-    confirmationToken: String
-    confirmed: Boolean
-    email: String
-    password: String
-    provider: String
-    resetPasswordToken: String
-    role: ID
-    username: String
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
 }
 
+type UsersPermissionsUser {
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRoleEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
 
-"The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
-scalar JSON
+type UsersPermissionsUserEntity {
+  id: ID
+  attributes: UsersPermissionsUser
+}
 
-"A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."
-scalar DateTime
+type UsersPermissionsUserEntityResponse {
+  data: UsersPermissionsUserEntity
+}
 
-"The `Upload` scalar type represents a file upload."
-scalar Upload
+type UsersPermissionsUserEntityResponseCollection {
+  data: [UsersPermissionsUserEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type UsersPermissionsUserRelationResponseCollection {
+  data: [UsersPermissionsUserEntity!]!
+}
+
+input HomepageInput {
+  title: String
+}
+
+type Homepage {
+  title: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type HomepageEntity {
+  id: ID
+  attributes: Homepage
+}
+
+type HomepageEntityResponse {
+  data: HomepageEntity
+}
+
+union PageContentDynamicZone = ComponentUiText | ComponentUiSection | ComponentUiMenu | ComponentUiGrid | Error
 
 scalar PageContentDynamicZoneInput
 
-"A string used to identify an i18n locale"
-scalar I18NLocaleCode
+input PageFiltersInput {
+  id: IDFilterInput
+  pathname: StringFilterInput
+  title: StringFilterInput
+  description: StringFilterInput
+  keywords: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [PageFiltersInput]
+  or: [PageFiltersInput]
+  not: PageFiltersInput
+}
+
+input PageInput {
+  pathname: String
+  title: String
+  description: String
+  keywords: String
+  content: [PageContentDynamicZoneInput!]
+  publishedAt: DateTime
+}
+
+type Page {
+  pathname: String!
+  title: String
+  description: String
+  keywords: String
+  content: [PageContentDynamicZone]
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type PageEntity {
+  id: ID
+  attributes: Page
+}
+
+type PageEntityResponse {
+  data: PageEntity
+}
+
+type PageEntityResponseCollection {
+  data: [PageEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input SettingInput {
+  hostname: String
+  googleAnalyticsCode: String
+}
+
+type Setting {
+  hostname: String!
+  googleAnalyticsCode: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type SettingEntity {
+  id: ID
+  attributes: Setting
+}
+
+type SettingEntityResponse {
+  data: SettingEntity
+}
+
+union GenericMorph = ComponentDataEntry | ComponentDataMoney | ComponentDataSet | ComponentUiCard | ComponentUiGrid | ComponentUiLink | ComponentUiMenu | ComponentUiParagraph | ComponentUiSection | ComponentUiText | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Homepage | Page | Setting
+
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String! = "local"
+}
+
+type UsersPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsCreateRolePayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsUpdateRolePayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsDeleteRolePayload {
+  ok: Boolean!
+}
+
+input PaginationArg {
+  page: Int
+  pageSize: Int
+  start: Int
+  limit: Int
+}
+
+type Query {
+  uploadFile(id: ID): UploadFileEntityResponse
+  uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
+  usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
+  usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
+  usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
+  usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  homepage: HomepageEntityResponse
+  page(id: ID): PageEntityResponse
+  pages(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], publicationState: PublicationState = LIVE): PageEntityResponseCollection
+  setting: SettingEntityResponse
+  me: UsersPermissionsMe
+}
+
+type Mutation {
+  createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
+  updateUploadFile(id: ID!, data: UploadFileInput!): UploadFileEntityResponse
+  deleteUploadFile(id: ID!): UploadFileEntityResponse
+  updateHomepage(data: HomepageInput!): HomepageEntityResponse
+  deleteHomepage: HomepageEntityResponse
+  createPage(data: PageInput!): PageEntityResponse
+  updatePage(id: ID!, data: PageInput!): PageEntityResponse
+  deletePage(id: ID!): PageEntityResponse
+  updateSetting(data: SettingInput!): SettingEntityResponse
+  deleteSetting: SettingEntityResponse
+  upload(refId: ID, ref: String, field: String, info: FileInfoInput, file: Upload!): UploadFileEntityResponse!
+  multipleUpload(refId: ID, ref: String, field: String, files: [Upload]!): [UploadFileEntityResponse]!
+  updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
+  removeFile(id: ID!): UploadFileEntityResponse
+
+  """Create a new role"""
+  createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload
+
+  """Update an existing role"""
+  updateUsersPermissionsRole(id: ID!, data: UsersPermissionsRoleInput!): UsersPermissionsUpdateRolePayload
+
+  """Delete an existing role"""
+  deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
+
+  """Create a new user"""
+  createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+
+  """Update an existing user"""
+  updateUsersPermissionsUser(id: ID!, data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+
+  """Update an existing user"""
+  deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+
+  """Register a user"""
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+
+  """Request a reset password token"""
+  forgotPassword(email: String!): UsersPermissionsPasswordPayload
+
+  """
+  Reset user password. Confirm with a code (resetToken from forgotPassword)
+  """
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+
+  """Confirm an email users email address"""
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}

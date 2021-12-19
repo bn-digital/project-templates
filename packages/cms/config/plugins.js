@@ -1,6 +1,10 @@
 const name = require('./name')
 
 module.exports = ({ env }) => ({
+  permissions: {
+    enabled: true,
+    resolve: '@gravitybv/strapi-plugin-permissions',
+  },
   graphql: {
     config: {
       endpoint: '/graphql',
@@ -26,16 +30,16 @@ module.exports = ({ env }) => ({
     config: {
       provider: 'nodemailer',
       providerOptions: {
-        host: env('SMTP_HOST', 'bndigital.dev'),
-        port: env('SMTP_PORT', 31025),
+        host: env('SMTP_HOST', 'infrastructure.bndigital.dev'),
+        port: env('SMTP_PORT', 1025),
         auth: {
           user: env('SMTP_USERNAME', ''),
           pass: env('SMTP_PASSWORD', ''),
         },
       },
       settings: {
-        defaultFrom: env('MAIL_FROM', `no-reply@${env('DOMAIN', `${name}.bndigital.dev`)}`),
-        defaultReplyTo: env('MAIL_TO', `no-reply@${env('DOMAIN', `${name}.bndigital.dev`)}`),
+        defaultFrom: env('SMTP_MAIL_FROM', `no-reply@${env('DOMAIN', `${name}.bndigital.dev`)}`),
+        defaultReplyTo: env('SMTP_MAIL_TO', `no-reply@${env('DOMAIN', `${name}.bndigital.dev`)}`),
       },
     },
   },

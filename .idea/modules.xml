@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/packages/cms/cms.iml" filepath="$PROJECT_DIR$/packages/cms/cms.iml" />
-      <module fileurl="file://$PROJECT_DIR$/project-templates.iml" filepath="$PROJECT_DIR$/project-templates.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/website/website.iml" filepath="$PROJECT_DIR$/packages/website/website.iml" />
     </modules>
   </component>

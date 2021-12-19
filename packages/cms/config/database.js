@@ -1,19 +1,32 @@
-const name = require('./name')
 const path = require('path')
+const name = require('./name')
 
-module.exports = ({env}) => ({
+/**
+ *
+ * @param {(key: string, defaultValue?: string)=> string} env
+ * @returns {{connection: import("knex").Knex.Config}}
+ */
+module.exports = ({ env }) => ({
   connection: {
-    client: 'sqlite',
-    connection: {
-      filename: path.join(__dirname, '..', '.tmp', `db.sqlite3`),
-      user: env('DATABASE_USERNAME', 'postgres'),
-      password: env('DATABASE_PASSWORD'),
-      host: env('DATABASE_HOST', 'postgresql'),
-      port: env('DATABASE_PORT', 5432),
-      database: env('DATABASE_NAME', name),
-    },
-    pool: {min: 0, max: 7},
-    acquireConnectionTimeout: 10000,
+    client: env('NODE_ENV') === 'production' ? 'postgres' : 'sqlite',
+    connection:
+      env('NODE_ENV') === 'production'
+        ? {
+            pool: { min: 0, max: 5 },
+            charset: 'utf-8',
+            decimalNumbers: true,
+            parseJSON: true,
+            supportBigNumbers: true,
+            user: env('DATABASE_USERNAME', 'postgres'),
+            password: env('DATABASE_PASSWORD'),
+            database: env('DATABASE_NAME', name),
+            schema: 'public',
+            host: env('DATABASE_HOST', 'localhost'),
+            port: Number.parseInt(env('DATABASE_PORT', '5432')),
+          }
+        : {
+            filename: path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db')),
+          },
     useNullAsDefault: true,
-  },
+  }
 })

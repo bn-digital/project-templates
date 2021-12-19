@@ -22,8 +22,7 @@
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,
-    "target": "ESNext",
-    "types": ["@bn-digital/webpack/types"]
+    "target": "ESNext"
   },
   "include": ["src"]
 }
