@@ -21,8 +21,10 @@ env:
 jobs:
   ci:
     name: CI Pipeline
-    environment: staging
-    runs-on: self-hosted
+    environment:
+      name: staging
+      url: https://app.bndigital.dev
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Import Vault secrets
