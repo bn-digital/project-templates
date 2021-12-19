@@ -1,12 +1,17 @@
 import { FC } from 'react'
 import { Layout } from 'antd'
 import { HeroSection } from '../../components/section'
-import { ContentProps, withContent } from '../../components/app/Content'
+import { HomepageProps, withHomepage } from '../../graphql'
+import { TabSection } from '../../components/section/TabSection'
 
-const Home: FC<ContentProps> = ({ section, menu }) => (
-  <Layout.Content>
-    <HeroSection data={{ ...section.hero?.[0], button: menu.cta?.[0] }} />
-  </Layout.Content>
-)
+const Home: FC<HomepageProps> = ({ data }) => {
+  const content = data?.homepage?.data?.attributes
+  return (
+    <Layout.Content>
+      <HeroSection {...content?.hero} />
+      <TabSection data={content?.capabilities} />
+    </Layout.Content>
+  )
+}
 
-export default withContent(Home)
+export default withHomepage()(Home)

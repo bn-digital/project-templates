@@ -1,6 +1,7 @@
 import ApiProvider from './Api'
-import ViewProvider from './View'
+import { ViewProvider } from './View'
 import { FC } from 'react'
+
 export { ViewProvider, ApiProvider }
 
 const App: FC = ({ children }) => (

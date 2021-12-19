@@ -1,0 +1,18 @@
+query homepage {
+  homepage {
+    data {
+      id
+      attributes {
+        meta {
+          ...Meta
+        }
+        hero {
+          ...Card
+        }
+        capabilities {
+          ...Tab
+        }
+      }
+    }
+  }
+}

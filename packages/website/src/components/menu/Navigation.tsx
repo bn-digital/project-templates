@@ -1,10 +1,10 @@
 import { VFC } from 'react'
 import { Menu } from 'antd'
 import { NavLink } from 'react-router-dom'
-import styles from './Navigation.module.less'
+import './Navigation.less'
 
-const Navigation: VFC<Partial<{ data: ComponentUiLink[] }>> = ({ data = [] }) => (
-  <Menu className={styles.menu} theme={'light'} mode='horizontal'>
+const Navigation: VFC<Partial<{ data: LinkFragment[] }>> = ({ data = [] }) => (
+  <Menu theme={'light'} mode='horizontal'>
     {data?.map(
       it =>
         it && (

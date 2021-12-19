@@ -1,0 +1,5 @@
+fragment Meta on ComponentDataMeta {
+  id
+  title
+  description
+}

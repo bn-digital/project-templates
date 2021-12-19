@@ -1,21 +1,35 @@
 # nonk8s
-apiVersion: skaffold/v2beta23
+apiVersion: skaffold/v2beta25
 kind: Config
 build:
   artifacts:
     - image: cms
-      docker:
-        target: cms
+      context: packages/cms
     - image: website
-      docker:
-        target: website
+      context: packages/website
   tagPolicy:
-    sha256: { }
+    sha256: {}
   local:
     concurrency: 0
-    push: true
+    push: false
     useBuildkit: true
+deploy:
+  helm:
+    releases:
+      - name: website
+        remoteChart: bn-digital/app
+        version: 1.1.4
+        artifactOverrides:
+          image: website
+      - name: cms
+        remoteChart: bn-digital/app
+        version: 1.1.4
+        artifactOverrides:
+          image: cms
 profiles:
+  - name: development
+    activation:
+      - kubeContext: minikube
   - name: staging
     activation:
       - kubeContext: do-fra1-bndigital

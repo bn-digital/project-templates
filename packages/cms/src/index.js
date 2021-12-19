@@ -1,5 +1,4 @@
 const { printSchema } = require('graphql')
-const path = require('path')
 
 /**
  * Generates GraphQL schema and dumps into src/graphql/schema.graphql file
@@ -18,7 +17,7 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register({ strapi }) {},
+  register() {},
 
   /**
    * An asynchronous bootstrap function that runs before

@@ -8,7 +8,9 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTime
 
-"""The `Upload` scalar type represents a file upload."""
+"""
+The `Upload` scalar type represents a file upload.
+"""
 scalar Upload
 
 type Error {
@@ -205,6 +207,18 @@ type ComponentDataEntry {
   id: ID!
   key: String
   value: String!
+}
+
+input ComponentDataMetaInput {
+  id: ID
+  title: String
+  description: String
+}
+
+type ComponentDataMeta {
+  id: ID!
+  title: String
+  description: String
 }
 
 enum CurrencyCode {
@@ -409,6 +423,14 @@ input ComponentUiCardFiltersInput {
   not: ComponentUiCardFiltersInput
 }
 
+input ComponentUiCardInput {
+  id: ID
+  title: String
+  subtitle: String
+  description: String
+  media: ID
+}
+
 type ComponentUiCard {
   id: ID!
   title: String
@@ -489,6 +511,25 @@ type ComponentUiSection {
   visible: Boolean!
   children(filters: ComponentUiCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiCard]!
   type: ContentSectionType!
+}
+
+input ComponentUiTabFiltersInput {
+  name: StringFilterInput
+  and: [ComponentUiTabFiltersInput]
+  or: [ComponentUiTabFiltersInput]
+  not: ComponentUiTabFiltersInput
+}
+
+input ComponentUiTabInput {
+  id: ID
+  name: String
+  pane: ComponentUiCardInput
+}
+
+type ComponentUiTab {
+  id: ID!
+  name: String!
+  pane: ComponentUiCard!
 }
 
 enum ContentTextType {
@@ -629,7 +670,11 @@ type UsersPermissionsRole {
   name: String!
   description: String
   type: String
-  permissions(filters: UsersPermissionsPermissionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsPermissionRelationResponseCollection
+  permissions(
+    filters: UsersPermissionsPermissionFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsPermissionRelationResponseCollection
   users(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserRelationResponseCollection
   createdAt: DateTime
   updatedAt: DateTime
@@ -709,11 +754,15 @@ type UsersPermissionsUserRelationResponseCollection {
 }
 
 input HomepageInput {
-  title: String
+  meta: ComponentDataMetaInput
+  hero: ComponentUiCardInput
+  capabilities: [ComponentUiTabInput]
 }
 
 type Homepage {
-  title: String
+  meta: ComponentDataMeta
+  hero: ComponentUiCard
+  capabilities(filters: ComponentUiTabFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiTab]
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -800,7 +849,26 @@ type SettingEntityResponse {
   data: SettingEntity
 }
 
-union GenericMorph = ComponentDataEntry | ComponentDataMoney | ComponentDataSet | ComponentUiCard | ComponentUiGrid | ComponentUiLink | ComponentUiMenu | ComponentUiParagraph | ComponentUiSection | ComponentUiText | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Homepage | Page | Setting
+union GenericMorph =
+    ComponentDataEntry
+  | ComponentDataMeta
+  | ComponentDataMoney
+  | ComponentDataSet
+  | ComponentUiCard
+  | ComponentUiGrid
+  | ComponentUiLink
+  | ComponentUiMenu
+  | ComponentUiParagraph
+  | ComponentUiSection
+  | ComponentUiTab
+  | ComponentUiText
+  | UploadFile
+  | UsersPermissionsPermission
+  | UsersPermissionsRole
+  | UsersPermissionsUser
+  | Homepage
+  | Page
+  | Setting
 
 input FileInfoInput {
   name: String
@@ -868,9 +936,17 @@ type Query {
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
   usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
-  usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
+  usersPermissionsRoles(
+    filters: UsersPermissionsRoleFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsRoleEntityResponseCollection
   usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
-  usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  usersPermissionsUsers(
+    filters: UsersPermissionsUserFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsUserEntityResponseCollection
   homepage: HomepageEntityResponse
   page(id: ID): PageEntityResponse
   pages(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], publicationState: PublicationState = LIVE): PageEntityResponseCollection
@@ -894,29 +970,45 @@ type Mutation {
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   removeFile(id: ID!): UploadFileEntityResponse
 
-  """Create a new role"""
+  """
+  Create a new role
+  """
   createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload
 
-  """Update an existing role"""
+  """
+  Update an existing role
+  """
   updateUsersPermissionsRole(id: ID!, data: UsersPermissionsRoleInput!): UsersPermissionsUpdateRolePayload
 
-  """Delete an existing role"""
+  """
+  Delete an existing role
+  """
   deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
 
-  """Create a new user"""
+  """
+  Create a new user
+  """
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
 
-  """Update an existing user"""
+  """
+  Update an existing user
+  """
   updateUsersPermissionsUser(id: ID!, data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
 
-  """Update an existing user"""
+  """
+  Update an existing user
+  """
   deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
   login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
 
-  """Register a user"""
+  """
+  Register a user
+  """
   register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
 
-  """Request a reset password token"""
+  """
+  Request a reset password token
+  """
   forgotPassword(email: String!): UsersPermissionsPasswordPayload
 
   """
@@ -924,6 +1016,8 @@ type Mutation {
   """
   resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
 
-  """Confirm an email users email address"""
+  """
+  Confirm an email users email address
+  """
   emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
 }

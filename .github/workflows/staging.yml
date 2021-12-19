@@ -1,25 +1,22 @@
 name: Staging
 on:
   workflow_dispatch: { }
-  push:
+  pull_request:
     branches:
       - latest
     paths:
-      - '.github/workflows/staging.yml'
-      - 'helmfile.yaml'
-      - '**/*/Dockerfile'
-      - '**/*/package.json'
-      - 'packages/cms/api/**/*'
-      - 'packages/cms/components/**/*'
-      - 'packages/cms/config/**/*'
-      - 'packages/cms/extensions/**/*'
-      - 'packages/website/src/**/*'
+      - helmfile.yaml
+      - Dockerfile
+      - package.json
+      - packages/cms/src/**/*
+      - packages/website/src/**/*
+      - packages/cms/config/**/*
 
 env:
-  SKAFFOLD_DEFAULT_REPO: dcr.bndigital.dev/${{ github.event.repository.name }}
+  SKAFFOLD_DEFAULT_REPO: ${{ secrets.DOCKER_REGISTRY }}/${{ github.event.repository.name }}
+  APP_ENV: staging
   VAULT_ENDPOINT: ${{ secrets.VAULT_ENDPOINT }}
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-  APP_ENV: staging
 
 jobs:
   ci:
@@ -34,7 +31,7 @@ jobs:
         with:
           method: github
           url: ${{ env.VAULT_ENDPOINT }}
-          githubToken: ${{ github.token }}
+          githubToken: ${{ env.GITHUB_TOKEN }}
           secrets: |
             infrastructure/data/bndigital/${{ env.APP_ENV }}/kubernetes cluster | KUBERNETES_CLUSTER ;
             infrastructure/data/bndigital/${{ env.APP_ENV }}/digitalocean token | DIGITALOCEAN_TOKEN ;
@@ -48,17 +45,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install dependencies
-        run: yarn
-
-      - name: Generate env files
-        run: yarn workspaces foreach run env --dist=.env.${{ env.APP_ENV }}
-
-      - name: Build packages
-        run: yarn workspaces foreach run build
-
       - name: Run Sonar scanner
         uses: sonarsource/sonarqube-scan-action@v1.0.0
+
+      - name: Generate env variables
+        uses: bn-digital/vault-env@latest
+        with:
+          endpoint: ${{ env.VAULT_ENDPOINT }}
+          token: ${{ env.GITHUB_TOKEN }}
+          template: packages/cms/.env.${{ env.APP_ENV }}
+          target: packages/cms/.env
 
       - name: Login Docker registry
         uses: docker/login-action@v1

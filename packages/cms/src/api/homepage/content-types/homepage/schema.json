@@ -4,14 +4,28 @@
   "info": {
     "singularName": "homepage",
     "pluralName": "homepages",
-    "displayName": "Homepage"
+    "displayName": "Homepage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
   "attributes": {
-    "title": {
-      "type": "string"
+    "meta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "data.meta"
+    },
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.card"
+    },
+    "capabilities": {
+      "displayName": "Tab",
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.tab"
     }
   }
 }

@@ -1,16 +1,14 @@
 import { FC } from 'react'
 import { ConfigProvider } from 'antd'
 import { IntlProvider } from 'react-intl'
-import { ConfigProviderProps } from 'antd/lib/config-provider'
 import './View.less'
 
 type ViewProps = { locale: string }
 
-function withLocale(Wrapped: FC<ConfigProviderProps>): FC<Partial<ViewProps>> {
-  return ({ locale = 'en', children }) => (
-    <IntlProvider locale={locale}>
-      <Wrapped locale={{ locale }}>{children}</Wrapped>
-    </IntlProvider>
-  )
-}
-export default withLocale(ConfigProvider)
+const ViewProvider: FC<Partial<ViewProps>> = ({ locale = 'en', children }) => (
+  <IntlProvider locale={locale}>
+    <ConfigProvider locale={{ locale }}>{children}</ConfigProvider>
+  </IntlProvider>
+)
+
+export { ViewProvider }
