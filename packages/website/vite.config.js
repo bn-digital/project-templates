@@ -1,3 +1,3 @@
-const { withReact, mergeConfig } = require('@bn-digital/vite')
+import configure from '@bn-digital/vite'
 
-module.exports = mergeConfig(withReact())
+export default configure()

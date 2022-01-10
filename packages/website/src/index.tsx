@@ -1,19 +1,18 @@
-import { StrictMode, VFC } from 'react'
-import { createRoot } from 'react-dom'
-import App from './components/app'
-import Pages from './pages'
+import { VFC } from 'react'
+import { renderApp, RoutingProvider } from '@bn-digital/react'
+import UIProvider from '@bn-digital/antd'
+import { ClientProvider } from '@bn-digital/graphql-client'
+import I18nProvider from '@bn-digital/react-i18n'
+import pages from './pages'
 
 const Root: VFC = () => (
-  <StrictMode>
-    <App>
-      <Pages />
-    </App>
-  </StrictMode>
+  <ClientProvider production={import.meta.env.PROD}>
+    <I18nProvider>
+      <UIProvider>
+        <RoutingProvider routes={pages} />
+      </UIProvider>
+    </I18nProvider>
+  </ClientProvider>
 )
 
-const container = document.querySelector('#root')
-
-if (container) {
-  const root = createRoot(container)
-  root.render(<Root />)
-}
+renderApp(<Root />, { strict: true })

@@ -1,11 +1,5 @@
 fragment Link on ComponentUiLink {
   id
-  protocol
   title
   url
-  icon {
-    data {
-      ...File
-    }
-  }
 }

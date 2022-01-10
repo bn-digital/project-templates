@@ -1,0 +1,14 @@
+{
+  "key": "plugin_sitemap_settings",
+  "value": {
+    "hostname": "",
+    "includeHomepage": true,
+    "excludeDrafts": true,
+    "hostname_overrides": {},
+    "contentTypes": {},
+    "customEntries": {}
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

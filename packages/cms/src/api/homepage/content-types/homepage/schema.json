@@ -20,12 +20,6 @@
       "type": "component",
       "repeatable": false,
       "component": "ui.card"
-    },
-    "capabilities": {
-      "displayName": "Tab",
-      "type": "component",
-      "repeatable": true,
-      "component": "ui.tab"
     }
   }
 }

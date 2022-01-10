@@ -1,14 +1,18 @@
-import { lazy, VFC } from 'react'
-import { BrowserRouter, useRoutes } from 'react-router-dom'
+import { lazy } from 'react'
 import { DefaultLayout } from '../components/layout'
 
 const Home = lazy(() => import('./home'))
-const Routes: VFC = () => useRoutes([{ element: <DefaultLayout />, children: [{ path: '/', element: <Home /> }] }])
 
-const Pages = () => (
-  <BrowserRouter>
-    <Routes />
-  </BrowserRouter>
-)
+const pages = {
+  '': {
+    element: <DefaultLayout />,
+    children: [
+      {
+        element: <Home />,
+        path: '/',
+      },
+    ],
+  },
+}
 
-export { Pages as default }
+export { pages as default }

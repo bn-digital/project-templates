@@ -2,39 +2,24 @@
 apiVersion: skaffold/v2beta25
 kind: Config
 build:
+  local:
+    concurrency: 0
+    useBuildkit: true
+  tagPolicy:
+    sha256: {}
   artifacts:
     - image: cms
       context: packages/cms
     - image: website
       context: packages/website
-  tagPolicy:
-    sha256: {}
-  local:
-    concurrency: 0
-    push: false
-    useBuildkit: true
-deploy:
-  helm:
-    releases:
-      - name: website
-        remoteChart: bn-digital/app
-        version: 1.1.4
-        artifactOverrides:
-          image: website
-      - name: cms
-        remoteChart: bn-digital/app
-        version: 1.1.4
-        artifactOverrides:
-          image: cms
 profiles:
-  - name: development
-    activation:
-      - kubeContext: minikube
   - name: staging
-    activation:
-      - kubeContext: do-fra1-bndigital
     build:
       tagPolicy:
         gitCommit:
           ignoreChanges: true
           variant: CommitSha
+      local:
+        push: true
+        concurrency: 0
+        useBuildkit: true

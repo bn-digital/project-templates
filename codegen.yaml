@@ -20,12 +20,14 @@ generates:
       - typescript-operations:
           inlineFragmentTypes: combine
           dedupeFragments: true
+          experimentalFragmentVariables: true
           preResolveTypes: true
       - typescript-react-apollo:
           dedupeFragments: true
           inlineFragmentTypes: combine
           withComponent: true
           withHooks: true
+          withResultType: true
           withHOC: true
   packages/website/src/types/graphql.d.ts:
     plugins:
@@ -38,3 +40,5 @@ generates:
           noExport: true
           dedupeFragments: true
           preResolveTypes: true
+          experimentalFragmentVariables: true
+          exportFragmentSpreadSubTypes: true

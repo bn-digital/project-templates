@@ -19,14 +19,28 @@ env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
+  analysis:
+    name: Code analysis
+    runs-on: self-hosted
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Run Sonar scanner
+        uses: sonarsource/sonarqube-scan-action@v1.0.0
+
   ci:
     name: CI Pipeline
+    runs-on: self-hosted
     environment:
       name: staging
       url: https://app.bndigital.dev
-    runs-on: ubuntu-20.04
-
     steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
       - name: Import Vault secrets
         uses: hashicorp/vault-action@v2.3.1
         id: secrets
@@ -41,14 +55,6 @@ jobs:
             infrastructure/data/bndigital/${{ env.APP_ENV }}/registry docker-password | DOCKER_PASSWORD ;
             infrastructure/data/bndigital/${{ env.APP_ENV }}/sonarqube host | SONAR_HOST_URL ;
             infrastructure/data/bndigital/${{ env.APP_ENV }}/sonarqube token | SONAR_TOKEN ;
-
-      - name: Checkout sources
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Run Sonar scanner
-        uses: sonarsource/sonarqube-scan-action@v1.0.0
 
       - name: Generate env variables
         uses: bn-digital/vault-env@latest

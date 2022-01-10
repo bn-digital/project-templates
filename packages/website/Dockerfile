@@ -1,11 +1,8 @@
 # syntax = docker/dockerfile:latest
-FROM dcr.bndigital.dev/library/yarn:1.2.1 AS build
+FROM dcr.bndigital.dev/library/yarn:1.3.0 AS build
+RUN yarn
 COPY . .
-RUN yarn set version berry \
- && yarn config set nodeLinker node-modules \
- && yarn config set enableGlobalCache true \
- && yarn \
- && yarn build
+RUN yarn build
 
-FROM dcr.bndigital.dev/library/nodejs:1.2.1
+FROM dcr.bndigital.dev/library/nodejs:1.3.0
 COPY --chown=node --from=build /usr/local/src/build .

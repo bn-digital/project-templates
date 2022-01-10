@@ -6,9 +6,7 @@ import { Space } from 'antd'
 const Logo: VFC = () => (
   <Link to={'/'}>
     <Space direction={'horizontal'}>
-      <SvgIcon fill={'#0170FE'} type={'ant'} />
-      <SvgIcon fill={'#61DAFB'} type={'react'} />
-      <SvgIcon fill={'2F2E8B'} type={'strapi'} />
+      <SvgIcon fill={'#2F2E8B'} type={'strapi'} />
     </Space>
   </Link>
 )

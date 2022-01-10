@@ -1,0 +1,58 @@
+{
+  "key": "plugin_content_manager_configuration_components::data.set",
+  "value": {
+    "uid": "data.set",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "value",
+      "defaultSortBy": "value",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "Id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "value": {
+        "edit": {
+          "label": "Value",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Value",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "value"
+      ],
+      "edit": [
+        [
+          {
+            "name": "value",
+            "size": 6
+          }
+        ]
+      ],
+      "editRelations": []
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

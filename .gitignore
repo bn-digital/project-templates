@@ -40,9 +40,6 @@ build
 .cache
 .strapi-updater.json
 
-# Generated
-**/*/types/graphql.d.ts
-
 # Gradle
 .gradle
 
@@ -50,4 +47,4 @@ build
 .scannerwork
 
 # Terraform
-.ter
+.terraform

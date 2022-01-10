@@ -12,18 +12,20 @@
       "default": true,
       "required": true
     },
+    "heading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.card"
+    },
     "children": {
       "type": "component",
       "repeatable": true,
-      "component": "ui.card",
-      "required": true,
-      "min": 1
+      "component": "ui.card"
     },
-    "type": {
-      "type": "enumeration",
-      "enum": ["hero", "advantages", "testomonials", "team"],
-      "enumName": "ContentSectionType",
-      "required": true
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.link"
     }
   }
 }

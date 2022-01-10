@@ -1,7 +1,0 @@
-query page($pathname: String!) {
-  pages(filters: { pathname: { eq: $pathname } }, pagination: { limit: 1 }) {
-    data {
-      ...Page
-    }
-  }
-}

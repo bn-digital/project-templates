@@ -2,7 +2,6 @@ import { Col, Layout, Row } from 'antd'
 import { Logo } from '../logo/Logo'
 import { Navigation } from '../menu/Navigation'
 import { Outlet } from 'react-router'
-import { withContent } from '../app/Content'
 import { Suspense, VFC } from 'react'
 import './DefaultLayout.less'
 
@@ -29,4 +28,4 @@ const DefaultLayout: VFC = () => (
   </Layout>
 )
 
-export default withContent(DefaultLayout, () => ({ pathname: '/' }))
+export { DefaultLayout }

@@ -11,23 +11,24 @@
     "defaults"
   ],
   "dependencies": {
-    "@apollo/client": "^3.5.6",
-    "antd": "^4.17.3",
-    "graphql": "^16.2.0",
-    "history": "^5.2.0",
-    "react": "^18.0.0-rc.0",
-    "react-dom": "^18.0.0-rc.0",
-    "react-ga": "^3.3.0",
+    "@bn-digital/antd": "^1.0.1",
+    "@bn-digital/graphql-client": "^1.0.20",
+    "@bn-digital/react": "^1.0.7",
+    "@bn-digital/react-i18n": "^1.0.0",
+    "antd": "^4.18.2",
+    "react": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-helmet-async": "^1.2.2",
-    "react-intl": "^5.23.0",
-    "react-markdown": "^7.1.1",
+    "react-markdown": "^7.1.2",
     "react-responsive": "^9.0.0-beta.5",
     "react-router-dom": "^6.2.1"
   },
   "devDependencies": {
-    "@bn-digital/vite": "^1.0.24",
-    "@types/react": "^17.0.37",
+    "@bn-digital/sdk": "^1.0.0",
+    "@bn-digital/vite": "^1.1.30",
+    "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "@types/react-helmet": "^6.1.5",
     "typescript": "^4.5.4"
   }
 }

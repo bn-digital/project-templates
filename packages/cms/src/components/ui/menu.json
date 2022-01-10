@@ -18,12 +18,6 @@
       "component": "ui.link",
       "required": true,
       "min": 1
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": ["header", "footer", "socials", "cta"],
-      "required": true,
-      "enumName": "ContentMenuType"
     }
   }
 }

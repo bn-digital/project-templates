@@ -1,17 +1,14 @@
 import { FC } from 'react'
 import { Layout } from 'antd'
 import { HeroSection } from '../../components/section'
-import { HomepageProps, withHomepage } from '../../graphql'
-import { TabSection } from '../../components/section/TabSection'
+import { withHomepage } from '../../graphql'
+import { Helmet } from 'react-helmet'
 
-const Home: FC<HomepageProps> = ({ data }) => {
-  const content = data?.homepage?.data?.attributes
-  return (
-    <Layout.Content>
-      <HeroSection {...content?.hero} />
-      <TabSection data={content?.capabilities} />
-    </Layout.Content>
-  )
-}
+const Home: FC<Maybe<HomepageFragment>> = ({ hero, meta }) => (
+  <Layout.Content>
+    <Helmet title={meta?.title ?? undefined} meta={[{ name: 'description', content: meta?.description ?? undefined }]} />
+    <HeroSection {...hero} />
+  </Layout.Content>
+)
 
-export default withHomepage()(Home)
+export default withHomepage()(({ data }) => <Home {...data?.homepage?.data?.attributes} />)

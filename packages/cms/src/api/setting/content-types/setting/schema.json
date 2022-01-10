@@ -17,8 +17,10 @@
       "required": true,
       "default": "localhost"
     },
-    "googleAnalyticsCode": {
-      "type": "password"
+    "headerMenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.link"
     }
   }
 }

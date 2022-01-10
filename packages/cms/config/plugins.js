@@ -19,7 +19,7 @@ module.exports = ({ env }) => ({
       providerOptions: {
         accessKeyId: env('S3_ACCESS_KEY_ID'),
         secretAccessKey: env('S3_SECRET_ACCESS_KEY'),
-        endpoint: env('S3_ENDPOINT', `https://${env('S3_REGION', 'fra1')}.digitaloceanspaces.com`),
+        endpoint: env('S3_ENDPOINT'),
         params: {
           Bucket: `${env('S3_BUCKET', `bn-dev/${name}`)}/uploads`,
         },
@@ -30,8 +30,8 @@ module.exports = ({ env }) => ({
     config: {
       provider: 'nodemailer',
       providerOptions: {
-        host: env('SMTP_HOST', 'infrastructure.bndigital.dev'),
-        port: env('SMTP_PORT', 1025),
+        host: env('SMTP_HOST', 'bndigital.dev'),
+        port: env('SMTP_PORT', 31025),
         auth: {
           user: env('SMTP_USERNAME', ''),
           pass: env('SMTP_PASSWORD', ''),

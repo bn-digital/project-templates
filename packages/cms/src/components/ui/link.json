@@ -13,15 +13,6 @@
     },
     "title": {
       "type": "string"
-    },
-    "protocol": {
-      "type": "enumeration",
-      "enum": ["geo", "skype", "tel", "mailto"]
-    },
-    "icon": {
-      "allowedTypes": ["images"],
-      "type": "media",
-      "multiple": false
     }
   }
 }
