@@ -1,18 +1,8 @@
-import { VFC } from 'react'
-import { renderApp, RoutingProvider } from '@bn-digital/react'
-import UIProvider from '@bn-digital/antd'
-import { ClientProvider } from '@bn-digital/graphql-client'
-import I18nProvider from '@bn-digital/react-i18n'
-import pages from './pages'
+import { renderApp } from '@bn-digital/react'
+import { initMarker, initSentry, reportWebVitals } from '@bn-digital/sdk'
+import { App } from './components/app'
 
-const Root: VFC = () => (
-  <ClientProvider production={import.meta.env.PROD}>
-    <I18nProvider>
-      <UIProvider>
-        <RoutingProvider routes={pages} />
-      </UIProvider>
-    </I18nProvider>
-  </ClientProvider>
-)
-
-renderApp(<Root />, { strict: true })
+await initMarker({ enabled: import.meta.env.PROD, destination: import.meta.env.WEBSITE_MARKER_ID })
+initSentry({ enabled: import.meta.env.PROD, dsn: import.meta.env.WEBSITE_SENTRY_DSN })
+renderApp(<App />, { strict: true })
+reportWebVitals()

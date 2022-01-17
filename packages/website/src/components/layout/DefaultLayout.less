@@ -1,11 +1,20 @@
-@import 'antd/dist/antd';
 @import 'src/index';
 
-.ant-layout {
-  padding: 0 40px;
-}
+#root {
+  .ant-layout {
+    height: 100%;
+    min-height: 100vh;
+  }
 
-.fixed {
-  max-width: 1440px;
-  margin: 0 auto;
+  .ant-layout-footer {
+    height: @layout-footer-height;
+    line-height: @layout-footer-height;
+  }
+
+  h1, h2, h3, h4, h5 {
+    &.ant-typography {
+      font-weight: 900;
+      font-family: @headings-font-family;
+    }
+  }
 }

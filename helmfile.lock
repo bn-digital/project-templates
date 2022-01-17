@@ -1,4 +1,4 @@
-version: v0.142.0
+version: v0.143.0
 dependencies:
 - name: app
   repository: https://dcr.bndigital.dev/chartrepo/library

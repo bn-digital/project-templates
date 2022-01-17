@@ -1,21 +1,23 @@
-name: Staging
+name: Deploy
 on:
   workflow_dispatch: { }
-  pull_request:
+  push:
     branches:
       - latest
     paths:
-      - helmfile.yaml
-      - Dockerfile
-      - package.json
-      - packages/cms/src/**/*
-      - packages/website/src/**/*
-      - packages/cms/config/**/*
+      - ".github/workflows/deploy.yml"
+      - "skaffold.yaml"
+      - "**/*/.env.*"
+      - "**/*/Dockerfile"
+      - "**/*/package.json"
+      - "packages/cms/src/**/*"
+      - "packages/website/src/**/*"
+      - "packages/cms/config/**/*"
 
 env:
-  SKAFFOLD_DEFAULT_REPO: ${{ secrets.DOCKER_REGISTRY }}/${{ github.event.repository.name }}
+  APP_NAME: ${{ github.event.repository.name }}
   APP_ENV: staging
-  VAULT_ENDPOINT: ${{ secrets.VAULT_ENDPOINT }}
+  DOMAIN: ${{ github.event.repository.name }}
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
@@ -43,7 +45,6 @@ jobs:
 
       - name: Import Vault secrets
         uses: hashicorp/vault-action@v2.3.1
-        id: secrets
         with:
           method: github
           url: ${{ env.VAULT_ENDPOINT }}
@@ -56,26 +57,6 @@ jobs:
             infrastructure/data/bndigital/${{ env.APP_ENV }}/sonarqube host | SONAR_HOST_URL ;
             infrastructure/data/bndigital/${{ env.APP_ENV }}/sonarqube token | SONAR_TOKEN ;
 
-      - name: Generate env variables
-        uses: bn-digital/vault-env@latest
-        with:
-          endpoint: ${{ env.VAULT_ENDPOINT }}
-          token: ${{ env.GITHUB_TOKEN }}
-          template: packages/cms/.env.${{ env.APP_ENV }}
-          target: packages/cms/.env
-
-      - name: Login Docker registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ env.SKAFFOLD_DEFAULT_REPO }}
-          username: ${{ env.DOCKER_USERNAME }}
-          password: ${{ env.DOCKER_PASSWORD }}
-
-      - name: Build Docker images
-        uses: hiberbee/github-action-skaffold@1.14.0
-        with:
-          command: build
-
       - name: Setup DigitalOcean cli
         uses: digitalocean/action-doctl@v2
         with:
@@ -85,7 +66,6 @@ jobs:
         run: doctl kubernetes cluster kubeconfig save ${{ env.KUBERNETES_CLUSTER }} --set-current-context
 
       - name: Release Helm charts
-        uses: hiberbee/github-action-helm@1.9.1
+        uses: hiberbee/github-action-helm@1.10.0
         with:
           helmfile: apply
-          environment: ${{ env.APP_ENV }}

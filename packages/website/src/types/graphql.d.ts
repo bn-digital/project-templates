@@ -934,57 +934,42 @@ type UsersPermissionsUserRelationResponseCollection = {
 }
 
 type CardFragment = {
-  __typename?: 'ComponentUiCard'
   id: string
   title?: string | null | undefined
   subtitle?: string | null | undefined
   description?: string | null | undefined
-  media?: { __typename?: 'UploadFileEntityResponse'; data?: ({ __typename?: 'UploadFileEntity' } & FileFragment) | null | undefined } | null | undefined
+  media?: { data?: FileFragment | null | undefined } | null | undefined
 }
 
 type CardFragmentVariables = Exact<{ [key: string]: never }>
 
-type EntryFragment = { __typename?: 'ComponentDataEntry'; id: string; key?: string | null | undefined; value: string }
+type EntryFragment = { id: string; key?: string | null | undefined; value: string }
 
 type EntryFragmentVariables = Exact<{ [key: string]: never }>
 
-type FileFragment = {
-  __typename?: 'UploadFileEntity'
-  id?: string | null | undefined
-  attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null | undefined; url: string } | null | undefined
-}
+type FileFragment = { id?: string | null | undefined; attributes?: { previewUrl?: string | null | undefined; url: string } | null | undefined }
 
 type FileFragmentVariables = Exact<{ [key: string]: never }>
 
-type LinkFragment = { __typename?: 'ComponentUiLink'; id: string; title?: string | null | undefined; url: string }
+type LinkFragment = { id: string; title?: string | null | undefined; url: string }
 
 type LinkFragmentVariables = Exact<{ [key: string]: never }>
 
-type MetaFragment = { __typename?: 'ComponentDataMeta'; id: string; title?: string | null | undefined; description?: string | null | undefined }
+type MetaFragment = { id: string; title?: string | null | undefined; description?: string | null | undefined }
 
 type MetaFragmentVariables = Exact<{ [key: string]: never }>
 
-type ParagraphFragment = { __typename?: 'ComponentUiParagraph'; id: string; value: string }
+type ParagraphFragment = { id: string; value: string }
 
 type ParagraphFragmentVariables = Exact<{ [key: string]: never }>
 
-type TabFragment = { __typename?: 'ComponentUiTab'; id: string; name: string; pane: { __typename?: 'ComponentUiCard' } & CardFragment }
+type TabFragment = { id: string; name: string; pane: CardFragment }
 
 type TabFragmentVariables = Exact<{ [key: string]: never }>
 
 type HomepageFragment = {
-  __typename?: 'Homepage'
-  meta?: { __typename?: 'ComponentDataMeta'; title?: string | null | undefined; description?: string | null | undefined } | null | undefined
-  hero?:
-    | {
-        __typename?: 'ComponentUiCard'
-        subtitle?: string | null | undefined
-        id: string
-        description?: string | null | undefined
-        title?: string | null | undefined
-      }
-    | null
-    | undefined
+  meta?: { title?: string | null | undefined; description?: string | null | undefined } | null | undefined
+  hero?: { subtitle?: string | null | undefined; id: string; description?: string | null | undefined; title?: string | null | undefined } | null | undefined
 }
 
 type HomepageFragmentVariables = Exact<{ [key: string]: never }>
@@ -992,22 +977,12 @@ type HomepageFragmentVariables = Exact<{ [key: string]: never }>
 type HomepageQueryVariables = Exact<{ [key: string]: never }>
 
 type HomepageQuery = {
-  __typename?: 'Query'
   homepage?:
     | {
-        __typename?: 'HomepageEntityResponse'
         data?:
           | {
-              __typename?: 'HomepageEntity'
               id?: string | null | undefined
-              attributes?:
-                | {
-                    __typename?: 'Homepage'
-                    meta?: ({ __typename?: 'ComponentDataMeta' } & MetaFragment) | null | undefined
-                    hero?: ({ __typename?: 'ComponentUiCard' } & CardFragment) | null | undefined
-                  }
-                | null
-                | undefined
+              attributes?: { meta?: MetaFragment | null | undefined; hero?: CardFragment | null | undefined } | null | undefined
             }
           | null
           | undefined

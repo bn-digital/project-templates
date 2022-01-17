@@ -10,7 +10,14 @@ const HeroSection: VFC<Partial<CardFragment>> = ({ title = '', description = '',
       <Typography.Paragraph>{subtitle}</Typography.Paragraph>
     </Col>
     <Col span={24}>
-      <Typography.Paragraph>{description}</Typography.Paragraph>
+      <Typography.Paragraph>
+        {description?.split('\n').map((it, index) => (
+          <span key={index}>
+            {it}
+            <br />
+          </span>
+        ))}
+      </Typography.Paragraph>
     </Col>
   </Row>
 )

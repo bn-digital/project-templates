@@ -16,12 +16,15 @@ config:
     DateTime: Date
 generates:
   packages/website/src/graphql/index.tsx:
+    config:
+      skipTypename: true
     plugins:
       - typescript-operations:
           inlineFragmentTypes: combine
           dedupeFragments: true
           experimentalFragmentVariables: true
           preResolveTypes: true
+          skipTypename: true
       - typescript-react-apollo:
           dedupeFragments: true
           inlineFragmentTypes: combine
@@ -30,6 +33,8 @@ generates:
           withResultType: true
           withHOC: true
   packages/website/src/types/graphql.d.ts:
+    config:
+      skipTypename: true
     plugins:
       - typescript:
           noExport: true

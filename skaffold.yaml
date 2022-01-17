@@ -15,10 +15,6 @@ build:
 profiles:
   - name: staging
     build:
-      tagPolicy:
-        gitCommit:
-          ignoreChanges: true
-          variant: CommitSha
       local:
         push: true
         concurrency: 0

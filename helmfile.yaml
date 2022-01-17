@@ -6,38 +6,38 @@ helmDefaults:
   createNamespace: true
   cleanupOnFail: true
 
-environments:
-  staging: { }
-  production: { }
-
 releases:
-  # name: %project-name%-cms-app
-  - name: app-website
-    namespace: '{{ .Environment.Name }}'
+  - name: '{{ env "APP_NAME" | default "app" }}-website'
+    namespace: '{{ env "APP_ENV" | default "staging" }}'
     chart: bndigital/app
     version: 1.1.4
+    installed: true
     values:
-      - image: '{{ env "SKAFFOLD_DEFAULT_REPO" | default "dcr.bndigital.dev/app" }}/website:{{ env "GITHUB_REF" | default "latest" }}'
+      - image: '{{ env "DOCKER_REGISTRY" | default "dcr.bndigital.dev" }}/{{ env "APP_NAME" | default "app" }}/website:{{ env "IMAGE_TAG" | default "latest" }}'
+        pullPolicy: Always
+        podAnnotations:
+          github.com/commit: '{{ env "GITHUB_SHA" | default "-" }}'
         serviceAccount:
           name: bndigital-app
         ingress:
-          host: '{{ env "DOMAIN" | default "app.bndigital.dev" }}'
+          host: '{{ env "DOMAIN" | default "" }}'
           proxy:
             paths:
               - pathTemplate: strapi
                 service:
                 # name: %project-name%-cms-app
-                  name: app-cms-app
+                  name: '{{ env "APP_NAME" | default "app" }}-cms-app'
 
   # name: %project-name%-cms-app
-  - name: app-cms
-    namespace: '{{ .Environment.Name }}'
+  - name: '{{ env "APP_NAME" | default "app" }}-cms'
+    namespace: '{{ env "APP_ENV" | default "staging" }}'
     chart: bndigital/app
+    installed: true
     version: 1.1.4
     values:
-      - image: '{{ env "SKAFFOLD_DEFAULT_REPO" | default "dcr.bndigital.dev/app" }}/cms:{{ env "IMAGE_TAG" | default "latest" }}'
+      - image: '{{ env "DOCKER_REGISTRY" | default "dcr.bndigital.dev" }}/{{ env "APP_NAME" | default "app" }}/cms:{{ env "IMAGE_TAG" | default "latest" }}'
+        pullPolicy: Always
+        podAnnotations:
+          github.com/commit: '{{ env "GITHUB_SHA" | default "-" }}'
         serviceAccount:
           name: bndigital-app
-        podAnnotations:
-          github.com/ref: '{{ requiredEnv "GITHUB_REF" }}'
-          github.com/sha: '{{ requiredEnv "GITHUB_SHA" }}'

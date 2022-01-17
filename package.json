@@ -16,30 +16,30 @@
     "email": "vlad.volkov@bndigital.co",
     "url": "https://github.com/vladyslavvolkov"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,less,graphql}": [
-      "prettier --write"
-    ],
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ],
-    "*.less": [
-      "stylelint --fix"
-    ]
+    "*.{js,jsx,ts,tsx,json,less,graphql}": ["yarn prettier --write"],
+    "*.{js,jsx,ts,tsx}": ["yarn eslint --fix"],
+    "*.less": ["yarn stylelint --fix"]
   },
   "prettier": "@bn-digital/prettier-config",
   "stylelint": {
     "extends": "@bn-digital/stylelint-config"
   },
   "eslintConfig": {
-    "extends": "@bn-digital/eslint-config"
+    "extends": "@bn-digital/eslint-config",
+    "overrides": [
+      {
+        "files": "**/*.d.ts",
+        "rules": {
+          "@typescript-eslint/no-explicit-any": 0
+        }
+      }
+    ]
   },
   "devDependencies": {
     "@bn-digital/commitlint-config": "^1.2.2",
-    "@bn-digital/eslint-config": "^1.18.1",
+    "@bn-digital/eslint-config": "^1.18.2",
     "@bn-digital/graphql-config": "^1.0.3",
     "@bn-digital/prettier-config": "^1.13.1",
     "@bn-digital/stylelint-config": "^1.13.5",
@@ -59,7 +59,8 @@
     "build": "yarn workspaces foreach run build",
     "upgrade": "yarn up '*'",
     "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src && yarn stylelint --fix packages/*/src/**/*.less",
-    "lint": "yarn prettier --check packages/*/src && yarn eslint packages/*/src && yarn stylelint packages/*/src/**/*.less"
+    "lint": "yarn prettier --check packages/*/src && yarn eslint packages/*/src && yarn stylelint packages/*/src/**/*.less",
+    "postinstall": "husky install"
   },
   "packageManager": "yarn@3.1.1"
 }

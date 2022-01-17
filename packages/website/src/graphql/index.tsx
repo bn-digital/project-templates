@@ -6,57 +6,42 @@ import * as ApolloReactHoc from '@apollo/client/react/hoc'
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 const defaultOptions = {}
 export type CardFragment = {
-  __typename?: 'ComponentUiCard'
   id: string
   title?: string | null | undefined
   subtitle?: string | null | undefined
   description?: string | null | undefined
-  media?: { __typename?: 'UploadFileEntityResponse'; data?: ({ __typename?: 'UploadFileEntity' } & FileFragment) | null | undefined } | null | undefined
+  media?: { data?: FileFragment | null | undefined } | null | undefined
 }
 
 export type CardFragmentVariables = Exact<{ [key: string]: never }>
 
-export type EntryFragment = { __typename?: 'ComponentDataEntry'; id: string; key?: string | null | undefined; value: string }
+export type EntryFragment = { id: string; key?: string | null | undefined; value: string }
 
 export type EntryFragmentVariables = Exact<{ [key: string]: never }>
 
-export type FileFragment = {
-  __typename?: 'UploadFileEntity'
-  id?: string | null | undefined
-  attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null | undefined; url: string } | null | undefined
-}
+export type FileFragment = { id?: string | null | undefined; attributes?: { previewUrl?: string | null | undefined; url: string } | null | undefined }
 
 export type FileFragmentVariables = Exact<{ [key: string]: never }>
 
-export type LinkFragment = { __typename?: 'ComponentUiLink'; id: string; title?: string | null | undefined; url: string }
+export type LinkFragment = { id: string; title?: string | null | undefined; url: string }
 
 export type LinkFragmentVariables = Exact<{ [key: string]: never }>
 
-export type MetaFragment = { __typename?: 'ComponentDataMeta'; id: string; title?: string | null | undefined; description?: string | null | undefined }
+export type MetaFragment = { id: string; title?: string | null | undefined; description?: string | null | undefined }
 
 export type MetaFragmentVariables = Exact<{ [key: string]: never }>
 
-export type ParagraphFragment = { __typename?: 'ComponentUiParagraph'; id: string; value: string }
+export type ParagraphFragment = { id: string; value: string }
 
 export type ParagraphFragmentVariables = Exact<{ [key: string]: never }>
 
-export type TabFragment = { __typename?: 'ComponentUiTab'; id: string; name: string; pane: { __typename?: 'ComponentUiCard' } & CardFragment }
+export type TabFragment = { id: string; name: string; pane: CardFragment }
 
 export type TabFragmentVariables = Exact<{ [key: string]: never }>
 
 export type HomepageFragment = {
-  __typename?: 'Homepage'
-  meta?: { __typename?: 'ComponentDataMeta'; title?: string | null | undefined; description?: string | null | undefined } | null | undefined
-  hero?:
-    | {
-        __typename?: 'ComponentUiCard'
-        subtitle?: string | null | undefined
-        id: string
-        description?: string | null | undefined
-        title?: string | null | undefined
-      }
-    | null
-    | undefined
+  meta?: { title?: string | null | undefined; description?: string | null | undefined } | null | undefined
+  hero?: { subtitle?: string | null | undefined; id: string; description?: string | null | undefined; title?: string | null | undefined } | null | undefined
 }
 
 export type HomepageFragmentVariables = Exact<{ [key: string]: never }>
@@ -64,22 +49,12 @@ export type HomepageFragmentVariables = Exact<{ [key: string]: never }>
 export type HomepageQueryVariables = Exact<{ [key: string]: never }>
 
 export type HomepageQuery = {
-  __typename?: 'Query'
   homepage?:
     | {
-        __typename?: 'HomepageEntityResponse'
         data?:
           | {
-              __typename?: 'HomepageEntity'
               id?: string | null | undefined
-              attributes?:
-                | {
-                    __typename?: 'Homepage'
-                    meta?: ({ __typename?: 'ComponentDataMeta' } & MetaFragment) | null | undefined
-                    hero?: ({ __typename?: 'ComponentUiCard' } & CardFragment) | null | undefined
-                  }
-                | null
-                | undefined
+              attributes?: { meta?: MetaFragment | null | undefined; hero?: CardFragment | null | undefined } | null | undefined
             }
           | null
           | undefined

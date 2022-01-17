@@ -8,9 +8,9 @@ const name = require('./name')
  */
 module.exports = ({ env }) => ({
   connection: {
-    client: env('NODE_ENV') === 'production' ? 'postgres' : 'sqlite',
+    client: env('NODE_ENV') === 'production' ? env('DATABASE_CLIENT', 'sqlite') : 'sqlite',
     connection:
-      env('NODE_ENV') === 'production'
+      env('DATABASE_CLIENT') === 'postgres' || env('DATABASE_CLIENT') === 'postgresql' || env('DATABASE_CLIENT') === 'pg' || env('DATABASE_CLIENT') === 'mysql'
         ? {
             pool: { min: 0, max: 5 },
             charset: 'utf-8',
@@ -18,15 +18,15 @@ module.exports = ({ env }) => ({
             parseJSON: true,
             supportBigNumbers: true,
             user: env('DATABASE_USERNAME', 'postgres'),
-            password: env('DATABASE_PASSWORD'),
+            password: env('DATABASE_PASSWORD', ''),
             database: env('DATABASE_NAME', name),
-            schema: 'public',
-            host: env('DATABASE_HOST', 'localhost'),
+            schema: env('DATABASE_SCHEMA', 'public'),
+            host: env('DATABASE_HOST', 'postgresql'),
             port: Number.parseInt(env('DATABASE_PORT', '5432')),
           }
         : {
             filename: path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db')),
           },
     useNullAsDefault: true,
-  }
+  },
 })

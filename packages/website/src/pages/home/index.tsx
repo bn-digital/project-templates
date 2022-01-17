@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Layout } from 'antd'
-import { HeroSection } from '../../components/section'
-import { withHomepage } from '../../graphql'
+import { HeroSection } from 'src/components/section'
+import { withHomepage } from 'src/graphql'
 import { Helmet } from 'react-helmet'
 
 const Home: FC<Maybe<HomepageFragment>> = ({ hero, meta }) => (

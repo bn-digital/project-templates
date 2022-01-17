@@ -1,31 +1,39 @@
-import { Col, Layout, Row } from 'antd'
-import { Logo } from '../logo/Logo'
-import { Navigation } from '../menu/Navigation'
+import { Drawer, Layout, Skeleton } from 'antd'
 import { Outlet } from 'react-router'
 import { Suspense, VFC } from 'react'
+import { AppContext } from 'src/components/app'
+import { Footer } from './Footer'
+import { Content } from './Content'
+import { Header } from './Header'
 import './DefaultLayout.less'
 
+const PageLoader: VFC = () => (
+  <Content>
+    <Skeleton />
+  </Content>
+)
+
 const DefaultLayout: VFC = () => (
-  <Layout>
-    <Layout.Header>
-      <Layout.Content className={'fixed'}>
-        <Row align={'middle'} wrap={false}>
-          <Col>
-            <Logo />
-          </Col>
-          <Col flex={'auto'}>
-            <Navigation />
-          </Col>
-        </Row>
-      </Layout.Content>
-    </Layout.Header>
-    <Layout.Content className={'fixed'}>
-      <Suspense fallback={<></>}>
-        <Outlet />
-      </Suspense>
-    </Layout.Content>
-    <Layout.Footer style={{ textAlign: 'center' }}>App ©{new Date().getFullYear()}</Layout.Footer>
-  </Layout>
+  <AppContext.Consumer>
+    {({ burger: { opened, toggle } }) => (
+      <Layout>
+        <Layout.Header>
+          <Content>
+            <Header />
+          </Content>
+        </Layout.Header>
+        <Suspense fallback={<PageLoader />}>
+          <Outlet />
+        </Suspense>
+        <Layout.Footer>
+          <Content>
+            <Footer />
+          </Content>
+        </Layout.Footer>
+        <Drawer width={'50%'} height={'100%'} onClose={toggle} visible={opened} />
+      </Layout>
+    )}
+  </AppContext.Consumer>
 )
 
 export { DefaultLayout }
