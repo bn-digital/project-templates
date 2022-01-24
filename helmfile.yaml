@@ -7,37 +7,49 @@ helmDefaults:
   cleanupOnFail: true
 
 releases:
-  - name: '{{ env "APP_NAME" | default "app" }}-website'
-    namespace: '{{ env "APP_ENV" | default "staging" }}'
+  - name: '{{ requiredEnv "APP_NAME" }}-website'
+    namespace: '{{ requiredEnv "APP_ENV" }}'
     chart: bndigital/app
-    version: 1.1.4
-    installed: true
+    version: 1.2.10
     values:
-      - image: '{{ env "DOCKER_REGISTRY" | default "dcr.bndigital.dev" }}/{{ env "APP_NAME" | default "app" }}/website:{{ env "IMAGE_TAG" | default "latest" }}'
-        pullPolicy: Always
-        podAnnotations:
-          github.com/commit: '{{ env "GITHUB_SHA" | default "-" }}'
+      - app:
+          name: '{{ requiredEnv "APP_NAME" }}'
+        image:
+          registry:
+            url: '{{ requiredEnv "DOCKER_REGISTRY" }}/{{ requiredEnv "APP_NAME" }}'
+          repository: 'website'
+          tag: '{{ env "APP_VERSION" | default "latest" }}'
+        vcs:
+          repository: '{{ requiredEnv "GITHUB_REPOSITORY" }}'
+          ref: '{{ requiredEnv "GITHUB_REF_NAME" }}'
+          commit: '{{ requiredEnv "GITHUB_SHA" }}'
         serviceAccount:
           name: bndigital-app
         ingress:
-          host: '{{ env "DOMAIN" | default "" }}'
+          host: '{{ requiredEnv "DOMAIN" }}'
           proxy:
             paths:
-              - pathTemplate: strapi
+              - implementation: 'strapi'
                 service:
-                # name: %project-name%-cms-app
-                  name: '{{ env "APP_NAME" | default "app" }}-cms-app'
+                  name: '{{ requiredEnv "APP_NAME" }}-cms-app'
 
-  # name: %project-name%-cms-app
-  - name: '{{ env "APP_NAME" | default "app" }}-cms'
-    namespace: '{{ env "APP_ENV" | default "staging" }}'
+  - name: '{{ requiredEnv "APP_NAME" }}-cms'
+    namespace: '{{ requiredEnv "APP_ENV" }}'
     chart: bndigital/app
-    installed: true
-    version: 1.1.4
+    version: 1.2.10
     values:
-      - image: '{{ env "DOCKER_REGISTRY" | default "dcr.bndigital.dev" }}/{{ env "APP_NAME" | default "app" }}/cms:{{ env "IMAGE_TAG" | default "latest" }}'
-        pullPolicy: Always
-        podAnnotations:
-          github.com/commit: '{{ env "GITHUB_SHA" | default "-" }}'
+      - app:
+          name: '{{ requiredEnv "APP_NAME" }}'
+        image:
+          registry:
+            url: '{{ requiredEnv "DOCKER_REGISTRY" }}/{{ requiredEnv "APP_NAME" }}'
+          repository: 'cms'
+          tag: '{{ env "APP_VERSION" | default "latest" }}'
+        vcs:
+          repository: '{{ requiredEnv "GITHUB_REPOSITORY" }}'
+          ref: '{{ requiredEnv "GITHUB_REF_NAME" }}'
+          commit: '{{ requiredEnv "GITHUB_SHA" }}'
+        healthcheck:
+          path: /graphql
         serviceAccount:
           name: bndigital-app

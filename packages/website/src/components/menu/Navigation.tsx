@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import './Navigation.less'
 
 const Navigation: VFC<Partial<{ data: Maybe<LinkFragment>[] }>> = ({ data = [] }) => (
-  <Menu inlineCollapsed={false} theme={'light'} mode='horizontal'>
+  <Menu theme={'light'} mode='horizontal'>
     {data?.map(
       it =>
         it?.url && (

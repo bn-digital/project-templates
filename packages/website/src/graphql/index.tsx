@@ -4,7 +4,7 @@ import * as Apollo from '@apollo/client'
 import * as ApolloReactComponents from '@apollo/client/react/components'
 import * as ApolloReactHoc from '@apollo/client/react/hoc'
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-const defaultOptions = {}
+const defaultOptions = {} as const
 export type CardFragment = {
   id: string
   title?: string | null | undefined

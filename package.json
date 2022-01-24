@@ -27,25 +27,17 @@
     "extends": "@bn-digital/stylelint-config"
   },
   "eslintConfig": {
-    "extends": "@bn-digital/eslint-config",
-    "overrides": [
-      {
-        "files": "**/*.d.ts",
-        "rules": {
-          "@typescript-eslint/no-explicit-any": 0
-        }
-      }
-    ]
+    "extends": "@bn-digital/eslint-config"
   },
   "devDependencies": {
     "@bn-digital/commitlint-config": "^1.2.2",
-    "@bn-digital/eslint-config": "^1.18.2",
-    "@bn-digital/graphql-config": "^1.0.3",
-    "@bn-digital/prettier-config": "^1.13.1",
+    "@bn-digital/eslint-config": "^1.18.6",
+    "@bn-digital/graphql-config": "^1.0.5",
+    "@bn-digital/prettier-config": "^1.13.2",
     "@bn-digital/stylelint-config": "^1.13.5",
     "husky": "^7.0.4",
-    "lint-staged": "^12.1.7",
-    "typescript": "^4.5.4"
+    "lint-staged": "^12.3.1",
+    "typescript": "^4.5.5"
   },
   "scripts": {
     "prettier": "node_modules/.bin/prettier",
