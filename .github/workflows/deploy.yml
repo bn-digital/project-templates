@@ -38,9 +38,9 @@ jobs:
           url: ${{ env.VAULT_ENDPOINT }}
           githubToken: ${{ env.GITHUB_TOKEN }}
           secrets: |
-            infrastructure/data/harbor registry     | DOCKER_REGISTRY ;
-            infrastructure/data/kubernetes cluster  | KUBERNETES_CLUSTER ;
-            infrastructure/data/digitalocean token  | DIGITALOCEAN_TOKEN ;
+            infrastructure/data/harbor        registry  | DOCKER_REGISTRY ;
+            infrastructure/data/kubernetes    cluster   | KUBERNETES_CLUSTER ;
+            infrastructure/data/digitalocean  token     | DIGITALOCEAN_TOKEN ;
 
       - name: Setup DigitalOcean cli
         uses: digitalocean/action-doctl@v2

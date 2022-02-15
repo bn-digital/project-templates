@@ -5,36 +5,39 @@
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::setting.setting",
+      "subject": "api::customer.customer",
       "properties": {
         "fields": [
-          "hostname"
+          "firstName",
+          "lastName"
         ]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::setting.setting",
+      "subject": "api::customer.customer",
       "properties": {},
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::setting.setting",
+      "subject": "api::customer.customer",
       "properties": {
         "fields": [
-          "hostname"
+          "firstName",
+          "lastName"
         ]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::setting.setting",
+      "subject": "api::customer.customer",
       "properties": {
         "fields": [
-          "hostname"
+          "firstName",
+          "lastName"
         ]
       },
       "conditions": []

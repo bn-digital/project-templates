@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customers",
+  "info": {
+    "singularName": "customer",
+    "pluralName": "customers",
+    "displayName": "Customer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "stripe": {
+      "type": "component",
+      "repeatable": false,
+      "component": "integration.stripe",
+      "private": true
+    },
+    "uuid": {
+      "type": "uid",
+      "required": false
+    }
+  }
+}

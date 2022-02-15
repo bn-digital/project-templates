@@ -2,13 +2,15 @@ import { FC } from 'react'
 import { Layout } from 'antd'
 import { HeroSection } from 'src/components/section'
 import { withHomepage } from 'src/graphql'
-import { Helmet } from 'react-helmet'
+import { Page } from 'src/components/page'
 
-const Home: FC<Maybe<HomepageFragment>> = ({ hero, meta }) => (
+const Home: FC<Maybe<HomepageFragment>> = ({ hero }) => (
   <Layout.Content>
-    <Helmet title={meta?.title ?? undefined} meta={[{ name: 'description', content: meta?.description ?? undefined }]} />
     <HeroSection {...hero} />
   </Layout.Content>
 )
 
-export default withHomepage()(({ data }) => <Home {...data?.homepage?.data?.attributes} />)
+export default withHomepage()(({ data }) => {
+  if (data?.loading) return null
+  return <Page seo={data?.homepage?.data?.attributes?.seo} {...data?.homepage?.data?.attributes} />
+})

@@ -20,20 +20,6 @@
           "sortable": true
         }
       },
-      "meta": {
-        "edit": {
-          "label": "Meta",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "Meta",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "hero": {
         "edit": {
           "label": "Hero",
@@ -44,6 +30,34 @@
         },
         "list": {
           "label": "Hero",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "pathname": {
+        "edit": {
+          "label": "Pathname",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Pathname",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "seo": {
+        "edit": {
+          "label": "Seo",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Seo",
           "searchable": false,
           "sortable": false
         }
@@ -81,18 +95,25 @@
       "list": [
         "id",
         "createdAt",
-        "updatedAt"
+        "updatedAt",
+        "pathname"
       ],
       "edit": [
         [
           {
-            "name": "meta",
+            "name": "hero",
             "size": 12
           }
         ],
         [
           {
-            "name": "hero",
+            "name": "pathname",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "seo",
             "size": 12
           }
         ]

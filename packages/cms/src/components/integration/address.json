@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_integration_addresses",
+  "info": {
+    "displayName": "Address",
+    "icon": "map-marked-alt"
+  },
+  "options": {},
+  "attributes": {
+    "country": {
+      "type": "string",
+      "required": false
+    },
+    "region": {
+      "type": "string",
+      "required": false
+    },
+    "city": {
+      "type": "string",
+      "required": false
+    },
+    "street": {
+      "type": "string",
+      "required": true
+    },
+    "unit": {
+      "type": "string"
+    },
+    "zipCode": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

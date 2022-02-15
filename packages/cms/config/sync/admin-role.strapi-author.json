@@ -5,10 +5,11 @@
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::setting.setting",
+      "subject": "api::customer.customer",
       "properties": {
         "fields": [
-          "hostname"
+          "firstName",
+          "lastName"
         ]
       },
       "conditions": [
@@ -17,7 +18,7 @@
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::setting.setting",
+      "subject": "api::customer.customer",
       "properties": {},
       "conditions": [
         "admin::is-creator"
@@ -25,10 +26,11 @@
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::setting.setting",
+      "subject": "api::customer.customer",
       "properties": {
         "fields": [
-          "hostname"
+          "firstName",
+          "lastName"
         ]
       },
       "conditions": [
@@ -37,10 +39,135 @@
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::setting.setting",
+      "subject": "api::customer.customer",
       "properties": {
         "fields": [
-          "hostname"
+          "firstName",
+          "lastName"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "plugin::graphs-builder.graph",
+      "properties": {
+        "fields": [
+          "collectionX",
+          "collectionXAttribute",
+          "title",
+          "type"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "plugin::graphs-builder.graph",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::graphs-builder.graph",
+      "properties": {
+        "fields": [
+          "collectionX",
+          "collectionXAttribute",
+          "title",
+          "type"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "plugin::graphs-builder.graph",
+      "properties": {
+        "fields": [
+          "collectionX",
+          "collectionXAttribute",
+          "title",
+          "type"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "blocked",
+          "confirmationToken",
+          "confirmed",
+          "customer",
+          "email",
+          "password",
+          "provider",
+          "resetPasswordToken",
+          "role",
+          "username"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "plugin::users-permissions.user",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "blocked",
+          "confirmationToken",
+          "confirmed",
+          "customer",
+          "email",
+          "password",
+          "provider",
+          "resetPasswordToken",
+          "role",
+          "username"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "blocked",
+          "confirmationToken",
+          "confirmed",
+          "customer",
+          "email",
+          "password",
+          "provider",
+          "resetPasswordToken",
+          "role",
+          "username"
         ]
       },
       "conditions": [

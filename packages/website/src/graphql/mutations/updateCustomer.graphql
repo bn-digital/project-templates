@@ -1,0 +1,11 @@
+mutation updateCustomer($id: ID!, $data: CustomerInput!) {
+  updateCustomer(id: $id, data: $data) {
+    data {
+      id
+      attributes {
+        createdAt
+        firstName
+      }
+    }
+  }
+}

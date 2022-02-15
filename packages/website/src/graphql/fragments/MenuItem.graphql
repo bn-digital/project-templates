@@ -1,0 +1,6 @@
+fragment MenuItem on NavigationItem {
+  id
+  title
+  path
+  externalPath
+}

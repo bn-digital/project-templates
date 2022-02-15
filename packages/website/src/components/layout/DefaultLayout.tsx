@@ -22,9 +22,11 @@ const DefaultLayout: VFC = () => (
             <Header />
           </Content>
         </Layout.Header>
-        <Suspense fallback={<PageLoader />}>
-          <Outlet />
-        </Suspense>
+        <Layout.Content>
+          <Suspense fallback={<PageLoader />}>
+            <Outlet />
+          </Suspense>
+        </Layout.Content>
         <Layout.Footer>
           <Content>
             <Footer />

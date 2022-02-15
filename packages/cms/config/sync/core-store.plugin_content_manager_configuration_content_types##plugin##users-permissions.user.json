@@ -147,6 +147,21 @@
           "sortable": true
         }
       },
+      "customer": {
+        "edit": {
+          "label": "Customer",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "firstName"
+        },
+        "list": {
+          "label": "Customer",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "CreatedAt",
@@ -183,9 +198,6 @@
         "email",
         "confirmed"
       ],
-      "editRelations": [
-        "role"
-      ],
       "edit": [
         [
           {
@@ -213,6 +225,10 @@
             "size": 4
           }
         ]
+      ],
+      "editRelations": [
+        "role",
+        "customer"
       ]
     }
   },

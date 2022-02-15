@@ -1,9 +1,19 @@
 const name = require('./name')
 
 module.exports = ({ env }) => ({
-  permissions: {
+  secrets: {
     enabled: true,
-    resolve: '@gravitybv/strapi-plugin-permissions',
+    resolve: './src/plugins/secrets',
+  },
+  navigation: {
+    enabled: true,
+    config: {
+      contentTypes: ['api::homepage.homepage', 'api::contact-us.contact-us'],
+      allowedLevels: 2,
+    },
+  },
+  seo: {
+    enabled: true,
   },
   graphql: {
     config: {

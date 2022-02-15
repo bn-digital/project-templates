@@ -1,0 +1,6 @@
+fragment Menu on NavigationItem {
+  ...MenuItem
+  items {
+    ...MenuItem
+  }
+}

@@ -2,18 +2,28 @@ import { VFC } from 'react'
 import { Menu } from 'antd'
 import { NavLink } from 'react-router-dom'
 import './Navigation.less'
+import { NavigationComponent } from 'src/graphql'
 
-const Navigation: VFC<Partial<{ data: Maybe<LinkFragment>[] }>> = ({ data = [] }) => (
-  <Menu theme={'light'} mode='horizontal'>
-    {data?.map(
-      it =>
-        it?.url && (
-          <Menu.Item key={it.url}>
-            <NavLink to={it.url}>{it.title}</NavLink>
-          </Menu.Item>
-        ),
-    )}
-  </Menu>
+type NavigationProps = { slug: string }
+
+const Navigation: VFC<NavigationProps> = ({ slug }) => (
+  <NavigationComponent variables={{ slug }}>
+    {({ data, loading }) => {
+      if (loading) return null
+      return (
+        <Menu theme={'light'} mode={'horizontal'}>
+          {data?.renderNavigation?.map(
+            it =>
+              it?.path && (
+                <Menu.Item key={it?.id}>
+                  <NavLink to={it.path}>{it.title}</NavLink>
+                </Menu.Item>
+              ),
+          )}
+        </Menu>
+      )
+    }}
+  </NavigationComponent>
 )
 
 export { Navigation }

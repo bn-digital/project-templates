@@ -2,7 +2,7 @@ name: Build
 on:
   pull_request:
     branches:
-      - latest
+      - latest # Will be triggered only on pull request against latest branch with changes in one of paths from below
     paths:
       - ".github/workflows/build.yml"
       - "skaffold.yaml"
@@ -14,8 +14,8 @@ on:
       - "packages/cms/config/**/*"
 
 env:
-  APP_NAME: ${{ github.event.repository.name }}
-  APP_ENV: staging
+  APP_NAME: ${{ github.event.repository.name }} # user for subdomain, docker image repository, Vault path etc
+  APP_ENV: staging # used for target infrastructure rollout, Vault path, Kubernetes namespace
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
     name: Analyze source code
     runs-on: self-hosted
     steps:
-      - name: Checkout sources
+      - name: Checkout sources # Checkout from github
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -36,7 +36,7 @@ jobs:
           url: ${{ env.VAULT_ENDPOINT }}
           githubToken: ${{ env.GITHUB_TOKEN }}
           secrets: |
-            infrastructure/data/sonarqube url | SONAR_HOST_URL ;
+            infrastructure/data/sonarqube url   | SONAR_HOST_URL ;
             infrastructure/data/sonarqube token | SONAR_TOKEN ;
 
       - name: Run Sonar scanner

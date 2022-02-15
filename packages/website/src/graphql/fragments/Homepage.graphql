@@ -1,8 +1,4 @@
 fragment Homepage on Homepage {
-  meta {
-    title
-    description
-  }
   hero {
     subtitle
     id

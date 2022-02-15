@@ -1,0 +1,214 @@
+{
+  "key": "plugin_content_manager_configuration_components::shared.seo",
+  "value": {
+    "uid": "shared.seo",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "metaTitle",
+      "defaultSortBy": "metaTitle",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "Id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "metaTitle": {
+        "edit": {
+          "label": "MetaTitle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "MetaTitle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "metaDescription": {
+        "edit": {
+          "label": "MetaDescription",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "MetaDescription",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "metaImage": {
+        "edit": {
+          "label": "MetaImage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "MetaImage",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "metaSocial": {
+        "edit": {
+          "label": "MetaSocial",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "MetaSocial",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "keywords": {
+        "edit": {
+          "label": "Keywords",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Keywords",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "metaRobots": {
+        "edit": {
+          "label": "MetaRobots",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "MetaRobots",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "structuredData": {
+        "edit": {
+          "label": "StructuredData",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "StructuredData",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "metaViewport": {
+        "edit": {
+          "label": "MetaViewport",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "MetaViewport",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "canonicalURL": {
+        "edit": {
+          "label": "CanonicalURL",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "CanonicalURL",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "metaTitle",
+        "metaDescription",
+        "metaImage"
+      ],
+      "edit": [
+        [
+          {
+            "name": "metaTitle",
+            "size": 6
+          },
+          {
+            "name": "metaDescription",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "metaImage",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "metaSocial",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "keywords",
+            "size": 6
+          },
+          {
+            "name": "metaRobots",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "structuredData",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "metaViewport",
+            "size": 6
+          },
+          {
+            "name": "canonicalURL",
+            "size": 6
+          }
+        ]
+      ],
+      "editRelations": []
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

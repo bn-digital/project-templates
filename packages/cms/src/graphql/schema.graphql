@@ -22,6 +22,11 @@ type ResponseCollectionMeta {
   pagination: Pagination!
 }
 
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
 input IDFilterInput {
   and: [ID]
   or: [ID]
@@ -197,21 +202,87 @@ type ComponentDataEntry {
   value: String!
 }
 
-input ComponentDataMetaInput {
-  id: ID
-  title: String
-  description: String
-}
-
-type ComponentDataMeta {
-  id: ID!
-  title: String
-  description: String
-}
-
 type ComponentDataSet {
   id: ID!
   value: String!
+}
+
+type ComponentIntegrationAddress {
+  id: ID!
+  country: String
+  region: String
+  city: String
+  street: String!
+  unit: String
+  zipCode: String!
+}
+
+input ComponentIntegrationStripeInput {
+  id: ID
+  stripeId: String
+  payload: JSON
+}
+
+type ComponentIntegrationStripe {
+  id: ID!
+  stripeId: String!
+  payload: JSON
+}
+
+enum ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK {
+  Facebook
+  Twitter
+}
+
+input ComponentSharedMetaSocialFiltersInput {
+  socialNetwork: StringFilterInput
+  title: StringFilterInput
+  description: StringFilterInput
+  and: [ComponentSharedMetaSocialFiltersInput]
+  or: [ComponentSharedMetaSocialFiltersInput]
+  not: ComponentSharedMetaSocialFiltersInput
+}
+
+input ComponentSharedMetaSocialInput {
+  id: ID
+  socialNetwork: ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK
+  title: String
+  description: String
+  image: ID
+}
+
+type ComponentSharedMetaSocial {
+  id: ID!
+  socialNetwork: ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK!
+  title: String!
+  description: String!
+  image: UploadFileEntityResponse
+}
+
+input ComponentSharedSeoInput {
+  id: ID
+  metaTitle: String
+  metaDescription: String
+  metaImage: ID
+  metaSocial: [ComponentSharedMetaSocialInput]
+  keywords: String
+  metaRobots: String
+  structuredData: JSON
+  metaViewport: String
+  canonicalURL: String
+}
+
+type ComponentSharedSeo {
+  id: ID!
+  metaTitle: String!
+  metaDescription: String
+  metaImage: UploadFileEntityResponse
+  metaSocial(filters: ComponentSharedMetaSocialFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSharedMetaSocial]
+  keywords: String
+  metaRobots: String
+  structuredData: JSON
+  metaViewport: String
+  canonicalURL: String
 }
 
 input ComponentUiCardFiltersInput {
@@ -221,14 +292,6 @@ input ComponentUiCardFiltersInput {
   and: [ComponentUiCardFiltersInput]
   or: [ComponentUiCardFiltersInput]
   not: ComponentUiCardFiltersInput
-}
-
-input ComponentUiCardInput {
-  id: ID
-  title: String
-  subtitle: String
-  description: String
-  media: ID
 }
 
 type ComponentUiCard {
@@ -251,12 +314,6 @@ input ComponentUiLinkFiltersInput {
   and: [ComponentUiLinkFiltersInput]
   or: [ComponentUiLinkFiltersInput]
   not: ComponentUiLinkFiltersInput
-}
-
-input ComponentUiLinkInput {
-  id: ID
-  url: String
-  title: String
 }
 
 type ComponentUiLink {
@@ -301,50 +358,6 @@ type ComponentUiText {
   id: ID!
   visible: Boolean!
   children(filters: ComponentUiParagraphFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiParagraph]!
-}
-
-input HomepageInput {
-  meta: ComponentDataMetaInput
-  hero: ComponentUiCardInput
-  sitemap_exclude: Boolean
-}
-
-type Homepage {
-  meta: ComponentDataMeta
-  hero: ComponentUiCard
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-type HomepageEntity {
-  id: ID
-  attributes: Homepage
-}
-
-type HomepageEntityResponse {
-  data: HomepageEntity
-}
-
-input SettingInput {
-  hostname: String
-  headerMenu: [ComponentUiLinkInput]
-  sitemap_exclude: Boolean
-}
-
-type Setting {
-  hostname: String!
-  headerMenu(filters: ComponentUiLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiLink]
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-type SettingEntity {
-  id: ID
-  attributes: Setting
-}
-
-type SettingEntityResponse {
-  data: SettingEntity
 }
 
 input UploadFileFiltersInput {
@@ -420,6 +433,38 @@ type UploadFileEntityResponse {
 
 type UploadFileEntityResponseCollection {
   data: [UploadFileEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input I18NLocaleFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  code: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [I18NLocaleFiltersInput]
+  or: [I18NLocaleFiltersInput]
+  not: I18NLocaleFiltersInput
+}
+
+type I18NLocale {
+  name: String
+  code: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type I18NLocaleEntity {
+  id: ID
+  attributes: I18NLocale
+}
+
+type I18NLocaleEntityResponse {
+  data: I18NLocaleEntity
+}
+
+type I18NLocaleEntityResponseCollection {
+  data: [I18NLocaleEntity!]!
   meta: ResponseCollectionMeta!
 }
 
@@ -507,6 +552,7 @@ input UsersPermissionsUserFiltersInput {
   confirmed: BooleanFilterInput
   blocked: BooleanFilterInput
   role: UsersPermissionsRoleFiltersInput
+  customer: CustomerFiltersInput
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
   sitemap_exclude: BooleanFilterInput
@@ -525,6 +571,7 @@ input UsersPermissionsUserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+  customer: ID
   sitemap_exclude: Boolean
 }
 
@@ -535,6 +582,7 @@ type UsersPermissionsUser {
   confirmed: Boolean
   blocked: Boolean
   role: UsersPermissionsRoleEntityResponse
+  customer: CustomerEntityResponse
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -555,6 +603,63 @@ type UsersPermissionsUserEntityResponseCollection {
 
 type UsersPermissionsUserRelationResponseCollection {
   data: [UsersPermissionsUserEntity!]!
+}
+
+input EmailDesignerEmailTemplateFiltersInput {
+  id: IDFilterInput
+  templateReferenceId: IntFilterInput
+  design: JSONFilterInput
+  name: StringFilterInput
+  subject: StringFilterInput
+  bodyHtml: StringFilterInput
+  bodyText: StringFilterInput
+  enabled: BooleanFilterInput
+  tags: JSONFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  sitemap_exclude: BooleanFilterInput
+  and: [EmailDesignerEmailTemplateFiltersInput]
+  or: [EmailDesignerEmailTemplateFiltersInput]
+  not: EmailDesignerEmailTemplateFiltersInput
+}
+
+input EmailDesignerEmailTemplateInput {
+  templateReferenceId: Int
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  enabled: Boolean
+  tags: JSON
+  sitemap_exclude: Boolean
+}
+
+type EmailDesignerEmailTemplate {
+  templateReferenceId: Int
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  enabled: Boolean
+  tags: JSON
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type EmailDesignerEmailTemplateEntity {
+  id: ID
+  attributes: EmailDesignerEmailTemplate
+}
+
+type EmailDesignerEmailTemplateEntityResponse {
+  data: EmailDesignerEmailTemplateEntity
+}
+
+type EmailDesignerEmailTemplateEntityResponseCollection {
+  data: [EmailDesignerEmailTemplateEntity!]!
+  meta: ResponseCollectionMeta!
 }
 
 enum ENUM_GRAPHSBUILDERGRAPH_TYPE {
@@ -609,12 +714,257 @@ type GraphsBuilderGraphEntityResponseCollection {
   meta: ResponseCollectionMeta!
 }
 
-union GenericMorph = ComponentDataEntry | ComponentDataMeta | ComponentDataSet | ComponentUiCard | ComponentUiGrid | ComponentUiLink | ComponentUiMenu | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | Homepage | Setting | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | GraphsBuilderGraph
+input ContactUsInput {
+  seo: ComponentSharedSeoInput
+  pathname: String
+  sitemap_exclude: Boolean
+}
+
+type ContactUs {
+  seo: ComponentSharedSeo
+  pathname: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ContactUsEntity {
+  id: ID
+  attributes: ContactUs
+}
+
+type ContactUsEntityResponse {
+  data: ContactUsEntity
+}
+
+input CustomerFiltersInput {
+  id: IDFilterInput
+  firstName: StringFilterInput
+  lastName: StringFilterInput
+  uuid: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  sitemap_exclude: BooleanFilterInput
+  and: [CustomerFiltersInput]
+  or: [CustomerFiltersInput]
+  not: CustomerFiltersInput
+}
+
+input CustomerInput {
+  firstName: String
+  lastName: String
+  stripe: ComponentIntegrationStripeInput
+  uuid: String
+  sitemap_exclude: Boolean
+}
+
+type Customer {
+  firstName: String
+  lastName: String
+  uuid: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  id: ID
+}
+
+type CustomerEntity {
+  id: ID
+  attributes: Customer
+}
+
+type CustomerEntityResponse {
+  data: CustomerEntity
+}
+
+type CustomerEntityResponseCollection {
+  data: [CustomerEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type Homepage {
+  hero: ComponentUiCard
+  seo: ComponentSharedSeo
+  pathname: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type HomepageEntity {
+  id: ID
+  attributes: Homepage
+}
+
+type HomepageEntityResponse {
+  data: HomepageEntity
+}
+
+input OrderFiltersInput {
+  id: IDFilterInput
+  items: OrderLineFiltersInput
+  uuid: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  sitemap_exclude: BooleanFilterInput
+  and: [OrderFiltersInput]
+  or: [OrderFiltersInput]
+  not: OrderFiltersInput
+}
+
+input OrderInput {
+  stripe: ComponentIntegrationStripeInput
+  items: [ID]
+  uuid: String
+  sitemap_exclude: Boolean
+}
+
+type Order {
+  items(filters: OrderLineFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): OrderLineRelationResponseCollection
+  uuid: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type OrderEntity {
+  id: ID
+  attributes: Order
+}
+
+type OrderEntityResponse {
+  data: OrderEntity
+}
+
+type OrderEntityResponseCollection {
+  data: [OrderEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input OrderLineFiltersInput {
+  id: IDFilterInput
+  quantity: IntFilterInput
+  product: ProductFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  sitemap_exclude: BooleanFilterInput
+  and: [OrderLineFiltersInput]
+  or: [OrderLineFiltersInput]
+  not: OrderLineFiltersInput
+}
+
+input OrderLineInput {
+  quantity: Int
+  product: ID
+  sitemap_exclude: Boolean
+}
+
+type OrderLine {
+  quantity: Int!
+  product: ProductEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type OrderLineEntity {
+  id: ID
+  attributes: OrderLine
+}
+
+type OrderLineEntityResponse {
+  data: OrderLineEntity
+}
+
+type OrderLineEntityResponseCollection {
+  data: [OrderLineEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type OrderLineRelationResponseCollection {
+  data: [OrderLineEntity!]!
+}
+
+input ProductFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  uuid: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  sitemap_exclude: BooleanFilterInput
+  and: [ProductFiltersInput]
+  or: [ProductFiltersInput]
+  not: ProductFiltersInput
+}
+
+input ProductInput {
+  name: String
+  stripe: ComponentIntegrationStripeInput
+  uuid: String
+  publishedAt: DateTime
+  sitemap_exclude: Boolean
+}
+
+type Product {
+  name: String!
+  uuid: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type ProductEntity {
+  id: ID
+  attributes: Product
+}
+
+type ProductEntityResponse {
+  data: ProductEntity
+}
+
+type ProductEntityResponseCollection {
+  data: [ProductEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+union GenericMorph = ComponentDataEntry | ComponentDataSet | ComponentIntegrationAddress | ComponentIntegrationStripe | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiGrid | ComponentUiLink | ComponentUiMenu | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | UploadFile | I18NLocale | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | EmailDesignerEmailTemplate | GraphsBuilderGraph | ContactUs | Customer | Homepage | Order | OrderLine | Product
 
 input FileInfoInput {
   name: String
   alternativeText: String
   caption: String
+}
+
+type NavigationItem {
+  id: Int!
+  title: String!
+  type: String!
+  path: String
+  externalPath: String
+  uiRouterKey: String!
+  menuAttached: Boolean!
+  order: Int!
+  parent: Int
+  master: Int
+  items: [NavigationItem]
+  related: [NavigationRelated]
+  audience: [String]
+  created_at: String
+  updated_at: String
+  created_by: String
+  updated_by: String
+  createdAt: String
+  updatedAt: String
+  createdBy: String
+  updatedBy: String
+}
+
+type NavigationRelated {
+  id: Int
+  title: String
+  name: String
+}
+
+enum NavigationRenderType {
+  FLAT
+  TREE
+  RFR
 }
 
 type UsersPermissionsMe {
@@ -674,30 +1024,57 @@ input PaginationArg {
 }
 
 type Query {
-  homepage: HomepageEntityResponse
-  setting: SettingEntityResponse
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
+  i18NLocale(id: ID): I18NLocaleEntityResponse
+  i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
   usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
   usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
   usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  emailDesignerEmailTemplate(id: ID): EmailDesignerEmailTemplateEntityResponse
+  emailDesignerEmailTemplates(filters: EmailDesignerEmailTemplateFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): EmailDesignerEmailTemplateEntityResponseCollection
   graphsBuilderGraph(id: ID): GraphsBuilderGraphEntityResponse
   graphsBuilderGraphs(filters: GraphsBuilderGraphFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): GraphsBuilderGraphEntityResponseCollection
-  me: UsersPermissionsMe
+  contactUs: ContactUsEntityResponse
+  customer(id: ID): CustomerEntityResponse
+  customers(filters: CustomerFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CustomerEntityResponseCollection
+  homepage: HomepageEntityResponse
+  order(id: ID): OrderEntityResponse
+  orders(filters: OrderFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): OrderEntityResponseCollection
+  orderLine(id: ID): OrderLineEntityResponse
+  orderLines(filters: OrderLineFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): OrderLineEntityResponseCollection
+  product(id: ID): ProductEntityResponse
+  products(filters: ProductFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], publicationState: PublicationState = LIVE): ProductEntityResponseCollection
+  renderNavigationChild(id: String!, childUiKey: String!, type: NavigationRenderType, menuOnly: Boolean): [NavigationItem]!
+  renderNavigation(navigationIdOrSlug: String!, type: NavigationRenderType, menuOnly: Boolean): [NavigationItem]!
+  me: Customer
 }
 
 type Mutation {
-  updateHomepage(data: HomepageInput!): HomepageEntityResponse
-  deleteHomepage: HomepageEntityResponse
-  updateSetting(data: SettingInput!): SettingEntityResponse
-  deleteSetting: SettingEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   updateUploadFile(id: ID!, data: UploadFileInput!): UploadFileEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
+  createEmailDesignerEmailTemplate(data: EmailDesignerEmailTemplateInput!): EmailDesignerEmailTemplateEntityResponse
+  updateEmailDesignerEmailTemplate(id: ID!, data: EmailDesignerEmailTemplateInput!): EmailDesignerEmailTemplateEntityResponse
+  deleteEmailDesignerEmailTemplate(id: ID!): EmailDesignerEmailTemplateEntityResponse
   createGraphsBuilderGraph(data: GraphsBuilderGraphInput!): GraphsBuilderGraphEntityResponse
   updateGraphsBuilderGraph(id: ID!, data: GraphsBuilderGraphInput!): GraphsBuilderGraphEntityResponse
   deleteGraphsBuilderGraph(id: ID!): GraphsBuilderGraphEntityResponse
+  updateContactUs(data: ContactUsInput!): ContactUsEntityResponse
+  deleteContactUs: ContactUsEntityResponse
+  createCustomer(data: CustomerInput!): CustomerEntityResponse
+  updateCustomer(id: ID!, data: CustomerInput!): CustomerEntityResponse
+  deleteCustomer(id: ID!): CustomerEntityResponse
+  createOrder(data: OrderInput!): OrderEntityResponse
+  updateOrder(id: ID!, data: OrderInput!): OrderEntityResponse
+  deleteOrder(id: ID!): OrderEntityResponse
+  createOrderLine(data: OrderLineInput!): OrderLineEntityResponse
+  updateOrderLine(id: ID!, data: OrderLineInput!): OrderLineEntityResponse
+  deleteOrderLine(id: ID!): OrderLineEntityResponse
+  createProduct(data: ProductInput!): ProductEntityResponse
+  updateProduct(id: ID!, data: ProductInput!): ProductEntityResponse
+  deleteProduct(id: ID!): ProductEntityResponse
   upload(refId: ID, ref: String, field: String, info: FileInfoInput, file: Upload!): UploadFileEntityResponse!
   multipleUpload(refId: ID, ref: String, field: String, files: [Upload]!): [UploadFileEntityResponse]!
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!

@@ -4,6 +4,342 @@
   "description": "Super Admins can access and manage all features and settings.",
   "permissions": [
     {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::contact-us.contact-us",
+      "properties": {
+        "fields": [
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL",
+          "pathname"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::contact-us.contact-us",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::contact-us.contact-us",
+      "properties": {
+        "fields": [
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL",
+          "pathname"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::contact-us.contact-us",
+      "properties": {
+        "fields": [
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL",
+          "pathname"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::customer.customer",
+      "properties": {
+        "fields": [
+          "firstName",
+          "lastName",
+          "stripe.stripeId",
+          "stripe.payload",
+          "uuid"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::customer.customer",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::customer.customer",
+      "properties": {
+        "fields": [
+          "firstName",
+          "lastName",
+          "stripe.stripeId",
+          "stripe.payload",
+          "uuid"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::customer.customer",
+      "properties": {
+        "fields": [
+          "firstName",
+          "lastName",
+          "stripe.stripeId",
+          "stripe.payload",
+          "uuid"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::homepage.homepage",
+      "properties": {
+        "fields": [
+          "hero.title",
+          "hero.subtitle",
+          "hero.description",
+          "hero.media",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL",
+          "pathname"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::homepage.homepage",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::homepage.homepage",
+      "properties": {
+        "fields": [
+          "hero.title",
+          "hero.subtitle",
+          "hero.description",
+          "hero.media",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL",
+          "pathname"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::homepage.homepage",
+      "properties": {
+        "fields": [
+          "hero.title",
+          "hero.subtitle",
+          "hero.description",
+          "hero.media",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL",
+          "pathname"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::order-line.order-line",
+      "properties": {
+        "fields": [
+          "quantity",
+          "product"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::order-line.order-line",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::order-line.order-line",
+      "properties": {
+        "fields": [
+          "quantity",
+          "product"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::order-line.order-line",
+      "properties": {
+        "fields": [
+          "quantity",
+          "product"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::order.order",
+      "properties": {
+        "fields": [
+          "uuid",
+          "stripe.stripeId",
+          "stripe.payload",
+          "items"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::order.order",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::order.order",
+      "properties": {
+        "fields": [
+          "uuid",
+          "stripe.stripeId",
+          "stripe.payload",
+          "items"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::order.order",
+      "properties": {
+        "fields": [
+          "uuid",
+          "stripe.stripeId",
+          "stripe.payload",
+          "items"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::product.product",
+      "properties": {
+        "fields": [
+          "name",
+          "stripe.stripeId",
+          "stripe.payload"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::product.product",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::product.product",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::product.product",
+      "properties": {
+        "fields": [
+          "name",
+          "stripe.stripeId",
+          "stripe.payload"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::product.product",
+      "properties": {
+        "fields": [
+          "name",
+          "stripe.stripeId",
+          "stripe.payload"
+        ]
+      },
+      "conditions": []
+    },
+    {
       "action": "admin::api-tokens.create",
       "subject": null,
       "properties": {},
@@ -143,24 +479,6 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "plugin::users-permissions.user",
-      "properties": {
-        "fields": [
-          "username",
-          "email",
-          "provider",
-          "password",
-          "resetPasswordToken",
-          "confirmationToken",
-          "confirmed",
-          "blocked",
-          "role"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
       "subject": "plugin::graphs-builder.graph",
       "properties": {
         "fields": [
@@ -173,72 +491,9 @@
       "conditions": []
     },
     {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::homepage.homepage",
-      "properties": {
-        "fields": [
-          "meta.title",
-          "meta.description",
-          "hero.title",
-          "hero.subtitle",
-          "hero.description",
-          "hero.media"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::setting.setting",
-      "properties": {
-        "fields": [
-          "hostname",
-          "headerMenu.url",
-          "headerMenu.title"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "plugin::users-permissions.user",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::setting.setting",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::homepage.homepage",
-      "properties": {},
-      "conditions": []
-    },
-    {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "plugin::graphs-builder.graph",
       "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "plugin::users-permissions.user",
-      "properties": {
-        "fields": [
-          "username",
-          "email",
-          "provider",
-          "password",
-          "resetPasswordToken",
-          "confirmationToken",
-          "confirmed",
-          "blocked",
-          "role"
-        ]
-      },
       "conditions": []
     },
     {
@@ -250,51 +505,6 @@
           "type",
           "collectionX",
           "collectionXAttribute"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::homepage.homepage",
-      "properties": {
-        "fields": [
-          "meta.title",
-          "meta.description",
-          "hero.title",
-          "hero.subtitle",
-          "hero.description",
-          "hero.media"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::setting.setting",
-      "properties": {
-        "fields": [
-          "hostname",
-          "headerMenu.url",
-          "headerMenu.title"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "plugin::users-permissions.user",
-      "properties": {
-        "fields": [
-          "username",
-          "email",
-          "provider",
-          "password",
-          "resetPasswordToken",
-          "confirmationToken",
-          "confirmed",
-          "blocked",
-          "role"
         ]
       },
       "conditions": []
@@ -313,28 +523,148 @@
       "conditions": []
     },
     {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::homepage.homepage",
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "plugin::navigation.audience",
       "properties": {
         "fields": [
-          "meta.title",
-          "meta.description",
-          "hero.title",
-          "hero.subtitle",
-          "hero.description",
-          "hero.media"
+          "name",
+          "key"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "plugin::navigation.audience",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::navigation.audience",
+      "properties": {
+        "fields": [
+          "name",
+          "key"
         ]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::setting.setting",
+      "subject": "plugin::navigation.audience",
       "properties": {
         "fields": [
-          "hostname",
-          "headerMenu.url",
-          "headerMenu.title"
+          "name",
+          "key"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "plugin::navigation.navigation",
+      "properties": {
+        "fields": [
+          "name",
+          "slug",
+          "visible",
+          "items"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "plugin::navigation.navigation",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::navigation.navigation",
+      "properties": {
+        "fields": [
+          "name",
+          "slug",
+          "visible",
+          "items"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "plugin::navigation.navigation",
+      "properties": {
+        "fields": [
+          "name",
+          "slug",
+          "visible",
+          "items"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role",
+          "customer"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "plugin::users-permissions.user",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role",
+          "customer"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role",
+          "customer"
         ]
       },
       "conditions": []
@@ -353,6 +683,42 @@
     },
     {
       "action": "plugin::email.settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.delete",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::i18n.locale.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::navigation.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::navigation.update",
       "subject": null,
       "properties": {},
       "conditions": []

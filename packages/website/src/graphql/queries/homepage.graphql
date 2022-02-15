@@ -3,11 +3,11 @@ query homepage {
     data {
       id
       attributes {
-        meta {
-          ...Meta
-        }
         hero {
           ...Card
+        }
+        seo {
+          ...Seo
         }
       }
     }

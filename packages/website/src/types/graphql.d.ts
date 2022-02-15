@@ -55,21 +55,88 @@ type ComponentDataEntryFiltersInput = {
   value?: InputMaybe<StringFilterInput>
 }
 
-type ComponentDataMeta = {
-  description?: Maybe<Scalars['String']>
-  id: Scalars['ID']
-  title?: Maybe<Scalars['String']>
-}
-
-type ComponentDataMetaInput = {
-  description?: InputMaybe<Scalars['String']>
-  id?: InputMaybe<Scalars['ID']>
-  title?: InputMaybe<Scalars['String']>
-}
-
 type ComponentDataSet = {
   id: Scalars['ID']
   value: Scalars['String']
+}
+
+type ComponentIntegrationAddress = {
+  city?: Maybe<Scalars['String']>
+  country?: Maybe<Scalars['String']>
+  id: Scalars['ID']
+  region?: Maybe<Scalars['String']>
+  street: Scalars['String']
+  unit?: Maybe<Scalars['String']>
+  zipCode: Scalars['String']
+}
+
+type ComponentIntegrationStripe = {
+  id: Scalars['ID']
+  payload?: Maybe<Scalars['JSON']>
+  stripeId: Scalars['String']
+}
+
+type ComponentIntegrationStripeInput = {
+  id?: InputMaybe<Scalars['ID']>
+  payload?: InputMaybe<Scalars['JSON']>
+  stripeId?: InputMaybe<Scalars['String']>
+}
+
+type ComponentSharedMetaSocial = {
+  description: Scalars['String']
+  id: Scalars['ID']
+  image?: Maybe<UploadFileEntityResponse>
+  socialNetwork: Enum_Componentsharedmetasocial_Socialnetwork
+  title: Scalars['String']
+}
+
+type ComponentSharedMetaSocialFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSharedMetaSocialFiltersInput>>>
+  description?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSharedMetaSocialFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSharedMetaSocialFiltersInput>>>
+  socialNetwork?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+type ComponentSharedMetaSocialInput = {
+  description?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  image?: InputMaybe<Scalars['ID']>
+  socialNetwork?: InputMaybe<Enum_Componentsharedmetasocial_Socialnetwork>
+  title?: InputMaybe<Scalars['String']>
+}
+
+type ComponentSharedSeo = {
+  canonicalURL?: Maybe<Scalars['String']>
+  id: Scalars['ID']
+  keywords?: Maybe<Scalars['String']>
+  metaDescription?: Maybe<Scalars['String']>
+  metaImage?: Maybe<UploadFileEntityResponse>
+  metaRobots?: Maybe<Scalars['String']>
+  metaSocial?: Maybe<Array<Maybe<ComponentSharedMetaSocial>>>
+  metaTitle: Scalars['String']
+  metaViewport?: Maybe<Scalars['String']>
+  structuredData?: Maybe<Scalars['JSON']>
+}
+
+type ComponentSharedSeoMetaSocialArgs = {
+  filters?: InputMaybe<ComponentSharedMetaSocialFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type ComponentSharedSeoInput = {
+  canonicalURL?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  keywords?: InputMaybe<Scalars['String']>
+  metaDescription?: InputMaybe<Scalars['String']>
+  metaImage?: InputMaybe<Scalars['ID']>
+  metaRobots?: InputMaybe<Scalars['String']>
+  metaSocial?: InputMaybe<Array<InputMaybe<ComponentSharedMetaSocialInput>>>
+  metaTitle?: InputMaybe<Scalars['String']>
+  metaViewport?: InputMaybe<Scalars['String']>
+  structuredData?: InputMaybe<Scalars['JSON']>
 }
 
 type ComponentUiCard = {
@@ -87,14 +154,6 @@ type ComponentUiCardFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentUiCardFiltersInput>>>
   subtitle?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
-}
-
-type ComponentUiCardInput = {
-  description?: InputMaybe<Scalars['String']>
-  id?: InputMaybe<Scalars['ID']>
-  media?: InputMaybe<Scalars['ID']>
-  subtitle?: InputMaybe<Scalars['String']>
-  title?: InputMaybe<Scalars['String']>
 }
 
 type ComponentUiGrid = {
@@ -121,12 +180,6 @@ type ComponentUiLinkFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentUiLinkFiltersInput>>>
   title?: InputMaybe<StringFilterInput>
   url?: InputMaybe<StringFilterInput>
-}
-
-type ComponentUiLinkInput = {
-  id?: InputMaybe<Scalars['ID']>
-  title?: InputMaybe<Scalars['String']>
-  url?: InputMaybe<Scalars['String']>
 }
 
 type ComponentUiMenu = {
@@ -185,6 +238,72 @@ type ComponentUiTextChildrenArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
+type ContactUs = {
+  createdAt?: Maybe<Scalars['DateTime']>
+  pathname: Scalars['String']
+  seo?: Maybe<ComponentSharedSeo>
+  updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+type ContactUsEntity = {
+  attributes?: Maybe<ContactUs>
+  id?: Maybe<Scalars['ID']>
+}
+
+type ContactUsEntityResponse = {
+  data?: Maybe<ContactUsEntity>
+}
+
+type ContactUsInput = {
+  pathname?: InputMaybe<Scalars['String']>
+  seo?: InputMaybe<ComponentSharedSeoInput>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+}
+
+type Customer = {
+  createdAt?: Maybe<Scalars['DateTime']>
+  firstName?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['ID']>
+  lastName?: Maybe<Scalars['String']>
+  updatedAt?: Maybe<Scalars['DateTime']>
+  uuid?: Maybe<Scalars['String']>
+}
+
+type CustomerEntity = {
+  attributes?: Maybe<Customer>
+  id?: Maybe<Scalars['ID']>
+}
+
+type CustomerEntityResponse = {
+  data?: Maybe<CustomerEntity>
+}
+
+type CustomerEntityResponseCollection = {
+  data: Array<CustomerEntity>
+  meta: ResponseCollectionMeta
+}
+
+type CustomerFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<CustomerFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  firstName?: InputMaybe<StringFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  lastName?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<CustomerFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<CustomerFiltersInput>>>
+  sitemap_exclude?: InputMaybe<BooleanFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+  uuid?: InputMaybe<StringFilterInput>
+}
+
+type CustomerInput = {
+  firstName?: InputMaybe<Scalars['String']>
+  lastName?: InputMaybe<Scalars['String']>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+  stripe?: InputMaybe<ComponentIntegrationStripeInput>
+  uuid?: InputMaybe<Scalars['String']>
+}
+
 type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
@@ -208,7 +327,66 @@ type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']>
 }
 
+type Enum_Componentsharedmetasocial_Socialnetwork = 'Facebook' | 'Twitter'
+
 type Enum_Graphsbuildergraph_Type = 'bar' | 'dateLine' | 'line' | 'pie'
+
+type EmailDesignerEmailTemplate = {
+  bodyHtml?: Maybe<Scalars['String']>
+  bodyText?: Maybe<Scalars['String']>
+  createdAt?: Maybe<Scalars['DateTime']>
+  design?: Maybe<Scalars['JSON']>
+  enabled?: Maybe<Scalars['Boolean']>
+  name?: Maybe<Scalars['String']>
+  subject?: Maybe<Scalars['String']>
+  tags?: Maybe<Scalars['JSON']>
+  templateReferenceId?: Maybe<Scalars['Int']>
+  updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+type EmailDesignerEmailTemplateEntity = {
+  attributes?: Maybe<EmailDesignerEmailTemplate>
+  id?: Maybe<Scalars['ID']>
+}
+
+type EmailDesignerEmailTemplateEntityResponse = {
+  data?: Maybe<EmailDesignerEmailTemplateEntity>
+}
+
+type EmailDesignerEmailTemplateEntityResponseCollection = {
+  data: Array<EmailDesignerEmailTemplateEntity>
+  meta: ResponseCollectionMeta
+}
+
+type EmailDesignerEmailTemplateFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<EmailDesignerEmailTemplateFiltersInput>>>
+  bodyHtml?: InputMaybe<StringFilterInput>
+  bodyText?: InputMaybe<StringFilterInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  design?: InputMaybe<JsonFilterInput>
+  enabled?: InputMaybe<BooleanFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<EmailDesignerEmailTemplateFiltersInput>>>
+  sitemap_exclude?: InputMaybe<BooleanFilterInput>
+  subject?: InputMaybe<StringFilterInput>
+  tags?: InputMaybe<JsonFilterInput>
+  templateReferenceId?: InputMaybe<IntFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+type EmailDesignerEmailTemplateInput = {
+  bodyHtml?: InputMaybe<Scalars['String']>
+  bodyText?: InputMaybe<Scalars['String']>
+  design?: InputMaybe<Scalars['JSON']>
+  enabled?: InputMaybe<Scalars['Boolean']>
+  name?: InputMaybe<Scalars['String']>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+  subject?: InputMaybe<Scalars['String']>
+  tags?: InputMaybe<Scalars['JSON']>
+  templateReferenceId?: InputMaybe<Scalars['Int']>
+}
 
 type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']>
@@ -241,8 +419,11 @@ type FloatFilterInput = {
 
 type GenericMorph =
   | ComponentDataEntry
-  | ComponentDataMeta
   | ComponentDataSet
+  | ComponentIntegrationAddress
+  | ComponentIntegrationStripe
+  | ComponentSharedMetaSocial
+  | ComponentSharedSeo
   | ComponentUiCard
   | ComponentUiGrid
   | ComponentUiLink
@@ -251,9 +432,15 @@ type GenericMorph =
   | ComponentUiSection
   | ComponentUiTab
   | ComponentUiText
+  | ContactUs
+  | Customer
+  | EmailDesignerEmailTemplate
   | GraphsBuilderGraph
   | Homepage
-  | Setting
+  | I18NLocale
+  | Order
+  | OrderLine
+  | Product
   | UploadFile
   | UsersPermissionsPermission
   | UsersPermissionsRole
@@ -307,7 +494,8 @@ type GraphsBuilderGraphInput = {
 type Homepage = {
   createdAt?: Maybe<Scalars['DateTime']>
   hero?: Maybe<ComponentUiCard>
-  meta?: Maybe<ComponentDataMeta>
+  pathname: Scalars['String']
+  seo?: Maybe<ComponentSharedSeo>
   updatedAt?: Maybe<Scalars['DateTime']>
 }
 
@@ -320,10 +508,36 @@ type HomepageEntityResponse = {
   data?: Maybe<HomepageEntity>
 }
 
-type HomepageInput = {
-  hero?: InputMaybe<ComponentUiCardInput>
-  meta?: InputMaybe<ComponentDataMetaInput>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+type I18NLocale = {
+  code?: Maybe<Scalars['String']>
+  createdAt?: Maybe<Scalars['DateTime']>
+  name?: Maybe<Scalars['String']>
+  updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+type I18NLocaleEntity = {
+  attributes?: Maybe<I18NLocale>
+  id?: Maybe<Scalars['ID']>
+}
+
+type I18NLocaleEntityResponse = {
+  data?: Maybe<I18NLocaleEntity>
+}
+
+type I18NLocaleEntityResponseCollection = {
+  data: Array<I18NLocaleEntity>
+  meta: ResponseCollectionMeta
+}
+
+type I18NLocaleFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<I18NLocaleFiltersInput>>>
+  code?: InputMaybe<StringFilterInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<I18NLocaleFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<I18NLocaleFiltersInput>>>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
 type IdFilterInput = {
@@ -396,15 +610,24 @@ type JsonFilterInput = {
 }
 
 type Mutation = {
+  createCustomer?: Maybe<CustomerEntityResponse>
+  createEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
   createGraphsBuilderGraph?: Maybe<GraphsBuilderGraphEntityResponse>
+  createOrder?: Maybe<OrderEntityResponse>
+  createOrderLine?: Maybe<OrderLineEntityResponse>
+  createProduct?: Maybe<ProductEntityResponse>
   createUploadFile?: Maybe<UploadFileEntityResponse>
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
+  deleteContactUs?: Maybe<ContactUsEntityResponse>
+  deleteCustomer?: Maybe<CustomerEntityResponse>
+  deleteEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
   deleteGraphsBuilderGraph?: Maybe<GraphsBuilderGraphEntityResponse>
-  deleteHomepage?: Maybe<HomepageEntityResponse>
-  deleteSetting?: Maybe<SettingEntityResponse>
+  deleteOrder?: Maybe<OrderEntityResponse>
+  deleteOrderLine?: Maybe<OrderLineEntityResponse>
+  deleteProduct?: Maybe<ProductEntityResponse>
   deleteUploadFile?: Maybe<UploadFileEntityResponse>
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>
@@ -421,10 +644,14 @@ type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>
+  updateContactUs?: Maybe<ContactUsEntityResponse>
+  updateCustomer?: Maybe<CustomerEntityResponse>
+  updateEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
   updateFileInfo: UploadFileEntityResponse
   updateGraphsBuilderGraph?: Maybe<GraphsBuilderGraphEntityResponse>
-  updateHomepage?: Maybe<HomepageEntityResponse>
-  updateSetting?: Maybe<SettingEntityResponse>
+  updateOrder?: Maybe<OrderEntityResponse>
+  updateOrderLine?: Maybe<OrderLineEntityResponse>
+  updateProduct?: Maybe<ProductEntityResponse>
   updateUploadFile?: Maybe<UploadFileEntityResponse>
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>
@@ -433,8 +660,28 @@ type Mutation = {
   upload: UploadFileEntityResponse
 }
 
+type MutationCreateCustomerArgs = {
+  data: CustomerInput
+}
+
+type MutationCreateEmailDesignerEmailTemplateArgs = {
+  data: EmailDesignerEmailTemplateInput
+}
+
 type MutationCreateGraphsBuilderGraphArgs = {
   data: GraphsBuilderGraphInput
+}
+
+type MutationCreateOrderArgs = {
+  data: OrderInput
+}
+
+type MutationCreateOrderLineArgs = {
+  data: OrderLineInput
+}
+
+type MutationCreateProductArgs = {
+  data: ProductInput
 }
 
 type MutationCreateUploadFileArgs = {
@@ -449,7 +696,27 @@ type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput
 }
 
+type MutationDeleteCustomerArgs = {
+  id: Scalars['ID']
+}
+
+type MutationDeleteEmailDesignerEmailTemplateArgs = {
+  id: Scalars['ID']
+}
+
 type MutationDeleteGraphsBuilderGraphArgs = {
+  id: Scalars['ID']
+}
+
+type MutationDeleteOrderArgs = {
+  id: Scalars['ID']
+}
+
+type MutationDeleteOrderLineArgs = {
+  id: Scalars['ID']
+}
+
+type MutationDeleteProductArgs = {
   id: Scalars['ID']
 }
 
@@ -498,6 +765,20 @@ type MutationResetPasswordArgs = {
   passwordConfirmation: Scalars['String']
 }
 
+type MutationUpdateContactUsArgs = {
+  data: ContactUsInput
+}
+
+type MutationUpdateCustomerArgs = {
+  data: CustomerInput
+  id: Scalars['ID']
+}
+
+type MutationUpdateEmailDesignerEmailTemplateArgs = {
+  data: EmailDesignerEmailTemplateInput
+  id: Scalars['ID']
+}
+
 type MutationUpdateFileInfoArgs = {
   id: Scalars['ID']
   info?: InputMaybe<FileInfoInput>
@@ -508,12 +789,19 @@ type MutationUpdateGraphsBuilderGraphArgs = {
   id: Scalars['ID']
 }
 
-type MutationUpdateHomepageArgs = {
-  data: HomepageInput
+type MutationUpdateOrderArgs = {
+  data: OrderInput
+  id: Scalars['ID']
 }
 
-type MutationUpdateSettingArgs = {
-  data: SettingInput
+type MutationUpdateOrderLineArgs = {
+  data: OrderLineInput
+  id: Scalars['ID']
+}
+
+type MutationUpdateProductArgs = {
+  data: ProductInput
+  id: Scalars['ID']
 }
 
 type MutationUpdateUploadFileArgs = {
@@ -539,6 +827,127 @@ type MutationUploadArgs = {
   refId?: InputMaybe<Scalars['ID']>
 }
 
+type NavigationItem = {
+  audience?: Maybe<Array<Maybe<Scalars['String']>>>
+  createdAt?: Maybe<Scalars['String']>
+  createdBy?: Maybe<Scalars['String']>
+  created_at?: Maybe<Scalars['String']>
+  created_by?: Maybe<Scalars['String']>
+  externalPath?: Maybe<Scalars['String']>
+  id: Scalars['Int']
+  items?: Maybe<Array<Maybe<NavigationItem>>>
+  master?: Maybe<Scalars['Int']>
+  menuAttached: Scalars['Boolean']
+  order: Scalars['Int']
+  parent?: Maybe<Scalars['Int']>
+  path?: Maybe<Scalars['String']>
+  related?: Maybe<Array<Maybe<NavigationRelated>>>
+  title: Scalars['String']
+  type: Scalars['String']
+  uiRouterKey: Scalars['String']
+  updatedAt?: Maybe<Scalars['String']>
+  updatedBy?: Maybe<Scalars['String']>
+  updated_at?: Maybe<Scalars['String']>
+  updated_by?: Maybe<Scalars['String']>
+}
+
+type NavigationRelated = {
+  id?: Maybe<Scalars['Int']>
+  name?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+}
+
+type NavigationRenderType = 'FLAT' | 'RFR' | 'TREE'
+
+type Order = {
+  createdAt?: Maybe<Scalars['DateTime']>
+  items?: Maybe<OrderLineRelationResponseCollection>
+  updatedAt?: Maybe<Scalars['DateTime']>
+  uuid?: Maybe<Scalars['String']>
+}
+
+type OrderItemsArgs = {
+  filters?: InputMaybe<OrderLineFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type OrderEntity = {
+  attributes?: Maybe<Order>
+  id?: Maybe<Scalars['ID']>
+}
+
+type OrderEntityResponse = {
+  data?: Maybe<OrderEntity>
+}
+
+type OrderEntityResponseCollection = {
+  data: Array<OrderEntity>
+  meta: ResponseCollectionMeta
+}
+
+type OrderFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<OrderFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  items?: InputMaybe<OrderLineFiltersInput>
+  not?: InputMaybe<OrderFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<OrderFiltersInput>>>
+  sitemap_exclude?: InputMaybe<BooleanFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+  uuid?: InputMaybe<StringFilterInput>
+}
+
+type OrderInput = {
+  items?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+  stripe?: InputMaybe<ComponentIntegrationStripeInput>
+  uuid?: InputMaybe<Scalars['String']>
+}
+
+type OrderLine = {
+  createdAt?: Maybe<Scalars['DateTime']>
+  product?: Maybe<ProductEntityResponse>
+  quantity: Scalars['Int']
+  updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+type OrderLineEntity = {
+  attributes?: Maybe<OrderLine>
+  id?: Maybe<Scalars['ID']>
+}
+
+type OrderLineEntityResponse = {
+  data?: Maybe<OrderLineEntity>
+}
+
+type OrderLineEntityResponseCollection = {
+  data: Array<OrderLineEntity>
+  meta: ResponseCollectionMeta
+}
+
+type OrderLineFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<OrderLineFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  not?: InputMaybe<OrderLineFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<OrderLineFiltersInput>>>
+  product?: InputMaybe<ProductFiltersInput>
+  quantity?: InputMaybe<IntFilterInput>
+  sitemap_exclude?: InputMaybe<BooleanFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+type OrderLineInput = {
+  product?: InputMaybe<Scalars['ID']>
+  quantity?: InputMaybe<Scalars['Int']>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+}
+
+type OrderLineRelationResponseCollection = {
+  data: Array<OrderLineEntity>
+}
+
 type Pagination = {
   page: Scalars['Int']
   pageCount: Scalars['Int']
@@ -553,18 +962,97 @@ type PaginationArg = {
   start?: InputMaybe<Scalars['Int']>
 }
 
+type Product = {
+  createdAt?: Maybe<Scalars['DateTime']>
+  name: Scalars['String']
+  publishedAt?: Maybe<Scalars['DateTime']>
+  updatedAt?: Maybe<Scalars['DateTime']>
+  uuid?: Maybe<Scalars['String']>
+}
+
+type ProductEntity = {
+  attributes?: Maybe<Product>
+  id?: Maybe<Scalars['ID']>
+}
+
+type ProductEntityResponse = {
+  data?: Maybe<ProductEntity>
+}
+
+type ProductEntityResponseCollection = {
+  data: Array<ProductEntity>
+  meta: ResponseCollectionMeta
+}
+
+type ProductFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ProductFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ProductFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ProductFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  sitemap_exclude?: InputMaybe<BooleanFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+  uuid?: InputMaybe<StringFilterInput>
+}
+
+type ProductInput = {
+  name?: InputMaybe<Scalars['String']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+  stripe?: InputMaybe<ComponentIntegrationStripeInput>
+  uuid?: InputMaybe<Scalars['String']>
+}
+
+type PublicationState = 'LIVE' | 'PREVIEW'
+
 type Query = {
+  contactUs?: Maybe<ContactUsEntityResponse>
+  customer?: Maybe<CustomerEntityResponse>
+  customers?: Maybe<CustomerEntityResponseCollection>
+  emailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
+  emailDesignerEmailTemplates?: Maybe<EmailDesignerEmailTemplateEntityResponseCollection>
   graphsBuilderGraph?: Maybe<GraphsBuilderGraphEntityResponse>
   graphsBuilderGraphs?: Maybe<GraphsBuilderGraphEntityResponseCollection>
   homepage?: Maybe<HomepageEntityResponse>
-  me?: Maybe<UsersPermissionsMe>
-  setting?: Maybe<SettingEntityResponse>
+  i18NLocale?: Maybe<I18NLocaleEntityResponse>
+  i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>
+  me?: Maybe<Customer>
+  order?: Maybe<OrderEntityResponse>
+  orderLine?: Maybe<OrderLineEntityResponse>
+  orderLines?: Maybe<OrderLineEntityResponseCollection>
+  orders?: Maybe<OrderEntityResponseCollection>
+  product?: Maybe<ProductEntityResponse>
+  products?: Maybe<ProductEntityResponseCollection>
+  renderNavigation: Array<Maybe<NavigationItem>>
+  renderNavigationChild: Array<Maybe<NavigationItem>>
   uploadFile?: Maybe<UploadFileEntityResponse>
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>
   usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>
+}
+
+type QueryCustomerArgs = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
+type QueryCustomersArgs = {
+  filters?: InputMaybe<CustomerFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type QueryEmailDesignerEmailTemplateArgs = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
+type QueryEmailDesignerEmailTemplatesArgs = {
+  filters?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
 type QueryGraphsBuilderGraphArgs = {
@@ -575,6 +1063,60 @@ type QueryGraphsBuilderGraphsArgs = {
   filters?: InputMaybe<GraphsBuilderGraphFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type QueryI18NLocaleArgs = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
+type QueryI18NLocalesArgs = {
+  filters?: InputMaybe<I18NLocaleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type QueryOrderArgs = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
+type QueryOrderLineArgs = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
+type QueryOrderLinesArgs = {
+  filters?: InputMaybe<OrderLineFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type QueryOrdersArgs = {
+  filters?: InputMaybe<OrderFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type QueryProductArgs = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
+type QueryProductsArgs = {
+  filters?: InputMaybe<ProductFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type QueryRenderNavigationArgs = {
+  menuOnly?: InputMaybe<Scalars['Boolean']>
+  navigationIdOrSlug: Scalars['String']
+  type?: InputMaybe<NavigationRenderType>
+}
+
+type QueryRenderNavigationChildArgs = {
+  childUiKey: Scalars['String']
+  id: Scalars['String']
+  menuOnly?: InputMaybe<Scalars['Boolean']>
+  type?: InputMaybe<NavigationRenderType>
 }
 
 type QueryUploadFileArgs = {
@@ -609,34 +1151,6 @@ type QueryUsersPermissionsUsersArgs = {
 
 type ResponseCollectionMeta = {
   pagination: Pagination
-}
-
-type Setting = {
-  createdAt?: Maybe<Scalars['DateTime']>
-  headerMenu?: Maybe<Array<Maybe<ComponentUiLink>>>
-  hostname: Scalars['String']
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
-
-type SettingHeaderMenuArgs = {
-  filters?: InputMaybe<ComponentUiLinkFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type SettingEntity = {
-  attributes?: Maybe<Setting>
-  id?: Maybe<Scalars['ID']>
-}
-
-type SettingEntityResponse = {
-  data?: Maybe<SettingEntity>
-}
-
-type SettingInput = {
-  headerMenu?: InputMaybe<Array<InputMaybe<ComponentUiLinkInput>>>
-  hostname?: InputMaybe<Scalars['String']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
 }
 
 type StringFilterInput = {
@@ -876,6 +1390,7 @@ type UsersPermissionsUser = {
   blocked?: Maybe<Scalars['Boolean']>
   confirmed?: Maybe<Scalars['Boolean']>
   createdAt?: Maybe<Scalars['DateTime']>
+  customer?: Maybe<CustomerEntityResponse>
   email: Scalars['String']
   provider?: Maybe<Scalars['String']>
   role?: Maybe<UsersPermissionsRoleEntityResponse>
@@ -903,6 +1418,7 @@ type UsersPermissionsUserFiltersInput = {
   confirmationToken?: InputMaybe<StringFilterInput>
   confirmed?: InputMaybe<BooleanFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
+  customer?: InputMaybe<CustomerFiltersInput>
   email?: InputMaybe<StringFilterInput>
   id?: InputMaybe<IdFilterInput>
   not?: InputMaybe<UsersPermissionsUserFiltersInput>
@@ -920,6 +1436,7 @@ type UsersPermissionsUserInput = {
   blocked?: InputMaybe<Scalars['Boolean']>
   confirmationToken?: InputMaybe<Scalars['String']>
   confirmed?: InputMaybe<Scalars['Boolean']>
+  customer?: InputMaybe<Scalars['ID']>
   email?: InputMaybe<Scalars['String']>
   password?: InputMaybe<Scalars['String']>
   provider?: InputMaybe<Scalars['String']>
@@ -955,9 +1472,16 @@ type LinkFragment = { id: string; title?: string | null | undefined; url: string
 
 type LinkFragmentVariables = Exact<{ [key: string]: never }>
 
-type MetaFragment = { id: string; title?: string | null | undefined; description?: string | null | undefined }
+type SeoFragment = {
+  id: string
+  canonicalURL?: string | null | undefined
+  keywords?: string | null | undefined
+  metaTitle: string
+  metaViewport?: string | null | undefined
+  metaDescription?: string | null | undefined
+}
 
-type MetaFragmentVariables = Exact<{ [key: string]: never }>
+type SeoFragmentVariables = Exact<{ [key: string]: never }>
 
 type ParagraphFragment = { id: string; value: string }
 
@@ -968,11 +1492,47 @@ type TabFragment = { id: string; name: string; pane: CardFragment }
 type TabFragmentVariables = Exact<{ [key: string]: never }>
 
 type HomepageFragment = {
-  meta?: { title?: string | null | undefined; description?: string | null | undefined } | null | undefined
   hero?: { subtitle?: string | null | undefined; id: string; description?: string | null | undefined; title?: string | null | undefined } | null | undefined
 }
 
 type HomepageFragmentVariables = Exact<{ [key: string]: never }>
+
+type MenuFragment = { items?: Array<MenuItemFragment | null | undefined> | null | undefined } & MenuItemFragment
+
+type MenuFragmentVariables = Exact<{ [key: string]: never }>
+
+type MenuItemFragment = { id: number; title: string; path?: string | null | undefined; externalPath?: string | null | undefined }
+
+type MenuItemFragmentVariables = Exact<{ [key: string]: never }>
+
+type LoginMutationVariables = Exact<{
+  input: UsersPermissionsLoginInput
+}>
+
+type LoginMutation = { login: { jwt?: string | null | undefined } }
+
+type RegisterMutationVariables = Exact<{
+  input: UsersPermissionsRegisterInput
+}>
+
+type RegisterMutation = { register: { jwt?: string | null | undefined } }
+
+type UpdateCustomerMutationVariables = Exact<{
+  id: Scalars['ID']
+  data: CustomerInput
+}>
+
+type UpdateCustomerMutation = {
+  updateCustomer?:
+    | {
+        data?:
+          | { id?: string | null | undefined; attributes?: { createdAt?: Date | null | undefined; firstName?: string | null | undefined } | null | undefined }
+          | null
+          | undefined
+      }
+    | null
+    | undefined
+}
 
 type HomepageQueryVariables = Exact<{ [key: string]: never }>
 
@@ -980,13 +1540,25 @@ type HomepageQuery = {
   homepage?:
     | {
         data?:
-          | {
-              id?: string | null | undefined
-              attributes?: { meta?: MetaFragment | null | undefined; hero?: CardFragment | null | undefined } | null | undefined
-            }
+          | { id?: string | null | undefined; attributes?: { hero?: CardFragment | null | undefined; seo?: SeoFragment | null | undefined } | null | undefined }
           | null
           | undefined
       }
     | null
     | undefined
 }
+
+type MeQueryVariables = Exact<{ [key: string]: never }>
+
+type MeQuery = {
+  me?:
+    | { id?: string | null | undefined; createdAt?: Date | null | undefined; firstName?: string | null | undefined; updatedAt?: Date | null | undefined }
+    | null
+    | undefined
+}
+
+type NavigationQueryVariables = Exact<{
+  slug: Scalars['String']
+}>
+
+type NavigationQuery = { renderNavigation: Array<MenuFragment | null | undefined> }

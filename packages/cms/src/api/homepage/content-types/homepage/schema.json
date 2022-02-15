@@ -11,15 +11,21 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "meta": {
-      "type": "component",
-      "repeatable": false,
-      "component": "data.meta"
-    },
     "hero": {
       "type": "component",
       "repeatable": false,
       "component": "ui.card"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "pathname": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "default": "/"
     }
   }
 }

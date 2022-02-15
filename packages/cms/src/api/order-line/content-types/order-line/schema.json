@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_lines",
+  "info": {
+    "singularName": "order-line",
+    "pluralName": "order-lines",
+    "displayName": "OrderLine",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "default": 1
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    }
+  }
+}

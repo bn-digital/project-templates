@@ -1,0 +1,5 @@
+query navigation($slug: String!) {
+  renderNavigation(navigationIdOrSlug: $slug, type: TREE) {
+    ...Menu
+  }
+}

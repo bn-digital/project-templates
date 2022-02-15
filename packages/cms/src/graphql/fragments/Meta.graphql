@@ -1,5 +1,8 @@
-fragment Meta on ComponentDataMeta {
+fragment Seo on ComponentSharedSeo {
   id
-  title
-  description
+  canonicalURL
+  keywords
+  metaTitle
+  metaViewport
+  metaDescription
 }
