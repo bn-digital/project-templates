@@ -1,169 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41586c2a-e4b9-49c2-b94b-539f4ffd96a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_components##integration.address.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_components##page.home.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##api##website.website.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##plugin##entity-notes.note.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/customer/content-types/customer/lifecycles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/stripe-resource/content-types/stripe-resource/schema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/stripe-resource/controllers/stripe-resource.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/stripe-resource/routes/stripe-resource.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/stripe-resource/services/stripe-resource.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/website/content-types/website/schema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/website/controllers/website.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/website/routes/website.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/api/website/services/website.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/components/page/contact-us.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/components/page/home.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/graphql/fragments/Menu.graphql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/cms/src/graphql/schema.graphqls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/website/public/ContactUs.graphql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/website/src/graphql/fragments/ContactUs.graphql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/website/src/graphql/fragments/Website.graphql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/website/src/graphql/mutations/forgotPassword.graphql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/website/src/graphql/queries/website.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.graphqlconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.graphqlconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/033ea5f0-bb35-45cc-8b51-a7c0a591e98a.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/033ea5f0-bb35-45cc-8b51-a7c0a591e98a/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a53d6698-856f-49af-82fc-22fe2379c9d7/storage_v2/_src_/database/app.IXoBAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a53d6698-856f-49af-82fc-22fe2379c9d7/storage_v2/_src_/database/app.IXoBAA/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a53d6698-856f-49af-82fc-22fe2379c9d7/storage_v2/_src_/database/app.IXoBAA/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a53d6698-856f-49af-82fc-22fe2379c9d7/storage_v2/_src_/database/bn.TAwAAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a53d6698-856f-49af-82fc-22fe2379c9d7/storage_v2/_src_/database/bn.TAwAAA/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a53d6698-856f-49af-82fc-22fe2379c9d7/storage_v2/_src_/database/bn.TAwAAA/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a53d6698-856f-49af-82fc-22fe2379c9d7/storage_v2/_src_/database/bn.TAwAAA/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileColors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/google-java-format.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/python-terminal.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/website.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/scopes/GraphQL.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/scopes/Styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codegen.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/codegen.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helmfile.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helmfile.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/.env.dist" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/.env.dist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/.env.staging" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/.env.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/.tmp/data.db" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/.tmp/data.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/cms.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/plugins.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/admin-role.strapi-author.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/admin-role.strapi-author.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/admin-role.strapi-editor.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/admin-role.strapi-editor.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/admin-role.strapi-super-admin.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/admin-role.strapi-super-admin.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_components##ui.section.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_components##ui.section.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##api##contact-us.contact-us.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##api##customer.customer.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##api##customer.customer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##api##homepage.homepage.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##api##order-line.order-line.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##api##order-line.order-line.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##api##order.order.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##api##order.order.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##api##product.product.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##api##product.product.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##plugin##navigation.audience.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##plugin##navigation.navigation-item.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##plugin##navigation.navigation.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##plugin##navigation.navigations-items-related.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##plugin##users-permissions.user.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_content_manager_configuration_content_types##plugin##users-permissions.user.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_sitemap_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/core-store.plugin_sitemap_settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/core-store.strapi_content_types_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/core-store.strapi_content_types_schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/user-role.authenticated.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/user-role.authenticated.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/config/sync/user-role.public.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/config/sync/user-role.public.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/admin/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/src/admin/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/admin/src/pages/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/api/contact-us/content-types/contact-us/schema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/api/contact-us/controllers/contact-us.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/api/contact-us/routes/contact-us.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/api/contact-us/services/contact-us.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/api/customer/content-types/customer/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/src/api/customer/content-types/customer/schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/api/customer/services/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/src/api/customer/services/customer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/api/homepage/content-types/homepage/schema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/api/homepage/controllers/homepage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/api/homepage/routes/homepage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/api/homepage/services/homepage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/api/product/content-types/product/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/src/api/product/content-types/product/schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/graphql/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/src/graphql/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/graphql/schema.graphql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/helpers/createSuperAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/src/helpers/createSuperAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/helpers/generateGraphqlSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/src/helpers/generateGraphqlSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/admin/src/components/Initializer/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/admin/src/components/PluginIcon/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/admin/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/admin/src/pages/App/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/admin/src/pages/HomePage/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/admin/src/pluginId.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/admin/src/translations/en.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/admin/src/translations/fr.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/admin/src/utils/axiosInstance.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/admin/src/utils/getTrad.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/config/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/content-types/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/controllers/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/controllers/my-controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/destroy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/middlewares/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/policies/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/register.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/routes/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/services/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/server/services/my-service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/strapi-admin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/cms/src/plugins/secrets/strapi-server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/components/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/app/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/components/layout/DefaultLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/layout/DefaultLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/layout/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/components/menu/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/menu/Navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/components/page/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/components/page/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/graphql/fragments/Homepage.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/graphql/fragments/Home.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/graphql/fragments/Menu.graphql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/graphql/fragments/MenuItem.graphql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/graphql/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/graphql/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/graphql/mutations/updateCustomer.graphql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/graphql/queries/homepage.graphql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/graphql/queries/me.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/graphql/queries/me.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/graphql/queries/navigation.graphql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/pages/home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/pages/home/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/src/types/graphql.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/src/types/graphql.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/website/website.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-templates.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/skaffold.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/skaffold.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-    </list>
+    <list default="true" id="41586c2a-e4b9-49c2-b94b-539f4ffd96a3" name="Changes" comment="Changes in project template" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="latest" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -173,6 +27,31 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="test" />
+                    <option name="lastUsedInstant" value="1645109734" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="latest" />
+                    <option name="lastUsedInstant" value="1645109733" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="GithubProjectSettings">
     <option name="branchProtectionPatterns">
@@ -209,6 +88,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TF_FMT" value="false" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.google.cloudcode.ide_session_index" value="20220217_0001" />
@@ -235,6 +115,14 @@
       <workItem from="1645107999866" duration="1447000" />
       <workItem from="1645109526369" />
     </task>
+    <task id="LOCAL-00001" summary="Changes in project template">
+      <created>1645109699806</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1645109699807</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <option name="createBranch" value="false" />
     <servers>
       <Linear>
@@ -260,5 +148,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Changes in project template" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in project template" />
   </component>
 </project>
