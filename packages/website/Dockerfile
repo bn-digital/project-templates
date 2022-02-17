@@ -1,8 +1,9 @@
 # syntax = docker/dockerfile:latest
-FROM dcr.bndigital.dev/library/yarn:1.3.0 AS build
+ARG version=1.6.0
+FROM dcr.bndigital.dev/library/yarn:${version} AS build
 RUN yarn
 COPY . .
 RUN yarn build
 
-FROM dcr.bndigital.dev/library/nodejs:1.3.0
+FROM dcr.bndigital.dev/library/nodejs:${version}
 COPY --chown=node --from=build /usr/local/src/build .

@@ -1,49 +1,32 @@
-schema: packages/cms/src/graphql/schema.graphql
+schema: packages/cms/src/graphql/schema.graphqls
 documents:
-  - packages/cms/src/graphql/*/*.graphql
-  - packages/website/src/graphql/*/*.graphql
-hooks:
-  afterAllFileWrite:
-    - yarn eslint --fix --quiet
-    - yarn prettier --write
+  - packages/*/src/graphql/*/*.graphql
 config:
   scalars:
     Upload: unknown
-    Date: string
-    Time: string
-    JSON: Record<string, any>
-    Long: number
+    Date: String
+    Time: String
+    JSON: Record<string, Object|Array|String|Number|Boolean|null|undefined>
+    Long: Number
     DateTime: Date
 generates:
   packages/website/src/graphql/index.tsx:
     config:
       skipTypename: true
+      dedupeFragments: true
     plugins:
       - typescript-operations:
-          inlineFragmentTypes: combine
-          dedupeFragments: true
-          experimentalFragmentVariables: true
           preResolveTypes: true
-          skipTypename: true
       - typescript-react-apollo:
-          dedupeFragments: true
-          inlineFragmentTypes: combine
           withComponent: true
           withHooks: true
           withResultType: true
-          withHOC: true
   packages/website/src/types/graphql.d.ts:
     config:
+      noExport: true
       skipTypename: true
     plugins:
       - typescript:
-          noExport: true
-          skipTypename: true
           enumsAsTypes: true
       - typescript-operations:
-          inlineFragmentTypes: combine
-          noExport: true
-          dedupeFragments: true
           preResolveTypes: true
-          experimentalFragmentVariables: true
-          exportFragmentSpreadSubTypes: true

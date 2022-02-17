@@ -17,15 +17,15 @@
     "lastName": {
       "type": "string"
     },
-    "stripe": {
-      "type": "component",
-      "repeatable": false,
-      "component": "integration.stripe",
-      "private": true
-    },
     "uuid": {
       "type": "uid",
       "required": false
+    },
+    "stripe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::stripe-resource.stripe-resource",
+      "private": true
     }
   }
 }

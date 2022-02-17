@@ -1,0 +1,10 @@
+query website {
+  website {
+    data {
+      id
+      attributes {
+        ...Website
+      }
+    }
+  }
+}

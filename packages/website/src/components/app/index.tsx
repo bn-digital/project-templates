@@ -1,4 +1,3 @@
-import { ConfigProvider } from 'antd'
 import { createContext, Dispatch, FC, SetStateAction, useContext, useState, VFC } from 'react'
 import { ClientProvider } from '@bn-digital/graphql-client'
 import I18nProvider from '@bn-digital/react-i18n'
@@ -6,7 +5,7 @@ import { UIProvider } from '@bn-digital/antd'
 import { RoutingProvider } from '@bn-digital/react'
 import pages from 'src/pages'
 import { useToggle } from 'react-use'
-import 'src/components/app/index.less'
+import './index.less'
 
 type AppTheme = string | 'dark' | 'light' | 'default'
 

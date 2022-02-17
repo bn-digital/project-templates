@@ -1,8 +1,12 @@
 query me {
   me {
-    id
+    email
     createdAt
-    firstName
     updatedAt
+    customer {
+      data {
+        id
+      }
+    }
   }
 }

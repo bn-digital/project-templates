@@ -82,8 +82,11 @@
       "list": [
         "id",
         "quantity",
-        "createdAt",
-        "updatedAt"
+        "product",
+        "createdAt"
+      ],
+      "editRelations": [
+        "product"
       ],
       "edit": [
         [
@@ -92,9 +95,6 @@
             "size": 4
           }
         ]
-      ],
-      "editRelations": [
-        "product"
       ]
     }
   },

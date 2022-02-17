@@ -4,34 +4,7 @@
   "type": "authenticated",
   "permissions": [
     {
-      "action": "api::customer.customer.findOne"
-    },
-    {
-      "action": "api::customer.customer.update"
-    },
-    {
-      "action": "api::homepage.homepage.find"
-    },
-    {
-      "action": "plugin::users-permissions.auth.callback"
-    },
-    {
       "action": "plugin::users-permissions.auth.connect"
-    },
-    {
-      "action": "plugin::users-permissions.auth.emailConfirmation"
-    },
-    {
-      "action": "plugin::users-permissions.auth.forgotPassword"
-    },
-    {
-      "action": "plugin::users-permissions.auth.register"
-    },
-    {
-      "action": "plugin::users-permissions.auth.resetPassword"
-    },
-    {
-      "action": "plugin::users-permissions.auth.sendEmailConfirmation"
     },
     {
       "action": "plugin::users-permissions.user.me"

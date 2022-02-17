@@ -9,7 +9,10 @@
       "properties": {
         "fields": [
           "firstName",
-          "lastName"
+          "lastName",
+          "stripe.stripeId",
+          "stripe.payload",
+          "uuid"
         ]
       },
       "conditions": [
@@ -30,7 +33,10 @@
       "properties": {
         "fields": [
           "firstName",
-          "lastName"
+          "lastName",
+          "stripe.stripeId",
+          "stripe.payload",
+          "uuid"
         ]
       },
       "conditions": [
@@ -43,7 +49,271 @@
       "properties": {
         "fields": [
           "firstName",
-          "lastName"
+          "lastName",
+          "stripe.stripeId",
+          "stripe.payload",
+          "uuid"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::order-line.order-line",
+      "properties": {
+        "fields": [
+          "quantity",
+          "product"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::order-line.order-line",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::order-line.order-line",
+      "properties": {
+        "fields": [
+          "quantity",
+          "product"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::order-line.order-line",
+      "properties": {
+        "fields": [
+          "quantity",
+          "product"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::order.order",
+      "properties": {
+        "fields": [
+          "stripe.stripeId",
+          "stripe.payload",
+          "items",
+          "uuid"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::order.order",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::order.order",
+      "properties": {
+        "fields": [
+          "stripe.stripeId",
+          "stripe.payload",
+          "items",
+          "uuid"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::order.order",
+      "properties": {
+        "fields": [
+          "stripe.stripeId",
+          "stripe.payload",
+          "items",
+          "uuid"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::product.product",
+      "properties": {
+        "fields": [
+          "name",
+          "stripe.stripeId",
+          "stripe.payload",
+          "uuid",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::product.product",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::product.product",
+      "properties": {
+        "fields": [
+          "name",
+          "stripe.stripeId",
+          "stripe.payload",
+          "uuid",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::product.product",
+      "properties": {
+        "fields": [
+          "name",
+          "stripe.stripeId",
+          "stripe.payload",
+          "uuid",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::website.website",
+      "properties": {
+        "fields": [
+          "content",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::website.website",
+      "properties": {
+        "fields": [
+          "content",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::website.website",
+      "properties": {
+        "fields": [
+          "content",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL"
         ]
       },
       "conditions": [
@@ -55,10 +325,10 @@
       "subject": "plugin::graphs-builder.graph",
       "properties": {
         "fields": [
-          "collectionX",
-          "collectionXAttribute",
           "title",
-          "type"
+          "type",
+          "collectionX",
+          "collectionXAttribute"
         ]
       },
       "conditions": [
@@ -78,10 +348,10 @@
       "subject": "plugin::graphs-builder.graph",
       "properties": {
         "fields": [
-          "collectionX",
-          "collectionXAttribute",
           "title",
-          "type"
+          "type",
+          "collectionX",
+          "collectionXAttribute"
         ]
       },
       "conditions": [
@@ -93,81 +363,10 @@
       "subject": "plugin::graphs-builder.graph",
       "properties": {
         "fields": [
-          "collectionX",
-          "collectionXAttribute",
           "title",
-          "type"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "plugin::users-permissions.user",
-      "properties": {
-        "fields": [
-          "blocked",
-          "confirmationToken",
-          "confirmed",
-          "customer",
-          "email",
-          "password",
-          "provider",
-          "resetPasswordToken",
-          "role",
-          "username"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "plugin::users-permissions.user",
-      "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "plugin::users-permissions.user",
-      "properties": {
-        "fields": [
-          "blocked",
-          "confirmationToken",
-          "confirmed",
-          "customer",
-          "email",
-          "password",
-          "provider",
-          "resetPasswordToken",
-          "role",
-          "username"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "plugin::users-permissions.user",
-      "properties": {
-        "fields": [
-          "blocked",
-          "confirmationToken",
-          "confirmed",
-          "customer",
-          "email",
-          "password",
-          "provider",
-          "resetPasswordToken",
-          "role",
-          "username"
+          "type",
+          "collectionX",
+          "collectionXAttribute"
         ]
       },
       "conditions": [

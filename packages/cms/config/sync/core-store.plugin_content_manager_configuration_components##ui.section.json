@@ -91,13 +91,13 @@
         ],
         [
           {
-            "name": "children",
+            "name": "heading",
             "size": 12
           }
         ],
         [
           {
-            "name": "heading",
+            "name": "children",
             "size": 12
           }
         ],

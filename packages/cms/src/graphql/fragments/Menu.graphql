@@ -1,0 +1,6 @@
+fragment Menu on ComponentUiMenu {
+  id
+  children {
+    ...Link
+  }
+}

@@ -2,7 +2,7 @@ const { printSchema } = require('graphql')
 
 function generateGraphqlSchema(strapi) {
   const schema = strapi.plugin('graphql').service('content-api').buildSchema()
-  strapi.fs.writeAppFile('./src/graphql/schema.graphql', printSchema(schema))
+  strapi.fs.writeAppFile('./src/graphql/schema.graphqls', printSchema(schema))
   strapi.log.info('[GraphQL] Schema generated')
 }
 
@@ -17,25 +17,25 @@ function getSchemaExtension(strapi) {
         type: 'Query',
         definition: t => {
           t.field('me', {
-            type: 'Customer',
+            type: 'UsersPermissionsUser',
           })
-        },
-      }),
-      nexus.extendType({
-        type: 'Customer',
-        definition: t => {
-          t.id('id')
         },
       }),
     ],
     resolvers: {
       Query: {
         me: async (root, args, ctx) => {
-          const user = await strapi.plugin('users-permissions').service('user').fetch({ id: ctx.state.user.id }, ['customer'])
-          const customer = user.customer ?? (await strapi.entityService.create('api::customer.customer', { data: {}, populate: ['*'] }))
-          !user.customer && (await strapi.plugin('users-permissions').service('user').edit(root.id, { customer: customer.id }))
-
-          return customer
+          return await strapi.plugin('users-permissions').service('user').fetch({ id: ctx.state.user.id })
+        },
+      },
+      UploadFile: {
+        url: async root => {
+          console.log(root)
+          let url = new URL(root.url)
+          if (process.env.S3_PUBLIC_URL) {
+            url = new URL(`${process.env.S3_PUBLIC_URL}${url.pathname}`)
+          }
+          return url.toString()
         },
       },
     },

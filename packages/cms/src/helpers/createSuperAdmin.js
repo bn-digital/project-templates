@@ -1,4 +1,4 @@
-const defaultAdminUser = {
+const defaultAdminData = {
   username: process.env.ADMIN_USERNAME || 'dev@bndigital.co',
   password: process.env.ADMIN_PASSWORD || 'BNd1g1t@l',
   firstname: process.env.ADMIN_FIRSTNAME || 'BN',
@@ -9,14 +9,14 @@ const defaultAdminUser = {
 }
 
 async function createSuperAdmin(strapi) {
-  let admin = await strapi.query('admin::user').findOne({ username: defaultAdminUser.username })
+  const admin = await strapi.query('admin::user').findOne({ username: defaultAdminData.username })
   try {
     if (!admin) {
       strapi.log.warn('[Strapi] No SuperAdmin found. Creating....')
-      let verifyRole = await strapi.query('admin::role').findOne({ code: 'strapi-super-admin' })
-      if (!verifyRole) {
+      let superAdminRole = await strapi.query('admin::role').findOne({ code: 'strapi-super-admin' })
+      if (!superAdminRole) {
         strapi.log.warn('[Strapi] No SuperAdmin role found. Creating....')
-        verifyRole = await strapi.query('admin::role').create({
+        superAdminRole = await strapi.query('admin::role').create({
           data: {
             name: 'Super Admin',
             code: 'strapi-super-admin',
@@ -25,12 +25,12 @@ async function createSuperAdmin(strapi) {
         })
       }
 
-      defaultAdminUser.roles = [verifyRole.id]
-      defaultAdminUser.password = await strapi.admin.services.auth.hashPassword(defaultAdminUser.password)
-      admin = await strapi.query('admin::user').create({ data: defaultAdminUser })
+      defaultAdminData.roles = [superAdminRole.id]
+      defaultAdminData.password = await strapi.admin.services.auth.hashPassword(defaultAdminData.password)
+      return await strapi.query('admin::user').create({ data: defaultAdminData })
     }
   } catch (error) {
-    console.error(error)
+    strapi.log.warn(`[Strapi] Failed creating super admin: ${error}`)
   }
   return admin
 }

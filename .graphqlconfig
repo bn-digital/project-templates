@@ -1,16 +1,14 @@
 {
   "name": "CMS GraphQL API",
-  "schemaPath": "./packages/cms/src/graphql/schema.graphql",
+  "schemaPath": "./packages/cms/src/graphql/schema.graphqls",
   "includes": [
-    "./packages/*/src/graphql/*/*.graphql"
+    "./packages/cms/src/graphql/**/*.graphql",
+    "./packages/website/src/graphql/**/*.graphql"
   ],
   "extensions": {
     "endpoints": {
       "development": {
-        "url": "http://localhost:1337/graphql",
-        "headers": {
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjQ0MTMyMzcyLCJleHAiOjE2NDY3MjQzNzJ9.lTiAmP8SYtSHtI7iexN1IPYohKcxVAMupAO2c_Nw9sw"
-        }
+        "url": "http://localhost:1337/graphql"
       }
     }
   }

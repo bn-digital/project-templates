@@ -1,21 +1,17 @@
 const name = require('./name')
 
 module.exports = ({ env }) => ({
-  secrets: {
-    enabled: true,
-    resolve: './src/plugins/secrets',
-  },
-  navigation: {
-    enabled: true,
-    config: {
-      contentTypes: ['api::homepage.homepage', 'api::contact-us.contact-us'],
-      allowedLevels: 2,
-    },
-  },
-  seo: {
+  'transformer': {
     enabled: true,
   },
-  graphql: {
+  'entity-notes': {
+    enabled: true,
+  },
+  'seo': {
+    enabled: true,
+  },
+  'graphql': {
+    enabled: true,
     config: {
       endpoint: '/graphql',
       shadowCRUD: true,
@@ -23,7 +19,8 @@ module.exports = ({ env }) => ({
       playgroundAlways: env('NODE_ENV', 'development') === 'development',
     },
   },
-  upload: {
+  'upload': {
+    enabled: true,
     config: {
       provider: 'aws-s3',
       providerOptions: {
@@ -36,7 +33,8 @@ module.exports = ({ env }) => ({
       },
     },
   },
-  email: {
+  'email': {
+    enabled: true,
     config: {
       provider: 'nodemailer',
       providerOptions: {

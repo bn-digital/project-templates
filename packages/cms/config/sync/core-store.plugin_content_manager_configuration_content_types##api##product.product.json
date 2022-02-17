@@ -48,6 +48,34 @@
           "sortable": false
         }
       },
+      "uuid": {
+        "edit": {
+          "label": "Uuid",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Uuid",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "seo": {
+        "edit": {
+          "label": "Seo",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Seo",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "CreatedAt",
@@ -81,9 +109,10 @@
       "list": [
         "id",
         "name",
-        "createdAt",
-        "updatedAt"
+        "uuid",
+        "createdAt"
       ],
+      "editRelations": [],
       "edit": [
         [
           {
@@ -96,9 +125,20 @@
             "name": "stripe",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "uuid",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "seo",
+            "size": 12
+          }
         ]
-      ],
-      "editRelations": []
+      ]
     }
   },
   "type": "object",

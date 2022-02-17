@@ -1,0 +1,15 @@
+fragment Home on ComponentPageHome {
+  id
+  pathname
+  hero {
+    subtitle
+    id
+    description
+    title
+    media {
+      data {
+        ...File
+      }
+    }
+  }
+}

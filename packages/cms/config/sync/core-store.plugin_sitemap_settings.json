@@ -1,7 +1,7 @@
 {
   "key": "plugin_sitemap_settings",
   "value": {
-    "hostname": "http://localhost:8080",
+    "hostname": "",
     "includeHomepage": true,
     "excludeDrafts": true,
     "hostname_overrides": {},

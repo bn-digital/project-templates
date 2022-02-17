@@ -1,8 +1,0 @@
-fragment Homepage on Homepage {
-  hero {
-    subtitle
-    id
-    description
-    title
-  }
-}

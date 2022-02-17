@@ -198,6 +198,10 @@
         "email",
         "confirmed"
       ],
+      "editRelations": [
+        "role",
+        "customer"
+      ],
       "edit": [
         [
           {
@@ -225,10 +229,6 @@
             "size": 4
           }
         ]
-      ],
-      "editRelations": [
-        "role",
-        "customer"
       ]
     }
   },

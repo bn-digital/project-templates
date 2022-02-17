@@ -8,11 +8,8 @@
     "start": "yarn vite serve"
   },
   "proxy": "http://localhost:1337",
-  "browserslist": [
-    "defaults"
-  ],
   "dependencies": {
-    "@bn-digital/antd": "^1.1.1",
+    "@bn-digital/antd": "^1.1.2",
     "@bn-digital/graphql-client": "^1.1.45",
     "@bn-digital/react": "^1.2.0",
     "@bn-digital/react-i18n": "^1.0.1",

@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "uuid",
-      "defaultSortBy": "uuid",
+      "mainField": "id",
+      "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -16,20 +16,6 @@
         "edit": {},
         "list": {
           "label": "Id",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "uuid": {
-        "edit": {
-          "label": "Uuid",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "Uuid",
           "searchable": true,
           "sortable": true
         }
@@ -61,6 +47,20 @@
           "label": "Items",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "uuid": {
+        "edit": {
+          "label": "Uuid",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Uuid",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -95,26 +95,26 @@
     "layouts": {
       "list": [
         "id",
+        "items",
         "uuid",
-        "createdAt",
-        "updatedAt"
+        "createdAt"
+      ],
+      "editRelations": [
+        "items"
       ],
       "edit": [
-        [
-          {
-            "name": "uuid",
-            "size": 6
-          }
-        ],
         [
           {
             "name": "stripe",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "uuid",
+            "size": 6
+          }
         ]
-      ],
-      "editRelations": [
-        "items"
       ]
     }
   },
