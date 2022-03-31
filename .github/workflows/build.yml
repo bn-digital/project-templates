@@ -22,7 +22,7 @@ env:
 jobs:
   analyze:
     name: Analyze source code
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout sources # Checkout from github
         uses: actions/checkout@v2
@@ -51,7 +51,7 @@ jobs:
 
   build:
     name: Build Docker images
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
