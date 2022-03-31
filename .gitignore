@@ -4,6 +4,10 @@
 # Windows
 Thumbs.db
 
+# IDE
+.idea/workspace.xml
+.idea/shelf
+
 # Logs
 *.log
 
