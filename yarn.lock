@@ -197,6 +197,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@app/website@workspace:packages/website"
   dependencies:
+    "@apollo/client": ^3.5.10
     "@bn-digital/antd": ^1.1.2
     "@bn-digital/graphql-client": ^1.2.7
     "@bn-digital/sdk": ^1.2.4

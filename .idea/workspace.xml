@@ -91,8 +91,8 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="test" />
-                    <option name="lastUsedInstant" value="1645109734" />
+                    <option name="branchName" value="eng-000/react-18-strapi-4.2" />
+                    <option name="lastUsedInstant" value="1648742006" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="latest" />
@@ -106,6 +106,9 @@
         </option>
       </RecentBranches>
     </option>
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="c7c000b5-23d4-4613-902b-f78a51633752" />
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="true" />
@@ -142,33 +145,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "go.import.settings.migrated": "true",
-    "javascript.nodejs.core.library.configured.version": "17.8.0",
-    "javascript.nodejs.core.library.typings.version": "17.0.23",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "A:\\src\\github.com\\bn-digital\\project-templates\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
-    "ts.external.directory.path": "A:\\src\\github.com\\bn-digital\\project-templates\\node_modules\\typescript\\lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed&quot;: &quot;true&quot;,
+    &quot;TF_FMT&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;17.8.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;17.0.23&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;A:\\src\\github.com\\bn-digital\\project-templates\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;A:\\src\\github.com\\bn-digital\\project-templates\\node_modules\\typescript\\lib&quot;
   },
-  "keyToStringList": {
-    "GitStage.ChangesTree.GroupingKeys": [
-      "directory",
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="A:\src\github.com\bn-digital\project-templates\packages\cms" />
@@ -260,7 +264,7 @@
       <workItem from="1647705423185" duration="3664000" />
       <workItem from="1648660864911" duration="2028000" />
       <workItem from="1648674974385" duration="3747000" />
-      <workItem from="1648736598487" duration="4332000" />
+      <workItem from="1648736598487" duration="4818000" />
     </task>
     <task id="LOCAL-00001" summary="Changes in project template">
       <created>1645109699806</created>
@@ -269,7 +273,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645109699807</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Updated to react 18 and strapi 4.2">
+      <created>1648742012177</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1648742012177</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <option name="createBranch" value="false" />
     <servers>
       <Linear>
@@ -310,7 +321,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Changes in project template" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in project template" />
+    <MESSAGE value="Updated to react 18 and strapi 4.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated to react 18 and strapi 4.2" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
