@@ -15,35 +15,35 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
-          "searchable": false,
-          "sortable": false
+          "label": "id",
+          "searchable": true,
+          "sortable": true
         }
       },
       "name": {
         "edit": {
-          "label": "Name",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Name",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
       },
       "pane": {
         "edit": {
-          "label": "Pane",
+          "label": "pane",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Pane",
+          "label": "pane",
           "searchable": false,
           "sortable": false
         }
@@ -52,8 +52,10 @@
     "layouts": {
       "list": [
         "id",
-        "name"
+        "name",
+        "pane"
       ],
+      "editRelations": [],
       "edit": [
         [
           {
@@ -67,8 +69,7 @@
             "size": 12
           }
         ]
-      ],
-      "editRelations": []
+      ]
     },
     "isComponent": true
   },

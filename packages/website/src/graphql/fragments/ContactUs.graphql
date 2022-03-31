@@ -1,15 +1,10 @@
 fragment ContactUs on ComponentPageContactUs {
   id
   pathname
-  hero {
-    subtitle
+  contact {
     id
-    description
-    title
-    media {
-      data {
-        ...File
-      }
-    }
+    address
+    email
+    phone
   }
 }

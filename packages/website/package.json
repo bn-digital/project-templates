@@ -4,31 +4,33 @@
   "scripts": {
     "vite": "node_modules/.bin/vite",
     "env": "yarn vault-env",
-    "build": "yarn vite build",
+    "build": "yarn tsc && yarn vite build",
     "start": "yarn vite serve"
   },
   "proxy": "http://localhost:1337",
   "dependencies": {
     "@bn-digital/antd": "^1.1.2",
-    "@bn-digital/graphql-client": "^1.1.45",
-    "@bn-digital/react": "^1.2.0",
-    "@bn-digital/react-i18n": "^1.0.1",
-    "antd": "^4.18.7",
+    "@bn-digital/graphql-client": "^1.2.7",
+    "antd": "^4.19.3",
     "classnames": "^2.3.1",
-    "react": "^17.0.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-helmet": "^6.1.0",
-    "react-helmet-async": "^1.2.2",
-    "react-markdown": "^8.0.0",
-    "react-router-dom": "^6.2.1",
+    "react-helmet-async": "^1.2.3",
+    "react-intl": "^5.24.8",
+    "react-markdown": "^8.0.2",
+    "react-router-dom": "^6.2.2",
     "react-use": "^17.3.2"
   },
   "devDependencies": {
-    "@bn-digital/sdk": "^1.2.2",
+    "@bn-digital/sdk": "^1.2.4",
     "@bn-digital/vault-env": "^1.4.0",
-    "@bn-digital/vite": "^1.6.1",
+    "@bn-digital/vite": "^1.8.1",
     "@types/classnames": "^2.3.1",
-    "@types/react": "^17.0.39",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
     "@types/react-helmet": "^6.1.5",
-    "typescript": "^4.5.5"
+    "typescript": "^4.6.3",
+    "vite-plugin-csp": "^1.0.1"
   }
 }

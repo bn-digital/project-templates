@@ -15,231 +15,231 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": true,
           "sortable": true
         }
       },
       "name": {
         "edit": {
-          "label": "Name",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Name",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
       },
       "alternativeText": {
         "edit": {
-          "label": "AlternativeText",
+          "label": "alternativeText",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "AlternativeText",
+          "label": "alternativeText",
           "searchable": true,
           "sortable": true
         }
       },
       "caption": {
         "edit": {
-          "label": "Caption",
+          "label": "caption",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Caption",
+          "label": "caption",
           "searchable": true,
           "sortable": true
         }
       },
       "width": {
         "edit": {
-          "label": "Width",
+          "label": "width",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Width",
+          "label": "width",
           "searchable": true,
           "sortable": true
         }
       },
       "height": {
         "edit": {
-          "label": "Height",
+          "label": "height",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Height",
+          "label": "height",
           "searchable": true,
           "sortable": true
         }
       },
       "formats": {
         "edit": {
-          "label": "Formats",
+          "label": "formats",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Formats",
+          "label": "formats",
           "searchable": false,
           "sortable": false
         }
       },
       "hash": {
         "edit": {
-          "label": "Hash",
+          "label": "hash",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Hash",
+          "label": "hash",
           "searchable": true,
           "sortable": true
         }
       },
       "ext": {
         "edit": {
-          "label": "Ext",
+          "label": "ext",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Ext",
+          "label": "ext",
           "searchable": true,
           "sortable": true
         }
       },
       "mime": {
         "edit": {
-          "label": "Mime",
+          "label": "mime",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Mime",
+          "label": "mime",
           "searchable": true,
           "sortable": true
         }
       },
       "size": {
         "edit": {
-          "label": "Size",
+          "label": "size",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Size",
+          "label": "size",
           "searchable": true,
           "sortable": true
         }
       },
       "url": {
         "edit": {
-          "label": "Url",
+          "label": "url",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Url",
+          "label": "url",
           "searchable": true,
           "sortable": true
         }
       },
       "previewUrl": {
         "edit": {
-          "label": "PreviewUrl",
+          "label": "previewUrl",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "PreviewUrl",
+          "label": "previewUrl",
           "searchable": true,
           "sortable": true
         }
       },
       "provider": {
         "edit": {
-          "label": "Provider",
+          "label": "provider",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Provider",
+          "label": "provider",
           "searchable": true,
           "sortable": true
         }
       },
       "provider_metadata": {
         "edit": {
-          "label": "Provider_metadata",
+          "label": "provider_metadata",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Provider_metadata",
+          "label": "provider_metadata",
           "searchable": false,
           "sortable": false
         }
       },
       "createdAt": {
         "edit": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }

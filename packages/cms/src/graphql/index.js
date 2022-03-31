@@ -10,24 +10,9 @@ function getExtensionService(strapi) {
   return strapi.plugin('graphql').service('extension')
 }
 
-function getSchemaExtension(strapi) {
-  return ({ nexus }) => ({
-    types: [
-      nexus.extendType({
-        type: 'Query',
-        definition: t => {
-          t.field('me', {
-            type: 'UsersPermissionsUser',
-          })
-        },
-      }),
-    ],
+function getSchemaExtension() {
+  return () => ({
     resolvers: {
-      Query: {
-        me: async (root, args, ctx) => {
-          return await strapi.plugin('users-permissions').service('user').fetch({ id: ctx.state.user.id })
-        },
-      },
       UploadFile: {
         url: async root => {
           console.log(root)
@@ -39,15 +24,6 @@ function getSchemaExtension(strapi) {
         },
       },
     },
-    resolversConfig: {
-      'Mutation.updateCustomer': {
-        policies: ['global::owner'],
-      },
-      'Query.customer': {
-        policies: ['global::owner'],
-      },
-    },
-    plugins: [],
   })
 }
 

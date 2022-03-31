@@ -1,5 +1,5 @@
-import { FC } from 'react'
 import { Layout } from 'antd'
+import { FC } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { HeroSection } from 'src/components/section'
 

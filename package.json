@@ -39,13 +39,14 @@
   },
   "devDependencies": {
     "@bn-digital/commitlint-config": "^1.1.1",
-    "@bn-digital/eslint-config": "^1.19.1",
-    "@bn-digital/graphql-config": "^1.0.7",
-    "@bn-digital/prettier-config": "^1.13.3",
-    "@bn-digital/stylelint-config": "^1.13.5",
+    "@bn-digital/eslint-config": "^1.19.4",
+    "@bn-digital/graphql-config": "^1.0.9",
+    "@bn-digital/prettier-config": "^1.14.1",
+    "@bn-digital/stylelint-config": "^1.14.1",
     "concurrently": "^7.0.0",
-    "lint-staged": "^12.3.4",
-    "typescript": "^4.5.5"
+    "lint-staged": "^12.3.7",
+    "pm2": "^5.2.0",
+    "typescript": "^4.6.3"
   },
   "scripts": {
     "prettier": "node_modules/.bin/prettier",

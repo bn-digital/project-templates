@@ -1,15 +1,17 @@
 import { lazy } from 'react'
+import { RouteObject, useRoutes } from 'react-router-dom'
+
 import { DefaultLayout } from '../components/layout'
 
 const Home = lazy(() => import('./home'))
-
 const NotFound = lazy(() => import('./not-found'))
 
 /**
  * fixed in ENG-123
  */
-const pages = {
-  '': {
+const routes: RouteObject[] = [
+  {
+    path: '',
     element: <DefaultLayout />,
     children: [
       {
@@ -26,6 +28,6 @@ const pages = {
       },
     ],
   },
-}
-
-export { pages as default }
+]
+const Pages = () => useRoutes(routes)
+export { Pages as default }

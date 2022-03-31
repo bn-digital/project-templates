@@ -15,21 +15,21 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
-          "searchable": false,
-          "sortable": false
+          "label": "id",
+          "searchable": true,
+          "sortable": true
         }
       },
       "value": {
         "edit": {
-          "label": "Value",
+          "label": "value",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Value",
+          "label": "value",
           "searchable": false,
           "sortable": false
         }
@@ -39,6 +39,7 @@
       "list": [
         "id"
       ],
+      "editRelations": [],
       "edit": [
         [
           {
@@ -46,8 +47,7 @@
             "size": 12
           }
         ]
-      ],
-      "editRelations": []
+      ]
     },
     "isComponent": true
   },

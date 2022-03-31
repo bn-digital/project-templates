@@ -1,7 +1,8 @@
-import { VFC } from 'react'
-import { Menu } from 'antd'
-import { NavLink } from 'react-router-dom'
 import './Navigation.less'
+
+import { Menu } from 'antd'
+import { VFC } from 'react'
+import { NavLink } from 'react-router-dom'
 
 type NavigationProps = { data: LinkFragment[] }
 

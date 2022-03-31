@@ -15,28 +15,28 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": true,
           "sortable": true
         }
       },
       "action": {
         "edit": {
-          "label": "Action",
+          "label": "action",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Action",
+          "label": "action",
           "searchable": true,
           "sortable": true
         }
       },
       "role": {
         "edit": {
-          "label": "Role",
+          "label": "role",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -44,35 +44,35 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Role",
+          "label": "role",
           "searchable": true,
           "sortable": true
         }
       },
       "createdAt": {
         "edit": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }

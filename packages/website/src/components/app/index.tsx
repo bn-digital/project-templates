@@ -1,11 +1,11 @@
-import { createContext, Dispatch, FC, SetStateAction, useContext, useState, VFC } from 'react'
-import { ClientProvider } from '@bn-digital/graphql-client'
-import I18nProvider from '@bn-digital/react-i18n'
-import { UIProvider } from '@bn-digital/antd'
-import { RoutingProvider } from '@bn-digital/react'
-import pages from 'src/pages'
-import { useToggle } from 'react-use'
 import './index.less'
+
+import { UIProvider } from '@bn-digital/antd'
+import { ClientProvider } from '@bn-digital/graphql-client'
+import { createContext, Dispatch, FC, SetStateAction, useContext, useState, VFC } from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import { useToggle } from 'react-use'
+import Pages from 'src/pages'
 
 type AppTheme = string | 'dark' | 'light' | 'default'
 
@@ -36,19 +36,15 @@ const ContextProvider: FC = ({ children }) => {
 const App: VFC = () => (
   <ContextProvider>
     <ClientProvider production={import.meta.env.PROD}>
-      <Context.Consumer>
-        {({ i18n: { locale }, ui: { size } }) => (
-          <I18nProvider locale={locale}>
-            <UIProvider size={size} locale={locale}>
-              <RoutingProvider routes={pages} />
-            </UIProvider>
-          </I18nProvider>
-        )}
-      </Context.Consumer>
+      <UIProvider locale={'en'}>
+        <BrowserRouter>
+          <Pages />
+        </BrowserRouter>
+      </UIProvider>
     </ClientProvider>
   </ContextProvider>
 )
 
 const useApp = () => useContext<AppProps>(Context)
 
-export { App, useApp, Context as AppContext }
+export { App, Context as AppContext, useApp }

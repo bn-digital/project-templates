@@ -1,5 +1,5 @@
-import { VFC } from 'react'
 import { Col, Row, Typography } from 'antd'
+import { VFC } from 'react'
 
 const HeroSection: VFC<Partial<CardFragment>> = ({ title = '', description = '', subtitle = '' }) => (
   <Row align={'middle'} justify={'center'}>

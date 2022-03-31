@@ -15,56 +15,56 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": true,
           "sortable": true
         }
       },
       "name": {
         "edit": {
-          "label": "Name",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Name",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
       },
       "description": {
         "edit": {
-          "label": "Description",
+          "label": "description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Description",
+          "label": "description",
           "searchable": true,
           "sortable": true
         }
       },
       "type": {
         "edit": {
-          "label": "Type",
+          "label": "type",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Type",
+          "label": "type",
           "searchable": true,
           "sortable": true
         }
       },
       "permissions": {
         "edit": {
-          "label": "Permissions",
+          "label": "permissions",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -72,14 +72,14 @@
           "mainField": "action"
         },
         "list": {
-          "label": "Permissions",
+          "label": "permissions",
           "searchable": false,
           "sortable": false
         }
       },
       "users": {
         "edit": {
-          "label": "Users",
+          "label": "users",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -87,35 +87,35 @@
           "mainField": "username"
         },
         "list": {
-          "label": "Users",
+          "label": "users",
           "searchable": false,
           "sortable": false
         }
       },
       "createdAt": {
         "edit": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }

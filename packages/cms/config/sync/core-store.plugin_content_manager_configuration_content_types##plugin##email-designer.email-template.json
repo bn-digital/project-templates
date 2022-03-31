@@ -15,147 +15,147 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": true,
           "sortable": true
         }
       },
       "templateReferenceId": {
         "edit": {
-          "label": "TemplateReferenceId",
+          "label": "templateReferenceId",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "TemplateReferenceId",
+          "label": "templateReferenceId",
           "searchable": true,
           "sortable": true
         }
       },
       "design": {
         "edit": {
-          "label": "Design",
+          "label": "design",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Design",
+          "label": "design",
           "searchable": false,
           "sortable": false
         }
       },
       "name": {
         "edit": {
-          "label": "Name",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Name",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
       },
       "subject": {
         "edit": {
-          "label": "Subject",
+          "label": "subject",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Subject",
+          "label": "subject",
           "searchable": true,
           "sortable": true
         }
       },
       "bodyHtml": {
         "edit": {
-          "label": "BodyHtml",
+          "label": "bodyHtml",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "BodyHtml",
+          "label": "bodyHtml",
           "searchable": true,
           "sortable": true
         }
       },
       "bodyText": {
         "edit": {
-          "label": "BodyText",
+          "label": "bodyText",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "BodyText",
+          "label": "bodyText",
           "searchable": true,
           "sortable": true
         }
       },
       "enabled": {
         "edit": {
-          "label": "Enabled",
+          "label": "enabled",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Enabled",
+          "label": "enabled",
           "searchable": true,
           "sortable": true
         }
       },
       "tags": {
         "edit": {
-          "label": "Tags",
+          "label": "tags",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Tags",
+          "label": "tags",
           "searchable": false,
           "sortable": false
         }
       },
       "createdAt": {
         "edit": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }

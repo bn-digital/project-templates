@@ -15,126 +15,126 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": true,
           "sortable": true
         }
       },
       "username": {
         "edit": {
-          "label": "Username",
+          "label": "username",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Username",
+          "label": "username",
           "searchable": true,
           "sortable": true
         }
       },
       "email": {
         "edit": {
-          "label": "Email",
+          "label": "email",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Email",
+          "label": "email",
           "searchable": true,
           "sortable": true
         }
       },
       "provider": {
         "edit": {
-          "label": "Provider",
+          "label": "provider",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "Provider",
+          "label": "provider",
           "searchable": true,
           "sortable": true
         }
       },
       "password": {
         "edit": {
-          "label": "Password",
+          "label": "password",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Password",
+          "label": "password",
           "searchable": true,
           "sortable": true
         }
       },
       "resetPasswordToken": {
         "edit": {
-          "label": "ResetPasswordToken",
+          "label": "resetPasswordToken",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "ResetPasswordToken",
+          "label": "resetPasswordToken",
           "searchable": true,
           "sortable": true
         }
       },
       "confirmationToken": {
         "edit": {
-          "label": "ConfirmationToken",
+          "label": "confirmationToken",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "ConfirmationToken",
+          "label": "confirmationToken",
           "searchable": true,
           "sortable": true
         }
       },
       "confirmed": {
         "edit": {
-          "label": "Confirmed",
+          "label": "confirmed",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Confirmed",
+          "label": "confirmed",
           "searchable": true,
           "sortable": true
         }
       },
       "blocked": {
         "edit": {
-          "label": "Blocked",
+          "label": "blocked",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Blocked",
+          "label": "blocked",
           "searchable": true,
           "sortable": true
         }
       },
       "role": {
         "edit": {
-          "label": "Role",
+          "label": "role",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -142,50 +142,35 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Role",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "customer": {
-        "edit": {
-          "label": "Customer",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "firstName"
-        },
-        "list": {
-          "label": "Customer",
+          "label": "role",
           "searchable": true,
           "sortable": true
         }
       },
       "createdAt": {
         "edit": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }
@@ -199,8 +184,7 @@
         "confirmed"
       ],
       "editRelations": [
-        "role",
-        "customer"
+        "role"
       ],
       "edit": [
         [

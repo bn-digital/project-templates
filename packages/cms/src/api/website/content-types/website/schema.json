@@ -8,6 +8,7 @@
     "description": ""
   },
   "options": {
+    "populateCreatorFields": false,
     "draftAndPublish": false
   },
   "pluginOptions": {
@@ -23,10 +24,7 @@
         }
       },
       "type": "dynamiczone",
-      "components": [
-        "page.home",
-        "page.contact-us"
-      ]
+      "components": ["page.home", "page.contact-us", "page.about"]
     },
     "seo": {
       "type": "component",

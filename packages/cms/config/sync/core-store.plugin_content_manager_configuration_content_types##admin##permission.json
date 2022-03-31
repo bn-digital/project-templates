@@ -15,70 +15,70 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": true,
           "sortable": true
         }
       },
       "action": {
         "edit": {
-          "label": "Action",
+          "label": "action",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Action",
+          "label": "action",
           "searchable": true,
           "sortable": true
         }
       },
       "subject": {
         "edit": {
-          "label": "Subject",
+          "label": "subject",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Subject",
+          "label": "subject",
           "searchable": true,
           "sortable": true
         }
       },
       "properties": {
         "edit": {
-          "label": "Properties",
+          "label": "properties",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Properties",
+          "label": "properties",
           "searchable": false,
           "sortable": false
         }
       },
       "conditions": {
         "edit": {
-          "label": "Conditions",
+          "label": "conditions",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Conditions",
+          "label": "conditions",
           "searchable": false,
           "sortable": false
         }
       },
       "role": {
         "edit": {
-          "label": "Role",
+          "label": "role",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -86,35 +86,35 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Role",
+          "label": "role",
           "searchable": true,
           "sortable": true
         }
       },
       "createdAt": {
         "edit": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }

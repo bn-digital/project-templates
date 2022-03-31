@@ -37,6 +37,7 @@ node_modules
 
 # Strapi
 build
+dist
 .cache
 .strapi-updater.json
 

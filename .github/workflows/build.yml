@@ -17,6 +17,7 @@ env:
   APP_NAME: ${{ github.event.repository.name }} # user for subdomain, docker image repository, Vault path etc
   APP_ENV: staging # used for target infrastructure rollout, Vault path, Kubernetes namespace
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  VAULT_ENDPOINT: ${{ secrets.VAULT_ENDPOINT }}
 
 jobs:
   analyze:
@@ -93,7 +94,7 @@ jobs:
           password: ${{ env.DOCKER_PASSWORD }}
 
       - name: Build Docker images
-        uses: hiberbee/github-action-skaffold@1.14.0
+        uses: hiberbee/github-action-skaffold@1.17.0
         with:
           command: build
           repository: ${{ env.DOCKER_REGISTRY }}/${{ env.APP_NAME }}

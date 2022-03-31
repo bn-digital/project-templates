@@ -15,126 +15,126 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": true,
           "sortable": true
         }
       },
       "firstname": {
         "edit": {
-          "label": "Firstname",
+          "label": "firstname",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Firstname",
+          "label": "firstname",
           "searchable": true,
           "sortable": true
         }
       },
       "lastname": {
         "edit": {
-          "label": "Lastname",
+          "label": "lastname",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Lastname",
+          "label": "lastname",
           "searchable": true,
           "sortable": true
         }
       },
       "username": {
         "edit": {
-          "label": "Username",
+          "label": "username",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Username",
+          "label": "username",
           "searchable": true,
           "sortable": true
         }
       },
       "email": {
         "edit": {
-          "label": "Email",
+          "label": "email",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Email",
+          "label": "email",
           "searchable": true,
           "sortable": true
         }
       },
       "password": {
         "edit": {
-          "label": "Password",
+          "label": "password",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Password",
+          "label": "password",
           "searchable": true,
           "sortable": true
         }
       },
       "resetPasswordToken": {
         "edit": {
-          "label": "ResetPasswordToken",
+          "label": "resetPasswordToken",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "ResetPasswordToken",
+          "label": "resetPasswordToken",
           "searchable": true,
           "sortable": true
         }
       },
       "registrationToken": {
         "edit": {
-          "label": "RegistrationToken",
+          "label": "registrationToken",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "RegistrationToken",
+          "label": "registrationToken",
           "searchable": true,
           "sortable": true
         }
       },
       "isActive": {
         "edit": {
-          "label": "IsActive",
+          "label": "isActive",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "IsActive",
+          "label": "isActive",
           "searchable": true,
           "sortable": true
         }
       },
       "roles": {
         "edit": {
-          "label": "Roles",
+          "label": "roles",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -142,63 +142,63 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Roles",
+          "label": "roles",
           "searchable": false,
           "sortable": false
         }
       },
       "blocked": {
         "edit": {
-          "label": "Blocked",
+          "label": "blocked",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Blocked",
+          "label": "blocked",
           "searchable": true,
           "sortable": true
         }
       },
       "preferedLanguage": {
         "edit": {
-          "label": "PreferedLanguage",
+          "label": "preferedLanguage",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "PreferedLanguage",
+          "label": "preferedLanguage",
           "searchable": true,
           "sortable": true
         }
       },
       "createdAt": {
         "edit": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }

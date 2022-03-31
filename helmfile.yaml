@@ -10,7 +10,7 @@ releases:
   - name: '{{ requiredEnv "APP_NAME" }}-website'
     namespace: '{{ requiredEnv "APP_ENV" }}'
     chart: bndigital/app
-    version: 1.2.10
+    version: 1.2.11
     values:
       - app:
           name: '{{ requiredEnv "APP_NAME" }}'
@@ -36,7 +36,7 @@ releases:
   - name: '{{ requiredEnv "APP_NAME" }}-cms'
     namespace: '{{ requiredEnv "APP_ENV" }}'
     chart: bndigital/app
-    version: 1.2.10
+    version: 1.2.11
     values:
       - app:
           name: '{{ requiredEnv "APP_NAME" }}'

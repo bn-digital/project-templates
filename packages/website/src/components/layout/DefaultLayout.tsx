@@ -1,13 +1,15 @@
-import { Drawer, Layout, Skeleton, Spin } from 'antd'
+import './DefaultLayout.less'
+
+import { Drawer, Layout, Spin } from 'antd'
+import { Suspense, VFC } from 'react'
 import { Outlet } from 'react-router'
-import { Suspense, useCallback, useEffect, useState, VFC } from 'react'
 import { useLocation } from 'react-router-dom'
 import { AppContext } from 'src/components/app'
 import { WebsiteComponent } from 'src/graphql'
-import { Footer } from './Footer'
+
 import { Content } from './Content'
+import { Footer } from './Footer'
 import { Header } from './Header'
-import './DefaultLayout.less'
 
 const PageLoader: VFC = () => (
   <Content>

@@ -6,7 +6,7 @@ config:
     Upload: unknown
     Date: String
     Time: String
-    JSON: Record<string, Object|Array|String|Number|Boolean|null|undefined>
+    JSON: Record<string, unknown|unknown[]|string|number|boolean|null|undefined|unknown>
     Long: Number
     DateTime: Date
 generates:

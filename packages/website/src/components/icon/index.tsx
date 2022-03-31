@@ -1,4 +1,5 @@
 import { FC, SVGProps } from 'react'
+
 import { ReactComponent as AntDesign } from './images/AntDesign.svg'
 import { ReactComponent as React } from './images/React.svg'
 import { ReactComponent as Strapi } from './images/Strapi.svg'

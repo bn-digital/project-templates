@@ -1,7 +1,8 @@
-import { FC } from 'react'
-import { Layout } from 'antd'
 import './Content.less'
+
+import { Layout } from 'antd'
 import classnames from 'classnames'
+import { FC } from 'react'
 
 type ContentProps = { fixed: boolean }
 

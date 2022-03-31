@@ -15,63 +15,63 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
-          "searchable": false,
-          "sortable": false
+          "label": "id",
+          "searchable": true,
+          "sortable": true
         }
       },
       "title": {
         "edit": {
-          "label": "Title",
+          "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Title",
+          "label": "title",
           "searchable": true,
           "sortable": true
         }
       },
       "subtitle": {
         "edit": {
-          "label": "Subtitle",
+          "label": "subtitle",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Subtitle",
+          "label": "subtitle",
           "searchable": true,
           "sortable": true
         }
       },
       "description": {
         "edit": {
-          "label": "Description",
+          "label": "description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Description",
+          "label": "description",
           "searchable": true,
           "sortable": true
         }
       },
       "media": {
         "edit": {
-          "label": "Media",
+          "label": "media",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Media",
+          "label": "media",
           "searchable": false,
           "sortable": false
         }
@@ -84,6 +84,7 @@
         "subtitle",
         "description"
       ],
+      "editRelations": [],
       "edit": [
         [
           {
@@ -105,8 +106,7 @@
             "size": 6
           }
         ]
-      ],
-      "editRelations": []
+      ]
     },
     "isComponent": true
   },
