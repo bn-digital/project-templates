@@ -1,10 +1,10 @@
-version: v0.143.0
+version: v0.144.0
 dependencies:
 - name: app
   repository: https://dcr.bndigital.dev/chartrepo/library
-  version: 1.2.10
+  version: 1.2.14
 - name: app
   repository: https://dcr.bndigital.dev/chartrepo/library
-  version: 1.2.10
+  version: 1.2.14
 digest: sha256:8ab34411a398408964519969a40ac2fb4d7adb3fa0c73bc1ff6bd5d11d987b16
 generated: "2022-01-24T12:00:01.0695874+02:00"

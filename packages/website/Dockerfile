@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:latest
-ARG version=1.6.0
+ARG version=1.7.0
 FROM dcr.bndigital.dev/library/yarn:${version} AS build
 RUN yarn
 COPY . .

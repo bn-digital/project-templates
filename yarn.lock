@@ -162,7 +162,7 @@ __metadata:
   dependencies:
     "@bn-digital/vault-env": ^1.4.0
     "@strapi/database": ^4.0.7
-    "@strapi/helper-plugin": ^4.0.7
+    "@strapi/helper-plugin": ^4.1.10
     "@strapi/plugin-content-manager": ^4.0.7
     "@strapi/plugin-content-type-builder": ^4.0.7
     "@strapi/plugin-graphql": ^4.0.7
@@ -177,18 +177,18 @@ __metadata:
     knex: ^1.0.3
     lodash: ^4.17.21
     mysql: ^2.18.1
-    nexus: ^1.2.0
+    nexus: ^1.3.0
     pg: ^8.7.3
     sqlite3: ^5.0.2
     strapi-plugin-config-sync: ^1.0.0-beta.8
     strapi-plugin-email-designer: ^2.0.9
     strapi-plugin-graphs-builder: ^0.1.0
-    strapi-plugin-notes: ^1.0.0
-    strapi-plugin-sitemap: ^2.0.6
-    strapi-plugin-transformer: ^1.0.1
+    strapi-plugin-notes: ^1.0.1
+    strapi-plugin-sitemap: ^2.0.8
+    strapi-plugin-transformer: ^1.0.3
     strapi-plugin-wysiwyg-tui-editor: ^4.0.1
     strapi-to-typescript: ^2.0.14
-    typescript: ^4.5.5
+    typescript: ^4.6.4
     uuid: ^8.3.2
   languageName: unknown
   linkType: soft
@@ -5269,7 +5269,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/helper-plugin@npm:4.0.7, @strapi/helper-plugin@npm:^4.0.7":
+"@strapi/helper-plugin@npm:4.0.7":
   version: 4.0.7
   resolution: "@strapi/helper-plugin@npm:4.0.7"
   dependencies:
@@ -5300,6 +5300,40 @@ __metadata:
     qs: 6.10.1
     react-select: ^4.0.2
   checksum: 41f7e2ed3e072a3d3eca20d59f15e9c7576d9b61d9f6a9e545ddb729620c365742d978687373d5b4c001790eaa01e08e6964f0ad209b8a5c73661cbe9bb5b008
+  languageName: node
+  linkType: hard
+
+"@strapi/helper-plugin@npm:^4.1.10":
+  version: 4.1.10
+  resolution: "@strapi/helper-plugin@npm:4.1.10"
+  dependencies:
+    "@fortawesome/fontawesome-free": ^5.15.2
+    "@fortawesome/fontawesome-svg-core": ^1.2.35
+    "@fortawesome/free-brands-svg-icons": ^5.15.2
+    "@fortawesome/free-solid-svg-icons": ^5.15.3
+    "@fortawesome/react-fontawesome": ^0.1.14
+    axios: 0.25.0
+    babel-plugin-styled-components: 2.0.2
+    formik: 2.2.9
+    invariant: ^2.2.1
+    lodash: 4.17.21
+    match-sorter: ^4.0.2
+    mini-css-extract-plugin: 2.4.4
+    moment: ^2.29.1
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    react-helmet: ^6.1.0
+    react-intl: 5.20.2
+    react-router: ^5.2.0
+    react-router-dom: 5.2.0
+    styled-components: 5.3.3
+    whatwg-fetch: ^3.6.2
+  peerDependencies:
+    formik: ^2.2.6
+    immer: 9.0.6
+    qs: 6.10.1
+    react-select: ^4.0.2
+  checksum: 4e5c620bd1eb3b121b319f0c8d5736668605262aec9b72ff252a717485ca6d727d882c42d8e4b89d446cb90dd54daff447e065065f592da91372fda7b230fc3b
   languageName: node
   linkType: hard
 
@@ -7543,9 +7577,9 @@ __metadata:
     "@bn-digital/graphql-config": ^1.0.7
     "@bn-digital/prettier-config": ^1.13.3
     "@bn-digital/stylelint-config": ^1.13.5
-    concurrently: ^7.0.0
-    lint-staged: ^12.3.4
-    typescript: ^4.5.5
+    concurrently: ^7.1.0
+    lint-staged: ^12.4.1
+    typescript: ^4.6.4
   languageName: unknown
   linkType: soft
 
@@ -9753,9 +9787,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concurrently@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "concurrently@npm:7.0.0"
+"concurrently@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "concurrently@npm:7.1.0"
   dependencies:
     chalk: ^4.1.0
     date-fns: ^2.16.1
@@ -9767,7 +9801,7 @@ __metadata:
     yargs: ^16.2.0
   bin:
     concurrently: dist/bin/concurrently.js
-  checksum: 1be78f24bf814f097adaf2e61a37563eb73f12272bbeda90e3e616a23525f793268e22a3c6aedf34e5bad44459f7c30ee053c617905416ba11ce2bee55f089a5
+  checksum: 723996afc73af7ea914a03726c75b63be6ce83f0825b0bc54de0568ba89490e217ca88523f251fe1e5c30ee2780572dce830b530ef35e435e64c1f94cfd4e4af
   languageName: node
   linkType: hard
 
@@ -16437,9 +16471,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^12.3.4":
-  version: 12.3.4
-  resolution: "lint-staged@npm:12.3.4"
+"lint-staged@npm:^12.4.1":
+  version: 12.4.1
+  resolution: "lint-staged@npm:12.4.1"
   dependencies:
     cli-truncate: ^3.1.0
     colorette: ^2.0.16
@@ -16451,12 +16485,13 @@ __metadata:
     micromatch: ^4.0.4
     normalize-path: ^3.0.0
     object-inspect: ^1.12.0
+    pidtree: ^0.5.0
     string-argv: ^0.3.1
     supports-color: ^9.2.1
     yaml: ^1.10.2
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: 4e0b4b9da4183a0daeab35d41e4d243fb1270a39db997efa0c3745fa148a7a4b8b723a51cb757595fc8bb118796ca1465e67aede72f25e9ea48165aec36cec3b
+  checksum: b57183b537064cda6caef6679918bf271903145f7c28d09567e918b8b13094048b579f8df808ea590dbd7ea2ec332327c5e372cf3d77e85b7b0254f6541ce4c3
   languageName: node
   linkType: hard
 
@@ -18304,15 +18339,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nexus@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "nexus@npm:1.2.0"
+"nexus@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "nexus@npm:1.3.0"
   dependencies:
     iterall: ^1.3.0
     tslib: ^2.0.3
   peerDependencies:
-    graphql: ^14.5.8 || 15.x
-  checksum: 0daae381c6db2410359e68d6d3d6141467625d3757c20954f435c66c28e7bd800f65631ff2fd52598b6a01ce1fa98cb0663d736139140fef8d93bd8b1fa73d0b
+    graphql: 15.x || 16.x
+  checksum: 811a4ef69d811d77dee2d368dde487a8e1494fc7878ce2dd72f0863eb6030f8e52984e0fbfa12ae970377f2e9b7402a48cde804a16fdd754b4c83e34b92f91de
   languageName: node
   linkType: hard
 
@@ -19773,6 +19808,15 @@ __metadata:
   version: 2.3.0
   resolution: "picomatch@npm:2.3.0"
   checksum: 16818720ea7c5872b6af110760dee856c8e4cd79aed1c7a006d076b1cc09eff3ae41ca5019966694c33fbd2e1cc6ea617ab10e4adac6df06556168f13be3fca2
+  languageName: node
+  linkType: hard
+
+"pidtree@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "pidtree@npm:0.5.0"
+  bin:
+    pidtree: bin/pidtree.js
+  checksum: 371cd14bbc9bdee2a6a44596dd521dd3565e223481e0b1afffdca3f1c29831850bfa7784114dc30d245d37e7d186cec035e036256b39f75d878d19498fe0df6a
   languageName: node
   linkType: hard
 
@@ -24447,18 +24491,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strapi-plugin-notes@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "strapi-plugin-notes@npm:1.0.0"
+"strapi-plugin-notes@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "strapi-plugin-notes@npm:1.0.1"
   peerDependencies:
     "@strapi/strapi": ^4.0.7
-  checksum: 84ce4a6300738d56a5c192217073eac4f08c61a17f53806974389c1e1f39220c07c5676af92441d3692d8c75f50dac4e452208cf34480b3c0ef300107dd36d42
+  checksum: 53ffb33c7066af5bf8a11a49e28cb671f1bc6d02cacc55c23702f4c597083d9f6cde41b7c3fcc35ad9c40d736d99266c0048abdb6aad6a98626d206bbb707b1f
   languageName: node
   linkType: hard
 
-"strapi-plugin-sitemap@npm:^2.0.6":
-  version: 2.0.6
-  resolution: "strapi-plugin-sitemap@npm:2.0.6"
+"strapi-plugin-sitemap@npm:^2.0.8":
+  version: 2.0.8
+  resolution: "strapi-plugin-sitemap@npm:2.0.8"
   dependencies:
     immutable: ^3.8.2
     redux-immutable: ^4.0.0
@@ -24467,18 +24511,18 @@ __metadata:
     xml2js: ^0.4.23
   peerDependencies:
     "@strapi/strapi": ^4.0.0
-  checksum: 219619ee0b8a03ac1bfe713c41369130c968027c1d408978a11a568bf2067cb7e753e7852893b642efcf6612fa8d74985649fd9d79e7345c1b8609c974fdf0f7
+  checksum: 8ecf577e1a52c17e0c69d1fd6076f0fbfa45f089021bbc67ea388307b6aca7f036692dee40de79e86ae9314317f271bf327e6f2a321708850c020e666644c803
   languageName: node
   linkType: hard
 
-"strapi-plugin-transformer@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "strapi-plugin-transformer@npm:1.0.1"
+"strapi-plugin-transformer@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "strapi-plugin-transformer@npm:1.0.3"
   peerDependencies:
     "@strapi/strapi": ^4.0.7
     lodash: ^4.17.21
     yup: ^0.32.9
-  checksum: b8a1cbfcf8602f7a93c5a87f8ca03386ef27e84e6dbbf56953137b192cc199be7ee7d9b5b757d833ec6746bb220321e5050e30376c99a34d2e5a48de77294e3e
+  checksum: bf732cef9118d6d12390e2b1a719a04a79e2723d46a9809fe154891af2b81b36095bf2e0c54635fb51da1b5545e0e9051a211489ced72ae2917f309c7815fa0b
   languageName: node
   linkType: hard
 
@@ -24831,7 +24875,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^5.2.3, styled-components@npm:^5.3.3":
+"styled-components@npm:5.3.3, styled-components@npm:^5.2.3, styled-components@npm:^5.3.3":
   version: 5.3.3
   resolution: "styled-components@npm:5.3.3"
   dependencies:
@@ -25940,6 +25984,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^4.6.4":
+  version: 4.6.4
+  resolution: "typescript@npm:4.6.4"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: e7bfcc39cd4571a63a54e5ea21f16b8445268b9900bf55aee0e02ad981be576acc140eba24f1af5e3c1457767c96cea6d12861768fb386cf3ffb34013718631a
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@^4.4.3#~builtin<compat/typescript>":
   version: 4.5.2
   resolution: "typescript@patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=493e53"
@@ -25957,6 +26011,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: c05c318d79c690f101d7ffb34cd6c7d6bbd884d3af9cefe7749ad0cd6be43c7082f098280982ca945dcba23fde34a08fed9602bb26540936baf8c0520727d3ba
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>":
+  version: 4.6.4
+  resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=493e53"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 8cff08bf66d9ecfbf9fcc5edde04a5a7923e6cac3b21d99b4e9a06973bf5bd7f9a83ec7eed24129c1b9e13fd861de8c1070110d4b9ce9f18ab57c6999e9c9a6f
   languageName: node
   linkType: hard
 

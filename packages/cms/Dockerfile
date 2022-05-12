@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:latest
-FROM dcr.bndigital.dev/library/yarn:1.3.0 AS build
+FROM dcr.bndigital.dev/library/yarn:1.7.0 AS build
 RUN yarn
 COPY . .
 RUN yarn build

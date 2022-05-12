@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41586c2a-e4b9-49c2-b94b-539f4ffd96a3" name="Changes" comment="Changes in project template" />
+    <list default="true" id="41586c2a-e4b9-49c2-b94b-539f4ffd96a3" name="Changes" comment="Changes in project template">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helmfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/helmfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/cms/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/cms/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/website/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,14 +71,9 @@
       </list>
     </option>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/packages/cms/node_modules/pg/package.json" root0="SKIP_INSPECTION" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/WebStorm2021.3/javascript/typings/react-dom/17.0.2/node_modules/@types/react-dom/experimental.d.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/packages/website/node_modules/antd/lib/layout/index.d.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/packages/website/node_modules/@types/react/index.d.ts" root0="SKIP_INSPECTION" />
-  </component>
   <component name="KubernetesApiPersistence">
     <option name="context" value="do-fra1-bndigital" />
+    <option name="namespace" value="default" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -114,6 +120,8 @@
       <updated>1645109525495</updated>
       <workItem from="1645107999866" duration="1447000" />
       <workItem from="1645109526369" />
+      <workItem from="1652369630443" duration="194000" />
+      <workItem from="1652369839710" duration="1022000" />
     </task>
     <task id="LOCAL-00001" summary="Changes in project template">
       <created>1645109699806</created>
@@ -124,16 +132,7 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <option name="createBranch" value="false" />
-    <servers>
-      <Linear>
-        <commitMessageFormat>Resolved {id} {summary}</commitMessageFormat>
-        <option name="preferredOpenTaskState">
-          <CustomTaskState id="90e07840-d252-4033-b934-458ad9cbd380" name="In Progress" />
-        </option>
-        <option name="shouldFormatCommitMessage" value="true" />
-        <username>ENG</username>
-      </Linear>
-    </servers>
+    <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
@@ -148,6 +147,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
