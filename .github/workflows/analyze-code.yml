@@ -1,10 +1,6 @@
 name: Analyze source code
 on:
   workflow_call:
-    inputs:
-      project:
-        type: string
-        required: true
 
 jobs:
   sonarqube:
@@ -23,14 +19,14 @@ jobs:
           url: ${{ secrets.VAULT_ENDPOINT }}
           githubToken: ${{ secrets.GH_TOKEN }}
           secrets: |
-            infrastructure/data/sonarqube   host    | SONAR_HOST ;
+            infrastructure/data/sonarqube   url    | SONAR_HOST ;
             infrastructure/data/sonarqube   token   | SONAR_TOKEN ;
 
       - name: Run Sonar scanner
         uses: sonarsource/sonarqube-scan-action@v1.0.0
         with:
           args: |
-            -Dsonar.projectName=${{ inputs.project }}
-            -Dsonar.projectKey=${{ inputs.project }}
+            -Dsonar.projectName=${{ github.event.repository.name }}
+            -Dsonar.projectKey=${{ github.event.repository.name }}
             -Dsonar.links.scm=https://github.com/${{ github.repository }}
             -Dsonar.links.ci=https://github.com/${{ github.repository }}/actions
