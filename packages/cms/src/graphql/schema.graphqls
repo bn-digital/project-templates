@@ -8,7 +8,9 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTime
 
-"""The `Upload` scalar type represents a file upload."""
+"""
+The `Upload` scalar type represents a file upload.
+"""
 scalar Upload
 
 type Error {
@@ -588,7 +590,11 @@ type UsersPermissionsRole {
   name: String!
   description: String
   type: String
-  permissions(filters: UsersPermissionsPermissionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsPermissionRelationResponseCollection
+  permissions(
+    filters: UsersPermissionsPermissionFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsPermissionRelationResponseCollection
   users(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserRelationResponseCollection
   createdAt: DateTime
   updatedAt: DateTime
@@ -1008,7 +1014,37 @@ type WebsiteEntityResponse {
   data: WebsiteEntity
 }
 
-union GenericMorph = ComponentDataContact | ComponentDataEntry | ComponentDataSet | ComponentPageAbout | ComponentPageContactUs | ComponentPageHome | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiGrid | ComponentUiHeadline | ComponentUiLink | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | UploadFile | EntityNotesNote | I18NLocale | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | EmailDesignerEmailTemplate | GraphsBuilderGraph | MenusMenu | MenusMenuItem | Contact | Post | Translation | Website
+union GenericMorph =
+    ComponentDataContact
+  | ComponentDataEntry
+  | ComponentDataSet
+  | ComponentPageAbout
+  | ComponentPageContactUs
+  | ComponentPageHome
+  | ComponentSharedMetaSocial
+  | ComponentSharedSeo
+  | ComponentUiCard
+  | ComponentUiGrid
+  | ComponentUiHeadline
+  | ComponentUiLink
+  | ComponentUiParagraph
+  | ComponentUiSection
+  | ComponentUiTab
+  | ComponentUiText
+  | UploadFile
+  | EntityNotesNote
+  | I18NLocale
+  | UsersPermissionsPermission
+  | UsersPermissionsRole
+  | UsersPermissionsUser
+  | EmailDesignerEmailTemplate
+  | GraphsBuilderGraph
+  | MenusMenu
+  | MenusMenuItem
+  | Contact
+  | Post
+  | Translation
+  | Website
 
 input FileInfoInput {
   name: String
@@ -1080,11 +1116,23 @@ type Query {
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
-  usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
+  usersPermissionsRoles(
+    filters: UsersPermissionsRoleFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsRoleEntityResponseCollection
   usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
-  usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  usersPermissionsUsers(
+    filters: UsersPermissionsUserFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsUserEntityResponseCollection
   emailDesignerEmailTemplate(id: ID): EmailDesignerEmailTemplateEntityResponse
-  emailDesignerEmailTemplates(filters: EmailDesignerEmailTemplateFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): EmailDesignerEmailTemplateEntityResponseCollection
+  emailDesignerEmailTemplates(
+    filters: EmailDesignerEmailTemplateFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): EmailDesignerEmailTemplateEntityResponseCollection
   graphsBuilderGraph(id: ID): GraphsBuilderGraphEntityResponse
   graphsBuilderGraphs(filters: GraphsBuilderGraphFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): GraphsBuilderGraphEntityResponseCollection
   menusMenu(id: ID): MenusMenuEntityResponse
@@ -1130,29 +1178,45 @@ type Mutation {
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   removeFile(id: ID!): UploadFileEntityResponse
 
-  """Create a new role"""
+  """
+  Create a new role
+  """
   createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload
 
-  """Update an existing role"""
+  """
+  Update an existing role
+  """
   updateUsersPermissionsRole(id: ID!, data: UsersPermissionsRoleInput!): UsersPermissionsUpdateRolePayload
 
-  """Delete an existing role"""
+  """
+  Delete an existing role
+  """
   deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
 
-  """Create a new user"""
+  """
+  Create a new user
+  """
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
 
-  """Update an existing user"""
+  """
+  Update an existing user
+  """
   updateUsersPermissionsUser(id: ID!, data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
 
-  """Update an existing user"""
+  """
+  Update an existing user
+  """
   deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
   login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
 
-  """Register a user"""
+  """
+  Register a user
+  """
   register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
 
-  """Request a reset password token"""
+  """
+  Request a reset password token
+  """
   forgotPassword(email: String!): UsersPermissionsPasswordPayload
 
   """
@@ -1160,6 +1224,8 @@ type Mutation {
   """
   resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
 
-  """Confirm an email users email address"""
+  """
+  Confirm an email users email address
+  """
   emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
 }
