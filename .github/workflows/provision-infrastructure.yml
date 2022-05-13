@@ -1,0 +1,59 @@
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        description: Used by Vault to import secrets from
+        required: false
+        default: production
+    provider:
+      type: string
+      description: Used by Vault to import secrets from
+      required: false
+      default: digitalocean
+
+env:
+  APP_NAME: ${{ github.event.repository.name }}
+  APP_ENV: ${{ inputs.environment }}
+
+concurrency:
+  group: ${{ github.event.repository.name }}-terraform
+  cancel-in-progress: false
+
+jobs:
+  terraform:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+
+      - name: Import Vault secrets
+        uses: hashicorp/vault-action@v2.4.0
+        if: inputs.provider == 'digitalocean'
+        with:
+          method: github
+          url: ${{ env.VAULT_ENDPOINT }}
+          githubToken: ${{ env.GITHUB_TOKEN }}
+          secrets: |
+            projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/${{ inputs.provider }}   token | TF_VAR_digitalocean_token ;
+            projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/${{ inputs.provider }}   spaces-access-key-id | TF_VAR_spaces_access_key_id ;
+            projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/${{ inputs.provider }}   spaces-secret-access-key | TF_VAR_spaces_secret_access_key ;
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Init providers
+        run: terraform init
+        working-directory: packages/cloud
+
+      - name: Validate code
+        run: terraform validate -no-color
+        working-directory: packages/cloud
+
+      - name: Plan infrastructure changes
+        run: terraform plan -input=false
+        working-directory: packages/cloud
+
+      - name: Apply Terraform plan
+        run: terraform apply -auto-approve -input=false
+        working-directory: packages/cloud
