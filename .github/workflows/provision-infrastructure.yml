@@ -62,9 +62,3 @@ jobs:
         run: terraform apply -auto-approve -input=false
         working-directory: packages/cloud
 
-      - name: Persist state
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          tagging_message: ${{ github.event.tag.name }}
-
-
