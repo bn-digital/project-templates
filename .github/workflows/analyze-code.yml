@@ -16,8 +16,8 @@ jobs:
         uses: hashicorp/vault-action@v2.4.0
         with:
           method: github
-          url: ${{ env.VAULT_ENDPOINT }}
-          githubToken: ${{ env.GITHUB_TOKEN }}
+          url: ${{ secrets.VAULT_ENDPOINT }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
           secrets: |
             infrastructure/data/sonarqube   host    | SONAR_HOST ;
             infrastructure/data/sonarqube   token   | SONAR_TOKEN ;

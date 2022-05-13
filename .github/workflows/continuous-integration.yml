@@ -9,13 +9,19 @@ on:
       - ".github/workflows/build.yml"
       - "skaffold.yaml"
       - "**/*/.env.*"
-      - "**/*/Dockerfile"
-      - "**/*/package.json"
+      - "Dockerfile"
+      - ".dockerignore"
+      - "yarn.lock"
       - "packages/cms/src/**/*"
       - "packages/website/src/**/*"
       - "packages/cms/config/**/*"
+
 jobs:
   analyze:
     uses: bn-digital/project-templates/.github/workflows/build-images.yml@latest
+    name: Analyze source code
+    secrets: inherit
   build:
+    name: Build Docker images
     uses: bn-digital/project-templates/.github/workflows/build-images.yml@latest
+    secrets: inherit
