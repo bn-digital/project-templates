@@ -6,6 +6,10 @@ on:
         type: string
         required: false
         default: staging
+      secrets:
+        type: string
+        required: false
+        default: ''
       version:
         type: string
         required: false
@@ -45,8 +49,9 @@ jobs:
             infrastructure/data/harbor        registry  | DOCKER_REGISTRY ;
             infrastructure/data/harbor        username  | DOCKER_USERNAME ;
             infrastructure/data/harbor        password  | DOCKER_PASSWORD ;
-            infrastructure/data/kubernetes    cluster   | KUBERNETES_CLUSTER ;
             infrastructure/data/digitalocean  token     | DIGITALOCEAN_TOKEN ;
+            infrastructure/data/kubernetes    cluster   | KUBERNETES_CLUSTER ;
+            ${{ inputs.secrets }}
 
       - name: Setup DigitalOcean cli
         uses: digitalocean/action-doctl@v2
