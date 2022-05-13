@@ -4,7 +4,7 @@ on:
 
 jobs:
   sonarqube:
-    name: Analyze source code
+    name: Sonarqube
     runs-on: self-hosted
     steps:
       - name: Checkout sources
@@ -19,7 +19,7 @@ jobs:
           url: ${{ secrets.VAULT_ENDPOINT }}
           githubToken: ${{ secrets.GH_TOKEN }}
           secrets: |
-            infrastructure/data/sonarqube   url    | SONAR_HOST ;
+            infrastructure/data/sonarqube   url     | SONAR_HOST ;
             infrastructure/data/sonarqube   token   | SONAR_TOKEN ;
 
       - name: Run Sonar scanner
