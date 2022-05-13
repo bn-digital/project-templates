@@ -32,8 +32,8 @@ jobs:
         if: inputs.provider == 'digitalocean'
         with:
           method: github
-          url: ${{ env.VAULT_ENDPOINT }}
-          githubToken: ${{ env.GITHUB_TOKEN }}
+          url: ${{ secrets.VAULT_ENDPOINT }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
           secrets: |
             projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/digitalocean.com   token | TF_VAR_digitalocean_token ;
             projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/digitalocean.com   project | TF_VAR_project_name ;
