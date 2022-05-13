@@ -6,11 +6,11 @@ on:
         description: Used by Vault to import secrets from
         required: false
         default: production
-    provider:
-      type: string
-      description: Used by Vault to import secrets from
-      required: false
-      default: digitalocean
+      provider:
+        type: string
+        description: Used by Vault to import secrets from
+        required: false
+        default: digitalocean
 
 env:
   APP_NAME: ${{ github.event.repository.name }}
