@@ -1,4 +1,3 @@
-name: Deploy Helm Charts
 on:
   workflow_call:
     inputs:
@@ -27,7 +26,6 @@ env:
 
 jobs:
   helm:
-    name: Deploy charts
     runs-on: self-hosted
     environment:
       name: staging
