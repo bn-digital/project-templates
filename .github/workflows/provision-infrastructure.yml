@@ -33,7 +33,7 @@ jobs:
         with:
           method: github
           url: ${{ secrets.VAULT_ENDPOINT }}
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ secrets.GH_TOKEN }}
           secrets: |
             projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/digitalocean.com   token | TF_VAR_digitalocean_token ;
             projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/digitalocean.com   project | TF_VAR_project_name ;
