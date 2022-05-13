@@ -1,0 +1,63 @@
+name: Deploy Helm Charts
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: false
+        default: staging
+      version:
+        type: string
+        required: false
+        default: latest
+      domain:
+        type: string
+        required: false
+        default: ${{ github.event.repository.name }}.bndigital.dev
+
+env:
+  APP_NAME: ${{ github.event.repository.name }}
+  DOMAIN: ${{ inputs.domain }}
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  VAULT_ENDPOINT: ${{ secrets.VAULT_ENDPOINT }}
+
+jobs:
+  helm:
+    name: Deploy charts
+    runs-on: self-hosted
+    environment:
+      name: staging
+      url: ${{ env.DOMAIN }}
+    env:
+      APP_ENV: ${{ inputs.environment }}
+      APP_VERSION: ${{ inputs.version }}
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Import Vault secrets
+        uses: hashicorp/vault-action@v2.4.0
+        with:
+          method: github
+          url: ${{ env.VAULT_ENDPOINT }}
+          githubToken: ${{ env.GITHUB_TOKEN }}
+          secrets: |
+            infrastructure/data/harbor        registry  | DOCKER_REGISTRY ;
+            infrastructure/data/harbor        username  | DOCKER_USERNAME ;
+            infrastructure/data/harbor        password  | DOCKER_PASSWORD ;
+            infrastructure/data/kubernetes    cluster   | KUBERNETES_CLUSTER ;
+            infrastructure/data/digitalocean  token     | DIGITALOCEAN_TOKEN ;
+
+      - name: Setup DigitalOcean cli
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ env.DIGITALOCEAN_TOKEN }}
+
+      - name: Configure Kubernetes context
+        run: doctl kubernetes cluster kubeconfig save ${{ env.KUBERNETES_CLUSTER }} --set-current-context
+
+      - name: Release Helm charts
+        uses: hiberbee/github-action-helm@1.12.0
+        with:
+          helmfile: apply
+          environment: ${{ env.APP_ENV }}

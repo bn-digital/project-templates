@@ -11,22 +11,12 @@
     "populateCreatorFields": false,
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
   "attributes": {
     "entry": {
       "type": "component",
       "repeatable": true,
       "component": "data.entry",
-      "required": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      "required": true
     }
   }
 }

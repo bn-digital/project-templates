@@ -5,7 +5,10 @@ export default [
   {
     name: 'strapi::security',
     config: {
-      contentSecurityPolicy: false,
+      contentSecurityPolicy: {
+        defaults: true,
+        dangerouslyDisableDefaultSrc: true,
+      },
     },
   },
   'strapi::cors',
@@ -14,5 +17,5 @@ export default [
   'strapi::session',
   'strapi::body',
   'strapi::public',
-  { name: 'strapi::favicon', config: { path: path.join(__dirname, '..', 'public', 'favicon.ico') } },
+  'strapi::favicon',
 ]

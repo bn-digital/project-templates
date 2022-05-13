@@ -14,7 +14,7 @@
     "contact": {
       "type": "component",
       "repeatable": false,
-      "component": "ui.contact"
+      "component": "data.contact"
     }
   }
 }

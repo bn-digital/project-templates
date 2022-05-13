@@ -1762,6 +1762,270 @@
       "plugin": "graphs-builder",
       "globalId": "GraphsBuilderGraph"
     },
+    "plugin::menus.menu": {
+      "kind": "collectionType",
+      "collectionName": "menus",
+      "info": {
+        "displayName": "Menu",
+        "singularName": "menu",
+        "pluralName": "menus",
+        "tableName": "menus"
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      },
+      "attributes": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "slug": {
+          "type": "uid",
+          "targetField": "title",
+          "required": true
+        },
+        "items": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "plugin::menus.menu-item",
+          "mappedBy": "root_menu"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "__schema__": {
+        "collectionName": "menus",
+        "info": {
+          "displayName": "Menu",
+          "singularName": "menu",
+          "pluralName": "menus",
+          "tableName": "menus"
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {
+          "content-manager": {
+            "visible": false
+          },
+          "content-type-builder": {
+            "visible": false
+          }
+        },
+        "attributes": {
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "slug": {
+            "type": "uid",
+            "targetField": "title",
+            "required": true
+          },
+          "items": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "plugin::menus.menu-item",
+            "mappedBy": "root_menu"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "menu",
+      "connection": "default",
+      "uid": "plugin::menus.menu",
+      "plugin": "menus",
+      "globalId": "MenusMenu"
+    },
+    "plugin::menus.menu-item": {
+      "kind": "collectionType",
+      "collectionName": "menu_items",
+      "info": {
+        "displayName": "Menu Item",
+        "singularName": "menu-item",
+        "pluralName": "menu-items",
+        "tableName": "menu_items"
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      },
+      "attributes": {
+        "order": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "url": {
+          "type": "string"
+        },
+        "target": {
+          "type": "enumeration",
+          "enum": [
+            "_blank",
+            "_parent",
+            "_self",
+            "_top"
+          ]
+        },
+        "root_menu": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "plugin::menus.menu",
+          "inversedBy": "items",
+          "required": true
+        },
+        "parent": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "plugin::menus.menu-item"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "__schema__": {
+        "collectionName": "menu_items",
+        "info": {
+          "displayName": "Menu Item",
+          "singularName": "menu-item",
+          "pluralName": "menu-items",
+          "tableName": "menu_items"
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {
+          "content-manager": {
+            "visible": false
+          },
+          "content-type-builder": {
+            "visible": false
+          }
+        },
+        "attributes": {
+          "order": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "url": {
+            "type": "string"
+          },
+          "target": {
+            "type": "enumeration",
+            "enum": [
+              "_blank",
+              "_parent",
+              "_self",
+              "_top"
+            ]
+          },
+          "root_menu": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::menus.menu",
+            "inversedBy": "items",
+            "required": true
+          },
+          "parent": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "plugin::menus.menu-item"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "menu-item",
+      "connection": "default",
+      "uid": "plugin::menus.menu-item",
+      "plugin": "menus",
+      "globalId": "MenusMenuItem"
+    },
     "api::contact.contact": {
       "kind": "collectionType",
       "collectionName": "contacts",
@@ -1895,46 +2159,21 @@
         "populateCreatorFields": false,
         "draftAndPublish": true
       },
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "attributes": {
         "name": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
           "type": "string",
           "required": true
         },
         "slug": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": false
-            }
-          },
           "type": "uid",
           "unique": false,
           "targetField": "name",
           "required": false
         },
         "teaser": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
           "type": "text"
         },
         "content": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
           "type": "richtext"
         },
         "cover": {
@@ -1943,21 +2182,11 @@
           "required": false,
           "allowedTypes": [
             "images"
-          ],
-          "pluginOptions": {
-            "i18n": {
-              "localized": false
-            }
-          }
+          ]
         },
         "seo": {
           "type": "component",
           "repeatable": false,
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
           "component": "shared.seo"
         },
         "createdAt": {
@@ -1992,22 +2221,6 @@
           "useJoinTable": false,
           "private": true
         },
-        "localizations": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::post.post"
-        },
-        "locale": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "string"
-        },
         "sitemap_exclude": {
           "writable": true,
           "private": true,
@@ -2029,46 +2242,21 @@
           "populateCreatorFields": false,
           "draftAndPublish": true
         },
-        "pluginOptions": {
-          "i18n": {
-            "localized": true
-          }
-        },
         "attributes": {
           "name": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
             "type": "string",
             "required": true
           },
           "slug": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": false
-              }
-            },
             "type": "uid",
             "unique": false,
             "targetField": "name",
             "required": false
           },
           "teaser": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
             "type": "text"
           },
           "content": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
             "type": "richtext"
           },
           "cover": {
@@ -2077,21 +2265,11 @@
             "required": false,
             "allowedTypes": [
               "images"
-            ],
-            "pluginOptions": {
-              "i18n": {
-                "localized": false
-              }
-            }
+            ]
           },
           "seo": {
             "type": "component",
             "repeatable": false,
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
             "component": "shared.seo"
           }
         },
@@ -2119,22 +2297,12 @@
         "populateCreatorFields": false,
         "draftAndPublish": true
       },
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "attributes": {
         "entry": {
           "type": "component",
           "repeatable": true,
           "component": "data.entry",
-          "required": true,
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          }
+          "required": true
         },
         "createdAt": {
           "type": "datetime"
@@ -2168,22 +2336,6 @@
           "useJoinTable": false,
           "private": true
         },
-        "localizations": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::translation.translation"
-        },
-        "locale": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "string"
-        },
         "sitemap_exclude": {
           "writable": true,
           "private": true,
@@ -2205,22 +2357,12 @@
           "populateCreatorFields": false,
           "draftAndPublish": true
         },
-        "pluginOptions": {
-          "i18n": {
-            "localized": true
-          }
-        },
         "attributes": {
           "entry": {
             "type": "component",
             "repeatable": true,
             "component": "data.entry",
-            "required": true,
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            }
+            "required": true
           }
         },
         "kind": "singleType"
@@ -2247,18 +2389,8 @@
         "populateCreatorFields": false,
         "draftAndPublish": false
       },
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "attributes": {
         "content": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
           "type": "dynamiczone",
           "components": [
             "page.home",
@@ -2269,11 +2401,6 @@
         "seo": {
           "type": "component",
           "repeatable": false,
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
           "component": "shared.seo"
         },
         "createdAt": {
@@ -2302,22 +2429,6 @@
           "useJoinTable": false,
           "private": true
         },
-        "localizations": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::website.website"
-        },
-        "locale": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "string"
-        },
         "sitemap_exclude": {
           "writable": true,
           "private": true,
@@ -2339,18 +2450,8 @@
           "populateCreatorFields": false,
           "draftAndPublish": false
         },
-        "pluginOptions": {
-          "i18n": {
-            "localized": true
-          }
-        },
         "attributes": {
           "content": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
             "type": "dynamiczone",
             "components": [
               "page.home",
@@ -2361,11 +2462,6 @@
           "seo": {
             "type": "component",
             "repeatable": false,
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
             "component": "shared.seo"
           }
         },

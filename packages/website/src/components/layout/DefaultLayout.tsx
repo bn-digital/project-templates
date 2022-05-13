@@ -1,7 +1,7 @@
 import './DefaultLayout.less'
 
 import { Drawer, Layout, Spin } from 'antd'
-import { Suspense, VFC } from 'react'
+import { FC, Suspense } from 'react'
 import { Outlet } from 'react-router'
 import { useLocation } from 'react-router-dom'
 import { AppContext } from 'src/components/app'
@@ -11,7 +11,7 @@ import { Content } from './Content'
 import { Footer } from './Footer'
 import { Header } from './Header'
 
-const PageLoader: VFC = () => (
+const PageLoader: FC = () => (
   <Content>
     <Spin size={'small'} />
   </Content>
@@ -19,7 +19,12 @@ const PageLoader: VFC = () => (
 
 type ContentProps = ComponentPageContactUs | ComponentPageHome
 
-const DefaultLayout: VFC = () => {
+const menu: LinkFragment[] = [
+  { id: '1', title: 'Home', url: '/' },
+  { id: '2', title: 'Contact Us', url: '/contact-us' },
+]
+
+const DefaultLayout: FC = () => {
   const { pathname } = useLocation()
 
   function filterByPathname<T extends ContentProps>(data: T[] = []): T | null {
@@ -35,7 +40,7 @@ const DefaultLayout: VFC = () => {
               <>
                 <Layout.Header>
                   <Content>
-                    <Header />
+                    <Header menu={menu} />
                   </Content>
                 </Layout.Header>
                 <Layout.Content>

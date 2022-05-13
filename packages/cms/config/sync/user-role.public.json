@@ -4,10 +4,13 @@
   "type": "public",
   "permissions": [
     {
-      "action": "plugin::users-permissions.auth.admincallback"
+      "action": "plugin::i18n.locales.listLocales"
     },
     {
-      "action": "plugin::users-permissions.auth.adminregister"
+      "action": "plugin::menus.menu.find"
+    },
+    {
+      "action": "plugin::menus.menu.findOne"
     },
     {
       "action": "plugin::users-permissions.auth.callback"
@@ -16,16 +19,7 @@
       "action": "plugin::users-permissions.auth.connect"
     },
     {
-      "action": "plugin::users-permissions.auth.emailconfirmation"
-    },
-    {
-      "action": "plugin::users-permissions.auth.forgotpassword"
-    },
-    {
       "action": "plugin::users-permissions.auth.register"
-    },
-    {
-      "action": "plugin::users-permissions.auth.resetpassword"
     },
     {
       "action": "plugin::users-permissions.user.me"

@@ -10,7 +10,7 @@ export default ({ env }: { env: EnvFunction }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET', v5(name, '84a275d4-be64-454c-92a7-d3b046e24dc6')),
   },
-  watchIgnoreFiles: ['**/graphql/**', '**/config/sync/**'],
+  watchIgnoreFiles: ['**/graphql/**/*.graphql*', '**/config/sync/**', '**/database/data.sqlite*'],
   forgotPassword: {
     from: env('MAIL_FROM', `no-reply@${name}.dev`),
     replyTo: env('MAIL_TO', `no-reply@${name}.dev`),

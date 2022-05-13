@@ -1,6 +1,7 @@
 import { v5 } from 'uuid'
-import { name } from './name'
+
 import * as tasks from './cron'
+import { name } from './name'
 
 module.exports = ({ env }) => ({
   host: env('HOST', '0.0.0.0'),

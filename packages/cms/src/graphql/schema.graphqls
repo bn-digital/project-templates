@@ -193,6 +193,13 @@ input JSONFilterInput {
   between: [JSON]
 }
 
+type ComponentDataContact {
+  id: ID!
+  email: String
+  phone: String
+  address: String
+}
+
 input ComponentDataEntryFiltersInput {
   key: StringFilterInput
   value: StringFilterInput
@@ -231,7 +238,7 @@ type ComponentPageAbout {
 type ComponentPageContactUs {
   id: ID!
   pathname: String!
-  contact: ComponentUiContact
+  contact: ComponentDataContact
 }
 
 type ComponentPageHome {
@@ -317,13 +324,6 @@ type ComponentUiCard {
   media: UploadFileEntityResponse
 }
 
-type ComponentUiContact {
-  id: ID!
-  email: String
-  phone: String
-  address: String
-}
-
 type ComponentUiGrid {
   id: ID!
   visible: Boolean!
@@ -344,24 +344,10 @@ type ComponentUiHeadline {
   subtitle: String
 }
 
-input ComponentUiLinkFiltersInput {
-  url: StringFilterInput
-  title: StringFilterInput
-  and: [ComponentUiLinkFiltersInput]
-  or: [ComponentUiLinkFiltersInput]
-  not: ComponentUiLinkFiltersInput
-}
-
 type ComponentUiLink {
   id: ID!
   url: String!
   title: String
-}
-
-type ComponentUiMenu {
-  id: ID!
-  visible: Boolean!
-  children(filters: ComponentUiLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiLink]!
 }
 
 input ComponentUiParagraphFiltersInput {
@@ -792,25 +778,114 @@ type GraphsBuilderGraphEntityResponseCollection {
   meta: ResponseCollectionMeta!
 }
 
+input MenusMenuFiltersInput {
+  id: IDFilterInput
+  title: StringFilterInput
+  slug: StringFilterInput
+  items: MenusMenuItemFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  sitemap_exclude: BooleanFilterInput
+  and: [MenusMenuFiltersInput]
+  or: [MenusMenuFiltersInput]
+  not: MenusMenuFiltersInput
+}
+
+input MenusMenuInput {
+  title: String
+  slug: String
+  items: [ID]
+  sitemap_exclude: Boolean
+}
+
+type MenusMenu {
+  title: String!
+  slug: String!
+  items(filters: MenusMenuItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): MenusMenuItemRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type MenusMenuEntity {
+  id: ID
+  attributes: MenusMenu
+}
+
+type MenusMenuEntityResponse {
+  data: MenusMenuEntity
+}
+
+type MenusMenuEntityResponseCollection {
+  data: [MenusMenuEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+enum ENUM_MENUSMENUITEM_TARGET {
+  blank
+  parent
+  self
+  top
+}
+
+input MenusMenuItemFiltersInput {
+  id: IDFilterInput
+  order: IntFilterInput
+  title: StringFilterInput
+  url: StringFilterInput
+  target: StringFilterInput
+  root_menu: MenusMenuFiltersInput
+  parent: MenusMenuItemFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  sitemap_exclude: BooleanFilterInput
+  and: [MenusMenuItemFiltersInput]
+  or: [MenusMenuItemFiltersInput]
+  not: MenusMenuItemFiltersInput
+}
+
+input MenusMenuItemInput {
+  order: Int
+  title: String
+  url: String
+  target: ENUM_MENUSMENUITEM_TARGET
+  root_menu: ID
+  parent: ID
+  sitemap_exclude: Boolean
+}
+
+type MenusMenuItem {
+  order: Int
+  title: String!
+  url: String
+  target: ENUM_MENUSMENUITEM_TARGET
+  root_menu: MenusMenuEntityResponse!
+  parent: MenusMenuItemEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type MenusMenuItemEntity {
+  id: ID
+  attributes: MenusMenuItem
+}
+
+type MenusMenuItemEntityResponse {
+  data: MenusMenuItemEntity
+}
+
+type MenusMenuItemEntityResponseCollection {
+  data: [MenusMenuItemEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type MenusMenuItemRelationResponseCollection {
+  data: [MenusMenuItemEntity!]!
+}
+
 enum ENUM_CONTACT_STATUS {
   new
   sent
   failed
-}
-
-input ContactFiltersInput {
-  id: IDFilterInput
-  name: StringFilterInput
-  email: StringFilterInput
-  subject: StringFilterInput
-  text: StringFilterInput
-  status: StringFilterInput
-  createdAt: DateTimeFilterInput
-  updatedAt: DateTimeFilterInput
-  sitemap_exclude: BooleanFilterInput
-  and: [ContactFiltersInput]
-  or: [ContactFiltersInput]
-  not: ContactFiltersInput
 }
 
 input ContactInput {
@@ -841,11 +916,6 @@ type ContactEntityResponse {
   data: ContactEntity
 }
 
-type ContactEntityResponseCollection {
-  data: [ContactEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
 input PostFiltersInput {
   id: IDFilterInput
   name: StringFilterInput
@@ -855,8 +925,6 @@ input PostFiltersInput {
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
   publishedAt: DateTimeFilterInput
-  localizations: PostFiltersInput
-  locale: StringFilterInput
   sitemap_exclude: BooleanFilterInput
   and: [PostFiltersInput]
   or: [PostFiltersInput]
@@ -884,8 +952,6 @@ type Post {
   createdAt: DateTime
   updatedAt: DateTime
   publishedAt: DateTime
-  localizations(filters: PostFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], publicationState: PublicationState = LIVE): PostRelationResponseCollection
-  locale: String
 }
 
 type PostEntity {
@@ -902,10 +968,6 @@ type PostEntityResponseCollection {
   meta: ResponseCollectionMeta!
 }
 
-type PostRelationResponseCollection {
-  data: [PostEntity!]!
-}
-
 input TranslationInput {
   entry: [ComponentDataEntryInput]
   publishedAt: DateTime
@@ -917,8 +979,6 @@ type Translation {
   createdAt: DateTime
   updatedAt: DateTime
   publishedAt: DateTime
-  localizations(publicationState: PublicationState = LIVE): TranslationRelationResponseCollection
-  locale: String
 }
 
 type TranslationEntity {
@@ -930,27 +990,13 @@ type TranslationEntityResponse {
   data: TranslationEntity
 }
 
-type TranslationRelationResponseCollection {
-  data: [TranslationEntity!]!
-}
-
 union WebsiteContentDynamicZone = ComponentPageHome | ComponentPageContactUs | ComponentPageAbout | Error
-
-scalar WebsiteContentDynamicZoneInput
-
-input WebsiteInput {
-  content: [WebsiteContentDynamicZoneInput!]
-  seo: ComponentSharedSeoInput
-  sitemap_exclude: Boolean
-}
 
 type Website {
   content: [WebsiteContentDynamicZone]
   seo: ComponentSharedSeo
   createdAt: DateTime
   updatedAt: DateTime
-  localizations: WebsiteRelationResponseCollection
-  locale: String
 }
 
 type WebsiteEntity {
@@ -962,20 +1008,13 @@ type WebsiteEntityResponse {
   data: WebsiteEntity
 }
 
-type WebsiteRelationResponseCollection {
-  data: [WebsiteEntity!]!
-}
-
-union GenericMorph = ComponentDataEntry | ComponentDataSet | ComponentPageAbout | ComponentPageContactUs | ComponentPageHome | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiContact | ComponentUiGrid | ComponentUiHeadline | ComponentUiLink | ComponentUiMenu | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | UploadFile | EntityNotesNote | I18NLocale | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | EmailDesignerEmailTemplate | GraphsBuilderGraph | Contact | Post | Translation | Website
+union GenericMorph = ComponentDataContact | ComponentDataEntry | ComponentDataSet | ComponentPageAbout | ComponentPageContactUs | ComponentPageHome | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiGrid | ComponentUiHeadline | ComponentUiLink | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | UploadFile | EntityNotesNote | I18NLocale | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | EmailDesignerEmailTemplate | GraphsBuilderGraph | MenusMenu | MenusMenuItem | Contact | Post | Translation | Website
 
 input FileInfoInput {
   name: String
   alternativeText: String
   caption: String
 }
-
-"""A string used to identify an i18n locale"""
-scalar I18NLocaleCode
 
 type UsersPermissionsMe {
   id: ID!
@@ -1048,12 +1087,14 @@ type Query {
   emailDesignerEmailTemplates(filters: EmailDesignerEmailTemplateFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): EmailDesignerEmailTemplateEntityResponseCollection
   graphsBuilderGraph(id: ID): GraphsBuilderGraphEntityResponse
   graphsBuilderGraphs(filters: GraphsBuilderGraphFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): GraphsBuilderGraphEntityResponseCollection
-  contact(id: ID): ContactEntityResponse
-  contacts(filters: ContactFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContactEntityResponseCollection
-  post(id: ID, locale: I18NLocaleCode): PostEntityResponse
-  posts(filters: PostFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], publicationState: PublicationState = LIVE, locale: I18NLocaleCode): PostEntityResponseCollection
-  translation(publicationState: PublicationState = LIVE, locale: I18NLocaleCode): TranslationEntityResponse
-  website(locale: I18NLocaleCode): WebsiteEntityResponse
+  menusMenu(id: ID): MenusMenuEntityResponse
+  menusMenus(filters: MenusMenuFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): MenusMenuEntityResponseCollection
+  menusMenuItem(id: ID): MenusMenuItemEntityResponse
+  menusMenuItems(filters: MenusMenuItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): MenusMenuItemEntityResponseCollection
+  post(id: ID): PostEntityResponse
+  posts(filters: PostFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], publicationState: PublicationState = LIVE): PostEntityResponseCollection
+  translation(publicationState: PublicationState = LIVE): TranslationEntityResponse
+  website: WebsiteEntityResponse
   me: UsersPermissionsMe
 }
 
@@ -1070,21 +1111,24 @@ type Mutation {
   createGraphsBuilderGraph(data: GraphsBuilderGraphInput!): GraphsBuilderGraphEntityResponse
   updateGraphsBuilderGraph(id: ID!, data: GraphsBuilderGraphInput!): GraphsBuilderGraphEntityResponse
   deleteGraphsBuilderGraph(id: ID!): GraphsBuilderGraphEntityResponse
+  createMenusMenu(data: MenusMenuInput!): MenusMenuEntityResponse
+  updateMenusMenu(id: ID!, data: MenusMenuInput!): MenusMenuEntityResponse
+  deleteMenusMenu(id: ID!): MenusMenuEntityResponse
+  createMenusMenuItem(data: MenusMenuItemInput!): MenusMenuItemEntityResponse
+  updateMenusMenuItem(id: ID!, data: MenusMenuItemInput!): MenusMenuItemEntityResponse
+  deleteMenusMenuItem(id: ID!): MenusMenuItemEntityResponse
   createContact(data: ContactInput!): ContactEntityResponse
   updateContact(id: ID!, data: ContactInput!): ContactEntityResponse
   deleteContact(id: ID!): ContactEntityResponse
-  createPost(data: PostInput!, locale: I18NLocaleCode): PostEntityResponse
-  updatePost(id: ID!, data: PostInput!, locale: I18NLocaleCode): PostEntityResponse
-  deletePost(id: ID!, locale: I18NLocaleCode): PostEntityResponse
-  updateTranslation(data: TranslationInput!, locale: I18NLocaleCode): TranslationEntityResponse
-  deleteTranslation(locale: I18NLocaleCode): TranslationEntityResponse
+  createPost(data: PostInput!): PostEntityResponse
+  updatePost(id: ID!, data: PostInput!): PostEntityResponse
+  deletePost(id: ID!): PostEntityResponse
+  updateTranslation(data: TranslationInput!): TranslationEntityResponse
+  deleteTranslation: TranslationEntityResponse
   upload(refId: ID, ref: String, field: String, info: FileInfoInput, file: Upload!): UploadFileEntityResponse!
   multipleUpload(refId: ID, ref: String, field: String, files: [Upload]!): [UploadFileEntityResponse]!
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   removeFile(id: ID!): UploadFileEntityResponse
-  createPostLocalization(id: ID, data: PostInput, locale: I18NLocaleCode): PostEntityResponse
-  createTranslationLocalization(id: ID, data: TranslationInput, locale: I18NLocaleCode): TranslationEntityResponse
-  createWebsiteLocalization(id: ID, data: WebsiteInput, locale: I18NLocaleCode): WebsiteEntityResponse
 
   """Create a new role"""
   createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload

@@ -1,22 +1,10 @@
 import './Navigation.less'
 
-import { Menu } from 'antd'
-import { VFC } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Menu, MenuProps } from 'antd'
+import { FC } from 'react'
 
-type NavigationProps = { data: LinkFragment[] }
+type NavigationProps = { data: MenuProps['items'] }
 
-const Navigation: VFC<NavigationProps> = ({ data }) => (
-  <Menu theme={'light'} mode={'horizontal'}>
-    {data?.map(
-      it =>
-        it?.url && (
-          <Menu.Item key={it?.url}>
-            <NavLink to={it.url}>{it.title}</NavLink>
-          </Menu.Item>
-        ),
-    )}
-  </Menu>
-)
+const Navigation: FC<NavigationProps> = ({ data = [] }) => <Menu theme={'light'} mode={'horizontal'} items={data} />
 
 export { Navigation }

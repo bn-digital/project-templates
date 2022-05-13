@@ -42,7 +42,7 @@ export default ({ env }: { env: EnvFunction }) => ({
           }
         : {
             dialect: 'sqlite',
-            filename: path.join(process.cwd(), env<string>('DATABASE_FILENAME', '.tmp/data.db')),
+            filename: path.join(process.cwd(), env<string>('DATABASE_FILENAME', 'database/data.sqlite')),
           },
     useNullAsDefault: true,
   },

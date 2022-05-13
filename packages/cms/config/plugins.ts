@@ -1,9 +1,6 @@
 import { name } from './name'
 
 export default ({ env }: { env: EnvFunction }): Strapi.PluginsConfig => ({
-  'transformer': {
-    enabled: true,
-  },
   'entity-notes': {
     enabled: true,
   },

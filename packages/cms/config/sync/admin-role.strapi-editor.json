@@ -78,6 +78,18 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::post.post",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::post.post",
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::post.post",
       "properties": {
@@ -138,6 +150,18 @@
           "entry.value"
         ]
       },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::translation.translation",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::translation.translation",
+      "properties": {},
       "conditions": []
     },
     {
@@ -182,6 +206,12 @@
           "seo.canonicalURL"
         ]
       },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::website.website",
+      "properties": {},
       "conditions": []
     },
     {

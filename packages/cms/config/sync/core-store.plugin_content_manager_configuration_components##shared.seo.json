@@ -16,8 +16,8 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": true,
-          "sortable": true
+          "searchable": false,
+          "sortable": false
         }
       },
       "metaTitle": {
@@ -154,7 +154,6 @@
         "metaDescription",
         "metaImage"
       ],
-      "editRelations": [],
       "edit": [
         [
           {
@@ -204,7 +203,8 @@
             "size": 6
           }
         ]
-      ]
+      ],
+      "editRelations": []
     },
     "isComponent": true
   },

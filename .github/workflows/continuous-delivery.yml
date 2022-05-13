@@ -1,0 +1,20 @@
+name: Continuous Delivery
+on:
+  release:
+    types:
+      - released
+  push:
+    tags:
+      - "*"
+jobs:
+  build:
+    uses: bn-digital/project-templates/.github/workflows/build-images.yml@latest
+    with:
+      environment: production
+      version: ${{ github.event.release.tag_name }}
+  deploy:
+    uses: bn-digital/project-templates/.github/workflows/deploy-charts.yml@latest
+    with:
+      environment: production
+      version: ${{ github.event.release.tag_name }}
+      domain: ${{ github.event.repository.name }}

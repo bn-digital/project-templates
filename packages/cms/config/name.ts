@@ -4,7 +4,7 @@
  */
 import * as fs from 'fs'
 import * as path from 'path'
-const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))
+const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'))
 const name: string = packageJson.name.split('/')[0].toString().replace('@', '')
 
 export { name }

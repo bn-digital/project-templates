@@ -1,20 +1,9 @@
 {
+  "extends": "@strapi/typescript-utils/lib/configs/server",
   "compilerOptions": {
-    "lib": ["es2019", "es2020.promise", "es2020.bigint", "es2020.string", "DOM"],
-    "module": "commonjs",
-    "target": "es2019",
-    "strict": true,
-    "jsx": "react",
-    "noImplicitAny": false,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowJs": true,
     "outDir": "dist",
-    "rootDir": ".",
-    "noEmitOnError": true,
-    "resolveJsonModule": true,
-    "types": ["src/typings"]
+    "rootDir": "."
   },
-  "include": ["src", "config"]
+  "include": ["./", "src/**/*.json", "./package.json"],
+  "exclude": ["node_modules/", "build/", "dist/", ".cache/", ".tmp/", "src/admin/", "**/*.test.ts", "src/plugins/**"]
 }

@@ -12,13 +12,10 @@ type Scalars = {
   Float: number;
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: Date;
-  /** A string used to identify an i18n locale */
-  I18NLocaleCode: any;
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
-  JSON: Record<string, unknown|unknown[]|string|number|boolean|null|undefined|unknown>;
+  JSON: Record<string, any|any[]|string|number|boolean|null|undefined|unknown>;
   /** The `Upload` scalar type represents a file upload. */
   Upload: unknown;
-  WebsiteContentDynamicZoneInput: any;
 };
 
 type BooleanFilterInput = {
@@ -42,6 +39,13 @@ type BooleanFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
   startsWith?: InputMaybe<Scalars['Boolean']>;
+};
+
+type ComponentDataContact = {
+  address?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  phone?: Maybe<Scalars['String']>;
 };
 
 type ComponentDataEntry = {
@@ -87,7 +91,7 @@ type ComponentPageAboutDiplomasArgs = {
 };
 
 type ComponentPageContactUs = {
-  contact?: Maybe<ComponentUiContact>;
+  contact?: Maybe<ComponentDataContact>;
   id: Scalars['ID'];
   pathname: Scalars['String'];
 };
@@ -191,13 +195,6 @@ type ComponentUiCardFiltersInput = {
   title?: InputMaybe<StringFilterInput>;
 };
 
-type ComponentUiContact = {
-  address?: Maybe<Scalars['String']>;
-  email?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  phone?: Maybe<Scalars['String']>;
-};
-
 type ComponentUiGrid = {
   children: Array<Maybe<ComponentDataEntry>>;
   id: Scalars['ID'];
@@ -229,27 +226,6 @@ type ComponentUiLink = {
   id: Scalars['ID'];
   title?: Maybe<Scalars['String']>;
   url: Scalars['String'];
-};
-
-type ComponentUiLinkFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentUiLinkFiltersInput>>>;
-  not?: InputMaybe<ComponentUiLinkFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentUiLinkFiltersInput>>>;
-  title?: InputMaybe<StringFilterInput>;
-  url?: InputMaybe<StringFilterInput>;
-};
-
-type ComponentUiMenu = {
-  children: Array<Maybe<ComponentUiLink>>;
-  id: Scalars['ID'];
-  visible: Scalars['Boolean'];
-};
-
-
-type ComponentUiMenuChildrenArgs = {
-  filters?: InputMaybe<ComponentUiLinkFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 type ComponentUiParagraph = {
@@ -315,26 +291,6 @@ type ContactEntity = {
 
 type ContactEntityResponse = {
   data?: Maybe<ContactEntity>;
-};
-
-type ContactEntityResponseCollection = {
-  data: Array<ContactEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-type ContactFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  email?: InputMaybe<StringFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  name?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<ContactFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>;
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>;
-  status?: InputMaybe<StringFilterInput>;
-  subject?: InputMaybe<StringFilterInput>;
-  text?: InputMaybe<StringFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 type ContactInput = {
@@ -520,7 +476,7 @@ type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-type GenericMorph = ComponentDataEntry | ComponentDataSet | ComponentPageAbout | ComponentPageContactUs | ComponentPageHome | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiContact | ComponentUiGrid | ComponentUiHeadline | ComponentUiLink | ComponentUiMenu | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | Contact | EmailDesignerEmailTemplate | EntityNotesNote | GraphsBuilderGraph | I18NLocale | Post | Translation | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Website;
+type GenericMorph = ComponentDataContact | ComponentDataEntry | ComponentDataSet | ComponentPageAbout | ComponentPageContactUs | ComponentPageHome | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiGrid | ComponentUiHeadline | ComponentUiLink | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | Contact | EmailDesignerEmailTemplate | EntityNotesNote | GraphsBuilderGraph | I18NLocale | Post | Translation | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Website;
 
 type GraphsBuilderGraph = {
   collectionX: Scalars['String'];
@@ -674,14 +630,11 @@ type Mutation = {
   createEntityNotesNote?: Maybe<EntityNotesNoteEntityResponse>;
   createGraphsBuilderGraph?: Maybe<GraphsBuilderGraphEntityResponse>;
   createPost?: Maybe<PostEntityResponse>;
-  createPostLocalization?: Maybe<PostEntityResponse>;
-  createTranslationLocalization?: Maybe<TranslationEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
-  createWebsiteLocalization?: Maybe<WebsiteEntityResponse>;
   deleteContact?: Maybe<ContactEntityResponse>;
   deleteEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>;
   deleteEntityNotesNote?: Maybe<EntityNotesNoteEntityResponse>;
@@ -742,21 +695,6 @@ type MutationCreateGraphsBuilderGraphArgs = {
 
 type MutationCreatePostArgs = {
   data: PostInput;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-
-type MutationCreatePostLocalizationArgs = {
-  data?: InputMaybe<PostInput>;
-  id?: InputMaybe<Scalars['ID']>;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-
-type MutationCreateTranslationLocalizationArgs = {
-  data?: InputMaybe<TranslationInput>;
-  id?: InputMaybe<Scalars['ID']>;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 
@@ -772,13 +710,6 @@ type MutationCreateUsersPermissionsRoleArgs = {
 
 type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
-};
-
-
-type MutationCreateWebsiteLocalizationArgs = {
-  data?: InputMaybe<WebsiteInput>;
-  id?: InputMaybe<Scalars['ID']>;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 
@@ -804,12 +735,6 @@ type MutationDeleteGraphsBuilderGraphArgs = {
 
 type MutationDeletePostArgs = {
   id: Scalars['ID'];
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-
-type MutationDeleteTranslationArgs = {
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 
@@ -901,13 +826,11 @@ type MutationUpdateGraphsBuilderGraphArgs = {
 type MutationUpdatePostArgs = {
   data: PostInput;
   id: Scalars['ID'];
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 
 type MutationUpdateTranslationArgs = {
   data: TranslationInput;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 
@@ -955,22 +878,12 @@ type Post = {
   content?: Maybe<Scalars['String']>;
   cover?: Maybe<UploadFileEntityResponse>;
   createdAt?: Maybe<Scalars['DateTime']>;
-  locale?: Maybe<Scalars['String']>;
-  localizations?: Maybe<PostRelationResponseCollection>;
   name: Scalars['String'];
   publishedAt?: Maybe<Scalars['DateTime']>;
   seo?: Maybe<ComponentSharedSeo>;
   slug?: Maybe<Scalars['String']>;
   teaser?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-
-type PostLocalizationsArgs = {
-  filters?: InputMaybe<PostFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 type PostEntity = {
@@ -992,8 +905,6 @@ type PostFiltersInput = {
   content?: InputMaybe<StringFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
-  locale?: InputMaybe<StringFilterInput>;
-  localizations?: InputMaybe<PostFiltersInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<PostFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<PostFiltersInput>>>;
@@ -1015,17 +926,11 @@ type PostInput = {
   teaser?: InputMaybe<Scalars['String']>;
 };
 
-type PostRelationResponseCollection = {
-  data: Array<PostEntity>;
-};
-
 type PublicationState =
   | 'LIVE'
   | 'PREVIEW';
 
 type Query = {
-  contact?: Maybe<ContactEntityResponse>;
-  contacts?: Maybe<ContactEntityResponseCollection>;
   emailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>;
   emailDesignerEmailTemplates?: Maybe<EmailDesignerEmailTemplateEntityResponseCollection>;
   entityNotesNote?: Maybe<EntityNotesNoteEntityResponse>;
@@ -1045,18 +950,6 @@ type Query = {
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
   website?: Maybe<WebsiteEntityResponse>;
-};
-
-
-type QueryContactArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-
-type QueryContactsArgs = {
-  filters?: InputMaybe<ContactFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -1110,13 +1003,11 @@ type QueryI18NLocalesArgs = {
 
 type QueryPostArgs = {
   id?: InputMaybe<Scalars['ID']>;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 
 type QueryPostsArgs = {
   filters?: InputMaybe<PostFiltersInput>;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -1124,7 +1015,6 @@ type QueryPostsArgs = {
 
 
 type QueryTranslationArgs = {
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
   publicationState?: InputMaybe<PublicationState>;
 };
 
@@ -1164,11 +1054,6 @@ type QueryUsersPermissionsUsersArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
-type QueryWebsiteArgs = {
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
 type ResponseCollectionMeta = {
   pagination: Pagination;
 };
@@ -1199,8 +1084,6 @@ type StringFilterInput = {
 type Translation = {
   createdAt?: Maybe<Scalars['DateTime']>;
   entry: Array<Maybe<ComponentDataEntry>>;
-  locale?: Maybe<Scalars['String']>;
-  localizations?: Maybe<TranslationRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -1210,11 +1093,6 @@ type TranslationEntryArgs = {
   filters?: InputMaybe<ComponentDataEntryFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-type TranslationLocalizationsArgs = {
-  publicationState?: InputMaybe<PublicationState>;
 };
 
 type TranslationEntity = {
@@ -1230,10 +1108,6 @@ type TranslationInput = {
   entry?: InputMaybe<Array<InputMaybe<ComponentDataEntryInput>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
-};
-
-type TranslationRelationResponseCollection = {
-  data: Array<TranslationEntity>;
 };
 
 type UploadFile = {
@@ -1512,8 +1386,6 @@ type UsersPermissionsUserRelationResponseCollection = {
 type Website = {
   content?: Maybe<Array<Maybe<WebsiteContentDynamicZone>>>;
   createdAt?: Maybe<Scalars['DateTime']>;
-  locale?: Maybe<Scalars['String']>;
-  localizations?: Maybe<WebsiteRelationResponseCollection>;
   seo?: Maybe<ComponentSharedSeo>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -1529,16 +1401,6 @@ type WebsiteEntityResponse = {
   data?: Maybe<WebsiteEntity>;
 };
 
-type WebsiteInput = {
-  content?: InputMaybe<Array<Scalars['WebsiteContentDynamicZoneInput']>>;
-  seo?: InputMaybe<ComponentSharedSeoInput>;
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>;
-};
-
-type WebsiteRelationResponseCollection = {
-  data: Array<WebsiteEntity>;
-};
-
 type CardFragment = { id: string, title?: string | null, subtitle?: string | null, description?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null };
 
 type EntryFragment = { id: string, key?: string | null, value: string };
@@ -1548,8 +1410,6 @@ type FileFragment = { id?: string | null, attributes?: { previewUrl?: string | n
 type HeadlineFragment = { id: string, title?: string | null, subtitle?: string | null };
 
 type LinkFragment = { id: string, title?: string | null, url: string };
-
-type MenuFragment = { id: string, children: Array<{ id: string, title?: string | null, url: string } | null> };
 
 type SeoFragment = { id: string, canonicalURL?: string | null, keywords?: string | null, metaTitle: string, metaViewport?: string | null, metaDescription?: string | null };
 

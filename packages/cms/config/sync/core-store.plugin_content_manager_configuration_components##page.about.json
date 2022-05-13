@@ -16,8 +16,8 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": true,
-          "sortable": true
+          "searchable": false,
+          "sortable": false
         }
       },
       "pathname": {
@@ -112,7 +112,6 @@
         "education",
         "quote"
       ],
-      "editRelations": [],
       "edit": [
         [
           {
@@ -148,7 +147,8 @@
             "size": 6
           }
         ]
-      ]
+      ],
+      "editRelations": []
     },
     "isComponent": true
   },

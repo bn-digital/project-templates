@@ -4,10 +4,10 @@ documents:
 config:
   scalars:
     Upload: unknown
-    Date: String
-    Time: String
-    JSON: Record<string, unknown|unknown[]|string|number|boolean|null|undefined|unknown>
-    Long: Number
+    Date: string
+    Time: string
+    JSON: Record<string, any|any[]|string|number|boolean|null|undefined|unknown>
+    Long: number
     DateTime: Date
 generates:
   packages/website/src/graphql/index.tsx:
@@ -16,11 +16,12 @@ generates:
       dedupeFragments: true
     plugins:
       - typescript-operations:
+          noExport: true
           preResolveTypes: true
       - typescript-react-apollo:
           withComponent: true
           withHooks: true
-          withResultType: true
+          addDocBlocks: true
   packages/website/src/types/graphql.d.ts:
     config:
       noExport: true

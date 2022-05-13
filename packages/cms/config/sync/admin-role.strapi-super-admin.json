@@ -73,9 +73,6 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ],
-        "locales": [
-          "en"
         ]
       },
       "conditions": []
@@ -83,21 +80,13 @@
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::post.post",
-      "properties": {
-        "locales": [
-          "en"
-        ]
-      },
+      "properties": {},
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::post.post",
-      "properties": {
-        "locales": [
-          "en"
-        ]
-      },
+      "properties": {},
       "conditions": []
     },
     {
@@ -122,9 +111,6 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ],
-        "locales": [
-          "en"
         ]
       },
       "conditions": []
@@ -151,9 +137,6 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ],
-        "locales": [
-          "en"
         ]
       },
       "conditions": []
@@ -165,9 +148,6 @@
         "fields": [
           "entry.key",
           "entry.value"
-        ],
-        "locales": [
-          "en"
         ]
       },
       "conditions": []
@@ -175,21 +155,13 @@
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::translation.translation",
-      "properties": {
-        "locales": [
-          "en"
-        ]
-      },
+      "properties": {},
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::translation.translation",
-      "properties": {
-        "locales": [
-          "en"
-        ]
-      },
+      "properties": {},
       "conditions": []
     },
     {
@@ -199,9 +171,6 @@
         "fields": [
           "entry.key",
           "entry.value"
-        ],
-        "locales": [
-          "en"
         ]
       },
       "conditions": []
@@ -213,9 +182,6 @@
         "fields": [
           "entry.key",
           "entry.value"
-        ],
-        "locales": [
-          "en"
         ]
       },
       "conditions": []
@@ -238,9 +204,6 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ],
-        "locales": [
-          "en"
         ]
       },
       "conditions": []
@@ -248,11 +211,7 @@
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::website.website",
-      "properties": {
-        "locales": [
-          "en"
-        ]
-      },
+      "properties": {},
       "conditions": []
     },
     {
@@ -273,9 +232,6 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ],
-        "locales": [
-          "en"
         ]
       },
       "conditions": []
@@ -298,9 +254,6 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ],
-        "locales": [
-          "en"
         ]
       },
       "conditions": []

@@ -16,8 +16,8 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": true,
-          "sortable": true
+          "searchable": false,
+          "sortable": false
         }
       },
       "pathname": {
@@ -112,7 +112,6 @@
         "hero",
         "mission"
       ],
-      "editRelations": [],
       "edit": [
         [
           {
@@ -150,7 +149,8 @@
             "size": 12
           }
         ]
-      ]
+      ],
+      "editRelations": []
     },
     "isComponent": true
   },

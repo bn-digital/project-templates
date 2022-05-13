@@ -16,8 +16,8 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": true,
-          "sortable": true
+          "searchable": false,
+          "sortable": false
         }
       },
       "visible": {
@@ -84,7 +84,6 @@
         "heading",
         "children"
       ],
-      "editRelations": [],
       "edit": [
         [
           {
@@ -110,7 +109,8 @@
             "size": 12
           }
         ]
-      ]
+      ],
+      "editRelations": []
     },
     "isComponent": true
   },

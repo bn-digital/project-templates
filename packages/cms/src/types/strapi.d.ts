@@ -1,7 +1,24 @@
 type EnvVar<T = string | number | null | boolean | Array<string>> = T
-
-type EnvFunction = <T>(key: string, defaultValue?: EnvVar<T>) => EnvVar<T>
+type TypedEnvFunction = { int(key: string, defaultValue?: number): number; array(key: string, defaultValue?: string[]): string[] }
+type EnvFunction = <T = EnvVar>(key: string, defaultValue?: T) => T
 
 declare namespace Strapi {
-  type PluginsConfig = { [key: string]: Partial<{ enabled: boolean; config: Record<string, unknown> }> }
+  import { Strapi as StrapiInterface } from '@strapi/strapi'
+  import { IStrapi } from 'strapi-typed'
+  import { PathLike } from 'fs'
+
+  type Strapi = StrapiInterface &
+    IStrapi & {
+      fs: {
+        writeAppFile(path: string | PathLike, content: Buffer | string): void
+      }
+      log: {
+        info(...args: string[]): void
+      }
+    }
+  type PluginsConfig = { [key: string]: Partial<{ enabled: boolean; resolve: string; config: Record<string, unknown> }> }
+}
+
+declare global {
+  const strapi: Strapi.Strapi
 }
