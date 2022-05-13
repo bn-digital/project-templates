@@ -6,6 +6,7 @@ on:
   push:
     tags:
       - "*"
+
 jobs:
   build:
     uses: bn-digital/project-templates/.github/workflows/build-images.yml@latest
@@ -17,4 +18,4 @@ jobs:
     with:
       environment: production
       version: ${{ github.event.release.tag_name }}
-      domain: ${{ github.event.repository.name }}
+      domain: ${{ github.event.repository.name }}.bndigital.ai

@@ -21,4 +21,4 @@ jobs:
     with:
       environment: staging
       version: latest
-      domain: ${{ github.event.repository.name }}.bndigital.ai
+      domain: ${{ github.event.repository.name }}.bndigital.dev
