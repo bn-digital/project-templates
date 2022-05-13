@@ -44,7 +44,7 @@ releases:
     namespace: infrastructure
     condition: 'ingressController.enabled'
     chart: ingress-nginx/ingress-nginx
-    version: 4.0.19
+    version: 4.1.0
     labels:
       component: infrastructure
     values:
@@ -77,9 +77,8 @@ releases:
       component: infrastructure
     values:
       - installCRDs: true
-        ingressShim:
-          defaultACMEChallengeType: http01
-          defaultIssuerGroup: cert-manager.io
+        prometheus:
+          enabled: false
         global:
           priorityClassName: system-cluster-critical
 
@@ -94,7 +93,7 @@ releases:
           name: '{{ requiredEnv "APP_NAME" }}'
         image:
           registry:
-            url: '{{ requiredEnv "DOCKER_REGISTRY" }}/{{ requiredEnv "APP_NAME" }}'
+            url: '{{ env "DOCKER_REGISTRY" | default "dcr.bndigital.dev" }}/{{ requiredEnv "APP_NAME" }}'
             username: '{{ requiredEnv "DOCKER_USERNAME" }}'
             password: '{{ requiredEnv "DOCKER_PASSWORD" }}'
           repository: 'website'
@@ -102,8 +101,8 @@ releases:
           pullSecrets: ['{{ requiredEnv "APP_NAME" }}-website-registry']
         vcs:
           repository: '{{ requiredEnv "GITHUB_REPOSITORY" }}'
-          ref: '{{ requiredEnv "GITHUB_REF_NAME" }}'
-          commit: '{{ requiredEnv "GITHUB_SHA" }}'
+          ref: '{{ env "GITHUB_REF_NAME" | default "latest" }}'
+          commit: '{{ env "GITHUB_SHA" | default "unknown" }}'
         ingress:
           host: '{{ requiredEnv "DOMAIN" }}'
           tls:
@@ -128,14 +127,14 @@ releases:
           name: '{{ requiredEnv "APP_NAME" }}'
         image:
           registry:
-            url: '{{ requiredEnv "DOCKER_REGISTRY" }}/{{ requiredEnv "APP_NAME" }}'
+            url: '{{ env "DOCKER_REGISTRY" | default "dcr.bndigital.dev" }}/{{ requiredEnv "APP_NAME" }}'
           repository: 'cms'
           tag: '{{ env "APP_VERSION" | default "latest" }}'
           pullSecrets: ['{{ requiredEnv "APP_NAME" }}-website-registry']
         vcs:
           repository: '{{ requiredEnv "GITHUB_REPOSITORY" }}'
-          ref: '{{ requiredEnv "GITHUB_REF_NAME" }}'
-          commit: '{{ requiredEnv "GITHUB_SHA" }}'
+          ref: '{{ env "GITHUB_REF_NAME" | default "latest" }}'
+          commit: '{{ env "GITHUB_SHA" | default "unknown" }}'
         database:
           enabled: {{ .Values.database.enabled }}
           auth:
@@ -147,10 +146,6 @@ releases:
             priorityClassName: system-node-critical
             persistence:
               size: 2Gi
-            resources:
-              requests:
-                cpu: '1.0'
-                memory: '1Gi'
           serviceAccount:
             create: true
           volumePermissions:
