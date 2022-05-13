@@ -1,10 +1,7 @@
-name: Analyze source code
 on:
   workflow_call:
-
 jobs:
   sonarqube:
-    name: Sonarqube
     runs-on: self-hosted
     steps:
       - name: Checkout sources
