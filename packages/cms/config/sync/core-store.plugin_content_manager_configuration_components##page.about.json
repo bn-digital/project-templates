@@ -1,0 +1,158 @@
+{
+  "key": "plugin_content_manager_configuration_components::page.about",
+  "value": {
+    "uid": "page.about",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "pathname",
+      "defaultSortBy": "pathname",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "pathname": {
+        "edit": {
+          "label": "pathname",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "pathname",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "education": {
+        "edit": {
+          "label": "education",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "education",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "quote": {
+        "edit": {
+          "label": "quote",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "quote",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "diplomas": {
+        "edit": {
+          "label": "diplomas",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "diplomas",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "about": {
+        "edit": {
+          "label": "about",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "about",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "photo": {
+        "edit": {
+          "label": "photo",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "photo",
+          "searchable": false,
+          "sortable": false
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "pathname",
+        "education",
+        "quote"
+      ],
+      "edit": [
+        [
+          {
+            "name": "pathname",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "education",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "quote",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "diplomas",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "about",
+            "size": 6
+          },
+          {
+            "name": "photo",
+            "size": 6
+          }
+        ]
+      ],
+      "editRelations": []
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

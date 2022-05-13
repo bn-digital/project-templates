@@ -1,0 +1,21 @@
+name: Continuous Integration
+on:
+  pull_request:
+    branches:
+      - latest
+      - main
+      - master
+    paths:
+      - ".github/workflows/build.yml"
+      - "skaffold.yaml"
+      - "**/*/.env.*"
+      - "**/*/Dockerfile"
+      - "**/*/package.json"
+      - "packages/cms/src/**/*"
+      - "packages/website/src/**/*"
+      - "packages/cms/config/**/*"
+jobs:
+  analyze:
+    uses: bn-digital/project-templates/.github/workflows/build-images.yml@latest
+  build:
+    uses: bn-digital/project-templates/.github/workflows/build-images.yml@latest

@@ -15,91 +15,91 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": true,
           "sortable": true
         }
       },
       "title": {
         "edit": {
-          "label": "Title",
+          "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Title",
+          "label": "title",
           "searchable": true,
           "sortable": true
         }
       },
       "type": {
         "edit": {
-          "label": "Type",
+          "label": "type",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Type",
+          "label": "type",
           "searchable": true,
           "sortable": true
         }
       },
       "collectionX": {
         "edit": {
-          "label": "CollectionX",
+          "label": "collectionX",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "CollectionX",
+          "label": "collectionX",
           "searchable": true,
           "sortable": true
         }
       },
       "collectionXAttribute": {
         "edit": {
-          "label": "CollectionXAttribute",
+          "label": "collectionXAttribute",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "CollectionXAttribute",
+          "label": "collectionXAttribute",
           "searchable": true,
           "sortable": true
         }
       },
       "createdAt": {
         "edit": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }

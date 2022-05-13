@@ -1,0 +1,61 @@
+version: '3.x'
+
+networks:
+  public:
+  private:
+
+volumes:
+  database:
+  pki:
+  caddy:
+
+services:
+
+  # This container handles external traffic on HTTP/HTTPS, handing routes inside of Caddyfile config.
+  proxy:
+    container_name: proxy
+    image: caddy/caddy:2-alpine
+    ports:
+      - '80:80'
+      - '443:443'
+    networks:
+      - public
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - pki:/data/caddy
+      - caddy:/config
+    env_file:
+      - .env
+
+  website:
+    container_name: website
+    build:
+      context: packages/website
+    image: website:${APP_VERSION:-latest}
+    networks:
+      - public
+
+  cms:
+    container_name: cms
+    build:
+      context: packages/cms
+    image: cms:${APP_VERSION:-latest}
+    networks:
+      - public
+      - private
+    env_file:
+      - .env
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: database
+
+  database:
+    container_name: database
+    image: postgres:14.2
+    networks:
+      - private
+    env_file:
+      - .env
+    volumes:
+      - database:/var/lib/postgresql
+      - ./packages/cms/data/db:/docker-entrypoint-initdb.d:ro

@@ -1,0 +1,22 @@
+schemaVersion: 2.0.0
+metadataTest:
+  entrypoint:
+    - yarn
+  cmd:
+    - strapi
+    - start
+  workdir: /usr/local/src
+commandTests:
+  - name: strapi
+    command: yarn
+    args:
+      - strapi
+      - --version
+    expectedOutput:
+      - '4.'
+fileExistenceTests:
+  - name: strapi
+    path: /usr/local/src/package.json
+    shouldExist: true
+    uid: 1000
+    gid: 1000

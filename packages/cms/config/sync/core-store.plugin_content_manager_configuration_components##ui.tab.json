@@ -15,35 +15,35 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": false,
           "sortable": false
         }
       },
       "name": {
         "edit": {
-          "label": "Name",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Name",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
       },
       "pane": {
         "edit": {
-          "label": "Pane",
+          "label": "pane",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Pane",
+          "label": "pane",
           "searchable": false,
           "sortable": false
         }
@@ -52,7 +52,8 @@
     "layouts": {
       "list": [
         "id",
-        "name"
+        "name",
+        "pane"
       ],
       "edit": [
         [

@@ -7,29 +7,99 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "id",
-      "defaultSortBy": "id",
+      "mainField": "pathname",
+      "defaultSortBy": "pathname",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": false,
           "sortable": false
         }
       },
-      "hero": {
+      "pathname": {
         "edit": {
-          "label": "Hero",
+          "label": "pathname",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Hero",
+          "label": "pathname",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "hero": {
+        "edit": {
+          "label": "hero",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hero",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "mission": {
+        "edit": {
+          "label": "mission",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "mission",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "features": {
+        "edit": {
+          "label": "features",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "features",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "strategy": {
+        "edit": {
+          "label": "strategy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "strategy",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "services": {
+        "edit": {
+          "label": "services",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "services",
           "searchable": false,
           "sortable": false
         }
@@ -37,12 +107,45 @@
     },
     "layouts": {
       "list": [
-        "id"
+        "id",
+        "pathname",
+        "hero",
+        "mission"
       ],
       "edit": [
         [
           {
+            "name": "pathname",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "hero",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "mission",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "features",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "strategy",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "services",
             "size": 12
           }
         ]

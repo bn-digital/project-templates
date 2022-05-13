@@ -15,63 +15,63 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": true,
           "sortable": true
         }
       },
       "content": {
         "edit": {
-          "label": "Content",
+          "label": "content",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Content",
+          "label": "content",
           "searchable": false,
           "sortable": false
         }
       },
       "seo": {
         "edit": {
-          "label": "Seo",
+          "label": "seo",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Seo",
+          "label": "seo",
           "searchable": false,
           "sortable": false
         }
       },
       "createdAt": {
         "edit": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "CreatedAt",
+          "label": "createdAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "UpdatedAt",
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }
@@ -80,6 +80,7 @@
     "layouts": {
       "list": [
         "id",
+        "seo",
         "createdAt",
         "updatedAt"
       ],

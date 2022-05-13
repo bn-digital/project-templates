@@ -629,564 +629,6 @@
       "plugin": "admin",
       "globalId": "AdminApiToken"
     },
-    "api::customer.customer": {
-      "kind": "collectionType",
-      "collectionName": "customers",
-      "info": {
-        "singularName": "customer",
-        "pluralName": "customers",
-        "displayName": "Customer",
-        "description": ""
-      },
-      "options": {
-        "draftAndPublish": false
-      },
-      "attributes": {
-        "firstName": {
-          "type": "string"
-        },
-        "lastName": {
-          "type": "string"
-        },
-        "stripe": {
-          "type": "component",
-          "repeatable": false,
-          "component": "integration.stripe",
-          "private": true
-        },
-        "uuid": {
-          "type": "uid",
-          "required": false
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
-        }
-      },
-      "__schema__": {
-        "collectionName": "customers",
-        "info": {
-          "singularName": "customer",
-          "pluralName": "customers",
-          "displayName": "Customer",
-          "description": ""
-        },
-        "options": {
-          "draftAndPublish": false
-        },
-        "attributes": {
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "stripe": {
-            "type": "component",
-            "repeatable": false,
-            "component": "integration.stripe",
-            "private": true
-          },
-          "uuid": {
-            "type": "uid",
-            "required": false
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "customer",
-      "connection": "default",
-      "uid": "api::customer.customer",
-      "apiName": "customer",
-      "globalId": "Customer",
-      "actions": {},
-      "lifecycles": {}
-    },
-    "api::order.order": {
-      "kind": "collectionType",
-      "collectionName": "orders",
-      "info": {
-        "singularName": "order",
-        "pluralName": "orders",
-        "displayName": "Order",
-        "description": ""
-      },
-      "options": {
-        "draftAndPublish": false
-      },
-      "pluginOptions": {},
-      "attributes": {
-        "stripe": {
-          "type": "component",
-          "repeatable": false,
-          "component": "integration.stripe",
-          "private": true
-        },
-        "items": {
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::order-line.order-line"
-        },
-        "uuid": {
-          "type": "uid"
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
-        }
-      },
-      "__schema__": {
-        "collectionName": "orders",
-        "info": {
-          "singularName": "order",
-          "pluralName": "orders",
-          "displayName": "Order",
-          "description": ""
-        },
-        "options": {
-          "draftAndPublish": false
-        },
-        "pluginOptions": {},
-        "attributes": {
-          "stripe": {
-            "type": "component",
-            "repeatable": false,
-            "component": "integration.stripe",
-            "private": true
-          },
-          "items": {
-            "type": "relation",
-            "relation": "oneToMany",
-            "target": "api::order-line.order-line"
-          },
-          "uuid": {
-            "type": "uid"
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "order",
-      "connection": "default",
-      "uid": "api::order.order",
-      "apiName": "order",
-      "globalId": "Order",
-      "actions": {},
-      "lifecycles": {}
-    },
-    "api::order-line.order-line": {
-      "kind": "collectionType",
-      "collectionName": "order_lines",
-      "info": {
-        "singularName": "order-line",
-        "pluralName": "order-lines",
-        "displayName": "OrderLine",
-        "description": ""
-      },
-      "options": {
-        "draftAndPublish": false
-      },
-      "pluginOptions": {},
-      "attributes": {
-        "quantity": {
-          "type": "integer",
-          "required": true,
-          "min": 1,
-          "default": 1
-        },
-        "product": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "api::product.product"
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
-        }
-      },
-      "__schema__": {
-        "collectionName": "order_lines",
-        "info": {
-          "singularName": "order-line",
-          "pluralName": "order-lines",
-          "displayName": "OrderLine",
-          "description": ""
-        },
-        "options": {
-          "draftAndPublish": false
-        },
-        "pluginOptions": {},
-        "attributes": {
-          "quantity": {
-            "type": "integer",
-            "required": true,
-            "min": 1,
-            "default": 1
-          },
-          "product": {
-            "type": "relation",
-            "relation": "oneToOne",
-            "target": "api::product.product"
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "order-line",
-      "connection": "default",
-      "uid": "api::order-line.order-line",
-      "apiName": "order-line",
-      "globalId": "OrderLine",
-      "actions": {},
-      "lifecycles": {}
-    },
-    "api::product.product": {
-      "kind": "collectionType",
-      "collectionName": "products",
-      "info": {
-        "singularName": "product",
-        "pluralName": "products",
-        "displayName": "Product",
-        "description": ""
-      },
-      "options": {
-        "draftAndPublish": true
-      },
-      "pluginOptions": {},
-      "attributes": {
-        "name": {
-          "type": "string",
-          "required": true
-        },
-        "stripe": {
-          "type": "component",
-          "repeatable": false,
-          "component": "integration.stripe",
-          "private": true
-        },
-        "uuid": {
-          "type": "uid"
-        },
-        "seo": {
-          "type": "component",
-          "repeatable": false,
-          "component": "shared.seo"
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "publishedAt": {
-          "type": "datetime",
-          "configurable": false,
-          "writable": true,
-          "visible": false
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
-        }
-      },
-      "__schema__": {
-        "collectionName": "products",
-        "info": {
-          "singularName": "product",
-          "pluralName": "products",
-          "displayName": "Product",
-          "description": ""
-        },
-        "options": {
-          "draftAndPublish": true
-        },
-        "pluginOptions": {},
-        "attributes": {
-          "name": {
-            "type": "string",
-            "required": true
-          },
-          "stripe": {
-            "type": "component",
-            "repeatable": false,
-            "component": "integration.stripe",
-            "private": true
-          },
-          "uuid": {
-            "type": "uid"
-          },
-          "seo": {
-            "type": "component",
-            "repeatable": false,
-            "component": "shared.seo"
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "product",
-      "connection": "default",
-      "uid": "api::product.product",
-      "apiName": "product",
-      "globalId": "Product",
-      "actions": {},
-      "lifecycles": {}
-    },
-    "api::website.website": {
-      "kind": "singleType",
-      "collectionName": "websites",
-      "info": {
-        "singularName": "website",
-        "pluralName": "websites",
-        "displayName": "Website",
-        "description": ""
-      },
-      "options": {
-        "draftAndPublish": false
-      },
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "attributes": {
-        "content": {
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
-          "type": "dynamiczone",
-          "components": [
-            "page.home"
-          ]
-        },
-        "seo": {
-          "type": "component",
-          "repeatable": false,
-          "pluginOptions": {
-            "i18n": {
-              "localized": true
-            }
-          },
-          "component": "shared.seo"
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "localizations": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::website.website"
-        },
-        "locale": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "string"
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
-        }
-      },
-      "__schema__": {
-        "collectionName": "websites",
-        "info": {
-          "singularName": "website",
-          "pluralName": "websites",
-          "displayName": "Website",
-          "description": ""
-        },
-        "options": {
-          "draftAndPublish": false
-        },
-        "pluginOptions": {
-          "i18n": {
-            "localized": true
-          }
-        },
-        "attributes": {
-          "content": {
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
-            "type": "dynamiczone",
-            "components": [
-              "page.home"
-            ]
-          },
-          "seo": {
-            "type": "component",
-            "repeatable": false,
-            "pluginOptions": {
-              "i18n": {
-                "localized": true
-              }
-            },
-            "component": "shared.seo"
-          }
-        },
-        "kind": "singleType"
-      },
-      "modelType": "contentType",
-      "modelName": "website",
-      "connection": "default",
-      "uid": "api::website.website",
-      "apiName": "website",
-      "globalId": "Website",
-      "actions": {},
-      "lifecycles": {}
-    },
     "plugin::upload.file": {
       "collectionName": "files",
       "info": {
@@ -1855,7 +1297,7 @@
       },
       "options": {
         "draftAndPublish": false,
-        "timestamps": false
+        "timestamps": true
       },
       "attributes": {
         "username": {
@@ -1908,11 +1350,6 @@
           "inversedBy": "users",
           "configurable": false
         },
-        "customer": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "api::customer.customer"
-        },
         "createdAt": {
           "type": "datetime"
         },
@@ -1962,7 +1399,6 @@
         }
       },
       "kind": "collectionType",
-      "__filename__": "schema.json",
       "__schema__": {
         "collectionName": "up_users",
         "info": {
@@ -1974,7 +1410,7 @@
         },
         "options": {
           "draftAndPublish": false,
-          "timestamps": false
+          "timestamps": true
         },
         "attributes": {
           "username": {
@@ -2026,11 +1462,6 @@
             "target": "plugin::users-permissions.role",
             "inversedBy": "users",
             "configurable": false
-          },
-          "customer": {
-            "type": "relation",
-            "relation": "oneToOne",
-            "target": "api::customer.customer"
           }
         },
         "kind": "collectionType"
@@ -2330,6 +1761,720 @@
       "uid": "plugin::graphs-builder.graph",
       "plugin": "graphs-builder",
       "globalId": "GraphsBuilderGraph"
+    },
+    "plugin::menus.menu": {
+      "kind": "collectionType",
+      "collectionName": "menus",
+      "info": {
+        "displayName": "Menu",
+        "singularName": "menu",
+        "pluralName": "menus",
+        "tableName": "menus"
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      },
+      "attributes": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "slug": {
+          "type": "uid",
+          "targetField": "title",
+          "required": true
+        },
+        "items": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "plugin::menus.menu-item",
+          "mappedBy": "root_menu"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "__schema__": {
+        "collectionName": "menus",
+        "info": {
+          "displayName": "Menu",
+          "singularName": "menu",
+          "pluralName": "menus",
+          "tableName": "menus"
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {
+          "content-manager": {
+            "visible": false
+          },
+          "content-type-builder": {
+            "visible": false
+          }
+        },
+        "attributes": {
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "slug": {
+            "type": "uid",
+            "targetField": "title",
+            "required": true
+          },
+          "items": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "plugin::menus.menu-item",
+            "mappedBy": "root_menu"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "menu",
+      "connection": "default",
+      "uid": "plugin::menus.menu",
+      "plugin": "menus",
+      "globalId": "MenusMenu"
+    },
+    "plugin::menus.menu-item": {
+      "kind": "collectionType",
+      "collectionName": "menu_items",
+      "info": {
+        "displayName": "Menu Item",
+        "singularName": "menu-item",
+        "pluralName": "menu-items",
+        "tableName": "menu_items"
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      },
+      "attributes": {
+        "order": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "url": {
+          "type": "string"
+        },
+        "target": {
+          "type": "enumeration",
+          "enum": [
+            "_blank",
+            "_parent",
+            "_self",
+            "_top"
+          ]
+        },
+        "root_menu": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "plugin::menus.menu",
+          "inversedBy": "items",
+          "required": true
+        },
+        "parent": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "plugin::menus.menu-item"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "__schema__": {
+        "collectionName": "menu_items",
+        "info": {
+          "displayName": "Menu Item",
+          "singularName": "menu-item",
+          "pluralName": "menu-items",
+          "tableName": "menu_items"
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {
+          "content-manager": {
+            "visible": false
+          },
+          "content-type-builder": {
+            "visible": false
+          }
+        },
+        "attributes": {
+          "order": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "url": {
+            "type": "string"
+          },
+          "target": {
+            "type": "enumeration",
+            "enum": [
+              "_blank",
+              "_parent",
+              "_self",
+              "_top"
+            ]
+          },
+          "root_menu": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::menus.menu",
+            "inversedBy": "items",
+            "required": true
+          },
+          "parent": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "plugin::menus.menu-item"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "menu-item",
+      "connection": "default",
+      "uid": "plugin::menus.menu-item",
+      "plugin": "menus",
+      "globalId": "MenusMenuItem"
+    },
+    "api::contact.contact": {
+      "kind": "collectionType",
+      "collectionName": "contacts",
+      "info": {
+        "singularName": "contact",
+        "pluralName": "contacts",
+        "displayName": "Contact",
+        "description": ""
+      },
+      "options": {
+        "populateCreatorFields": false,
+        "draftAndPublish": false
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "email": {
+          "type": "email",
+          "required": true
+        },
+        "subject": {
+          "type": "string"
+        },
+        "text": {
+          "type": "text"
+        },
+        "status": {
+          "type": "enumeration",
+          "enum": [
+            "new",
+            "sent",
+            "failed"
+          ]
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "__schema__": {
+        "collectionName": "contacts",
+        "info": {
+          "singularName": "contact",
+          "pluralName": "contacts",
+          "displayName": "Contact",
+          "description": ""
+        },
+        "options": {
+          "populateCreatorFields": false,
+          "draftAndPublish": false
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "email": {
+            "type": "email",
+            "required": true
+          },
+          "subject": {
+            "type": "string"
+          },
+          "text": {
+            "type": "text"
+          },
+          "status": {
+            "type": "enumeration",
+            "enum": [
+              "new",
+              "sent",
+              "failed"
+            ]
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "contact",
+      "connection": "default",
+      "uid": "api::contact.contact",
+      "apiName": "contact",
+      "globalId": "Contact",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::post.post": {
+      "kind": "collectionType",
+      "collectionName": "posts",
+      "info": {
+        "singularName": "post",
+        "pluralName": "posts",
+        "displayName": "Post",
+        "description": ""
+      },
+      "options": {
+        "populateCreatorFields": false,
+        "draftAndPublish": true
+      },
+      "attributes": {
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "slug": {
+          "type": "uid",
+          "unique": false,
+          "targetField": "name",
+          "required": false
+        },
+        "teaser": {
+          "type": "text"
+        },
+        "content": {
+          "type": "richtext"
+        },
+        "cover": {
+          "type": "media",
+          "multiple": false,
+          "required": false,
+          "allowedTypes": [
+            "images"
+          ]
+        },
+        "seo": {
+          "type": "component",
+          "repeatable": false,
+          "component": "shared.seo"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "publishedAt": {
+          "type": "datetime",
+          "configurable": false,
+          "writable": true,
+          "visible": false
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "__schema__": {
+        "collectionName": "posts",
+        "info": {
+          "singularName": "post",
+          "pluralName": "posts",
+          "displayName": "Post",
+          "description": ""
+        },
+        "options": {
+          "populateCreatorFields": false,
+          "draftAndPublish": true
+        },
+        "attributes": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "slug": {
+            "type": "uid",
+            "unique": false,
+            "targetField": "name",
+            "required": false
+          },
+          "teaser": {
+            "type": "text"
+          },
+          "content": {
+            "type": "richtext"
+          },
+          "cover": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+              "images"
+            ]
+          },
+          "seo": {
+            "type": "component",
+            "repeatable": false,
+            "component": "shared.seo"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "post",
+      "connection": "default",
+      "uid": "api::post.post",
+      "apiName": "post",
+      "globalId": "Post",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::translation.translation": {
+      "kind": "singleType",
+      "collectionName": "translations",
+      "info": {
+        "singularName": "translation",
+        "pluralName": "translations",
+        "displayName": "Translation",
+        "description": ""
+      },
+      "options": {
+        "populateCreatorFields": false,
+        "draftAndPublish": true
+      },
+      "attributes": {
+        "entry": {
+          "type": "component",
+          "repeatable": true,
+          "component": "data.entry",
+          "required": true
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "publishedAt": {
+          "type": "datetime",
+          "configurable": false,
+          "writable": true,
+          "visible": false
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "__schema__": {
+        "collectionName": "translations",
+        "info": {
+          "singularName": "translation",
+          "pluralName": "translations",
+          "displayName": "Translation",
+          "description": ""
+        },
+        "options": {
+          "populateCreatorFields": false,
+          "draftAndPublish": true
+        },
+        "attributes": {
+          "entry": {
+            "type": "component",
+            "repeatable": true,
+            "component": "data.entry",
+            "required": true
+          }
+        },
+        "kind": "singleType"
+      },
+      "modelType": "contentType",
+      "modelName": "translation",
+      "connection": "default",
+      "uid": "api::translation.translation",
+      "apiName": "translation",
+      "globalId": "Translation",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::website.website": {
+      "kind": "singleType",
+      "collectionName": "websites",
+      "info": {
+        "singularName": "website",
+        "pluralName": "websites",
+        "displayName": "Website",
+        "description": ""
+      },
+      "options": {
+        "populateCreatorFields": false,
+        "draftAndPublish": false
+      },
+      "attributes": {
+        "content": {
+          "type": "dynamiczone",
+          "components": [
+            "page.home",
+            "page.contact-us",
+            "page.about"
+          ]
+        },
+        "seo": {
+          "type": "component",
+          "repeatable": false,
+          "component": "shared.seo"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "__schema__": {
+        "collectionName": "websites",
+        "info": {
+          "singularName": "website",
+          "pluralName": "websites",
+          "displayName": "Website",
+          "description": ""
+        },
+        "options": {
+          "populateCreatorFields": false,
+          "draftAndPublish": false
+        },
+        "attributes": {
+          "content": {
+            "type": "dynamiczone",
+            "components": [
+              "page.home",
+              "page.contact-us",
+              "page.about"
+            ]
+          },
+          "seo": {
+            "type": "component",
+            "repeatable": false,
+            "component": "shared.seo"
+          }
+        },
+        "kind": "singleType"
+      },
+      "modelType": "contentType",
+      "modelName": "website",
+      "connection": "default",
+      "uid": "api::website.website",
+      "apiName": "website",
+      "globalId": "Website",
+      "actions": {},
+      "lifecycles": {}
     }
   },
   "type": "object",

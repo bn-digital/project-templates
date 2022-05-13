@@ -1,15 +1,17 @@
-import { Drawer, Layout, Skeleton, Spin } from 'antd'
+import './DefaultLayout.less'
+
+import { Drawer, Layout, Spin } from 'antd'
+import { FC, Suspense } from 'react'
 import { Outlet } from 'react-router'
-import { Suspense, useCallback, useEffect, useState, VFC } from 'react'
 import { useLocation } from 'react-router-dom'
 import { AppContext } from 'src/components/app'
 import { WebsiteComponent } from 'src/graphql'
-import { Footer } from './Footer'
-import { Content } from './Content'
-import { Header } from './Header'
-import './DefaultLayout.less'
 
-const PageLoader: VFC = () => (
+import { Content } from './Content'
+import { Footer } from './Footer'
+import { Header } from './Header'
+
+const PageLoader: FC = () => (
   <Content>
     <Spin size={'small'} />
   </Content>
@@ -17,7 +19,12 @@ const PageLoader: VFC = () => (
 
 type ContentProps = ComponentPageContactUs | ComponentPageHome
 
-const DefaultLayout: VFC = () => {
+const menu: LinkFragment[] = [
+  { id: '1', title: 'Home', url: '/' },
+  { id: '2', title: 'Contact Us', url: '/contact-us' },
+]
+
+const DefaultLayout: FC = () => {
   const { pathname } = useLocation()
 
   function filterByPathname<T extends ContentProps>(data: T[] = []): T | null {
@@ -33,7 +40,7 @@ const DefaultLayout: VFC = () => {
               <>
                 <Layout.Header>
                   <Content>
-                    <Header />
+                    <Header menu={menu} />
                   </Content>
                 </Layout.Header>
                 <Layout.Content>

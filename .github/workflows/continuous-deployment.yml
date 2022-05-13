@@ -1,0 +1,24 @@
+name: Continuous Deployment
+on:
+  pull_request:
+    branches:
+      - latest
+      - main
+      - master
+    paths:
+      - ".github/workflows/build.yml"
+      - "skaffold.yaml"
+      - "**/*/.env.*"
+      - "**/*/Dockerfile"
+      - "**/*/package.json"
+      - "packages/cms/src/**/*"
+      - "packages/website/src/**/*"
+      - "packages/cms/config/**/*"
+
+jobs:
+  deploy:
+    uses: bn-digital/project-templates/.github/workflows/deploy-charts.yml@latest
+    with:
+      environment: staging
+      version: latest
+      domain: ${{ github.event.repository.name }}.bndigital.dev

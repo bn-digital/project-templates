@@ -1,20 +1,36 @@
 # nonk8s
-apiVersion: skaffold/v2beta27
+apiVersion: skaffold/v2beta28
 kind: Config
 build:
   local:
-    concurrency: 0
     useBuildkit: true
+  tagPolicy:
+    sha256: { }
   artifacts:
     - image: cms
-      context: packages/cms
+      docker:
+        target: cms
     - image: website
-      context: packages/website
+      docker:
+        target: website
+
+test:
+  - image: website
+    structureTests:
+      - nodejs-container-tests.yaml
+      - website-container-tests.yaml
+  - image: cms
+    structureTests:
+      - nodejs-container-tests.yaml
+      - cms-container-tests.yaml
+
 profiles:
+  - name: development
+    activation:
+      - kubeContext: minikube
   - name: staging
-    build:
-      tagPolicy:
-        sha256: {}
+    activation:
+      - env: CI=true
   - name: production
     build:
       tagPolicy:

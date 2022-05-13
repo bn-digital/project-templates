@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_page_abouts",
+  "info": {
+    "displayName": "About",
+    "icon": "user-circle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "pathname": {
+      "type": "string",
+      "default": "/about",
+      "required": true
+    },
+    "education": {
+      "type": "component",
+      "repeatable": false,
+      "component": "data.entry"
+    },
+    "quote": {
+      "type": "text"
+    },
+    "diplomas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.card"
+    },
+    "about": {
+      "type": "text"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

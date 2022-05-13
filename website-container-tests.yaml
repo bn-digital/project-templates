@@ -1,0 +1,21 @@
+schemaVersion: 2.0.0
+metadataTest:
+  entrypoint:
+    - serve
+  cmd:
+    - --single
+    - .
+  workdir: /usr/local/src
+commandTests:
+  - name: serve
+    command: serve
+    args:
+      - --version
+    expectedOutput:
+      - '13.'
+fileExistenceTests:
+  - name: index
+    path: /usr/local/src/index.html
+    shouldExist: true
+    uid: 1000
+    gid: 1000

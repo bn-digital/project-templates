@@ -39,13 +39,14 @@
   },
   "devDependencies": {
     "@bn-digital/commitlint-config": "^1.1.1",
-    "@bn-digital/eslint-config": "^1.19.1",
-    "@bn-digital/graphql-config": "^1.0.7",
-    "@bn-digital/prettier-config": "^1.13.3",
-    "@bn-digital/stylelint-config": "^1.13.5",
-    "concurrently": "^7.0.0",
-    "lint-staged": "^12.3.4",
-    "typescript": "^4.5.5"
+    "@bn-digital/eslint-config": "^1.19.24",
+    "@bn-digital/graphql-config": "^1.0.9",
+    "@bn-digital/prettier-config": "^1.14.4",
+    "@bn-digital/stylelint-config": "^1.14.2",
+    "concurrently": "^7.1.0",
+    "lint-staged": "^12.4.1",
+    "pm2": "^5.2.0",
+    "typescript": "^4.6.4"
   },
   "scripts": {
     "prettier": "node_modules/.bin/prettier",
@@ -57,8 +58,8 @@
     "website": "yarn workspace @app/website run start",
     "start": "concurrently 'yarn:website' 'yarn:cms' 'yarn:generate'",
     "build": "yarn workspaces foreach run build",
-    "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src && yarn stylelint --fix packages/*/src/**/*.less",
-    "lint": "yarn prettier --check packages/*/src && yarn eslint packages/*/src && yarn stylelint packages/*/src/**/*.less"
+    "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src/**/*.{ts,tsx} && yarn stylelint --fix packages/*/src/**/*.less",
+    "lint": "yarn prettier --check packages/*/src && yarn eslint packages/*/src/**/*.{ts,tsx} && yarn stylelint packages/*/src/**/*.less"
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "yarn@3.2.0"
 }

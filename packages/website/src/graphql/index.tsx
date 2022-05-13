@@ -4,58 +4,58 @@ import * as React from 'react';
 import * as ApolloReactComponents from '@apollo/client/react/components';
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 const defaultOptions = {} as const;
-export type CardFragment = { id: string, title?: string | null, subtitle?: string | null, description?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null };
+type CardFragment = { id: string, title?: string | null, subtitle?: string | null, description?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null };
 
-export type EntryFragment = { id: string, key?: string | null, value: string };
+type EntryFragment = { id: string, key?: string | null, value: string };
 
-export type FileFragment = { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null };
+type FileFragment = { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null };
 
-export type LinkFragment = { id: string, title?: string | null, url: string };
+type HeadlineFragment = { id: string, title?: string | null, subtitle?: string | null };
 
-export type MenuFragment = { id: string, children: Array<{ id: string, title?: string | null, url: string } | null> };
+type LinkFragment = { id: string, title?: string | null, url: string };
 
-export type SeoFragment = { id: string, canonicalURL?: string | null, keywords?: string | null, metaTitle: string, metaViewport?: string | null, metaDescription?: string | null };
+type SeoFragment = { id: string, canonicalURL?: string | null, keywords?: string | null, metaTitle: string, metaViewport?: string | null, metaDescription?: string | null };
 
-export type ParagraphFragment = { id: string, value: string };
+type ParagraphFragment = { id: string, value: string };
 
-export type TabFragment = { id: string, name: string, pane: { id: string, title?: string | null, subtitle?: string | null, description?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } };
+type TabFragment = { id: string, name: string, pane: { id: string, title?: string | null, subtitle?: string | null, description?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } };
 
-export type ContactUsFragment = { id: string, pathname: string, hero?: { subtitle?: string | null, id: string, description?: string | null, title?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } | null };
+type ContactUsFragment = { id: string, pathname: string, contact?: { id: string, address?: string | null, email?: string | null, phone?: string | null } | null };
 
-export type HomeFragment = { id: string, pathname: string, hero?: { subtitle?: string | null, id: string, description?: string | null, title?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } | null };
+type HomeFragment = { id: string, pathname: string, hero?: { subtitle?: string | null, id: string, description?: string | null, title?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } | null, mission?: Array<{ id: string, title?: string | null, subtitle?: string | null } | null> | null, strategy?: { id: string, title?: string | null, subtitle?: string | null } | null, services?: { id: string, title?: string | null, subtitle?: string | null } | null, features?: Array<{ id: string, title?: string | null, subtitle?: string | null, description?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } | null> | null };
 
-export type WebsiteFragment = { content?: Array<{ __typename: 'ComponentPageContactUs', id: string, pathname: string, hero?: { subtitle?: string | null, id: string, description?: string | null, title?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } | null } | { __typename: 'ComponentPageHome', id: string, pathname: string, hero?: { subtitle?: string | null, id: string, description?: string | null, title?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } | null } | { __typename: 'Error' } | null> | null };
+type WebsiteFragment = { content?: Array<{ __typename: 'ComponentPageAbout' } | { __typename: 'ComponentPageContactUs', id: string, pathname: string, contact?: { id: string, address?: string | null, email?: string | null, phone?: string | null } | null } | { __typename: 'ComponentPageHome', id: string, pathname: string, hero?: { subtitle?: string | null, id: string, description?: string | null, title?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } | null, mission?: Array<{ id: string, title?: string | null, subtitle?: string | null } | null> | null, strategy?: { id: string, title?: string | null, subtitle?: string | null } | null, services?: { id: string, title?: string | null, subtitle?: string | null } | null, features?: Array<{ id: string, title?: string | null, subtitle?: string | null, description?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } | null> | null } | { __typename: 'Error' } | null> | null };
 
-export type ForgotPasswordMutationVariables = Exact<{
+type ForgotPasswordMutationVariables = Exact<{
   email: Scalars['String'];
 }>;
 
 
-export type ForgotPasswordMutation = { forgotPassword?: { ok: boolean } | null };
+type ForgotPasswordMutation = { forgotPassword?: { ok: boolean } | null };
 
-export type LoginMutationVariables = Exact<{
+type LoginMutationVariables = Exact<{
   input: UsersPermissionsLoginInput;
 }>;
 
 
-export type LoginMutation = { login: { jwt?: string | null } };
+type LoginMutation = { login: { jwt?: string | null } };
 
-export type RegisterMutationVariables = Exact<{
+type RegisterMutationVariables = Exact<{
   input: UsersPermissionsRegisterInput;
 }>;
 
 
-export type RegisterMutation = { register: { jwt?: string | null } };
+type RegisterMutation = { register: { jwt?: string | null } };
 
-export type MeQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type MeQuery = { me?: { email: string, createdAt?: Date | null, updatedAt?: Date | null, customer?: { data?: { id?: string | null } | null } | null } | null };
-
-export type WebsiteQueryVariables = Exact<{ [key: string]: never; }>;
+type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type WebsiteQuery = { website?: { data?: { id?: string | null, attributes?: { content?: Array<{ __typename: 'ComponentPageContactUs', id: string, pathname: string, hero?: { subtitle?: string | null, id: string, description?: string | null, title?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } | null } | { __typename: 'ComponentPageHome', id: string, pathname: string, hero?: { subtitle?: string | null, id: string, description?: string | null, title?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } | null } | { __typename: 'Error' } | null> | null } | null } | null } | null };
+type MeQuery = { me?: { email?: string | null } | null };
+
+type WebsiteQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type WebsiteQuery = { website?: { data?: { id?: string | null, attributes?: { content?: Array<{ __typename: 'ComponentPageAbout' } | { __typename: 'ComponentPageContactUs', id: string, pathname: string, contact?: { id: string, address?: string | null, email?: string | null, phone?: string | null } | null } | { __typename: 'ComponentPageHome', id: string, pathname: string, hero?: { subtitle?: string | null, id: string, description?: string | null, title?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } | null, mission?: Array<{ id: string, title?: string | null, subtitle?: string | null } | null> | null, strategy?: { id: string, title?: string | null, subtitle?: string | null } | null, services?: { id: string, title?: string | null, subtitle?: string | null } | null, features?: Array<{ id: string, title?: string | null, subtitle?: string | null, description?: string | null, media?: { data?: { id?: string | null, attributes?: { previewUrl?: string | null, url: string } | null } | null } | null } | null> | null } | { __typename: 'Error' } | null> | null } | null } | null } | null };
 
 export const EntryFragmentDoc = gql`
     fragment Entry on ComponentDataEntry {
@@ -69,14 +69,6 @@ export const LinkFragmentDoc = gql`
   id
   title
   url
-}
-    `;
-export const MenuFragmentDoc = gql`
-    fragment Menu on ComponentUiMenu {
-  id
-  children {
-    ...Link
-  }
 }
     `;
 export const SeoFragmentDoc = gql`
@@ -126,6 +118,13 @@ export const TabFragmentDoc = gql`
   }
 }
     `;
+export const HeadlineFragmentDoc = gql`
+    fragment Headline on ComponentUiHeadline {
+  id
+  title
+  subtitle
+}
+    `;
 export const HomeFragmentDoc = gql`
     fragment Home on ComponentPageHome {
   id
@@ -141,22 +140,29 @@ export const HomeFragmentDoc = gql`
       }
     }
   }
+  mission {
+    ...Headline
+  }
+  strategy {
+    ...Headline
+  }
+  services {
+    ...Headline
+  }
+  features {
+    ...Card
+  }
 }
     `;
 export const ContactUsFragmentDoc = gql`
     fragment ContactUs on ComponentPageContactUs {
   id
   pathname
-  hero {
-    subtitle
+  contact {
     id
-    description
-    title
-    media {
-      data {
-        ...File
-      }
-    }
+    address
+    email
+    phone
   }
 }
     `;
@@ -290,13 +296,6 @@ export const MeDocument = gql`
     query me {
   me {
     email
-    createdAt
-    updatedAt
-    customer {
-      data {
-        id
-      }
-    }
   }
 }
     `;
@@ -347,6 +346,8 @@ export const WebsiteDocument = gql`
     ${WebsiteFragmentDoc}
 ${HomeFragmentDoc}
 ${FileFragmentDoc}
+${HeadlineFragmentDoc}
+${CardFragmentDoc}
 ${ContactUsFragmentDoc}`;
 export type WebsiteComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<WebsiteQuery, WebsiteQueryVariables>, 'query'>;
 

@@ -15,35 +15,35 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": false,
           "sortable": false
         }
       },
       "url": {
         "edit": {
-          "label": "Url",
+          "label": "url",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Url",
+          "label": "url",
           "searchable": true,
           "sortable": true
         }
       },
       "title": {
         "edit": {
-          "label": "Title",
+          "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Title",
+          "label": "title",
           "searchable": true,
           "sortable": true
         }

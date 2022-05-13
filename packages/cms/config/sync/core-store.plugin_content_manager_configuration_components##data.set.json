@@ -15,21 +15,21 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": false,
           "sortable": false
         }
       },
       "value": {
         "edit": {
-          "label": "Value",
+          "label": "value",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Value",
+          "label": "value",
           "searchable": true,
           "sortable": true
         }

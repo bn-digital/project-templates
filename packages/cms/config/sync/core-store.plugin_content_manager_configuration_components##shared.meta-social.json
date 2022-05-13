@@ -15,63 +15,63 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": false,
           "sortable": false
         }
       },
       "socialNetwork": {
         "edit": {
-          "label": "SocialNetwork",
+          "label": "socialNetwork",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "SocialNetwork",
+          "label": "socialNetwork",
           "searchable": true,
           "sortable": true
         }
       },
       "title": {
         "edit": {
-          "label": "Title",
+          "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Title",
+          "label": "title",
           "searchable": true,
           "sortable": true
         }
       },
       "description": {
         "edit": {
-          "label": "Description",
+          "label": "description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Description",
+          "label": "description",
           "searchable": true,
           "sortable": true
         }
       },
       "image": {
         "edit": {
-          "label": "Image",
+          "label": "image",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Image",
+          "label": "image",
           "searchable": false,
           "sortable": false
         }

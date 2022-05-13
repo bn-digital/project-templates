@@ -22,11 +22,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ]
+      "allowedTypes": ["images", "files", "videos"]
     },
     "metaSocial": {
       "type": "component",

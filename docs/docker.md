@@ -56,29 +56,80 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 yum install docker-ce docker-ce-cli containerd.io
 ```
 
-6. Start application container
+### Docker Compose
+
+#### Install on Linux
+
+You can install Compose V2 by downloading the appropriate binary for your system from the project release page and copying it into $HOME/.docker/cli-plugins as docker-compose.
+
+Run the following command to download the current stable release of Docker Compose:
 
 ```shell
-docker run --name=website -it -d -p 80:5000 website:latest 
+mkdir -p /usr/local/lib/docker/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
+chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 ```
 
-## Stopping
+To verify install
 
-docker stop website
+```shell
+docker-compose version
+```
 
 ## Build
 
-Execute locally from project root:
+### Option A: Docker
+Execute locally from each package working directory:
+
+**For CMS**:
 
 ```shell
-docker build -t website:latest --target=website .
+cd packages/cms
+docker build -t cms:latest .
 ```
 
-## Further update
-
-Execute on server:
+**For Website**:
 
 ```shell
-docker pull dcr.bndigital.dev/yieldapp/website:latest
-docker restart yieldapp
+cd packages/website
+docker build -t website:latest .
 ```
+
+---
+
+To simplify image builds you can use [Docker Compose](#docker-compose) or [Skaffold](https://skaffold.dev)
+
+#### Option B: Docker Compose
+
+From project root:
+
+```shell
+docker compose build
+```
+
+#### Option C: Skaffold
+
+From project root:
+
+```shell
+skaffold build
+```
+
+## Deployment
+
+### Docker Compose
+
+```shell
+docker-compose up -d
+```
+
+### Kubernetes
+
+#### Prerequisites:
+- [Helm](https://github.com/helm/helm)
+- [Helmfile](https://github.com/helmfile/helmfile)
+
+```shell
+helmfile --environment production apply
+```
+

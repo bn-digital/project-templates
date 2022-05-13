@@ -15,63 +15,63 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "Id",
+          "label": "id",
           "searchable": false,
           "sortable": false
         }
       },
       "visible": {
         "edit": {
-          "label": "Visible",
+          "label": "visible",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Visible",
+          "label": "visible",
           "searchable": true,
           "sortable": true
         }
       },
       "heading": {
         "edit": {
-          "label": "Heading",
+          "label": "heading",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Heading",
+          "label": "heading",
           "searchable": false,
           "sortable": false
         }
       },
       "children": {
         "edit": {
-          "label": "Children",
+          "label": "children",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Children",
+          "label": "children",
           "searchable": false,
           "sortable": false
         }
       },
       "button": {
         "edit": {
-          "label": "Button",
+          "label": "button",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Button",
+          "label": "button",
           "searchable": false,
           "sortable": false
         }
@@ -80,7 +80,9 @@
     "layouts": {
       "list": [
         "id",
-        "visible"
+        "visible",
+        "heading",
+        "children"
       ],
       "edit": [
         [

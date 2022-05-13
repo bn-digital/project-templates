@@ -1,10 +1,16 @@
-version: v0.143.0
+version: v0.144.0
 dependencies:
 - name: app
   repository: https://dcr.bndigital.dev/chartrepo/library
-  version: 1.2.10
+  version: 1.2.14
 - name: app
   repository: https://dcr.bndigital.dev/chartrepo/library
-  version: 1.2.10
-digest: sha256:8ab34411a398408964519969a40ac2fb4d7adb3fa0c73bc1ff6bd5d11d987b16
-generated: "2022-01-24T12:00:01.0695874+02:00"
+  version: 1.2.14
+- name: cert-manager
+  repository: https://charts.jetstack.io
+  version: v1.8.0
+- name: ingress-nginx
+  repository: https://kubernetes.github.io/ingress-nginx
+  version: 4.1.0
+digest: sha256:3d3a418bfa98674ec15aa6b811be0c68edfb3638353531652f717ac80babc435
+generated: "2022-05-13T06:30:54.0668921+03:00"
