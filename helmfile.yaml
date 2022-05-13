@@ -1,10 +1,6 @@
-repositories:
-  - name: bndigital
-    url: https://dcr.bndigital.dev/chartrepo/library
-  - name: ingress-nginx
-    url: https://kubernetes.github.io/ingress-nginx
-  - name: jetstack
-    url: https://charts.jetstack.io
+helmfiles:
+  - path: git::https://github.com/bn-digital/helm.git@helmfiles/load-balancer.yaml?ref=latest
+  - path: git::https://github.com/bn-digital/helm.git@helmfiles/app.yaml?ref=latest
 
 helmDefaults:
   createNamespace: true
@@ -12,143 +8,26 @@ helmDefaults:
 
 environments:
   default:
-    kubeContext: minikube
     values:
       - database:
           enabled: false
-        ingressController:
-          enabled: false
         tlsIssuer:
+          enabled: false
+        ingressController:
           enabled: false
   staging:
-    kubeContext: do-fra1-bndigital
     values:
       - database:
           enabled: false
-        ingressController:
-          enabled: false
         tlsIssuer:
+          enabled: true
+        ingressController:
           enabled: false
   production:
-    kubeContext: '{{ requiredEnv "KUBE_CONTEXT" }}'
     values:
       - database:
           enabled: true
-        ingressController:
-          enabled: true
         tlsIssuer:
           enabled: true
-
-releases:
-  - name: ingress-nginx
-    namespace: infrastructure
-    condition: 'ingressController.enabled'
-    chart: ingress-nginx/ingress-nginx
-    version: 4.1.0
-    labels:
-      component: infrastructure
-    values:
-      - defaultBackend:
-          enabled: false
-        controller:
-          priorityClassName: system-cluster-critical
-          ingressClassResource:
-            default: true
-          config:
-            allow-snippet-annotations: 'true'
-            enable-modsecurity: 'true'
-            use-gzip: 'true'
-            use-http2: 'true'
-          service:
-            omitClusterIP: true
-            annotations:
-              service.beta.kubernetes.io/do-loadbalancer-name: '{{ requiredEnv "APP_NAME" }}'
-              service.beta.kubernetes.io/do-loadbalancer-protocol: 'http2'
-              service.beta.kubernetes.io/do-loadbalancer-http2-port: '443'
-              service.beta.kubernetes.io/do-loadbalancer-redirect-http-to-https: 'true'
-              service.beta.kubernetes.io/do-loadbalancer-tls-passthrough: 'true'
-
-  - name: cert-manager
-    namespace: infrastructure
-    chart: jetstack/cert-manager
-    condition: 'tlsIssuer.enabled'
-    version: v1.8.0
-    labels:
-      component: infrastructure
-    values:
-      - installCRDs: true
-        prometheus:
-          enabled: false
-        global:
-          priorityClassName: system-cluster-critical
-
-  - name: '{{ requiredEnv "APP_NAME" }}-website'
-    namespace: '{{ requiredEnv "APP_ENV" }}'
-    chart: bndigital/app
-    version: 1.2.14
-    labels:
-      component: project
-    values:
-      - app:
-          name: '{{ requiredEnv "APP_NAME" }}'
-        image:
-          registry:
-            url: '{{ env "DOCKER_REGISTRY" | default "dcr.bndigital.dev" }}/{{ requiredEnv "APP_NAME" }}'
-            username: '{{ requiredEnv "DOCKER_USERNAME" }}'
-            password: '{{ requiredEnv "DOCKER_PASSWORD" }}'
-          repository: 'website'
-          tag: '{{ env "APP_VERSION" | default "latest" }}'
-          pullSecrets: ['{{ requiredEnv "APP_NAME" }}-website-registry']
-        vcs:
-          repository: '{{ requiredEnv "GITHUB_REPOSITORY" }}'
-          ref: '{{ env "GITHUB_REF_NAME" | default "latest" }}'
-          commit: '{{ env "GITHUB_SHA" | default "unknown" }}'
-        ingress:
-          host: '{{ requiredEnv "DOMAIN" }}'
-          tls:
-            issuer:
-              enabled: {{ .Values.tlsIssuer.enabled }}
-              name: letsencrypt
-          proxy:
-            www: false
-            paths:
-              - implementation: 'strapi'
-                service:
-                  name: '{{ requiredEnv "APP_NAME" }}-cms-app'
-
-  - name: '{{ requiredEnv "APP_NAME" }}-cms'
-    namespace: '{{ requiredEnv "APP_ENV" }}'
-    chart: bndigital/app
-    version: 1.2.14
-    labels:
-      component: project
-    values:
-      - app:
-          name: '{{ requiredEnv "APP_NAME" }}'
-        image:
-          registry:
-            url: '{{ env "DOCKER_REGISTRY" | default "dcr.bndigital.dev" }}/{{ requiredEnv "APP_NAME" }}'
-          repository: 'cms'
-          tag: '{{ env "APP_VERSION" | default "latest" }}'
-          pullSecrets: ['{{ requiredEnv "APP_NAME" }}-website-registry']
-        vcs:
-          repository: '{{ requiredEnv "GITHUB_REPOSITORY" }}'
-          ref: '{{ env "GITHUB_REF_NAME" | default "latest" }}'
-          commit: '{{ env "GITHUB_SHA" | default "unknown" }}'
-        database:
-          enabled: {{ .Values.database.enabled }}
-          auth:
-            username: '{{ requiredEnv "APP_NAME" }}'
-            password: '{{ env "DATABASE_PASSWORD" | default "password" }}'
-            database: '{{ requiredEnv "APP_NAME" }}'
-            postgresPassword: '{{ env "DATABASE_ROOT_PASSWORD" | default "password" }}'
-          primary:
-            priorityClassName: system-node-critical
-            persistence:
-              size: 2Gi
-          serviceAccount:
-            create: true
-          volumePermissions:
-            enabled: true
-        healthcheck:
-          path: /graphql
+        ingressController:
+          enabled: true

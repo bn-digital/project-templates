@@ -37,6 +37,7 @@ jobs:
           secrets: |
             projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/digitalocean.com   token | TF_VAR_digitalocean_token ;
             projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/digitalocean.com   project | TF_VAR_project_name ;
+            projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/digitalocean.com   domain | TF_VAR_domain ;
             projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/digitalocean.com   spaces-access-key-id | TF_VAR_spaces_access_key_id ;
             projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/digitalocean.com   spaces-secret-access-key | TF_VAR_spaces_secret_access_key ;
             projects/data/${{ env.APP_NAME }}/${{ env.APP_ENV }}/digitalocean.com   spaces-region | TF_VAR_spaces_region ;
@@ -60,3 +61,7 @@ jobs:
       - name: Apply Terraform plan
         run: terraform apply -auto-approve -input=false
         working-directory: packages/cloud
+
+      - name: Persist state
+        uses: stefanzweifel/git-auto-commit-action@v4
+
