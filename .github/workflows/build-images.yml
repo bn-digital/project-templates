@@ -29,7 +29,7 @@ jobs:
         with:
           method: github
           url: ${{ secrets.VAULT_ENDPOINT }}
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ secrets.GH_TOKEN }}
           secrets: |
             infrastructure/data/harbor registry     | DOCKER_REGISTRY ;
             infrastructure/data/harbor username     | DOCKER_USERNAME ;

@@ -17,7 +17,7 @@ jobs:
         with:
           method: github
           url: ${{ secrets.VAULT_ENDPOINT }}
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ secrets.GH_TOKEN }}
           secrets: |
             infrastructure/data/sonarqube   host    | SONAR_HOST ;
             infrastructure/data/sonarqube   token   | SONAR_TOKEN ;
