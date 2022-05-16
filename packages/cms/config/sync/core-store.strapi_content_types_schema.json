@@ -2382,8 +2382,7 @@
       "info": {
         "singularName": "website",
         "pluralName": "websites",
-        "displayName": "Website",
-        "description": ""
+        "displayName": "Website"
       },
       "options": {
         "populateCreatorFields": false,
@@ -2443,8 +2442,7 @@
         "info": {
           "singularName": "website",
           "pluralName": "websites",
-          "displayName": "Website",
-          "description": ""
+          "displayName": "Website"
         },
         "options": {
           "populateCreatorFields": false,

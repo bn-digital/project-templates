@@ -4,13 +4,13 @@
   "type": "public",
   "permissions": [
     {
+      "action": "api::contact.contact.create"
+    },
+    {
+      "action": "api::website.website.find"
+    },
+    {
       "action": "plugin::i18n.locales.listLocales"
-    },
-    {
-      "action": "plugin::menus.menu.find"
-    },
-    {
-      "action": "plugin::menus.menu.findOne"
     },
     {
       "action": "plugin::users-permissions.auth.callback"

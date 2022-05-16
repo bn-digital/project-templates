@@ -1,9 +1,10 @@
 /* eslint-disable */
 import * as path from 'path'
 import { name } from './name'
-
+import { Knex } from 'knex'
 const Client = require('knex/lib/dialects/postgres')
 const Formatter = require('knex/lib/formatter')
+
 /**
  * Overrides default Strapi + Knex ORM field name strategy, enforcing snake_case instead of direct property name mapping
  * @param value
@@ -22,26 +23,21 @@ Formatter.prototype.wrapAsIdentifier = (value: any) => `"${(value || '').replace
  *
  * @param {(key: string, defaultValue?: string)=> string} env
  */
-export default ({ env }: { env: EnvFunction }) => ({
+export default ({ env }: { env: EnvFunction & TypedEnvFunction }): { connection: Knex.Config } => ({
   connection: {
-    client: env('DATABASE_CLIENT', 'sqlite'),
+    client: env<Strapi.Db.CLient>('DATABASE_CLIENT', 'sqlite'),
     connection:
-      env('NODE_ENV') === 'production'
+      env('NODE_ENV') === 'production' || env<Strapi.Db.CLient>('DATABASE_CLIENT', 'sqlite') === 'postgres'
         ? {
-            pool: { min: 0, max: 5 },
-            charset: 'utf-8',
-            decimalNumbers: true,
-            parseJSON: true,
-            supportBigNumbers: true,
+            charset: 'utf8',
             user: env('DATABASE_USERNAME', 'postgres'),
-            password: env('DATABASE_PASSWORD'),
+            password: env('DATABASE_PASSWORD', ''),
             database: env('DATABASE_NAME', name),
-            schema: 'public',
+            ssl: env.bool('DATABASE_SSL', false),
             host: env('DATABASE_HOST', 'localhost'),
-            port: Number.parseInt(env<string>('DATABASE_PORT', '5432')),
+            port: env.int('DATABASE_PORT', 5432),
           }
         : {
-            dialect: 'sqlite',
             filename: path.join(process.cwd(), env<string>('DATABASE_FILENAME', 'database/data.sqlite')),
           },
     useNullAsDefault: true,

@@ -23,7 +23,7 @@
     "@strapi/provider-upload-aws-s3": "^4.2.0-beta.2",
     "@strapi/strapi": "^4.2.0-beta.2",
     "knex": "^2.0.0",
-    "lodash": "4.17.21",
+    "lodash": "^4.17.21",
     "pg": "^8.7.3",
     "sqlite3": "^5.0.8",
     "strapi-plugin-config-sync": "^1.0.1",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@bn-digital/vault-env": "^1.4.0",
     "@swc/cli": "^0.1.57",
-    "@swc/core": "^1.2.182",
+    "@swc/core": "^1.2.185",
     "@types/node": "^17.0.33",
     "@types/uuid": "^8.3.4",
     "@vscode/sqlite3": "^5.0.8",
