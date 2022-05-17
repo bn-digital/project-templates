@@ -1,5 +1,3 @@
-import * as path from 'path'
-
 export default [
   'strapi::errors',
   {
@@ -18,4 +16,5 @@ export default [
   'strapi::body',
   'strapi::public',
   'strapi::favicon',
+  'plugin::strapi-prometheus.metrics',
 ]

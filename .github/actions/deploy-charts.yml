@@ -7,21 +7,18 @@ on:
         default: staging
       secrets:
         type: string
+        description: Additional key-value map of Value secret paths & names which will be mapped to env variables
         required: false
         default: ''
       version:
         type: string
         required: false
         default: latest
-      domain:
-        type: string
-        required: false
-        default: ${{ github.event.repository.name }}.bndigital.dev
 
 env:
   APP_NAME: ${{ github.event.repository.name }}
-  DOMAIN: ${{ inputs.domain }}
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  DOMAIN: ${{ github.event.repository.name }}.bndigital.dev
   VAULT_ENDPOINT: ${{ secrets.VAULT_ENDPOINT }}
 
 jobs:

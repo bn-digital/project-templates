@@ -12,7 +12,7 @@ declare namespace Strapi {
   import { PathLike } from 'fs'
 
   namespace Db {
-    type CLient = 'sqlite' | 'pg' | 'postgres' | 'postgresql' | 'mysql'
+    type Client = 'sqlite' | 'pg' | 'postgres' | 'postgresql' | 'mysql'
   }
 
   type Strapi = StrapiInterface &

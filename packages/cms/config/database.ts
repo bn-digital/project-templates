@@ -1,6 +1,6 @@
 /* eslint-disable */
 import * as path from 'path'
-import { name } from './name'
+import { name } from './'
 import { Knex } from 'knex'
 const Client = require('knex/lib/dialects/postgres')
 const Formatter = require('knex/lib/formatter')
@@ -25,9 +25,9 @@ Formatter.prototype.wrapAsIdentifier = (value: any) => `"${(value || '').replace
  */
 export default ({ env }: { env: EnvFunction & TypedEnvFunction }): { connection: Knex.Config } => ({
   connection: {
-    client: env<Strapi.Db.CLient>('DATABASE_CLIENT', 'sqlite'),
+    client: env<Strapi.Db.Client>('DATABASE_Client', 'sqlite'),
     connection:
-      env('NODE_ENV') === 'production' || env<Strapi.Db.CLient>('DATABASE_CLIENT', 'sqlite') === 'postgres'
+      env('NODE_ENV') === 'production' || env<Strapi.Db.Client>('DATABASE_Client', 'sqlite') === 'postgres'
         ? {
             charset: 'utf8',
             user: env('DATABASE_USERNAME', 'postgres'),

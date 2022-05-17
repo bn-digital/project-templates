@@ -1,7 +1,5 @@
-import { v5 } from 'uuid'
-
+import { generateSecret } from './'
 import * as tasks from './cron'
-import { name } from './name'
 
 module.exports = ({ env }) => ({
   host: env('HOST', '0.0.0.0'),
@@ -12,6 +10,6 @@ module.exports = ({ env }) => ({
     tasks,
   },
   app: {
-    keys: env.array('SESSION_KEY', [v5(name, '22339ddd-8c29-4a86-822e-e1173c686e8d')]),
+    keys: env.array('APP_KEYS', [generateSecret('app.keys')]),
   },
 })

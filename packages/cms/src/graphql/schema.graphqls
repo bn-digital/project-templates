@@ -503,38 +503,6 @@ type EntityNotesNoteEntityResponseCollection {
   meta: ResponseCollectionMeta!
 }
 
-input I18NLocaleFiltersInput {
-  id: IDFilterInput
-  name: StringFilterInput
-  code: StringFilterInput
-  createdAt: DateTimeFilterInput
-  updatedAt: DateTimeFilterInput
-  and: [I18NLocaleFiltersInput]
-  or: [I18NLocaleFiltersInput]
-  not: I18NLocaleFiltersInput
-}
-
-type I18NLocale {
-  name: String
-  code: String
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-type I18NLocaleEntity {
-  id: ID
-  attributes: I18NLocale
-}
-
-type I18NLocaleEntityResponse {
-  data: I18NLocaleEntity
-}
-
-type I18NLocaleEntityResponseCollection {
-  data: [I18NLocaleEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
 input UsersPermissionsPermissionFiltersInput {
   id: IDFilterInput
   action: StringFilterInput
@@ -667,6 +635,38 @@ type UsersPermissionsUserEntityResponseCollection {
 
 type UsersPermissionsUserRelationResponseCollection {
   data: [UsersPermissionsUserEntity!]!
+}
+
+input I18NLocaleFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  code: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [I18NLocaleFiltersInput]
+  or: [I18NLocaleFiltersInput]
+  not: I18NLocaleFiltersInput
+}
+
+type I18NLocale {
+  name: String
+  code: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type I18NLocaleEntity {
+  id: ID
+  attributes: I18NLocale
+}
+
+type I18NLocaleEntityResponse {
+  data: I18NLocaleEntity
+}
+
+type I18NLocaleEntityResponseCollection {
+  data: [I18NLocaleEntity!]!
+  meta: ResponseCollectionMeta!
 }
 
 input EmailDesignerEmailTemplateFiltersInput {
@@ -1008,7 +1008,7 @@ type WebsiteEntityResponse {
   data: WebsiteEntity
 }
 
-union GenericMorph = ComponentDataContact | ComponentDataEntry | ComponentDataSet | ComponentPageAbout | ComponentPageContactUs | ComponentPageHome | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiGrid | ComponentUiHeadline | ComponentUiLink | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | UploadFile | EntityNotesNote | I18NLocale | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | EmailDesignerEmailTemplate | GraphsBuilderGraph | MenusMenu | MenusMenuItem | Contact | Post | Translation | Website
+union GenericMorph = ComponentDataContact | ComponentDataEntry | ComponentDataSet | ComponentPageAbout | ComponentPageContactUs | ComponentPageHome | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiGrid | ComponentUiHeadline | ComponentUiLink | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | UploadFile | EntityNotesNote | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | I18NLocale | EmailDesignerEmailTemplate | GraphsBuilderGraph | MenusMenu | MenusMenuItem | Contact | Post | Translation | Website
 
 input FileInfoInput {
   name: String
@@ -1077,12 +1077,12 @@ type Query {
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
   entityNotesNote(id: ID): EntityNotesNoteEntityResponse
   entityNotesNotes(filters: EntityNotesNoteFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): EntityNotesNoteEntityResponseCollection
-  i18NLocale(id: ID): I18NLocaleEntityResponse
-  i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
   usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
   usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
   usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  i18NLocale(id: ID): I18NLocaleEntityResponse
+  i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   emailDesignerEmailTemplate(id: ID): EmailDesignerEmailTemplateEntityResponse
   emailDesignerEmailTemplates(filters: EmailDesignerEmailTemplateFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): EmailDesignerEmailTemplateEntityResponseCollection
   graphsBuilderGraph(id: ID): GraphsBuilderGraphEntityResponse

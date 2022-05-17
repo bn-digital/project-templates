@@ -1,11 +1,8 @@
-import { lazy } from 'react'
 import { RouteObject, useRoutes } from 'react-router-dom'
+import { DefaultLayout } from 'src/components/layout'
 
-import { DefaultLayout } from '../components/layout'
-
-const Home = lazy(() => import('./home'))
-const NotFound = lazy(() => import('./not-found'))
-
+import Home from './home'
+import NotFound from './not-found'
 /**
  * fixed in ENG-123
  */
@@ -17,6 +14,7 @@ const routes: RouteObject[] = [
       {
         element: <Home />,
         path: '/',
+        index: true,
       },
       {
         element: <Home />,

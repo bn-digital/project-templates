@@ -9,7 +9,6 @@ import { IntlProvider } from 'react-intl'
 import { BrowserRouter } from 'react-router-dom'
 import { useToggle } from 'react-use'
 import Pages from 'src/pages'
-
 type AppTheme = string | 'dark' | 'light' | 'default'
 
 type Size = 'small' | 'middle' | 'large'
@@ -42,7 +41,7 @@ const App: FC = () => (
       <Context.Consumer>
         {({ i18n }) => (
           <ConfigProvider locale={i18n.locale}>
-            <IntlProvider locale={i18n.locale.locale} defaultLocale={defaultValue.i18n.locale.locale}>
+            <IntlProvider locale={i18n.locale.locale} defaultLocale={defaultValue.i18n.locale.locale} messages={{}}>
               <BrowserRouter>
                 <Pages />
               </BrowserRouter>
