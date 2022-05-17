@@ -1,24 +1,26 @@
 name: Continuous Deployment
 on:
-  pull_request:
+  push:
     branches:
       - latest
       - main
       - master
     paths:
-      - ".github/workflows/build.yml"
+      - ".github/workflows/continuous-deployment.yml"
       - "skaffold.yaml"
+      - "helmfile.*"
       - "**/*/.env.*"
-      - "**/*/Dockerfile"
-      - "**/*/package.json"
-      - "packages/cms/src/**/*"
+      - "Dockerfile"
+      - ".dockerignore"
+      - "yarn.lock"
+      - "packages/website/public/**/*"
       - "packages/website/src/**/*"
       - "packages/cms/config/**/*"
+      - "packages/cms/database/**/*"
+      - "packages/cms/public/**/*"
+      - "packages/cms/src/**/*"
 
 jobs:
   deploy:
     uses: bn-digital/project-templates/.github/workflows/deploy-charts.yml@latest
-    with:
-      environment: staging
-      version: latest
-      domain: ${{ github.event.repository.name }}.bndigital.dev
+    secrets: inherit

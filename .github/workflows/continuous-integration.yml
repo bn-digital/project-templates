@@ -6,22 +6,24 @@ on:
       - main
       - master
     paths:
-      - ".github/workflows/build.yml"
+      - ".github/workflows/continuous-deployment.yml"
       - "skaffold.yaml"
+      - "helmfile.*"
       - "**/*/.env.*"
       - "Dockerfile"
       - ".dockerignore"
       - "yarn.lock"
-      - "packages/cms/src/**/*"
+      - "packages/website/public/**/*"
       - "packages/website/src/**/*"
       - "packages/cms/config/**/*"
+      - "packages/cms/database/**/*"
+      - "packages/cms/public/**/*"
+      - "packages/cms/src/**/*"
 
 jobs:
   analyze:
     uses: bn-digital/project-templates/.github/workflows/analyze-code.yml@latest
-    name: Analyze source code
     secrets: inherit
   build:
-    name: Build Docker images
     uses: bn-digital/project-templates/.github/workflows/build-images.yml@latest
     secrets: inherit

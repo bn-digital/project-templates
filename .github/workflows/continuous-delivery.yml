@@ -1,20 +1,27 @@
 name: Continuous Delivery
 on:
-  release:
-    types:
-      - released
   push:
     tags:
-      - "*"
+      - '*'
 
 jobs:
-  build:
-    uses: bn-digital/project-templates/.github/workflows/build-images.yml@latest
+  provision:
+    uses: bn-digital/project-templates/.github/workflows/provision-infrastructure.yml@latest
+    secrets: inherit
     with:
       environment: production
-      version: ${{ github.event.release.tag_name }}
+      provider: digitalocean
+  build:
+    uses: bn-digital/project-templates/.github/workflows/build-images.yml@latest
+    secrets: inherit
+    with:
+      environment: production
   deploy:
+    needs:
+      - provision
+      - build
     uses: bn-digital/project-templates/.github/workflows/deploy-charts.yml@latest
+    secrets: inherit
     with:
       environment: production
       version: ${{ github.event.release.tag_name }}
