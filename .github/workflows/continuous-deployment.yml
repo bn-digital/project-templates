@@ -17,7 +17,7 @@ on:
 
 jobs:
   deploy:
-    uses: bn-digital/project-templates/.github/actions/deploy-charts.yml@latest
+    uses: bn-digital/project-templates/.github/workflows/deploy-charts.yml@latest
     with:
       environment: staging
       version: latest
