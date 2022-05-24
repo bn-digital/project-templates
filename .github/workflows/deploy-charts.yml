@@ -57,7 +57,7 @@ jobs:
         run: doctl kubernetes cluster kubeconfig save ${{ env.KUBERNETES_CLUSTER }} --set-current-context
 
       - name: Release Helm charts
-        uses: hiberbee/github-action-helm@1.12.0
+        uses: hiberbee/github-action-helm@1.13.0
         with:
           helmfile: apply
           environment: ${{ env.APP_ENV }}
