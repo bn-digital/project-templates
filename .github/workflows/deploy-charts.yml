@@ -32,7 +32,7 @@ jobs:
       APP_VERSION: ${{ inputs.version }}
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Import Vault secrets
         uses: hashicorp/vault-action@v2.4.0

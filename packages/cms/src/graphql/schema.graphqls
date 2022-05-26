@@ -245,9 +245,7 @@ type ComponentPageHome {
   id: ID!
   pathname: String!
   hero: ComponentUiCard
-  mission(filters: ComponentUiHeadlineFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiHeadline]
   features(filters: ComponentUiCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiCard]
-  strategy: ComponentUiHeadline
   services: ComponentUiHeadline
 }
 
@@ -328,14 +326,6 @@ type ComponentUiGrid {
   id: ID!
   visible: Boolean!
   children(filters: ComponentDataEntryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentDataEntry]!
-}
-
-input ComponentUiHeadlineFiltersInput {
-  title: StringFilterInput
-  subtitle: StringFilterInput
-  and: [ComponentUiHeadlineFiltersInput]
-  or: [ComponentUiHeadlineFiltersInput]
-  not: ComponentUiHeadlineFiltersInput
 }
 
 type ComponentUiHeadline {
@@ -1145,7 +1135,7 @@ type Mutation {
   """Update an existing user"""
   updateUsersPermissionsUser(id: ID!, data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
 
-  """Update an existing user"""
+  """Delete an existing user"""
   deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
   login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
 

@@ -17,21 +17,10 @@
       "repeatable": false,
       "component": "ui.card"
     },
-    "mission": {
-      "displayName": "Text Section",
-      "type": "component",
-      "repeatable": true,
-      "component": "ui.headline"
-    },
     "features": {
       "type": "component",
       "repeatable": true,
       "component": "ui.card"
-    },
-    "strategy": {
-      "type": "component",
-      "repeatable": false,
-      "component": "ui.headline"
     },
     "services": {
       "type": "component",

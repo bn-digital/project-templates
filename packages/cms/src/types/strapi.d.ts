@@ -7,23 +7,21 @@ type TypedEnvFunction = {
 type EnvFunction = <T = EnvVar>(key: string, defaultValue?: T) => T
 
 declare namespace Strapi {
-  import { Strapi as StrapiInterface } from '@strapi/strapi'
-  import { IStrapi } from 'strapi-typed'
+  import { StrapiInterface } from '@strapi/strapi'
   import { PathLike } from 'fs'
 
   namespace Db {
     type Client = 'sqlite' | 'pg' | 'postgres' | 'postgresql' | 'mysql'
   }
 
-  type Strapi = StrapiInterface &
-    IStrapi & {
-      fs: {
-        writeAppFile(path: string | PathLike, content: Buffer | string): void
-      }
-      log: {
-        info(...args: string[]): void
-      }
+  type Strapi = StrapiInterface & {
+    fs: {
+      writeAppFile(path: string | PathLike, content: Buffer | string): void
     }
+    log: {
+      info(...args: string[]): void
+    }
+  }
   type PluginsConfig = { [key: string]: Partial<{ enabled: boolean; resolve: string; config: Record<string, unknown> }> }
 }
 

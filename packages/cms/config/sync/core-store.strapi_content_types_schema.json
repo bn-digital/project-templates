@@ -955,107 +955,6 @@
       "plugin": "entity-notes",
       "globalId": "EntityNotesNote"
     },
-    "plugin::i18n.locale": {
-      "info": {
-        "singularName": "locale",
-        "pluralName": "locales",
-        "collectionName": "locales",
-        "displayName": "Locale",
-        "description": ""
-      },
-      "options": {
-        "draftAndPublish": false
-      },
-      "pluginOptions": {
-        "content-manager": {
-          "visible": false
-        },
-        "content-type-builder": {
-          "visible": false
-        }
-      },
-      "attributes": {
-        "name": {
-          "type": "string",
-          "min": 1,
-          "max": 50,
-          "configurable": false
-        },
-        "code": {
-          "type": "string",
-          "unique": true,
-          "configurable": false
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        }
-      },
-      "kind": "collectionType",
-      "__schema__": {
-        "info": {
-          "singularName": "locale",
-          "pluralName": "locales",
-          "collectionName": "locales",
-          "displayName": "Locale",
-          "description": ""
-        },
-        "options": {
-          "draftAndPublish": false
-        },
-        "pluginOptions": {
-          "content-manager": {
-            "visible": false
-          },
-          "content-type-builder": {
-            "visible": false
-          }
-        },
-        "attributes": {
-          "name": {
-            "type": "string",
-            "min": 1,
-            "max": 50,
-            "configurable": false
-          },
-          "code": {
-            "type": "string",
-            "unique": true,
-            "configurable": false
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "locale",
-      "connection": "default",
-      "uid": "plugin::i18n.locale",
-      "plugin": "i18n",
-      "collectionName": "i18n_locale",
-      "globalId": "I18NLocale"
-    },
     "plugin::users-permissions.permission": {
       "collectionName": "up_permissions",
       "info": {
@@ -1472,6 +1371,107 @@
       "uid": "plugin::users-permissions.user",
       "plugin": "users-permissions",
       "globalId": "UsersPermissionsUser"
+    },
+    "plugin::i18n.locale": {
+      "info": {
+        "singularName": "locale",
+        "pluralName": "locales",
+        "collectionName": "locales",
+        "displayName": "Locale",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      },
+      "attributes": {
+        "name": {
+          "type": "string",
+          "min": 1,
+          "max": 50,
+          "configurable": false
+        },
+        "code": {
+          "type": "string",
+          "unique": true,
+          "configurable": false
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "kind": "collectionType",
+      "__schema__": {
+        "info": {
+          "singularName": "locale",
+          "pluralName": "locales",
+          "collectionName": "locales",
+          "displayName": "Locale",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {
+          "content-manager": {
+            "visible": false
+          },
+          "content-type-builder": {
+            "visible": false
+          }
+        },
+        "attributes": {
+          "name": {
+            "type": "string",
+            "min": 1,
+            "max": 50,
+            "configurable": false
+          },
+          "code": {
+            "type": "string",
+            "unique": true,
+            "configurable": false
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "locale",
+      "connection": "default",
+      "uid": "plugin::i18n.locale",
+      "plugin": "i18n",
+      "collectionName": "i18n_locale",
+      "globalId": "I18NLocale"
     },
     "plugin::email-designer.email-template": {
       "kind": "collectionType",
@@ -2382,7 +2382,8 @@
       "info": {
         "singularName": "website",
         "pluralName": "websites",
-        "displayName": "Website"
+        "displayName": "Website",
+        "description": ""
       },
       "options": {
         "populateCreatorFields": false,
@@ -2442,7 +2443,8 @@
         "info": {
           "singularName": "website",
           "pluralName": "websites",
-          "displayName": "Website"
+          "displayName": "Website",
+          "description": ""
         },
         "options": {
           "populateCreatorFields": false,

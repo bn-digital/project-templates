@@ -48,20 +48,6 @@
           "sortable": false
         }
       },
-      "mission": {
-        "edit": {
-          "label": "mission",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "mission",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "features": {
         "edit": {
           "label": "features",
@@ -72,20 +58,6 @@
         },
         "list": {
           "label": "features",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "strategy": {
-        "edit": {
-          "label": "strategy",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "strategy",
           "searchable": false,
           "sortable": false
         }
@@ -109,8 +81,7 @@
       "list": [
         "id",
         "pathname",
-        "hero",
-        "mission"
+        "hero"
       ],
       "edit": [
         [
@@ -127,19 +98,7 @@
         ],
         [
           {
-            "name": "mission",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "features",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "strategy",
             "size": 12
           }
         ],

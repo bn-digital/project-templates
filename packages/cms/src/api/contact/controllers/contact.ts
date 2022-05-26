@@ -4,6 +4,6 @@
  *  contact controller
  */
 
-import { createCoreController } from '@strapi/strapi/lib/factories'
+import { factories } from '@strapi/strapi'
 
-export default createCoreController('api::contact.contact')
+export default factories.createCoreController('api::contact.contact')

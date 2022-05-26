@@ -1,4 +1,4 @@
-import configure from '@bn-digital/vite'
+import { configureReact as configure } from '@bn-digital/vite'
 
 export default configure(
   {},

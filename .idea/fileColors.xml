@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SharedFileColors">
+    <fileColor scope="IaC" color="Violet" />
+    <fileColor scope="Tests" color="Green" />
     <fileColor scope="Components" color="Blue" />
     <fileColor scope="Styles" color="Rose" />
-    <fileColor scope="GraphQL" color="Violet" />
+    <fileColor scope="GraphQL" color="Orange" />
     <fileColor scope="Non-Project Files" color="Yellow" />
   </component>
 </project>

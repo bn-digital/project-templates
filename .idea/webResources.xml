@@ -2,11 +2,10 @@
 <project version="4">
   <component name="WebResourcesPaths">
     <contentEntries>
-      <entry url="file://$PROJECT_DIR$">
+      <entry url="file://$PROJECT_DIR$/packages/website">
         <entryData>
           <resourceRoots>
             <path value="file://$PROJECT_DIR$/packages/website/public" />
-            <path value="file://$PROJECT_DIR$/packages/cms/public" />
           </resourceRoots>
         </entryData>
       </entry>
