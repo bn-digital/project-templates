@@ -1,12 +1,12 @@
 import './index.less'
 
 import { ClientProvider } from '@bn-digital/graphql-client'
-import { ConfigProvider } from 'antd'
+import { DatePicker } from 'antd'
 import type { Locale } from 'antd/es/locale-provider'
 import locale from 'antd/lib/locale/en_US'
+import moment from 'moment'
 import { createContext, Dispatch, FC, PropsWithChildren, ReactNode, SetStateAction, useContext, useState } from 'react'
 import { IntlProvider } from 'react-intl'
-import { BrowserRouter } from 'react-router-dom'
 import { useToggle } from 'react-use'
 import Pages from 'src/pages'
 type AppTheme = string | 'dark' | 'light' | 'default'
@@ -40,13 +40,10 @@ const App: FC = () => (
     <ClientProvider production={import.meta.env.PROD}>
       <Context.Consumer>
         {({ i18n }) => (
-          <ConfigProvider locale={i18n.locale}>
-            <IntlProvider locale={i18n.locale.locale} defaultLocale={defaultValue.i18n.locale.locale} messages={{}}>
-              <BrowserRouter>
-                <Pages />
-              </BrowserRouter>
-            </IntlProvider>
-          </ConfigProvider>
+          <IntlProvider locale={i18n.locale.locale} defaultLocale={defaultValue.i18n.locale.locale} messages={{}}>
+            <DatePicker defaultValue={moment()} />
+            <Pages />
+          </IntlProvider>
         )}
       </Context.Consumer>
     </ClientProvider>

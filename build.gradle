@@ -8,7 +8,7 @@ allprojects {
     module {
       outputDir file("build")
       sourceDirs += file("src")
-      excludeDirs += files(".cache", ".gradle", "gradle", ".yarn", "build", ".tmp")
+      excludeDirs += files(".cache", ".gradle", "gradle", ".yarn", "build", ".tmp", ".terraform")
     }
   }
 }

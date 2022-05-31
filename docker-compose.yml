@@ -30,7 +30,7 @@ services:
   website:
     container_name: website
     build:
-      context: packages/website
+      target: website
     image: website:${APP_VERSION:-latest}
     networks:
       - public
@@ -38,7 +38,7 @@ services:
   cms:
     container_name: cms
     build:
-      context: packages/cms
+      target: cms
     image: cms:${APP_VERSION:-latest}
     networks:
       - public
@@ -51,11 +51,13 @@ services:
 
   database:
     container_name: database
-    image: postgres:14.2
+    image: postgres:14.3
     networks:
       - private
     env_file:
       - .env
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - database:/var/lib/postgresql
-      - ./packages/cms/data/db:/docker-entrypoint-initdb.d:ro
+      - ./packages/cms/database/dumps:/docker-entrypoint-initdb.d:ro

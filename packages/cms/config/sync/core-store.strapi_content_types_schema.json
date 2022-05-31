@@ -2393,9 +2393,8 @@
         "content": {
           "type": "dynamiczone",
           "components": [
-            "page.home",
             "page.contact-us",
-            "page.about"
+            "page.home"
           ]
         },
         "seo": {
@@ -2454,9 +2453,8 @@
           "content": {
             "type": "dynamiczone",
             "components": [
-              "page.home",
               "page.contact-us",
-              "page.about"
+              "page.home"
             ]
           },
           "seo": {

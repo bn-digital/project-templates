@@ -7,6 +7,15 @@
       "action": "api::contact.contact.create"
     },
     {
+      "action": "api::post.post.find"
+    },
+    {
+      "action": "api::post.post.findOne"
+    },
+    {
+      "action": "api::translation.translation.find"
+    },
+    {
       "action": "api::website.website.find"
     },
     {
@@ -25,7 +34,7 @@
       "action": "plugin::menus.menu.findOne"
     },
     {
-      "action": "plugin::strapi-prometheus.prometheus.metrics"
+      "action": "plugin::upload.content-api.upload"
     },
     {
       "action": "plugin::users-permissions.auth.callback"

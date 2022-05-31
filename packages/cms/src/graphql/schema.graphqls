@@ -208,12 +208,6 @@ input ComponentDataEntryFiltersInput {
   not: ComponentDataEntryFiltersInput
 }
 
-input ComponentDataEntryInput {
-  id: ID
-  key: String
-  value: String
-}
-
 type ComponentDataEntry {
   id: ID!
   key: String
@@ -223,16 +217,6 @@ type ComponentDataEntry {
 type ComponentDataSet {
   id: ID!
   value: String!
-}
-
-type ComponentPageAbout {
-  id: ID!
-  pathname: String!
-  education: ComponentDataEntry
-  quote: String
-  diplomas(filters: ComponentUiCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiCard]
-  about: String
-  photo: UploadFileEntityResponse
 }
 
 type ComponentPageContactUs {
@@ -246,7 +230,6 @@ type ComponentPageHome {
   pathname: String!
   hero: ComponentUiCard
   features(filters: ComponentUiCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentUiCard]
-  services: ComponentUiHeadline
 }
 
 enum ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK {
@@ -263,33 +246,12 @@ input ComponentSharedMetaSocialFiltersInput {
   not: ComponentSharedMetaSocialFiltersInput
 }
 
-input ComponentSharedMetaSocialInput {
-  id: ID
-  socialNetwork: ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK
-  title: String
-  description: String
-  image: ID
-}
-
 type ComponentSharedMetaSocial {
   id: ID!
   socialNetwork: ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK!
   title: String!
   description: String!
   image: UploadFileEntityResponse
-}
-
-input ComponentSharedSeoInput {
-  id: ID
-  metaTitle: String
-  metaDescription: String
-  metaImage: ID
-  metaSocial: [ComponentSharedMetaSocialInput]
-  keywords: String
-  metaRobots: String
-  structuredData: JSON
-  metaViewport: String
-  canonicalURL: String
 }
 
 type ComponentSharedSeo {
@@ -921,17 +883,6 @@ input PostFiltersInput {
   not: PostFiltersInput
 }
 
-input PostInput {
-  name: String
-  slug: String
-  teaser: String
-  content: String
-  cover: ID
-  seo: ComponentSharedSeoInput
-  publishedAt: DateTime
-  sitemap_exclude: Boolean
-}
-
 type Post {
   name: String!
   slug: String
@@ -958,12 +909,6 @@ type PostEntityResponseCollection {
   meta: ResponseCollectionMeta!
 }
 
-input TranslationInput {
-  entry: [ComponentDataEntryInput]
-  publishedAt: DateTime
-  sitemap_exclude: Boolean
-}
-
 type Translation {
   entry(filters: ComponentDataEntryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentDataEntry]!
   createdAt: DateTime
@@ -980,7 +925,7 @@ type TranslationEntityResponse {
   data: TranslationEntity
 }
 
-union WebsiteContentDynamicZone = ComponentPageHome | ComponentPageContactUs | ComponentPageAbout | Error
+union WebsiteContentDynamicZone = ComponentPageContactUs | ComponentPageHome | Error
 
 type Website {
   content: [WebsiteContentDynamicZone]
@@ -998,7 +943,7 @@ type WebsiteEntityResponse {
   data: WebsiteEntity
 }
 
-union GenericMorph = ComponentDataContact | ComponentDataEntry | ComponentDataSet | ComponentPageAbout | ComponentPageContactUs | ComponentPageHome | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiGrid | ComponentUiHeadline | ComponentUiLink | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | UploadFile | EntityNotesNote | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | I18NLocale | EmailDesignerEmailTemplate | GraphsBuilderGraph | MenusMenu | MenusMenuItem | Contact | Post | Translation | Website
+union GenericMorph = ComponentDataContact | ComponentDataEntry | ComponentDataSet | ComponentPageContactUs | ComponentPageHome | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiGrid | ComponentUiHeadline | ComponentUiLink | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | UploadFile | EntityNotesNote | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | I18NLocale | EmailDesignerEmailTemplate | GraphsBuilderGraph | MenusMenu | MenusMenuItem | Contact | Post | Translation | Website
 
 input FileInfoInput {
   name: String
@@ -1110,11 +1055,6 @@ type Mutation {
   createContact(data: ContactInput!): ContactEntityResponse
   updateContact(id: ID!, data: ContactInput!): ContactEntityResponse
   deleteContact(id: ID!): ContactEntityResponse
-  createPost(data: PostInput!): PostEntityResponse
-  updatePost(id: ID!, data: PostInput!): PostEntityResponse
-  deletePost(id: ID!): PostEntityResponse
-  updateTranslation(data: TranslationInput!): TranslationEntityResponse
-  deleteTranslation: TranslationEntityResponse
   upload(refId: ID, ref: String, field: String, info: FileInfoInput, file: Upload!): UploadFileEntityResponse!
   multipleUpload(refId: ID, ref: String, field: String, files: [Upload]!): [UploadFileEntityResponse]!
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!

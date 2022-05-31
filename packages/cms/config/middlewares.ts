@@ -3,10 +3,7 @@ export default [
   {
     name: 'strapi::security',
     config: {
-      contentSecurityPolicy: {
-        defaults: true,
-        dangerouslyDisableDefaultSrc: true,
-      },
+      contentSecurityPolicy: false,
     },
   },
   'strapi::cors',
@@ -16,5 +13,4 @@ export default [
   'strapi::body',
   'strapi::public',
   'strapi::favicon',
-  'plugin::strapi-prometheus.metrics',
 ]

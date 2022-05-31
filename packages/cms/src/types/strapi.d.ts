@@ -7,24 +7,36 @@ type TypedEnvFunction = {
 type EnvFunction = <T = EnvVar>(key: string, defaultValue?: T) => T
 
 declare namespace Strapi {
-  import { StrapiInterface } from '@strapi/strapi'
+  import { Strapi as StrapiInterface } from '@strapi/strapi'
   import { PathLike } from 'fs'
 
   namespace Db {
     type Client = 'sqlite' | 'pg' | 'postgres' | 'postgresql' | 'mysql'
   }
 
+  type LogLevel = 'info' | 'warn' | 'error'
   type Strapi = StrapiInterface & {
     fs: {
       writeAppFile(path: string | PathLike, content: Buffer | string): void
     }
     log: {
-      info(...args: string[]): void
+      [key in LogLevel]: (...args: string[]) => void
     }
+  }
+  namespace GraphqlPlugin {
+    import type { GraphQLSchema, GraphQLFieldResolver } from 'graphql'
+    type SchemaExtension = () => { resolvers: { [key: string]: { [key: string]: GraphQLFieldResolver<unknown, unknown> } } }
+    type ExtensionService = {
+      use(schemaExtension: SchemaExtension): void
+      shadowCRUD(entityName: AllTypes): {
+        disableMutations()
+        disableQueries()
+        disable()
+      }
+    }
+    type ContentApiService = { buildSchema(): GraphQLSchema }
   }
   type PluginsConfig = { [key: string]: Partial<{ enabled: boolean; resolve: string; config: Record<string, unknown> }> }
 }
 
-declare global {
-  const strapi: Strapi.Strapi
-}
+declare const strapi: Strapi.Strapi

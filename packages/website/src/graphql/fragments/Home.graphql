@@ -12,15 +12,6 @@ fragment Home on ComponentPageHome {
       }
     }
   }
-  mission {
-    ...Headline
-  }
-  strategy {
-    ...Headline
-  }
-  services {
-    ...Headline
-  }
   features {
     ...Card
   }

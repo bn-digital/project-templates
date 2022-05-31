@@ -7,14 +7,8 @@ export default ({ env }: { env: EnvFunction }): Strapi.PluginsConfig => ({
   'seo': {
     enabled: true,
   },
-  'strapi-prometheus': {
+  'import-export-entries': {
     enabled: true,
-    config: {
-      prefix: name,
-      fullURL: false,
-      includeQuery: false,
-      defaultMetrics: true,
-    },
   },
   'graphql': {
     enabled: true,
@@ -26,6 +20,7 @@ export default ({ env }: { env: EnvFunction }): Strapi.PluginsConfig => ({
     },
   },
   'users-permissions': {
+    enabled: true,
     config: {
       jwtSecret: env('JWT_SECRET', generateSecret('users-permissions.jwt-secret')),
     },

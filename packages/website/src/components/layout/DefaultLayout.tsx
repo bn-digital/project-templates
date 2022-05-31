@@ -5,7 +5,7 @@ import { FC, Suspense } from 'react'
 import { Outlet } from 'react-router'
 import { useLocation } from 'react-router-dom'
 import { AppContext } from 'src/components/app'
-import { WebsiteComponent } from 'src/graphql'
+import { MenuComponent, WebsiteComponent } from 'src/graphql'
 
 import { Content } from './Content'
 import { Footer } from './Footer'
@@ -18,11 +18,6 @@ const PageLoader: FC = () => (
 )
 
 type ContentProps = ComponentPageContactUs | ComponentPageHome
-
-const menu: LinkFragment[] = [
-  { id: '1', title: 'Home', url: '/' },
-  { id: '2', title: 'Contact Us', url: '/contact-us' },
-]
 
 const DefaultLayout: FC = () => {
   const { pathname } = useLocation()
@@ -40,7 +35,17 @@ const DefaultLayout: FC = () => {
               <>
                 <Layout.Header>
                   <Content>
-                    <Header menu={menu} />
+                    <MenuComponent variables={{ filters: { slug: { eq: 'header' } } }}>
+                      {({ data }) => (
+                        <Header
+                          menu={(data?.menusMenus?.data?.flatMap(it => it.attributes?.items?.data) ?? []).map(it => ({
+                            id: `${it?.id}`,
+                            title: `${it?.attributes?.title}`,
+                            url: `${it?.attributes?.url}`,
+                          }))}
+                        />
+                      )}
+                    </MenuComponent>
                   </Content>
                 </Layout.Header>
                 <Layout.Content>

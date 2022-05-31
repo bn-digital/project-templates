@@ -22,5 +22,5 @@ on:
 
 jobs:
   deploy:
-    uses: bn-digital/project-templates/.github/workflows/deploy-charts.yml@latest
+    uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
     secrets: inherit

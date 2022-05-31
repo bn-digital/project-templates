@@ -61,20 +61,6 @@
           "searchable": false,
           "sortable": false
         }
-      },
-      "services": {
-        "edit": {
-          "label": "services",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "services",
-          "searchable": false,
-          "sortable": false
-        }
       }
     },
     "layouts": {
@@ -99,12 +85,6 @@
         [
           {
             "name": "features",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "services",
             "size": 12
           }
         ]
