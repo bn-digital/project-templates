@@ -5,13 +5,18 @@ on:
       - '*'
 
 jobs:
+  setup:
+    uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
+    secrets: inherit
   provision:
+    needs: [setup]
     uses: bn-digital/terraform/.github/workflows/provision-infrastructure.yml@latest
     secrets: inherit
     with:
       environment: production
       provider: digitalocean
   build:
+    needs: [setup]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
     secrets: inherit
     with:

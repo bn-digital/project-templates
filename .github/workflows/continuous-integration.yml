@@ -21,9 +21,14 @@ on:
       - "packages/cms/src/**/*"
 
 jobs:
+  setup:
+    uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
+    secrets: inherit
   analyze:
+    needs: [setup]
     uses: bn-digital/coding-standard/.github/workflows/analyze-code.yml@latest
     secrets: inherit
   build:
+    needs: [setup]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
     secrets: inherit

@@ -1,7 +1,7 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::post.post",
+  "key": "plugin_content_manager_configuration_content_types::api::category.category",
   "value": {
-    "uid": "api::post.post",
+    "uid": "api::category.category",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -48,44 +48,17 @@
           "sortable": true
         }
       },
-      "teaser": {
+      "posts": {
         "edit": {
-          "label": "teaser",
+          "label": "posts",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "name"
         },
         "list": {
-          "label": "teaser",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "content": {
-        "edit": {
-          "label": "content",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "content",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "cover": {
-        "edit": {
-          "label": "cover",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "cover",
+          "label": "posts",
           "searchable": false,
           "sortable": false
         }
@@ -102,21 +75,6 @@
           "label": "seo",
           "searchable": false,
           "sortable": false
-        }
-      },
-      "category": {
-        "edit": {
-          "label": "category",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "category",
-          "searchable": true,
-          "sortable": true
         }
       },
       "createdAt": {
@@ -153,7 +111,7 @@
         "id",
         "name",
         "slug",
-        "teaser"
+        "createdAt"
       ],
       "edit": [
         [
@@ -168,31 +126,13 @@
         ],
         [
           {
-            "name": "teaser",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "content",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "cover",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "seo",
             "size": 12
           }
         ]
       ],
       "editRelations": [
-        "category"
+        "posts"
       ]
     }
   },

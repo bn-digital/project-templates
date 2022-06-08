@@ -31,3 +31,7 @@ generates:
           enumsAsTypes: true
       - typescript-operations:
           preResolveTypes: true
+hooks:
+  afterAllFileWrite:
+    - yarn prettier --write
+    - yarn eslint --fix

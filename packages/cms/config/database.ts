@@ -24,7 +24,7 @@ Formatter.prototype.wrapAsIdentifier = (value: any) => `"${(value || '').replace
  *
  * @param {(key: string, defaultValue?: string)=> string} env
  */
-export default ({ env }: { env: EnvFunction & TypedEnvFunction }): { connection: Knex.Config } => ({
+export default ({ env }: { env: TypedEnvFunction }): { connection: Knex.Config } => ({
   connection: {
     client: env<Strapi.Db.Client>('DATABASE_CLIENT', 'sqlite'),
     connection:

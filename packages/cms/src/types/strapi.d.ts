@@ -1,13 +1,14 @@
 type EnvVar<T = string | number | null | boolean | Array<string>> = T
-type TypedEnvFunction = {
+type EnvFunction = <T = EnvVar>(key: string, defaultValue?: T) => T
+
+type TypedEnvFunction = EnvFunction & {
   int(key: string, defaultValue?: number): number
   bool(key: string, defaultValue?: boolean): boolean
   array(key: string, defaultValue?: string[]): string[]
 }
-type EnvFunction = <T = EnvVar>(key: string, defaultValue?: T) => T
 
 declare namespace Strapi {
-  import { Strapi as StrapiInterface } from '@strapi/strapi'
+  import { Core } from '@strapi/strapi'
   import { PathLike } from 'fs'
 
   namespace Db {
@@ -15,7 +16,7 @@ declare namespace Strapi {
   }
 
   type LogLevel = 'info' | 'warn' | 'error'
-  type Strapi = StrapiInterface & {
+  type Strapi = Core.Strapi & {
     fs: {
       writeAppFile(path: string | PathLike, content: Buffer | string): void
     }
@@ -39,4 +40,4 @@ declare namespace Strapi {
   type PluginsConfig = { [key: string]: Partial<{ enabled: boolean; resolve: string; config: Record<string, unknown> }> }
 }
 
-declare const strapi: Strapi.Strapi
+declare const strapi: Strapi

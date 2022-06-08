@@ -20,7 +20,7 @@
       "type": "uid",
       "unique": false,
       "targetField": "name",
-      "required": false
+      "required": true
     },
     "teaser": {
       "type": "text"
@@ -38,6 +38,12 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "posts"
     }
   }
 }
