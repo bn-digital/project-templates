@@ -21,6 +21,9 @@ on:
       - "packages/cms/src/**/*"
 
 jobs:
+  setup:
+    uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
+    secrets: inherit
   deploy:
-    uses: bn-digital/project-templates/.github/workflows/deploy-charts.yml@latest
+    uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
     secrets: inherit

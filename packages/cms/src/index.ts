@@ -1,10 +1,10 @@
 import { generateGraphqlSchema, getExtensionService, getSchemaExtension } from './graphql'
 
 export default {
-  register({ strapi }) {
+  register({ strapi }: { strapi: Strapi.Strapi }) {
     const extensionService = getExtensionService(strapi)
     // Disabling CUD operations for public-facing APIs
-    const readOnlyEntities = ['website']
+    const readOnlyEntities = ['website', 'post', 'translation']
     const writeOnlyEntities = ['contact']
     readOnlyEntities.forEach(entity => extensionService.shadowCRUD(`api::${entity}.${entity}`).disableMutations())
     writeOnlyEntities.forEach(entity => extensionService.shadowCRUD(`api::${entity}.${entity}`).disableQueries())
@@ -12,7 +12,7 @@ export default {
     extensionService.use(getSchemaExtension())
   },
 
-  bootstrap({ strapi }) {
+  bootstrap({ strapi }: { strapi: Strapi.Strapi }) {
     generateGraphqlSchema(strapi)
   },
 }

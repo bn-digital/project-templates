@@ -2,10 +2,12 @@
 
 # Base images
 
-ARG version=1.8.0
+ARG version=2.0.0
 FROM dcr.bndigital.dev/library/yarn:${version} AS build
 COPY .yarn .yarn
 COPY package.json yarn.lock .yarnrc.yml ./
+COPY ./packages/cms/package.json ./packages/cms/package.json
+COPY ./packages/website/package.json ./packages/website/package.json
 RUN yarn
 
 FROM dcr.bndigital.dev/library/nodejs:${version} AS runtime
@@ -13,17 +15,13 @@ FROM dcr.bndigital.dev/library/nodejs:${version} AS runtime
 # Build artifact images
 
 FROM build AS build-website
-COPY ./packages/website/package.json ./packages/website/package.json
-RUN yarn
-COPY ./packages/website ./packages/website
 WORKDIR /usr/local/src/packages/website
+COPY ./packages/website .
 RUN yarn build
 
 FROM build AS build-cms
-COPY ./packages/cms/package.json ./packages/cms/package.json
-RUN yarn
-COPY ./packages/cms ./packages/cms
 WORKDIR /usr/local/src/packages/cms
+COPY ./packages/cms .
 RUN yarn build
 
 # Runtime images

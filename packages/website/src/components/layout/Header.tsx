@@ -11,7 +11,7 @@ const BurgerMenu: FC = () => {
   return <UnorderedListOutlined onClick={burger.toggle} />
 }
 
-const Header: FC<{ menu: Maybe<LinkFragment>[] }> = ({ menu = [] }) => {
+const Header: FC<{ menu: Maybe<LinkFragment>[] | undefined }> = ({ menu = [] }) => {
   const navigate = useNavigate()
   return (
     <Row align={'middle'} justify={'space-between'}>

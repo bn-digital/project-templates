@@ -104,6 +104,21 @@
           "sortable": false
         }
       },
+      "category": {
+        "edit": {
+          "label": "category",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "category",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -140,7 +155,6 @@
         "slug",
         "teaser"
       ],
-      "editRelations": [],
       "edit": [
         [
           {
@@ -176,6 +190,9 @@
             "size": 12
           }
         ]
+      ],
+      "editRelations": [
+        "category"
       ]
     }
   },

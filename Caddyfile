@@ -1,0 +1,59 @@
+{$DOMAIN}:80 {
+        redir https://{$DOMAIN}{uri} permanent
+}
+
+{$DOMAIN}:443 {
+        route /* {
+                reverse_proxy website:5000
+        }
+        route /admin {
+                reverse_proxy cms:5000
+        }
+        route /api/* {
+                reverse_proxy cms:5000
+        }
+        route /admin/* {
+                reverse_proxy cms:5000
+        }
+        route /graphql {
+                reverse_proxy cms:5000
+        }
+        route /content-manager/* {
+                reverse_proxy cms:5000
+        }
+        route /content-type-builder/* {
+                reverse_proxy cms:5000
+        }
+        route /email/* {
+                reverse_proxy cms:5000
+        }
+        route /email-designer/* {
+                reverse_proxy cms:5000
+        }
+        route /import-export-content/* {
+                reverse_proxy cms:5000
+        }
+        route /sitemap {
+                reverse_proxy cms:5000
+        }
+        route /sitemap.xml {
+                reverse_proxy cms:5000
+        }
+        route /sitemap/* {
+                reverse_proxy cms:5000
+        }
+        route /users-permissions/* {
+                reverse_proxy cms:5000
+        }
+        route /upload {
+                reverse_proxy cms:5000
+        }
+        route /upload/* {
+                reverse_proxy cms:5000
+        }
+        route /uploads/* {
+                reverse_proxy cms:5000
+        }
+
+        file_server
+}

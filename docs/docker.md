@@ -6,7 +6,7 @@
 
 #### Debian
 
-1. Older versions of Docker were called docker, docker.io, or docker-engine. If these are installed, uninstall them:
+1. Older versions of Docker were called `docker`, `docker.io`, or `docker-engine`. If these are installed, uninstall them:
 
 ```shell
 sudo apt-get remove docker docker-engine docker.io containerd runc
@@ -65,15 +65,13 @@ You can install Compose V2 by downloading the appropriate binary for your system
 Run the following command to download the current stable release of Docker Compose:
 
 ```shell
-mkdir -p /usr/local/lib/docker/cli-plugins
-curl -SL https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
-chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+apt-get install docker-compose-plugin
 ```
 
 To verify install
 
 ```shell
-docker-compose version
+docker compose version
 ```
 
 ## Build
@@ -120,7 +118,7 @@ skaffold build
 ### Docker Compose
 
 ```shell
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Kubernetes

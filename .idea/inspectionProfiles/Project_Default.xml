@@ -4,5 +4,6 @@
     <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="IgnoreCoverEntry" enabled="true" level="INFORMATION" enabled_by_default="true" />
     <inspection_tool class="IgnoreUnusedEntry" enabled="true" level="INFORMATION" enabled_by_default="true" />
+    <inspection_tool class="TFMissingModule" enabled="true" level="INFORMATION" enabled_by_default="true" />
   </profile>
 </component>

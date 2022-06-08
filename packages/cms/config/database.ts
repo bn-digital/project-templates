@@ -1,5 +1,6 @@
 /* eslint-disable */
-import * as path from 'path'
+import path from 'path'
+import { workingDir } from '.'
 import { name } from './'
 import { Knex } from 'knex'
 const Client = require('knex/lib/dialects/postgres')
@@ -23,11 +24,11 @@ Formatter.prototype.wrapAsIdentifier = (value: any) => `"${(value || '').replace
  *
  * @param {(key: string, defaultValue?: string)=> string} env
  */
-export default ({ env }: { env: EnvFunction & TypedEnvFunction }): { connection: Knex.Config } => ({
+export default ({ env }: { env: TypedEnvFunction }): { connection: Knex.Config } => ({
   connection: {
-    client: env<Strapi.Db.Client>('DATABASE_Client', 'sqlite'),
+    client: env<Strapi.Db.Client>('DATABASE_CLIENT', 'sqlite'),
     connection:
-      env('NODE_ENV') === 'production' || env<Strapi.Db.Client>('DATABASE_Client', 'sqlite') === 'postgres'
+      env<Strapi.Db.Client>('DATABASE_CLIENT', 'sqlite') === 'postgres'
         ? {
             charset: 'utf8',
             user: env('DATABASE_USERNAME', 'postgres'),
@@ -38,7 +39,7 @@ export default ({ env }: { env: EnvFunction & TypedEnvFunction }): { connection:
             port: env.int('DATABASE_PORT', 5432),
           }
         : {
-            filename: path.join(process.cwd(), env<string>('DATABASE_FILENAME', 'database/data.sqlite')),
+            filename: path.join(workingDir, env<string>('DATABASE_FILENAME', path.join('database', 'data.sqlite'))),
           },
     useNullAsDefault: true,
   },

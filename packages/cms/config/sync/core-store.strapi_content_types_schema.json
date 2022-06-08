@@ -2026,6 +2026,120 @@
       "plugin": "menus",
       "globalId": "MenusMenuItem"
     },
+    "api::category.category": {
+      "kind": "collectionType",
+      "collectionName": "categories",
+      "info": {
+        "singularName": "category",
+        "pluralName": "categories",
+        "displayName": "Category",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "slug": {
+          "type": "uid",
+          "targetField": "name",
+          "required": true
+        },
+        "posts": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::post.post",
+          "mappedBy": "category"
+        },
+        "seo": {
+          "type": "component",
+          "repeatable": false,
+          "component": "shared.seo"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "__schema__": {
+        "collectionName": "categories",
+        "info": {
+          "singularName": "category",
+          "pluralName": "categories",
+          "displayName": "Category",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "slug": {
+            "type": "uid",
+            "targetField": "name",
+            "required": true
+          },
+          "posts": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::post.post",
+            "mappedBy": "category"
+          },
+          "seo": {
+            "type": "component",
+            "repeatable": false,
+            "component": "shared.seo"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "category",
+      "connection": "default",
+      "uid": "api::category.category",
+      "apiName": "category",
+      "globalId": "Category",
+      "actions": {},
+      "lifecycles": {}
+    },
     "api::contact.contact": {
       "kind": "collectionType",
       "collectionName": "contacts",
@@ -2168,7 +2282,7 @@
           "type": "uid",
           "unique": false,
           "targetField": "name",
-          "required": false
+          "required": true
         },
         "teaser": {
           "type": "text"
@@ -2188,6 +2302,12 @@
           "type": "component",
           "repeatable": false,
           "component": "shared.seo"
+        },
+        "category": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::category.category",
+          "inversedBy": "posts"
         },
         "createdAt": {
           "type": "datetime"
@@ -2251,7 +2371,7 @@
             "type": "uid",
             "unique": false,
             "targetField": "name",
-            "required": false
+            "required": true
           },
           "teaser": {
             "type": "text"
@@ -2271,6 +2391,12 @@
             "type": "component",
             "repeatable": false,
             "component": "shared.seo"
+          },
+          "category": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::category.category",
+            "inversedBy": "posts"
           }
         },
         "kind": "collectionType"
@@ -2393,9 +2519,8 @@
         "content": {
           "type": "dynamiczone",
           "components": [
-            "page.home",
             "page.contact-us",
-            "page.about"
+            "page.home"
           ]
         },
         "seo": {
@@ -2454,9 +2579,8 @@
           "content": {
             "type": "dynamiczone",
             "components": [
-              "page.home",
               "page.contact-us",
-              "page.about"
+              "page.home"
             ]
           },
           "seo": {

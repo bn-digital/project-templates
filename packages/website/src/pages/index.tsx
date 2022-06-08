@@ -1,4 +1,5 @@
-import { RouteObject, useRoutes } from 'react-router-dom'
+import { FC } from 'react'
+import { BrowserRouter, RouteObject, useRoutes } from 'react-router-dom'
 import { DefaultLayout } from 'src/components/layout'
 
 import Home from './home'
@@ -28,4 +29,13 @@ const routes: RouteObject[] = [
   },
 ]
 const Pages = () => useRoutes(routes)
-export { Pages as default }
+
+function withBrowserRouter(Wrapped: FC): FC {
+  return () => (
+    <BrowserRouter>
+      <Wrapped />
+    </BrowserRouter>
+  )
+}
+
+export default withBrowserRouter(Pages) as FC
