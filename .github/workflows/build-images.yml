@@ -1,0 +1,68 @@
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: false
+        description: Used by Skaffold and Helmfile profiles
+        type: string
+        default: staging
+
+env:
+  APP_NAME: ${{ github.event.repository.name }}
+  APP_ENV: ${{ inputs.environment }}
+
+concurrency:
+  group: ${{ github.event.repository.name }}-docker-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  docker:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+
+      - name: Import Vault secrets
+        uses: hashicorp/vault-action@v2.4.0
+        with:
+          method: github
+          url: ${{ secrets.VAULT_ENDPOINT }}
+          githubToken: ${{ secrets.GH_TOKEN }}
+          secrets: |
+            infrastructure/data/harbor registry     | DOCKER_REGISTRY ;
+            infrastructure/data/harbor username     | DOCKER_USERNAME ;
+            infrastructure/data/harbor password     | DOCKER_PASSWORD ;
+            infrastructure/data/sentry url          | SENTRY_URL ;
+            infrastructure/data/sentry organization | SENTRY_ORGANIZATION ;
+            infrastructure/data/sentry token        | SENTRY_AUTH_TOKEN ;
+
+      - name: Generate cms .env files
+        uses: bn-digital/vault-env@latest
+        with:
+          endpoint: ${{ env.VAULT_ENDPOINT }}
+          token: ${{ env.GITHUB_TOKEN }}
+          template: packages/cms/.env.${{ env.APP_ENV }}
+          target: packages/cms/.env
+
+      - name: Generate website .env files
+        uses: bn-digital/vault-env@latest
+        with:
+          endpoint: ${{ env.VAULT_ENDPOINT }}
+          token: ${{ env.GITHUB_TOKEN }}
+          template: packages/website/.env.${{ env.APP_ENV }}
+          target: packages/website/.env.production
+
+      - name: Login Docker registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.DOCKER_REGISTRY }}/${{ env.APP_NAME }}
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ env.DOCKER_PASSWORD }}
+
+      - name: Build Docker images
+        uses: hiberbee/github-action-skaffold@1.18.0
+        with:
+          command: build
+          skip-tests: false
+          repository: ${{ env.DOCKER_REGISTRY }}/${{ env.APP_NAME }}
+          profile: ${{ env.APP_ENV }}
