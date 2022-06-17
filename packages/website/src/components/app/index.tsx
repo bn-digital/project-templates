@@ -5,8 +5,9 @@ import type { Locale } from 'antd/es/locale-provider'
 import locale from 'antd/lib/locale/en_US'
 import { createContext, Dispatch, FC, PropsWithChildren, ReactNode, SetStateAction, useContext, useState } from 'react'
 import { IntlProvider } from 'react-intl'
+import { DataBrowserRouter } from 'react-router-dom'
 import { useToggle } from 'react-use'
-import Pages from 'src/pages'
+import routes from 'src/pages'
 
 type AppTheme = string | 'dark' | 'light' | 'default'
 
@@ -39,8 +40,8 @@ const App: FC = () => (
     <ClientProvider production={import.meta.env.PROD}>
       <Context.Consumer>
         {({ i18n }) => (
-          <IntlProvider locale={i18n.locale.locale} defaultLocale={defaultValue.i18n.locale.locale} messages={{}}>
-            <Pages />
+          <IntlProvider locale={i18n.locale!.locale} defaultLocale={defaultValue.i18n.locale.locale} messages={{}}>
+            <DataBrowserRouter routes={routes} />
           </IntlProvider>
         )}
       </Context.Consumer>

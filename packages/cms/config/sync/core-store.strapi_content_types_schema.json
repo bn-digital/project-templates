@@ -714,6 +714,19 @@
           "relation": "morphToMany",
           "configurable": false
         },
+        "folder": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "plugin::upload.folder",
+          "inversedBy": "files",
+          "private": true
+        },
+        "folderPath": {
+          "type": "string",
+          "min": 1,
+          "required": true,
+          "private": true
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -749,6 +762,15 @@
           "type": "boolean"
         }
       },
+      "indexes": [
+        {
+          "name": "upload_files_folder_path_index",
+          "columns": [
+            "folder_path"
+          ],
+          "type": null
+        }
+      ],
       "kind": "collectionType",
       "__schema__": {
         "collectionName": "files",
@@ -834,6 +856,19 @@
             "type": "relation",
             "relation": "morphToMany",
             "configurable": false
+          },
+          "folder": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::upload.folder",
+            "inversedBy": "files",
+            "private": true
+          },
+          "folderPath": {
+            "type": "string",
+            "min": 1,
+            "required": true,
+            "private": true
           }
         },
         "kind": "collectionType"
@@ -844,6 +879,168 @@
       "uid": "plugin::upload.file",
       "plugin": "upload",
       "globalId": "UploadFile"
+    },
+    "plugin::upload.folder": {
+      "collectionName": "upload_folders",
+      "info": {
+        "singularName": "folder",
+        "pluralName": "folders",
+        "displayName": "Folder"
+      },
+      "options": {},
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      },
+      "attributes": {
+        "name": {
+          "type": "string",
+          "min": 1,
+          "required": true
+        },
+        "pathId": {
+          "type": "integer",
+          "unique": true,
+          "required": true
+        },
+        "parent": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "plugin::upload.folder",
+          "inversedBy": "children"
+        },
+        "children": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "plugin::upload.folder",
+          "mappedBy": "parent"
+        },
+        "files": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "plugin::upload.file",
+          "mappedBy": "folder"
+        },
+        "path": {
+          "type": "string",
+          "min": 1,
+          "required": true
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "indexes": [
+        {
+          "name": "upload_folders_path_id_index",
+          "columns": [
+            "path_id"
+          ],
+          "type": "unique"
+        },
+        {
+          "name": "upload_folders_path_index",
+          "columns": [
+            "path"
+          ],
+          "type": "unique"
+        }
+      ],
+      "kind": "collectionType",
+      "__schema__": {
+        "collectionName": "upload_folders",
+        "info": {
+          "singularName": "folder",
+          "pluralName": "folders",
+          "displayName": "Folder"
+        },
+        "options": {},
+        "pluginOptions": {
+          "content-manager": {
+            "visible": false
+          },
+          "content-type-builder": {
+            "visible": false
+          }
+        },
+        "attributes": {
+          "name": {
+            "type": "string",
+            "min": 1,
+            "required": true
+          },
+          "pathId": {
+            "type": "integer",
+            "unique": true,
+            "required": true
+          },
+          "parent": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::upload.folder",
+            "inversedBy": "children"
+          },
+          "children": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "plugin::upload.folder",
+            "mappedBy": "parent"
+          },
+          "files": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "plugin::upload.file",
+            "mappedBy": "folder"
+          },
+          "path": {
+            "type": "string",
+            "min": 1,
+            "required": true
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "folder",
+      "connection": "default",
+      "uid": "plugin::upload.folder",
+      "plugin": "upload",
+      "globalId": "UploadFolder"
     },
     "plugin::entity-notes.note": {
       "kind": "collectionType",

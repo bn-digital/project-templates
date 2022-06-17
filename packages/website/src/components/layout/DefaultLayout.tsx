@@ -3,7 +3,7 @@ import './DefaultLayout.less'
 import { Drawer, Layout, Spin } from 'antd'
 import { FC, Suspense } from 'react'
 import { Outlet } from 'react-router'
-import { useLocation } from 'react-router-dom'
+import { ScrollRestoration, useLocation } from 'react-router-dom'
 import { AppContext } from 'src/components/app'
 import { MenuComponent, WebsiteComponent } from 'src/graphql'
 
@@ -62,6 +62,7 @@ const DefaultLayout: FC = () => {
             )}
           </WebsiteComponent>
           <Drawer width={'50%'} height={'100%'} onClose={toggle} visible={opened} />
+          <ScrollRestoration/>
         </Layout>
       )}
     </AppContext.Consumer>

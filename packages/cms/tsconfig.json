@@ -1,9 +1,12 @@
 {
-  "extends": "@strapi/typescript-utils/lib/configs/server",
+  "extends": "@strapi/typescript-utils/tsconfigs/server",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "."
   },
   "include": ["./", "src/**/*.json", "./package.json"],
-  "exclude": ["node_modules/", "build/", "dist/", ".cache/", ".tmp/", "src/admin/", "**/*.test.ts", "src/plugins/**"]
+  "exclude": ["node_modules/", "build/", "dist/", ".cache/", ".tmp/", "src/admin/", "**/*.test.ts", "src/plugins/**"],
+  "typeAcquisition": {
+    "enable": true
+  }
 }

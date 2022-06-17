@@ -216,6 +216,35 @@
           "sortable": false
         }
       },
+      "folder": {
+        "edit": {
+          "label": "folder",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "folder",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "folderPath": {
+        "edit": {
+          "label": "folderPath",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "folderPath",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -252,7 +281,6 @@
         "alternativeText",
         "caption"
       ],
-      "editRelations": [],
       "edit": [
         [
           {
@@ -327,7 +355,16 @@
             "name": "provider_metadata",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "folderPath",
+            "size": 6
+          }
         ]
+      ],
+      "editRelations": [
+        "folder"
       ]
     }
   },

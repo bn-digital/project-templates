@@ -4,6 +4,12 @@
   "type": "public",
   "permissions": [
     {
+      "action": "api::category.category.find"
+    },
+    {
+      "action": "api::category.category.findOne"
+    },
+    {
       "action": "api::contact.contact.create"
     },
     {

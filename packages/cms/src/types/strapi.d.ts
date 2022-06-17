@@ -1,31 +1,12 @@
-type EnvVar<T = string | number | null | boolean | Array<string>> = T
-type EnvFunction = <T = EnvVar>(key: string, defaultValue?: T) => T
-
-type TypedEnvFunction = EnvFunction & {
-  int(key: string, defaultValue?: number): number
-  bool(key: string, defaultValue?: boolean): boolean
-  array(key: string, defaultValue?: string[]): string[]
-}
-
 declare namespace Strapi {
-  import { Core } from '@strapi/strapi'
-  import { PathLike } from 'fs'
+  import { GraphQLFieldResolver, GraphQLSchema } from 'graphql'
 
   namespace Db {
     type Client = 'sqlite' | 'pg' | 'postgres' | 'postgresql' | 'mysql'
   }
 
-  type LogLevel = 'info' | 'warn' | 'error'
-  type Strapi = Core.Strapi & {
-    fs: {
-      writeAppFile(path: string | PathLike, content: Buffer | string): void
-    }
-    log: {
-      [key in LogLevel]: (...args: string[]) => void
-    }
-  }
-  namespace GraphqlPlugin {
-    import type { GraphQLSchema, GraphQLFieldResolver } from 'graphql'
+  namespace Graphql {
+    type Plugin = { service<T = any>(name: 'extension' | 'content-api'): T }
     type SchemaExtension = () => { resolvers: { [key: string]: { [key: string]: GraphQLFieldResolver<unknown, unknown> } } }
     type ExtensionService = {
       use(schemaExtension: SchemaExtension): void
@@ -39,5 +20,3 @@ declare namespace Strapi {
   }
   type PluginsConfig = { [key: string]: Partial<{ enabled: boolean; resolve: string; config: Record<string, unknown> }> }
 }
-
-declare const strapi: Strapi

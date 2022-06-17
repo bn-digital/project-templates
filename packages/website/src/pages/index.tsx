@@ -1,25 +1,22 @@
-import { FC } from 'react'
-import { BrowserRouter, RouteObject, useRoutes } from 'react-router-dom'
+import { lazy } from 'react'
+import { RouteObject } from 'react-router-dom'
 import { DefaultLayout } from 'src/components/layout'
 
-import Home from './home'
-import NotFound from './not-found'
-/**
- * fixed in ENG-123
- */
+const Home = lazy(() => import('./home'))
+const NotFound = lazy(() => import('./not-found'))
+
 const routes: RouteObject[] = [
   {
-    path: '',
+    path: '/',
     element: <DefaultLayout />,
     children: [
       {
         element: <Home />,
-        path: '/',
         index: true,
       },
       {
         element: <Home />,
-        path: '/contact-us',
+        path: 'contact-us',
       },
       {
         element: <NotFound />,
@@ -28,14 +25,5 @@ const routes: RouteObject[] = [
     ],
   },
 ]
-const Pages = () => useRoutes(routes)
 
-function withBrowserRouter(Wrapped: FC): FC {
-  return () => (
-    <BrowserRouter>
-      <Wrapped />
-    </BrowserRouter>
-  )
-}
-
-export default withBrowserRouter(Pages) as FC
+export { routes as default }

@@ -4,6 +4,9 @@ kind: Config
 build:
   local:
     useBuildkit: true
+    useDockerCLI: true
+    push: false
+    concurrency: 0
   tagPolicy:
     sha256: { }
   artifacts:

@@ -371,6 +371,8 @@ input UploadFileFiltersInput {
   previewUrl: StringFilterInput
   provider: StringFilterInput
   provider_metadata: JSONFilterInput
+  folder: UploadFolderFiltersInput
+  folderPath: StringFilterInput
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
   sitemap_exclude: BooleanFilterInput
@@ -394,6 +396,8 @@ input UploadFileInput {
   previewUrl: String
   provider: String
   provider_metadata: JSON
+  folder: ID
+  folderPath: String
   sitemap_exclude: Boolean
 }
 
@@ -429,6 +433,65 @@ type UploadFileEntityResponse {
 type UploadFileEntityResponseCollection {
   data: [UploadFileEntity!]!
   meta: ResponseCollectionMeta!
+}
+
+type UploadFileRelationResponseCollection {
+  data: [UploadFileEntity!]!
+}
+
+input UploadFolderFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  pathId: IntFilterInput
+  parent: UploadFolderFiltersInput
+  children: UploadFolderFiltersInput
+  files: UploadFileFiltersInput
+  path: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  sitemap_exclude: BooleanFilterInput
+  and: [UploadFolderFiltersInput]
+  or: [UploadFolderFiltersInput]
+  not: UploadFolderFiltersInput
+}
+
+input UploadFolderInput {
+  name: String
+  pathId: Int
+  parent: ID
+  children: [ID]
+  files: [ID]
+  path: String
+  sitemap_exclude: Boolean
+}
+
+type UploadFolder {
+  name: String!
+  pathId: Int!
+  parent: UploadFolderEntityResponse
+  children(filters: UploadFolderFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFolderRelationResponseCollection
+  files(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
+  path: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UploadFolderEntity {
+  id: ID
+  attributes: UploadFolder
+}
+
+type UploadFolderEntityResponse {
+  data: UploadFolderEntity
+}
+
+type UploadFolderEntityResponseCollection {
+  data: [UploadFolderEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type UploadFolderRelationResponseCollection {
+  data: [UploadFolderEntity!]!
 }
 
 input EntityNotesNoteFiltersInput {
@@ -1014,7 +1077,7 @@ type WebsiteEntityResponse {
   data: WebsiteEntity
 }
 
-union GenericMorph = ComponentDataContact | ComponentDataEntry | ComponentDataSet | ComponentPageContactUs | ComponentPageHome | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiGrid | ComponentUiHeadline | ComponentUiLink | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | UploadFile | EntityNotesNote | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | I18NLocale | EmailDesignerEmailTemplate | GraphsBuilderGraph | MenusMenu | MenusMenuItem | Category | Contact | Post | Translation | Website
+union GenericMorph = ComponentDataContact | ComponentDataEntry | ComponentDataSet | ComponentPageContactUs | ComponentPageHome | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiGrid | ComponentUiHeadline | ComponentUiLink | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | UploadFile | UploadFolder | EntityNotesNote | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | I18NLocale | EmailDesignerEmailTemplate | GraphsBuilderGraph | MenusMenu | MenusMenuItem | Category | Contact | Post | Translation | Website
 
 input FileInfoInput {
   name: String
@@ -1081,6 +1144,8 @@ input PaginationArg {
 type Query {
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
+  uploadFolder(id: ID): UploadFolderEntityResponse
+  uploadFolders(filters: UploadFolderFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFolderEntityResponseCollection
   entityNotesNote(id: ID): EntityNotesNoteEntityResponse
   entityNotesNotes(filters: EntityNotesNoteFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): EntityNotesNoteEntityResponseCollection
   usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
@@ -1110,6 +1175,9 @@ type Mutation {
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   updateUploadFile(id: ID!, data: UploadFileInput!): UploadFileEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
+  createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
+  updateUploadFolder(id: ID!, data: UploadFolderInput!): UploadFolderEntityResponse
+  deleteUploadFolder(id: ID!): UploadFolderEntityResponse
   createEntityNotesNote(data: EntityNotesNoteInput!): EntityNotesNoteEntityResponse
   updateEntityNotesNote(id: ID!, data: EntityNotesNoteInput!): EntityNotesNoteEntityResponse
   deleteEntityNotesNote(id: ID!): EntityNotesNoteEntityResponse

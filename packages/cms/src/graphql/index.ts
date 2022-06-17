@@ -2,18 +2,22 @@ import { printSchema } from 'graphql'
 
 import uploadFileUrl from './resolvers/upload-file/url'
 
-function generateGraphqlSchema(strapi: Strapi.Strapi): void {
+function generateGraphqlSchema(strapi: Strapi): void {
   const schema = getContentApiService(strapi).buildSchema()
   strapi.fs.writeAppFile('./src/graphql/schema.graphqls', printSchema(schema))
   strapi.log.info('[GraphQL] Schema generated')
 }
 
-function getExtensionService(strapi: Strapi.Strapi): Strapi.GraphqlPlugin.ExtensionService {
-  return strapi.plugin('graphql').service('extension')
+function getGraphqlPlugin(strapi: Strapi): Strapi.Graphql.Plugin {
+  return strapi.plugin('graphql')
 }
 
-function getContentApiService(strapi: Strapi.Strapi): Strapi.GraphqlPlugin.ContentApiService {
-  return strapi.plugin('graphql').service('content-api')
+function getExtensionService(strapi: Strapi) {
+  return getGraphqlPlugin(strapi).service<Strapi.Graphql.ExtensionService>('extension')
+}
+
+function getContentApiService(strapi: Strapi) {
+  return getGraphqlPlugin(strapi).service<Strapi.Graphql.ContentApiService>('content-api')
 }
 
 function getSchemaExtension() {
