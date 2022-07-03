@@ -11,6 +11,7 @@
 .editorconfig
 .git
 .github
+.gradle
 .graphqlconfig
 .idea
 gradle

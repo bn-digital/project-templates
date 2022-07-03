@@ -1,6 +1,6 @@
 import './DefaultLayout.less'
 
-import { Drawer, Layout, Spin } from 'antd'
+import { Drawer, Layout } from 'antd'
 import { FC, Suspense } from 'react'
 import { Outlet } from 'react-router'
 import { ScrollRestoration, useLocation } from 'react-router-dom'
@@ -10,12 +10,7 @@ import { MenuComponent, WebsiteComponent } from 'src/graphql'
 import { Content } from './Content'
 import { Footer } from './Footer'
 import { Header } from './Header'
-
-const PageLoader: FC = () => (
-  <Content>
-    <Spin size={'small'} />
-  </Content>
-)
+import { Loader } from './Loader'
 
 type ContentProps = ComponentPageContactUs | ComponentPageHome
 
@@ -49,7 +44,7 @@ const DefaultLayout: FC = () => {
                   </Content>
                 </Layout.Header>
                 <Layout.Content>
-                  <Suspense fallback={<PageLoader />}>
+                  <Suspense fallback={<Loader />}>
                     <Outlet context={filterByPathname(data?.website?.data?.attributes?.content as ContentProps[])} />
                   </Suspense>
                 </Layout.Content>
@@ -62,7 +57,7 @@ const DefaultLayout: FC = () => {
             )}
           </WebsiteComponent>
           <Drawer width={'50%'} height={'100%'} onClose={toggle} visible={opened} />
-          <ScrollRestoration/>
+          <ScrollRestoration />
         </Layout>
       )}
     </AppContext.Consumer>

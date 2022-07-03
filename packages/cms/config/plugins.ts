@@ -1,6 +1,6 @@
 import { domain, generateSecret, name } from './index'
 
-export default ({ env }: { env: EnvFunction }): Strapi.PluginsConfig => ({
+export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
   'entity-notes': {
     enabled: true,
   },
@@ -45,7 +45,7 @@ export default ({ env }: { env: EnvFunction }): Strapi.PluginsConfig => ({
       provider: 'nodemailer',
       providerOptions: {
         host: env('SMTP_HOST', 'bndigital.dev'),
-        port: env('SMTP_PORT', 1025),
+        port: env.int('SMTP_PORT', 1025),
         auth: {
           user: env('SMTP_USERNAME', ''),
           pass: env('SMTP_PASSWORD', ''),

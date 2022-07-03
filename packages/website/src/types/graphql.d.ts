@@ -141,7 +141,7 @@ type ComponentSharedMetaSocial = {
   description: Scalars['String']
   id: Scalars['ID']
   image?: Maybe<UploadFileEntityResponse>
-  socialNetwork: Enum_Componentsharedmetasocial_Socialnetwork
+  socialNetwork: EnumComponentsharedmetasocialSocialnetwork
   title: Scalars['String']
 }
 
@@ -158,7 +158,7 @@ type ComponentSharedMetaSocialInput = {
   description?: InputMaybe<Scalars['String']>
   id?: InputMaybe<Scalars['ID']>
   image?: InputMaybe<Scalars['ID']>
-  socialNetwork?: InputMaybe<Enum_Componentsharedmetasocial_Socialnetwork>
+  socialNetwork?: InputMaybe<EnumComponentsharedmetasocialSocialnetwork>
   title?: InputMaybe<Scalars['String']>
 }
 
@@ -283,7 +283,7 @@ type Contact = {
   createdAt?: Maybe<Scalars['DateTime']>
   email: Scalars['String']
   name: Scalars['String']
-  status?: Maybe<Enum_Contact_Status>
+  status?: Maybe<EnumContactStatus>
   subject?: Maybe<Scalars['String']>
   text?: Maybe<Scalars['String']>
   updatedAt?: Maybe<Scalars['DateTime']>
@@ -302,7 +302,7 @@ type ContactInput = {
   email?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
   sitemap_exclude?: InputMaybe<Scalars['Boolean']>
-  status?: InputMaybe<Enum_Contact_Status>
+  status?: InputMaybe<EnumContactStatus>
   subject?: InputMaybe<Scalars['String']>
   text?: InputMaybe<Scalars['String']>
 }
@@ -330,13 +330,13 @@ type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']>
 }
 
-type Enum_Componentsharedmetasocial_Socialnetwork = 'Facebook' | 'Twitter'
+type EnumComponentsharedmetasocialSocialnetwork = 'Facebook' | 'Twitter'
 
-type Enum_Contact_Status = 'failed' | 'new' | 'sent'
+type EnumContactStatus = 'failed' | 'new' | 'sent'
 
-type Enum_Graphsbuildergraph_Type = 'bar' | 'dateLine' | 'line' | 'pie'
+type EnumGraphsbuildergraphType = 'bar' | 'dateLine' | 'line' | 'pie'
 
-type Enum_Menusmenuitem_Target = 'blank' | 'parent' | 'self' | 'top'
+type EnumMenusmenuitemTarget = 'blank' | 'parent' | 'self' | 'top'
 
 type EmailDesignerEmailTemplate = {
   bodyHtml?: Maybe<Scalars['String']>
@@ -501,6 +501,7 @@ type GenericMorph =
   | Post
   | Translation
   | UploadFile
+  | UploadFolder
   | UsersPermissionsPermission
   | UsersPermissionsRole
   | UsersPermissionsUser
@@ -511,7 +512,7 @@ type GraphsBuilderGraph = {
   collectionXAttribute?: Maybe<Scalars['String']>
   createdAt?: Maybe<Scalars['DateTime']>
   title: Scalars['String']
-  type: Enum_Graphsbuildergraph_Type
+  type: EnumGraphsbuildergraphType
   updatedAt?: Maybe<Scalars['DateTime']>
 }
 
@@ -548,7 +549,7 @@ type GraphsBuilderGraphInput = {
   collectionXAttribute?: InputMaybe<Scalars['String']>
   sitemap_exclude?: InputMaybe<Scalars['Boolean']>
   title?: InputMaybe<Scalars['String']>
-  type?: InputMaybe<Enum_Graphsbuildergraph_Type>
+  type?: InputMaybe<EnumGraphsbuildergraphType>
 }
 
 type I18NLocale = {
@@ -705,7 +706,7 @@ type MenusMenuItem = {
   order?: Maybe<Scalars['Int']>
   parent?: Maybe<MenusMenuItemEntityResponse>
   root_menu: MenusMenuEntityResponse
-  target?: Maybe<Enum_Menusmenuitem_Target>
+  target?: Maybe<EnumMenusmenuitemTarget>
   title: Scalars['String']
   updatedAt?: Maybe<Scalars['DateTime']>
   url?: Maybe<Scalars['String']>
@@ -746,7 +747,7 @@ type MenusMenuItemInput = {
   parent?: InputMaybe<Scalars['ID']>
   root_menu?: InputMaybe<Scalars['ID']>
   sitemap_exclude?: InputMaybe<Scalars['Boolean']>
-  target?: InputMaybe<Enum_Menusmenuitem_Target>
+  target?: InputMaybe<EnumMenusmenuitemTarget>
   title?: InputMaybe<Scalars['String']>
   url?: InputMaybe<Scalars['String']>
 }
@@ -764,6 +765,7 @@ type Mutation = {
   createMenusMenu?: Maybe<MenusMenuEntityResponse>
   createMenusMenuItem?: Maybe<MenusMenuItemEntityResponse>
   createUploadFile?: Maybe<UploadFileEntityResponse>
+  createUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
   /** Create a new user */
@@ -776,6 +778,7 @@ type Mutation = {
   deleteMenusMenu?: Maybe<MenusMenuEntityResponse>
   deleteMenusMenuItem?: Maybe<MenusMenuItemEntityResponse>
   deleteUploadFile?: Maybe<UploadFileEntityResponse>
+  deleteUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>
   /** Delete an existing user */
@@ -800,6 +803,7 @@ type Mutation = {
   updateMenusMenu?: Maybe<MenusMenuEntityResponse>
   updateMenusMenuItem?: Maybe<MenusMenuItemEntityResponse>
   updateUploadFile?: Maybe<UploadFileEntityResponse>
+  updateUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>
   /** Update an existing user */
@@ -839,6 +843,10 @@ type MutationCreateUploadFileArgs = {
   data: UploadFileInput
 }
 
+type MutationCreateUploadFolderArgs = {
+  data: UploadFolderInput
+}
+
 type MutationCreateUsersPermissionsRoleArgs = {
   data: UsersPermissionsRoleInput
 }
@@ -876,6 +884,10 @@ type MutationDeleteMenusMenuItemArgs = {
 }
 
 type MutationDeleteUploadFileArgs = {
+  id: Scalars['ID']
+}
+
+type MutationDeleteUploadFolderArgs = {
   id: Scalars['ID']
 }
 
@@ -962,6 +974,11 @@ type MutationUpdateMenusMenuItemArgs = {
 
 type MutationUpdateUploadFileArgs = {
   data: UploadFileInput
+  id: Scalars['ID']
+}
+
+type MutationUpdateUploadFolderArgs = {
+  data: UploadFolderInput
   id: Scalars['ID']
 }
 
@@ -1067,6 +1084,8 @@ type Query = {
   translation?: Maybe<TranslationEntityResponse>
   uploadFile?: Maybe<UploadFileEntityResponse>
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>
+  uploadFolder?: Maybe<UploadFolderEntityResponse>
+  uploadFolders?: Maybe<UploadFolderEntityResponseCollection>
   usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>
@@ -1165,6 +1184,16 @@ type QueryUploadFileArgs = {
 
 type QueryUploadFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type QueryUploadFolderArgs = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
+type QueryUploadFoldersArgs = {
+  filters?: InputMaybe<UploadFolderFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
@@ -1278,6 +1307,8 @@ type UploadFileFiltersInput = {
   caption?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   ext?: InputMaybe<StringFilterInput>
+  folder?: InputMaybe<UploadFolderFiltersInput>
+  folderPath?: InputMaybe<StringFilterInput>
   formats?: InputMaybe<JsonFilterInput>
   hash?: InputMaybe<StringFilterInput>
   height?: InputMaybe<IntFilterInput>
@@ -1300,6 +1331,8 @@ type UploadFileInput = {
   alternativeText?: InputMaybe<Scalars['String']>
   caption?: InputMaybe<Scalars['String']>
   ext?: InputMaybe<Scalars['String']>
+  folder?: InputMaybe<Scalars['ID']>
+  folderPath?: InputMaybe<Scalars['String']>
   formats?: InputMaybe<Scalars['JSON']>
   hash?: InputMaybe<Scalars['String']>
   height?: InputMaybe<Scalars['Int']>
@@ -1312,6 +1345,77 @@ type UploadFileInput = {
   size?: InputMaybe<Scalars['Float']>
   url?: InputMaybe<Scalars['String']>
   width?: InputMaybe<Scalars['Int']>
+}
+
+type UploadFileRelationResponseCollection = {
+  data: Array<UploadFileEntity>
+}
+
+type UploadFolder = {
+  children?: Maybe<UploadFolderRelationResponseCollection>
+  createdAt?: Maybe<Scalars['DateTime']>
+  files?: Maybe<UploadFileRelationResponseCollection>
+  name: Scalars['String']
+  parent?: Maybe<UploadFolderEntityResponse>
+  path: Scalars['String']
+  pathId: Scalars['Int']
+  updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+type UploadFolderChildrenArgs = {
+  filters?: InputMaybe<UploadFolderFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type UploadFolderFilesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type UploadFolderEntity = {
+  attributes?: Maybe<UploadFolder>
+  id?: Maybe<Scalars['ID']>
+}
+
+type UploadFolderEntityResponse = {
+  data?: Maybe<UploadFolderEntity>
+}
+
+type UploadFolderEntityResponseCollection = {
+  data: Array<UploadFolderEntity>
+  meta: ResponseCollectionMeta
+}
+
+type UploadFolderFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<UploadFolderFiltersInput>>>
+  children?: InputMaybe<UploadFolderFiltersInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  files?: InputMaybe<UploadFileFiltersInput>
+  id?: InputMaybe<IdFilterInput>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<UploadFolderFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<UploadFolderFiltersInput>>>
+  parent?: InputMaybe<UploadFolderFiltersInput>
+  path?: InputMaybe<StringFilterInput>
+  pathId?: InputMaybe<IntFilterInput>
+  sitemap_exclude?: InputMaybe<BooleanFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+type UploadFolderInput = {
+  children?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  files?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  name?: InputMaybe<Scalars['String']>
+  parent?: InputMaybe<Scalars['ID']>
+  path?: InputMaybe<Scalars['String']>
+  pathId?: InputMaybe<Scalars['Int']>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+}
+
+type UploadFolderRelationResponseCollection = {
+  data: Array<UploadFolderEntity>
 }
 
 type UsersPermissionsCreateRolePayload = {
@@ -1591,6 +1695,16 @@ type HomeFragment = {
   } | null> | null
 }
 
+type PostFragment = {
+  id?: string | null
+  attributes?: {
+    content?: string | null
+    slug: string
+    cover?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
+    category?: { data?: { id?: string | null; attributes?: { slug: string } | null } | null } | null
+  } | null
+}
+
 type WebsiteFragment = {
   content?: Array<
     | {
@@ -1659,9 +1773,27 @@ type MenuQuery = {
         items?: {
           data: Array<{
             id?: string | null
-            attributes?: { title: string; url?: string | null; target?: Enum_Menusmenuitem_Target | null; order?: number | null } | null
+            attributes?: { title: string; url?: string | null; target?: EnumMenusmenuitemTarget | null; order?: number | null } | null
           }>
         } | null
+      } | null
+    }>
+  } | null
+}
+
+type PostsQueryVariables = Exact<{
+  filters?: InputMaybe<PostFiltersInput>
+}>
+
+type PostsQuery = {
+  posts?: {
+    data: Array<{
+      id?: string | null
+      attributes?: {
+        content?: string | null
+        slug: string
+        cover?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
+        category?: { data?: { id?: string | null; attributes?: { slug: string } | null } | null } | null
       } | null
     }>
   } | null

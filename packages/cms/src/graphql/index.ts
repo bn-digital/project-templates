@@ -13,14 +13,14 @@ function getGraphqlPlugin(strapi: Strapi): Strapi.Graphql.Plugin {
 }
 
 function getExtensionService(strapi: Strapi) {
-  return getGraphqlPlugin(strapi).service<Strapi.Graphql.ExtensionService>('extension')
+  return strapi.service<Strapi.Graphql.ExtensionService>('plugin::graphql.extension')
 }
 
 function getContentApiService(strapi: Strapi) {
   return getGraphqlPlugin(strapi).service<Strapi.Graphql.ContentApiService>('content-api')
 }
 
-function getSchemaExtension() {
+function getSchemaExtension(): () => Strapi.Graphql.SchemaExtension {
   return () => ({
     resolvers: {
       UploadFile: {
@@ -30,4 +30,4 @@ function getSchemaExtension() {
   })
 }
 
-export { generateGraphqlSchema, getExtensionService, getSchemaExtension }
+export { generateGraphqlSchema,getExtensionService, getSchemaExtension }

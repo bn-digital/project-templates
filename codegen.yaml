@@ -2,6 +2,8 @@ schema: packages/cms/src/graphql/schema.graphqls
 documents:
   - packages/*/src/graphql/*/*.graphql
 config:
+  namingConvention:
+    transformUnderscore: true
   scalars:
     Upload: unknown
     Date: string

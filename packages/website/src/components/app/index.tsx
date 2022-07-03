@@ -1,13 +1,16 @@
 import './index.less'
 
 import { ClientProvider } from '@bn-digital/graphql-client'
+import locale from 'antd/es/locale/en_US'
 import type { Locale } from 'antd/es/locale-provider'
-import locale from 'antd/lib/locale/en_US'
 import { createContext, Dispatch, FC, PropsWithChildren, ReactNode, SetStateAction, useContext, useState } from 'react'
 import { IntlProvider } from 'react-intl'
 import { DataBrowserRouter } from 'react-router-dom'
 import { useToggle } from 'react-use'
-import routes from 'src/pages'
+
+import routes from '../../pages'
+import { Loader } from '../layout/Loader'
+import { ErrorBoundary } from './ErrorBoundary'
 
 type AppTheme = string | 'dark' | 'light' | 'default'
 
@@ -19,7 +22,6 @@ type AppProps = {
   ui: { theme: AppTheme; size: Size }
   user: { authenticated: boolean | null; role: string | null }
 }
-
 const defaultValue: AppProps = {
   i18n: { locale, setLocale: () => undefined },
   burger: { opened: false, toggle: () => undefined },
@@ -37,15 +39,17 @@ const ContextProvider: FC<PropsWithChildren<Partial<ReactNode>>> = ({ children }
 
 const App: FC = () => (
   <ContextProvider>
-    <ClientProvider production={import.meta.env.PROD}>
-      <Context.Consumer>
-        {({ i18n }) => (
-          <IntlProvider locale={i18n.locale!.locale} defaultLocale={defaultValue.i18n.locale.locale} messages={{}}>
-            <DataBrowserRouter routes={routes} />
-          </IntlProvider>
-        )}
-      </Context.Consumer>
-    </ClientProvider>
+    <ErrorBoundary>
+      <ClientProvider production={import.meta.env.PROD}>
+        <Context.Consumer>
+          {({ i18n }) => (
+            <IntlProvider locale={i18n.locale.locale} defaultLocale={defaultValue.i18n.locale.locale} messages={{}}>
+              <DataBrowserRouter routes={routes} fallbackElement={<Loader />} />
+            </IntlProvider>
+          )}
+        </Context.Consumer>
+      </ClientProvider>
+    </ErrorBoundary>
   </ContextProvider>
 )
 

@@ -1,3 +1,5 @@
+import './index.less'
+
 import { renderApp } from '@bn-digital/react'
 
 import { App } from './components/app'

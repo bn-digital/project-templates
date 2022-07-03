@@ -4,9 +4,19 @@
     "outDir": "dist",
     "rootDir": "."
   },
-  "include": ["./", "src/**/*.json", "./package.json"],
-  "exclude": ["node_modules/", "build/", "dist/", ".cache/", ".tmp/", "src/admin/", "**/*.test.ts", "src/plugins/**"],
-  "typeAcquisition": {
-    "enable": true
-  }
+  "include": [
+    "./",
+    "src/**/*.json",
+    "./package.json"
+  ],
+  "exclude": [
+    "node_modules/",
+    "build/",
+    "dist/",
+    ".cache/",
+    ".tmp/",
+    "src/admin/",
+    "**/*.test.ts",
+    "src/plugins/**"
+  ]
 }

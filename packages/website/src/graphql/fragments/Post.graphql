@@ -1,0 +1,20 @@
+fragment Post on PostEntity {
+  id
+  attributes {
+    content
+    slug
+    cover {
+      data {
+        ...File
+      }
+    }
+    category {
+      data {
+        id
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+}

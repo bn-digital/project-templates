@@ -2,17 +2,22 @@ import { lazy } from 'react'
 import { RouteObject } from 'react-router-dom'
 import { DefaultLayout } from 'src/components/layout'
 
+const Post = lazy(() => import('./post'))
 const Home = lazy(() => import('./home'))
 const NotFound = lazy(() => import('./not-found'))
 
 const routes: RouteObject[] = [
   {
-    path: '/',
+    path: '',
     element: <DefaultLayout />,
     children: [
       {
         element: <Home />,
         index: true,
+      },
+      {
+        element: <Post />,
+        path: 'posts/:slug',
       },
       {
         element: <Home />,

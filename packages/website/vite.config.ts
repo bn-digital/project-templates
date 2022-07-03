@@ -1,7 +1,7 @@
 import { configureReact as configure } from '@bn-digital/vite'
 
 export default configure(
-  {},
+  { base: '/' },
   {
     fonts: {
       google: {

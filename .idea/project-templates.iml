@@ -3,7 +3,7 @@
   <component name="TemplatesService">
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/packages/cms/src/templates" />
+        <option value="$MODULE_DIR$/node_modules/conventional-changelog-angular/templates" />
       </list>
     </option>
   </component>

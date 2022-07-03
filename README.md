@@ -1,5 +1,7 @@
 # Brand New App
 
+[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/bn-digital/project-templates/tree/latest)
+
 ## Table of contents
 
 - [Build and run as Docker container](docs/docker.md)

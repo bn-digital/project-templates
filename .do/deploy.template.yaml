@@ -1,0 +1,17 @@
+spec:
+  name: app
+  region: fra1
+  services:
+    - name: cms
+  databases:
+    - name: database
+      engine: PG
+      production: true
+      db_name: app
+      db_user: app
+  static_sites:
+    - name: website
+      git:
+        repo_clone_url: git@github.com/bn-digital/project-templates
+        branch: latest
+

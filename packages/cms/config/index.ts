@@ -13,7 +13,7 @@ const packageJson = JSON.parse(readFileSync(path.join(workingDir, 'package.json'
 
 const name = packageJson.name.split('/')[0].toString().replace('@', '')
 
-const namespace = '11de21c0-4ff6-4df3-b7aa-15ed356e2463' as const
+const namespace = packageJson.strapi.id
 
 const domain = process.env.DOMAIN ?? (`${name}.bndigital.dev` as const)
 
