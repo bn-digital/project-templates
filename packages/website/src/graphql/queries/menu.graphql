@@ -1,22 +1,7 @@
 query menu($filters: MenusMenuFiltersInput) {
   menusMenus(filters: $filters) {
     data {
-      id
-      attributes {
-        title
-        slug
-        items(sort: ["order:ASC"]) {
-          data {
-            id
-            attributes {
-              title
-              url
-              target
-              order
-            }
-          }
-        }
-      }
+      ...Menu
     }
   }
 }

@@ -18,3 +18,5 @@ FROM dcr.bndigital.dev/library/nodejs:${version} AS cms
 COPY --from=build --chown=node /usr/local/src/packages/cms .
 ENTRYPOINT ["yarn"]
 CMD ["strapi", "start"]
+
+FROM cms

@@ -1631,13 +1631,7 @@ type WebsiteEntityResponse = {
   data?: Maybe<WebsiteEntity>
 }
 
-type CardFragment = {
-  id: string
-  title?: string | null
-  subtitle?: string | null
-  description?: string | null
-  media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-}
+type CardFragment = { id: string; title?: string | null; subtitle?: string | null; description?: string | null; media?: { data?: FileFragment | null } | null }
 
 type EntryFragment = { id: string; key?: string | null; value: string }
 
@@ -1658,17 +1652,7 @@ type SeoFragment = {
 
 type ParagraphFragment = { id: string; value: string }
 
-type TabFragment = {
-  id: string
-  name: string
-  pane: {
-    id: string
-    title?: string | null
-    subtitle?: string | null
-    description?: string | null
-    media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-  }
-}
+type TabFragment = { id: string; name: string; pane: CardFragment }
 
 type ContactUsFragment = {
   id: string
@@ -1679,20 +1663,21 @@ type ContactUsFragment = {
 type HomeFragment = {
   id: string
   pathname: string
-  hero?: {
-    subtitle?: string | null
-    id: string
-    description?: string | null
-    title?: string | null
-    media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
+  hero?: { subtitle?: string | null; id: string; description?: string | null; title?: string | null; media?: { data?: FileFragment | null } | null } | null
+  features?: Array<CardFragment | null> | null
+}
+
+type MenuFragment = {
+  id?: string | null
+  attributes?: {
+    title: string
+    items?: {
+      data: Array<{
+        id?: string | null
+        attributes?: { order?: number | null; createdAt?: Date | null; url?: string | null; title: string; target?: EnumMenusmenuitemTarget | null } | null
+      }>
+    } | null
   } | null
-  features?: Array<{
-    id: string
-    title?: string | null
-    subtitle?: string | null
-    description?: string | null
-    media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-  } | null> | null
 }
 
 type PostFragment = {
@@ -1700,40 +1685,14 @@ type PostFragment = {
   attributes?: {
     content?: string | null
     slug: string
-    cover?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
+    cover?: { data?: FileFragment | null } | null
     category?: { data?: { id?: string | null; attributes?: { slug: string } | null } | null } | null
   } | null
 }
 
 type WebsiteFragment = {
   content?: Array<
-    | {
-        __typename: 'ComponentPageContactUs'
-        id: string
-        pathname: string
-        contact?: { id: string; address?: string | null; email?: string | null; phone?: string | null } | null
-      }
-    | {
-        __typename: 'ComponentPageHome'
-        id: string
-        pathname: string
-        hero?: {
-          subtitle?: string | null
-          id: string
-          description?: string | null
-          title?: string | null
-          media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-        } | null
-        features?: Array<{
-          id: string
-          title?: string | null
-          subtitle?: string | null
-          description?: string | null
-          media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-        } | null> | null
-      }
-    | { __typename: 'Error' }
-    | null
+    ({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' } | null
   > | null
 }
 
@@ -1763,79 +1722,14 @@ type MenuQueryVariables = Exact<{
   filters?: InputMaybe<MenusMenuFiltersInput>
 }>
 
-type MenuQuery = {
-  menusMenus?: {
-    data: Array<{
-      id?: string | null
-      attributes?: {
-        title: string
-        slug: string
-        items?: {
-          data: Array<{
-            id?: string | null
-            attributes?: { title: string; url?: string | null; target?: EnumMenusmenuitemTarget | null; order?: number | null } | null
-          }>
-        } | null
-      } | null
-    }>
-  } | null
-}
+type MenuQuery = { menusMenus?: { data: Array<MenuFragment> } | null }
 
 type PostsQueryVariables = Exact<{
   filters?: InputMaybe<PostFiltersInput>
 }>
 
-type PostsQuery = {
-  posts?: {
-    data: Array<{
-      id?: string | null
-      attributes?: {
-        content?: string | null
-        slug: string
-        cover?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-        category?: { data?: { id?: string | null; attributes?: { slug: string } | null } | null } | null
-      } | null
-    }>
-  } | null
-}
+type PostsQuery = { posts?: { data: Array<PostFragment> } | null }
 
 type WebsiteQueryVariables = Exact<{ [key: string]: never }>
 
-type WebsiteQuery = {
-  website?: {
-    data?: {
-      id?: string | null
-      attributes?: {
-        content?: Array<
-          | {
-              __typename: 'ComponentPageContactUs'
-              id: string
-              pathname: string
-              contact?: { id: string; address?: string | null; email?: string | null; phone?: string | null } | null
-            }
-          | {
-              __typename: 'ComponentPageHome'
-              id: string
-              pathname: string
-              hero?: {
-                subtitle?: string | null
-                id: string
-                description?: string | null
-                title?: string | null
-                media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-              } | null
-              features?: Array<{
-                id: string
-                title?: string | null
-                subtitle?: string | null
-                description?: string | null
-                media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-              } | null> | null
-            }
-          | { __typename: 'Error' }
-          | null
-        > | null
-      } | null
-    } | null
-  } | null
-}
+type WebsiteQuery = { website?: { data?: { id?: string | null; attributes?: WebsiteFragment | null } | null } | null }

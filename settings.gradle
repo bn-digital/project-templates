@@ -1,6 +1,0 @@
-rootProject.name = rootDir.name
-
-file('packages').eachDir {
-  include(it.name)
-  project(":${it.name}").projectDir = it
-}

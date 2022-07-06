@@ -4,13 +4,7 @@ import * as ApolloReactComponents from '@apollo/client/react/components'
 import * as React from 'react'
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 const defaultOptions = {} as const
-type CardFragment = {
-  id: string
-  title?: string | null
-  subtitle?: string | null
-  description?: string | null
-  media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-}
+type CardFragment = { id: string; title?: string | null; subtitle?: string | null; description?: string | null; media?: { data?: FileFragment | null } | null }
 
 type EntryFragment = { id: string; key?: string | null; value: string }
 
@@ -31,17 +25,7 @@ type SeoFragment = {
 
 type ParagraphFragment = { id: string; value: string }
 
-type TabFragment = {
-  id: string
-  name: string
-  pane: {
-    id: string
-    title?: string | null
-    subtitle?: string | null
-    description?: string | null
-    media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-  }
-}
+type TabFragment = { id: string; name: string; pane: CardFragment }
 
 type ContactUsFragment = {
   id: string
@@ -52,20 +36,21 @@ type ContactUsFragment = {
 type HomeFragment = {
   id: string
   pathname: string
-  hero?: {
-    subtitle?: string | null
-    id: string
-    description?: string | null
-    title?: string | null
-    media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
+  hero?: { subtitle?: string | null; id: string; description?: string | null; title?: string | null; media?: { data?: FileFragment | null } | null } | null
+  features?: Array<CardFragment | null> | null
+}
+
+type MenuFragment = {
+  id?: string | null
+  attributes?: {
+    title: string
+    items?: {
+      data: Array<{
+        id?: string | null
+        attributes?: { order?: number | null; createdAt?: Date | null; url?: string | null; title: string; target?: EnumMenusmenuitemTarget | null } | null
+      }>
+    } | null
   } | null
-  features?: Array<{
-    id: string
-    title?: string | null
-    subtitle?: string | null
-    description?: string | null
-    media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-  } | null> | null
 }
 
 type PostFragment = {
@@ -73,40 +58,14 @@ type PostFragment = {
   attributes?: {
     content?: string | null
     slug: string
-    cover?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
+    cover?: { data?: FileFragment | null } | null
     category?: { data?: { id?: string | null; attributes?: { slug: string } | null } | null } | null
   } | null
 }
 
 type WebsiteFragment = {
   content?: Array<
-    | {
-        __typename: 'ComponentPageContactUs'
-        id: string
-        pathname: string
-        contact?: { id: string; address?: string | null; email?: string | null; phone?: string | null } | null
-      }
-    | {
-        __typename: 'ComponentPageHome'
-        id: string
-        pathname: string
-        hero?: {
-          subtitle?: string | null
-          id: string
-          description?: string | null
-          title?: string | null
-          media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-        } | null
-        features?: Array<{
-          id: string
-          title?: string | null
-          subtitle?: string | null
-          description?: string | null
-          media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-        } | null> | null
-      }
-    | { __typename: 'Error' }
-    | null
+    ({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' } | null
   > | null
 }
 
@@ -136,82 +95,17 @@ type MenuQueryVariables = Exact<{
   filters?: InputMaybe<MenusMenuFiltersInput>
 }>
 
-type MenuQuery = {
-  menusMenus?: {
-    data: Array<{
-      id?: string | null
-      attributes?: {
-        title: string
-        slug: string
-        items?: {
-          data: Array<{
-            id?: string | null
-            attributes?: { title: string; url?: string | null; target?: EnumMenusmenuitemTarget | null; order?: number | null } | null
-          }>
-        } | null
-      } | null
-    }>
-  } | null
-}
+type MenuQuery = { menusMenus?: { data: Array<MenuFragment> } | null }
 
 type PostsQueryVariables = Exact<{
   filters?: InputMaybe<PostFiltersInput>
 }>
 
-type PostsQuery = {
-  posts?: {
-    data: Array<{
-      id?: string | null
-      attributes?: {
-        content?: string | null
-        slug: string
-        cover?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-        category?: { data?: { id?: string | null; attributes?: { slug: string } | null } | null } | null
-      } | null
-    }>
-  } | null
-}
+type PostsQuery = { posts?: { data: Array<PostFragment> } | null }
 
 type WebsiteQueryVariables = Exact<{ [key: string]: never }>
 
-type WebsiteQuery = {
-  website?: {
-    data?: {
-      id?: string | null
-      attributes?: {
-        content?: Array<
-          | {
-              __typename: 'ComponentPageContactUs'
-              id: string
-              pathname: string
-              contact?: { id: string; address?: string | null; email?: string | null; phone?: string | null } | null
-            }
-          | {
-              __typename: 'ComponentPageHome'
-              id: string
-              pathname: string
-              hero?: {
-                subtitle?: string | null
-                id: string
-                description?: string | null
-                title?: string | null
-                media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-              } | null
-              features?: Array<{
-                id: string
-                title?: string | null
-                subtitle?: string | null
-                description?: string | null
-                media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null } | null } | null
-              } | null> | null
-            }
-          | { __typename: 'Error' }
-          | null
-        > | null
-      } | null
-    } | null
-  } | null
-}
+type WebsiteQuery = { website?: { data?: { id?: string | null; attributes?: WebsiteFragment | null } | null } | null }
 
 export const EntryFragmentDoc = gql`
   fragment Entry on ComponentDataEntry {
@@ -281,6 +175,26 @@ export const TabFragmentDoc = gql`
     }
   }
 `
+export const MenuFragmentDoc = gql`
+  fragment Menu on MenusMenuEntity {
+    id
+    attributes {
+      title
+      items {
+        data {
+          id
+          attributes {
+            order
+            createdAt
+            url
+            title
+            target
+          }
+        }
+      }
+    }
+  }
+`
 export const PostFragmentDoc = gql`
   fragment Post on PostEntity {
     id
@@ -344,7 +258,7 @@ export const WebsiteFragmentDoc = gql`
     }
   }
 `
-export const ForgotPasswordDocument = gql`
+const ForgotPasswordDocument = gql`
   mutation forgotPassword($email: String!) {
     forgotPassword(email: $email) {
       ok
@@ -385,7 +299,7 @@ export function useForgotPasswordMutation(baseOptions?: Apollo.MutationHookOptio
 export type ForgotPasswordMutationHookResult = ReturnType<typeof useForgotPasswordMutation>
 export type ForgotPasswordMutationResult = Apollo.MutationResult<ForgotPasswordMutation>
 export type ForgotPasswordMutationOptions = Apollo.BaseMutationOptions<ForgotPasswordMutation, ForgotPasswordMutationVariables>
-export const LoginDocument = gql`
+const LoginDocument = gql`
   mutation login($input: UsersPermissionsLoginInput!) {
     login(input: $input) {
       jwt
@@ -423,7 +337,7 @@ export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginM
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>
 export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>
-export const RegisterDocument = gql`
+const RegisterDocument = gql`
   mutation register($input: UsersPermissionsRegisterInput!) {
     register(input: $input) {
       jwt
@@ -461,7 +375,7 @@ export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<Reg
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>
 export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>
-export const MeDocument = gql`
+const MeDocument = gql`
   query me {
     me {
       email
@@ -498,29 +412,15 @@ export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>
-export const MenuDocument = gql`
+const MenuDocument = gql`
   query menu($filters: MenusMenuFiltersInput) {
     menusMenus(filters: $filters) {
       data {
-        id
-        attributes {
-          title
-          slug
-          items(sort: ["order:ASC"]) {
-            data {
-              id
-              attributes {
-                title
-                url
-                target
-                order
-              }
-            }
-          }
-        }
+        ...Menu
       }
     }
   }
+  ${MenuFragmentDoc}
 `
 export type MenuComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MenuQuery, MenuQueryVariables>, 'query'>
 
@@ -553,7 +453,7 @@ export function useMenuLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MenuQ
 export type MenuQueryHookResult = ReturnType<typeof useMenuQuery>
 export type MenuLazyQueryHookResult = ReturnType<typeof useMenuLazyQuery>
 export type MenuQueryResult = Apollo.QueryResult<MenuQuery, MenuQueryVariables>
-export const PostsDocument = gql`
+const PostsDocument = gql`
   query posts($filters: PostFiltersInput) {
     posts(publicationState: LIVE, filters: $filters) {
       data {
@@ -595,7 +495,7 @@ export function usePostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Post
 export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>
 export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>
 export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>
-export const WebsiteDocument = gql`
+const WebsiteDocument = gql`
   query website {
     website {
       data {

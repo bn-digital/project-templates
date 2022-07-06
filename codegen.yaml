@@ -4,6 +4,13 @@ documents:
 config:
   namingConvention:
     transformUnderscore: true
+  skipTypename: true
+  noExport: true
+  preResolveTypes: true
+  inlineFragmentTypes: combine
+  optimizeDocumentNode: true
+  dedupeFragments: true
+  enumsAsTypes: true
   scalars:
     Upload: unknown
     Date: string
@@ -13,26 +20,21 @@ config:
     DateTime: Date
 generates:
   packages/website/src/graphql/index.tsx:
-    config:
-      skipTypename: true
-      dedupeFragments: true
     plugins:
-      - typescript-operations:
-          noExport: true
-          preResolveTypes: true
+      - typescript-operations
       - typescript-react-apollo:
+          withMutationFn: false
+          withRefetchFn: false
+          withResultType: true
           withComponent: true
           withHooks: true
-          addDocBlocks: true
   packages/website/src/types/graphql.d.ts:
     config:
       noExport: true
       skipTypename: true
     plugins:
-      - typescript:
-          enumsAsTypes: true
-      - typescript-operations:
-          preResolveTypes: true
+      - typescript
+      - typescript-operations
 hooks:
   afterAllFileWrite:
     - yarn prettier --write

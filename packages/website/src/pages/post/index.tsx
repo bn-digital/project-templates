@@ -6,8 +6,8 @@ import { usePostsQuery } from 'src/graphql'
 
 const Post: FC = () => {
   const { slug } = useParams<{ slug: string }>()
-  const { data, loading } = usePostsQuery({ variables: { filters: { slug: { eq: slug } } } })
-  const post = data?.posts?.data?.[0]?.attributes
+  const { data, loading } = usePostsQuery({ variables: { filters: { slug: { eq: slug as string } } } })
+  const post = data?.posts?.data?.[0].attributes
 
   return (
     <Skeleton loading={loading}>

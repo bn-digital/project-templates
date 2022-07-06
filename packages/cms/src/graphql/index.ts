@@ -30,4 +30,4 @@ function getSchemaExtension(): () => Strapi.Graphql.SchemaExtension {
   })
 }
 
-export { generateGraphqlSchema,getExtensionService, getSchemaExtension }
+export { generateGraphqlSchema, getExtensionService, getSchemaExtension }
