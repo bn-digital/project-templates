@@ -1,16 +1,16 @@
-spec:
-  name: app
-  services:
-    - name: cms
-      github:
-        repo: bn-digital/project-templates
-        branch: latest
-        deploy_on_push: true
-    - name: website
-      build_command: yarn build
-      environment_slug: node-js
-      source_dir: packages/website
-      github:
-        repo: bn-digital/project-templates
-        branch: latest
-        deploy_on_push: true
+name: app
+region: fra1
+services:
+  - name: cms
+    github:
+      repo: bn-digital/project-templates
+      branch: latest
+      deploy_on_push: true
+  - name: website
+    build_command: yarn build
+    environment_slug: node-js
+    source_dir: packages/website
+    github:
+      repo: bn-digital/project-templates
+      branch: latest
+      deploy_on_push: true
