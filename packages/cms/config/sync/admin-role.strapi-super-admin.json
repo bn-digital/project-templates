@@ -229,6 +229,10 @@
         "fields": [
           "entry.key",
           "entry.value"
+        ],
+        "locales": [
+          "en",
+          "es-ES"
         ]
       },
       "conditions": []
@@ -236,13 +240,23 @@
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::translation.translation",
-      "properties": {},
+      "properties": {
+        "locales": [
+          "en",
+          "es-ES"
+        ]
+      },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::translation.translation",
-      "properties": {},
+      "properties": {
+        "locales": [
+          "en",
+          "es-ES"
+        ]
+      },
       "conditions": []
     },
     {
@@ -252,6 +266,10 @@
         "fields": [
           "entry.key",
           "entry.value"
+        ],
+        "locales": [
+          "en",
+          "es-ES"
         ]
       },
       "conditions": []
@@ -263,6 +281,10 @@
         "fields": [
           "entry.key",
           "entry.value"
+        ],
+        "locales": [
+          "en",
+          "es-ES"
         ]
       },
       "conditions": []
@@ -487,51 +509,6 @@
       "action": "plugin::content-manager.components.configure-layout",
       "subject": null,
       "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "plugin::graphs-builder.graph",
-      "properties": {
-        "fields": [
-          "title",
-          "type",
-          "collectionX",
-          "collectionXAttribute"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "plugin::graphs-builder.graph",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "plugin::graphs-builder.graph",
-      "properties": {
-        "fields": [
-          "title",
-          "type",
-          "collectionX",
-          "collectionXAttribute"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "plugin::graphs-builder.graph",
-      "properties": {
-        "fields": [
-          "title",
-          "type",
-          "collectionX",
-          "collectionXAttribute"
-        ]
-      },
       "conditions": []
     },
     {

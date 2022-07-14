@@ -1,4 +1,4 @@
-declare namespace Strapi {
+namespace Strapi {
   type App = { strapi: Strapi }
   type Env = { env: EnvFunction & TypedEnvFunction }
 

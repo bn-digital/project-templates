@@ -1042,116 +1042,6 @@
       "plugin": "upload",
       "globalId": "UploadFolder"
     },
-    "plugin::entity-notes.note": {
-      "kind": "collectionType",
-      "collectionName": "notes",
-      "info": {
-        "singularName": "note",
-        "pluralName": "notes",
-        "displayName": "notes"
-      },
-      "pluginOptions": {
-        "content-manager": {
-          "visible": false
-        },
-        "content-type-builder": {
-          "visible": false
-        }
-      },
-      "options": {
-        "draftAndPublish": false,
-        "comment": ""
-      },
-      "attributes": {
-        "title": {
-          "type": "string"
-        },
-        "content": {
-          "type": "text"
-        },
-        "entityId": {
-          "type": "integer"
-        },
-        "entitySlug": {
-          "type": "string"
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
-        }
-      },
-      "__schema__": {
-        "collectionName": "notes",
-        "info": {
-          "singularName": "note",
-          "pluralName": "notes",
-          "displayName": "notes"
-        },
-        "options": {
-          "draftAndPublish": false,
-          "comment": ""
-        },
-        "pluginOptions": {
-          "content-manager": {
-            "visible": false
-          },
-          "content-type-builder": {
-            "visible": false
-          }
-        },
-        "attributes": {
-          "title": {
-            "type": "string"
-          },
-          "content": {
-            "type": "text"
-          },
-          "entityId": {
-            "type": "integer"
-          },
-          "entitySlug": {
-            "type": "string"
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "note",
-      "connection": "default",
-      "uid": "plugin::entity-notes.note",
-      "plugin": "entity-notes",
-      "globalId": "EntityNotesNote"
-    },
     "plugin::users-permissions.permission": {
       "collectionName": "up_permissions",
       "info": {
@@ -1816,149 +1706,6 @@
       "plugin": "email-designer",
       "globalId": "EmailDesignerEmailTemplate"
     },
-    "plugin::graphs-builder.graph": {
-      "collectionName": "graphs_builder_graph",
-      "info": {
-        "name": "graph",
-        "description": "",
-        "singularName": "graph",
-        "pluralName": "graphs",
-        "displayName": "Graph"
-      },
-      "pluginOptions": {
-        "content-manager": {
-          "visible": true
-        },
-        "content-type-builder": {
-          "visible": true
-        }
-      },
-      "options": {
-        "draftAndPublish": false,
-        "timestamps": true
-      },
-      "attributes": {
-        "title": {
-          "type": "string",
-          "configurable": false,
-          "required": true
-        },
-        "type": {
-          "type": "enumeration",
-          "enum": [
-            "pie",
-            "bar",
-            "line",
-            "dateLine"
-          ],
-          "configurable": false,
-          "required": true
-        },
-        "collectionX": {
-          "type": "string",
-          "configurable": false,
-          "required": true
-        },
-        "collectionXAttribute": {
-          "type": "string",
-          "configurable": false
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
-        }
-      },
-      "config": {
-        "attributes": {}
-      },
-      "kind": "collectionType",
-      "__schema__": {
-        "collectionName": "graphs_builder_graph",
-        "info": {
-          "name": "graph",
-          "description": "",
-          "singularName": "graph",
-          "pluralName": "graphs",
-          "displayName": "Graph"
-        },
-        "options": {
-          "draftAndPublish": false,
-          "timestamps": true
-        },
-        "pluginOptions": {
-          "content-manager": {
-            "visible": true
-          },
-          "content-type-builder": {
-            "visible": true
-          }
-        },
-        "attributes": {
-          "title": {
-            "type": "string",
-            "configurable": false,
-            "required": true
-          },
-          "type": {
-            "type": "enumeration",
-            "enum": [
-              "pie",
-              "bar",
-              "line",
-              "dateLine"
-            ],
-            "configurable": false,
-            "required": true
-          },
-          "collectionX": {
-            "type": "string",
-            "configurable": false,
-            "required": true
-          },
-          "collectionXAttribute": {
-            "type": "string",
-            "configurable": false
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "graph",
-      "connection": "default",
-      "uid": "plugin::graphs-builder.graph",
-      "plugin": "graphs-builder",
-      "globalId": "GraphsBuilderGraph"
-    },
     "plugin::menus.menu": {
       "kind": "collectionType",
       "collectionName": "menus",
@@ -2620,12 +2367,22 @@
         "populateCreatorFields": false,
         "draftAndPublish": true
       },
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "attributes": {
         "entry": {
           "type": "component",
           "repeatable": true,
           "component": "data.entry",
-          "required": true
+          "required": true,
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          }
         },
         "createdAt": {
           "type": "datetime"
@@ -2659,6 +2416,22 @@
           "useJoinTable": false,
           "private": true
         },
+        "localizations": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::translation.translation"
+        },
+        "locale": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "string"
+        },
         "sitemap_exclude": {
           "writable": true,
           "private": true,
@@ -2680,12 +2453,22 @@
           "populateCreatorFields": false,
           "draftAndPublish": true
         },
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
         "attributes": {
           "entry": {
             "type": "component",
             "repeatable": true,
             "component": "data.entry",
-            "required": true
+            "required": true,
+            "pluginOptions": {
+              "i18n": {
+                "localized": true
+              }
+            }
           }
         },
         "kind": "singleType"

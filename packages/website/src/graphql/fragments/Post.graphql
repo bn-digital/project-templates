@@ -10,10 +10,7 @@ fragment Post on PostEntity {
     }
     category {
       data {
-        id
-        attributes {
-          slug
-        }
+        ...Category
       }
     }
   }

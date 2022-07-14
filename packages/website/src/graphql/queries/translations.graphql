@@ -1,0 +1,21 @@
+query translations($locale: I18NLocaleCode) {
+  translation(locale: $locale) {
+    data {
+      attributes {
+        localizations {
+          data {
+            attributes {
+              locale
+              entry {
+                ...Entry
+              }
+            }
+          }
+        }
+        entry(pagination: { limit: 1000 }) {
+          ...Entry
+        }
+      }
+    }
+  }
+}

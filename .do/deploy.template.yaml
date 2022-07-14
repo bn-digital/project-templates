@@ -1,5 +1,5 @@
 spec:
-  name: bn-app
+  name: app
   services:
     - name: cms
       environment_slug: node-js

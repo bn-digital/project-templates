@@ -23,7 +23,7 @@ class ErrorBoundary<T extends Props> extends Component<T, State> {
   render(): ReactNode {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <Result status={'error'} />
+      return <Result status='error' />
     }
 
     return this.props.children

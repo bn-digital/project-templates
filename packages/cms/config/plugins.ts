@@ -1,15 +1,6 @@
 import { domain, generateSecret, name } from './index'
 
 export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
-  'entity-notes': {
-    enabled: true,
-  },
-  'seo': {
-    enabled: true,
-  },
-  'import-export-entries': {
-    enabled: true,
-  },
   'graphql': {
     enabled: true,
     config: {
@@ -34,7 +25,7 @@ export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
         secretAccessKey: env('S3_SECRET_ACCESS_KEY'),
         endpoint: env('S3_ENDPOINT'),
         params: {
-          Bucket: `${env('S3_BUCKET', `bn-dev/${name}`)}/uploads`,
+          Bucket: `${env('S3_BUCKET', 'bn-dev')}/${name}/uploads`,
         },
       },
     },

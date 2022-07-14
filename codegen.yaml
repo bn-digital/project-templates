@@ -18,10 +18,14 @@ config:
     JSON: Record<string, any|any[]|string|number|boolean|null|undefined|unknown>
     Long: number
     DateTime: Date
+    I18NLocaleCode: string | 'en-US' | 'es-ES'
 generates:
   packages/website/src/graphql/index.tsx:
     plugins:
       - typescript-operations
+      - fragment-matcher:
+          apolloClientVersion: 3
+          useExplicitTyping: true
       - typescript-react-apollo:
           withMutationFn: false
           withRefetchFn: false

@@ -12,6 +12,8 @@ type Scalars = {
   Float: number
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: Date
+  /** A string used to identify an i18n locale */
+  I18NLocaleCode: string | 'en-US' | 'es-ES'
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: Record<string, any | any[] | string | number | boolean | null | undefined | unknown>
   /** The `Upload` scalar type represents a file upload. */
@@ -79,6 +81,7 @@ type CategoryFiltersInput = {
   not?: InputMaybe<CategoryFiltersInput>
   or?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>
   posts?: InputMaybe<PostFiltersInput>
+  seo?: InputMaybe<ComponentSharedSeoFiltersInput>
   sitemap_exclude?: InputMaybe<BooleanFilterInput>
   slug?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
@@ -111,6 +114,12 @@ type ComponentDataEntryFiltersInput = {
   not?: InputMaybe<ComponentDataEntryFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentDataEntryFiltersInput>>>
   value?: InputMaybe<StringFilterInput>
+}
+
+type ComponentDataEntryInput = {
+  id?: InputMaybe<Scalars['ID']>
+  key?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['String']>
 }
 
 type ComponentDataSet = {
@@ -179,6 +188,20 @@ type ComponentSharedSeoMetaSocialArgs = {
   filters?: InputMaybe<ComponentSharedMetaSocialFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type ComponentSharedSeoFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSharedSeoFiltersInput>>>
+  canonicalURL?: InputMaybe<StringFilterInput>
+  keywords?: InputMaybe<StringFilterInput>
+  metaDescription?: InputMaybe<StringFilterInput>
+  metaRobots?: InputMaybe<StringFilterInput>
+  metaSocial?: InputMaybe<ComponentSharedMetaSocialFiltersInput>
+  metaTitle?: InputMaybe<StringFilterInput>
+  metaViewport?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSharedSeoFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSharedSeoFiltersInput>>>
+  structuredData?: InputMaybe<JsonFilterInput>
 }
 
 type ComponentSharedSeoInput = {
@@ -334,8 +357,6 @@ type EnumComponentsharedmetasocialSocialnetwork = 'Facebook' | 'Twitter'
 
 type EnumContactStatus = 'failed' | 'new' | 'sent'
 
-type EnumGraphsbuildergraphType = 'bar' | 'dateLine' | 'line' | 'pie'
-
 type EnumMenusmenuitemTarget = 'blank' | 'parent' | 'self' | 'top'
 
 type EmailDesignerEmailTemplate = {
@@ -395,51 +416,6 @@ type EmailDesignerEmailTemplateInput = {
   templateReferenceId?: InputMaybe<Scalars['Int']>
 }
 
-type EntityNotesNote = {
-  content?: Maybe<Scalars['String']>
-  createdAt?: Maybe<Scalars['DateTime']>
-  entityId?: Maybe<Scalars['Int']>
-  entitySlug?: Maybe<Scalars['String']>
-  title?: Maybe<Scalars['String']>
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
-
-type EntityNotesNoteEntity = {
-  attributes?: Maybe<EntityNotesNote>
-  id?: Maybe<Scalars['ID']>
-}
-
-type EntityNotesNoteEntityResponse = {
-  data?: Maybe<EntityNotesNoteEntity>
-}
-
-type EntityNotesNoteEntityResponseCollection = {
-  data: Array<EntityNotesNoteEntity>
-  meta: ResponseCollectionMeta
-}
-
-type EntityNotesNoteFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<EntityNotesNoteFiltersInput>>>
-  content?: InputMaybe<StringFilterInput>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  entityId?: InputMaybe<IntFilterInput>
-  entitySlug?: InputMaybe<StringFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  not?: InputMaybe<EntityNotesNoteFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<EntityNotesNoteFiltersInput>>>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type EntityNotesNoteInput = {
-  content?: InputMaybe<Scalars['String']>
-  entityId?: InputMaybe<Scalars['Int']>
-  entitySlug?: InputMaybe<Scalars['String']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
-  title?: InputMaybe<Scalars['String']>
-}
-
 type Error = {
   code: Scalars['String']
   message?: Maybe<Scalars['String']>
@@ -493,8 +469,6 @@ type GenericMorph =
   | ComponentUiText
   | Contact
   | EmailDesignerEmailTemplate
-  | EntityNotesNote
-  | GraphsBuilderGraph
   | I18NLocale
   | MenusMenu
   | MenusMenuItem
@@ -506,51 +480,6 @@ type GenericMorph =
   | UsersPermissionsRole
   | UsersPermissionsUser
   | Website
-
-type GraphsBuilderGraph = {
-  collectionX: Scalars['String']
-  collectionXAttribute?: Maybe<Scalars['String']>
-  createdAt?: Maybe<Scalars['DateTime']>
-  title: Scalars['String']
-  type: EnumGraphsbuildergraphType
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
-
-type GraphsBuilderGraphEntity = {
-  attributes?: Maybe<GraphsBuilderGraph>
-  id?: Maybe<Scalars['ID']>
-}
-
-type GraphsBuilderGraphEntityResponse = {
-  data?: Maybe<GraphsBuilderGraphEntity>
-}
-
-type GraphsBuilderGraphEntityResponseCollection = {
-  data: Array<GraphsBuilderGraphEntity>
-  meta: ResponseCollectionMeta
-}
-
-type GraphsBuilderGraphFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<GraphsBuilderGraphFiltersInput>>>
-  collectionX?: InputMaybe<StringFilterInput>
-  collectionXAttribute?: InputMaybe<StringFilterInput>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  not?: InputMaybe<GraphsBuilderGraphFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<GraphsBuilderGraphFiltersInput>>>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  type?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type GraphsBuilderGraphInput = {
-  collectionX?: InputMaybe<Scalars['String']>
-  collectionXAttribute?: InputMaybe<Scalars['String']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
-  title?: InputMaybe<Scalars['String']>
-  type?: InputMaybe<EnumGraphsbuildergraphType>
-}
 
 type I18NLocale = {
   code?: Maybe<Scalars['String']>
@@ -760,10 +689,9 @@ type Mutation = {
   createCategory?: Maybe<CategoryEntityResponse>
   createContact?: Maybe<ContactEntityResponse>
   createEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
-  createEntityNotesNote?: Maybe<EntityNotesNoteEntityResponse>
-  createGraphsBuilderGraph?: Maybe<GraphsBuilderGraphEntityResponse>
   createMenusMenu?: Maybe<MenusMenuEntityResponse>
   createMenusMenuItem?: Maybe<MenusMenuItemEntityResponse>
+  createTranslationLocalization?: Maybe<TranslationEntityResponse>
   createUploadFile?: Maybe<UploadFileEntityResponse>
   createUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Create a new role */
@@ -773,8 +701,6 @@ type Mutation = {
   deleteCategory?: Maybe<CategoryEntityResponse>
   deleteContact?: Maybe<ContactEntityResponse>
   deleteEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
-  deleteEntityNotesNote?: Maybe<EntityNotesNoteEntityResponse>
-  deleteGraphsBuilderGraph?: Maybe<GraphsBuilderGraphEntityResponse>
   deleteMenusMenu?: Maybe<MenusMenuEntityResponse>
   deleteMenusMenuItem?: Maybe<MenusMenuItemEntityResponse>
   deleteUploadFile?: Maybe<UploadFileEntityResponse>
@@ -797,9 +723,7 @@ type Mutation = {
   updateCategory?: Maybe<CategoryEntityResponse>
   updateContact?: Maybe<ContactEntityResponse>
   updateEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
-  updateEntityNotesNote?: Maybe<EntityNotesNoteEntityResponse>
   updateFileInfo: UploadFileEntityResponse
-  updateGraphsBuilderGraph?: Maybe<GraphsBuilderGraphEntityResponse>
   updateMenusMenu?: Maybe<MenusMenuEntityResponse>
   updateMenusMenuItem?: Maybe<MenusMenuItemEntityResponse>
   updateUploadFile?: Maybe<UploadFileEntityResponse>
@@ -823,20 +747,18 @@ type MutationCreateEmailDesignerEmailTemplateArgs = {
   data: EmailDesignerEmailTemplateInput
 }
 
-type MutationCreateEntityNotesNoteArgs = {
-  data: EntityNotesNoteInput
-}
-
-type MutationCreateGraphsBuilderGraphArgs = {
-  data: GraphsBuilderGraphInput
-}
-
 type MutationCreateMenusMenuArgs = {
   data: MenusMenuInput
 }
 
 type MutationCreateMenusMenuItemArgs = {
   data: MenusMenuItemInput
+}
+
+type MutationCreateTranslationLocalizationArgs = {
+  data?: InputMaybe<TranslationInput>
+  id?: InputMaybe<Scalars['ID']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
 type MutationCreateUploadFileArgs = {
@@ -864,14 +786,6 @@ type MutationDeleteContactArgs = {
 }
 
 type MutationDeleteEmailDesignerEmailTemplateArgs = {
-  id: Scalars['ID']
-}
-
-type MutationDeleteEntityNotesNoteArgs = {
-  id: Scalars['ID']
-}
-
-type MutationDeleteGraphsBuilderGraphArgs = {
   id: Scalars['ID']
 }
 
@@ -947,19 +861,9 @@ type MutationUpdateEmailDesignerEmailTemplateArgs = {
   id: Scalars['ID']
 }
 
-type MutationUpdateEntityNotesNoteArgs = {
-  data: EntityNotesNoteInput
-  id: Scalars['ID']
-}
-
 type MutationUpdateFileInfoArgs = {
   id: Scalars['ID']
   info?: InputMaybe<FileInfoInput>
-}
-
-type MutationUpdateGraphsBuilderGraphArgs = {
-  data: GraphsBuilderGraphInput
-  id: Scalars['ID']
 }
 
 type MutationUpdateMenusMenuArgs = {
@@ -1051,6 +955,7 @@ type PostFiltersInput = {
   not?: InputMaybe<PostFiltersInput>
   or?: InputMaybe<Array<InputMaybe<PostFiltersInput>>>
   publishedAt?: InputMaybe<DateTimeFilterInput>
+  seo?: InputMaybe<ComponentSharedSeoFiltersInput>
   sitemap_exclude?: InputMaybe<BooleanFilterInput>
   slug?: InputMaybe<StringFilterInput>
   teaser?: InputMaybe<StringFilterInput>
@@ -1068,10 +973,6 @@ type Query = {
   category?: Maybe<CategoryEntityResponse>
   emailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
   emailDesignerEmailTemplates?: Maybe<EmailDesignerEmailTemplateEntityResponseCollection>
-  entityNotesNote?: Maybe<EntityNotesNoteEntityResponse>
-  entityNotesNotes?: Maybe<EntityNotesNoteEntityResponseCollection>
-  graphsBuilderGraph?: Maybe<GraphsBuilderGraphEntityResponse>
-  graphsBuilderGraphs?: Maybe<GraphsBuilderGraphEntityResponseCollection>
   i18NLocale?: Maybe<I18NLocaleEntityResponse>
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>
   me?: Maybe<UsersPermissionsMe>
@@ -1109,26 +1010,6 @@ type QueryEmailDesignerEmailTemplateArgs = {
 
 type QueryEmailDesignerEmailTemplatesArgs = {
   filters?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type QueryEntityNotesNoteArgs = {
-  id?: InputMaybe<Scalars['ID']>
-}
-
-type QueryEntityNotesNotesArgs = {
-  filters?: InputMaybe<EntityNotesNoteFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type QueryGraphsBuilderGraphArgs = {
-  id?: InputMaybe<Scalars['ID']>
-}
-
-type QueryGraphsBuilderGraphsArgs = {
-  filters?: InputMaybe<GraphsBuilderGraphFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
@@ -1175,6 +1056,7 @@ type QueryPostsArgs = {
 }
 
 type QueryTranslationArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
   publicationState?: InputMaybe<PublicationState>
 }
 
@@ -1248,6 +1130,8 @@ type StringFilterInput = {
 type Translation = {
   createdAt?: Maybe<Scalars['DateTime']>
   entry: Array<Maybe<ComponentDataEntry>>
+  locale?: Maybe<Scalars['String']>
+  localizations?: Maybe<TranslationRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']>
   updatedAt?: Maybe<Scalars['DateTime']>
 }
@@ -1258,6 +1142,10 @@ type TranslationEntryArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
+type TranslationLocalizationsArgs = {
+  publicationState?: InputMaybe<PublicationState>
+}
+
 type TranslationEntity = {
   attributes?: Maybe<Translation>
   id?: Maybe<Scalars['ID']>
@@ -1265,6 +1153,16 @@ type TranslationEntity = {
 
 type TranslationEntityResponse = {
   data?: Maybe<TranslationEntity>
+}
+
+type TranslationInput = {
+  entry?: InputMaybe<Array<InputMaybe<ComponentDataEntryInput>>>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+}
+
+type TranslationRelationResponseCollection = {
+  data: Array<TranslationEntity>
 }
 
 type UploadFile = {
@@ -1654,6 +1552,8 @@ type ParagraphFragment = { id: string; value: string }
 
 type TabFragment = { id: string; name: string; pane: CardFragment }
 
+type CategoryFragment = { id?: string | null; attributes?: { name: string; slug: string } | null }
+
 type ContactUsFragment = {
   id: string
   pathname: string
@@ -1686,7 +1586,7 @@ type PostFragment = {
     content?: string | null
     slug: string
     cover?: { data?: FileFragment | null } | null
-    category?: { data?: { id?: string | null; attributes?: { slug: string } | null } | null } | null
+    category?: { data?: CategoryFragment | null } | null
   } | null
 }
 
@@ -1714,6 +1614,10 @@ type RegisterMutationVariables = Exact<{
 
 type RegisterMutation = { register: { jwt?: string | null } }
 
+type CategoriesQueryVariables = Exact<{ [key: string]: never }>
+
+type CategoriesQuery = { categories?: { data: Array<{ attributes?: { posts?: { data: Array<PostFragment> } | null } | null } & CategoryFragment> } | null }
+
 type MeQueryVariables = Exact<{ [key: string]: never }>
 
 type MeQuery = { me?: { email?: string | null } | null }
@@ -1729,6 +1633,21 @@ type PostsQueryVariables = Exact<{
 }>
 
 type PostsQuery = { posts?: { data: Array<PostFragment> } | null }
+
+type TranslationsQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}>
+
+type TranslationsQuery = {
+  translation?: {
+    data?: {
+      attributes?: {
+        localizations?: { data: Array<{ attributes?: { locale?: string | null; entry: Array<EntryFragment | null> } | null }> } | null
+        entry: Array<EntryFragment | null>
+      } | null
+    } | null
+  } | null
+}
 
 type WebsiteQueryVariables = Exact<{ [key: string]: never }>
 

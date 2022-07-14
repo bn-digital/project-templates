@@ -1,0 +1,7 @@
+fragment Category on CategoryEntity {
+  id
+  attributes {
+    name
+    slug
+  }
+}

@@ -1,7 +1,8 @@
-import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
+import { gql } from '@apollo/client'
 import * as ApolloReactComponents from '@apollo/client/react/components'
 import * as React from 'react'
+
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 const defaultOptions = {} as const
 type CardFragment = { id: string; title?: string | null; subtitle?: string | null; description?: string | null; media?: { data?: FileFragment | null } | null }
@@ -26,6 +27,8 @@ type SeoFragment = {
 type ParagraphFragment = { id: string; value: string }
 
 type TabFragment = { id: string; name: string; pane: CardFragment }
+
+type CategoryFragment = { id?: string | null; attributes?: { name: string; slug: string } | null }
 
 type ContactUsFragment = {
   id: string
@@ -59,14 +62,12 @@ type PostFragment = {
     content?: string | null
     slug: string
     cover?: { data?: FileFragment | null } | null
-    category?: { data?: { id?: string | null; attributes?: { slug: string } | null } | null } | null
+    category?: { data?: CategoryFragment | null } | null
   } | null
 }
 
 type WebsiteFragment = {
-  content?: Array<
-    ({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' } | null
-  > | null
+  content?: Array<({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' } | null> | null
 }
 
 type ForgotPasswordMutationVariables = Exact<{
@@ -87,6 +88,10 @@ type RegisterMutationVariables = Exact<{
 
 type RegisterMutation = { register: { jwt?: string | null } }
 
+type CategoriesQueryVariables = Exact<{ [key: string]: never }>
+
+type CategoriesQuery = { categories?: { data: Array<{ attributes?: { posts?: { data: Array<PostFragment> } | null } | null } & CategoryFragment> } | null }
+
 type MeQueryVariables = Exact<{ [key: string]: never }>
 
 type MeQuery = { me?: { email?: string | null } | null }
@@ -103,9 +108,98 @@ type PostsQueryVariables = Exact<{
 
 type PostsQuery = { posts?: { data: Array<PostFragment> } | null }
 
+type TranslationsQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}>
+
+type TranslationsQuery = {
+  translation?: {
+    data?: {
+      attributes?: {
+        localizations?: { data: Array<{ attributes?: { locale?: string | null; entry: Array<EntryFragment | null> } | null }> } | null
+        entry: Array<EntryFragment | null>
+      } | null
+    } | null
+  } | null
+}
+
 type WebsiteQueryVariables = Exact<{ [key: string]: never }>
 
 type WebsiteQuery = { website?: { data?: { id?: string | null; attributes?: WebsiteFragment | null } | null } | null }
+
+export type PossibleTypesResultData = {
+  possibleTypes: {
+    GenericMorph: [
+      'Category',
+      'ComponentDataContact',
+      'ComponentDataEntry',
+      'ComponentDataSet',
+      'ComponentPageContactUs',
+      'ComponentPageHome',
+      'ComponentSharedMetaSocial',
+      'ComponentSharedSeo',
+      'ComponentUiCard',
+      'ComponentUiGrid',
+      'ComponentUiHeadline',
+      'ComponentUiLink',
+      'ComponentUiParagraph',
+      'ComponentUiSection',
+      'ComponentUiTab',
+      'ComponentUiText',
+      'Contact',
+      'EmailDesignerEmailTemplate',
+      'I18NLocale',
+      'MenusMenu',
+      'MenusMenuItem',
+      'Post',
+      'Translation',
+      'UploadFile',
+      'UploadFolder',
+      'UsersPermissionsPermission',
+      'UsersPermissionsRole',
+      'UsersPermissionsUser',
+      'Website',
+    ]
+    WebsiteContentDynamicZone: ['ComponentPageContactUs', 'ComponentPageHome', 'Error']
+  }
+}
+const result: PossibleTypesResultData = {
+  possibleTypes: {
+    GenericMorph: [
+      'Category',
+      'ComponentDataContact',
+      'ComponentDataEntry',
+      'ComponentDataSet',
+      'ComponentPageContactUs',
+      'ComponentPageHome',
+      'ComponentSharedMetaSocial',
+      'ComponentSharedSeo',
+      'ComponentUiCard',
+      'ComponentUiGrid',
+      'ComponentUiHeadline',
+      'ComponentUiLink',
+      'ComponentUiParagraph',
+      'ComponentUiSection',
+      'ComponentUiTab',
+      'ComponentUiText',
+      'Contact',
+      'EmailDesignerEmailTemplate',
+      'I18NLocale',
+      'MenusMenu',
+      'MenusMenuItem',
+      'Post',
+      'Translation',
+      'UploadFile',
+      'UploadFolder',
+      'UsersPermissionsPermission',
+      'UsersPermissionsRole',
+      'UsersPermissionsUser',
+      'Website',
+    ],
+    WebsiteContentDynamicZone: ['ComponentPageContactUs', 'ComponentPageHome', 'Error'],
+  },
+}
+export default result
 
 export const EntryFragmentDoc = gql`
   fragment Entry on ComponentDataEntry {
@@ -195,6 +289,15 @@ export const MenuFragmentDoc = gql`
     }
   }
 `
+export const CategoryFragmentDoc = gql`
+  fragment Category on CategoryEntity {
+    id
+    attributes {
+      name
+      slug
+    }
+  }
+`
 export const PostFragmentDoc = gql`
   fragment Post on PostEntity {
     id
@@ -208,10 +311,7 @@ export const PostFragmentDoc = gql`
       }
       category {
         data {
-          id
-          attributes {
-            slug
-          }
+          ...Category
         }
       }
     }
@@ -266,10 +366,8 @@ const ForgotPasswordDocument = gql`
   }
 `
 export type ForgotPasswordMutationFn = Apollo.MutationFunction<ForgotPasswordMutation, ForgotPasswordMutationVariables>
-export type ForgotPasswordComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<ForgotPasswordMutation, ForgotPasswordMutationVariables>,
-  'mutation'
->
+export type ForgotPasswordComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<ForgotPasswordMutation, ForgotPasswordMutationVariables>,
+  'mutation'>
 
 export const ForgotPasswordComponent = (props: ForgotPasswordComponentProps) => (
   <ApolloReactComponents.Mutation<ForgotPasswordMutation, ForgotPasswordMutationVariables> mutation={ForgotPasswordDocument} {...props} />
@@ -296,6 +394,7 @@ export function useForgotPasswordMutation(baseOptions?: Apollo.MutationHookOptio
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<ForgotPasswordMutation, ForgotPasswordMutationVariables>(ForgotPasswordDocument, options)
 }
+
 export type ForgotPasswordMutationHookResult = ReturnType<typeof useForgotPasswordMutation>
 export type ForgotPasswordMutationResult = Apollo.MutationResult<ForgotPasswordMutation>
 export type ForgotPasswordMutationOptions = Apollo.BaseMutationOptions<ForgotPasswordMutation, ForgotPasswordMutationVariables>
@@ -334,6 +433,7 @@ export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginM
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options)
 }
+
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>
 export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>
@@ -372,9 +472,63 @@ export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<Reg
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, options)
 }
+
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>
 export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>
+const CategoriesDocument = gql`
+  query categories {
+    categories {
+      data {
+        ...Category
+        attributes {
+          posts {
+            data {
+              ...Post
+            }
+          }
+        }
+      }
+    }
+  }
+  ${CategoryFragmentDoc}
+  ${PostFragmentDoc}
+  ${FileFragmentDoc}
+`
+export type CategoriesComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<CategoriesQuery, CategoriesQueryVariables>, 'query'>
+
+export const CategoriesComponent = (props: CategoriesComponentProps) => (
+  <ApolloReactComponents.Query<CategoriesQuery, CategoriesQueryVariables> query={CategoriesDocument} {...props} />
+)
+
+/**
+ * __useCategoriesQuery__
+ *
+ * To run a query within a React component, call `useCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoriesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options)
+}
+
+export function useCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options)
+}
+
+export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>
+export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>
+export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>
 const MeDocument = gql`
   query me {
     me {
@@ -384,7 +538,8 @@ const MeDocument = gql`
 `
 export type MeComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MeQuery, MeQueryVariables>, 'query'>
 
-export const MeComponent = (props: MeComponentProps) => <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
+export const MeComponent = (props: MeComponentProps) => <ApolloReactComponents.Query<MeQuery, MeQueryVariables>
+  query={MeDocument} {...props} />
 
 /**
  * __useMeQuery__
@@ -405,10 +560,12 @@ export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQuer
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options)
 }
+
 export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options)
 }
+
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>
@@ -424,7 +581,8 @@ const MenuDocument = gql`
 `
 export type MenuComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MenuQuery, MenuQueryVariables>, 'query'>
 
-export const MenuComponent = (props: MenuComponentProps) => <ApolloReactComponents.Query<MenuQuery, MenuQueryVariables> query={MenuDocument} {...props} />
+export const MenuComponent = (props: MenuComponentProps) => <ApolloReactComponents.Query<MenuQuery, MenuQueryVariables>
+  query={MenuDocument} {...props} />
 
 /**
  * __useMenuQuery__
@@ -446,10 +604,12 @@ export function useMenuQuery(baseOptions?: Apollo.QueryHookOptions<MenuQuery, Me
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<MenuQuery, MenuQueryVariables>(MenuDocument, options)
 }
+
 export function useMenuLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MenuQuery, MenuQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<MenuQuery, MenuQueryVariables>(MenuDocument, options)
 }
+
 export type MenuQueryHookResult = ReturnType<typeof useMenuQuery>
 export type MenuLazyQueryHookResult = ReturnType<typeof useMenuLazyQuery>
 export type MenuQueryResult = Apollo.QueryResult<MenuQuery, MenuQueryVariables>
@@ -463,10 +623,12 @@ const PostsDocument = gql`
   }
   ${PostFragmentDoc}
   ${FileFragmentDoc}
+  ${CategoryFragmentDoc}
 `
 export type PostsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<PostsQuery, PostsQueryVariables>, 'query'>
 
-export const PostsComponent = (props: PostsComponentProps) => <ApolloReactComponents.Query<PostsQuery, PostsQueryVariables> query={PostsDocument} {...props} />
+export const PostsComponent = (props: PostsComponentProps) => <ApolloReactComponents.Query<PostsQuery, PostsQueryVariables>
+  query={PostsDocument} {...props} />
 
 /**
  * __usePostsQuery__
@@ -488,13 +650,74 @@ export function usePostsQuery(baseOptions?: Apollo.QueryHookOptions<PostsQuery, 
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options)
 }
+
 export function usePostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options)
 }
+
 export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>
 export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>
 export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>
+const TranslationsDocument = gql`
+  query translations($locale: I18NLocaleCode) {
+    translation(locale: $locale) {
+      data {
+        attributes {
+          localizations {
+            data {
+              attributes {
+                locale
+                entry {
+                  ...Entry
+                }
+              }
+            }
+          }
+          entry(pagination: { limit: 1000 }) {
+            ...Entry
+          }
+        }
+      }
+    }
+  }
+  ${EntryFragmentDoc}
+`
+export type TranslationsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<TranslationsQuery, TranslationsQueryVariables>, 'query'>
+
+export const TranslationsComponent = (props: TranslationsComponentProps) => (
+  <ApolloReactComponents.Query<TranslationsQuery, TranslationsQueryVariables> query={TranslationsDocument} {...props} />
+)
+
+/**
+ * __useTranslationsQuery__
+ *
+ * To run a query within a React component, call `useTranslationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTranslationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTranslationsQuery({
+ *   variables: {
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useTranslationsQuery(baseOptions?: Apollo.QueryHookOptions<TranslationsQuery, TranslationsQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<TranslationsQuery, TranslationsQueryVariables>(TranslationsDocument, options)
+}
+
+export function useTranslationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TranslationsQuery, TranslationsQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<TranslationsQuery, TranslationsQueryVariables>(TranslationsDocument, options)
+}
+
+export type TranslationsQueryHookResult = ReturnType<typeof useTranslationsQuery>
+export type TranslationsLazyQueryHookResult = ReturnType<typeof useTranslationsLazyQuery>
+export type TranslationsQueryResult = Apollo.QueryResult<TranslationsQuery, TranslationsQueryVariables>
 const WebsiteDocument = gql`
   query website {
     website {
@@ -537,10 +760,12 @@ export function useWebsiteQuery(baseOptions?: Apollo.QueryHookOptions<WebsiteQue
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<WebsiteQuery, WebsiteQueryVariables>(WebsiteDocument, options)
 }
+
 export function useWebsiteLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<WebsiteQuery, WebsiteQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<WebsiteQuery, WebsiteQueryVariables>(WebsiteDocument, options)
 }
+
 export type WebsiteQueryHookResult = ReturnType<typeof useWebsiteQuery>
 export type WebsiteLazyQueryHookResult = ReturnType<typeof useWebsiteLazyQuery>
 export type WebsiteQueryResult = Apollo.QueryResult<WebsiteQuery, WebsiteQueryVariables>

@@ -1,13 +1,14 @@
 import './index.less'
 
-import { ClientProvider } from '@bn-digital/graphql-client'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import locale from 'antd/es/locale/en_US'
 import type { Locale } from 'antd/es/locale-provider'
 import { createContext, Dispatch, FC, PropsWithChildren, ReactNode, SetStateAction, useContext, useState } from 'react'
-import { IntlProvider } from 'react-intl'
 import { DataBrowserRouter } from 'react-router-dom'
 import { useToggle } from 'react-use'
+import { LocaleProvider } from 'src/components/app/Locale'
 
+import introspection from '../../graphql'
 import routes from '../../pages'
 import { Loader } from '../layout/Loader'
 import { ErrorBoundary } from './ErrorBoundary'
@@ -23,7 +24,7 @@ type AppProps = {
   user: { authenticated: boolean | null; role: string | null }
 }
 const defaultValue: AppProps = {
-  i18n: { locale, setLocale: () => undefined },
+  i18n: { locale: locale, setLocale: () => undefined },
   burger: { opened: false, toggle: () => undefined },
   ui: { theme: 'default', size: 'middle' },
   user: { authenticated: null, role: null },
@@ -37,18 +38,26 @@ const ContextProvider: FC<PropsWithChildren<Partial<ReactNode>>> = ({ children }
   return <Context.Provider value={{ ...defaultValue, i18n: { locale, setLocale }, burger: { opened, toggle } }}>{children}</Context.Provider>
 }
 
+const client = new ApolloClient({
+  uri: '/graphql',
+  headers: { Authorization: localStorage.getItem('jwtToken') ? `Bearer ${localStorage.getItem('jwtToken')}` : '' },
+  connectToDevTools: import.meta.env.DEV,
+  queryDeduplication: true,
+  cache: new InMemoryCache({
+    resultCaching: import.meta.env.PROD,
+    possibleTypes: introspection.possibleTypes,
+    typePolicies: { Post: { keyFields: ['slug'] } },
+  }),
+})
+
 const App: FC = () => (
   <ContextProvider>
     <ErrorBoundary>
-      <ClientProvider production={import.meta.env.PROD}>
-        <Context.Consumer>
-          {({ i18n }) => (
-            <IntlProvider locale={i18n.locale.locale} defaultLocale={defaultValue.i18n.locale.locale} messages={{}}>
-              <DataBrowserRouter routes={routes} fallbackElement={<Loader />} />
-            </IntlProvider>
-          )}
-        </Context.Consumer>
-      </ClientProvider>
+      <ApolloProvider client={client}>
+        <LocaleProvider>
+          <DataBrowserRouter routes={routes} fallbackElement={<Loader />} />
+        </LocaleProvider>
+      </ApolloProvider>
     </ErrorBoundary>
   </ContextProvider>
 )

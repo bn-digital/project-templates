@@ -165,14 +165,6 @@
       ]
     },
     {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::translation.translation",
-      "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::translation.translation",
       "properties": {
@@ -272,59 +264,6 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "plugin::graphs-builder.graph",
-      "properties": {
-        "fields": [
-          "title",
-          "type",
-          "collectionX",
-          "collectionXAttribute"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "plugin::graphs-builder.graph",
-      "properties": {},
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "plugin::graphs-builder.graph",
-      "properties": {
-        "fields": [
-          "title",
-          "type",
-          "collectionX",
-          "collectionXAttribute"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ]
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "plugin::graphs-builder.graph",
-      "properties": {
-        "fields": [
-          "title",
-          "type",
-          "collectionX",
-          "collectionXAttribute"
         ]
       },
       "conditions": [

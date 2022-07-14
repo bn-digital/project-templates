@@ -5,8 +5,8 @@ import ReactMarkdown from 'react-markdown'
 const Markdown: FC<PropsWithChildren> = ({ children = '' }) => (
   <ReactMarkdown
     components={{
-      b: ({ children }) => <Typography.Text strong>{children}</Typography.Text>,
-      i: ({ children }) => <Typography.Text italic>{children}</Typography.Text>,
+      b: ({ children }) => <Typography.Text strong={true}>{children}</Typography.Text>,
+      i: ({ children }) => <Typography.Text italic={true}>{children}</Typography.Text>,
       a: ({ href, children }) => (
         <Typography.Link href={href} target={href?.startsWith('http') ? '_blank' : undefined}>
           {children}

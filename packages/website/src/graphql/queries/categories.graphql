@@ -1,0 +1,14 @@
+query categories {
+  categories {
+    data {
+      ...Category
+      attributes {
+        posts {
+          data {
+            ...Post
+          }
+        }
+      }
+    }
+  }
+}
