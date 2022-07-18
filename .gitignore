@@ -39,12 +39,6 @@ node_modules
 # Environmnet
 .env
 
-# Strapi
-build
-dist
-.cache
-.strapi-updater.json
-
 # Gradle
 .gradle
 

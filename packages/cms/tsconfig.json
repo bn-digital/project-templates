@@ -3,15 +3,13 @@
   "compilerOptions": {
     "outDir": "dist",
     "lib": [
-      "DOM",
       "ES2020"
     ],
     "rootDir": "."
   },
   "include": [
     "./",
-    "src/**/*.json",
-    "./package.json"
+    "src/**/*.json"
   ],
   "exclude": [
     "node_modules/",

@@ -4,45 +4,16 @@ kind: Config
 build:
   local:
     useBuildkit: true
-    useDockerCLI: true
-    push: false
-    concurrency: 1
+    useDockerCLI: false
   tagPolicy:
     sha256: { }
   artifacts:
     - image: cms
-      hooks:
-        before:
-          - dir: packages/cms
-            command:
-              - yarn
-              - env
-              - --dist=.env.staging
-              - --file=.env
       docker:
         target: cms
     - image: website
-      hooks:
-        before:
-          - dir: packages/website
-            command:
-              - yarn
-              - env
-              - --dist=.env.staging
-              - --file=.env.production
       docker:
         target: website
-
-test:
-  - image: website
-    structureTests:
-      - nodejs-container-tests.yaml
-      - website-container-tests.yaml
-  - image: cms
-    structureTests:
-      - nodejs-container-tests.yaml
-      - cms-container-tests.yaml
-
 profiles:
   - name: staging
     activation:

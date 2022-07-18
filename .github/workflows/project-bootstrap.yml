@@ -1,0 +1,26 @@
+name: Project bootstrap
+on:
+  push:
+    branches:
+      - latest
+      - main
+      - master
+jobs:
+  initial-task:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-message: |
+            Checklist for new projects to complete setup and initial configuration:
+            
+            Action items for @${{ github.author }}:
+            
+            - [ ] Package name changed from `app` to `${{ github.event.repository.name }}` in `package.json` and nested workspaces
+            
+            Action items for @bn-digital/sre:
+
+            - [ ] Docker container registry `${{ github.event.repository.name }}` exists in [${{ secrets.DOCKER_REGISTRY }}](https:/${{ secrets.DOCKER_REGISTRY }}) 
+            - [ ] Database `${{ github.event.repository.name }}` created for staging environment
+            - [ ] Marker.io project created

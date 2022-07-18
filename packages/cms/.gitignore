@@ -1,0 +1,4 @@
+build
+dist
+.cache
+.strapi-updater.json

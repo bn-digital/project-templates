@@ -2,18 +2,15 @@
  * Name is generated from package scope name, defined in package.json, i.e. leading chunk before slash (@app/cms - app)
  * @type {string}
  */
-import { readFileSync } from 'fs'
 import path from 'path'
 import process from 'process'
 import { v5 } from 'uuid'
 
 const workingDir = path.join(__dirname, '..', '..')
 
-const packageJson = JSON.parse(readFileSync(path.join(workingDir, 'package.json'), 'utf-8'))
+const name = path.dirname(path.join(workingDir, '..', '..'))
 
-const name = packageJson.name.split('/')[0].toString().replace('@', '')
-
-const namespace = packageJson.strapi.id
+const namespace = '85dacdac-285a-41e0-b2b7-50127c6f2871'
 
 const domain = process.env.DOMAIN ?? (`${name}.bndigital.dev` as const)
 

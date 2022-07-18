@@ -5,29 +5,37 @@ on:
       - '*'
 
 jobs:
-  setup:
+  secrets:
     uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
     secrets: inherit
   provision:
-    needs: [setup]
+    needs: [ secrets ]
     uses: bn-digital/terraform/.github/workflows/provision-infrastructure.yml@latest
     secrets: inherit
     with:
       environment: production
       provider: digitalocean
+      secrets: |
+        projects/data/${{ github.event.repository.name }}/production/digitalocean       domain              | TF_VAR_domain ;
+        projects/data/${{ github.event.repository.name }}/production/digitalocean       token               | DIGITALOCEAN_TOKEN ;
+        projects/data/${{ github.event.repository.name }}/production/spaces             access-key-id       | SPACES_ACCESS_KEY_ID ;
+        projects/data/${{ github.event.repository.name }}/production/spaces             secret-access-key   | SPACES_SECRET_ACCESS_KEY ;
   build:
-    needs: [setup]
+    needs: [ secrets ]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
     secrets: inherit
     with:
       environment: production
   deploy:
-    needs:
-      - provision
-      - build
+    needs: [ provision,build ]
     uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
     secrets: inherit
     with:
       environment: production
-      version: ${{ github.event.release.tag_name }}
-      domain: ${{ github.event.repository.name }}.bndigital.ai
+      version: ${{ github.ref_name }}
+      secrets: |
+        projects/data/${{ github.event.repository.name }}/production/digitalocean       domain          | DOMAIN ;
+        projects/data/${{ github.event.repository.name }}/production/digitalocean       kubernetes      | KUBERNETES_CLUSTER ;
+        projects/data/${{ github.event.repository.name }}/production/digitalocean       token           | DIGITALOCEAN_TOKEN ;
+        projects/data/${{ github.event.repository.name }}/production/database           password        | DATABASE_PASSWORD ;
+        projects/data/${{ github.event.repository.name }}/production/database           root-password   | DATABASE_ROOT_PASSWORD ;
