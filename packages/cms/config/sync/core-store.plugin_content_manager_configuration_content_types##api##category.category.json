@@ -111,7 +111,10 @@
         "id",
         "name",
         "slug",
-        "createdAt"
+        "posts"
+      ],
+      "editRelations": [
+        "posts"
       ],
       "edit": [
         [
@@ -130,9 +133,6 @@
             "size": 12
           }
         ]
-      ],
-      "editRelations": [
-        "posts"
       ]
     }
   },

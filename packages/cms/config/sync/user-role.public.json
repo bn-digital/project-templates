@@ -4,55 +4,25 @@
   "type": "public",
   "permissions": [
     {
-      "action": "api::category.category.find"
-    },
-    {
-      "action": "api::category.category.findOne"
-    },
-    {
-      "action": "api::contact.contact.create"
-    },
-    {
-      "action": "api::post.post.find"
-    },
-    {
-      "action": "api::post.post.findOne"
-    },
-    {
-      "action": "api::translation.translation.find"
-    },
-    {
-      "action": "api::website.website.find"
-    },
-    {
-      "action": "plugin::i18n.locales.listLocales"
-    },
-    {
-      "action": "plugin::menus.menu-item.find"
-    },
-    {
-      "action": "plugin::menus.menu-item.findOne"
-    },
-    {
-      "action": "plugin::menus.menu.find"
-    },
-    {
-      "action": "plugin::menus.menu.findOne"
-    },
-    {
-      "action": "plugin::upload.content-api.upload"
-    },
-    {
       "action": "plugin::users-permissions.auth.callback"
     },
     {
       "action": "plugin::users-permissions.auth.connect"
     },
     {
+      "action": "plugin::users-permissions.auth.emailConfirmation"
+    },
+    {
+      "action": "plugin::users-permissions.auth.forgotPassword"
+    },
+    {
       "action": "plugin::users-permissions.auth.register"
     },
     {
-      "action": "plugin::users-permissions.user.me"
+      "action": "plugin::users-permissions.auth.resetPassword"
+    },
+    {
+      "action": "plugin::users-permissions.auth.sendEmailConfirmation"
     }
   ]
 }

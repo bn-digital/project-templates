@@ -8,7 +8,7 @@ import { v5 } from 'uuid'
 
 const workingDir = path.join(__dirname, '..', '..')
 
-const name = path.dirname(path.join(workingDir, '..', '..'))
+const name = process.env.APP_NAME ?? path.basename(path.join(workingDir, '..', '..'))
 
 const namespace = '85dacdac-285a-41e0-b2b7-50127c6f2871'
 
