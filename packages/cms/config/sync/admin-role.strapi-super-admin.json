@@ -231,7 +231,8 @@
           "entry.value"
         ],
         "locales": [
-          "en"
+          "en",
+          "es"
         ]
       },
       "conditions": []
@@ -241,7 +242,8 @@
       "subject": "api::translation.translation",
       "properties": {
         "locales": [
-          "en"
+          "en",
+          "es"
         ]
       },
       "conditions": []
@@ -251,7 +253,8 @@
       "subject": "api::translation.translation",
       "properties": {
         "locales": [
-          "en"
+          "en",
+          "es"
         ]
       },
       "conditions": []
@@ -265,7 +268,8 @@
           "entry.value"
         ],
         "locales": [
-          "en"
+          "en",
+          "es"
         ]
       },
       "conditions": []
@@ -279,7 +283,8 @@
           "entry.value"
         ],
         "locales": [
-          "en"
+          "en",
+          "es"
         ]
       },
       "conditions": []

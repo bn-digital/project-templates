@@ -6,19 +6,19 @@ on:
       - main
       - master
     paths:
-      - ".github/workflows/continuous-integration.yml"
-      - "skaffold.yaml"
-      - "helmfile.*"
-      - "**/*/.env.*"
-      - "Dockerfile"
-      - ".dockerignore"
-      - "yarn.lock"
-      - "packages/website/public/**/*"
-      - "packages/website/src/**/*"
-      - "packages/cms/config/**/*"
-      - "packages/cms/database/**/*"
-      - "packages/cms/public/**/*"
-      - "packages/cms/src/**/*"
+      - '.github/workflows/continuous-integration.yml'
+      - 'skaffold.yaml'
+      - 'helmfile.*'
+      - '**/*/.env.*'
+      - 'Dockerfile'
+      - '.dockerignore'
+      - 'yarn.lock'
+      - 'packages/website/public/**/*'
+      - 'packages/website/src/**/*'
+      - 'packages/cms/config/**/*'
+      - 'packages/cms/database/**/*'
+      - 'packages/cms/public/**/*'
+      - 'packages/cms/src/**/*'
 
 jobs:
   secrets:

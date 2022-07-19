@@ -27,7 +27,7 @@ jobs:
     with:
       environment: production
   deploy:
-    needs: [ provision,build ]
+    needs: [ provision, build ]
     uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
     secrets: inherit
     with:

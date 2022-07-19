@@ -1,23 +1,36 @@
 import { UnorderedListOutlined } from '@ant-design/icons'
 import { Col, Row, Select } from 'antd'
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { useIntl } from 'react-intl'
 import { useNavigate } from 'react-router-dom'
 import { useApp } from 'src/components/app'
 import { Logo } from 'src/components/logo/Logo'
 import { Navigation } from 'src/components/menu/Navigation'
+import { useMenuQuery } from 'src/graphql'
+
+import { useLocale } from '../app/Locale'
 
 const BurgerMenu: FC = () => {
   const { burger } = useApp()
   return <UnorderedListOutlined onClick={burger.toggle} />
 }
 
-const Header: FC<{ menu: Maybe<Maybe<LinkFragment>[]> }> = ({ menu = [] }) => {
-  const {
-    i18n: { setLocale },
-  } = useApp()
+const Header: FC = () => {
+  const { locale, setLocale } = useLocale()
+  const { data } = useMenuQuery({ variables: { filters: { slug: { eq: 'header' } } } })
   const navigate = useNavigate()
   const { formatMessage } = useIntl()
+
+  const menuItems = useMemo(
+    () =>
+      (data?.menusMenus?.data?.flatMap(it => it.attributes?.items?.data) ?? []).map(it => ({
+        id: `${it?.id}`,
+        title: `${it?.attributes?.title}`,
+        url: `${it?.attributes?.url}`,
+      })),
+    [data?.menusMenus?.data],
+  )
+
   return (
     <Row align={'middle'} justify={'space-between'}>
       <Col span={4}>
@@ -26,23 +39,25 @@ const Header: FC<{ menu: Maybe<Maybe<LinkFragment>[]> }> = ({ menu = [] }) => {
       <Col span={20}>
         <Row justify={'end'} wrap={false} align={'middle'}>
           <Col xs={0} sm={0} md={0} lg={22} xl={22} xxl={22}>
-            <Navigation
-              data={menu?.map(it => ({
-                key: it?.url as string,
-                label: formatMessage({ id: it?.title as string }),
-                onClick: () => it?.url && navigate(it?.url),
-              }))}
-            />
+            {menuItems && (
+              <Navigation
+                data={menuItems?.map(it => ({
+                  key: it.url,
+                  label: formatMessage({ id: it.title }),
+                  onClick: () => navigate(it.url),
+                }))}
+              />
+            )}
           </Col>
-          <Col span={2}>
+          <Col xs={0} sm={0} md={0} lg={2} xl={2} xxl={2}>
             <Select
-              defaultValue={'en-US'}
+              defaultValue={locale}
               options={[
-                { value: 'en-US', label: 'English' },
-                { value: 'es-ES', label: 'Español' },
+                { value: 'en', label: 'English' },
+                { value: 'es', label: 'Español' },
               ]}
-              onSelect={(value: string) => setLocale(prevState => ({ ...prevState, locale: value }))}
-            ></Select>
+              onSelect={setLocale}
+            />
           </Col>
           <Col xs={1} sm={1} md={1} lg={0} xl={0} xxl={0}>
             <BurgerMenu />

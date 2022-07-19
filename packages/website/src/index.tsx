@@ -1,7 +1,5 @@
-import './index.less'
-
-import { renderApp } from '@bn-digital/react'
+import { createRoot } from 'react-dom/client'
 
 import { App } from './components/app'
 
-renderApp(App, { selector: '#root', reactVersion: 18 })
+createRoot(document.querySelector('#root') as HTMLElement).render(<App />)

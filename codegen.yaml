@@ -18,7 +18,7 @@ config:
     JSON: Record<string, any|any[]|string|number|boolean|null|undefined|unknown>
     Long: number
     DateTime: Date
-    I18NLocaleCode: string | 'en-US' | 'es-ES'
+    I18NLocaleCode: string | 'en' | 'es'
 generates:
   packages/website/src/graphql/index.tsx:
     plugins:
@@ -34,7 +34,6 @@ generates:
           withHooks: true
   packages/website/src/types/graphql.d.ts:
     config:
-      noExport: true
       skipTypename: true
     plugins:
       - typescript

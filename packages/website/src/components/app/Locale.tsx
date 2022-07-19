@@ -1,32 +1,46 @@
-import { FC, PropsWithChildren, useMemo } from 'react'
+import { ConfigProvider } from 'antd'
+import enUS from 'antd/lib/locale/en_US'
+import esES from 'antd/lib/locale/es_ES'
+import { createContext, Dispatch, FC, PropsWithChildren, SetStateAction, useContext, useMemo, useState } from 'react'
 import { IntlProvider } from 'react-intl'
 import { useTranslationsQuery } from 'src/graphql'
 
-import { useApp } from '.'
+const defaultLocale = 'en'
 
-const defaultLocale = 'en-US' as const
+type Locale = typeof defaultLocale | string
+
+type ContextProps = { locale: Locale; setLocale: Dispatch<SetStateAction<Locale>> }
+
+const Context = createContext<ContextProps>({ locale: defaultLocale, setLocale: value => value })
 
 const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
-  const {
-    i18n: { locale },
-  } = useApp()
-  const { data } = useTranslationsQuery({ variables: locale.locale === defaultLocale ? {} : { locale: locale.locale } })
-  const messages = useMemo(
-    () =>
-      data?.translation?.data?.attributes?.entry?.reduce(
+  const [locale, setLocale] = useState<Locale>(defaultLocale)
+  const { data, loading } = useTranslationsQuery()
+  const messages = useMemo(() => {
+    if (data?.translation?.data?.attributes) {
+      const messagesData =
+        locale !== defaultLocale
+          ? data?.translation.data.attributes.localizations?.data?.find(it => it?.attributes?.locale === locale)?.attributes?.entry
+          : data?.translation.data.attributes.entry
+      return messagesData?.reduce(
         (all, one) => ({
           ...all,
           [one?.key as string]: one?.value as string,
         }),
         {},
-      ),
-    [data?.translation?.data?.attributes?.entry],
-  )
+      )
+    }
+  }, [data?.translation?.data?.attributes, locale])
+
+  if (!messages || loading) return null
+
   return (
-    <IntlProvider locale={locale.locale} defaultLocale={defaultLocale} messages={messages}>
-      {children}
-    </IntlProvider>
+    <Context.Provider value={{ locale, setLocale }}>
+      <IntlProvider locale={locale} timeZone={'Etc'} defaultLocale={defaultLocale} messages={messages}>
+        <ConfigProvider locale={locale === 'en' ? enUS : esES}>{children}</ConfigProvider>
+      </IntlProvider>
+    </Context.Provider>
   )
 }
-
-export { LocaleProvider }
+const useLocale = () => useContext(Context)
+export { LocaleProvider, useLocale }
