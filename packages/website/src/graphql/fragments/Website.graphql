@@ -1,7 +1,10 @@
-fragment Website on Website {
-  content {
-    __typename
-    ...Home
-    ...ContactUs
+fragment Website on WebsiteEntity {
+  id
+  attributes {
+    content {
+      __typename
+      ...Home
+      ...ContactUs
+    }
   }
 }

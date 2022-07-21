@@ -5,6 +5,7 @@
   "description": "A Strapi application",
   "scripts": {
     "start": "yarn env && strapi develop",
+    "generate": "yarn strapi content-types:generate-types --file=src/types/api.d.ts",
     "serve": "strapi start",
     "env": "vault-env",
     "build": "strapi build"

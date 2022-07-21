@@ -14,6 +14,8 @@ type HeadlineFragment = { id: string; title?: string | null; subtitle?: string |
 
 type LinkFragment = { id: string; title?: string | null; url: string }
 
+type ParagraphFragment = { id: string; value: string }
+
 type SeoFragment = {
   id: string
   canonicalURL?: string | null
@@ -22,8 +24,6 @@ type SeoFragment = {
   metaViewport?: string | null
   metaDescription?: string | null
 }
-
-type ParagraphFragment = { id: string; value: string }
 
 type TabFragment = { id: string; name: string; pane: CardFragment }
 
@@ -66,9 +66,12 @@ type PostFragment = {
 }
 
 type WebsiteFragment = {
-  content?: Array<
-    ({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' } | null
-  > | null
+  id?: string | null
+  attributes?: {
+    content?: Array<
+      ({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' } | null
+    > | null
+  } | null
 }
 
 type ForgotPasswordMutationVariables = Exact<{
@@ -125,7 +128,7 @@ type TranslationsQuery = {
 
 type WebsiteQueryVariables = Exact<{ [key: string]: never }>
 
-type WebsiteQuery = { website?: { data?: { id?: string | null; attributes?: WebsiteFragment | null } | null } | null }
+type WebsiteQuery = { website?: { data?: WebsiteFragment | null } | null }
 
 export type PossibleTypesResultData = {
   possibleTypes: {
@@ -222,6 +225,12 @@ export const LinkFragmentDoc = gql`
     url
   }
 `
+export const ParagraphFragmentDoc = gql`
+  fragment Paragraph on ComponentUiParagraph {
+    id
+    value
+  }
+`
 export const SeoFragmentDoc = gql`
   fragment Seo on ComponentSharedSeo {
     id
@@ -230,12 +239,6 @@ export const SeoFragmentDoc = gql`
     metaTitle
     metaViewport
     metaDescription
-  }
-`
-export const ParagraphFragmentDoc = gql`
-  fragment Paragraph on ComponentUiParagraph {
-    id
-    value
   }
 `
 export const FileFragmentDoc = gql`
@@ -350,11 +353,14 @@ export const ContactUsFragmentDoc = gql`
   }
 `
 export const WebsiteFragmentDoc = gql`
-  fragment Website on Website {
-    content {
-      __typename
-      ...Home
-      ...ContactUs
+  fragment Website on WebsiteEntity {
+    id
+    attributes {
+      content {
+        __typename
+        ...Home
+        ...ContactUs
+      }
     }
   }
 `
@@ -708,10 +714,7 @@ const WebsiteDocument = gql`
   query website {
     website {
       data {
-        id
-        attributes {
-          ...Website
-        }
+        ...Website
       }
     }
   }

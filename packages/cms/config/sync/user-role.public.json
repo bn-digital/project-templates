@@ -25,6 +25,9 @@
       "action": "api::website.website.find"
     },
     {
+      "action": "plugin::i18n.locales.listLocales"
+    },
+    {
       "action": "plugin::menus.menu-item.find"
     },
     {

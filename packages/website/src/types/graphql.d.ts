@@ -10,13 +10,9 @@ type Scalars = {
   Boolean: boolean
   Int: number
   Float: number
-  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: Date
-  /** A string used to identify an i18n locale */
   I18NLocaleCode: string | 'en' | 'es'
-  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: Record<string, any | any[] | string | number | boolean | null | undefined | unknown>
-  /** The `Upload` scalar type represents a file upload. */
   Upload: unknown
 }
 
@@ -404,18 +400,6 @@ type EmailDesignerEmailTemplateFiltersInput = {
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
-type EmailDesignerEmailTemplateInput = {
-  bodyHtml?: InputMaybe<Scalars['String']>
-  bodyText?: InputMaybe<Scalars['String']>
-  design?: InputMaybe<Scalars['JSON']>
-  enabled?: InputMaybe<Scalars['Boolean']>
-  name?: InputMaybe<Scalars['String']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
-  subject?: InputMaybe<Scalars['String']>
-  tags?: InputMaybe<Scalars['JSON']>
-  templateReferenceId?: InputMaybe<Scalars['Int']>
-}
-
 type Error = {
   code: Scalars['String']
   message?: Maybe<Scalars['String']>
@@ -623,13 +607,6 @@ type MenusMenuFiltersInput = {
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
-type MenusMenuInput = {
-  items?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
-  slug?: InputMaybe<Scalars['String']>
-  title?: InputMaybe<Scalars['String']>
-}
-
 type MenusMenuItem = {
   createdAt?: Maybe<Scalars['DateTime']>
   order?: Maybe<Scalars['Int']>
@@ -671,16 +648,6 @@ type MenusMenuItemFiltersInput = {
   url?: InputMaybe<StringFilterInput>
 }
 
-type MenusMenuItemInput = {
-  order?: InputMaybe<Scalars['Int']>
-  parent?: InputMaybe<Scalars['ID']>
-  root_menu?: InputMaybe<Scalars['ID']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
-  target?: InputMaybe<EnumMenusmenuitemTarget>
-  title?: InputMaybe<Scalars['String']>
-  url?: InputMaybe<Scalars['String']>
-}
-
 type MenusMenuItemRelationResponseCollection = {
   data: Array<MenusMenuItemEntity>
 }
@@ -688,9 +655,6 @@ type MenusMenuItemRelationResponseCollection = {
 type Mutation = {
   createCategory?: Maybe<CategoryEntityResponse>
   createContact?: Maybe<ContactEntityResponse>
-  createEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
-  createMenusMenu?: Maybe<MenusMenuEntityResponse>
-  createMenusMenuItem?: Maybe<MenusMenuItemEntityResponse>
   createTranslationLocalization?: Maybe<TranslationEntityResponse>
   createUploadFile?: Maybe<UploadFileEntityResponse>
   createUploadFolder?: Maybe<UploadFolderEntityResponse>
@@ -700,9 +664,6 @@ type Mutation = {
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
   deleteCategory?: Maybe<CategoryEntityResponse>
   deleteContact?: Maybe<ContactEntityResponse>
-  deleteEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
-  deleteMenusMenu?: Maybe<MenusMenuEntityResponse>
-  deleteMenusMenuItem?: Maybe<MenusMenuItemEntityResponse>
   deleteUploadFile?: Maybe<UploadFileEntityResponse>
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Delete an existing role */
@@ -722,10 +683,7 @@ type Mutation = {
   resetPassword?: Maybe<UsersPermissionsLoginPayload>
   updateCategory?: Maybe<CategoryEntityResponse>
   updateContact?: Maybe<ContactEntityResponse>
-  updateEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
   updateFileInfo: UploadFileEntityResponse
-  updateMenusMenu?: Maybe<MenusMenuEntityResponse>
-  updateMenusMenuItem?: Maybe<MenusMenuItemEntityResponse>
   updateUploadFile?: Maybe<UploadFileEntityResponse>
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Update an existing role */
@@ -741,18 +699,6 @@ type MutationCreateCategoryArgs = {
 
 type MutationCreateContactArgs = {
   data: ContactInput
-}
-
-type MutationCreateEmailDesignerEmailTemplateArgs = {
-  data: EmailDesignerEmailTemplateInput
-}
-
-type MutationCreateMenusMenuArgs = {
-  data: MenusMenuInput
-}
-
-type MutationCreateMenusMenuItemArgs = {
-  data: MenusMenuItemInput
 }
 
 type MutationCreateTranslationLocalizationArgs = {
@@ -782,18 +728,6 @@ type MutationDeleteCategoryArgs = {
 }
 
 type MutationDeleteContactArgs = {
-  id: Scalars['ID']
-}
-
-type MutationDeleteEmailDesignerEmailTemplateArgs = {
-  id: Scalars['ID']
-}
-
-type MutationDeleteMenusMenuArgs = {
-  id: Scalars['ID']
-}
-
-type MutationDeleteMenusMenuItemArgs = {
   id: Scalars['ID']
 }
 
@@ -856,24 +790,9 @@ type MutationUpdateContactArgs = {
   id: Scalars['ID']
 }
 
-type MutationUpdateEmailDesignerEmailTemplateArgs = {
-  data: EmailDesignerEmailTemplateInput
-  id: Scalars['ID']
-}
-
 type MutationUpdateFileInfoArgs = {
   id: Scalars['ID']
   info?: InputMaybe<FileInfoInput>
-}
-
-type MutationUpdateMenusMenuArgs = {
-  data: MenusMenuInput
-  id: Scalars['ID']
-}
-
-type MutationUpdateMenusMenuItemArgs = {
-  data: MenusMenuItemInput
-  id: Scalars['ID']
 }
 
 type MutationUpdateUploadFileArgs = {
@@ -1539,6 +1458,8 @@ type HeadlineFragment = { id: string; title?: string | null; subtitle?: string |
 
 type LinkFragment = { id: string; title?: string | null; url: string }
 
+type ParagraphFragment = { id: string; value: string }
+
 type SeoFragment = {
   id: string
   canonicalURL?: string | null
@@ -1547,8 +1468,6 @@ type SeoFragment = {
   metaViewport?: string | null
   metaDescription?: string | null
 }
-
-type ParagraphFragment = { id: string; value: string }
 
 type TabFragment = { id: string; name: string; pane: CardFragment }
 
@@ -1591,9 +1510,12 @@ type PostFragment = {
 }
 
 type WebsiteFragment = {
-  content?: Array<
-    ({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' } | null
-  > | null
+  id?: string | null
+  attributes?: {
+    content?: Array<
+      ({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' } | null
+    > | null
+  } | null
 }
 
 type ForgotPasswordMutationVariables = Exact<{
@@ -1650,4 +1572,4 @@ type TranslationsQuery = {
 
 type WebsiteQueryVariables = Exact<{ [key: string]: never }>
 
-type WebsiteQuery = { website?: { data?: { id?: string | null; attributes?: WebsiteFragment | null } | null } | null }
+type WebsiteQuery = { website?: { data?: WebsiteFragment | null } | null }
