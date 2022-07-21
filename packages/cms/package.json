@@ -25,13 +25,13 @@
     "@strapi/strapi": "^4.3.0-beta.2",
     "@strapi/typescript-utils": "^4.3.0-beta.2",
     "better-sqlite3": "^7.6.2",
-    "knex": "^2.1.0",
+    "knex": "^2.2.0",
     "lodash": "^4.17.21",
     "pg": "^8.7.3",
     "sqlite3": "^5.0.9",
     "strapi-plugin-config-sync": "^1.0.2",
     "strapi-plugin-email-designer": "^2.1.1",
-    "strapi-plugin-import-export-entries": "^1.6.5",
+    "strapi-plugin-import-export-entries": "^1.6.9",
     "strapi-plugin-menus": "^0.3.3",
     "strapi-plugin-sitemap": "^2.0.8",
     "strapi-plugin-wysiwyg-tui-editor": "^4.0.1",
@@ -41,6 +41,7 @@
     "id": "fdaea281-8950-4f22-a7cf-8d27600eb545"
   },
   "devDependencies": {
+    "@bn-digital/eslint-config": "^1.20.3",
     "@bn-digital/vault-env": "^1.4.0",
     "@swc/cli": "^0.1.57",
     "@swc/core": "^1.2.218",

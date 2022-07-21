@@ -1,6 +1,6 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { createContext, FC, PropsWithChildren, ReactNode, useContext } from 'react'
-import { DataBrowserRouter } from 'react-router-dom'
+import { DataBrowserRouter, ScrollRestoration } from 'react-router-dom'
 import { useToggle } from 'react-use'
 import { LocaleProvider } from 'src/components/app/Locale'
 
@@ -18,6 +18,7 @@ type AppProps = {
   ui: { theme: AppTheme; size: Size }
   user: { authenticated: boolean | null; role: string | null }
 }
+
 const defaultValue: AppProps = {
   burger: { opened: false, toggle: () => undefined },
   ui: { theme: 'default', size: 'middle' },
@@ -44,15 +45,17 @@ const client = new ApolloClient({
 })
 
 const App: FC = () => (
-  <ContextProvider>
-    <ErrorBoundary>
-      <ApolloProvider client={client}>
+  <ErrorBoundary>
+    <ApolloProvider client={client}>
+      <ContextProvider>
         <LocaleProvider>
-          <DataBrowserRouter routes={routes} fallbackElement={<Loader />} />
+          <DataBrowserRouter routes={routes} fallbackElement={<Loader />}>
+            <ScrollRestoration />
+          </DataBrowserRouter>
         </LocaleProvider>
-      </ApolloProvider>
-    </ErrorBoundary>
-  </ContextProvider>
+      </ContextProvider>
+    </ApolloProvider>
+  </ErrorBoundary>
 )
 
 const useApp = () => useContext<AppProps>(Context)

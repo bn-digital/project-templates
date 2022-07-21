@@ -1,10 +1,12 @@
 import { Result } from 'antd'
-import { Component, ErrorInfo, PropsWithChildren, ReactNode } from 'react'
+import { Component, ErrorInfo, PropsWithChildren } from 'react'
 
-type Props = PropsWithChildren<Partial<ReactNode>>
-type State = { hasError: boolean }
+type Props = PropsWithChildren
+type State = { hasError: boolean; errorInfo?: ErrorInfo }
 
 class ErrorBoundary<T extends Props> extends Component<T, State> {
+  private error?: Error
+
   constructor(props: T) {
     super(props)
     this.state = { hasError: false }
@@ -16,14 +18,15 @@ class ErrorBoundary<T extends Props> extends Component<T, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    this.error = error
     // You can also log the error to an error reporting service
     console.error(error.message, errorInfo)
   }
 
-  render(): ReactNode {
+  render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <Result status='error' />
+      return <Result title={this.error?.name} subTitle={this.error?.message} status='error' />
     }
 
     return this.props.children

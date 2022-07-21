@@ -704,18 +704,6 @@ input EmailDesignerEmailTemplateFiltersInput {
   not: EmailDesignerEmailTemplateFiltersInput
 }
 
-input EmailDesignerEmailTemplateInput {
-  templateReferenceId: Int
-  design: JSON
-  name: String
-  subject: String
-  bodyHtml: String
-  bodyText: String
-  enabled: Boolean
-  tags: JSON
-  sitemap_exclude: Boolean
-}
-
 type EmailDesignerEmailTemplate {
   templateReferenceId: Int
   design: JSON
@@ -754,13 +742,6 @@ input MenusMenuFiltersInput {
   and: [MenusMenuFiltersInput]
   or: [MenusMenuFiltersInput]
   not: MenusMenuFiltersInput
-}
-
-input MenusMenuInput {
-  title: String
-  slug: String
-  items: [ID]
-  sitemap_exclude: Boolean
 }
 
 type MenusMenu {
@@ -806,16 +787,6 @@ input MenusMenuItemFiltersInput {
   and: [MenusMenuItemFiltersInput]
   or: [MenusMenuItemFiltersInput]
   not: MenusMenuItemFiltersInput
-}
-
-input MenusMenuItemInput {
-  order: Int
-  title: String
-  url: String
-  target: ENUM_MENUSMENUITEM_TARGET
-  root_menu: ID
-  parent: ID
-  sitemap_exclude: Boolean
 }
 
 type MenusMenuItem {
@@ -1026,7 +997,7 @@ type WebsiteEntityResponse {
 }
 
 union GenericMorph =
-    ComponentDataContact
+  ComponentDataContact
   | ComponentDataEntry
   | ComponentDataSet
   | ComponentPageContactUs
@@ -1168,15 +1139,6 @@ type Mutation {
   createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
   updateUploadFolder(id: ID!, data: UploadFolderInput!): UploadFolderEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
-  createEmailDesignerEmailTemplate(data: EmailDesignerEmailTemplateInput!): EmailDesignerEmailTemplateEntityResponse
-  updateEmailDesignerEmailTemplate(id: ID!, data: EmailDesignerEmailTemplateInput!): EmailDesignerEmailTemplateEntityResponse
-  deleteEmailDesignerEmailTemplate(id: ID!): EmailDesignerEmailTemplateEntityResponse
-  createMenusMenu(data: MenusMenuInput!): MenusMenuEntityResponse
-  updateMenusMenu(id: ID!, data: MenusMenuInput!): MenusMenuEntityResponse
-  deleteMenusMenu(id: ID!): MenusMenuEntityResponse
-  createMenusMenuItem(data: MenusMenuItemInput!): MenusMenuItemEntityResponse
-  updateMenusMenuItem(id: ID!, data: MenusMenuItemInput!): MenusMenuItemEntityResponse
-  deleteMenusMenuItem(id: ID!): MenusMenuItemEntityResponse
   createCategory(data: CategoryInput!): CategoryEntityResponse
   updateCategory(id: ID!, data: CategoryInput!): CategoryEntityResponse
   deleteCategory(id: ID!): CategoryEntityResponse
