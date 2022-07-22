@@ -12,7 +12,7 @@ type Scalars = {
   Float: number
   DateTime: Date
   I18NLocaleCode: string | 'en' | 'es'
-  JSON: Record<string, any | any[] | string | number | boolean | null | undefined | unknown>
+  JSON: Record<string, any | any[] | string | number | boolean | null | undefined>
   Upload: unknown
 }
 

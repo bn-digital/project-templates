@@ -16,7 +16,7 @@ config:
     Upload: unknown
     Date: string
     Time: string
-    JSON: Record<string, any|any[]|string|number|boolean|null|undefined|unknown>
+    JSON: Record<string, any|any[]|string|number|boolean|null|undefined>
     Long: number
     DateTime: Date
     I18NLocaleCode: string | 'en' | 'es'
