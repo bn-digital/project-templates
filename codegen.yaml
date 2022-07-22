@@ -5,6 +5,7 @@ config:
   namingConvention:
     transformUnderscore: true
   skipTypename: true
+  maybeValue: T
   noExport: true
   preResolveTypes: true
   inlineFragmentTypes: combine

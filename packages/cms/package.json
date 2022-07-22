@@ -4,8 +4,11 @@
   "version": "1.0.0",
   "description": "A Strapi application",
   "scripts": {
+    "config-sync": "node_modules/.bin/config-sync",
+    "config:export": "yarn config-sync export --yes",
+    "config:import": "yarn config-sync import --yes",
     "start": "yarn env && strapi develop",
-    "generate": "yarn strapi content-types:generate-types --file=src/types/api.d.ts",
+    "generate": "yarn strapi content-types:generate-types --file=src/types/api.d.ts && yarn config:export",
     "serve": "strapi start",
     "env": "vault-env",
     "build": "strapi build"
@@ -29,7 +32,7 @@
     "knex": "^2.2.0",
     "lodash": "^4.17.21",
     "pg": "^8.7.3",
-    "sqlite3": "^5.0.9",
+    "sqlite3": "^5.0.10",
     "strapi-plugin-config-sync": "^1.0.2",
     "strapi-plugin-email-designer": "^2.1.1",
     "strapi-plugin-import-export-entries": "^1.6.9",

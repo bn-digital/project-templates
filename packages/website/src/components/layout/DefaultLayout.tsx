@@ -1,11 +1,12 @@
 import './DefaultLayout.less'
 
 import { Drawer, Layout } from 'antd'
-import { FC, Suspense, useCallback } from 'react'
+import { FC, Suspense, useMemo } from 'react'
 import { Outlet } from 'react-router'
 import { useLocation } from 'react-router-dom'
 import { useApp } from 'src/components/app'
 import { Loader } from 'src/components/layout/Loader'
+import { Navigation } from 'src/components/menu/Navigation'
 import { useWebsiteQuery } from 'src/graphql'
 
 import { Content } from './Content'
@@ -14,20 +15,25 @@ import { Header } from './Header'
 
 type ContentProps = ComponentPageContactUs | ComponentPageHome
 
-type FilterCallback = <T extends ContentProps>(data: T[]) => T | null
+function filterByPathname<T extends ContentProps>(pathname = '/', data: T[] = []): T | null {
+  return data.find(it => it?.pathname === pathname) ?? null
+}
 
 const DefaultLayout: FC = () => {
   const { pathname } = useLocation()
   const { data } = useWebsiteQuery()
   const { burger } = useApp()
-  const filterByPathname = useCallback<FilterCallback>((data = []) => data.find(it => it?.pathname === pathname) ?? null, [pathname])
-  const context = filterByPathname(data?.website?.data?.attributes?.content as ContentProps[])
+
+  const context: ContentProps | null = useMemo(
+    () => (data?.website?.data ? filterByPathname(pathname, data?.website?.data.attributes?.content as ContentProps[]) : null),
+    [data?.website?.data, pathname],
+  )
 
   return (
     <Layout>
       <Layout.Header>
         <Content>
-          <Header />
+          <Header renderMenu={() => <Navigation mode={'horizontal'} type={'header'} />} />
         </Content>
       </Layout.Header>
       <Layout.Content>
@@ -40,7 +46,9 @@ const DefaultLayout: FC = () => {
           <Footer />
         </Content>
       </Layout.Footer>
-      <Drawer width={'75%'} height={'100%'} onClose={burger.toggle} visible={burger.opened} />
+      <Drawer width={'75%'} height={'100%'} onClose={burger.toggle} visible={burger.opened}>
+        <Navigation mode={'vertical'} type={'header'} />
+      </Drawer>
     </Layout>
   )
 }

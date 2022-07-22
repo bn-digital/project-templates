@@ -1,5 +1,5 @@
-type Maybe<T> = T | null
-type InputMaybe<T> = Maybe<T>
+type Maybe<T> = T
+type InputMaybe<T> = T
 type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
 type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> }
 type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> }
@@ -1448,113 +1448,85 @@ type WebsiteEntityResponse = {
   data?: Maybe<WebsiteEntity>
 }
 
-type CardFragment = { id: string; title?: string | null; subtitle?: string | null; description?: string | null; media?: { data?: FileFragment | null } | null }
+type CardFragment = { id: string; title?: string; subtitle?: string; description?: string; media?: { data?: FileFragment } }
 
-type EntryFragment = { id: string; key?: string | null; value: string }
+type EntryFragment = { id: string; key?: string; value: string }
 
-type FileFragment = { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null }
+type FileFragment = { id?: string; attributes?: { previewUrl?: string; url: string } }
 
-type HeadlineFragment = { id: string; title?: string | null; subtitle?: string | null }
+type HeadlineFragment = { id: string; title?: string; subtitle?: string }
 
-type LinkFragment = { id: string; title?: string | null; url: string }
+type LinkFragment = { id: string; title?: string; url: string }
 
 type ParagraphFragment = { id: string; value: string }
 
-type SeoFragment = {
-  id: string
-  canonicalURL?: string | null
-  keywords?: string | null
-  metaTitle: string
-  metaViewport?: string | null
-  metaDescription?: string | null
-}
+type SeoFragment = { id: string; canonicalURL?: string; keywords?: string; metaTitle: string; metaViewport?: string; metaDescription?: string }
 
 type TabFragment = { id: string; name: string; pane: CardFragment }
 
-type CategoryFragment = { id?: string | null; attributes?: { name: string; slug: string } | null }
+type CategoryFragment = { id?: string; attributes?: { name: string; slug: string } }
 
-type ContactUsFragment = {
-  id: string
-  pathname: string
-  contact?: { id: string; address?: string | null; email?: string | null; phone?: string | null } | null
-}
+type ContactUsFragment = { id: string; pathname: string; contact?: { id: string; address?: string; email?: string; phone?: string } }
 
 type HomeFragment = {
   id: string
   pathname: string
-  hero?: { subtitle?: string | null; id: string; description?: string | null; title?: string | null; media?: { data?: FileFragment | null } | null } | null
-  features?: Array<CardFragment | null> | null
+  hero?: { subtitle?: string; id: string; description?: string; title?: string; media?: { data?: FileFragment } }
+  features?: Array<CardFragment>
 }
 
-type MenuFragment = {
-  id?: string | null
-  attributes?: {
-    title: string
-    items?: {
-      data: Array<{
-        id?: string | null
-        attributes?: { order?: number | null; createdAt?: Date | null; url?: string | null; title: string; target?: EnumMenusmenuitemTarget | null } | null
-      }>
-    } | null
-  } | null
-}
+type MenuFragment = { id?: string; attributes?: { title: string; items?: { data: Array<MenuItemFragment> } } }
 
-type PostFragment = {
-  id?: string | null
-  attributes?: {
-    content?: string | null
-    slug: string
-    cover?: { data?: FileFragment | null } | null
-    category?: { data?: CategoryFragment | null } | null
-  } | null
-}
+type MenuItemFragment = { id?: string; attributes?: { order?: number; createdAt?: Date; url?: string; title: string; target?: EnumMenusmenuitemTarget } }
+
+type PostFragment = { id?: string; attributes?: { content?: string; slug: string; cover?: { data?: FileFragment }; category?: { data?: CategoryFragment } } }
 
 type WebsiteFragment = {
-  id?: string | null
+  id?: string
   attributes?: {
     content?: Array<
-      ({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' } | null
-    > | null
-  } | null
+      ({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' }
+    >
+  }
 }
 
 type ForgotPasswordMutationVariables = Exact<{
   email: Scalars['String']
 }>
 
-type ForgotPasswordMutation = { forgotPassword?: { ok: boolean } | null }
+type ForgotPasswordMutation = { forgotPassword?: { ok: boolean } }
 
 type LoginMutationVariables = Exact<{
   input: UsersPermissionsLoginInput
 }>
 
-type LoginMutation = { login: { jwt?: string | null } }
+type LoginMutation = { login: { jwt?: string } }
 
 type RegisterMutationVariables = Exact<{
   input: UsersPermissionsRegisterInput
 }>
 
-type RegisterMutation = { register: { jwt?: string | null } }
+type RegisterMutation = { register: { jwt?: string } }
 
 type CategoriesQueryVariables = Exact<{ [key: string]: never }>
 
-type CategoriesQuery = { categories?: { data: Array<{ attributes?: { posts?: { data: Array<PostFragment> } | null } | null } & CategoryFragment> } | null }
+type CategoriesQuery = { categories?: { data: Array<{ attributes?: { posts?: { data: Array<PostFragment> } } } & CategoryFragment> } }
 
 type MeQueryVariables = Exact<{ [key: string]: never }>
 
-type MeQuery = { me?: { email?: string | null } | null }
+type MeQuery = { me?: { email?: string } }
 
 type MenuQueryVariables = Exact<{
   filters?: InputMaybe<MenusMenuFiltersInput>
 }>
 
-type MenuQuery = { menusMenus?: { data: Array<MenuFragment> } | null }
+type MenuQuery = { menusMenus?: { data: Array<MenuFragment> } }
 
 type PostsQueryVariables = Exact<{
   filters?: InputMaybe<PostFiltersInput>
 }>
 
-type PostsQuery = { posts?: { data: Array<PostFragment> } | null }
+type PostsQuery = { posts?: { data: Array<PostFragment> } }
 
 type TranslationsQueryVariables = Exact<{ [key: string]: never }>
 
@@ -1562,14 +1534,14 @@ type TranslationsQuery = {
   translation?: {
     data?: {
       attributes?: {
-        locale?: string | null
-        localizations?: { data: Array<{ attributes?: { locale?: string | null; entry: Array<EntryFragment | null> } | null }> } | null
-        entry: Array<EntryFragment | null>
-      } | null
-    } | null
-  } | null
+        locale?: string
+        localizations?: { data: Array<{ attributes?: { locale?: string; entry: Array<EntryFragment> } }> }
+        entry: Array<EntryFragment>
+      }
+    }
+  }
 }
 
 type WebsiteQueryVariables = Exact<{ [key: string]: never }>
 
-type WebsiteQuery = { website?: { data?: WebsiteFragment | null } | null }
+type WebsiteQuery = { website?: { data?: WebsiteFragment } }

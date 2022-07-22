@@ -4,6 +4,9 @@
   "type": "public",
   "permissions": [
     {
+      "action": "api::category.category.create"
+    },
+    {
       "action": "api::category.category.find"
     },
     {
