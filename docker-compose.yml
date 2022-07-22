@@ -1,48 +1,66 @@
 version: '3.x'
 
-networks:
-  public:
-  private:
-
 volumes:
   database:
-  pki:
-  caddy:
 
 services:
-
-  # This container handles external traffic on HTTP/HTTPS, handing routes inside of Caddyfile config.
-  proxy:
-    container_name: proxy
-    image: caddy/caddy:2-alpine
+  traeffik:
+    image: library/traefik:v2.8.1
+    container_name: traeffik
+    command:
+      - '--certificatesresolvers.letsencrypt.acme.email=admin@$DOMAIN'
+      - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=http'
+      - '--certificatesresolvers.letsencrypt.acme.storage=acme.json'
+      - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
+      - '--entrypoints.http.address=:80'
+      - '--entrypoints.https.address=:443'
+      - '--providers.docker.exposedbydefault=false'
+      - '--providers.docker=true'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - '80:80'
       - '443:443'
-    networks:
-      - public
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - pki:/data/caddy
-      - caddy:/config
-    env_file:
-      - .env
+
+    website:
+      container_name: website
+      build:
+        args:
+          api_url: $DOMAIN/graphql
+        target: website
+      labels:
+        traefik.enable: 'true'
+        traefik.http.routers.website.entrypoints: 'http'
+        traefik.http.routers.website.rule: 'Host(`$DOMAIN`)'
+        traefik.http.routers.website.tls.certresolver: 'letsencrypt'
+        traefik.http.routers.website.tls.domains[0].main: '$DOMAIN'
+        traefik.http.routers.website.tls: 'true'
+
+    cms:
+      container_name: cms
+      build:
+        target: cms
+      env_file:
+        - .env
+      labels:
+        traefik.enable: 'true'
+        traefik.http.routers.cms.entrypoints: 'http'
+        traefik.http.routers.cms.rule: 'Host(`$DOMAIN`) && PathPrefix(`/admin`,`/api`,`/connect`,`/config-sync`,`/comments`,`/content-manager`,`/content-type-builder`,`/graphql`,`/email`,`/email-designer`,`/i18n`,`/import-export-entities`,`/seo`,`/sitemap`,`/users-permissions`,`/upload`,`/uploads`)'
+        traefik.http.routers.cms.tls.certresolver: 'letsencrypt'
+        traefik.http.routers.cms.tls.domains[0].main: '$DOMAIN'
+        traefik.http.routers.cms.tls: 'true'
 
   website:
     container_name: website
     build:
       target: website
     image: website:${APP_VERSION:-latest}
-    networks:
-      - public
 
   cms:
     container_name: cms
     build:
       target: cms
     image: cms:${APP_VERSION:-latest}
-    networks:
-      - public
-      - private
     env_file:
       - .env
     environment:
@@ -51,9 +69,7 @@ services:
 
   database:
     container_name: database
-    image: postgres:14.3
-    networks:
-      - private
+    image: postgres:14.4
     env_file:
       - .env
     environment:
