@@ -1,10 +1,10 @@
 version: v0.144.0
 dependencies:
 - name: app
-  repository: https://dcr.bndigital.dev/chartrepo/library
-  version: 1.2.14
+  repository: https://bn-digital.github.io/helm
+  version: 2.0.1
 - name: app
-  repository: https://dcr.bndigital.dev/chartrepo/library
-  version: 1.2.14
+  repository: https://bn-digital.github.io/helm
+  version: 2.0.1
 digest: sha256:5a3157cdcaaa678e1df5e8c03e43f171515f1f018bde16f5be10dadb06b01268
 generated: "2022-05-13T14:57:54.9742881+03:00"
