@@ -34,4 +34,3 @@ profiles:
         gitCommit:
           variant: Tags
           ignoreChanges: true
-          
