@@ -32,7 +32,3 @@ jobs:
     needs: [ secrets ]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
     secrets: inherit
-  test:
-    needs: [ build ]
-    uses: bn-digital/docker/.github/workflows/test-images.yml@latest
-    secrets: inherit
