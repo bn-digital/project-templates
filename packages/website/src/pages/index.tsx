@@ -1,5 +1,5 @@
 import { FC, lazy } from 'react'
-import { RouteObject } from 'react-router-dom'
+import type { RouteObject } from 'react-router-dom'
 import { DefaultLayout } from 'src/components/layout'
 
 const Post = lazy<FC>(() => import('./post'))

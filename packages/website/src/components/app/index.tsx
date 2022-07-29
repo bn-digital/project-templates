@@ -35,7 +35,7 @@ const ContextProvider: FC<PropsWithChildren<Partial<ReactNode>>> = ({ children }
 }
 
 const client = new ApolloClient({
-  uri: '/graphql',
+  uri: import.meta.env.WEBSITE_API_URL ?? '/graphql',
   headers: { Authorization: localStorage.getItem('jwtToken') ? `Bearer ${localStorage.getItem('jwtToken')}` : '' },
   connectToDevTools: import.meta.env.DEV,
   queryDeduplication: true,

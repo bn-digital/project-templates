@@ -5,7 +5,7 @@ volumes:
 
 services:
   traeffik:
-    image: library/traefik:v2.8.1
+    image: traefik:v2.8.1
     container_name: traeffik
     command:
       - '--certificatesresolvers.letsencrypt.acme.email=admin@$DOMAIN'
@@ -22,39 +22,20 @@ services:
       - '80:80'
       - '443:443'
 
-    website:
-      container_name: website
-      build:
-        args:
-          api_url: $DOMAIN/graphql
-        target: website
-      labels:
-        traefik.enable: 'true'
-        traefik.http.routers.website.entrypoints: 'http'
-        traefik.http.routers.website.rule: 'Host(`$DOMAIN`)'
-        traefik.http.routers.website.tls.certresolver: 'letsencrypt'
-        traefik.http.routers.website.tls.domains[0].main: '$DOMAIN'
-        traefik.http.routers.website.tls: 'true'
-
-    cms:
-      container_name: cms
-      build:
-        target: cms
-      env_file:
-        - .env
-      labels:
-        traefik.enable: 'true'
-        traefik.http.routers.cms.entrypoints: 'http'
-        traefik.http.routers.cms.rule: 'Host(`$DOMAIN`) && PathPrefix(`/admin`,`/api`,`/connect`,`/config-sync`,`/comments`,`/content-manager`,`/content-type-builder`,`/graphql`,`/email`,`/email-designer`,`/i18n`,`/import-export-entities`,`/seo`,`/sitemap`,`/users-permissions`,`/upload`,`/uploads`)'
-        traefik.http.routers.cms.tls.certresolver: 'letsencrypt'
-        traefik.http.routers.cms.tls.domains[0].main: '$DOMAIN'
-        traefik.http.routers.cms.tls: 'true'
-
   website:
     container_name: website
     build:
+      args:
+        api_url: $DOMAIN/graphql
       target: website
     image: website:${APP_VERSION:-latest}
+    labels:
+      traefik.enable: 'true'
+      traefik.http.routers.website.entrypoints: 'http'
+      traefik.http.routers.website.rule: 'Host(`$DOMAIN`)'
+      traefik.http.routers.website.tls.certresolver: 'letsencrypt'
+      traefik.http.routers.website.tls.domains[0].main: '$DOMAIN'
+      traefik.http.routers.website.tls: 'true'
 
   cms:
     container_name: cms
@@ -66,6 +47,13 @@ services:
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_HOST: database
+    labels:
+      traefik.enable: 'true'
+      traefik.http.routers.cms.entrypoints: 'http'
+      traefik.http.routers.cms.rule: 'Host(`$DOMAIN`) && PathPrefix(`/admin`,`/api`,`/connect`,`/config-sync`,`/comments`,`/content-manager`,`/content-type-builder`,`/graphql`,`/email`,`/email-designer`,`/i18n`,`/import-export-entities`,`/seo`,`/sitemap`,`/users-permissions`,`/upload`,`/uploads`)'
+      traefik.http.routers.cms.tls.certresolver: 'letsencrypt'
+      traefik.http.routers.cms.tls.domains[0].main: '$DOMAIN'
+      traefik.http.routers.cms.tls: 'true'
 
   database:
     container_name: database
