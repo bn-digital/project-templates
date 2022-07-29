@@ -1,44 +1,38 @@
 schema: http://127.0.0.1:1337/graphql
 documents:
-  - packages/*/src/graphql/*/*.graphql
+  - src/graphql/*/*.graphql
 config:
   namingConvention:
     transformUnderscore: true
-  skipTypename: true
-  noExport: true
-  preResolveTypes: true
-  inlineFragmentTypes: combine
-  optimizeDocumentNode: true
-  dedupeFragments: true
-  enumsAsTypes: true
+  inlineFragmentTypes: inline
   scalars:
-    Upload: unknown
     Date: string
-    Time: string
-    JSON: Record<string, any|any[]|string|number|boolean|null|undefined|unknown>
-    Long: number
     DateTime: Date
     I18NLocaleCode: string | 'en' | 'es'
+    JSON: Record<string, any|any[]|string|number|boolean|null|undefined>
+    Long: number
+    Time: string
+    Upload: unknown
 generates:
-  packages/website/src/graphql/index.tsx:
+  src/graphql/index.tsx:
     plugins:
       - typescript-operations
       - fragment-matcher:
           apolloClientVersion: 3
           useExplicitTyping: true
       - typescript-react-apollo:
+          reactApolloVersion: 3
           withMutationFn: false
           withRefetchFn: false
           withResultType: true
           withComponent: true
           withHooks: true
-  packages/website/src/types/graphql.d.ts:
+  src/types/graphql.d.ts:
     config:
+      noExport: true
       skipTypename: true
+      enumsAsTypes: true
     plugins:
       - typescript
       - typescript-operations
-hooks:
-  afterAllFileWrite:
-    - yarn prettier --write
-    - yarn eslint --fix
+

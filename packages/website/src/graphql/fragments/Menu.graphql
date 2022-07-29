@@ -1,0 +1,11 @@
+fragment Menu on MenusMenuEntity {
+  id
+  attributes {
+    title
+    items(sort: "order:ASC") {
+      data {
+        ...MenuItem
+      }
+    }
+  }
+}

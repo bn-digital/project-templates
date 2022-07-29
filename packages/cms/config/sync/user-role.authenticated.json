@@ -22,7 +22,7 @@
       "action": "api::translation.translation.find"
     },
     {
-      "action": "api::website.website.find"
+      "action": "plugin::i18n.locales.listLocales"
     },
     {
       "action": "plugin::menus.menu-item.find"
@@ -35,6 +35,9 @@
     },
     {
       "action": "plugin::menus.menu.findOne"
+    },
+    {
+      "action": "plugin::users-permissions.auth.connect"
     },
     {
       "action": "plugin::users-permissions.user.me"

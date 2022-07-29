@@ -2,13 +2,13 @@ type LogLevel = 'info' | 'warn' | 'error'
 type Primitive = string | number | null | boolean
 type EnvVar<T = Primitive> = T
 type EnvFunction = <T = EnvVar>(key: string, defaultValue?: T) => T
-
 type TypedEnvFunction = Partial<{
   int(key: string, defaultValue?: number): number
   date(key: string, defaultValue?: Date): number
   float(key: number, defaultValue?: number): number
   bool(key: string, defaultValue?: boolean): boolean
-  array(key: string, defaultValue?: string[]): string[]
+  array<T = EnvVar>(key: string, defaultValue?: T[]): T[]
+  json<T = { [key: string]: any }>(key: string, defaultValue?: T): T
 }>
 
 declare global {

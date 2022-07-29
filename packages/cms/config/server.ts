@@ -11,6 +11,6 @@ export default ({ env }: Strapi.Env) => ({
     tasks,
   },
   app: {
-    keys: env.array('APP_KEYS', [generateSecret('app.keys')]),
+    keys: env.array<string>('APP_KEYS', [generateSecret('app.keys')]),
   },
 })

@@ -1,18 +1,10 @@
-fragment Menu on MenusMenuEntity {
+fragment MenuItem on MenusMenuItemEntity {
   id
   attributes {
+    order
+    createdAt
+    url
     title
-    items {
-      data {
-        id
-        attributes {
-          order
-          createdAt
-          url
-          title
-          target
-        }
-      }
-    }
+    target
   }
 }

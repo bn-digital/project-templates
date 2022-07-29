@@ -5,7 +5,6 @@ metadataTest:
   cmd:
     - strapi
     - start
-  workdir: /usr/local/src
 commandTests:
   - name: strapi
     command: yarn
@@ -20,3 +19,9 @@ fileExistenceTests:
     shouldExist: true
     uid: 1000
     gid: 1000
+  - name: .env
+    path: /usr/local/src/.env
+    shouldExist: true
+    uid: 1000
+    gid: 1000
+

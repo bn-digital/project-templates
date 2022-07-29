@@ -1,11 +1,11 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { createContext, FC, PropsWithChildren, ReactNode, useContext } from 'react'
 import { DataBrowserRouter, ScrollRestoration } from 'react-router-dom'
-import { useToggle } from 'react-use'
-import { LocaleProvider } from 'src/components/app/Locale'
+import { useLocalStorage, useToggle } from 'react-use'
 
 import introspection from '../../graphql'
 import routes from '../../pages'
+import { LocaleProvider } from '../app/Locale'
 import { Loader } from '../layout/Loader'
 import { ErrorBoundary } from './ErrorBoundary'
 
@@ -29,18 +29,19 @@ const Context = createContext<AppProps>(defaultValue)
 
 const ContextProvider: FC<PropsWithChildren<Partial<ReactNode>>> = ({ children }) => {
   const [opened, toggle] = useToggle(false)
-  return <Context.Provider value={{ ...defaultValue, burger: { opened, toggle } }}>{children}</Context.Provider>
+  const [token] = useLocalStorage('jwtToken')
+
+  return <Context.Provider value={{ ...defaultValue, user: { authenticated: !!token, role: 'USER' }, burger: { opened, toggle } }}>{children}</Context.Provider>
 }
 
 const client = new ApolloClient({
-  uri: '/graphql',
+  uri: import.meta.env.WEBSITE_API_URL ?? '/graphql',
   headers: { Authorization: localStorage.getItem('jwtToken') ? `Bearer ${localStorage.getItem('jwtToken')}` : '' },
   connectToDevTools: import.meta.env.DEV,
   queryDeduplication: true,
   cache: new InMemoryCache({
     resultCaching: import.meta.env.PROD,
     possibleTypes: introspection.possibleTypes,
-    typePolicies: { Post: { keyFields: ['slug'] } },
   }),
 })
 
@@ -60,4 +61,4 @@ const App: FC = () => (
 
 const useApp = () => useContext<AppProps>(Context)
 
-export { App, Context as AppContext, useApp }
+export { App, useApp }

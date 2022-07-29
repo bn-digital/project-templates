@@ -12,7 +12,7 @@ type Scalars = {
   Float: number
   DateTime: Date
   I18NLocaleCode: string | 'en' | 'es'
-  JSON: Record<string, any | any[] | string | number | boolean | null | undefined | unknown>
+  JSON: Record<string, any | any[] | string | number | boolean | null | undefined>
   Upload: unknown
 }
 
@@ -1448,28 +1448,13 @@ type WebsiteEntityResponse = {
   data?: Maybe<WebsiteEntity>
 }
 
-type CardFragment = { id: string; title?: string | null; subtitle?: string | null; description?: string | null; media?: { data?: FileFragment | null } | null }
-
-type EntryFragment = { id: string; key?: string | null; value: string }
-
-type FileFragment = { id?: string | null; attributes?: { previewUrl?: string | null; url: string } | null }
-
-type HeadlineFragment = { id: string; title?: string | null; subtitle?: string | null }
-
-type LinkFragment = { id: string; title?: string | null; url: string }
-
-type ParagraphFragment = { id: string; value: string }
-
-type SeoFragment = {
+type CardFragment = {
   id: string
-  canonicalURL?: string | null
-  keywords?: string | null
-  metaTitle: string
-  metaViewport?: string | null
-  metaDescription?: string | null
+  title?: string | null
+  subtitle?: string | null
+  description?: string | null
+  media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null } | null
 }
-
-type TabFragment = { id: string; name: string; pane: CardFragment }
 
 type CategoryFragment = { id?: string | null; attributes?: { name: string; slug: string } | null }
 
@@ -1479,12 +1464,32 @@ type ContactUsFragment = {
   contact?: { id: string; address?: string | null; email?: string | null; phone?: string | null } | null
 }
 
+type EntryFragment = { id: string; key?: string | null; value: string }
+
+type FileFragment = { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null }
+
+type HeadlineFragment = { id: string; title?: string | null; subtitle?: string | null }
+
 type HomeFragment = {
   id: string
   pathname: string
-  hero?: { subtitle?: string | null; id: string; description?: string | null; title?: string | null; media?: { data?: FileFragment | null } | null } | null
-  features?: Array<CardFragment | null> | null
+  hero?: {
+    subtitle?: string | null
+    id: string
+    description?: string | null
+    title?: string | null
+    media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null } | null
+  } | null
+  features?: Array<{
+    id: string
+    title?: string | null
+    subtitle?: string | null
+    description?: string | null
+    media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null } | null
+  } | null> | null
 }
+
+type LinkFragment = { id: string; title?: string | null; url: string }
 
 type MenuFragment = {
   id?: string | null
@@ -1499,21 +1504,87 @@ type MenuFragment = {
   } | null
 }
 
+type MenuItemFragment = {
+  id?: string | null
+  attributes?: { order?: number | null; createdAt?: Date | null; url?: string | null; title: string; target?: EnumMenusmenuitemTarget | null } | null
+}
+
+type ParagraphFragment = { id: string; value: string }
+
 type PostFragment = {
   id?: string | null
   attributes?: {
     content?: string | null
     slug: string
-    cover?: { data?: FileFragment | null } | null
-    category?: { data?: CategoryFragment | null } | null
+    cover?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null } | null
+    category?: { data?: { id?: string | null; attributes?: { name: string; slug: string } | null } | null } | null
   } | null
+}
+
+type SeoFragment = {
+  id: string
+  canonicalURL?: string | null
+  keywords?: string | null
+  metaTitle: string
+  metaViewport?: string | null
+  metaDescription?: string | null
+}
+
+type TabFragment = {
+  id: string
+  name: string
+  pane: {
+    id: string
+    title?: string | null
+    subtitle?: string | null
+    description?: string | null
+    media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null } | null
+  }
 }
 
 type WebsiteFragment = {
   id?: string | null
   attributes?: {
+    seo?: {
+      id: string
+      canonicalURL?: string | null
+      keywords?: string | null
+      metaTitle: string
+      metaViewport?: string | null
+      metaDescription?: string | null
+    } | null
     content?: Array<
-      ({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' } | null
+      | {
+          __typename: 'ComponentPageContactUs'
+          id: string
+          pathname: string
+          contact?: { id: string; address?: string | null; email?: string | null; phone?: string | null } | null
+        }
+      | {
+          __typename: 'ComponentPageHome'
+          id: string
+          pathname: string
+          hero?: {
+            subtitle?: string | null
+            id: string
+            description?: string | null
+            title?: string | null
+            media?: {
+              data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null
+            } | null
+          } | null
+          features?: Array<{
+            id: string
+            title?: string | null
+            subtitle?: string | null
+            description?: string | null
+            media?: {
+              data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null
+            } | null
+          } | null> | null
+        }
+      | { __typename: 'Error' }
+      | null
     > | null
   } | null
 }
@@ -1538,7 +1609,30 @@ type RegisterMutation = { register: { jwt?: string | null } }
 
 type CategoriesQueryVariables = Exact<{ [key: string]: never }>
 
-type CategoriesQuery = { categories?: { data: Array<{ attributes?: { posts?: { data: Array<PostFragment> } | null } | null } & CategoryFragment> } | null }
+type CategoriesQuery = {
+  categories?: {
+    data: Array<{
+      id?: string | null
+      attributes?: {
+        name: string
+        slug: string
+        posts?: {
+          data: Array<{
+            id?: string | null
+            attributes?: {
+              content?: string | null
+              slug: string
+              cover?: {
+                data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null
+              } | null
+              category?: { data?: { id?: string | null; attributes?: { name: string; slug: string } | null } | null } | null
+            } | null
+          }>
+        } | null
+      } | null
+    }>
+  } | null
+}
 
 type MeQueryVariables = Exact<{ [key: string]: never }>
 
@@ -1548,13 +1642,42 @@ type MenuQueryVariables = Exact<{
   filters?: InputMaybe<MenusMenuFiltersInput>
 }>
 
-type MenuQuery = { menusMenus?: { data: Array<MenuFragment> } | null }
+type MenuQuery = {
+  menusMenus?: {
+    data: Array<{
+      id?: string | null
+      attributes?: {
+        title: string
+        items?: {
+          data: Array<{
+            id?: string | null
+            attributes?: { order?: number | null; createdAt?: Date | null; url?: string | null; title: string; target?: EnumMenusmenuitemTarget | null } | null
+          }>
+        } | null
+      } | null
+    }>
+  } | null
+}
 
 type PostsQueryVariables = Exact<{
   filters?: InputMaybe<PostFiltersInput>
 }>
 
-type PostsQuery = { posts?: { data: Array<PostFragment> } | null }
+type PostsQuery = {
+  posts?: {
+    data: Array<{
+      id?: string | null
+      attributes?: {
+        content?: string | null
+        slug: string
+        cover?: {
+          data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null
+        } | null
+        category?: { data?: { id?: string | null; attributes?: { name: string; slug: string } | null } | null } | null
+      } | null
+    }>
+  } | null
+}
 
 type TranslationsQueryVariables = Exact<{ [key: string]: never }>
 
@@ -1563,8 +1686,10 @@ type TranslationsQuery = {
     data?: {
       attributes?: {
         locale?: string | null
-        localizations?: { data: Array<{ attributes?: { locale?: string | null; entry: Array<EntryFragment | null> } | null }> } | null
-        entry: Array<EntryFragment | null>
+        localizations?: {
+          data: Array<{ attributes?: { locale?: string | null; entry: Array<{ id: string; key?: string | null; value: string } | null> } | null }>
+        } | null
+        entry: Array<{ id: string; key?: string | null; value: string } | null>
       } | null
     } | null
   } | null
@@ -1572,4 +1697,53 @@ type TranslationsQuery = {
 
 type WebsiteQueryVariables = Exact<{ [key: string]: never }>
 
-type WebsiteQuery = { website?: { data?: WebsiteFragment | null } | null }
+type WebsiteQuery = {
+  website?: {
+    data?: {
+      id?: string | null
+      attributes?: {
+        seo?: {
+          id: string
+          canonicalURL?: string | null
+          keywords?: string | null
+          metaTitle: string
+          metaViewport?: string | null
+          metaDescription?: string | null
+        } | null
+        content?: Array<
+          | {
+              __typename: 'ComponentPageContactUs'
+              id: string
+              pathname: string
+              contact?: { id: string; address?: string | null; email?: string | null; phone?: string | null } | null
+            }
+          | {
+              __typename: 'ComponentPageHome'
+              id: string
+              pathname: string
+              hero?: {
+                subtitle?: string | null
+                id: string
+                description?: string | null
+                title?: string | null
+                media?: {
+                  data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null
+                } | null
+              } | null
+              features?: Array<{
+                id: string
+                title?: string | null
+                subtitle?: string | null
+                description?: string | null
+                media?: {
+                  data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null
+                } | null
+              } | null> | null
+            }
+          | { __typename: 'Error' }
+          | null
+        > | null
+      } | null
+    } | null
+  } | null
+}

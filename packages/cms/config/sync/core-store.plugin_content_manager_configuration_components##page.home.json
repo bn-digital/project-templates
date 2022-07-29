@@ -67,8 +67,7 @@
       "list": [
         "id",
         "pathname",
-        "hero",
-        "features"
+        "hero"
       ],
       "edit": [
         [
