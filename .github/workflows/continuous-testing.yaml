@@ -1,0 +1,45 @@
+name: Continuous Delivery
+on:
+  push:
+    branches:
+      - latest
+
+jobs:
+  containers:
+    runs-on: self-hosted
+    needs: [ build ]
+    steps:
+      - name: Login Docker Registry
+        uses: docker/login@v2
+        with:
+          registry: ${{ secrets.DOCKER_REGISTRY }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Test Docker images
+        uses: hiberbee/github-action-skaffold@1.22.0
+        with:
+          command: test
+          images: cms=${{ secrets.DOCKER_REGISTRY }}/${{ github.event.repository.name }}/cms:latest,website=${{ secrets.DOCKER_REGISTRY }}/${{ github.event.repository.name }}/website:latest
+
+  releases:
+    runs-on: self-hosted
+    needs: [ container-structure-test ]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+
+      - name: Setup Kube dev cluster
+        uses: hiberbee/github-action-minikube@1.7.0
+
+      - name: Deploy Helm charts
+        uses: hiberbee/github-action-helm@1.13.0
+        with:
+          helmfile: apply
+          environment: default
+
+      - name: Check releases
+        uses: hiberbee/github-action-helm@1.13.0
+        with:
+          helmfile: test
+          environment: default
