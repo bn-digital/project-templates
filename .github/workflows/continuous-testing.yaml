@@ -24,6 +24,7 @@ jobs:
 
       - name: Test Docker images
         uses: hiberbee/github-action-skaffold@1.22.0
+        continue-on-error: true
         with:
           command: test --images=cms=${{ secrets.DOCKER_REGISTRY }}/${{ github.event.repository.name }}/cms:latest,website=${{ secrets.DOCKER_REGISTRY }}/${{ github.event.repository.name }}/website:latest
 
