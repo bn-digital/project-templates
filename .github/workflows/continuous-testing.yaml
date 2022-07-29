@@ -5,9 +5,12 @@ on:
       - latest
 
 jobs:
+  secrets:
+    uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
+    secrets: inherit
   containers:
     runs-on: self-hosted
-    needs: [ build ]
+    needs: [ secrets ]
     steps:
       - name: Login Docker Registry
         uses: docker/login@v2
@@ -24,7 +27,7 @@ jobs:
 
   releases:
     runs-on: self-hosted
-    needs: [ container-structure-test ]
+    needs: [ containers ]
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
