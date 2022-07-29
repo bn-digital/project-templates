@@ -25,8 +25,7 @@ jobs:
       - name: Test Docker images
         uses: hiberbee/github-action-skaffold@1.22.0
         with:
-          command: test
-          images: cms=${{ secrets.DOCKER_REGISTRY }}/${{ github.event.repository.name }}/cms:latest,website=${{ secrets.DOCKER_REGISTRY }}/${{ github.event.repository.name }}/website:latest
+          command: test --images=cms=${{ secrets.DOCKER_REGISTRY }}/${{ github.event.repository.name }}/cms:latest,website=${{ secrets.DOCKER_REGISTRY }}/${{ github.event.repository.name }}/website:latest
 
   releases:
     runs-on: self-hosted
