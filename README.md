@@ -2,6 +2,13 @@
 
 [![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/bn-digital/project-templates/tree/latest)
 
+## Github Workflows
+
+[![Continuous Integration](https://github.com/bn-digital/project-templates/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/bn-digital/project-templates/actions/workflows/continuous-integration.yml)
+[![Continuous Testing](https://github.com/bn-digital/project-templates/actions/workflows/continuous-testing.yml/badge.svg)](https://github.com/bn-digital/project-templates/actions/workflows/continuous-testing.yml)
+[![Continuous Deployment](https://github.com/bn-digital/project-templates/actions/workflows/continuous-deployment.yml/badge.svg)](https://github.com/bn-digital/project-templates/actions/workflows/continuous-deployment.yml)
+[![Continuous Delivery](https://github.com/bn-digital/project-templates/actions/workflows/continuous-delivery.yml/badge.svg)](https://github.com/bn-digital/project-templates/actions/workflows/continuous-delivery.yml)
+
 ## Table of contents
 
 - [Build and run as Docker container](docs/docker.md)
