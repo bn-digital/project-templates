@@ -1,4 +1,4 @@
-name: Continuous Delivery
+name: Continuous Testing
 on:
   push:
     branches:
@@ -12,6 +12,9 @@ jobs:
     runs-on: self-hosted
     needs: [ secrets ]
     steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+        
       - name: Login Docker Registry
         uses: docker/login-action@v2
         with:
