@@ -1,5 +1,5 @@
-type Maybe<T> = T
-type InputMaybe<T> = T
+type Maybe<T> = T | null
+type InputMaybe<T> = Maybe<T>
 type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
 type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> }
 type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> }
@@ -1448,85 +1448,236 @@ type WebsiteEntityResponse = {
   data?: Maybe<WebsiteEntity>
 }
 
-type CardFragment = { id: string; title?: string; subtitle?: string; description?: string; media?: { data?: FileFragment } }
+type CardFragment = {
+  id: string
+  title?: string | null
+  subtitle?: string | null
+  description?: string | null
+  media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null } | null
+}
 
-type EntryFragment = { id: string; key?: string; value: string }
+type CategoryFragment = { id?: string | null; attributes?: { name: string; slug: string } | null }
 
-type FileFragment = { id?: string; attributes?: { previewUrl?: string; url: string } }
+type ContactUsFragment = {
+  id: string
+  pathname: string
+  contact?: { id: string; address?: string | null; email?: string | null; phone?: string | null } | null
+}
 
-type HeadlineFragment = { id: string; title?: string; subtitle?: string }
+type EntryFragment = { id: string; key?: string | null; value: string }
 
-type LinkFragment = { id: string; title?: string; url: string }
+type FileFragment = { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null }
 
-type ParagraphFragment = { id: string; value: string }
-
-type SeoFragment = { id: string; canonicalURL?: string; keywords?: string; metaTitle: string; metaViewport?: string; metaDescription?: string }
-
-type TabFragment = { id: string; name: string; pane: CardFragment }
-
-type CategoryFragment = { id?: string; attributes?: { name: string; slug: string } }
-
-type ContactUsFragment = { id: string; pathname: string; contact?: { id: string; address?: string; email?: string; phone?: string } }
+type HeadlineFragment = { id: string; title?: string | null; subtitle?: string | null }
 
 type HomeFragment = {
   id: string
   pathname: string
-  hero?: { subtitle?: string; id: string; description?: string; title?: string; media?: { data?: FileFragment } }
-  features?: Array<CardFragment>
+  hero?: {
+    subtitle?: string | null
+    id: string
+    description?: string | null
+    title?: string | null
+    media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null } | null
+  } | null
+  features?: Array<{
+    id: string
+    title?: string | null
+    subtitle?: string | null
+    description?: string | null
+    media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null } | null
+  } | null> | null
 }
 
-type MenuFragment = { id?: string; attributes?: { title: string; items?: { data: Array<MenuItemFragment> } } }
+type LinkFragment = { id: string; title?: string | null; url: string }
 
-type MenuItemFragment = { id?: string; attributes?: { order?: number; createdAt?: Date; url?: string; title: string; target?: EnumMenusmenuitemTarget } }
+type MenuFragment = {
+  id?: string | null
+  attributes?: {
+    title: string
+    items?: {
+      data: Array<{
+        id?: string | null
+        attributes?: { order?: number | null; createdAt?: Date | null; url?: string | null; title: string; target?: EnumMenusmenuitemTarget | null } | null
+      }>
+    } | null
+  } | null
+}
 
-type PostFragment = { id?: string; attributes?: { content?: string; slug: string; cover?: { data?: FileFragment }; category?: { data?: CategoryFragment } } }
+type MenuItemFragment = {
+  id?: string | null
+  attributes?: { order?: number | null; createdAt?: Date | null; url?: string | null; title: string; target?: EnumMenusmenuitemTarget | null } | null
+}
+
+type ParagraphFragment = { id: string; value: string }
+
+type PostFragment = {
+  id?: string | null
+  attributes?: {
+    content?: string | null
+    slug: string
+    cover?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null } | null
+    category?: { data?: { id?: string | null; attributes?: { name: string; slug: string } | null } | null } | null
+  } | null
+}
+
+type SeoFragment = {
+  id: string
+  canonicalURL?: string | null
+  keywords?: string | null
+  metaTitle: string
+  metaViewport?: string | null
+  metaDescription?: string | null
+}
+
+type TabFragment = {
+  id: string
+  name: string
+  pane: {
+    id: string
+    title?: string | null
+    subtitle?: string | null
+    description?: string | null
+    media?: { data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null } | null
+  }
+}
 
 type WebsiteFragment = {
-  id?: string
+  id?: string | null
   attributes?: {
+    seo?: {
+      id: string
+      canonicalURL?: string | null
+      keywords?: string | null
+      metaTitle: string
+      metaViewport?: string | null
+      metaDescription?: string | null
+    } | null
     content?: Array<
-      ({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' }
-    >
-  }
+      | {
+          __typename: 'ComponentPageContactUs'
+          id: string
+          pathname: string
+          contact?: { id: string; address?: string | null; email?: string | null; phone?: string | null } | null
+        }
+      | {
+          __typename: 'ComponentPageHome'
+          id: string
+          pathname: string
+          hero?: {
+            subtitle?: string | null
+            id: string
+            description?: string | null
+            title?: string | null
+            media?: {
+              data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null
+            } | null
+          } | null
+          features?: Array<{
+            id: string
+            title?: string | null
+            subtitle?: string | null
+            description?: string | null
+            media?: {
+              data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null
+            } | null
+          } | null> | null
+        }
+      | { __typename: 'Error' }
+      | null
+    > | null
+  } | null
 }
 
 type ForgotPasswordMutationVariables = Exact<{
   email: Scalars['String']
 }>
 
-type ForgotPasswordMutation = { forgotPassword?: { ok: boolean } }
+type ForgotPasswordMutation = { forgotPassword?: { ok: boolean } | null }
 
 type LoginMutationVariables = Exact<{
   input: UsersPermissionsLoginInput
 }>
 
-type LoginMutation = { login: { jwt?: string } }
+type LoginMutation = { login: { jwt?: string | null } }
 
 type RegisterMutationVariables = Exact<{
   input: UsersPermissionsRegisterInput
 }>
 
-type RegisterMutation = { register: { jwt?: string } }
+type RegisterMutation = { register: { jwt?: string | null } }
 
 type CategoriesQueryVariables = Exact<{ [key: string]: never }>
 
-type CategoriesQuery = { categories?: { data: Array<{ attributes?: { posts?: { data: Array<PostFragment> } } } & CategoryFragment> } }
+type CategoriesQuery = {
+  categories?: {
+    data: Array<{
+      id?: string | null
+      attributes?: {
+        name: string
+        slug: string
+        posts?: {
+          data: Array<{
+            id?: string | null
+            attributes?: {
+              content?: string | null
+              slug: string
+              cover?: {
+                data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null
+              } | null
+              category?: { data?: { id?: string | null; attributes?: { name: string; slug: string } | null } | null } | null
+            } | null
+          }>
+        } | null
+      } | null
+    }>
+  } | null
+}
 
 type MeQueryVariables = Exact<{ [key: string]: never }>
 
-type MeQuery = { me?: { email?: string } }
+type MeQuery = { me?: { email?: string | null } | null }
 
 type MenuQueryVariables = Exact<{
   filters?: InputMaybe<MenusMenuFiltersInput>
 }>
 
-type MenuQuery = { menusMenus?: { data: Array<MenuFragment> } }
+type MenuQuery = {
+  menusMenus?: {
+    data: Array<{
+      id?: string | null
+      attributes?: {
+        title: string
+        items?: {
+          data: Array<{
+            id?: string | null
+            attributes?: { order?: number | null; createdAt?: Date | null; url?: string | null; title: string; target?: EnumMenusmenuitemTarget | null } | null
+          }>
+        } | null
+      } | null
+    }>
+  } | null
+}
 
 type PostsQueryVariables = Exact<{
   filters?: InputMaybe<PostFiltersInput>
 }>
 
-type PostsQuery = { posts?: { data: Array<PostFragment> } }
+type PostsQuery = {
+  posts?: {
+    data: Array<{
+      id?: string | null
+      attributes?: {
+        content?: string | null
+        slug: string
+        cover?: {
+          data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null
+        } | null
+        category?: { data?: { id?: string | null; attributes?: { name: string; slug: string } | null } | null } | null
+      } | null
+    }>
+  } | null
+}
 
 type TranslationsQueryVariables = Exact<{ [key: string]: never }>
 
@@ -1534,14 +1685,65 @@ type TranslationsQuery = {
   translation?: {
     data?: {
       attributes?: {
-        locale?: string
-        localizations?: { data: Array<{ attributes?: { locale?: string; entry: Array<EntryFragment> } }> }
-        entry: Array<EntryFragment>
-      }
-    }
-  }
+        locale?: string | null
+        localizations?: {
+          data: Array<{ attributes?: { locale?: string | null; entry: Array<{ id: string; key?: string | null; value: string } | null> } | null }>
+        } | null
+        entry: Array<{ id: string; key?: string | null; value: string } | null>
+      } | null
+    } | null
+  } | null
 }
 
 type WebsiteQueryVariables = Exact<{ [key: string]: never }>
 
-type WebsiteQuery = { website?: { data?: WebsiteFragment } }
+type WebsiteQuery = {
+  website?: {
+    data?: {
+      id?: string | null
+      attributes?: {
+        seo?: {
+          id: string
+          canonicalURL?: string | null
+          keywords?: string | null
+          metaTitle: string
+          metaViewport?: string | null
+          metaDescription?: string | null
+        } | null
+        content?: Array<
+          | {
+              __typename: 'ComponentPageContactUs'
+              id: string
+              pathname: string
+              contact?: { id: string; address?: string | null; email?: string | null; phone?: string | null } | null
+            }
+          | {
+              __typename: 'ComponentPageHome'
+              id: string
+              pathname: string
+              hero?: {
+                subtitle?: string | null
+                id: string
+                description?: string | null
+                title?: string | null
+                media?: {
+                  data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null
+                } | null
+              } | null
+              features?: Array<{
+                id: string
+                title?: string | null
+                subtitle?: string | null
+                description?: string | null
+                media?: {
+                  data?: { id?: string | null; attributes?: { previewUrl?: string | null; alternativeText?: string | null; url: string } | null } | null
+                } | null
+              } | null> | null
+            }
+          | { __typename: 'Error' }
+          | null
+        > | null
+      } | null
+    } | null
+  } | null
+}

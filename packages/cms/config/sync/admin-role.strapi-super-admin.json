@@ -232,8 +232,7 @@
         ],
         "locales": [
           "en",
-          "es",
-          "uk"
+          "es-ES"
         ]
       },
       "conditions": []
@@ -244,8 +243,7 @@
       "properties": {
         "locales": [
           "en",
-          "es",
-          "uk"
+          "es-ES"
         ]
       },
       "conditions": []
@@ -256,8 +254,7 @@
       "properties": {
         "locales": [
           "en",
-          "es",
-          "uk"
+          "es-ES"
         ]
       },
       "conditions": []
@@ -272,8 +269,7 @@
         ],
         "locales": [
           "en",
-          "es",
-          "uk"
+          "es-ES"
         ]
       },
       "conditions": []
@@ -288,8 +284,7 @@
         ],
         "locales": [
           "en",
-          "es",
-          "uk"
+          "es-ES"
         ]
       },
       "conditions": []

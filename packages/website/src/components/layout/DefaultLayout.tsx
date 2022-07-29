@@ -13,10 +13,10 @@ import { Content } from './Content'
 import { Footer } from './Footer'
 import { Header } from './Header'
 
-type ContentProps = ComponentPageContactUs | ComponentPageHome
+type ContentProps = ContactUsFragment | HomeFragment
 
-function filterByPathname<T extends ContentProps>(pathname = '/', data: T[] = []): T | null {
-  return data.find(it => it?.pathname === pathname) ?? null
+function filterByPathname<T extends ContentProps>(pathname = '/', data: (T | null)[] = []): T | null {
+  return data?.find(it => it?.pathname === pathname) ?? null
 }
 
 const DefaultLayout: FC = () => {
@@ -24,9 +24,9 @@ const DefaultLayout: FC = () => {
   const { data } = useWebsiteQuery()
   const { burger } = useApp()
 
-  const context: ContentProps | null = useMemo(
-    () => (data?.website?.data ? filterByPathname(pathname, data?.website?.data.attributes?.content as ContentProps[]) : null),
-    [data?.website?.data, pathname],
+  const context = useMemo(
+    () => (data?.website?.data?.attributes?.content ? filterByPathname(pathname, data?.website?.data.attributes?.content as ContentProps[]) : null),
+    [data?.website?.data?.attributes?.content, pathname],
   )
 
   return (

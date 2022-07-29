@@ -8,7 +8,9 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTime
 
-"""The `Upload` scalar type represents a file upload."""
+"""
+The `Upload` scalar type represents a file upload.
+"""
 scalar Upload
 
 type Error {
@@ -37,6 +39,7 @@ input IDFilterInput {
   or: [ID]
   not: IDFilterInput
   eq: ID
+  eqi: ID
   ne: ID
   startsWith: ID
   endsWith: ID
@@ -60,6 +63,7 @@ input BooleanFilterInput {
   or: [Boolean]
   not: BooleanFilterInput
   eq: Boolean
+  eqi: Boolean
   ne: Boolean
   startsWith: Boolean
   endsWith: Boolean
@@ -83,6 +87,7 @@ input StringFilterInput {
   or: [String]
   not: StringFilterInput
   eq: String
+  eqi: String
   ne: String
   startsWith: String
   endsWith: String
@@ -106,6 +111,7 @@ input IntFilterInput {
   or: [Int]
   not: IntFilterInput
   eq: Int
+  eqi: Int
   ne: Int
   startsWith: Int
   endsWith: Int
@@ -129,6 +135,7 @@ input FloatFilterInput {
   or: [Float]
   not: FloatFilterInput
   eq: Float
+  eqi: Float
   ne: Float
   startsWith: Float
   endsWith: Float
@@ -152,6 +159,7 @@ input DateTimeFilterInput {
   or: [DateTime]
   not: DateTimeFilterInput
   eq: DateTime
+  eqi: DateTime
   ne: DateTime
   startsWith: DateTime
   endsWith: DateTime
@@ -175,6 +183,7 @@ input JSONFilterInput {
   or: [JSON]
   not: JSONFilterInput
   eq: JSON
+  eqi: JSON
   ne: JSON
   startsWith: JSON
   endsWith: JSON
@@ -567,7 +576,11 @@ type UsersPermissionsRole {
   name: String!
   description: String
   type: String
-  permissions(filters: UsersPermissionsPermissionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsPermissionRelationResponseCollection
+  permissions(
+    filters: UsersPermissionsPermissionFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsPermissionRelationResponseCollection
   users(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserRelationResponseCollection
   createdAt: DateTime
   updatedAt: DateTime
@@ -837,7 +850,12 @@ input CategoryInput {
 type Category {
   name: String!
   slug: String!
-  posts(filters: PostFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], publicationState: PublicationState = LIVE): PostRelationResponseCollection
+  posts(
+    filters: PostFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): PostRelationResponseCollection
   seo: ComponentSharedSeo
   createdAt: DateTime
   updatedAt: DateTime
@@ -985,7 +1003,36 @@ type WebsiteEntityResponse {
   data: WebsiteEntity
 }
 
-union GenericMorph = ComponentDataContact | ComponentDataEntry | ComponentDataSet | ComponentPageContactUs | ComponentPageHome | ComponentSharedMetaSocial | ComponentSharedSeo | ComponentUiCard | ComponentUiGrid | ComponentUiHeadline | ComponentUiLink | ComponentUiParagraph | ComponentUiSection | ComponentUiTab | ComponentUiText | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | I18NLocale | EmailDesignerEmailTemplate | MenusMenu | MenusMenuItem | Category | Contact | Post | Translation | Website
+union GenericMorph =
+    ComponentDataContact
+  | ComponentDataEntry
+  | ComponentDataSet
+  | ComponentPageContactUs
+  | ComponentPageHome
+  | ComponentSharedMetaSocial
+  | ComponentSharedSeo
+  | ComponentUiCard
+  | ComponentUiGrid
+  | ComponentUiHeadline
+  | ComponentUiLink
+  | ComponentUiParagraph
+  | ComponentUiSection
+  | ComponentUiTab
+  | ComponentUiText
+  | UploadFile
+  | UploadFolder
+  | UsersPermissionsPermission
+  | UsersPermissionsRole
+  | UsersPermissionsUser
+  | I18NLocale
+  | EmailDesignerEmailTemplate
+  | MenusMenu
+  | MenusMenuItem
+  | Category
+  | Contact
+  | Post
+  | Translation
+  | Website
 
 input FileInfoInput {
   name: String
@@ -1042,7 +1089,9 @@ type UsersPermissionsDeleteRolePayload {
   ok: Boolean!
 }
 
-"""A string used to identify an i18n locale"""
+"""
+A string used to identify an i18n locale
+"""
 scalar I18NLocaleCode
 
 input PaginationArg {
@@ -1058,13 +1107,25 @@ type Query {
   uploadFolder(id: ID): UploadFolderEntityResponse
   uploadFolders(filters: UploadFolderFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFolderEntityResponseCollection
   usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
-  usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
+  usersPermissionsRoles(
+    filters: UsersPermissionsRoleFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsRoleEntityResponseCollection
   usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
-  usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  usersPermissionsUsers(
+    filters: UsersPermissionsUserFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsUserEntityResponseCollection
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   emailDesignerEmailTemplate(id: ID): EmailDesignerEmailTemplateEntityResponse
-  emailDesignerEmailTemplates(filters: EmailDesignerEmailTemplateFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): EmailDesignerEmailTemplateEntityResponseCollection
+  emailDesignerEmailTemplates(
+    filters: EmailDesignerEmailTemplateFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): EmailDesignerEmailTemplateEntityResponseCollection
   menusMenu(id: ID): MenusMenuEntityResponse
   menusMenus(filters: MenusMenuFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): MenusMenuEntityResponseCollection
   menusMenuItem(id: ID): MenusMenuItemEntityResponse
@@ -1096,29 +1157,45 @@ type Mutation {
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   removeFile(id: ID!): UploadFileEntityResponse
 
-  """Create a new role"""
+  """
+  Create a new role
+  """
   createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload
 
-  """Update an existing role"""
+  """
+  Update an existing role
+  """
   updateUsersPermissionsRole(id: ID!, data: UsersPermissionsRoleInput!): UsersPermissionsUpdateRolePayload
 
-  """Delete an existing role"""
+  """
+  Delete an existing role
+  """
   deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
 
-  """Create a new user"""
+  """
+  Create a new user
+  """
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
 
-  """Update an existing user"""
+  """
+  Update an existing user
+  """
   updateUsersPermissionsUser(id: ID!, data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
 
-  """Delete an existing user"""
+  """
+  Delete an existing user
+  """
   deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
   login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
 
-  """Register a user"""
+  """
+  Register a user
+  """
   register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
 
-  """Request a reset password token"""
+  """
+  Request a reset password token
+  """
   forgotPassword(email: String!): UsersPermissionsPasswordPayload
 
   """
@@ -1126,7 +1203,9 @@ type Mutation {
   """
   resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
 
-  """Confirm an email users email address"""
+  """
+  Confirm an email users email address
+  """
   emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
   createTranslationLocalization(id: ID, data: TranslationInput, locale: I18NLocaleCode): TranslationEntityResponse
 }

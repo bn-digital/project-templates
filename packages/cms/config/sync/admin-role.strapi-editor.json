@@ -5,84 +5,6 @@
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::category.category",
-      "properties": {
-        "fields": [
-          "name",
-          "slug",
-          "posts",
-          "seo.metaTitle",
-          "seo.metaDescription",
-          "seo.metaImage",
-          "seo.metaSocial.socialNetwork",
-          "seo.metaSocial.title",
-          "seo.metaSocial.description",
-          "seo.metaSocial.image",
-          "seo.keywords",
-          "seo.metaRobots",
-          "seo.structuredData",
-          "seo.metaViewport",
-          "seo.canonicalURL"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::category.category",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::category.category",
-      "properties": {
-        "fields": [
-          "name",
-          "slug",
-          "posts",
-          "seo.metaTitle",
-          "seo.metaDescription",
-          "seo.metaImage",
-          "seo.metaSocial.socialNetwork",
-          "seo.metaSocial.title",
-          "seo.metaSocial.description",
-          "seo.metaSocial.image",
-          "seo.keywords",
-          "seo.metaRobots",
-          "seo.structuredData",
-          "seo.metaViewport",
-          "seo.canonicalURL"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::category.category",
-      "properties": {
-        "fields": [
-          "name",
-          "slug",
-          "posts",
-          "seo.metaTitle",
-          "seo.metaDescription",
-          "seo.metaImage",
-          "seo.metaSocial.socialNetwork",
-          "seo.metaSocial.title",
-          "seo.metaSocial.description",
-          "seo.metaSocial.image",
-          "seo.keywords",
-          "seo.metaRobots",
-          "seo.structuredData",
-          "seo.metaViewport",
-          "seo.canonicalURL"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
       "subject": "api::contact.contact",
       "properties": {
         "fields": [
@@ -150,8 +72,7 @@
           "seo.metaRobots",
           "seo.structuredData",
           "seo.metaViewport",
-          "seo.canonicalURL",
-          "category"
+          "seo.canonicalURL"
         ]
       },
       "conditions": []
@@ -189,8 +110,7 @@
           "seo.metaRobots",
           "seo.structuredData",
           "seo.metaViewport",
-          "seo.canonicalURL",
-          "category"
+          "seo.canonicalURL"
         ]
       },
       "conditions": []
@@ -216,8 +136,7 @@
           "seo.metaRobots",
           "seo.structuredData",
           "seo.metaViewport",
-          "seo.canonicalURL",
-          "category"
+          "seo.canonicalURL"
         ]
       },
       "conditions": []

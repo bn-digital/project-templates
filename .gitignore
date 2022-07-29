@@ -36,11 +36,11 @@ node_modules
 !.yarn/sdks
 !.yarn/versions
 
+# Build
+tsconfig.tsbuildinfo
+
 # Environmnet
 .env
-
-# Gradle
-.gradle
 
 # SonarQube
 .scannerwork

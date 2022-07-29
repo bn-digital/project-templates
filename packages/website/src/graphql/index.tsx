@@ -4,103 +4,464 @@ import * as ApolloReactComponents from '@apollo/client/react/components'
 import * as React from 'react'
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 const defaultOptions = {} as const
-type CardFragment = { id: string; title?: string; subtitle?: string; description?: string; media?: { data?: FileFragment } }
-
-type EntryFragment = { id: string; key?: string; value: string }
-
-type FileFragment = { id?: string; attributes?: { previewUrl?: string; url: string } }
-
-type HeadlineFragment = { id: string; title?: string; subtitle?: string }
-
-type LinkFragment = { id: string; title?: string; url: string }
-
-type ParagraphFragment = { id: string; value: string }
-
-type SeoFragment = { id: string; canonicalURL?: string; keywords?: string; metaTitle: string; metaViewport?: string; metaDescription?: string }
-
-type TabFragment = { id: string; name: string; pane: CardFragment }
-
-type CategoryFragment = { id?: string; attributes?: { name: string; slug: string } }
-
-type ContactUsFragment = { id: string; pathname: string; contact?: { id: string; address?: string; email?: string; phone?: string } }
-
-type HomeFragment = {
+export type CardFragment = {
+  __typename?: 'ComponentUiCard'
   id: string
-  pathname: string
-  hero?: { subtitle?: string; id: string; description?: string; title?: string; media?: { data?: FileFragment } }
-  features?: Array<CardFragment>
+  title?: string | null
+  subtitle?: string | null
+  description?: string | null
+  media?: {
+    __typename?: 'UploadFileEntityResponse'
+    data?: {
+      __typename?: 'UploadFileEntity'
+      id?: string | null
+      attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null; alternativeText?: string | null; url: string } | null
+    } | null
+  } | null
 }
 
-type MenuFragment = { id?: string; attributes?: { title: string; items?: { data: Array<MenuItemFragment> } } }
+export type CategoryFragment = {
+  __typename?: 'CategoryEntity'
+  id?: string | null
+  attributes?: { __typename?: 'Category'; name: string; slug: string } | null
+}
 
-type MenuItemFragment = { id?: string; attributes?: { order?: number; createdAt?: Date; url?: string; title: string; target?: EnumMenusmenuitemTarget } }
+export type ContactUsFragment = {
+  __typename?: 'ComponentPageContactUs'
+  id: string
+  pathname: string
+  contact?: { __typename?: 'ComponentDataContact'; id: string; address?: string | null; email?: string | null; phone?: string | null } | null
+}
 
-type PostFragment = { id?: string; attributes?: { content?: string; slug: string; cover?: { data?: FileFragment }; category?: { data?: CategoryFragment } } }
+export type EntryFragment = { __typename?: 'ComponentDataEntry'; id: string; key?: string | null; value: string }
 
-type WebsiteFragment = {
-  id?: string
+export type FileFragment = {
+  __typename?: 'UploadFileEntity'
+  id?: string | null
+  attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null; alternativeText?: string | null; url: string } | null
+}
+
+export type HeadlineFragment = { __typename?: 'ComponentUiHeadline'; id: string; title?: string | null; subtitle?: string | null }
+
+export type HomeFragment = {
+  __typename?: 'ComponentPageHome'
+  id: string
+  pathname: string
+  hero?: {
+    __typename?: 'ComponentUiCard'
+    subtitle?: string | null
+    id: string
+    description?: string | null
+    title?: string | null
+    media?: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null; alternativeText?: string | null; url: string } | null
+      } | null
+    } | null
+  } | null
+  features?: Array<{
+    __typename?: 'ComponentUiCard'
+    id: string
+    title?: string | null
+    subtitle?: string | null
+    description?: string | null
+    media?: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null; alternativeText?: string | null; url: string } | null
+      } | null
+    } | null
+  } | null> | null
+}
+
+export type LinkFragment = { __typename?: 'ComponentUiLink'; id: string; title?: string | null; url: string }
+
+export type MenuFragment = {
+  __typename?: 'MenusMenuEntity'
+  id?: string | null
   attributes?: {
-    content?: Array<
-      ({ __typename: 'ComponentPageContactUs' } & ContactUsFragment) | ({ __typename: 'ComponentPageHome' } & HomeFragment) | { __typename: 'Error' }
-    >
+    __typename?: 'MenusMenu'
+    title: string
+    items?: {
+      __typename?: 'MenusMenuItemRelationResponseCollection'
+      data: Array<{
+        __typename?: 'MenusMenuItemEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'MenusMenuItem'
+          order?: number | null
+          createdAt?: Date | null
+          url?: string | null
+          title: string
+          target?: EnumMenusmenuitemTarget | null
+        } | null
+      }>
+    } | null
+  } | null
+}
+
+export type MenuItemFragment = {
+  __typename?: 'MenusMenuItemEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'MenusMenuItem'
+    order?: number | null
+    createdAt?: Date | null
+    url?: string | null
+    title: string
+    target?: EnumMenusmenuitemTarget | null
+  } | null
+}
+
+export type ParagraphFragment = { __typename?: 'ComponentUiParagraph'; id: string; value: string }
+
+export type PostFragment = {
+  __typename?: 'PostEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'Post'
+    content?: string | null
+    slug: string
+    cover?: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null; alternativeText?: string | null; url: string } | null
+      } | null
+    } | null
+    category?: {
+      __typename?: 'CategoryEntityResponse'
+      data?: { __typename?: 'CategoryEntity'; id?: string | null; attributes?: { __typename?: 'Category'; name: string; slug: string } | null } | null
+    } | null
+  } | null
+}
+
+export type SeoFragment = {
+  __typename?: 'ComponentSharedSeo'
+  id: string
+  canonicalURL?: string | null
+  keywords?: string | null
+  metaTitle: string
+  metaViewport?: string | null
+  metaDescription?: string | null
+}
+
+export type TabFragment = {
+  __typename?: 'ComponentUiTab'
+  id: string
+  name: string
+  pane: {
+    __typename?: 'ComponentUiCard'
+    id: string
+    title?: string | null
+    subtitle?: string | null
+    description?: string | null
+    media?: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null; alternativeText?: string | null; url: string } | null
+      } | null
+    } | null
   }
 }
 
-type ForgotPasswordMutationVariables = Exact<{
+export type WebsiteFragment = {
+  __typename?: 'WebsiteEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'Website'
+    seo?: {
+      __typename?: 'ComponentSharedSeo'
+      id: string
+      canonicalURL?: string | null
+      keywords?: string | null
+      metaTitle: string
+      metaViewport?: string | null
+      metaDescription?: string | null
+    } | null
+    content?: Array<
+      | {
+          __typename: 'ComponentPageContactUs'
+          id: string
+          pathname: string
+          contact?: { __typename?: 'ComponentDataContact'; id: string; address?: string | null; email?: string | null; phone?: string | null } | null
+        }
+      | {
+          __typename: 'ComponentPageHome'
+          id: string
+          pathname: string
+          hero?: {
+            __typename?: 'ComponentUiCard'
+            subtitle?: string | null
+            id: string
+            description?: string | null
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                id?: string | null
+                attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null; alternativeText?: string | null; url: string } | null
+              } | null
+            } | null
+          } | null
+          features?: Array<{
+            __typename?: 'ComponentUiCard'
+            id: string
+            title?: string | null
+            subtitle?: string | null
+            description?: string | null
+            media?: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                id?: string | null
+                attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null; alternativeText?: string | null; url: string } | null
+              } | null
+            } | null
+          } | null> | null
+        }
+      | { __typename: 'Error' }
+      | null
+    > | null
+  } | null
+}
+
+export type ForgotPasswordMutationVariables = Exact<{
   email: Scalars['String']
 }>
 
-type ForgotPasswordMutation = { forgotPassword?: { ok: boolean } }
+export type ForgotPasswordMutation = { __typename?: 'Mutation'; forgotPassword?: { __typename?: 'UsersPermissionsPasswordPayload'; ok: boolean } | null }
 
-type LoginMutationVariables = Exact<{
+export type LoginMutationVariables = Exact<{
   input: UsersPermissionsLoginInput
 }>
 
-type LoginMutation = { login: { jwt?: string } }
+export type LoginMutation = { __typename?: 'Mutation'; login: { __typename?: 'UsersPermissionsLoginPayload'; jwt?: string | null } }
 
-type RegisterMutationVariables = Exact<{
+export type RegisterMutationVariables = Exact<{
   input: UsersPermissionsRegisterInput
 }>
 
-type RegisterMutation = { register: { jwt?: string } }
+export type RegisterMutation = { __typename?: 'Mutation'; register: { __typename?: 'UsersPermissionsLoginPayload'; jwt?: string | null } }
 
-type CategoriesQueryVariables = Exact<{ [key: string]: never }>
+export type CategoriesQueryVariables = Exact<{ [key: string]: never }>
 
-type CategoriesQuery = { categories?: { data: Array<{ attributes?: { posts?: { data: Array<PostFragment> } } } & CategoryFragment> } }
+export type CategoriesQuery = {
+  __typename?: 'Query'
+  categories?: {
+    __typename?: 'CategoryEntityResponseCollection'
+    data: Array<{
+      __typename?: 'CategoryEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'Category'
+        name: string
+        slug: string
+        posts?: {
+          __typename?: 'PostRelationResponseCollection'
+          data: Array<{
+            __typename?: 'PostEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'Post'
+              content?: string | null
+              slug: string
+              cover?: {
+                __typename?: 'UploadFileEntityResponse'
+                data?: {
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null; alternativeText?: string | null; url: string } | null
+                } | null
+              } | null
+              category?: {
+                __typename?: 'CategoryEntityResponse'
+                data?: { __typename?: 'CategoryEntity'; id?: string | null; attributes?: { __typename?: 'Category'; name: string; slug: string } | null } | null
+              } | null
+            } | null
+          }>
+        } | null
+      } | null
+    }>
+  } | null
+}
 
-type MeQueryVariables = Exact<{ [key: string]: never }>
+export type MeQueryVariables = Exact<{ [key: string]: never }>
 
-type MeQuery = { me?: { email?: string } }
+export type MeQuery = { __typename?: 'Query'; me?: { __typename?: 'UsersPermissionsMe'; email?: string | null } | null }
 
-type MenuQueryVariables = Exact<{
+export type MenuQueryVariables = Exact<{
   filters?: InputMaybe<MenusMenuFiltersInput>
 }>
 
-type MenuQuery = { menusMenus?: { data: Array<MenuFragment> } }
+export type MenuQuery = {
+  __typename?: 'Query'
+  menusMenus?: {
+    __typename?: 'MenusMenuEntityResponseCollection'
+    data: Array<{
+      __typename?: 'MenusMenuEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'MenusMenu'
+        title: string
+        items?: {
+          __typename?: 'MenusMenuItemRelationResponseCollection'
+          data: Array<{
+            __typename?: 'MenusMenuItemEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'MenusMenuItem'
+              order?: number | null
+              createdAt?: Date | null
+              url?: string | null
+              title: string
+              target?: EnumMenusmenuitemTarget | null
+            } | null
+          }>
+        } | null
+      } | null
+    }>
+  } | null
+}
 
-type PostsQueryVariables = Exact<{
+export type PostsQueryVariables = Exact<{
   filters?: InputMaybe<PostFiltersInput>
 }>
 
-type PostsQuery = { posts?: { data: Array<PostFragment> } }
-
-type TranslationsQueryVariables = Exact<{ [key: string]: never }>
-
-type TranslationsQuery = {
-  translation?: {
-    data?: {
+export type PostsQuery = {
+  __typename?: 'Query'
+  posts?: {
+    __typename?: 'PostEntityResponseCollection'
+    data: Array<{
+      __typename?: 'PostEntity'
+      id?: string | null
       attributes?: {
-        locale?: string
-        localizations?: { data: Array<{ attributes?: { locale?: string; entry: Array<EntryFragment> } }> }
-        entry: Array<EntryFragment>
-      }
-    }
-  }
+        __typename?: 'Post'
+        content?: string | null
+        slug: string
+        cover?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null; alternativeText?: string | null; url: string } | null
+          } | null
+        } | null
+        category?: {
+          __typename?: 'CategoryEntityResponse'
+          data?: { __typename?: 'CategoryEntity'; id?: string | null; attributes?: { __typename?: 'Category'; name: string; slug: string } | null } | null
+        } | null
+      } | null
+    }>
+  } | null
 }
 
-type WebsiteQueryVariables = Exact<{ [key: string]: never }>
+export type TranslationsQueryVariables = Exact<{ [key: string]: never }>
 
-type WebsiteQuery = { website?: { data?: WebsiteFragment } }
+export type TranslationsQuery = {
+  __typename?: 'Query'
+  translation?: {
+    __typename?: 'TranslationEntityResponse'
+    data?: {
+      __typename?: 'TranslationEntity'
+      attributes?: {
+        __typename?: 'Translation'
+        locale?: string | null
+        localizations?: {
+          __typename?: 'TranslationRelationResponseCollection'
+          data: Array<{
+            __typename?: 'TranslationEntity'
+            attributes?: {
+              __typename?: 'Translation'
+              locale?: string | null
+              entry: Array<{ __typename?: 'ComponentDataEntry'; id: string; key?: string | null; value: string } | null>
+            } | null
+          }>
+        } | null
+        entry: Array<{ __typename?: 'ComponentDataEntry'; id: string; key?: string | null; value: string } | null>
+      } | null
+    } | null
+  } | null
+}
+
+export type WebsiteQueryVariables = Exact<{ [key: string]: never }>
+
+export type WebsiteQuery = {
+  __typename?: 'Query'
+  website?: {
+    __typename?: 'WebsiteEntityResponse'
+    data?: {
+      __typename?: 'WebsiteEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'Website'
+        seo?: {
+          __typename?: 'ComponentSharedSeo'
+          id: string
+          canonicalURL?: string | null
+          keywords?: string | null
+          metaTitle: string
+          metaViewport?: string | null
+          metaDescription?: string | null
+        } | null
+        content?: Array<
+          | {
+              __typename: 'ComponentPageContactUs'
+              id: string
+              pathname: string
+              contact?: { __typename?: 'ComponentDataContact'; id: string; address?: string | null; email?: string | null; phone?: string | null } | null
+            }
+          | {
+              __typename: 'ComponentPageHome'
+              id: string
+              pathname: string
+              hero?: {
+                __typename?: 'ComponentUiCard'
+                subtitle?: string | null
+                id: string
+                description?: string | null
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null; alternativeText?: string | null; url: string } | null
+                  } | null
+                } | null
+              } | null
+              features?: Array<{
+                __typename?: 'ComponentUiCard'
+                id: string
+                title?: string | null
+                subtitle?: string | null
+                description?: string | null
+                media?: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: { __typename?: 'UploadFile'; previewUrl?: string | null; alternativeText?: string | null; url: string } | null
+                  } | null
+                } | null
+              } | null> | null
+            }
+          | { __typename: 'Error' }
+          | null
+        > | null
+      } | null
+    } | null
+  } | null
+}
 
 export type PossibleTypesResultData = {
   possibleTypes: {
@@ -197,53 +558,6 @@ export const LinkFragmentDoc = gql`
     url
   }
 `
-export const ParagraphFragmentDoc = gql`
-  fragment Paragraph on ComponentUiParagraph {
-    id
-    value
-  }
-`
-export const SeoFragmentDoc = gql`
-  fragment Seo on ComponentSharedSeo {
-    id
-    canonicalURL
-    keywords
-    metaTitle
-    metaViewport
-    metaDescription
-  }
-`
-export const FileFragmentDoc = gql`
-  fragment File on UploadFileEntity {
-    id
-    attributes {
-      previewUrl
-      url
-    }
-  }
-`
-export const CardFragmentDoc = gql`
-  fragment Card on ComponentUiCard {
-    id
-    title
-    subtitle
-    description
-    media {
-      data {
-        ...File
-      }
-    }
-  }
-`
-export const TabFragmentDoc = gql`
-  fragment Tab on ComponentUiTab {
-    id
-    name
-    pane {
-      ...Card
-    }
-  }
-`
 export const MenuItemFragmentDoc = gql`
   fragment MenuItem on MenusMenuItemEntity {
     id
@@ -266,6 +580,23 @@ export const MenuFragmentDoc = gql`
           ...MenuItem
         }
       }
+    }
+  }
+  ${MenuItemFragmentDoc}
+`
+export const ParagraphFragmentDoc = gql`
+  fragment Paragraph on ComponentUiParagraph {
+    id
+    value
+  }
+`
+export const FileFragmentDoc = gql`
+  fragment File on UploadFileEntity {
+    id
+    attributes {
+      previewUrl
+      alternativeText
+      url
     }
   }
 `
@@ -296,6 +627,42 @@ export const PostFragmentDoc = gql`
       }
     }
   }
+  ${FileFragmentDoc}
+  ${CategoryFragmentDoc}
+`
+export const CardFragmentDoc = gql`
+  fragment Card on ComponentUiCard {
+    id
+    title
+    subtitle
+    description
+    media {
+      data {
+        ...File
+      }
+    }
+  }
+  ${FileFragmentDoc}
+`
+export const TabFragmentDoc = gql`
+  fragment Tab on ComponentUiTab {
+    id
+    name
+    pane {
+      ...Card
+    }
+  }
+  ${CardFragmentDoc}
+`
+export const SeoFragmentDoc = gql`
+  fragment Seo on ComponentSharedSeo {
+    id
+    canonicalURL
+    keywords
+    metaTitle
+    metaViewport
+    metaDescription
+  }
 `
 export const HomeFragmentDoc = gql`
   fragment Home on ComponentPageHome {
@@ -316,6 +683,8 @@ export const HomeFragmentDoc = gql`
       ...Card
     }
   }
+  ${FileFragmentDoc}
+  ${CardFragmentDoc}
 `
 export const ContactUsFragmentDoc = gql`
   fragment ContactUs on ComponentPageContactUs {
@@ -333,6 +702,9 @@ export const WebsiteFragmentDoc = gql`
   fragment Website on WebsiteEntity {
     id
     attributes {
+      seo {
+        ...Seo
+      }
       content {
         __typename
         ...Home
@@ -340,8 +712,11 @@ export const WebsiteFragmentDoc = gql`
       }
     }
   }
+  ${SeoFragmentDoc}
+  ${HomeFragmentDoc}
+  ${ContactUsFragmentDoc}
 `
-const ForgotPasswordDocument = gql`
+export const ForgotPasswordDocument = gql`
   mutation forgotPassword($email: String!) {
     forgotPassword(email: $email) {
       ok
@@ -382,7 +757,7 @@ export function useForgotPasswordMutation(baseOptions?: Apollo.MutationHookOptio
 export type ForgotPasswordMutationHookResult = ReturnType<typeof useForgotPasswordMutation>
 export type ForgotPasswordMutationResult = Apollo.MutationResult<ForgotPasswordMutation>
 export type ForgotPasswordMutationOptions = Apollo.BaseMutationOptions<ForgotPasswordMutation, ForgotPasswordMutationVariables>
-const LoginDocument = gql`
+export const LoginDocument = gql`
   mutation login($input: UsersPermissionsLoginInput!) {
     login(input: $input) {
       jwt
@@ -420,7 +795,7 @@ export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginM
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>
 export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>
-const RegisterDocument = gql`
+export const RegisterDocument = gql`
   mutation register($input: UsersPermissionsRegisterInput!) {
     register(input: $input) {
       jwt
@@ -458,7 +833,7 @@ export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<Reg
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>
 export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>
-const CategoriesDocument = gql`
+export const CategoriesDocument = gql`
   query categories {
     categories {
       data {
@@ -475,7 +850,6 @@ const CategoriesDocument = gql`
   }
   ${CategoryFragmentDoc}
   ${PostFragmentDoc}
-  ${FileFragmentDoc}
 `
 export type CategoriesComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<CategoriesQuery, CategoriesQueryVariables>, 'query'>
 
@@ -509,7 +883,7 @@ export function useCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>
 export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>
 export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>
-const MeDocument = gql`
+export const MeDocument = gql`
   query me {
     me {
       email
@@ -546,7 +920,7 @@ export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>
-const MenuDocument = gql`
+export const MenuDocument = gql`
   query menu($filters: MenusMenuFiltersInput) {
     menusMenus(filters: $filters) {
       data {
@@ -555,7 +929,6 @@ const MenuDocument = gql`
     }
   }
   ${MenuFragmentDoc}
-  ${MenuItemFragmentDoc}
 `
 export type MenuComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MenuQuery, MenuQueryVariables>, 'query'>
 
@@ -588,7 +961,7 @@ export function useMenuLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MenuQ
 export type MenuQueryHookResult = ReturnType<typeof useMenuQuery>
 export type MenuLazyQueryHookResult = ReturnType<typeof useMenuLazyQuery>
 export type MenuQueryResult = Apollo.QueryResult<MenuQuery, MenuQueryVariables>
-const PostsDocument = gql`
+export const PostsDocument = gql`
   query posts($filters: PostFiltersInput) {
     posts(publicationState: LIVE, filters: $filters) {
       data {
@@ -597,8 +970,6 @@ const PostsDocument = gql`
     }
   }
   ${PostFragmentDoc}
-  ${FileFragmentDoc}
-  ${CategoryFragmentDoc}
 `
 export type PostsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<PostsQuery, PostsQueryVariables>, 'query'>
 
@@ -631,7 +1002,7 @@ export function usePostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Post
 export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>
 export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>
 export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>
-const TranslationsDocument = gql`
+export const TranslationsDocument = gql`
   query translations {
     translation {
       data {
@@ -688,7 +1059,7 @@ export function useTranslationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type TranslationsQueryHookResult = ReturnType<typeof useTranslationsQuery>
 export type TranslationsLazyQueryHookResult = ReturnType<typeof useTranslationsLazyQuery>
 export type TranslationsQueryResult = Apollo.QueryResult<TranslationsQuery, TranslationsQueryVariables>
-const WebsiteDocument = gql`
+export const WebsiteDocument = gql`
   query website {
     website {
       data {
@@ -697,10 +1068,6 @@ const WebsiteDocument = gql`
     }
   }
   ${WebsiteFragmentDoc}
-  ${HomeFragmentDoc}
-  ${FileFragmentDoc}
-  ${CardFragmentDoc}
-  ${ContactUsFragmentDoc}
 `
 export type WebsiteComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<WebsiteQuery, WebsiteQueryVariables>, 'query'>
 

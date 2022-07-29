@@ -1,6 +1,9 @@
 fragment Website on WebsiteEntity {
   id
   attributes {
+    seo {
+      ...Seo
+    }
     content {
       __typename
       ...Home

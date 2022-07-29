@@ -1,8 +1,7 @@
 {
-  "name": "CMS GraphQL API",
+  "name": "GraphQL API",
   "schemaPath": "./packages/cms/src/graphql/schema.graphqls",
   "includes": [
-    "./packages/cms/src/graphql/**/*.graphql",
     "./packages/website/src/graphql/**/*.graphql"
   ],
   "extensions": {

@@ -2,10 +2,10 @@
   "extends": "@strapi/typescript-utils/tsconfigs/server",
   "compilerOptions": {
     "outDir": "dist",
+    "rootDir": ".",
     "lib": [
       "ES2020"
-    ],
-    "rootDir": "."
+    ]
   },
   "include": [
     "./",
