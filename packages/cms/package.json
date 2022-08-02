@@ -6,7 +6,7 @@
     "config-sync": "node_modules/.bin/config-sync",
     "config:export": "yarn config-sync export --yes",
     "config:import": "yarn config-sync import --yes",
-    "start": "yarn env && strapi develop",
+    "start": "yarn env && yarn strapi develop",
     "generate": "yarn strapi ts:generate-types --file=src/types/api.d.ts",
     "serve": "yarn strapi start",
     "env": "yarn vault-env",

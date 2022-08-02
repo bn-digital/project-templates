@@ -27,24 +27,27 @@ Formatter.prototype.wrapAsIdentifier = (value: any) => `"${(value || '').replace
  *
  * @param {(key: string, defaultValue?: string)=> string} env
  */
-export default ({ env }: Strapi.Env): { connection: Knex.Config } => ({
-  connection: {
-    client: env<Strapi.Db.Client>('DATABASE_CLIENT', 'sqlite'),
-    connection:
-      env<Strapi.Db.Client>('DATABASE_CLIENT', 'sqlite') === 'postgres'
-        ? {
-          charset: 'utf8',
-          user: env('DATABASE_USERNAME', 'postgres'),
-          password: env('DATABASE_PASSWORD', ''),
-          database: env('DATABASE_NAME', name),
-          ssl: env.bool('DATABASE_SSL', false),
-          host: env('DATABASE_HOST', 'localhost'),
-          port: env.int('DATABASE_PORT', 5432),
-          decimalNumbers: true,
-        }
-        : {
-          filename: path.join(workingDir, env<string>('DATABASE_FILENAME', path.join('database', 'data.sqlite'))),
-        },
-    useNullAsDefault: true,
-  },
-})
+export default ({ env }: Strapi.Env): { connection: Knex.Config } => {
+  const client = env<Strapi.Db.Client>('DATABASE_CLIENT', 'sqlite')
+  return {
+    connection: {
+      client,
+      connection:
+        (client === 'postgres' || client === 'pg' || client === 'postgresql')
+          ? {
+            charset: 'utf8',
+            user: env('DATABASE_USERNAME', 'postgres'),
+            password: env('DATABASE_PASSWORD', ''),
+            database: env('DATABASE_NAME', name),
+            ssl: env.bool('DATABASE_SSL', false),
+            host: env('DATABASE_HOST', 'localhost'),
+            port: env.int('DATABASE_PORT', 5432),
+            decimalNumbers: true,
+          }
+          : {
+            filename: path.join(workingDir, env<string>('DATABASE_FILENAME', path.join('database', 'data.sqlite'))),
+          },
+      useNullAsDefault: true,
+    },
+  }
+}

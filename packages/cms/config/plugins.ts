@@ -8,6 +8,9 @@ export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
       shadowCRUD: true,
       subscriptions: false,
       playgroundAlways: env('NODE_ENV', 'development') === 'development',
+      apolloServer: {
+        cache: 'bounced',
+      },
     },
   },
   'users-permissions': {
@@ -31,7 +34,7 @@ export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
     },
   },
   'email': {
-    enabled: true,
+    enabled: !!env('SMTP_HOST') && !!env('SMTP_PORT'),
     config: {
       provider: 'nodemailer',
       providerOptions: {

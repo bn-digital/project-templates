@@ -1,5 +1,5 @@
 import { generateSecret } from './'
-import * as tasks from './cron'
+import tasks from './cron'
 
 export default ({ env }: Strapi.Env) => ({
   host: env('HOST', '0.0.0.0'),
