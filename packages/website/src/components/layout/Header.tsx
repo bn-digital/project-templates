@@ -11,8 +11,22 @@ const BurgerMenu: FC = () => {
   return <UnorderedListOutlined onClick={burger.toggle} />
 }
 
-const Header: FC<{ renderMenu: FC }> = ({ renderMenu: MenuComponent }) => {
+const LanguageMenu: FC = () => {
   const { locale, setLocale } = useLocale()
+
+  return (
+    <Select
+      defaultValue={locale}
+      options={[
+        { value: 'en', label: 'English' },
+        { value: 'es', label: 'Español' },
+      ]}
+      onSelect={setLocale}
+    />
+  )
+}
+
+const Header: FC<{ renderMenu: FC }> = ({ renderMenu: HorizontalMenu }) => {
   const { isMobile } = useBreakpoints()
   return (
     <Row align={'middle'} justify={'space-between'}>
@@ -22,17 +36,10 @@ const Header: FC<{ renderMenu: FC }> = ({ renderMenu: MenuComponent }) => {
       <Col span={20}>
         <Row justify={'end'} wrap={false} align={'middle'}>
           <Col xs={0} sm={0} md={0} lg={22} xl={22} xxl={22}>
-            <MenuComponent />
+            <HorizontalMenu />
           </Col>
           <Col xs={0} sm={0} md={0} lg={2} xl={2} xxl={2}>
-            <Select
-              defaultValue={locale}
-              options={[
-                { value: 'en', label: 'English' },
-                { value: 'es', label: 'Español' },
-              ]}
-              onSelect={setLocale}
-            />
+            <LanguageMenu />
           </Col>
           <Col xs={1} sm={1} md={1} lg={0} xl={0} xxl={0}>
             {isMobile && <BurgerMenu />}

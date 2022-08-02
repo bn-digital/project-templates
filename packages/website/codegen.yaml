@@ -8,7 +8,7 @@ config:
   scalars:
     Date: string
     DateTime: Date
-    I18NLocaleCode: string | 'en' | 'es'
+    I18NLocaleCode: string | 'en' | 'es-ES'
     JSON: Record<string, any|any[]|string|number|boolean|null|undefined>
     Long: number
     Time: string

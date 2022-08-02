@@ -20,7 +20,8 @@ const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
     if (data?.translation?.data?.attributes) {
       const messagesData =
         locale !== defaultLocale
-          ? data?.translation.data.attributes.localizations?.data?.find(it => it?.attributes?.locale === locale)?.attributes?.entry
+          ? data?.translation.data.attributes.localizations?.data?.find(it => it?.attributes?.locale === locale)?.attributes?.entry ??
+            data?.translation.data.attributes.entry
           : data?.translation.data.attributes.entry
       return messagesData?.reduce(
         (all, one) => ({

@@ -16,7 +16,7 @@
   "proxy": "http://localhost:1337",
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "antd": "^4.22.2",
+    "antd": "^4.22.3",
     "classnames": "^2.3.1",
     "history": "^5.3.0",
     "react": "^18.2.0",
@@ -35,7 +35,6 @@
     "@bn-digital/vite": "^1.12.3",
     "@types/classnames": "^2.3.1",
     "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "typescript": "^4.7.4"
+    "@types/react-dom": "^18.0.6"
   }
 }
