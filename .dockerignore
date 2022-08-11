@@ -8,6 +8,7 @@
 **/build
 **/dist
 **/node_modules
+**/schema.graphqls
 .editorconfig
 .git
 .github

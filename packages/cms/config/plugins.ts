@@ -9,7 +9,7 @@ export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
       subscriptions: false,
       playgroundAlways: env('NODE_ENV', 'development') === 'development',
       apolloServer: {
-        cache: 'bounced',
+        cache: 'bounded',
       },
     },
   },

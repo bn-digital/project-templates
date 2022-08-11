@@ -2,7 +2,7 @@ import { name } from '../config'
 import { generateGraphqlSchema, getExtensionService, getSchemaExtension } from './graphql'
 
 export default {
-  register({ strapi }: { strapi: Strapi.Strapi }) {
+  register({ strapi }: Global) {
     strapi.log.info(`[strapi] Project name resolved as ${name}`)
     const extensionService = getExtensionService(strapi)
     // Disabling CUD operations for public-facing APIs
@@ -22,6 +22,8 @@ export default {
   },
 
   bootstrap({ strapi }: Global) {
-    generateGraphqlSchema(strapi)
+    if (process.env.NODE_ENV !== 'production') {
+      generateGraphqlSchema(strapi)
+    }
   },
 }

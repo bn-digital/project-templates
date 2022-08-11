@@ -6,62 +6,63 @@ volumes:
 services:
   traeffik:
     image: traefik:v2.8.1
-    container_name: traeffik
     command:
-      - '--certificatesresolvers.letsencrypt.acme.email=admin@$DOMAIN'
-      - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=http'
-      - '--certificatesresolvers.letsencrypt.acme.storage=acme.json'
-      - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
+      #      - '--certificatesresolvers.letsencrypt.acme.email=admin@$DOMAIN'
+      #      - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=http'
+      #      - '--certificatesresolvers.letsencrypt.acme.storage=acme.json'
+      #      - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
       - '--entrypoints.http.address=:80'
       - '--entrypoints.https.address=:443'
       - '--providers.docker.exposedbydefault=false'
       - '--providers.docker=true'
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+    #    volumes:
+    #      - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - '80:80'
       - '443:443'
 
   website:
-    container_name: website
-    build:
-      args:
-        api_url: $DOMAIN/graphql
-      target: website
-    image: website:${APP_VERSION:-latest}
+    #    build:
+    #      args:
+    #        api_url: $DOMAIN/graphql
+    #      target: website
+    image: ${DOCKER_REPOSITORY:-library}/website:${APP_VERSION:-latest}
     labels:
       traefik.enable: 'true'
       traefik.http.routers.website.entrypoints: 'http'
-      traefik.http.routers.website.rule: 'Host(`$DOMAIN`)'
-      traefik.http.routers.website.tls.certresolver: 'letsencrypt'
-      traefik.http.routers.website.tls.domains[0].main: '$DOMAIN'
-      traefik.http.routers.website.tls: 'true'
+      traefik.http.routers.website.rule: 'Host(`app.aws.bndigital.dev`)'
+  #      traefik.http.routers.website.tls.certresolver: 'letsencrypt'
+  #      traefik.http.routers.website.tls.domains[0].main: '$DOMAIN'
+  #      traefik.http.routers.website.tls: 'true'
 
   cms:
-    container_name: cms
-    build:
-      target: cms
-    image: cms:${APP_VERSION:-latest}
+    #    build:
+    #      target: cms
+    image: ${DOCKER_REPOSITORY:-library}/cms:${APP_VERSION:-latest}
     env_file:
       - .env
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_HOST: database
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: app
     labels:
       traefik.enable: 'true'
       traefik.http.routers.cms.entrypoints: 'http'
-      traefik.http.routers.cms.rule: 'Host(`$DOMAIN`) && PathPrefix(`/admin`,`/api`,`/connect`,`/config-sync`,`/comments`,`/content-manager`,`/content-type-builder`,`/graphql`,`/email`,`/email-designer`,`/i18n`,`/import-export-entities`,`/seo`,`/sitemap`,`/users-permissions`,`/upload`,`/uploads`)'
-      traefik.http.routers.cms.tls.certresolver: 'letsencrypt'
-      traefik.http.routers.cms.tls.domains[0].main: '$DOMAIN'
-      traefik.http.routers.cms.tls: 'true'
+      traefik.http.routers.cms.rule: 'Host(`app.aws.bndigital.dev`) && PathPrefix(`/admin`,`/api`,`/connect`,`/config-sync`,`/comments`,`/content-manager`,`/content-type-builder`,`/graphql`,`/email`,`/email-designer`,`/i18n`,`/import-export-entities`,`/seo`,`/sitemap`,`/users-permissions`,`/upload`,`/uploads`)'
+  #      traefik.http.routers.cms.tls.certresolver: 'letsencrypt'
+  #      traefik.http.routers.cms.tls.domains[0].main: '$DOMAIN'
+  #      traefik.http.routers.cms.tls: 'true'
 
   database:
-    container_name: database
     image: postgres:14.4
     env_file:
       - .env
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: app
+      POSTGRES_PASSWORD: password
     volumes:
       - database:/var/lib/postgresql
-      - ./packages/cms/database/dumps:/docker-entrypoint-initdb.d:ro
+#      - ./packages/cms/database/dumps:/docker-entrypoint-initdb.d:ro

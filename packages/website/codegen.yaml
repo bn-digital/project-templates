@@ -9,7 +9,7 @@ config:
     Date: string
     DateTime: Date
     I18NLocaleCode: string | 'en' | 'es-ES'
-    JSON: Record<string, any|any[]|string|number|boolean|null|undefined>
+    JSON: Record<string, any|any[]|string|number|boolean|null|undefined>|any[]
     Long: number
     Time: string
     Upload: unknown

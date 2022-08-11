@@ -28,3 +28,20 @@ jobs:
     needs: [ secrets ]
     uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
     secrets: inherit
+  test:
+    needs: [ deploy ]
+    runs-on: self-hosted
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+
+      - name: Install website dependencies
+        run: yarn
+
+      - name: Run website e2e tests
+        run: yarn test
+        working-directory: packages/website
+        env:
+          DOMAIN: ${{ github.repository }}.bndigital.dev
+
+

@@ -10,7 +10,6 @@ type TypedEnvFunction = Partial<{
   array<T = EnvVar>(key: string, defaultValue?: T[]): T[]
   json<T = { [key: string]: any }>(key: string, defaultValue?: T): T
 }>
-
 declare global {
   import { Strapi as StrapiInterface } from '@strapi/strapi'
 
@@ -26,5 +25,3 @@ declare global {
     }
   }
 }
-
-declare const strapi: Strapi

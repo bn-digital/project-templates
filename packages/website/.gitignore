@@ -1,1 +1,3 @@
 build
+cypress/videos
+cypress/screenshots

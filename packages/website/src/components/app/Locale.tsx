@@ -17,23 +17,28 @@ const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
   const [locale, setLocale] = useState<Locale>(defaultLocale)
   const { data, loading } = useTranslationsQuery()
   const messages = useMemo(() => {
+    let messagesData: Maybe<EntryFragment>[] = []
     if (data?.translation?.data?.attributes) {
-      const messagesData =
+      messagesData =
         locale !== defaultLocale
           ? data?.translation.data.attributes.localizations?.data?.find(it => it?.attributes?.locale === locale)?.attributes?.entry ??
             data?.translation.data.attributes.entry
           : data?.translation.data.attributes.entry
-      return messagesData?.reduce(
+    } else {
+      messagesData = []
+    }
+    return (
+      messagesData?.reduce(
         (all, one) => ({
           ...all,
           [one?.key as string]: one?.value as string,
         }),
         {},
-      )
-    }
+      ) ?? {}
+    )
   }, [data?.translation?.data?.attributes, locale])
 
-  if (!messages || loading) return null
+  if (loading) return null
 
   return (
     <Context.Provider value={{ locale, setLocale }}>
