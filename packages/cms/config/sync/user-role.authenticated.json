@@ -22,6 +22,9 @@
       "action": "api::translation.translation.find"
     },
     {
+      "action": "api::website.website.find"
+    },
+    {
       "action": "plugin::i18n.locales.listLocales"
     },
     {

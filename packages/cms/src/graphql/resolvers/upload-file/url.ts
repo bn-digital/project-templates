@@ -5,5 +5,5 @@ export default async (root: { url: string }): Promise<string> => {
   if (process.env.S3_PUBLIC_URL) {
     url = parse(`${process.env.S3_PUBLIC_URL}${url.pathname}`, true)
   }
-  return url.toString()
+  return url.href
 }

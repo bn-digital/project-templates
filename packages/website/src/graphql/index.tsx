@@ -99,6 +99,21 @@ export type MenuFragment = {
           url?: string | null
           title: string
           target?: EnumMenusmenuitemTarget | null
+          parent?: {
+            __typename?: 'MenusMenuItemEntityResponse'
+            data?: {
+              __typename?: 'MenusMenuItemEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'MenusMenuItem'
+                order?: number | null
+                createdAt?: Date | null
+                url?: string | null
+                title: string
+                target?: EnumMenusmenuitemTarget | null
+              } | null
+            } | null
+          } | null
         } | null
       }>
     } | null
@@ -245,7 +260,10 @@ export type LoginMutationVariables = Exact<{
   input: UsersPermissionsLoginInput
 }>
 
-export type LoginMutation = { __typename?: 'Mutation'; login: { __typename?: 'UsersPermissionsLoginPayload'; jwt?: string | null } }
+export type LoginMutation = {
+  __typename?: 'Mutation'
+  login: { __typename?: 'UsersPermissionsLoginPayload'; jwt?: string | null; user: { __typename?: 'UsersPermissionsMe'; username: string } }
+}
 
 export type RegisterMutationVariables = Exact<{
   input: UsersPermissionsRegisterInput
@@ -325,6 +343,21 @@ export type MenuQuery = {
               url?: string | null
               title: string
               target?: EnumMenusmenuitemTarget | null
+              parent?: {
+                __typename?: 'MenusMenuItemEntityResponse'
+                data?: {
+                  __typename?: 'MenusMenuItemEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'MenusMenuItem'
+                    order?: number | null
+                    createdAt?: Date | null
+                    url?: string | null
+                    title: string
+                    target?: EnumMenusmenuitemTarget | null
+                  } | null
+                } | null
+              } | null
             } | null
           }>
         } | null
@@ -578,6 +611,13 @@ export const MenuFragmentDoc = gql`
       items(sort: "order:ASC") {
         data {
           ...MenuItem
+          attributes {
+            parent {
+              data {
+                ...MenuItem
+              }
+            }
+          }
         }
       }
     }
@@ -761,6 +801,9 @@ export const LoginDocument = gql`
   mutation login($input: UsersPermissionsLoginInput!) {
     login(input: $input) {
       jwt
+      user {
+        username
+      }
     }
   }
 `

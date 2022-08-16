@@ -11,8 +11,8 @@ type Scalars = {
   Int: number
   Float: number
   DateTime: Date
-  I18NLocaleCode: string | 'en' | 'es'
-  JSON: Record<string, any | any[] | string | number | boolean | null | undefined>
+  I18NLocaleCode: string | 'en' | 'es-ES'
+  JSON: Record<string, any | any[] | string | number | boolean | null | undefined> | any[]
   Upload: unknown
 }
 
@@ -23,6 +23,7 @@ type BooleanFilterInput = {
   containsi?: InputMaybe<Scalars['Boolean']>
   endsWith?: InputMaybe<Scalars['Boolean']>
   eq?: InputMaybe<Scalars['Boolean']>
+  eqi?: InputMaybe<Scalars['Boolean']>
   gt?: InputMaybe<Scalars['Boolean']>
   gte?: InputMaybe<Scalars['Boolean']>
   in?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>
@@ -333,6 +334,7 @@ type DateTimeFilterInput = {
   containsi?: InputMaybe<Scalars['DateTime']>
   endsWith?: InputMaybe<Scalars['DateTime']>
   eq?: InputMaybe<Scalars['DateTime']>
+  eqi?: InputMaybe<Scalars['DateTime']>
   gt?: InputMaybe<Scalars['DateTime']>
   gte?: InputMaybe<Scalars['DateTime']>
   in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
@@ -418,6 +420,7 @@ type FloatFilterInput = {
   containsi?: InputMaybe<Scalars['Float']>
   endsWith?: InputMaybe<Scalars['Float']>
   eq?: InputMaybe<Scalars['Float']>
+  eqi?: InputMaybe<Scalars['Float']>
   gt?: InputMaybe<Scalars['Float']>
   gte?: InputMaybe<Scalars['Float']>
   in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
@@ -504,6 +507,7 @@ type IdFilterInput = {
   containsi?: InputMaybe<Scalars['ID']>
   endsWith?: InputMaybe<Scalars['ID']>
   eq?: InputMaybe<Scalars['ID']>
+  eqi?: InputMaybe<Scalars['ID']>
   gt?: InputMaybe<Scalars['ID']>
   gte?: InputMaybe<Scalars['ID']>
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
@@ -527,6 +531,7 @@ type IntFilterInput = {
   containsi?: InputMaybe<Scalars['Int']>
   endsWith?: InputMaybe<Scalars['Int']>
   eq?: InputMaybe<Scalars['Int']>
+  eqi?: InputMaybe<Scalars['Int']>
   gt?: InputMaybe<Scalars['Int']>
   gte?: InputMaybe<Scalars['Int']>
   in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
@@ -550,6 +555,7 @@ type JsonFilterInput = {
   containsi?: InputMaybe<Scalars['JSON']>
   endsWith?: InputMaybe<Scalars['JSON']>
   eq?: InputMaybe<Scalars['JSON']>
+  eqi?: InputMaybe<Scalars['JSON']>
   gt?: InputMaybe<Scalars['JSON']>
   gte?: InputMaybe<Scalars['JSON']>
   in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
@@ -1030,6 +1036,7 @@ type StringFilterInput = {
   containsi?: InputMaybe<Scalars['String']>
   endsWith?: InputMaybe<Scalars['String']>
   eq?: InputMaybe<Scalars['String']>
+  eqi?: InputMaybe<Scalars['String']>
   gt?: InputMaybe<Scalars['String']>
   gte?: InputMaybe<Scalars['String']>
   in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
@@ -1498,7 +1505,25 @@ type MenuFragment = {
     items?: {
       data: Array<{
         id?: string | null
-        attributes?: { order?: number | null; createdAt?: Date | null; url?: string | null; title: string; target?: EnumMenusmenuitemTarget | null } | null
+        attributes?: {
+          order?: number | null
+          createdAt?: Date | null
+          url?: string | null
+          title: string
+          target?: EnumMenusmenuitemTarget | null
+          parent?: {
+            data?: {
+              id?: string | null
+              attributes?: {
+                order?: number | null
+                createdAt?: Date | null
+                url?: string | null
+                title: string
+                target?: EnumMenusmenuitemTarget | null
+              } | null
+            } | null
+          } | null
+        } | null
       }>
     } | null
   } | null
@@ -1599,7 +1624,7 @@ type LoginMutationVariables = Exact<{
   input: UsersPermissionsLoginInput
 }>
 
-type LoginMutation = { login: { jwt?: string | null } }
+type LoginMutation = { login: { jwt?: string | null; user: { username: string } } }
 
 type RegisterMutationVariables = Exact<{
   input: UsersPermissionsRegisterInput
@@ -1651,7 +1676,25 @@ type MenuQuery = {
         items?: {
           data: Array<{
             id?: string | null
-            attributes?: { order?: number | null; createdAt?: Date | null; url?: string | null; title: string; target?: EnumMenusmenuitemTarget | null } | null
+            attributes?: {
+              order?: number | null
+              createdAt?: Date | null
+              url?: string | null
+              title: string
+              target?: EnumMenusmenuitemTarget | null
+              parent?: {
+                data?: {
+                  id?: string | null
+                  attributes?: {
+                    order?: number | null
+                    createdAt?: Date | null
+                    url?: string | null
+                    title: string
+                    target?: EnumMenusmenuitemTarget | null
+                  } | null
+                } | null
+              } | null
+            } | null
           }>
         } | null
       } | null

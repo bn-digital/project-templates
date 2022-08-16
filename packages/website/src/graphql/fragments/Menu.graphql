@@ -5,6 +5,13 @@ fragment Menu on MenusMenuEntity {
     items(sort: "order:ASC") {
       data {
         ...MenuItem
+        attributes {
+          parent {
+            data {
+              ...MenuItem
+            }
+          }
+        }
       }
     }
   }

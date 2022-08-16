@@ -1,4 +1,4 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { createContext, FC, PropsWithChildren, ReactNode, useContext } from 'react'
 import { DataBrowserRouter, ScrollRestoration } from 'react-router-dom'
 import { useLocalStorage, useToggle } from 'react-use'
@@ -35,8 +35,10 @@ const ContextProvider: FC<PropsWithChildren<Partial<ReactNode>>> = ({ children }
 }
 
 const client = new ApolloClient({
-  uri: import.meta.env.WEBSITE_API_URL ?? '/graphql',
-  headers: { Authorization: localStorage.getItem('jwtToken') ? `Bearer ${localStorage.getItem('jwtToken')}` : '' },
+  link: createHttpLink({
+    uri: import.meta.env.WEBSITE_API_URL ?? '/graphql',
+    headers: { Authorization: localStorage.getItem('jwtToken') ? localStorage.getItem('jwtToken') : '' },
+  }),
   connectToDevTools: import.meta.env.DEV,
   queryDeduplication: true,
   cache: new InMemoryCache({
