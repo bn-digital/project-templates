@@ -2,7 +2,7 @@
   "extends": "@strapi/typescript-utils/tsconfigs/server.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "."
+    "rootDir": ".",
     "resolveJsonModule": true
   },
   "include": [
