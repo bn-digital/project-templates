@@ -41,11 +41,10 @@ jobs:
       - name: Run tests
         uses: docker/build-push-action@v3
         env:
-          APP_ENV: staging
           APP_NAME: ${{ github.event.repository.name }}
         with:
           context: .
           push: false
           target: test
           tags: ${{ github.event.repository.name }}/website:latest
-          build-args: name=${{ env.APP_NAME }},env=${{ env.APP_ENV }}
+          build-args: name=${{ env.APP_NAME }}

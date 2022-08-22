@@ -4,15 +4,16 @@
 
 ## Github Workflows
 
-[![Continuous Integration](https://github.com/bn-digital/project-templates/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/bn-digital/project-templates/actions/workflows/continuous-integration.yml)
-[![Continuous Testing](https://github.com/bn-digital/project-templates/actions/workflows/continuous-testing.yml/badge.svg)](https://github.com/bn-digital/project-templates/actions/workflows/continuous-testing.yml)
-[![Continuous Deployment](https://github.com/bn-digital/project-templates/actions/workflows/continuous-deployment.yml/badge.svg)](https://github.com/bn-digital/project-templates/actions/workflows/continuous-deployment.yml)
-[![Continuous Delivery](https://github.com/bn-digital/project-templates/actions/workflows/continuous-delivery.yml/badge.svg)](https://github.com/bn-digital/project-templates/actions/workflows/continuous-delivery.yml)
+[![Integration](https://github.com/bn-digital/project-templates/actions/workflows/integration.yml/badge.svg)](https://github.com/bn-digital/project-templates/actions/workflows/integration.yml)
+[![Deployment](https://github.com/bn-digital/project-templates/actions/workflows/deployment.yml/badge.svg)](https://github.com/bn-digital/project-templates/actions/workflows/deployment.yml)
+[![Delivery](https://github.com/bn-digital/project-templates/actions/workflows/delivery.yml/badge.svg)](https://github.com/bn-digital/project-templates/actions/workflows/delivery.yml)
+[![Maintenance](https://github.com/bn-digital/project-templates/actions/workflows/maintenance.yml/badge.svg)](https://github.com/bn-digital/project-templates/actions/workflows/maintenance.yml)
 
 ## Table of contents
 
 - [Build and run as Docker container](docs/docker.md)
-- [Environment Variables](docs/env-variables.md)
+- [Backend storage](docs/storage.md)
+- [Environment variables](docs/env-variables.md)
 
 ### References
 
@@ -24,5 +25,6 @@
 - [skaffold](https://github.com/helm/helm)
 - [kubectl](https://github.com/helm/helm)
 - [helm](https://github.com/helm/helm)
+- [helmfile](https://github.com/helmfile/helmfile)
 - [doctl](https://github.com/digitalocean/doctl)
 - [terraform](https://github.com/terraform/terraform)
