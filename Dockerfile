@@ -14,6 +14,8 @@ RUN yarn build
 ARG version=2.4.0
 FROM dcr.bndigital.dev/library/yarn:${version} AS test
 COPY --from=build --chown=node /usr/local/src .
+ENV APP_ENV=$APP_ENV \
+    APP_NAME=$APP_NAME
 RUN yarn test
 
 
