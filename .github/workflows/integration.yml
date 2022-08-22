@@ -6,7 +6,7 @@ on:
       - main
       - master
     paths:
-      - '.github/workflows/continuous-integration.yml'
+      - '.github/workflows/integration.yml'
       - 'skaffold.yaml'
       - 'helmfile.*'
       - '**/*/.env.*'
