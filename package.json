@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "project-templates",
   "description": "Includes all required tools and packages to bootstrap full-stack app development using NodeJS stack",
   "version": "1.0.0",
   "private": true,
