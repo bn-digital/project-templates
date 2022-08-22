@@ -1,5 +1,5 @@
 {
-  "name": "@app/cms",
+  "name": "@project-templates/cms",
   "private": true,
   "description": "CMS & API provided by Strapi",
   "scripts": {

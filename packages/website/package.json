@@ -1,5 +1,5 @@
 {
-  "name": "@app/website",
+  "name": "@project-templates/website",
   "private": true,
   "scripts": {
     "vite": "node_modules/.bin/vite",
