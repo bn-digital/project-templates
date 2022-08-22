@@ -40,7 +40,7 @@
     "uuid": "^8.3.2"
   },
   "strapi": {
-    "id": "fdaea281-8950-4f22-a7cf-8d27600eb545"
+    "id": "68be1d7d-5510-45e4-a7fb-a93f6bb691f2"
   },
   "devDependencies": {
     "@bn-digital/eslint-config": "^1.20.7",
