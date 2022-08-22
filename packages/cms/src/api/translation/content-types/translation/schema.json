@@ -11,11 +11,6 @@
     "populateCreatorFields": false,
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
   "attributes": {
     "entry": {
       "type": "component",

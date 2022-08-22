@@ -33,7 +33,7 @@ export default ({ env }: Strapi.Env): { connection: Knex.Config } => {
     connection: {
       client,
       connection:
-        (client === 'postgres' || client === 'pg' || client === 'postgresql')
+        (client === 'postgres' || client === 'mysql')
           ? {
             charset: 'utf8',
             user: env('DATABASE_USERNAME', 'postgres'),

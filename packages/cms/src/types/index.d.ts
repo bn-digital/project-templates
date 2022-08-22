@@ -13,7 +13,7 @@ type TypedEnvFunction = Partial<{
 declare global {
   import { Strapi as StrapiInterface } from '@strapi/strapi'
 
-  interface Strapi extends StrapiInterface {
+  interface Strapi extends Omit<StrapiInterface, 'fs' | 'log'> {
     fs: {
       appendFile(path: string, content: Buffer | string): void
       removeAppFile(path: string): void
@@ -24,4 +24,6 @@ declare global {
       [key in LogLevel]: (...args: unknown[]) => void
     }
   }
+
+  const strapi: Strapi
 }

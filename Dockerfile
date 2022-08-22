@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:latest
 
-ARG version=latest
+ARG version=2.4.0
 FROM dcr.bndigital.dev/library/yarn:${version} AS build
 COPY .yarn .yarn
 COPY package.json yarn.lock .yarnrc.yml ./
@@ -10,6 +10,11 @@ COPY packages/website/package.json packages/website/package.json
 RUN yarn
 COPY packages packages
 RUN yarn build
+
+ARG version=2.4.0
+FROM dcr.bndigital.dev/library/yarn:${version} AS test
+COPY --from=build --chown=node /usr/local/src .
+RUN yarn test
 
 
 FROM dcr.bndigital.dev/library/nodejs:${version} AS website

@@ -2204,6 +2204,92 @@
       "actions": {},
       "lifecycles": {}
     },
+    "api::email.email": {
+      "kind": "collectionType",
+      "collectionName": "emails",
+      "info": {
+        "singularName": "email",
+        "pluralName": "emails",
+        "displayName": "Email"
+      },
+      "options": {
+        "draftAndPublish": true
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "to": {
+          "type": "email",
+          "required": true
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "publishedAt": {
+          "type": "datetime",
+          "configurable": false,
+          "writable": true,
+          "visible": false
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "__schema__": {
+        "collectionName": "emails",
+        "info": {
+          "singularName": "email",
+          "pluralName": "emails",
+          "displayName": "Email"
+        },
+        "options": {
+          "draftAndPublish": true
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "to": {
+            "type": "email",
+            "required": true
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "email",
+      "connection": "default",
+      "uid": "api::email.email",
+      "apiName": "email",
+      "globalId": "Email",
+      "actions": {},
+      "lifecycles": {}
+    },
     "api::post.post": {
       "kind": "collectionType",
       "collectionName": "posts",
@@ -2367,11 +2453,6 @@
         "populateCreatorFields": false,
         "draftAndPublish": true
       },
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "attributes": {
         "entry": {
           "type": "component",
@@ -2416,22 +2497,6 @@
           "useJoinTable": false,
           "private": true
         },
-        "localizations": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::translation.translation"
-        },
-        "locale": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "string"
-        },
         "sitemap_exclude": {
           "writable": true,
           "private": true,
@@ -2452,11 +2517,6 @@
         "options": {
           "populateCreatorFields": false,
           "draftAndPublish": true
-        },
-        "pluginOptions": {
-          "i18n": {
-            "localized": true
-          }
         },
         "attributes": {
           "entry": {

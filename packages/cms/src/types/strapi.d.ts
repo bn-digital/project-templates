@@ -3,7 +3,7 @@ namespace Strapi {
   type Env = { env: EnvFunction & TypedEnvFunction }
 
   namespace Db {
-    type Client = 'sqlite' | 'pg' | 'postgres' | 'postgresql' | 'mysql'
+    type Client = 'sqlite' | 'postgres' | 'mysql'
   }
 
   namespace Graphql {
