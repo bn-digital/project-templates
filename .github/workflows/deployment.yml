@@ -40,11 +40,9 @@ jobs:
 
       - name: Run tests
         uses: docker/build-push-action@v3
-        env:
-          APP_NAME: ${{ github.event.repository.name }}
         with:
           context: .
           push: false
           target: test
           tags: ${{ github.event.repository.name }}/website:latest
-          build-args: name=${{ env.APP_NAME }}
+          build-args: name=${{ github.event.repository.name }}
