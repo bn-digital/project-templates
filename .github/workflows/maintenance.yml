@@ -1,0 +1,16 @@
+name: Maintenance
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  github:
+    name: Cleanup stale branches
+    runs-on: self-hosted
+    steps:
+      - name: Stale Branches
+        uses: crs-k/stale-branches@v2.0.15
+        with:
+          days-before-stale: 7
+          days-before-delete: 14
+          compare-branches: 'save'

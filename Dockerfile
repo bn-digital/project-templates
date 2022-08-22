@@ -11,13 +11,19 @@ RUN yarn
 COPY packages packages
 RUN yarn build
 
-ARG version=2.4.0
 FROM dcr.bndigital.dev/library/yarn:${version} AS test
-COPY --from=build --chown=node /usr/local/src .
-ENV APP_ENV=$APP_ENV \
-    APP_NAME=$APP_NAME
-RUN yarn test
-
+ARG env=staging
+ARG name
+ENV APP_ENV=${env} \
+    APP_NAME=${name}
+COPY .yarn .yarn
+COPY package.json yarn.lock .yarnrc.yml ./
+RUN yarn
+COPY packages/website/package.json packages/website/package.json
+RUN yarn
+WORKDIR /usr/local/src/packages/website
+COPY packages/website .
+RUN yarn run test
 
 FROM dcr.bndigital.dev/library/nodejs:${version} AS website
 COPY --from=build --chown=node /usr/local/src/packages/website/build .
