@@ -276,7 +276,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@app/cms@workspace:packages/cms"
   dependencies:
-    "@bn-digital/eslint-config": "npm:^1.20.7"
     "@bn-digital/vault-env": "npm:^1.4.0"
     "@strapi/plugin-content-manager": "npm:4.3.2"
     "@strapi/plugin-content-type-builder": "npm:4.3.2"
@@ -300,6 +299,7 @@ __metadata:
     strapi-plugin-menus: "npm:^1.0.2"
     strapi-plugin-sitemap: "npm:^2.0.8"
     strapi-plugin-wysiwyg-tui-editor: "npm:^4.0.1"
+    typescript: "npm:^4.7.4"
     uuid: "npm:^8.3.2"
   languageName: unknown
   linkType: soft
@@ -326,6 +326,7 @@ __metadata:
     react-router: "npm:^6.4.0-pre.13"
     react-router-dom: "npm:^6.4.0-pre.13"
     react-use: "npm:^17.4.0"
+    typescript: "npm:^4.7.4"
   languageName: unknown
   linkType: soft
 
@@ -28839,7 +28840,7 @@ __metadata:
 
 "typescript@patch:typescript@npm%3A4.6.2#optional!builtin<compat/typescript>":
   version: 4.6.2
-  resolution: "typescript@patch:typescript@npm%3A4.6.2#optional!builtin<compat/typescript>::version=4.6.2&hash=f456af"
+  resolution: "typescript@patch:typescript@npm%3A4.6.2#optional!builtin<compat/typescript>::version=4.6.2&hash=a1c5e5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
@@ -28849,7 +28850,7 @@ __metadata:
 
 "typescript@patch:typescript@npm%3A^4.6.4#optional!builtin<compat/typescript>":
   version: 4.7.2
-  resolution: "typescript@patch:typescript@npm%3A4.7.2#optional!builtin<compat/typescript>::version=4.7.2&hash=f456af"
+  resolution: "typescript@patch:typescript@npm%3A4.7.2#optional!builtin<compat/typescript>::version=4.7.2&hash=a1c5e5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
@@ -28859,7 +28860,7 @@ __metadata:
 
 "typescript@patch:typescript@npm%3A^4.7.4#optional!builtin<compat/typescript>":
   version: 4.7.4
-  resolution: "typescript@patch:typescript@npm%3A4.7.4#optional!builtin<compat/typescript>::version=4.7.4&hash=f456af"
+  resolution: "typescript@patch:typescript@npm%3A4.7.4#optional!builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
