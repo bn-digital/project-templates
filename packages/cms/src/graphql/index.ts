@@ -1,6 +1,7 @@
 import { printSchema } from 'graphql'
 
-import uploadFileUrl from './resolvers/upload-file/url'
+import { url } from './resolvers/upload-file'
+import { changePassword, me } from './resolvers/user'
 
 function generateGraphqlSchema(strapi: Strapi.Strapi): void {
   const schema = getContentApiService(strapi).buildSchema()
@@ -20,14 +21,58 @@ function getContentApiService(strapi: Strapi.Strapi) {
   return getGraphqlPlugin(strapi).service<Strapi.Graphql.ContentApiService>('content-api')
 }
 
-function getSchemaExtension(): () => Strapi.Graphql.SchemaExtension {
-  return () => ({
-    resolvers: {
-      UploadFile: {
-        url: uploadFileUrl,
+function getSchemaExtension(): Strapi.Graphql.ExtensionCallback {
+  return ({ nexus }) => {
+    return {
+      types: [
+        nexus.extendType<'Query'>({
+          type: 'Query',
+          definition: t => {
+            t.field('me', {
+              type: 'UsersPermissionsUser',
+            })
+          },
+        }),
+        nexus.extendType<'Mutation'>({
+          type: 'Mutation',
+          definition: t => {
+            t.field('changePassword', {
+              type: 'Boolean',
+              args: {
+                input: nexus.arg({ type: 'ChangePasswordInput' }),
+              },
+            })
+          },
+        }),
+        nexus.extendType<'UsersPermissionsUser'>({
+          type: 'UsersPermissionsUser',
+          definition: t => {
+            t.field('id', {
+              type: 'ID',
+            })
+          },
+        }),
+        nexus.inputObjectType<'ChangePasswordInput'>({
+          name: 'ChangePasswordInput',
+          definition: t => {
+            t.nonNull.string('oldPassword')
+            t.nonNull.string('newPassword')
+          },
+        }),
+      ],
+      resolvers: {
+        Query: {
+          me,
+        },
+        Mutation: {
+          changePassword,
+        },
+        UploadFile: {
+          url,
+        },
       },
-    },
-  })
+    }
+  }
 }
 
 export { generateGraphqlSchema, getExtensionService, getSchemaExtension }

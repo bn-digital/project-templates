@@ -4,11 +4,13 @@ documents:
 config:
   namingConvention:
     transformUnderscore: true
-  inlineFragmentTypes: inline
+  maybeValue: T | null | undefined
+  inputMaybeValue: T | null | undefined
+  useTypeImports: true
   scalars:
     Date: string
     DateTime: Date
-    I18NLocaleCode: string | 'en' | 'es-ES'
+    I18NLocaleCode: string | 'en' |
     JSON: Record<string, any|any[]|string|number|boolean|null|undefined>|any[]
     Long: number
     Time: string
@@ -18,15 +20,15 @@ generates:
     plugins:
       - typescript-operations
       - fragment-matcher:
-          apolloClientVersion: 3
           useExplicitTyping: true
       - typescript-react-apollo:
-          reactApolloVersion: 3
+          addDocBlocks: true
+          withComponent: true
+          withHooks: true
           withMutationFn: false
           withRefetchFn: false
           withResultType: true
-          withComponent: true
-          withHooks: true
+      - typescript-apollo-client-helpers
   src/types/graphql.d.ts:
     config:
       noExport: true

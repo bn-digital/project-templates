@@ -4,8 +4,8 @@ spec:
     - name: cms
       environment_slug: node-js
       source_dir: /
-      build_command: yarn workspace @app/cms run build
-      run_command: yarn workspace @app/cms run serve
+      build_command: yarn workspace @project-templates/cms run build
+      run_command: yarn workspace @project-templates/cms run serve
       github:
         repo: bn-digital/project-templates
         branch: latest
@@ -18,8 +18,8 @@ spec:
     - name: website
       source_dir: /
       environment_slug: node-js
-      build_command: yarn workspace @app/website run build
-      run_command: yarn workspace @app/website run serve
+      build_command: yarn workspace @project-templates/website run build
+      run_command: yarn workspace @project-templates/website run serve
       github:
         repo: bn-digital/project-templates
         branch: latest

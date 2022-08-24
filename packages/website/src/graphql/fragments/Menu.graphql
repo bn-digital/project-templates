@@ -11,6 +11,24 @@ fragment Menu on MenusMenuEntity {
               ...MenuItem
             }
           }
+          root_menu {
+            data {
+              attributes {
+                items {
+                  data {
+                    ...MenuItem
+                  }
+                }
+              }
+            }
+          }
+          children {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
         }
       }
     }

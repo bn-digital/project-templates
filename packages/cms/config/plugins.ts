@@ -1,6 +1,12 @@
 import { domain, generateSecret, name } from './index'
 
 export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
+  'import-export-entries': {
+    enabled: true,
+    config: {
+      serverPublicHostname: env('S3_PUBLIC_URL', `https://${env('S3_BUCKET')}.${env('S3_ENDPOINT')}`),
+    },
+  },
   'graphql': {
     enabled: true,
     config: {

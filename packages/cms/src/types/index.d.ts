@@ -10,20 +10,22 @@ type TypedEnvFunction = Partial<{
   array<T = EnvVar>(key: string, defaultValue?: T[]): T[]
   json<T = { [key: string]: any }>(key: string, defaultValue?: T): T
 }>
-declare global {
-  import { Strapi as StrapiInterface } from '@strapi/strapi'
+type EntityUID = Strapi.SingleTypeUIDs | Strapi.CollectionTypeUIDs
 
-  interface Strapi extends Omit<StrapiInterface, 'fs' | 'log'> {
-    fs: {
-      appendFile(path: string, content: Buffer | string): void
-      removeAppFile(path: string): void
-      writePluginFile(path: string, content: Buffer | string): void
-      writeAppFile(path: string, content: Buffer | string): void
-    }
-    log: {
-      [key in LogLevel]: (...args: unknown[]) => void
-    }
+interface Strapi extends Omit<Strapi.Strapi, 'fs' | 'log'> {
+  fs: {
+    appendFile(path: string, content: Buffer | string): void
+    removeAppFile(path: string): void
+    writePluginFile(path: string, content: Buffer | string): void
+    writeAppFile(path: string, content: Buffer | string): void
   }
+  log: {
+    [key in LogLevel]: (...args: unknown[]) => void
+  }
+}
 
-  const strapi: Strapi
+const strapi: Strapi
+
+interface Global {
+  strapi: Strapi
 }

@@ -1,30 +1,30 @@
 import {
-  BooleanAttribute,
   CollectionTypeSchema,
-  ComponentAttribute,
-  ComponentSchema,
-  DateTimeAttribute,
-  DecimalAttribute,
+  StringAttribute,
+  RequiredAttribute,
+  SetMinMaxLength,
+  JSONAttribute,
   DefaultTo,
-  DynamicZoneAttribute,
+  RelationAttribute,
+  DateTimeAttribute,
+  PrivateAttribute,
   EmailAttribute,
+  UniqueAttribute,
+  PasswordAttribute,
+  BooleanAttribute,
   EnumerationAttribute,
   IntegerAttribute,
-  JSONAttribute,
-  MediaAttribute,
-  PasswordAttribute,
-  PrivateAttribute,
-  RelationAttribute,
-  RequiredAttribute,
-  RichTextAttribute,
+  DecimalAttribute,
   SetMinMax,
-  SetMinMaxLength,
-  SetPluginOptions,
-  SingleTypeSchema,
-  StringAttribute,
   TextAttribute,
   UIDAttribute,
-  UniqueAttribute,
+  ComponentAttribute,
+  RichTextAttribute,
+  MediaAttribute,
+  SingleTypeSchema,
+  SetPluginOptions,
+  DynamicZoneAttribute,
+  ComponentSchema,
 } from '@strapi/strapi'
 
 export interface AdminPermission extends CollectionTypeSchema {
@@ -560,6 +560,26 @@ export interface ApiContactContact extends CollectionTypeSchema {
   }
 }
 
+export interface ApiEmailEmail extends CollectionTypeSchema {
+  info: {
+    singularName: 'email'
+    pluralName: 'emails'
+    displayName: 'Email'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    to: EmailAttribute & RequiredAttribute
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<'api::email.email', 'oneToOne', 'admin::user'> & PrivateAttribute
+    updatedBy: RelationAttribute<'api::email.email', 'oneToOne', 'admin::user'> & PrivateAttribute
+    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
+  }
+}
+
 export interface ApiPostPost extends CollectionTypeSchema {
   info: {
     singularName: 'post'
@@ -599,11 +619,6 @@ export interface ApiTranslationTranslation extends SingleTypeSchema {
     populateCreatorFields: false
     draftAndPublish: true
   }
-  pluginOptions: {
-    i18n: {
-      localized: true
-    }
-  }
   attributes: {
     entry: ComponentAttribute<'data.entry', true> &
       RequiredAttribute &
@@ -617,8 +632,6 @@ export interface ApiTranslationTranslation extends SingleTypeSchema {
     publishedAt: DateTimeAttribute
     createdBy: RelationAttribute<'api::translation.translation', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'api::translation.translation', 'oneToOne', 'admin::user'> & PrivateAttribute
-    localizations: RelationAttribute<'api::translation.translation', 'oneToMany', 'api::translation.translation'>
-    locale: StringAttribute
     sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
@@ -877,6 +890,7 @@ declare global {
       'plugin::menus.menu-item': PluginMenusMenuItem
       'api::category.category': ApiCategoryCategory
       'api::contact.contact': ApiContactContact
+      'api::email.email': ApiEmailEmail
       'api::post.post': ApiPostPost
       'api::translation.translation': ApiTranslationTranslation
       'api::website.website': ApiWebsiteWebsite
