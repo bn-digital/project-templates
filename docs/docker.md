@@ -60,7 +60,8 @@ yum install docker-ce docker-ce-cli containerd.io
 
 #### Install on Linux
 
-You can install Compose V2 by downloading the appropriate binary for your system from the project release page and copying it into $HOME/.docker/cli-plugins as docker-compose.
+You can install Compose V2 by downloading the appropriate binary for your system from the project release page and copying it into $HOME/.docker/cli-plugins as
+docker-compose.
 
 Run the following command to download the current stable release of Docker Compose:
 
@@ -77,20 +78,19 @@ docker compose version
 ## Build
 
 ### Option A: Docker
+
 Execute locally from each package working directory:
 
 **For CMS**:
 
 ```shell
-cd packages/cms
-docker build -t cms:latest .
+docker build --tag=cms:latest --target=cms .
 ```
 
 **For Website**:
 
 ```shell
-cd packages/website
-docker build -t website:latest .
+docker build --tag=website:latest --target=website .
 ```
 
 ---
@@ -124,6 +124,7 @@ docker compose up -d
 ### Kubernetes
 
 #### Prerequisites:
+
 - [Helm](https://github.com/helm/helm)
 - [Helmfile](https://github.com/helmfile/helmfile)
 

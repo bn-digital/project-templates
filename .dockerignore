@@ -10,13 +10,16 @@
 **/node_modules
 **/schema.graphqls
 .editorconfig
+.do
 .git
 .github
 .gradle
 .graphqlconfig
 .idea
+docs
 gradle
 gradlew*
 helmfile.*
 packages/cloud
-sonar-project.properties
+*-tests.yaml
+docker-compose.yml
