@@ -16,5 +16,4 @@ variable "environment" {
 
 locals {
   project = basename(dirname("${path.cwd}/../../"))
-  domain  = var.domain == "" ? "${local.project}.bndigital.ai" : var.domain
 }
