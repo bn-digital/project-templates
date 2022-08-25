@@ -33,7 +33,9 @@
   },
   "include": [
     "./src",
+    "./package.json",
     "cypress",
+    "./cypress.config.ts",
     "./vite.config.ts"
   ]
 }
