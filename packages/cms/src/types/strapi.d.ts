@@ -1,4 +1,5 @@
 namespace Strapi {
+  import { GenericService } from '@strapi/strapi'
   type Env = { env: EnvFunction & TypedEnvFunction }
 
   namespace Db {
@@ -19,7 +20,7 @@ namespace Strapi {
 
     type ExtensionCallback = ({ nexus }: { nexus: typeof Nexus }) => Strapi.Graphql.SchemaExtension
 
-    type ExtensionService = {
+    type ExtensionService = GenericService & {
       use(schemaExtensionCallback: ExtensionCallback): void
       shadowCRUD(entityName: EntityUID): {
         disableMutations()
@@ -44,7 +45,7 @@ namespace Strapi {
       newPassword: string
     }
     type AuthContext = { user: UserEntity }
-    type UserService = {
+    type UserService = GenericService & {
       validatePassword(hash: string, newPassword: string): Promise<boolean>
       edit(id: string, params: Partial<UserEntity>): Promise<any>
       fetch(id: string, params?: { populate?: (keyof UserEntity | string)[] | string }): Promise<UserEntity | null>
