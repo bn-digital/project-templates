@@ -48,7 +48,7 @@
     "@bn-digital/stylelint-config": "^1.14.6",
     "@types/node": "^18.7.13",
     "lint-staged": "^13.0.3",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.2"
   },
   "scripts": {
     "prettier": "node_modules/.bin/prettier",
@@ -61,5 +61,5 @@
     "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src/**/*.{ts,tsx} && yarn stylelint --fix packages/*/src/**/*.less",
     "lint": "yarn prettier --check packages/*/src && yarn eslint packages/*/src/**/*.{ts,tsx} && yarn stylelint packages/*/src/**/*.less"
   },
-  "packageManager": "yarn@3.2.2"
+  "packageManager": "yarn@3.2.3"
 }
