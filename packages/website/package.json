@@ -4,11 +4,10 @@
   "scripts": {
     "vite": "node_modules/.bin/vite",
     "graphql-codegen": "node_modules/.bin/graphql-codegen",
-    "generate": "yarn graphql-codegen --watch",
     "env": "yarn vault-env",
     "build": "yarn vite build",
     "test": "cypress open --e2e --browser=chrome",
-    "serve": "yarn dlx serve --signle build",
+    "serve": "yarn dlx serve --single build",
     "start": "yarn vite serve"
   },
   "eslintConfig": {
@@ -29,10 +28,10 @@
     "react-use": "^17.4.0"
   },
   "devDependencies": {
-    "@bn-digital/graphql-config": "^1.2.2",
+    "@bn-digital/graphql-config": "^2.0.0",
     "@bn-digital/sdk": "^1.3.0",
     "@bn-digital/vault-env": "^1.4.0",
-    "@bn-digital/vite": "^1.12.11",
+    "@bn-digital/vite": "^2.0.2",
     "@types/cypress-dotenv": "^2.0.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",

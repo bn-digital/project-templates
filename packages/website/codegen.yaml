@@ -6,11 +6,11 @@ config:
     transformUnderscore: true
   maybeValue: T | null | undefined
   inputMaybeValue: T | null | undefined
-  useTypeImports: true
+  experimentalFragmentVariables: true
   scalars:
     Date: string
     DateTime: Date
-    I18NLocaleCode: string | 'en' |
+    I18NLocaleCode: string | 'en'
     JSON: Record<string, any|any[]|string|number|boolean|null|undefined>|any[]
     Long: number
     Time: string
@@ -18,17 +18,12 @@ config:
 generates:
   src/graphql/index.tsx:
     plugins:
-      - typescript-operations
       - fragment-matcher:
           useExplicitTyping: true
       - typescript-react-apollo:
-          addDocBlocks: true
+          addDocBlocks: false
           withComponent: true
           withHooks: true
-          withMutationFn: false
-          withRefetchFn: false
-          withResultType: true
-      - typescript-apollo-client-helpers
   src/types/graphql.d.ts:
     config:
       noExport: true

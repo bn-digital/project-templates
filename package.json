@@ -42,10 +42,10 @@
     "@graphql-tools/merge": "8.3.0"
   },
   "devDependencies": {
-    "@bn-digital/commitlint-config": "^1.3.1",
-    "@bn-digital/eslint-config": "^1.20.8",
-    "@bn-digital/prettier-config": "^1.15.2",
-    "@bn-digital/stylelint-config": "^1.14.6",
+    "@bn-digital/commitlint-config": "^2.0.0",
+    "@bn-digital/eslint-config": "^2.0.0",
+    "@bn-digital/prettier-config": "^2.0.0",
+    "@bn-digital/stylelint-config": "^2.0.0",
     "@types/node": "^18.7.13",
     "lint-staged": "^13.0.3",
     "typescript": "^4.8.2"
@@ -54,7 +54,6 @@
     "prettier": "node_modules/.bin/prettier",
     "stylelint": "node_modules/.bin/stylelint",
     "eslint": "node_modules/.bin/eslint",
-    "start:generate": "yarn workspaces foreach run generate",
     "start:cms": "yarn workspace @project-templates/cms run start",
     "start:website": "yarn workspace @project-templates/website run start",
     "build": "yarn workspaces foreach run build",

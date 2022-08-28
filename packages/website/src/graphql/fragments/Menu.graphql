@@ -22,13 +22,6 @@ fragment Menu on MenusMenuEntity {
               }
             }
           }
-          children {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
         }
       }
     }
