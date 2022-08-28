@@ -4,11 +4,10 @@
   "scripts": {
     "vite": "node_modules/.bin/vite",
     "graphql-codegen": "node_modules/.bin/graphql-codegen",
-    "generate": "yarn graphql-codegen --watch",
     "env": "yarn vault-env",
     "build": "yarn vite build",
-    "test": "cypress run --e2e",
-    "serve": "yarn dlx serve --signle build",
+    "test": "cypress open --e2e --browser=chrome",
+    "serve": "yarn dlx serve --single build",
     "start": "yarn vite serve"
   },
   "eslintConfig": {
@@ -17,11 +16,11 @@
   "proxy": "http://localhost:1337",
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "antd": "^4.22.7",
+    "antd": "^4.22.8",
     "history": "^5.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-intl": "^6.0.8",
+    "react-intl": "^6.1.0",
     "react-markdown": "^8.0.3",
     "react-responsive": "^9.0.0-beta.10",
     "react-router": "^6.4.0-pre.13",
@@ -29,15 +28,15 @@
     "react-use": "^17.4.0"
   },
   "devDependencies": {
-    "@bn-digital/graphql-config": "^1.2.2",
+    "@bn-digital/graphql-config": "^2.0.0",
     "@bn-digital/sdk": "^1.3.0",
     "@bn-digital/vault-env": "^1.4.0",
-    "@bn-digital/vite": "^1.12.11",
+    "@bn-digital/vite": "^2.0.3",
     "@types/cypress-dotenv": "^2.0.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "cypress": "^10.6.0",
     "dotenv": "^16.0.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.2"
   }
 }

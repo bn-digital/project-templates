@@ -1,7 +1,7 @@
 import { Col, Row, Typography } from 'antd'
 import { FC } from 'react'
 
-const HeroSection: FC<Partial<CardFragment>> = ({ title = '', description = '', subtitle = '' }) => (
+const HeroSection: FC<CardFragment> = ({ title = '', description = '', subtitle = '' }) => (
   <Row align={'middle'} justify={'center'}>
     <Col span={24}>
       <Typography.Title level={2}>{title}</Typography.Title>
