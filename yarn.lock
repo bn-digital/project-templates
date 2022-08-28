@@ -1843,9 +1843,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/vite@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "@bn-digital/vite@npm:2.0.2"
+"@bn-digital/vite@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@bn-digital/vite@npm:2.0.3"
   dependencies:
     "@bn-digital/eslint-config": "npm:^2.0.0"
     "@bn-digital/postcss-config": "npm:^2.0.0"
@@ -1864,7 +1864,7 @@ __metadata:
     vite-plugin-sentry: "npm:^1.1.5"
     vite-plugin-svgr: "npm:^2.2.1"
     vite-tsconfig-paths: "npm:^3.5.0"
-  checksum: 8aa20f7035fb086b9fc28ad38399bde399066cf67dec313c11c6fc88ac9a3ff1813133b27a1bab3a182030b886b1a1322307a27274b03e94bcc8345efcf0fb8e
+  checksum: 5bc3fca22a23621dd48fa05d3474e0742dd9d407c868d0539b193d29985359607ab224ec1050ce7916965f69c4aceadfad976365739911ab89e6f97ffd28f016
   languageName: node
   linkType: hard
 
@@ -3923,7 +3923,7 @@ __metadata:
     "@bn-digital/graphql-config": "npm:^2.0.0"
     "@bn-digital/sdk": "npm:^1.3.0"
     "@bn-digital/vault-env": "npm:^1.4.0"
-    "@bn-digital/vite": "npm:^2.0.2"
+    "@bn-digital/vite": "npm:^2.0.3"
     "@types/cypress-dotenv": "npm:^2.0.0"
     "@types/react": "npm:^18.0.17"
     "@types/react-dom": "npm:^18.0.6"
