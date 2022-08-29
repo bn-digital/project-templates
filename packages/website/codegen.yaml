@@ -32,4 +32,7 @@ generates:
     plugins:
       - typescript
       - typescript-operations
-
+hooks:
+  afterAllFileWrite:
+    - yarn prettier --write
+    - yarn eslint --fix

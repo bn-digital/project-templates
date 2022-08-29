@@ -1,5 +1,7 @@
 import { name } from '../config'
 import { generateGraphqlSchema, getExtensionService, getSchemaExtension } from './graphql'
+import { exportConfigs, importConfigs } from './helpers/config-sync'
+import { generateTypeDefinitions } from './helpers/typescript'
 
 export default {
   register({ strapi }: Global) {
@@ -28,6 +30,10 @@ export default {
   bootstrap({ strapi }: Global) {
     if (process.env.NODE_ENV !== 'production') {
       generateGraphqlSchema(strapi)
+      generateTypeDefinitions(strapi).then()
+      exportConfigs(strapi)
+    } else {
+      importConfigs(strapi)
     }
   },
 }

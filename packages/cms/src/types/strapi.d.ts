@@ -1,9 +1,25 @@
 namespace Strapi {
-  import { GenericService } from '@strapi/strapi'
+  import { GenericService } from '@strapi/strapi/lib'
   type Env = { env: EnvFunction & TypedEnvFunction }
 
   namespace Db {
     type Client = 'sqlite' | 'postgres' | 'mysql'
+  }
+
+  namespace ConfigSync {
+    type Plugin = {
+      service<T>(name: 'main'): T
+    }
+    type MainService = {
+      importAllConfig(): void
+      exportAllConfig(): void
+    }
+  }
+
+  namespace TypeScript {
+    type Generator = {
+      generateSchemasDefinitions(options: { strapi: Strapi.Strapi; outDir?: string; file?: string }): Promise<void>
+    }
   }
 
   namespace Graphql {

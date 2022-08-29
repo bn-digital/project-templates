@@ -2453,6 +2453,11 @@
         "populateCreatorFields": false,
         "draftAndPublish": true
       },
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "attributes": {
         "entry": {
           "type": "component",
@@ -2497,6 +2502,22 @@
           "useJoinTable": false,
           "private": true
         },
+        "localizations": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::translation.translation"
+        },
+        "locale": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "string"
+        },
         "sitemap_exclude": {
           "writable": true,
           "private": true,
@@ -2517,6 +2538,11 @@
         "options": {
           "populateCreatorFields": false,
           "draftAndPublish": true
+        },
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
         },
         "attributes": {
           "entry": {

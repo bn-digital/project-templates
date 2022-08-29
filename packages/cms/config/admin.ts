@@ -10,7 +10,7 @@ export default ({ env }: Strapi.Env) => ({
     secret: env('AUTH_SECRET', generateSecret('auth.secret')),
   },
   apiToken: { salt: env('API_TOKEN_SALT', generateSecret('api-token.salt')) },
-  watchIgnoreFiles: ['**/graphql/**/*.graphql*', '**/config/sync/**', '**/database/data.sqlite*'],
+  watchIgnoreFiles: ['**/graphql/**/*.graphql*', '**/config/sync/**', '**/types/**/*.d.ts', '**/database/data.sqlite*'],
   forgotPassword: {
     from: env('MAIL_FROM', `no-reply@${domain}`),
     replyTo: env('MAIL_TO', `no-reply@${domain}`),
