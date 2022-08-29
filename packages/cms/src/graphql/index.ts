@@ -1,24 +1,23 @@
 import { printSchema } from 'graphql'
 
-import { url } from './resolvers/upload-file'
-import { changePassword, me } from './resolvers/user'
+import resolvers from './resolvers'
 
 function generateGraphqlSchema(strapi: Strapi.Strapi): void {
   const schema = getContentApiService(strapi).buildSchema()
   strapi.fs.writeAppFile('./src/graphql/schema.graphqls', printSchema(schema))
-  strapi.log.info('[GraphQL] Schema generated')
+  strapi.log.info('[graphql] Schema generated')
 }
 
 function getGraphqlPlugin(strapi: Strapi.Strapi): Strapi.Graphql.Plugin {
   return strapi.plugin('graphql')
 }
 
-function getExtensionService(strapi: Strapi.Strapi) {
-  return strapi.service<Strapi.Graphql.ExtensionService>('plugin::graphql.extension')
+function getExtensionService(strapi: Strapi.Strapi): Strapi.Graphql.ExtensionService {
+  return strapi.service('plugin::graphql.extension')
 }
 
-function getContentApiService(strapi: Strapi.Strapi) {
-  return getGraphqlPlugin(strapi).service<Strapi.Graphql.ContentApiService>('content-api')
+function getContentApiService(strapi: Strapi.Strapi): Strapi.Graphql.ContentApiService {
+  return getGraphqlPlugin(strapi).service('content-api')
 }
 
 function getSchemaExtension(): Strapi.Graphql.ExtensionCallback {
@@ -60,17 +59,7 @@ function getSchemaExtension(): Strapi.Graphql.ExtensionCallback {
           },
         }),
       ],
-      resolvers: {
-        Query: {
-          me,
-        },
-        Mutation: {
-          changePassword,
-        },
-        UploadFile: {
-          url,
-        },
-      },
+      resolvers,
     }
   }
 }

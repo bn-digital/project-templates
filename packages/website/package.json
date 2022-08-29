@@ -3,7 +3,6 @@
   "private": true,
   "scripts": {
     "vite": "node_modules/.bin/vite",
-    "graphql-codegen": "node_modules/.bin/graphql-codegen",
     "env": "yarn vault-env",
     "build": "yarn vite build",
     "test": "cypress open --e2e --browser=chrome",

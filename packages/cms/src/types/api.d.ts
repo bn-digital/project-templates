@@ -619,6 +619,11 @@ export interface ApiTranslationTranslation extends SingleTypeSchema {
     populateCreatorFields: false
     draftAndPublish: true
   }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
   attributes: {
     entry: ComponentAttribute<'data.entry', true> &
       RequiredAttribute &
@@ -632,6 +637,8 @@ export interface ApiTranslationTranslation extends SingleTypeSchema {
     publishedAt: DateTimeAttribute
     createdBy: RelationAttribute<'api::translation.translation', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'api::translation.translation', 'oneToOne', 'admin::user'> & PrivateAttribute
+    localizations: RelationAttribute<'api::translation.translation', 'oneToMany', 'api::translation.translation'>
+    locale: StringAttribute
     sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }

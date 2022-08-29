@@ -38,6 +38,7 @@
     "extends": "@bn-digital/eslint-config"
   },
   "resolutions": {
+    "eslint": "8.22.0",
     "@strapi/typescript-utils": "4.3.2",
     "@graphql-tools/merge": "8.3.0"
   },
@@ -56,7 +57,7 @@
     "eslint": "node_modules/.bin/eslint",
     "start:cms": "yarn workspace @project-templates/cms run start",
     "start:website": "yarn workspace @project-templates/website run start",
-    "build": "yarn workspaces foreach run build",
+    "build": "yarn workspaces foreach --exclude=root run build",
     "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src/**/*.{ts,tsx} && yarn stylelint --fix packages/*/src/**/*.less",
     "lint": "yarn prettier --check packages/*/src && yarn eslint packages/*/src/**/*.{ts,tsx} && yarn stylelint packages/*/src/**/*.less"
   },
