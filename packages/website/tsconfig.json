@@ -17,6 +17,10 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "noEmit": true,
+    "noEmitHelpers": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
     "outDir": "build",
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -33,9 +37,8 @@
   },
   "include": [
     "./src",
+    "./test",
     "./package.json",
-    "cypress",
-    "./cypress.config.ts",
     "./vite.config.ts"
   ]
 }

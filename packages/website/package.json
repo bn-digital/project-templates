@@ -5,8 +5,7 @@
     "vite": "node_modules/.bin/vite",
     "env": "yarn vault-env",
     "build": "yarn vite build",
-    "static": "yarn build && yarn dlx react-snap",
-    "test": "cypress open --e2e --browser=chrome",
+    "test": "cypress run --e2e",
     "serve": "yarn dlx serve --single build",
     "start": "yarn vite serve"
   },
@@ -14,12 +13,6 @@
     "extends": "@bn-digital/eslint-config/react"
   },
   "proxy": "http://localhost:1337",
-  "reactSnap": {
-    "inlineCss": true,
-    "cacheAjaxRequests": true,
-    "navigateFallback": "index.html",
-    "skipThirdPartyRequests": true
-  },
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "antd": "^4.22.8",
