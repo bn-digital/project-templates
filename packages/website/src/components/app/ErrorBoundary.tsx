@@ -17,13 +17,13 @@ class ErrorBoundary<T extends Props> extends Component<T, State> {
     return { hasError: true }
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  override componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     this.error = error
     // You can also log the error to an error reporting service
     console.error(error.message, errorInfo)
   }
 
-  render() {
+  override render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
       return <Result title={this.error?.name} subTitle={this.error?.message} status='error' />

@@ -4,83 +4,91 @@ import * as ApolloReactComponents from '@apollo/client/react/components'
 import * as React from 'react'
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-const defaultOptions = {} as const
+const defaultOptions = {} as const;
 
 export type PossibleTypesResultData = {
-  possibleTypes: {
-    GenericMorph: [
-      'Category',
-      'ComponentDataContact',
-      'ComponentDataEntry',
-      'ComponentDataSet',
-      'ComponentPageContactUs',
-      'ComponentPageHome',
-      'ComponentSharedMetaSocial',
-      'ComponentSharedSeo',
-      'ComponentUiCard',
-      'ComponentUiGrid',
-      'ComponentUiHeadline',
-      'ComponentUiLink',
-      'ComponentUiParagraph',
-      'ComponentUiSection',
-      'ComponentUiTab',
-      'ComponentUiText',
-      'Contact',
-      'Email',
-      'EmailDesignerEmailTemplate',
-      'I18NLocale',
-      'MenusMenu',
-      'MenusMenuItem',
-      'Post',
-      'Translation',
-      'UploadFile',
-      'UploadFolder',
-      'UsersPermissionsPermission',
-      'UsersPermissionsRole',
-      'UsersPermissionsUser',
-      'Website',
-    ]
-    WebsiteContentDynamicZone: ['ComponentPageContactUs', 'ComponentPageHome', 'Error']
-  }
-}
-const result: PossibleTypesResultData = {
-  possibleTypes: {
-    GenericMorph: [
-      'Category',
-      'ComponentDataContact',
-      'ComponentDataEntry',
-      'ComponentDataSet',
-      'ComponentPageContactUs',
-      'ComponentPageHome',
-      'ComponentSharedMetaSocial',
-      'ComponentSharedSeo',
-      'ComponentUiCard',
-      'ComponentUiGrid',
-      'ComponentUiHeadline',
-      'ComponentUiLink',
-      'ComponentUiParagraph',
-      'ComponentUiSection',
-      'ComponentUiTab',
-      'ComponentUiText',
-      'Contact',
-      'Email',
-      'EmailDesignerEmailTemplate',
-      'I18NLocale',
-      'MenusMenu',
-      'MenusMenuItem',
-      'Post',
-      'Translation',
-      'UploadFile',
-      'UploadFolder',
-      'UsersPermissionsPermission',
-      'UsersPermissionsRole',
-      'UsersPermissionsUser',
-      'Website',
+  "possibleTypes": {
+    "GenericMorph": [
+      "Category",
+      "ComponentDataContact",
+      "ComponentDataEntry",
+      "ComponentDataSet",
+      "ComponentPageContactUs",
+      "ComponentPageHome",
+      "ComponentSharedMetaSocial",
+      "ComponentSharedSeo",
+      "ComponentUiCard",
+      "ComponentUiGrid",
+      "ComponentUiHeadline",
+      "ComponentUiLink",
+      "ComponentUiParagraph",
+      "ComponentUiSection",
+      "ComponentUiTab",
+      "ComponentUiText",
+      "Contact",
+      "Email",
+      "EmailDesignerEmailTemplate",
+      "I18NLocale",
+      "MenusMenu",
+      "MenusMenuItem",
+      "Post",
+      "Translation",
+      "UploadFile",
+      "UploadFolder",
+      "UsersPermissionsPermission",
+      "UsersPermissionsRole",
+      "UsersPermissionsUser",
+      "Website"
     ],
-    WebsiteContentDynamicZone: ['ComponentPageContactUs', 'ComponentPageHome', 'Error'],
-  },
-}
-export default result
+    "WebsiteContentDynamicZone": [
+      "ComponentPageContactUs",
+      "ComponentPageHome",
+      "Error"
+    ]
+  }
+};
+const result: PossibleTypesResultData = {
+  "possibleTypes": {
+    "GenericMorph": [
+      "Category",
+      "ComponentDataContact",
+      "ComponentDataEntry",
+      "ComponentDataSet",
+      "ComponentPageContactUs",
+      "ComponentPageHome",
+      "ComponentSharedMetaSocial",
+      "ComponentSharedSeo",
+      "ComponentUiCard",
+      "ComponentUiGrid",
+      "ComponentUiHeadline",
+      "ComponentUiLink",
+      "ComponentUiParagraph",
+      "ComponentUiSection",
+      "ComponentUiTab",
+      "ComponentUiText",
+      "Contact",
+      "Email",
+      "EmailDesignerEmailTemplate",
+      "I18NLocale",
+      "MenusMenu",
+      "MenusMenuItem",
+      "Post",
+      "Translation",
+      "UploadFile",
+      "UploadFolder",
+      "UsersPermissionsPermission",
+      "UsersPermissionsRole",
+      "UsersPermissionsUser",
+      "Website"
+    ],
+    "WebsiteContentDynamicZone": [
+      "ComponentPageContactUs",
+      "ComponentPageHome",
+      "Error"
+    ]
+  }
+};
+export default result;
 
 export const EntryFragmentDoc = gql`
   fragment Entry on ComponentDataEntry {
@@ -88,21 +96,21 @@ export const EntryFragmentDoc = gql`
     key
     value
   }
-`
+`;
 export const HeadlineFragmentDoc = gql`
   fragment Headline on ComponentUiHeadline {
     id
     title
     subtitle
   }
-`
+`;
 export const LinkFragmentDoc = gql`
   fragment Link on ComponentUiLink {
     id
     title
     url
   }
-`
+`;
 export const MenuItemFragmentDoc = gql`
   fragment MenuItem on MenusMenuItemEntity {
     id
@@ -114,7 +122,7 @@ export const MenuItemFragmentDoc = gql`
       target
     }
   }
-`
+`;
 export const MenuFragmentDoc = gql`
   fragment Menu on MenusMenuEntity {
     id
@@ -145,14 +153,13 @@ export const MenuFragmentDoc = gql`
       }
     }
   }
-  ${MenuItemFragmentDoc}
-`
+${MenuItemFragmentDoc}`;
 export const ParagraphFragmentDoc = gql`
   fragment Paragraph on ComponentUiParagraph {
     id
     value
   }
-`
+`;
 export const FileFragmentDoc = gql`
   fragment File on UploadFileEntity {
     id
@@ -162,7 +169,7 @@ export const FileFragmentDoc = gql`
       url
     }
   }
-`
+`;
 export const CategoryFragmentDoc = gql`
   fragment Category on CategoryEntity {
     id
@@ -171,7 +178,7 @@ export const CategoryFragmentDoc = gql`
       slug
     }
   }
-`
+`;
 export const PostFragmentDoc = gql`
   fragment Post on PostEntity {
     id
@@ -191,8 +198,7 @@ export const PostFragmentDoc = gql`
     }
   }
   ${FileFragmentDoc}
-  ${CategoryFragmentDoc}
-`
+${CategoryFragmentDoc}`;
 export const CardFragmentDoc = gql`
   fragment Card on ComponentUiCard {
     id
@@ -205,8 +211,7 @@ export const CardFragmentDoc = gql`
       }
     }
   }
-  ${FileFragmentDoc}
-`
+${FileFragmentDoc}`;
 export const TabFragmentDoc = gql`
   fragment Tab on ComponentUiTab {
     id
@@ -215,8 +220,7 @@ export const TabFragmentDoc = gql`
       ...Card
     }
   }
-  ${CardFragmentDoc}
-`
+${CardFragmentDoc}`;
 export const SeoFragmentDoc = gql`
   fragment Seo on ComponentSharedSeo {
     id
@@ -226,7 +230,7 @@ export const SeoFragmentDoc = gql`
     metaViewport
     metaDescription
   }
-`
+`;
 export const HomeFragmentDoc = gql`
   fragment Home on ComponentPageHome {
     id
@@ -247,8 +251,7 @@ export const HomeFragmentDoc = gql`
     }
   }
   ${FileFragmentDoc}
-  ${CardFragmentDoc}
-`
+${CardFragmentDoc}`;
 export const ContactUsFragmentDoc = gql`
   fragment ContactUs on ComponentPageContactUs {
     id
@@ -260,7 +263,7 @@ export const ContactUsFragmentDoc = gql`
       phone
     }
   }
-`
+`;
 export const WebsiteFragmentDoc = gql`
   fragment Website on WebsiteEntity {
     id
@@ -277,33 +280,29 @@ export const WebsiteFragmentDoc = gql`
   }
   ${SeoFragmentDoc}
   ${HomeFragmentDoc}
-  ${ContactUsFragmentDoc}
-`
+${ContactUsFragmentDoc}`;
 export const ForgotPasswordDocument = gql`
   mutation forgotPassword($email: String!) {
     forgotPassword(email: $email) {
       ok
     }
   }
-`
-export type ForgotPasswordMutationFn = Apollo.MutationFunction<ForgotPasswordMutation, ForgotPasswordMutationVariables>
-export type ForgotPasswordComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<ForgotPasswordMutation, ForgotPasswordMutationVariables>,
-  'mutation'
->
+`;
+export type ForgotPasswordMutationFn = Apollo.MutationFunction<ForgotPasswordMutation, ForgotPasswordMutationVariables>;
+export type ForgotPasswordComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<ForgotPasswordMutation, ForgotPasswordMutationVariables>, 'mutation'>;
 
 export const ForgotPasswordComponent = (props: ForgotPasswordComponentProps) => (
   <ApolloReactComponents.Mutation<ForgotPasswordMutation, ForgotPasswordMutationVariables> mutation={ForgotPasswordDocument} {...props} />
-)
+);
 
 export function useForgotPasswordMutation(baseOptions?: Apollo.MutationHookOptions<ForgotPasswordMutation, ForgotPasswordMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<ForgotPasswordMutation, ForgotPasswordMutationVariables>(ForgotPasswordDocument, options)
+  return Apollo.useMutation<ForgotPasswordMutation, ForgotPasswordMutationVariables>(ForgotPasswordDocument, options);
 }
 
-export type ForgotPasswordMutationHookResult = ReturnType<typeof useForgotPasswordMutation>
-export type ForgotPasswordMutationResult = Apollo.MutationResult<ForgotPasswordMutation>
-export type ForgotPasswordMutationOptions = Apollo.BaseMutationOptions<ForgotPasswordMutation, ForgotPasswordMutationVariables>
+export type ForgotPasswordMutationHookResult = ReturnType<typeof useForgotPasswordMutation>;
+export type ForgotPasswordMutationResult = Apollo.MutationResult<ForgotPasswordMutation>;
+export type ForgotPasswordMutationOptions = Apollo.BaseMutationOptions<ForgotPasswordMutation, ForgotPasswordMutationVariables>;
 export const LoginDocument = gql`
   mutation login($input: UsersPermissionsLoginInput!) {
     login(input: $input) {
@@ -313,44 +312,44 @@ export const LoginDocument = gql`
       }
     }
   }
-`
-export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>
-export type LoginComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<LoginMutation, LoginMutationVariables>, 'mutation'>
+`;
+export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>;
+export type LoginComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<LoginMutation, LoginMutationVariables>, 'mutation'>;
 
 export const LoginComponent = (props: LoginComponentProps) => (
   <ApolloReactComponents.Mutation<LoginMutation, LoginMutationVariables> mutation={LoginDocument} {...props} />
-)
+);
 
 export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options)
+  return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options);
 }
 
-export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>
-export type LoginMutationResult = Apollo.MutationResult<LoginMutation>
-export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>
+export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
+export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
+export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
 export const RegisterDocument = gql`
   mutation register($input: UsersPermissionsRegisterInput!) {
     register(input: $input) {
       jwt
     }
   }
-`
-export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, RegisterMutationVariables>
-export type RegisterComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<RegisterMutation, RegisterMutationVariables>, 'mutation'>
+`;
+export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, RegisterMutationVariables>;
+export type RegisterComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<RegisterMutation, RegisterMutationVariables>, 'mutation'>;
 
 export const RegisterComponent = (props: RegisterComponentProps) => (
   <ApolloReactComponents.Mutation<RegisterMutation, RegisterMutationVariables> mutation={RegisterDocument} {...props} />
-)
+);
 
 export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<RegisterMutation, RegisterMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, options)
+  return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, options);
 }
 
-export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>
-export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>
-export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>
+export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
+export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>;
+export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
 export const CategoriesDocument = gql`
   query categories {
     categories {
@@ -367,51 +366,52 @@ export const CategoriesDocument = gql`
     }
   }
   ${CategoryFragmentDoc}
-  ${PostFragmentDoc}
-`
-export type CategoriesComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<CategoriesQuery, CategoriesQueryVariables>, 'query'>
+${PostFragmentDoc}`;
+export type CategoriesComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<CategoriesQuery, CategoriesQueryVariables>, 'query'>;
 
 export const CategoriesComponent = (props: CategoriesComponentProps) => (
   <ApolloReactComponents.Query<CategoriesQuery, CategoriesQueryVariables> query={CategoriesDocument} {...props} />
-)
+);
 
 export function useCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options)
+  return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options);
 }
 
 export function useCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options)
+  return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options);
 }
 
-export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>
-export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>
-export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>
+export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
+export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>;
+export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;
 export const MeDocument = gql`
   query me {
     me {
       email
     }
   }
-`
-export type MeComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MeQuery, MeQueryVariables>, 'query'>
+`;
+export type MeComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MeQuery, MeQueryVariables>, 'query'>;
 
-export const MeComponent = (props: MeComponentProps) => <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
+export const MeComponent = (props: MeComponentProps) => (
+  <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
+);
 
 export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options)
+  return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options);
 }
 
 export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options)
+  return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options);
 }
 
-export type MeQueryHookResult = ReturnType<typeof useMeQuery>
-export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>
-export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>
+export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
+export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
+export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
 export const MenuDocument = gql`
   query menu($filters: MenusMenuFiltersInput) {
     menusMenus(filters: $filters) {
@@ -420,25 +420,26 @@ export const MenuDocument = gql`
       }
     }
   }
-  ${MenuFragmentDoc}
-`
-export type MenuComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MenuQuery, MenuQueryVariables>, 'query'>
+${MenuFragmentDoc}`;
+export type MenuComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MenuQuery, MenuQueryVariables>, 'query'>;
 
-export const MenuComponent = (props: MenuComponentProps) => <ApolloReactComponents.Query<MenuQuery, MenuQueryVariables> query={MenuDocument} {...props} />
+export const MenuComponent = (props: MenuComponentProps) => (
+  <ApolloReactComponents.Query<MenuQuery, MenuQueryVariables> query={MenuDocument} {...props} />
+);
 
 export function useMenuQuery(baseOptions?: Apollo.QueryHookOptions<MenuQuery, MenuQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<MenuQuery, MenuQueryVariables>(MenuDocument, options)
+  return Apollo.useQuery<MenuQuery, MenuQueryVariables>(MenuDocument, options);
 }
 
 export function useMenuLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MenuQuery, MenuQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<MenuQuery, MenuQueryVariables>(MenuDocument, options)
+  return Apollo.useLazyQuery<MenuQuery, MenuQueryVariables>(MenuDocument, options);
 }
 
-export type MenuQueryHookResult = ReturnType<typeof useMenuQuery>
-export type MenuLazyQueryHookResult = ReturnType<typeof useMenuLazyQuery>
-export type MenuQueryResult = Apollo.QueryResult<MenuQuery, MenuQueryVariables>
+export type MenuQueryHookResult = ReturnType<typeof useMenuQuery>;
+export type MenuLazyQueryHookResult = ReturnType<typeof useMenuLazyQuery>;
+export type MenuQueryResult = Apollo.QueryResult<MenuQuery, MenuQueryVariables>;
 export const PostsDocument = gql`
   query posts($filters: PostFiltersInput) {
     posts(publicationState: LIVE, filters: $filters) {
@@ -447,25 +448,26 @@ export const PostsDocument = gql`
       }
     }
   }
-  ${PostFragmentDoc}
-`
-export type PostsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<PostsQuery, PostsQueryVariables>, 'query'>
+${PostFragmentDoc}`;
+export type PostsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<PostsQuery, PostsQueryVariables>, 'query'>;
 
-export const PostsComponent = (props: PostsComponentProps) => <ApolloReactComponents.Query<PostsQuery, PostsQueryVariables> query={PostsDocument} {...props} />
+export const PostsComponent = (props: PostsComponentProps) => (
+  <ApolloReactComponents.Query<PostsQuery, PostsQueryVariables> query={PostsDocument} {...props} />
+);
 
 export function usePostsQuery(baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options)
+  return Apollo.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options);
 }
 
 export function usePostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options)
+  return Apollo.useLazyQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options);
 }
 
-export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>
-export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>
-export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>
+export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
+export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
+export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>;
 export const TranslationsDocument = gql`
   query translations {
     translation {
@@ -476,40 +478,39 @@ export const TranslationsDocument = gql`
             data {
               attributes {
                 locale
-                entry(pagination: { limit: 1000 }) {
+                entry(pagination: {limit: 1000}) {
                   ...Entry
                 }
               }
             }
           }
-          entry(pagination: { limit: 1000 }) {
+          entry(pagination: {limit: 1000}) {
             ...Entry
           }
         }
       }
     }
   }
-  ${EntryFragmentDoc}
-`
-export type TranslationsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<TranslationsQuery, TranslationsQueryVariables>, 'query'>
+${EntryFragmentDoc}`;
+export type TranslationsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<TranslationsQuery, TranslationsQueryVariables>, 'query'>;
 
 export const TranslationsComponent = (props: TranslationsComponentProps) => (
   <ApolloReactComponents.Query<TranslationsQuery, TranslationsQueryVariables> query={TranslationsDocument} {...props} />
-)
+);
 
 export function useTranslationsQuery(baseOptions?: Apollo.QueryHookOptions<TranslationsQuery, TranslationsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<TranslationsQuery, TranslationsQueryVariables>(TranslationsDocument, options)
+  return Apollo.useQuery<TranslationsQuery, TranslationsQueryVariables>(TranslationsDocument, options);
 }
 
 export function useTranslationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TranslationsQuery, TranslationsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<TranslationsQuery, TranslationsQueryVariables>(TranslationsDocument, options)
+  return Apollo.useLazyQuery<TranslationsQuery, TranslationsQueryVariables>(TranslationsDocument, options);
 }
 
-export type TranslationsQueryHookResult = ReturnType<typeof useTranslationsQuery>
-export type TranslationsLazyQueryHookResult = ReturnType<typeof useTranslationsLazyQuery>
-export type TranslationsQueryResult = Apollo.QueryResult<TranslationsQuery, TranslationsQueryVariables>
+export type TranslationsQueryHookResult = ReturnType<typeof useTranslationsQuery>;
+export type TranslationsLazyQueryHookResult = ReturnType<typeof useTranslationsLazyQuery>;
+export type TranslationsQueryResult = Apollo.QueryResult<TranslationsQuery, TranslationsQueryVariables>;
 export const WebsiteDocument = gql`
   query website {
     website {
@@ -518,24 +519,23 @@ export const WebsiteDocument = gql`
       }
     }
   }
-  ${WebsiteFragmentDoc}
-`
-export type WebsiteComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<WebsiteQuery, WebsiteQueryVariables>, 'query'>
+${WebsiteFragmentDoc}`;
+export type WebsiteComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<WebsiteQuery, WebsiteQueryVariables>, 'query'>;
 
 export const WebsiteComponent = (props: WebsiteComponentProps) => (
   <ApolloReactComponents.Query<WebsiteQuery, WebsiteQueryVariables> query={WebsiteDocument} {...props} />
-)
+);
 
 export function useWebsiteQuery(baseOptions?: Apollo.QueryHookOptions<WebsiteQuery, WebsiteQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<WebsiteQuery, WebsiteQueryVariables>(WebsiteDocument, options)
+  return Apollo.useQuery<WebsiteQuery, WebsiteQueryVariables>(WebsiteDocument, options);
 }
 
 export function useWebsiteLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<WebsiteQuery, WebsiteQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<WebsiteQuery, WebsiteQueryVariables>(WebsiteDocument, options)
+  return Apollo.useLazyQuery<WebsiteQuery, WebsiteQueryVariables>(WebsiteDocument, options);
 }
 
-export type WebsiteQueryHookResult = ReturnType<typeof useWebsiteQuery>
-export type WebsiteLazyQueryHookResult = ReturnType<typeof useWebsiteLazyQuery>
-export type WebsiteQueryResult = Apollo.QueryResult<WebsiteQuery, WebsiteQueryVariables>
+export type WebsiteQueryHookResult = ReturnType<typeof useWebsiteQuery>;
+export type WebsiteLazyQueryHookResult = ReturnType<typeof useWebsiteLazyQuery>;
+export type WebsiteQueryResult = Apollo.QueryResult<WebsiteQuery, WebsiteQueryVariables>;

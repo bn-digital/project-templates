@@ -1,5 +1,9 @@
-import { render } from 'react-dom'
+import { hydrate, render, Renderer } from 'react-dom'
 
 import { App } from './components/app'
 
-render(<App />, document.querySelector('#root'))
+const rootElement = document.querySelector('#root')
+
+const renderer: Renderer = rootElement?.hasChildNodes() ? hydrate : render
+
+renderer(<App />, rootElement)

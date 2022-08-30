@@ -5,23 +5,17 @@ import { useLocalStorage, useToggle } from 'react-use'
 
 import introspection from '../../graphql'
 import routes from '../../pages'
-import { LocaleProvider } from '../app/Locale'
 import { Loader } from '../layout/Loader'
 import { ErrorBoundary } from './ErrorBoundary'
-
-type AppTheme = string | 'dark' | 'light' | 'default'
-
-type Size = 'small' | 'middle' | 'large'
+import { LocaleProvider } from './Locale'
 
 type AppProps = {
   burger: { opened: boolean; toggle: VoidFunction }
-  ui: { theme: AppTheme; size: Size }
   user: { authenticated: boolean | null; role: string | null }
 }
 
 const defaultValue: AppProps = {
   burger: { opened: false, toggle: () => undefined },
-  ui: { theme: 'default', size: 'middle' },
   user: { authenticated: null, role: null },
 }
 

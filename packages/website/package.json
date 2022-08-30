@@ -5,7 +5,7 @@
     "vite": "node_modules/.bin/vite",
     "env": "yarn vault-env",
     "build": "yarn vite build",
-    "test": "cypress open --e2e --browser=chrome",
+    "test": "cypress run --e2e",
     "serve": "yarn dlx serve --single build",
     "start": "yarn vite serve"
   },
@@ -27,15 +27,14 @@
     "react-use": "^17.4.0"
   },
   "devDependencies": {
-    "@bn-digital/graphql-config": "^2.0.0",
+    "eslint": "8.22.0",
     "@bn-digital/sdk": "^1.3.0",
     "@bn-digital/vault-env": "^1.4.0",
-    "@bn-digital/vite": "^2.0.3",
-    "@types/cypress-dotenv": "^2.0.0",
-    "@types/react": "^18.0.17",
+    "@bn-digital/vite": "^2.0.4",
+    "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
-    "cypress": "^10.6.0",
-    "dotenv": "^16.0.1",
+    "cypress": "^10.7.0",
+    "dotenv": "^16.0.2",
     "typescript": "^4.8.2"
   }
 }

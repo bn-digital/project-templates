@@ -5,4 +5,8 @@
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" project-jdk-name="18" project-jdk-type="JavaSDK" />
+  <component name="ViteConfiguration">
+    <option name="mode" value="MANUAL" />
+    <option name="path" value="$PROJECT_DIR$/packages/website/vite.config.ts" />
+  </component>
 </project>

@@ -583,7 +583,7 @@
     <inspection_tool class="EqualsWhichDoesntCheckParameterClass" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="EqualsWithItself" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ErrorRethrown" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="Eslint" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="EventMethodCall" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ExceptionCaughtLocallyJS" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ExceptionFromCatchWhichDoesntWrap" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -612,7 +612,9 @@
     <inspection_tool class="FallthruInSwitchStatement" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="FeatureEnvy" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="FieldAccessNotGuarded" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="FieldAccessedSynchronizedAndUnsynchronized" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="FieldAccessedSynchronizedAndUnsynchronized" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="countGettersAndSetters" value="false" />
+    </inspection_tool>
     <inspection_tool class="FieldCanBeLocal" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="FieldCount" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="FieldFromDelayedInit" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -808,7 +810,11 @@
     <inspection_tool class="GroovyConditionalWithIdenticalBranches" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="GroovyConstantConditional" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="GroovyConstantIfStatement" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="GroovyConstantNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="GroovyConstantNamingConvention" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="m_regex" value="[A-Z\d]*" />
+      <option name="m_minLength" value="4" />
+      <option name="m_maxLength" value="32" />
+    </inspection_tool>
     <inspection_tool class="GroovyConstructorNamedArguments" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="GroovyContinue" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="GroovyContinueOrBreakFromFinallyBlock" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -1253,7 +1259,6 @@
     <inspection_tool class="JpaQueryApiInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="Json5StandardCompliance" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="JsonDuplicatePropertyKeys" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="JsonFormatViolation" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="JsonPathEvaluateUnknownKey" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="JsonPathUnknownFunction" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="JsonPathUnknownOperator" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1261,7 +1266,6 @@
     <inspection_tool class="JsonSchemaDeprecation" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="JsonSchemaRefReference" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="JsonStandardCompliance" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="JsonUnresolvedReferences" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="JspAbsolutePathInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="JspDirectiveInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="JspPropertiesInspection" enabled="true" level="ERROR" enabled_by_default="true" />
@@ -3099,12 +3103,10 @@
     <inspection_tool class="YamlClassInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="YamlControllerMethod" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="YamlDeprecatedClasses" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="YamlFormatViolation" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="YamlParameterInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="YamlQuotedEscapedInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="YamlServiceArgumentInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="YamlUnquotedColon" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="YamlUnresolvedReferences" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="YamlXmlServiceInstanceInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ZeppelinScalaResUsageFilter" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ZeroIndexToHead" enabled="true" level="WARNING" enabled_by_default="true" />
