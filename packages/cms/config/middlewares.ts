@@ -11,13 +11,15 @@ export default ({ env }: Strapi.Env) => {
         contentSecurityPolicy: {
           useDefaults: true,
           directives: {
-            'script-src': ["'self'", "'unsafe-inline'"],
+            'script-src': ["'self'", "'unsafe-inline'", `https://editor.unlayer.com`],
             'connect-src': ["'self'", 'https:'],
+            'frame-src': [`https://editor.unlayer.com`],
             'img-src': [
               "'self'",
               'data:',
               'blob:',
               `https://dl.airtable.com`,
+              `https://editor.unlayer.com`,
               `https://${bucket}.${region}.digitaloceanspaces.com`,
               `https://${bucket}.blob.core.windows.net`,
               `https://${bucket}.s3.amazonaws.com`,
@@ -28,6 +30,7 @@ export default ({ env }: Strapi.Env) => {
               'data:',
               'blob:',
               `https://dl.airtable.com`,
+              `https://editor.unlayer.com`,
               `https://${bucket}.${region}.digitaloceanspaces.com`,
               `https://${bucket}.blob.core.windows.net`,
               `https://${bucket}.s3.amazonaws.com`,

@@ -44,10 +44,10 @@
   },
   "devDependencies": {
     "@bn-digital/commitlint-config": "^2.0.0",
-    "@bn-digital/eslint-config": "^2.0.0",
+    "@bn-digital/eslint-config": "^2.0.1",
     "@bn-digital/prettier-config": "^2.0.0",
     "@bn-digital/stylelint-config": "^2.0.0",
-    "@types/node": "^18.7.13",
+    "@types/node": "^18.7.14",
     "lint-staged": "^13.0.3",
     "typescript": "^4.8.2"
   },
