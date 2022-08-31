@@ -1,9 +1,9 @@
-import { hydrate, render, Renderer } from 'react-dom'
+import { reportWebVitals } from '@bn-digital/sdk'
+import { createRoot } from 'react-dom/client'
 
 import { App } from './components/app'
 
 const rootElement = document.querySelector('#root')
-
-const renderer: Renderer = rootElement?.hasChildNodes() ? hydrate : render
-
-renderer(<App />, rootElement)
+const root = createRoot(rootElement as HTMLElement)
+root.render(<App />)
+reportWebVitals()
