@@ -1,11 +1,10 @@
-import { Layout } from 'antd'
 import { FC } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { HeroSection } from 'src/components/section'
 
 const Home: FC = () => {
   const props = useOutletContext<Maybe<HomeFragment>>()
-  return <Layout.Content>{props?.hero && <HeroSection {...props.hero} />}</Layout.Content>
+  return <>{props?.hero && <HeroSection {...props.hero} />}</>
 }
 
 export { Home as default }
