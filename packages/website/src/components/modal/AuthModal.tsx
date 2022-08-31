@@ -1,7 +1,7 @@
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons'
 import { ApolloError } from '@apollo/client'
 import { Button, Form, Input, Modal, ModalProps, notification } from 'antd'
-import { Dispatch, FC, SetStateAction } from 'react'
+import { Dispatch, FC, SetStateAction, useMemo } from 'react'
 import { useToggle } from 'react-use'
 import { useLoginMutation } from 'src/graphql'
 
@@ -29,15 +29,15 @@ const AuthModal: FC<
       .catch((error: ApolloError) => {
         notifier.error({ message: error.message })
       })
-  const PasswordIcon = hidden ? EyeInvisibleOutlined : EyeOutlined
+  const PasswordIcon = useMemo(() => (hidden ? EyeInvisibleOutlined : EyeOutlined), [hidden])
   return (
     <Modal bodyStyle={{ padding: '48px 16px 16px' }} visible={visible} footer={null} onCancel={() => toggle(!visible)}>
       {context}
       <Form<UsersPermissionsLoginInput> onFinish={login}>
-        <Form.Item label={'Username'} name={'identifier'}>
+        <Form.Item label={'Username'} required name={'identifier'}>
           <Input />
         </Form.Item>
-        <Form.Item label={'Password'} name={'password'}>
+        <Form.Item label={'Password'} required name={'password'}>
           <Input type={hidden ? 'password' : 'text'} suffix={<PasswordIcon onClick={togglePassword} />} />
         </Form.Item>
         <Form.Item>

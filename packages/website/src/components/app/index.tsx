@@ -5,7 +5,6 @@ import { useLocalStorage, useToggle } from 'react-use'
 
 import introspection from '../../graphql'
 import routes from '../../pages'
-import { Loader } from '../layout/Loader'
 import { ErrorBoundary } from './ErrorBoundary'
 import { LocaleProvider } from './Locale'
 
@@ -41,20 +40,28 @@ const client = new ApolloClient({
   }),
 })
 
+function withLocalization(Wrapped: FC<PropsWithChildren>): FC<PropsWithChildren> {
+  return props => (
+    <LocaleProvider>
+      <Wrapped {...props} />
+    </LocaleProvider>
+  )
+}
+
 const App: FC = () => (
   <ErrorBoundary>
     <ApolloProvider client={client}>
       <ContextProvider>
-        <LocaleProvider>
-          <DataBrowserRouter routes={routes} fallbackElement={<Loader />}>
-            <ScrollRestoration />
-          </DataBrowserRouter>
-        </LocaleProvider>
+        <DataBrowserRouter routes={routes} fallbackElement={null}>
+          <ScrollRestoration />
+        </DataBrowserRouter>
       </ContextProvider>
     </ApolloProvider>
   </ErrorBoundary>
 )
 
 const useApp = () => useContext<AppProps>(Context)
+
+export default withLocalization(App)
 
 export { App, useApp }

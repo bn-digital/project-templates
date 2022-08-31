@@ -1,10 +1,8 @@
-import './Navigation.less'
-
 import { Menu, MenuProps } from 'antd'
 import { FC, useMemo } from 'react'
-import { FormattedMessage } from 'react-intl'
 import { NavLink } from 'react-router-dom'
 import { useMenuQuery } from 'src/graphql'
+import './Navigation.less'
 
 const Navigation: FC<MenuProps & { type: string }> = ({ type, ...props }) => {
   const { data } = useMenuQuery({ variables: { filters: { slug: { eq: type } } } })
@@ -13,11 +11,7 @@ const Navigation: FC<MenuProps & { type: string }> = ({ type, ...props }) => {
     () =>
       rootMenu?.map(it => ({
         key: `${it?.url}`,
-        label: (
-          <NavLink to={`${it?.url as string}`}>
-            <FormattedMessage id={it?.title as string} />
-          </NavLink>
-        ),
+        label: <NavLink to={`${it?.url as string}`}>{it?.title}</NavLink>,
       })) ?? [],
     [rootMenu],
   )
