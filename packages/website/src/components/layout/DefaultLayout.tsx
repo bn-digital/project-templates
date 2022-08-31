@@ -9,7 +9,6 @@ import { Loader } from 'src/components/layout/Loader'
 import { Navigation } from 'src/components/menu/Navigation'
 import { useWebsiteQuery } from 'src/graphql'
 
-import { Content } from './Content'
 import { Footer } from './Footer'
 import { Header } from './Header'
 
@@ -32,9 +31,7 @@ const DefaultLayout: FC = () => {
   return (
     <Layout>
       <Layout.Header>
-        <Content>
           <Header renderMenu={() => <Navigation mode={'horizontal'} type={'header'} />} />
-        </Content>
       </Layout.Header>
       <Layout.Content>
         <Suspense fallback={<Loader />}>
@@ -42,9 +39,7 @@ const DefaultLayout: FC = () => {
         </Suspense>
       </Layout.Content>
       <Layout.Footer>
-        <Content>
           <Footer />
-        </Content>
       </Layout.Footer>
       <Drawer width={'75%'} height={'100%'} onClose={burger.toggle} visible={burger.opened}>
         <Navigation mode={'vertical'} type={'header'} />
