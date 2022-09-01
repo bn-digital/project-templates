@@ -9,7 +9,9 @@
   "attributes": {
     "pathname": {
       "type": "string",
-      "required": true
+      "required": true,
+      "default": "/",
+      "unique": false
     },
     "contact": {
       "type": "component",

@@ -72,7 +72,8 @@
           "seo.metaRobots",
           "seo.structuredData",
           "seo.metaViewport",
-          "seo.canonicalURL"
+          "seo.canonicalURL",
+          "uuid"
         ]
       },
       "conditions": []
@@ -110,7 +111,8 @@
           "seo.metaRobots",
           "seo.structuredData",
           "seo.metaViewport",
-          "seo.canonicalURL"
+          "seo.canonicalURL",
+          "uuid"
         ]
       },
       "conditions": []
@@ -136,7 +138,8 @@
           "seo.metaRobots",
           "seo.structuredData",
           "seo.metaViewport",
-          "seo.canonicalURL"
+          "seo.canonicalURL",
+          "uuid"
         ]
       },
       "conditions": []

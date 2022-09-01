@@ -2339,6 +2339,18 @@
           "target": "api::category.category",
           "inversedBy": "posts"
         },
+        "uuid": {
+          "type": "uid",
+          "required": true,
+          "customField": "plugin::custom-fields.uuid"
+        },
+        "background": {
+          "type": "string",
+          "options": {
+            "format": "rgba"
+          },
+          "customField": "plugin::custom-fields.color"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2427,6 +2439,18 @@
             "relation": "manyToOne",
             "target": "api::category.category",
             "inversedBy": "posts"
+          },
+          "uuid": {
+            "type": "customField",
+            "required": true,
+            "customField": "plugin::custom-fields.uuid"
+          },
+          "background": {
+            "type": "customField",
+            "options": {
+              "format": "rgba"
+            },
+            "customField": "plugin::custom-fields.color"
           }
         },
         "kind": "collectionType"
@@ -2594,6 +2618,11 @@
           "repeatable": false,
           "component": "shared.seo"
         },
+        "translations": {
+          "type": "component",
+          "repeatable": true,
+          "component": "data.entry"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2653,6 +2682,11 @@
             "type": "component",
             "repeatable": false,
             "component": "shared.seo"
+          },
+          "translations": {
+            "type": "component",
+            "repeatable": true,
+            "component": "data.entry"
           }
         },
         "kind": "singleType"

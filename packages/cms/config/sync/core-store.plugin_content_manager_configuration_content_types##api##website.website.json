@@ -48,6 +48,20 @@
           "sortable": false
         }
       },
+      "translations": {
+        "edit": {
+          "label": "translations",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "translations",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -84,7 +98,6 @@
         "createdAt",
         "updatedAt"
       ],
-      "editRelations": [],
       "edit": [
         [
           {
@@ -97,8 +110,15 @@
             "name": "seo",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "translations",
+            "size": 12
+          }
         ]
-      ]
+      ],
+      "editRelations": []
     }
   },
   "type": "object",

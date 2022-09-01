@@ -22,8 +22,8 @@
     "react-intl": "^6.1.0",
     "react-markdown": "^8.0.3",
     "react-responsive": "^9.0.0-beta.10",
-    "react-router": "^6.4.0-pre.13",
-    "react-router-dom": "^6.4.0-pre.13",
+    "react-router": "^6.4.0-pre.14",
+    "react-router-dom": "^6.4.0-pre.14",
     "react-use": "^17.4.0"
   },
   "devDependencies": {

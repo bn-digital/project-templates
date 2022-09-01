@@ -10,6 +10,11 @@ type TypedEnvFunction = Partial<{
   array<T = EnvVar>(key: string, defaultValue?: T[]): T[]
   json<T = { [key: string]: any }>(key: string, defaultValue?: T): T
 }>
+type CustomField = {
+  name: string
+  plugin: string
+  type: string
+}
 type EntityUID = Strapi.SingleTypeUIDs | Strapi.CollectionTypeUIDs
 
 interface Strapi extends Omit<Strapi.Strapi, 'fs' | 'log'> {
@@ -21,6 +26,9 @@ interface Strapi extends Omit<Strapi.Strapi, 'fs' | 'log'> {
   }
   log: {
     [key in LogLevel]: (...args: unknown[]) => void
+  }
+  customFields: {
+    register(customField: CustomField): void
   }
 }
 

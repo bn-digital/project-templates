@@ -1,6 +1,10 @@
 import { domain, generateSecret, name } from './index'
 
 export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
+  'custom-fields': {
+    enabled: true,
+    resolve: './src/plugins/custom-fields',
+  },
   'import-export-entries': {
     enabled: true,
     config: {

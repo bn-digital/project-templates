@@ -599,6 +599,8 @@ export interface ApiPostPost extends CollectionTypeSchema {
     cover: MediaAttribute
     seo: ComponentAttribute<'shared.seo'>
     category: RelationAttribute<'api::post.post', 'manyToOne', 'api::category.category'>
+    uuid: UIDAttribute & RequiredAttribute
+    background: StringAttribute
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     publishedAt: DateTimeAttribute
@@ -657,6 +659,7 @@ export interface ApiWebsiteWebsite extends SingleTypeSchema {
   attributes: {
     content: DynamicZoneAttribute<['page.contact-us', 'page.home']>
     seo: ComponentAttribute<'shared.seo'>
+    translations: ComponentAttribute<'data.entry', true>
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'api::website.website', 'oneToOne', 'admin::user'> & PrivateAttribute
@@ -707,7 +710,7 @@ export interface PageContactUs extends ComponentSchema {
     description: ''
   }
   attributes: {
-    pathname: StringAttribute & RequiredAttribute
+    pathname: StringAttribute & RequiredAttribute & DefaultTo<'/'>
     contact: ComponentAttribute<'data.contact'>
   }
 }
@@ -846,7 +849,6 @@ export interface UiSection extends ComponentSchema {
   attributes: {
     visible: BooleanAttribute & RequiredAttribute & DefaultTo<true>
     heading: ComponentAttribute<'ui.card'>
-    children: ComponentAttribute<'ui.card', true>
     button: ComponentAttribute<'ui.link'>
   }
 }

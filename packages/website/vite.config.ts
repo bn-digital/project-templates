@@ -4,12 +4,12 @@ import packageJson from './package.json'
 
 const name = packageJson.name.split('/')[0].replace('@', '')
 
-const isDevelopment: () => boolean = () => process.env.NODE_ENV !== ('production' as const)
+const env: (key: keyof typeof process.env) => string | null = key => process.env?.[key] ?? null
 
 export default configure(
   { server: { cors: true } },
   {
-    sourceMaps: isDevelopment(),
+    sourceMaps: env('NODE_ENV') !== 'production',
     fonts: {
       google: {
         preconnect: true,
@@ -23,19 +23,15 @@ export default configure(
     pwa: {
       injectRegister: 'inline',
       registerType: 'autoUpdate',
-      mode: isDevelopment() ? 'development' : 'production',
+      mode: env('NODE_ENV') !== 'production' ? 'development' : 'production',
       base: '/',
       workbox: {
+        additionalManifestEntries: ['/graphql', '/'],
         cacheId: name,
-        sourcemap: isDevelopment(),
+        sourcemap: env('NODE_ENV') !== 'production',
         cleanupOutdatedCaches: true,
-        disableDevLogs: !isDevelopment(),
+        disableDevLogs: env('NODE_ENV') === 'production',
         runtimeCaching: [
-          {
-            urlPattern: ({ request }) => request.url.endsWith(`graphql`),
-            handler: 'NetworkFirst',
-            options: { cacheName: 'api-cache' },
-          },
           {
             urlPattern: ({ request }) => request.destination === 'image',
             handler: 'StaleWhileRevalidate',
@@ -57,7 +53,8 @@ export default configure(
         background_color: '#262523',
       },
       devOptions: {
-        enabled: isDevelopment(),
+        enabled: env('NODE_ENV') !== 'production',
+        type: 'module',
       },
     },
   },

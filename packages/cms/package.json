@@ -28,7 +28,7 @@
     "bcryptjs": "^2.4.3",
     "better-sqlite3": "^7.6.2",
     "https-proxy-agent": "^5.0.1",
-    "knex": "^2.2.0",
+    "knex": "^2.3.0",
     "lodash": "^4.17.21",
     "pg": "^8.8.0",
     "strapi-plugin-config-sync": "^1.0.3",

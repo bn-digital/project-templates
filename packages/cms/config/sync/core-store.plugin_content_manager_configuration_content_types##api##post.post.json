@@ -119,6 +119,34 @@
           "sortable": true
         }
       },
+      "uuid": {
+        "edit": {
+          "label": "uuid",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "uuid",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "background": {
+        "edit": {
+          "label": "background",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "background",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -188,6 +216,18 @@
           {
             "name": "seo",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "uuid",
+            "size": 8
+          }
+        ],
+        [
+          {
+            "name": "background",
+            "size": 6
           }
         ]
       ],
