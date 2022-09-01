@@ -48,20 +48,6 @@
           "sortable": false
         }
       },
-      "children": {
-        "edit": {
-          "label": "children",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "children",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "button": {
         "edit": {
           "label": "button",
@@ -81,8 +67,7 @@
       "list": [
         "id",
         "visible",
-        "heading",
-        "children"
+        "heading"
       ],
       "edit": [
         [
@@ -94,12 +79,6 @@
         [
           {
             "name": "heading",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "children",
             "size": 12
           }
         ],

@@ -17,11 +17,6 @@
       "repeatable": false,
       "component": "ui.card"
     },
-    "children": {
-      "type": "component",
-      "repeatable": true,
-      "component": "ui.card"
-    },
     "button": {
       "type": "component",
       "repeatable": false,

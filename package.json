@@ -55,7 +55,7 @@
     "prettier": "node_modules/.bin/prettier",
     "stylelint": "node_modules/.bin/stylelint",
     "eslint": "node_modules/.bin/eslint",
-    "start": "concurrently 'yarn:start:cms' 'yarn:start:website'",
+    "start": "yarn workspaces foreach --exclude=root run start",
     "start:cms": "yarn workspace @project-templates/cms run start",
     "start:website": "yarn workspace @project-templates/website run start",
     "build": "yarn workspaces foreach --exclude=root run build",

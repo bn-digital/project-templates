@@ -2339,6 +2339,11 @@
           "target": "api::category.category",
           "inversedBy": "posts"
         },
+        "uuid": {
+          "type": "uid",
+          "required": true,
+          "customField": "plugin::custom-fields.uuid"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2427,6 +2432,11 @@
             "relation": "manyToOne",
             "target": "api::category.category",
             "inversedBy": "posts"
+          },
+          "uuid": {
+            "type": "customField",
+            "required": true,
+            "customField": "plugin::custom-fields.uuid"
           }
         },
         "kind": "collectionType"
@@ -2594,6 +2604,11 @@
           "repeatable": false,
           "component": "shared.seo"
         },
+        "translations": {
+          "type": "component",
+          "repeatable": true,
+          "component": "data.entry"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2653,6 +2668,11 @@
             "type": "component",
             "repeatable": false,
             "component": "shared.seo"
+          },
+          "translations": {
+            "type": "component",
+            "repeatable": true,
+            "component": "data.entry"
           }
         },
         "kind": "singleType"

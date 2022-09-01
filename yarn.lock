@@ -3942,7 +3942,7 @@ __metadata:
     bcryptjs: "npm:^2.4.3"
     better-sqlite3: "npm:^7.6.2"
     https-proxy-agent: "npm:^5.0.1"
-    knex: "npm:^2.2.0"
+    knex: "npm:^2.3.0"
     lodash: "npm:^4.17.21"
     nexus: "npm:^1.3.0"
     pg: "npm:^8.8.0"
@@ -3977,8 +3977,8 @@ __metadata:
     react-intl: "npm:^6.1.0"
     react-markdown: "npm:^8.0.3"
     react-responsive: "npm:^9.0.0-beta.10"
-    react-router: "npm:^6.4.0-pre.13"
-    react-router-dom: "npm:^6.4.0-pre.13"
+    react-router: "npm:^6.4.0-pre.14"
+    react-router-dom: "npm:^6.4.0-pre.14"
     react-use: "npm:^17.4.0"
     typescript: "npm:^4.8.2"
   languageName: unknown
@@ -4078,10 +4078,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@remix-run/router@npm:0.2.0-pre.8":
-  version: 0.2.0-pre.8
-  resolution: "@remix-run/router@npm:0.2.0-pre.8"
-  checksum: e47c01c85c4508aea926fb098fb63dccf52c4b47aa68f555ac448f7f0a853a0bdd66739440ecd5a40356faedc942719ac0a66e7e1b309bf5458474d86f9c1118
+"@remix-run/router@npm:0.2.0-pre.9":
+  version: 0.2.0-pre.9
+  resolution: "@remix-run/router@npm:0.2.0-pre.9"
+  checksum: e9e53df5c1635078566d870e67d8829acd1008659c95339f61e410abc1141e29df90f56fa109aad087251a92e18d90aa263f943e8a571febedfbb7152e90691a
   languageName: node
   linkType: hard
 
@@ -15322,9 +15322,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knex@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "knex@npm:2.2.0"
+"knex@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "knex@npm:2.3.0"
   dependencies:
     colorette: "npm:2.0.19"
     commander: "npm:^9.1.0"
@@ -15357,7 +15357,7 @@ __metadata:
       optional: true
   bin:
     knex: bin/cli.js
-  checksum: eff5161ece2f26c9b02c92c637c25f418d037350c1f869aa26430cf093a6cfb5a6c7618185b99753f0ce30defb6cbac9ca840b2169f06c10afb6d4323d278755
+  checksum: 752d39956dc093785f9d18109816caf909f4c29676675610e67fc8d4b5da2366c0e6113495be458231f4d592769ab0b01f1336043236bbcdd2469783e1e92fc8
   languageName: node
   linkType: hard
 
@@ -20887,15 +20887,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^6.4.0-pre.13":
-  version: 6.4.0-pre.13
-  resolution: "react-router-dom@npm:6.4.0-pre.13"
+"react-router-dom@npm:^6.4.0-pre.14":
+  version: 6.4.0-pre.14
+  resolution: "react-router-dom@npm:6.4.0-pre.14"
   dependencies:
-    react-router: "npm:6.4.0-pre.13"
+    react-router: "npm:6.4.0-pre.14"
   peerDependencies:
     react: ">=16.8"
     react-dom: ">=16.8"
-  checksum: aa3a3796c9e230a9730ba533f00ec7f54121ce2dc4f2752383eb66f74738a3af519f6202157a2a3654cb2461b61117445ae9ebace63cbdec16dd9489fc87c632
+  checksum: 55fb0f0dad409966bf08393099d4a5f48d08bdf335607937a91f32a1f5b6e5d05326d02ca1392933bd1380a204bbeefcfab5c72fea70f7f821be93b2adeb4fe4
   languageName: node
   linkType: hard
 
@@ -20930,14 +20930,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router@npm:6.4.0-pre.13, react-router@npm:^6.4.0-pre.13":
-  version: 6.4.0-pre.13
-  resolution: "react-router@npm:6.4.0-pre.13"
+"react-router@npm:6.4.0-pre.14, react-router@npm:^6.4.0-pre.14":
+  version: 6.4.0-pre.14
+  resolution: "react-router@npm:6.4.0-pre.14"
   dependencies:
-    "@remix-run/router": "npm:0.2.0-pre.8"
+    "@remix-run/router": "npm:0.2.0-pre.9"
   peerDependencies:
     react: ">=16.8"
-  checksum: 9bbbce5b451e93614bf563ade9639d7ca378d49bf02362af790fac120a28fa98c31a4a862a94560bfcf309a93ddcc860f9c0dddf667ac2302eb2685f9bdc568b
+  checksum: 2d3b75acccdba5bedc573ff53cf2344eb3af4d7a7813aed0ace101f9b50d221230b39553eaf21c0ea308938f520ef2de2132985c619b217d57357e1835ae82a0
   languageName: node
   linkType: hard
 

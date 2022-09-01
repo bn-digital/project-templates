@@ -193,7 +193,8 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL",
-          "category"
+          "category",
+          "uuid"
         ]
       },
       "conditions": []
@@ -232,7 +233,8 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL",
-          "category"
+          "category",
+          "uuid"
         ]
       },
       "conditions": []
@@ -259,7 +261,8 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL",
-          "category"
+          "category",
+          "uuid"
         ]
       },
       "conditions": []
@@ -348,7 +351,9 @@
           "seo.metaRobots",
           "seo.structuredData",
           "seo.metaViewport",
-          "seo.canonicalURL"
+          "seo.canonicalURL",
+          "translations.key",
+          "translations.value"
         ]
       },
       "conditions": []
@@ -376,7 +381,9 @@
           "seo.metaRobots",
           "seo.structuredData",
           "seo.metaViewport",
-          "seo.canonicalURL"
+          "seo.canonicalURL",
+          "translations.key",
+          "translations.value"
         ]
       },
       "conditions": []
@@ -398,7 +405,9 @@
           "seo.metaRobots",
           "seo.structuredData",
           "seo.metaViewport",
-          "seo.canonicalURL"
+          "seo.canonicalURL",
+          "translations.key",
+          "translations.value"
         ]
       },
       "conditions": []
