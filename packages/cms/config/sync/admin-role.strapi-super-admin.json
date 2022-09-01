@@ -194,7 +194,8 @@
           "seo.metaViewport",
           "seo.canonicalURL",
           "category",
-          "uuid"
+          "uuid",
+          "background"
         ]
       },
       "conditions": []
@@ -234,7 +235,8 @@
           "seo.metaViewport",
           "seo.canonicalURL",
           "category",
-          "uuid"
+          "uuid",
+          "background"
         ]
       },
       "conditions": []
@@ -262,7 +264,8 @@
           "seo.metaViewport",
           "seo.canonicalURL",
           "category",
-          "uuid"
+          "uuid",
+          "background"
         ]
       },
       "conditions": []

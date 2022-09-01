@@ -600,6 +600,7 @@ export interface ApiPostPost extends CollectionTypeSchema {
     seo: ComponentAttribute<'shared.seo'>
     category: RelationAttribute<'api::post.post', 'manyToOne', 'api::category.category'>
     uuid: UIDAttribute & RequiredAttribute
+    background: StringAttribute
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     publishedAt: DateTimeAttribute

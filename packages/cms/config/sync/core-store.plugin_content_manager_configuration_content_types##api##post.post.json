@@ -133,6 +133,20 @@
           "sortable": true
         }
       },
+      "background": {
+        "edit": {
+          "label": "background",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "background",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -163,6 +177,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "slug",
+        "teaser"
+      ],
       "edit": [
         [
           {
@@ -203,16 +223,16 @@
             "name": "uuid",
             "size": 8
           }
+        ],
+        [
+          {
+            "name": "background",
+            "size": 6
+          }
         ]
       ],
       "editRelations": [
         "category"
-      ],
-      "list": [
-        "id",
-        "name",
-        "slug",
-        "teaser"
       ]
     }
   },

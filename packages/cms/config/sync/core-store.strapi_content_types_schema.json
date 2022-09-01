@@ -2344,6 +2344,13 @@
           "required": true,
           "customField": "plugin::custom-fields.uuid"
         },
+        "background": {
+          "type": "string",
+          "options": {
+            "format": "rgba"
+          },
+          "customField": "plugin::custom-fields.color"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2437,6 +2444,13 @@
             "type": "customField",
             "required": true,
             "customField": "plugin::custom-fields.uuid"
+          },
+          "background": {
+            "type": "customField",
+            "options": {
+              "format": "rgba"
+            },
+            "customField": "plugin::custom-fields.color"
           }
         },
         "kind": "collectionType"
