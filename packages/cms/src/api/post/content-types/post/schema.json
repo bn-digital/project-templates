@@ -32,9 +32,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "seo": {
       "type": "component",
@@ -47,17 +45,17 @@
       "target": "api::category.category",
       "inversedBy": "posts"
     },
-    "uuid": {
-      "type": "customField",
-      "required": true,
-      "customField": "plugin::custom-fields.uuid"
-    },
     "background": {
       "type": "customField",
       "options": {
         "format": "rgba"
       },
-      "customField": "plugin::custom-fields.color"
+      "customField": "plugin::field-color.color"
+    },
+    "uuid": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::field-uuid.uuid"
     }
   }
 }

@@ -1,12 +1,12 @@
-import { Drawer, Layout } from 'antd'
-import { FC, Suspense, useMemo } from 'react'
-import { Outlet } from 'react-router'
-import { useLocation } from 'react-router-dom'
-import { useApp } from 'src/components/app'
-import { Navigation } from 'src/components/menu/Navigation'
-import { useWebsiteQuery } from 'src/graphql'
 import './DefaultLayout.less'
 
+import { Drawer, Layout } from 'antd'
+import { FC, Suspense, useMemo } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
+
+import { useWebsiteQuery } from '../../graphql'
+import { useApp } from '../app'
+import { Navigation } from '../menu/Navigation'
 import { Footer } from './Footer'
 import { Header } from './Header'
 

@@ -24,6 +24,7 @@ generates:
           addDocBlocks: false
           withComponent: true
           withHooks: true
+          withMutationOptionsType: false
   src/types/graphql.d.ts:
     config:
       noExport: true

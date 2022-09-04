@@ -15,6 +15,8 @@
     "extends": "@bn-digital/eslint-config/typescript"
   },
   "dependencies": {
+    "@bn-digital/strapi-plugin-field-color": "^1.0.1",
+    "@bn-digital/strapi-plugin-field-uuid": "^1.0.6",
     "@strapi/plugin-content-manager": "^4.4.0-alpha.0",
     "@strapi/plugin-content-type-builder": "^4.4.0-alpha.0",
     "@strapi/plugin-graphql": "^4.4.0-alpha.0",
@@ -33,7 +35,7 @@
     "pg": "^8.8.0",
     "strapi-plugin-config-sync": "^1.0.3",
     "strapi-plugin-email-designer": "^2.1.1",
-    "strapi-plugin-import-export-entries": "^1.13.0",
+    "strapi-plugin-import-export-entries": "^1.14.1",
     "strapi-plugin-menus": "^1.0.2",
     "strapi-plugin-sitemap": "^2.0.8",
     "strapi-plugin-wysiwyg-tui-editor": "^4.0.1",

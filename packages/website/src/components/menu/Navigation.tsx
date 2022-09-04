@@ -1,8 +1,10 @@
+import './Navigation.less'
+
 import { Menu, MenuProps } from 'antd'
 import { FC, useMemo } from 'react'
 import { NavLink } from 'react-router-dom'
-import { useMenuQuery } from 'src/graphql'
-import './Navigation.less'
+
+import { useMenuQuery } from '../../graphql'
 
 const Navigation: FC<MenuProps & { type: string }> = ({ type, ...props }) => {
   const { data } = useMenuQuery({ variables: { filters: { slug: { eq: type } } } })

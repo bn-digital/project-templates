@@ -1815,6 +1815,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bn-digital/strapi-plugin-field-color@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@bn-digital/strapi-plugin-field-color@npm:1.0.1"
+  peerDependencies:
+    "@strapi/strapi": ^4.4.0-alpha.0
+  checksum: 63c2d181f6347b6b12cec887f2b099f7b9c7daee8af7062198236f17bb199b3eed0b955a3964ded95181adc18ae9d906cd99b448e7e220519ac2ecddcdc71280
+  languageName: node
+  linkType: hard
+
+"@bn-digital/strapi-plugin-field-uuid@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "@bn-digital/strapi-plugin-field-uuid@npm:1.0.6"
+  dependencies:
+    uuid: "npm:^8.3.2"
+  peerDependencies:
+    "@strapi/strapi": ^4.4.0-alpha.0
+  checksum: 87876ffef66c67162add6c805488aff69040108887ee0ee337457ed69c12d507ef27c7f65e14faee5e61ebf890c563c429aa41960791140838d82ffde43ee252
+  languageName: node
+  linkType: hard
+
 "@bn-digital/stylelint-config@npm:^2.0.0":
   version: 2.0.0
   resolution: "@bn-digital/stylelint-config@npm:2.0.0"
@@ -2573,7 +2593,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/eslintrc@npm:^1.3.0":
+"@eslint/eslintrc@npm:^1.3.0, @eslint/eslintrc@npm:^1.3.1":
   version: 1.3.1
   resolution: "@eslint/eslintrc@npm:1.3.1"
   dependencies:
@@ -3593,6 +3613,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@humanwhocodes/module-importer@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@humanwhocodes/module-importer@npm:1.0.1"
+  checksum: 5127055802733906004cf372457fadd0f3d800cfdd3dd39d2291e06f5c44ccc47daa2f22b9f483409f15b0a9ff5e1646deb5570ff43e08ef021f865e42b74608
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/object-schema@npm:^1.2.1":
   version: 1.2.1
   resolution: "@humanwhocodes/object-schema@npm:1.2.1"
@@ -3926,6 +3953,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@project-templates/cms@workspace:packages/cms"
   dependencies:
+    "@bn-digital/strapi-plugin-field-color": "npm:^1.0.1"
+    "@bn-digital/strapi-plugin-field-uuid": "npm:^1.0.6"
     "@bn-digital/vault-env": "npm:^1.4.0"
     "@strapi/plugin-content-manager": "npm:^4.4.0-alpha.0"
     "@strapi/plugin-content-type-builder": "npm:^4.4.0-alpha.0"
@@ -3948,7 +3977,7 @@ __metadata:
     pg: "npm:^8.8.0"
     strapi-plugin-config-sync: "npm:^1.0.3"
     strapi-plugin-email-designer: "npm:^2.1.1"
-    strapi-plugin-import-export-entries: "npm:^1.13.0"
+    strapi-plugin-import-export-entries: "npm:^1.14.1"
     strapi-plugin-menus: "npm:^1.0.2"
     strapi-plugin-sitemap: "npm:^2.0.8"
     strapi-plugin-wysiwyg-tui-editor: "npm:^4.0.1"
@@ -3970,7 +3999,6 @@ __metadata:
     antd: "npm:^4.22.8"
     cypress: "npm:^10.7.0"
     dotenv: "npm:^16.0.2"
-    eslint: "npm:8.22.0"
     history: "npm:^5.3.0"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -11242,6 +11270,55 @@ __metadata:
   bin:
     eslint: bin/eslint.js
   checksum: 38bc9cb70cca6eba28d01bd72d7e6e8c3a869b4b4c3425e00af981e63155e12256290eb958c6bf379d2d364980ffe0ff211af9fd527342eeec4a559979989a55
+  languageName: node
+  linkType: hard
+
+"eslint@npm:^8.22.0":
+  version: 8.23.0
+  resolution: "eslint@npm:8.23.0"
+  dependencies:
+    "@eslint/eslintrc": "npm:^1.3.1"
+    "@humanwhocodes/config-array": "npm:^0.10.4"
+    "@humanwhocodes/gitignore-to-minimatch": "npm:^1.0.2"
+    "@humanwhocodes/module-importer": "npm:^1.0.1"
+    ajv: "npm:^6.10.0"
+    chalk: "npm:^4.0.0"
+    cross-spawn: "npm:^7.0.2"
+    debug: "npm:^4.3.2"
+    doctrine: "npm:^3.0.0"
+    escape-string-regexp: "npm:^4.0.0"
+    eslint-scope: "npm:^7.1.1"
+    eslint-utils: "npm:^3.0.0"
+    eslint-visitor-keys: "npm:^3.3.0"
+    espree: "npm:^9.4.0"
+    esquery: "npm:^1.4.0"
+    esutils: "npm:^2.0.2"
+    fast-deep-equal: "npm:^3.1.3"
+    file-entry-cache: "npm:^6.0.1"
+    find-up: "npm:^5.0.0"
+    functional-red-black-tree: "npm:^1.0.1"
+    glob-parent: "npm:^6.0.1"
+    globals: "npm:^13.15.0"
+    globby: "npm:^11.1.0"
+    grapheme-splitter: "npm:^1.0.4"
+    ignore: "npm:^5.2.0"
+    import-fresh: "npm:^3.0.0"
+    imurmurhash: "npm:^0.1.4"
+    is-glob: "npm:^4.0.0"
+    js-yaml: "npm:^4.1.0"
+    json-stable-stringify-without-jsonify: "npm:^1.0.1"
+    levn: "npm:^0.4.1"
+    lodash.merge: "npm:^4.6.2"
+    minimatch: "npm:^3.1.2"
+    natural-compare: "npm:^1.4.0"
+    optionator: "npm:^0.9.1"
+    regexpp: "npm:^3.2.0"
+    strip-ansi: "npm:^6.0.1"
+    strip-json-comments: "npm:^3.1.0"
+    text-table: "npm:^0.2.0"
+  bin:
+    eslint: bin/eslint.js
+  checksum: ea414f83f8b08f12f5e163492959c17a908552f2f44d4ce7530c73b24e9a4eb1f48c49fac4f079a1b05ead38511f832a5cd51a63db2587f1495b3aa0e78aff16
   languageName: node
   linkType: hard
 
@@ -23220,9 +23297,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strapi-plugin-import-export-entries@npm:^1.13.0":
-  version: 1.13.0
-  resolution: "strapi-plugin-import-export-entries@npm:1.13.0"
+"strapi-plugin-import-export-entries@npm:^1.14.1":
+  version: 1.14.1
+  resolution: "strapi-plugin-import-export-entries@npm:1.14.1"
   dependencies:
     "@monaco-editor/react": "npm:4.4.5"
     csvtojson: "npm:2.0.10"
@@ -23233,7 +23310,7 @@ __metadata:
     react-singleton-hook: "npm:3.3.0"
   peerDependencies:
     "@strapi/strapi": ^4.0.0
-  checksum: ff394238a8001051b728ae82d5799ac331b9ed096b19f1b2fdd0ce4344df368a6764282780cb8e1cb96732e5318508cc1475933f017edad623ecf9894d305781
+  checksum: 19ab843cd7e8ea3b368da25dab82c192444fc7bee1c11c04a3f539710088464e3af4dec7c0e54390111b328f78f0e77ffb7996978b0165d921c9f1a3dc0e72b3
   languageName: node
   linkType: hard
 

@@ -7,7 +7,7 @@ const name = packageJson.name.split('/')[0].replace('@', '')
 const env: (key: keyof typeof process.env) => string | null = key => process.env?.[key] ?? null
 
 export default configure(
-  { server: { cors: true } },
+  {},
   {
     sourceMaps: env('NODE_ENV') !== 'production',
     fonts: {
@@ -50,11 +50,9 @@ export default configure(
         ],
         theme_color: '#ffffff',
         categories: ['Web Application'],
-        background_color: '#262523',
       },
       devOptions: {
         enabled: env('NODE_ENV') !== 'production',
-        type: 'module',
       },
     },
   },

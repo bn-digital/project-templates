@@ -3,7 +3,8 @@ import { ApolloError } from '@apollo/client'
 import { Button, Form, Input, Modal, ModalProps, notification } from 'antd'
 import { Dispatch, FC, SetStateAction, useMemo } from 'react'
 import { useToggle } from 'react-use'
-import { useLoginMutation } from 'src/graphql'
+
+import { useLoginMutation } from '../../graphql'
 
 const AuthModal: FC<
   Pick<ModalProps, 'visible'> & { toggle: (state: boolean) => void; tokenDispatcher: Dispatch<SetStateAction<string | null | undefined>> }

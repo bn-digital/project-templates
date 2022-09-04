@@ -2,12 +2,12 @@ import { UnorderedListOutlined } from '@ant-design/icons'
 import { Button, Col, Row, Select } from 'antd'
 import { FC } from 'react'
 import { useLocalStorage, useToggle } from 'react-use'
-import { useApp } from 'src/components/app'
-import { useLocale } from 'src/components/app/Locale'
-import { Logo } from 'src/components/logo/Logo'
-import { useBreakpoints } from 'src/components/screen'
 
+import { useApp } from '../app'
+import { useLocale } from '../app/Locale'
+import { Logo } from '../logo/Logo'
 import { AuthModal } from '../modal/AuthModal'
+import { useBreakpoints } from '../screen'
 
 const BurgerMenu: FC = () => {
   const { burger } = useApp()

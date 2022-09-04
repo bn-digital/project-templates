@@ -1,8 +1,9 @@
 import { Result, Skeleton } from 'antd'
 import { FC } from 'react'
-import { useParams } from 'react-router'
-import { Markdown } from 'src/components/text'
-import { usePostsQuery } from 'src/graphql'
+import { useParams } from 'react-router-dom'
+
+import { Markdown } from '../../components/text'
+import { usePostsQuery } from '../../graphql'
 
 const Post: FC = () => {
   const { slug } = useParams<{ slug: string }>()
