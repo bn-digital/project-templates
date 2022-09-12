@@ -14,10 +14,7 @@
   "attributes": {
     "content": {
       "type": "dynamiczone",
-      "components": [
-        "page.contact-us",
-        "page.home"
-      ]
+      "components": ["page.contact-us", "page.home"]
     },
     "seo": {
       "type": "component",

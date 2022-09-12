@@ -3967,6 +3967,7 @@ __metadata:
     "@strapi/strapi": "npm:4.4.0-alpha.0"
     "@strapi/typescript-utils": "npm:4.3.2"
     "@types/bcryptjs": "npm:^2.4.2"
+    "@types/node": "npm:^18.7.16"
     "@types/uuid": "npm:^8.3.4"
     bcryptjs: "npm:^2.4.3"
     better-sqlite3: "npm:^7.6.2"
@@ -19710,9 +19711,7 @@ __metadata:
     "@bn-digital/eslint-config": "npm:^2.0.1"
     "@bn-digital/prettier-config": "npm:^2.0.0"
     "@bn-digital/stylelint-config": "npm:^2.0.0"
-    "@types/node": "npm:^18.7.16"
     lint-staged: "npm:^13.0.3"
-    typescript: "npm:^4.8.3"
   languageName: unknown
   linkType: soft
 

@@ -1,13 +1,5 @@
 {
   "extends": "@strapi/typescript-utils/tsconfigs/admin.json",
-  "include": [
-    "../plugins/**/admin/src/**/*",
-    "./"
-  ],
-  "exclude": [
-    "node_modules/",
-    "build/",
-    "dist/",
-    "**/*.test.ts"
-  ]
+  "include": ["../plugins/**/admin/src/**/*", "./"],
+  "exclude": ["node_modules/", "build/", "dist/", "**/*.test.ts"]
 }

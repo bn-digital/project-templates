@@ -4,4 +4,4 @@
 
 import { factories } from '@strapi/strapi'
 
-export default factories.createCoreController('api::email.email');
+export default factories.createCoreController('api::email.email')

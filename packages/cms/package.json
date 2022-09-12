@@ -12,7 +12,10 @@
     "id": "68be1d7d-5510-45e4-a7fb-a93f6bb691f2"
   },
   "eslintConfig": {
-    "extends": "@bn-digital/eslint-config/typescript"
+    "extends": "@bn-digital/eslint-config/typescript",
+    "globals": {
+      "process": "readonly"
+    }
   },
   "dependencies": {
     "@bn-digital/strapi-plugin-field-color": "^1.0.1",
@@ -43,6 +46,7 @@
   "devDependencies": {
     "@bn-digital/vault-env": "^1.4.0",
     "@types/bcryptjs": "^2.4.2",
+    "@types/node": "^18.7.16",
     "@types/uuid": "^8.3.4",
     "nexus": "^1.3.0",
     "typescript": "^4.8.3"

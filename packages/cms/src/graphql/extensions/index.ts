@@ -55,4 +55,4 @@ const schemaExtension: Strapi.Graphql.ExtensionCallback = ({ nexus }) => ({
   resolvers,
 })
 
-export { schemaExtension, readOnlyEntities, writeOnlyEntities }
+export { readOnlyEntities, schemaExtension, writeOnlyEntities }
