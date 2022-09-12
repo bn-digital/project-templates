@@ -13,7 +13,7 @@ export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
       endpoint: '/graphql',
       shadowCRUD: true,
       subscriptions: true,
-      playgroundAlways: env<'staging' | 'production'>('APP_ENV', 'staging') === 'production',
+      playgroundAlways: true,
       apolloServer: {
         cache: 'bounded',
         persistedQueries: {
@@ -25,7 +25,7 @@ export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
   'users-permissions': {
     enabled: true,
     config: {
-      jwtSecret: env('JWT_SECRET', generateSecret('users-permissions.jwt-secret')),
+      jwtSecret: env('JWT_SECRET', generateSecret('JWT_SECRET')),
     },
   },
   'upload': {
@@ -43,7 +43,7 @@ export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
     },
   },
   'email': {
-    enabled: !!env('SMTP_HOST') && !!env('SMTP_PORT'),
+    enabled: true,
     config: {
       provider: 'nodemailer',
       providerOptions: {

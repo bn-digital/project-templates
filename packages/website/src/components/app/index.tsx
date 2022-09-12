@@ -16,7 +16,7 @@ type AppProps = {
 }
 
 const defaultValue: AppProps = {
-  burger: { opened: false, toggle: () => undefined },
+  burger: { opened: false, toggle: () => ({}) },
   user: { authenticated: null, role: null },
 }
 
@@ -33,7 +33,7 @@ const client = new ApolloClient({
   link: createPersistedQueryLink({ sha256 }).concat(
     createHttpLink({
       uri: import.meta.env.WEBSITE_API_URL ?? '/graphql',
-      headers: { Authorization: localStorage.getItem('jwtToken') ? localStorage.getItem('jwtToken') : '' },
+      headers: { Authorization: window.localStorage.getItem('jwtToken') ? window.localStorage.getItem('jwtToken') : '' },
     }),
   ),
   connectToDevTools: import.meta.env.DEV,

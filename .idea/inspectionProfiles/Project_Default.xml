@@ -1441,6 +1441,7 @@
     <inspection_tool class="MismatchedStringCase" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="MisorderedAssertEqualsArguments" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="MissingAccessibleContext" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="MissingActionUpdateThread" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="MissingDeprecatedAnnotation" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="MissingDeprecatedAnnotationOnScheduledForRemovalApi" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="MissingFinalNewline" enabled="true" level="ERROR" enabled_by_default="true" />
@@ -3041,8 +3042,6 @@
     <inspection_tool class="VtlInterpolationsInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="VtlReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="VtlTypesInspection" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="VueDataFunction" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="VueDuplicateTag" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="VulnerableCodeUsages" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="VulnerableLibrariesGlobal" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true" />

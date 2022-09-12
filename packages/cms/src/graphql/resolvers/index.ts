@@ -1,5 +1,5 @@
-import { changePassword, me } from './user'
 import { url } from './upload-file'
+import { changePassword, me } from './user'
 
 const Query = {
   me,

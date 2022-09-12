@@ -1,4 +1,4 @@
-import axios, { type Method,AxiosError } from 'axios'
+import axios, { type Method, AxiosError } from 'axios'
 import type { Context } from 'koa'
 import { parse } from 'url'
 

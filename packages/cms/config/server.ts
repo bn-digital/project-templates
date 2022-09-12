@@ -7,14 +7,14 @@ export default ({ env }: Strapi.Env) => {
   return {
     host,
     port,
-    url: env('CMS_PUBLIC_URL', ''),
+    url: env('DOMAIN', '') ? `https://${env('DOMAIN')}` : env('CMS_PUBLIC_URL', ''),
     admin: { autoOpen: false },
     cron: {
       enabled: true,
       tasks,
     },
     app: {
-      keys: env.array<string>('APP_KEYS', [generateSecret('app.keys')]),
+      keys: env.array<string>('APP_KEYS', [generateSecret('APP_KEYS')]),
     },
   }
 }

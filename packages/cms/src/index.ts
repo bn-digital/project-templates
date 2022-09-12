@@ -1,11 +1,11 @@
-import { name } from '../config'
 import { extendSchema, generateSchema } from './graphql'
-import { exportConfigs, importConfigs } from './helpers/config-sync'
-import { generateTypeDefinitions } from './helpers/typescript'
+import { appInfo } from './hooks'
+import { exportConfigs, importConfigs } from './hooks/config-sync'
+import { generateTypeDefinitions } from './hooks/typescript'
 
 export default {
   register({ strapi }: Global) {
-    strapi.log.info(`[app] Project name resolved as ${name}`)
+    appInfo(strapi)
     extendSchema(strapi)
   },
 

@@ -2,6 +2,6 @@
  * email service.
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from '@strapi/strapi'
 
-export default factories.createCoreService('api::email.email');
+export default factories.createCoreService('api::email.email')
