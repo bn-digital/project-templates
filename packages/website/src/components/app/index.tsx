@@ -1,6 +1,8 @@
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
-import { createContext, FC, PropsWithChildren, ReactNode, useContext } from 'react'
-import { DataBrowserRouter, ScrollRestoration } from 'react-router-dom'
+import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'
+import { sha256 } from 'crypto-hash'
+import { createContext, FC, memo, PropsWithChildren, ReactNode, useContext } from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { useLocalStorage, useToggle } from 'react-use'
 
 import introspection from '../../graphql'
@@ -28,10 +30,12 @@ const ContextProvider: FC<PropsWithChildren<Partial<ReactNode>>> = ({ children }
 }
 
 const client = new ApolloClient({
-  link: createHttpLink({
-    uri: import.meta.env.WEBSITE_API_URL ?? '/graphql',
-    headers: { Authorization: localStorage.getItem('jwtToken') ? localStorage.getItem('jwtToken') : '' },
-  }),
+  link: createPersistedQueryLink({ sha256 }).concat(
+    createHttpLink({
+      uri: import.meta.env.WEBSITE_API_URL ?? '/graphql',
+      headers: { Authorization: localStorage.getItem('jwtToken') ? localStorage.getItem('jwtToken') : '' },
+    }),
+  ),
   connectToDevTools: import.meta.env.DEV,
   queryDeduplication: true,
   cache: new InMemoryCache({
@@ -41,20 +45,20 @@ const client = new ApolloClient({
 })
 
 function withLocalization(Wrapped: FC<PropsWithChildren>): FC<PropsWithChildren> {
-  return props => (
+  return memo(props => (
     <LocaleProvider>
       <Wrapped {...props} />
     </LocaleProvider>
-  )
+  ))
 }
+
+const Router = memo(() => <RouterProvider router={createBrowserRouter(routes)} />)
 
 const App: FC = () => (
   <ErrorBoundary>
     <ApolloProvider client={client}>
       <ContextProvider>
-        <DataBrowserRouter routes={routes} fallbackElement={null}>
-          <ScrollRestoration />
-        </DataBrowserRouter>
+        <Router />
       </ContextProvider>
     </ApolloProvider>
   </ErrorBoundary>

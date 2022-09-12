@@ -1,5 +1,5 @@
 type LogLevel = 'info' | 'warn' | 'error'
-type Primitive = string | number | null | boolean
+type Primitive = string | number | null | boolean | unknown
 type EnvVar<T = Primitive> = T
 type EnvFunction = <T = EnvVar>(key: string, defaultValue?: T) => T
 type TypedEnvFunction = Partial<{

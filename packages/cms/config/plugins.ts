@@ -12,10 +12,13 @@ export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
     config: {
       endpoint: '/graphql',
       shadowCRUD: true,
-      subscriptions: false,
-      playgroundAlways: env('NODE_ENV', 'development') === 'development',
+      subscriptions: true,
+      playgroundAlways: env<'staging' | 'production'>('APP_ENV', 'staging') === 'production',
       apolloServer: {
         cache: 'bounded',
+        persistedQueries: {
+          ttl: 3600,
+        },
       },
     },
   },

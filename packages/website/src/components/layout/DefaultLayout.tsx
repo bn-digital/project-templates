@@ -44,7 +44,7 @@ const DefaultLayout: FC = () => {
       <Layout.Footer>
         <Footer />
       </Layout.Footer>
-      <Drawer width={'75%'} height={'100%'} onClose={burger.toggle} visible={burger.opened}>
+      <Drawer width={'75%'} height={'100%'} onClose={burger.toggle} open={burger.opened}>
         <Navigation mode={'vertical'} type={'header'} />
       </Drawer>
     </Layout>

@@ -278,17 +278,9 @@ type ComponentUiParagraphFiltersInput = {
 
 type ComponentUiSection = {
   button?: Maybe<ComponentUiLink>;
-  children?: Maybe<Array<Maybe<ComponentUiCard>>>;
   heading?: Maybe<ComponentUiCard>;
   id: Scalars['ID'];
   visible: Scalars['Boolean'];
-};
-
-
-type ComponentUiSectionChildrenArgs = {
-  filters?: InputMaybe<ComponentUiCardFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 type ComponentUiTab = {
@@ -903,6 +895,7 @@ type PaginationArg = {
 };
 
 type Post = {
+  background?: Maybe<Scalars['String']>;
   category?: Maybe<CategoryEntityResponse>;
   content?: Maybe<Scalars['String']>;
   cover?: Maybe<UploadFileEntityResponse>;
@@ -913,6 +906,7 @@ type Post = {
   slug: Scalars['String'];
   teaser?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
+  uuid: Scalars['String'];
 };
 
 type PostEntity = {
@@ -931,6 +925,7 @@ type PostEntityResponseCollection = {
 
 type PostFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<PostFiltersInput>>>;
+  background?: InputMaybe<StringFilterInput>;
   category?: InputMaybe<CategoryFiltersInput>;
   content?: InputMaybe<StringFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
@@ -944,6 +939,7 @@ type PostFiltersInput = {
   slug?: InputMaybe<StringFilterInput>;
   teaser?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
+  uuid?: InputMaybe<StringFilterInput>;
 };
 
 type PostRelationResponseCollection = {
@@ -1545,7 +1541,15 @@ type Website = {
   content?: Maybe<Array<Maybe<WebsiteContentDynamicZone>>>;
   createdAt?: Maybe<Scalars['DateTime']>;
   seo?: Maybe<ComponentSharedSeo>;
+  translations?: Maybe<Array<Maybe<ComponentDataEntry>>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+type WebsiteTranslationsArgs = {
+  filters?: InputMaybe<ComponentDataEntryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 type WebsiteContentDynamicZone = ComponentPageContactUs | ComponentPageHome | Error;

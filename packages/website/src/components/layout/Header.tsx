@@ -61,7 +61,7 @@ const Header: FC<{ renderMenu: FC }> = ({ renderMenu: HorizontalMenu }) => {
           </Row>
         </Col>
       </Row>
-      {!token && <AuthModal visible={visible} toggle={toggle} tokenDispatcher={setToken} />}
+      {!token && <AuthModal open={visible} toggle={toggle} tokenDispatcher={setToken} />}
     </>
   )
 }
