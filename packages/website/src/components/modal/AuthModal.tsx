@@ -3,11 +3,14 @@ import { ApolloError } from '@apollo/client'
 import { Button, Form, Input, Modal, ModalProps, notification } from 'antd'
 import { Dispatch, FC, SetStateAction, useMemo } from 'react'
 import { useToggle } from 'react-use'
-import { useLoginMutation } from 'src/graphql'
 
-const AuthModal: FC<
-  Pick<ModalProps, 'visible'> & { toggle: (state: boolean) => void; tokenDispatcher: Dispatch<SetStateAction<string | null | undefined>> }
-> = ({ tokenDispatcher, visible = false, toggle = () => undefined }) => {
+import { useLoginMutation } from '../../graphql'
+
+const AuthModal: FC<Pick<ModalProps, 'open'> & { toggle: (state: boolean) => void; tokenDispatcher: Dispatch<SetStateAction<string | null | undefined>> }> = ({
+  tokenDispatcher,
+  open = false,
+  toggle = () => undefined,
+}) => {
   const [loginMutation, { loading }] = useLoginMutation()
   const [notifier, context] = notification.useNotification()
   const [hidden, togglePassword] = useToggle(true)
@@ -31,7 +34,7 @@ const AuthModal: FC<
       })
   const PasswordIcon = useMemo(() => (hidden ? EyeInvisibleOutlined : EyeOutlined), [hidden])
   return (
-    <Modal bodyStyle={{ padding: '48px 16px 16px' }} visible={visible} footer={null} onCancel={() => toggle(!visible)}>
+    <Modal bodyStyle={{ padding: '48px 16px 16px' }} open={open} footer={null} onCancel={() => toggle(false)}>
       {context}
       <Form<UsersPermissionsLoginInput> onFinish={login}>
         <Form.Item label={'Username'} required name={'identifier'}>

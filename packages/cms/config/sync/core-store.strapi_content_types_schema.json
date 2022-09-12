@@ -529,10 +529,7 @@
         },
         "type": {
           "type": "enumeration",
-          "enum": [
-            "read-only",
-            "full-access"
-          ],
+          "enum": ["read-only", "full-access"],
           "configurable": false,
           "required": false,
           "default": "read-only"
@@ -605,10 +602,7 @@
           },
           "type": {
             "type": "enumeration",
-            "enum": [
-              "read-only",
-              "full-access"
-            ],
+            "enum": ["read-only", "full-access"],
             "configurable": false,
             "required": false,
             "default": "read-only"
@@ -765,9 +759,7 @@
       "indexes": [
         {
           "name": "upload_files_folder_path_index",
-          "columns": [
-            "folder_path"
-          ],
+          "columns": ["folder_path"],
           "type": null
         }
       ],
@@ -968,16 +960,12 @@
       "indexes": [
         {
           "name": "upload_folders_path_id_index",
-          "columns": [
-            "path_id"
-          ],
+          "columns": ["path_id"],
           "type": "unique"
         },
         {
           "name": "upload_folders_path_index",
-          "columns": [
-            "path"
-          ],
+          "columns": ["path"],
           "type": "unique"
         }
       ],
@@ -1855,12 +1843,7 @@
         },
         "target": {
           "type": "enumeration",
-          "enum": [
-            "_blank",
-            "_parent",
-            "_self",
-            "_top"
-          ]
+          "enum": ["_blank", "_parent", "_self", "_top"]
         },
         "root_menu": {
           "type": "relation",
@@ -1941,12 +1924,7 @@
           },
           "target": {
             "type": "enumeration",
-            "enum": [
-              "_blank",
-              "_parent",
-              "_self",
-              "_top"
-            ]
+            "enum": ["_blank", "_parent", "_self", "_top"]
           },
           "root_menu": {
             "type": "relation",
@@ -2115,11 +2093,7 @@
         },
         "status": {
           "type": "enumeration",
-          "enum": [
-            "new",
-            "sent",
-            "failed"
-          ]
+          "enum": ["new", "sent", "failed"]
         },
         "createdAt": {
           "type": "datetime"
@@ -2186,11 +2160,7 @@
           },
           "status": {
             "type": "enumeration",
-            "enum": [
-              "new",
-              "sent",
-              "failed"
-            ]
+            "enum": ["new", "sent", "failed"]
           }
         },
         "kind": "collectionType"
@@ -2324,9 +2294,7 @@
           "type": "media",
           "multiple": false,
           "required": false,
-          "allowedTypes": [
-            "images"
-          ]
+          "allowedTypes": ["images"]
         },
         "seo": {
           "type": "component",
@@ -2342,14 +2310,14 @@
         "uuid": {
           "type": "uid",
           "required": true,
-          "customField": "plugin::custom-fields.uuid"
+          "customField": "plugin::field-uuid.uuid"
         },
         "background": {
           "type": "string",
           "options": {
             "format": "rgba"
           },
-          "customField": "plugin::custom-fields.color"
+          "customField": "plugin::field-color.color"
         },
         "createdAt": {
           "type": "datetime"
@@ -2425,9 +2393,7 @@
             "type": "media",
             "multiple": false,
             "required": false,
-            "allowedTypes": [
-              "images"
-            ]
+            "allowedTypes": ["images"]
           },
           "seo": {
             "type": "component",
@@ -2443,14 +2409,14 @@
           "uuid": {
             "type": "customField",
             "required": true,
-            "customField": "plugin::custom-fields.uuid"
+            "customField": "plugin::field-uuid.uuid"
           },
           "background": {
             "type": "customField",
             "options": {
               "format": "rgba"
             },
-            "customField": "plugin::custom-fields.color"
+            "customField": "plugin::field-color.color"
           }
         },
         "kind": "collectionType"
@@ -2608,10 +2574,7 @@
       "attributes": {
         "content": {
           "type": "dynamiczone",
-          "components": [
-            "page.contact-us",
-            "page.home"
-          ]
+          "components": ["page.contact-us", "page.home"]
         },
         "seo": {
           "type": "component",
@@ -2673,10 +2636,7 @@
         "attributes": {
           "content": {
             "type": "dynamiczone",
-            "components": [
-              "page.contact-us",
-              "page.home"
-            ]
+            "components": ["page.contact-us", "page.home"]
           },
           "seo": {
             "type": "component",

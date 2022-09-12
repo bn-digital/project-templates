@@ -125,7 +125,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": false
         },
         "list": {
           "label": "uuid",
@@ -177,12 +177,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "slug",
-        "teaser"
-      ],
       "edit": [
         [
           {
@@ -221,7 +215,7 @@
         [
           {
             "name": "uuid",
-            "size": 8
+            "size": 6
           }
         ],
         [
@@ -233,6 +227,13 @@
       ],
       "editRelations": [
         "category"
+      ],
+      "list": [
+        "uuid",
+        "id",
+        "name",
+        "slug",
+        "teaser"
       ]
     }
   },

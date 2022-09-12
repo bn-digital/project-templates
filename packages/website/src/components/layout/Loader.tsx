@@ -1,6 +1,7 @@
 import { Spin } from 'antd'
 import { FC } from 'react'
-import { Content } from 'src/components/layout/Content'
+
+import { Content } from './Content'
 
 const Loader: FC = () => (
   <Content>

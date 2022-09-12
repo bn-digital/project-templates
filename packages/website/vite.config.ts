@@ -7,7 +7,7 @@ const name = packageJson.name.split('/')[0].replace('@', '')
 const env: (key: keyof typeof process.env) => string | null = key => process.env?.[key] ?? null
 
 export default configure(
-  { server: { cors: true } },
+  { appType: 'spa', experimental: { hmrPartialAccept: true }, ssr: { target: 'webworker' } },
   {
     sourceMaps: env('NODE_ENV') !== 'production',
     fonts: {
@@ -23,10 +23,12 @@ export default configure(
     pwa: {
       injectRegister: 'inline',
       registerType: 'autoUpdate',
+      selfDestroying: true,
+      includeManifestIcons: true,
       mode: env('NODE_ENV') !== 'production' ? 'development' : 'production',
       base: '/',
       workbox: {
-        additionalManifestEntries: ['/graphql', '/'],
+        additionalManifestEntries: ['/'],
         cacheId: name,
         sourcemap: env('NODE_ENV') !== 'production',
         cleanupOutdatedCaches: true,
@@ -39,7 +41,6 @@ export default configure(
           },
         ],
       },
-      includeManifestIcons: true,
       manifest: {
         name,
         short_name: name,
@@ -50,11 +51,9 @@ export default configure(
         ],
         theme_color: '#ffffff',
         categories: ['Web Application'],
-        background_color: '#262523',
       },
       devOptions: {
         enabled: env('NODE_ENV') !== 'production',
-        type: 'module',
       },
     },
   },

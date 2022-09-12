@@ -13,4 +13,4 @@ jobs:
         with:
           days-before-stale: 7
           days-before-delete: 14
-          compare-branches: 'save'
+          compare-branches: save

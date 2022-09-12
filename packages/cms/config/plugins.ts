@@ -1,10 +1,6 @@
 import { domain, generateSecret, name } from './index'
 
 export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
-  'custom-fields': {
-    enabled: true,
-    resolve: './src/plugins/custom-fields',
-  },
   'import-export-entries': {
     enabled: true,
     config: {
@@ -16,10 +12,13 @@ export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
     config: {
       endpoint: '/graphql',
       shadowCRUD: true,
-      subscriptions: false,
-      playgroundAlways: env('NODE_ENV', 'development') === 'development',
+      subscriptions: true,
+      playgroundAlways: env<'staging' | 'production'>('APP_ENV', 'staging') === 'production',
       apolloServer: {
         cache: 'bounded',
+        persistedQueries: {
+          ttl: 3600,
+        },
       },
     },
   },
