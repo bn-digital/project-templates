@@ -14,10 +14,6 @@ jobs:
     secrets: inherit
     with:
       environment: production
-      secrets: |
-        projects/data/${{ github.event.repository.name }}/production/aws       region              | TF_VAR_aws_region        ;
-        projects/data/${{ github.event.repository.name }}/production/aws       access-key-id       | TF_VAR_aws_access_key_id ;
-        projects/data/${{ github.event.repository.name }}/production/aws       secret-access-key   | TF_VAR_aws_access_key_id ;
   build:
     needs: [ secrets ]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
