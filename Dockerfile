@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:latest
 
-ARG version=2.8.0
+ARG version=2.9.0
 FROM dcr.bndigital.dev/library/yarn:${version} AS build
 COPY .yarn .yarn
 COPY package.json yarn.lock .yarnrc.yml ./

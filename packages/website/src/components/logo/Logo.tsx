@@ -1,15 +1,15 @@
+import Icon, { AppleOutlined } from '@ant-design/icons'
 import { Space } from 'antd'
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-import { SvgIcon } from '../icon'
-
-const Logo: FC = () => (
-  <Link to={'/'}>
+const Logo: FC = () => {
+  const navigate = useNavigate()
+  return (
     <Space direction={'horizontal'}>
-      <SvgIcon fill={'#2F2E8B'} type={'strapi'} />
+      <Icon component={() => <AppleOutlined />} onClick={() => navigate('/')} />
     </Space>
-  </Link>
-)
+  )
+}
 
 export { Logo }
