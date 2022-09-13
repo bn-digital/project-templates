@@ -23,7 +23,6 @@ export default configure(
     pwa: {
       injectRegister: 'inline',
       registerType: 'autoUpdate',
-      selfDestroying: true,
       includeManifestIcons: true,
       mode: env('NODE_ENV') !== 'production' ? 'development' : 'production',
       base: '/',
