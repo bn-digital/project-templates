@@ -30,7 +30,7 @@
   "devDependencies": {
     "@bn-digital/sdk": "^1.3.0",
     "@bn-digital/vault-env": "^1.4.0",
-    "@bn-digital/vite": "^2.0.4",
+    "@bn-digital/vite": "^2.0.5",
     "@types/react": "^18.0.19",
     "@types/react-dom": "^18.0.6",
     "cypress": "^10.7.0",

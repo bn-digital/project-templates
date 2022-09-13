@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 
 import { App } from './components/app'
 
-await initMarker({ enabled: import.meta.env.PROD, destination: import.meta.env.WEBSITE_MARKER_ID })
+initMarker({ enabled: import.meta.env.PROD, destination: import.meta.env.WEBSITE_MARKER_ID }).then()
 
 const rootElement = window.document.querySelector('#root')
 const root = createRoot(rootElement as HTMLElement)

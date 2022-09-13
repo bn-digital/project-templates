@@ -7,7 +7,7 @@ const name = packageJson.name.split('/')[0].replace('@', '')
 const env: (key: keyof typeof process.env) => string | null = key => process.env?.[key] ?? null
 
 export default configure(
-  { appType: 'spa', experimental: { hmrPartialAccept: true }, ssr: { target: 'webworker' } },
+  { appType: 'spa', ssr: { target: 'webworker' } },
   {
     sourceMaps: env('NODE_ENV') !== 'production',
     fonts: {

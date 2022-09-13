@@ -2,11 +2,10 @@ import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@ap
 import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'
 import { sha256 } from 'crypto-hash'
 import { createContext, FC, memo, PropsWithChildren, ReactNode, useContext } from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { useLocalStorage, useToggle } from 'react-use'
 
 import introspection from '../../graphql'
-import routes from '../../pages'
+import Router from '../../pages'
 import { ErrorBoundary } from './ErrorBoundary'
 import { LocaleProvider } from './Locale'
 
@@ -51,8 +50,6 @@ function withLocalization(Wrapped: FC<PropsWithChildren>): FC<PropsWithChildren>
     </LocaleProvider>
   ))
 }
-
-const Router = memo(() => <RouterProvider router={createBrowserRouter(routes)} />)
 
 const App: FC = () => (
   <ErrorBoundary>
