@@ -172,6 +172,7 @@ export interface AdminApiToken extends CollectionTypeSchema {
   attributes: {
     name: StringAttribute &
       RequiredAttribute &
+      UniqueAttribute &
       SetMinMaxLength<{
         minLength: 1
       }>
@@ -180,16 +181,51 @@ export interface AdminApiToken extends CollectionTypeSchema {
         minLength: 1
       }> &
       DefaultTo<''>
-    type: EnumerationAttribute<['read-only', 'full-access']> & DefaultTo<'read-only'>
+    type: EnumerationAttribute<['read-only', 'full-access', 'custom']> & RequiredAttribute & DefaultTo<'read-only'>
     accessKey: StringAttribute &
       RequiredAttribute &
       SetMinMaxLength<{
         minLength: 1
       }>
+    lastUsedAt: DateTimeAttribute
+    permissions: RelationAttribute<'admin::api-token', 'oneToMany', 'admin::api-token-permission'>
+    expiresAt: DateTimeAttribute
+    lifespan: IntegerAttribute
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'admin::api-token', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'admin::api-token', 'oneToOne', 'admin::user'> & PrivateAttribute
+  }
+}
+
+export interface AdminApiTokenPermission extends CollectionTypeSchema {
+  info: {
+    name: 'API Token Permission'
+    description: ''
+    singularName: 'api-token-permission'
+    pluralName: 'api-token-permissions'
+    displayName: 'API Token Permission'
+  }
+  pluginOptions: {
+    'content-manager': {
+      visible: false
+    }
+    'content-type-builder': {
+      visible: false
+    }
+  }
+  attributes: {
+    action: StringAttribute &
+      RequiredAttribute &
+      SetMinMaxLength<{
+        minLength: 1
+      }>
+    token: RelationAttribute<'admin::api-token-permission', 'manyToOne', 'admin::api-token'>
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    createdBy: RelationAttribute<'admin::api-token-permission', 'oneToOne', 'admin::user'> & PrivateAttribute
+    updatedBy: RelationAttribute<'admin::api-token-permission', 'oneToOne', 'admin::user'> & PrivateAttribute
+    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 
@@ -888,6 +924,7 @@ declare global {
       'admin::user': AdminUser
       'admin::role': AdminRole
       'admin::api-token': AdminApiToken
+      'admin::api-token-permission': AdminApiTokenPermission
       'plugin::upload.file': PluginUploadFile
       'plugin::upload.folder': PluginUploadFolder
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission

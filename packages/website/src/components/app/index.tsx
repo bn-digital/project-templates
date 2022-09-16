@@ -5,7 +5,7 @@ import { createContext, FC, memo, PropsWithChildren, ReactNode, useContext } fro
 import { useLocalStorage, useToggle } from 'react-use'
 
 import introspection from '../../graphql'
-import Router from '../../pages'
+import Pages from '../../pages'
 import { ErrorBoundary } from './ErrorBoundary'
 import { LocaleProvider } from './Locale'
 
@@ -35,6 +35,7 @@ const client = new ApolloClient({
       headers: { Authorization: window.localStorage.getItem('jwtToken') ? window.localStorage.getItem('jwtToken') : '' },
     }),
   ),
+  defaultOptions: { query: { fetchPolicy: 'cache-first' }, watchQuery: { fetchPolicy: 'cache-only' } },
   connectToDevTools: import.meta.env.DEV,
   queryDeduplication: true,
   cache: new InMemoryCache({
@@ -55,7 +56,7 @@ const App: FC = () => (
   <ErrorBoundary>
     <ApolloProvider client={client}>
       <ContextProvider>
-        <Router />
+        <Pages />
       </ContextProvider>
     </ApolloProvider>
   </ErrorBoundary>

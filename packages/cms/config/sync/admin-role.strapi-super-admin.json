@@ -85,13 +85,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "subject",
-          "text",
-          "status"
-        ]
+        "fields": ["name", "email", "subject", "text", "status"]
       },
       "conditions": []
     },
@@ -105,13 +99,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "subject",
-          "text",
-          "status"
-        ]
+        "fields": ["name", "email", "subject", "text", "status"]
       },
       "conditions": []
     },
@@ -119,13 +107,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "subject",
-          "text",
-          "status"
-        ]
+        "fields": ["name", "email", "subject", "text", "status"]
       },
       "conditions": []
     },
@@ -133,9 +115,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::email.email",
       "properties": {
-        "fields": [
-          "to"
-        ]
+        "fields": ["to"]
       },
       "conditions": []
     },
@@ -155,9 +135,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::email.email",
       "properties": {
-        "fields": [
-          "to"
-        ]
+        "fields": ["to"]
       },
       "conditions": []
     },
@@ -165,9 +143,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::email.email",
       "properties": {
-        "fields": [
-          "to"
-        ]
+        "fields": ["to"]
       },
       "conditions": []
     },
@@ -274,14 +250,8 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::translation.translation",
       "properties": {
-        "fields": [
-          "entry.key",
-          "entry.value"
-        ],
-        "locales": [
-          "en",
-          "es"
-        ]
+        "fields": ["entry.key", "entry.value"],
+        "locales": ["en", "es"]
       },
       "conditions": []
     },
@@ -289,10 +259,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::translation.translation",
       "properties": {
-        "locales": [
-          "en",
-          "es"
-        ]
+        "locales": ["en", "es"]
       },
       "conditions": []
     },
@@ -300,10 +267,7 @@
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::translation.translation",
       "properties": {
-        "locales": [
-          "en",
-          "es"
-        ]
+        "locales": ["en", "es"]
       },
       "conditions": []
     },
@@ -311,14 +275,8 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::translation.translation",
       "properties": {
-        "fields": [
-          "entry.key",
-          "entry.value"
-        ],
-        "locales": [
-          "en",
-          "es"
-        ]
+        "fields": ["entry.key", "entry.value"],
+        "locales": ["en", "es"]
       },
       "conditions": []
     },
@@ -326,14 +284,8 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::translation.translation",
       "properties": {
-        "fields": [
-          "entry.key",
-          "entry.value"
-        ],
-        "locales": [
-          "en",
-          "es"
-        ]
+        "fields": ["entry.key", "entry.value"],
+        "locales": ["en", "es"]
       },
       "conditions": []
     },
@@ -413,6 +365,12 @@
           "translations.value"
         ]
       },
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.access",
+      "subject": null,
+      "properties": {},
       "conditions": []
     },
     {
@@ -429,6 +387,12 @@
     },
     {
       "action": "admin::api-tokens.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "admin::api-tokens.regenerate",
       "subject": null,
       "properties": {},
       "conditions": []
@@ -569,17 +533,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": [
-          "username",
-          "email",
-          "provider",
-          "password",
-          "resetPasswordToken",
-          "confirmationToken",
-          "confirmed",
-          "blocked",
-          "role"
-        ]
+        "fields": ["username", "email", "provider", "password", "resetPasswordToken", "confirmationToken", "confirmed", "blocked", "role"]
       },
       "conditions": []
     },
@@ -593,17 +547,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": [
-          "username",
-          "email",
-          "provider",
-          "password",
-          "resetPasswordToken",
-          "confirmationToken",
-          "confirmed",
-          "blocked",
-          "role"
-        ]
+        "fields": ["username", "email", "provider", "password", "resetPasswordToken", "confirmationToken", "confirmed", "blocked", "role"]
       },
       "conditions": []
     },
@@ -611,17 +555,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": [
-          "username",
-          "email",
-          "provider",
-          "password",
-          "resetPasswordToken",
-          "confirmationToken",
-          "confirmed",
-          "blocked",
-          "role"
-        ]
+        "fields": ["username", "email", "provider", "password", "resetPasswordToken", "confirmationToken", "confirmed", "blocked", "role"]
       },
       "conditions": []
     },
