@@ -4,7 +4,6 @@ ARG version=2.9.0
 FROM dcr.bndigital.dev/library/yarn:${version} AS build
 COPY .yarn .yarn
 COPY package.json yarn.lock .yarnrc.yml ./
-RUN yarn
 COPY packages/cms/package.json packages/cms/package.json
 COPY packages/website/package.json packages/website/package.json
 RUN yarn

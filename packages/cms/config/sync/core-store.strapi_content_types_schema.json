@@ -518,7 +518,8 @@
           "type": "string",
           "minLength": 1,
           "configurable": false,
-          "required": true
+          "required": true,
+          "unique": true
         },
         "description": {
           "type": "string",
@@ -529,9 +530,9 @@
         },
         "type": {
           "type": "enumeration",
-          "enum": ["read-only", "full-access"],
+          "enum": ["read-only", "full-access", "custom"],
           "configurable": false,
-          "required": false,
+          "required": true,
           "default": "read-only"
         },
         "accessKey": {
@@ -539,6 +540,29 @@
           "minLength": 1,
           "configurable": false,
           "required": true
+        },
+        "lastUsedAt": {
+          "type": "datetime",
+          "configurable": false,
+          "required": false
+        },
+        "permissions": {
+          "type": "relation",
+          "target": "admin::api-token-permission",
+          "relation": "oneToMany",
+          "mappedBy": "token",
+          "configurable": false,
+          "required": false
+        },
+        "expiresAt": {
+          "type": "datetime",
+          "configurable": false,
+          "required": false
+        },
+        "lifespan": {
+          "type": "integer",
+          "configurable": false,
+          "required": false
         },
         "createdAt": {
           "type": "datetime"
@@ -591,7 +615,8 @@
             "type": "string",
             "minLength": 1,
             "configurable": false,
-            "required": true
+            "required": true,
+            "unique": true
           },
           "description": {
             "type": "string",
@@ -602,9 +627,9 @@
           },
           "type": {
             "type": "enumeration",
-            "enum": ["read-only", "full-access"],
+            "enum": ["read-only", "full-access", "custom"],
             "configurable": false,
-            "required": false,
+            "required": true,
             "default": "read-only"
           },
           "accessKey": {
@@ -612,6 +637,29 @@
             "minLength": 1,
             "configurable": false,
             "required": true
+          },
+          "lastUsedAt": {
+            "type": "datetime",
+            "configurable": false,
+            "required": false
+          },
+          "permissions": {
+            "type": "relation",
+            "target": "admin::api-token-permission",
+            "relation": "oneToMany",
+            "mappedBy": "token",
+            "configurable": false,
+            "required": false
+          },
+          "expiresAt": {
+            "type": "datetime",
+            "configurable": false,
+            "required": false
+          },
+          "lifespan": {
+            "type": "integer",
+            "configurable": false,
+            "required": false
           }
         },
         "kind": "collectionType"
@@ -622,6 +670,116 @@
       "uid": "admin::api-token",
       "plugin": "admin",
       "globalId": "AdminApiToken"
+    },
+    "admin::api-token-permission": {
+      "collectionName": "strapi_api_token_permissions",
+      "info": {
+        "name": "API Token Permission",
+        "description": "",
+        "singularName": "api-token-permission",
+        "pluralName": "api-token-permissions",
+        "displayName": "API Token Permission"
+      },
+      "options": {},
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      },
+      "attributes": {
+        "action": {
+          "type": "string",
+          "minLength": 1,
+          "configurable": false,
+          "required": true
+        },
+        "token": {
+          "configurable": false,
+          "type": "relation",
+          "relation": "manyToOne",
+          "inversedBy": "permissions",
+          "target": "admin::api-token"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "kind": "collectionType",
+      "__schema__": {
+        "collectionName": "strapi_api_token_permissions",
+        "info": {
+          "name": "API Token Permission",
+          "description": "",
+          "singularName": "api-token-permission",
+          "pluralName": "api-token-permissions",
+          "displayName": "API Token Permission"
+        },
+        "options": {},
+        "pluginOptions": {
+          "content-manager": {
+            "visible": false
+          },
+          "content-type-builder": {
+            "visible": false
+          }
+        },
+        "attributes": {
+          "action": {
+            "type": "string",
+            "minLength": 1,
+            "configurable": false,
+            "required": true
+          },
+          "token": {
+            "configurable": false,
+            "type": "relation",
+            "relation": "manyToOne",
+            "inversedBy": "permissions",
+            "target": "admin::api-token"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "api-token-permission",
+      "connection": "default",
+      "uid": "admin::api-token-permission",
+      "plugin": "admin",
+      "globalId": "AdminApiTokenPermission"
     },
     "plugin::upload.file": {
       "collectionName": "files",
@@ -2307,17 +2465,17 @@
           "target": "api::category.category",
           "inversedBy": "posts"
         },
-        "uuid": {
-          "type": "uid",
-          "required": true,
-          "customField": "plugin::field-uuid.uuid"
-        },
         "background": {
           "type": "string",
           "options": {
             "format": "rgba"
           },
-          "customField": "plugin::field-color.color"
+          "customField": "plugin::color-picker.color"
+        },
+        "uuid": {
+          "type": "uid",
+          "required": true,
+          "customField": "plugin::field-uuid.uuid"
         },
         "createdAt": {
           "type": "datetime"
@@ -2406,17 +2564,17 @@
             "target": "api::category.category",
             "inversedBy": "posts"
           },
-          "uuid": {
-            "type": "customField",
-            "required": true,
-            "customField": "plugin::field-uuid.uuid"
-          },
           "background": {
             "type": "customField",
             "options": {
               "format": "rgba"
             },
-            "customField": "plugin::field-color.color"
+            "customField": "plugin::color-picker.color"
+          },
+          "uuid": {
+            "type": "customField",
+            "required": true,
+            "customField": "plugin::field-uuid.uuid"
           }
         },
         "kind": "collectionType"

@@ -20,21 +20,11 @@
     "hoistingLimits": "workspaces",
     "selfReferences": false
   },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
+  "workspaces": ["packages/*"],
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,less,graphql}": [
-      "yarn prettier --write"
-    ],
-    "*.{js,jsx,ts,tsx}": [
-      "yarn eslint --fix"
-    ],
-    "*.less": [
-      "yarn stylelint --fix"
-    ]
+    "*.{js,jsx,ts,tsx,json,less,graphql}": ["yarn prettier --write"],
+    "*.{js,jsx,ts,tsx}": ["yarn eslint --fix"],
+    "*.less": ["yarn stylelint --fix"]
   },
   "prettier": "@bn-digital/prettier-config",
   "stylelint": {
@@ -52,6 +42,7 @@
     "@bn-digital/eslint-config": "^2.0.2",
     "@bn-digital/prettier-config": "^2.0.0",
     "@bn-digital/stylelint-config": "^2.0.0",
+    "husky": "^8.0.1",
     "lint-staged": "^13.0.3"
   },
   "scripts": {
