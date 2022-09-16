@@ -20,21 +20,11 @@
     "hoistingLimits": "workspaces",
     "selfReferences": false
   },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
+  "workspaces": ["packages/*"],
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,less,graphql}": [
-      "yarn prettier --write"
-    ],
-    "*.{js,jsx,ts,tsx}": [
-      "yarn eslint --fix"
-    ],
-    "*.less": [
-      "yarn stylelint --fix"
-    ]
+    "*.{js,jsx,ts,tsx,json,less,graphql}": ["yarn prettier --write"],
+    "*.{js,jsx,ts,tsx}": ["yarn eslint --fix"],
+    "*.less": ["yarn stylelint --fix"]
   },
   "prettier": "@bn-digital/prettier-config",
   "stylelint": {
