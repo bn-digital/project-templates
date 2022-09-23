@@ -32,7 +32,7 @@ const client = new ApolloClient({
   link: createPersistedQueryLink({ sha256 }).concat(
     createHttpLink({
       uri: import.meta.env.WEBSITE_API_URL ?? '/graphql',
-      headers: { Authorization: window.localStorage.getItem('jwtToken') ? window.localStorage.getItem('jwtToken') : '' },
+      headers: { Authorization: `Bearer  ${JSON.parse(localStorage.getItem('jwtToken') || '{}')}` },
     }),
   ),
   defaultOptions: { query: { fetchPolicy: 'cache-first' }, watchQuery: { fetchPolicy: 'cache-only' } },
