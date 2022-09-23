@@ -1,7 +1,5 @@
 import { extendSchema, generateSchema } from './graphql'
-import { appInfo } from './hooks'
-import { exportConfigs, importConfigs } from './hooks/config-sync'
-import { generateTypeDefinitions } from './hooks/typescript'
+import { appInfo, exportConfigs, generateTypeDefinitions, importConfigs } from './hooks'
 
 export default {
   register({ strapi }: Global) {
@@ -18,4 +16,4 @@ export default {
       importConfigs(strapi)
     }
   },
-} as Global['strapi']
+} as Strapi

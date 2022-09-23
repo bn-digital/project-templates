@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { Knex } from 'knex'
 import path from 'path'
 import { workingDir } from '.'
 import { name } from './'
@@ -27,26 +26,26 @@ Formatter.prototype.wrapAsIdentifier = (value: any) => `"${(value || '').replace
  *
  * @param {(key: string, defaultValue?: string)=> string} env
  */
-export default ({ env }: Strapi.Env): { connection: Knex.Config } => {
-  const client = env<Strapi.Db.Client>('DATABASE_CLIENT', 'sqlite')
+export default ({ env }: Strapi.Env): Strapi.Database.Config => {
+  const client = env<Strapi.Database.Client>('DATABASE_CLIENT', 'sqlite')
   return {
     connection: {
       client,
       connection:
-        (client === 'postgres' || client === 'mysql')
+        client === 'postgres' || client === 'mysql'
           ? {
-            charset: 'utf8',
-            user: env('DATABASE_USERNAME', 'postgres'),
-            password: env('DATABASE_PASSWORD', ''),
-            database: env('DATABASE_NAME', name),
-            ssl: env.bool('DATABASE_SSL', false),
-            host: env('DATABASE_HOST', 'localhost'),
-            port: env.int('DATABASE_PORT', 5432),
-            decimalNumbers: true,
-          }
+              charset: 'utf8',
+              user: env('DATABASE_USERNAME', 'postgres'),
+              password: env('DATABASE_PASSWORD', ''),
+              database: env('DATABASE_NAME', name),
+              ssl: env.bool('DATABASE_SSL', false),
+              host: env('DATABASE_HOST', 'localhost'),
+              port: env.int('DATABASE_PORT', 5432),
+              decimalNumbers: true,
+            }
           : {
-            filename: path.join(workingDir, env<string>('DATABASE_FILENAME', path.join('database', 'data.sqlite'))),
-          },
+              filename: path.join(workingDir, env<string>('DATABASE_FILENAME', path.join('database', 'data.sqlite'))),
+            },
       useNullAsDefault: true,
     },
   }

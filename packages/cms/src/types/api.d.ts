@@ -229,6 +229,152 @@ export interface AdminApiTokenPermission extends CollectionTypeSchema {
   }
 }
 
+export interface ApiCategoryCategory extends CollectionTypeSchema {
+  info: {
+    singularName: 'category'
+    pluralName: 'categories'
+    displayName: 'Category'
+    description: ''
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    name: StringAttribute & RequiredAttribute
+    slug: UIDAttribute<'api::category.category', 'name'> & RequiredAttribute
+    posts: RelationAttribute<'api::category.category', 'oneToMany', 'api::post.post'>
+    seo: ComponentAttribute<'shared.seo'>
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    createdBy: RelationAttribute<'api::category.category', 'oneToOne', 'admin::user'> & PrivateAttribute
+    updatedBy: RelationAttribute<'api::category.category', 'oneToOne', 'admin::user'> & PrivateAttribute
+    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
+  }
+}
+
+export interface ApiContactContact extends CollectionTypeSchema {
+  info: {
+    singularName: 'contact'
+    pluralName: 'contacts'
+    displayName: 'Contact'
+    description: ''
+  }
+  options: {
+    populateCreatorFields: false
+    draftAndPublish: false
+  }
+  attributes: {
+    name: StringAttribute & RequiredAttribute
+    email: EmailAttribute & RequiredAttribute
+    subject: StringAttribute
+    text: TextAttribute
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    createdBy: RelationAttribute<'api::contact.contact', 'oneToOne', 'admin::user'> & PrivateAttribute
+    updatedBy: RelationAttribute<'api::contact.contact', 'oneToOne', 'admin::user'> & PrivateAttribute
+    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
+  }
+}
+
+export interface ApiEmailEmail extends CollectionTypeSchema {
+  info: {
+    singularName: 'email'
+    pluralName: 'emails'
+    displayName: 'Email'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    email: EmailAttribute
+    template: RelationAttribute<'api::email.email', 'oneToOne', 'plugin::email-designer.email-template'>
+    payload: JSONAttribute
+    status: EnumerationAttribute<['new', 'queued', 'sent', 'failed']> & RequiredAttribute & DefaultTo<'new'>
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<'api::email.email', 'oneToOne', 'admin::user'> & PrivateAttribute
+    updatedBy: RelationAttribute<'api::email.email', 'oneToOne', 'admin::user'> & PrivateAttribute
+    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
+  }
+}
+
+export interface ApiPostPost extends CollectionTypeSchema {
+  info: {
+    singularName: 'post'
+    pluralName: 'posts'
+    displayName: 'Post'
+    description: ''
+  }
+  options: {
+    populateCreatorFields: false
+    draftAndPublish: true
+  }
+  attributes: {
+    name: StringAttribute & RequiredAttribute
+    slug: UIDAttribute<'api::post.post', 'name'> & RequiredAttribute
+    teaser: TextAttribute
+    content: RichTextAttribute
+    cover: MediaAttribute
+    seo: ComponentAttribute<'shared.seo'>
+    category: RelationAttribute<'api::post.post', 'manyToOne', 'api::category.category'>
+    background: StringAttribute
+    uuid: UIDAttribute & RequiredAttribute
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<'api::post.post', 'oneToOne', 'admin::user'> & PrivateAttribute
+    updatedBy: RelationAttribute<'api::post.post', 'oneToOne', 'admin::user'> & PrivateAttribute
+    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
+  }
+}
+
+export interface ApiWebsiteWebsite extends SingleTypeSchema {
+  info: {
+    singularName: 'website'
+    pluralName: 'websites'
+    displayName: 'Website'
+    description: ''
+  }
+  options: {
+    populateCreatorFields: false
+    draftAndPublish: false
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    content: DynamicZoneAttribute<['page.contact-us', 'page.home']> &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    translations: ComponentAttribute<'data.entry', true> &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    seo: ComponentAttribute<'shared.seo'> &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    createdBy: RelationAttribute<'api::website.website', 'oneToOne', 'admin::user'> & PrivateAttribute
+    updatedBy: RelationAttribute<'api::website.website', 'oneToOne', 'admin::user'> & PrivateAttribute
+    localizations: RelationAttribute<'api::website.website', 'oneToMany', 'api::website.website'>
+    locale: StringAttribute
+    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
+  }
+}
+
 export interface PluginUploadFile extends CollectionTypeSchema {
   info: {
     singularName: 'file'
@@ -451,7 +597,7 @@ export interface PluginEmailDesignerEmailTemplate extends CollectionTypeSchema {
   info: {
     singularName: 'email-template'
     pluralName: 'email-templates'
-    displayName: 'Email-template'
+    displayName: 'Email Template'
     name: 'email-template'
   }
   options: {
@@ -462,10 +608,10 @@ export interface PluginEmailDesignerEmailTemplate extends CollectionTypeSchema {
   }
   pluginOptions: {
     'content-manager': {
-      visible: false
+      visible: true
     }
     'content-type-builder': {
-      visible: false
+      visible: true
     }
   }
   attributes: {
@@ -544,162 +690,6 @@ export interface PluginMenusMenuItem extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'plugin::menus.menu-item', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'plugin::menus.menu-item', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
-  }
-}
-
-export interface ApiCategoryCategory extends CollectionTypeSchema {
-  info: {
-    singularName: 'category'
-    pluralName: 'categories'
-    displayName: 'Category'
-    description: ''
-  }
-  options: {
-    draftAndPublish: false
-  }
-  attributes: {
-    name: StringAttribute & RequiredAttribute
-    slug: UIDAttribute<'api::category.category', 'name'> & RequiredAttribute
-    posts: RelationAttribute<'api::category.category', 'oneToMany', 'api::post.post'>
-    seo: ComponentAttribute<'shared.seo'>
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'api::category.category', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'api::category.category', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
-  }
-}
-
-export interface ApiContactContact extends CollectionTypeSchema {
-  info: {
-    singularName: 'contact'
-    pluralName: 'contacts'
-    displayName: 'Contact'
-    description: ''
-  }
-  options: {
-    populateCreatorFields: false
-    draftAndPublish: false
-  }
-  attributes: {
-    name: StringAttribute & RequiredAttribute
-    email: EmailAttribute & RequiredAttribute
-    subject: StringAttribute
-    text: TextAttribute
-    status: EnumerationAttribute<['new', 'sent', 'failed']>
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'api::contact.contact', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'api::contact.contact', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
-  }
-}
-
-export interface ApiEmailEmail extends CollectionTypeSchema {
-  info: {
-    singularName: 'email'
-    pluralName: 'emails'
-    displayName: 'Email'
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    to: EmailAttribute & RequiredAttribute
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    publishedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'api::email.email', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'api::email.email', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
-  }
-}
-
-export interface ApiPostPost extends CollectionTypeSchema {
-  info: {
-    singularName: 'post'
-    pluralName: 'posts'
-    displayName: 'Post'
-    description: ''
-  }
-  options: {
-    populateCreatorFields: false
-    draftAndPublish: true
-  }
-  attributes: {
-    name: StringAttribute & RequiredAttribute
-    slug: UIDAttribute<'api::post.post', 'name'> & RequiredAttribute
-    teaser: TextAttribute
-    content: RichTextAttribute
-    cover: MediaAttribute
-    seo: ComponentAttribute<'shared.seo'>
-    category: RelationAttribute<'api::post.post', 'manyToOne', 'api::category.category'>
-    background: StringAttribute
-    uuid: UIDAttribute & RequiredAttribute
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    publishedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'api::post.post', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'api::post.post', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
-  }
-}
-
-export interface ApiTranslationTranslation extends SingleTypeSchema {
-  info: {
-    singularName: 'translation'
-    pluralName: 'translations'
-    displayName: 'Translation'
-    description: ''
-  }
-  options: {
-    populateCreatorFields: false
-    draftAndPublish: true
-  }
-  pluginOptions: {
-    i18n: {
-      localized: true
-    }
-  }
-  attributes: {
-    entry: ComponentAttribute<'data.entry', true> &
-      RequiredAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    publishedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'api::translation.translation', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'api::translation.translation', 'oneToOne', 'admin::user'> & PrivateAttribute
-    localizations: RelationAttribute<'api::translation.translation', 'oneToMany', 'api::translation.translation'>
-    locale: StringAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
-  }
-}
-
-export interface ApiWebsiteWebsite extends SingleTypeSchema {
-  info: {
-    singularName: 'website'
-    pluralName: 'websites'
-    displayName: 'Website'
-    description: ''
-  }
-  options: {
-    populateCreatorFields: false
-    draftAndPublish: false
-  }
-  attributes: {
-    content: DynamicZoneAttribute<['page.contact-us', 'page.home']>
-    seo: ComponentAttribute<'shared.seo'>
-    translations: ComponentAttribute<'data.entry', true>
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'api::website.website', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'api::website.website', 'oneToOne', 'admin::user'> & PrivateAttribute
     sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
@@ -925,6 +915,11 @@ declare global {
       'admin::role': AdminRole
       'admin::api-token': AdminApiToken
       'admin::api-token-permission': AdminApiTokenPermission
+      'api::category.category': ApiCategoryCategory
+      'api::contact.contact': ApiContactContact
+      'api::email.email': ApiEmailEmail
+      'api::post.post': ApiPostPost
+      'api::website.website': ApiWebsiteWebsite
       'plugin::upload.file': PluginUploadFile
       'plugin::upload.folder': PluginUploadFolder
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission
@@ -934,12 +929,6 @@ declare global {
       'plugin::email-designer.email-template': PluginEmailDesignerEmailTemplate
       'plugin::menus.menu': PluginMenusMenu
       'plugin::menus.menu-item': PluginMenusMenuItem
-      'api::category.category': ApiCategoryCategory
-      'api::contact.contact': ApiContactContact
-      'api::email.email': ApiEmailEmail
-      'api::post.post': ApiPostPost
-      'api::translation.translation': ApiTranslationTranslation
-      'api::website.website': ApiWebsiteWebsite
       'data.contact': DataContact
       'data.entry': DataEntry
       'data.set': DataSet

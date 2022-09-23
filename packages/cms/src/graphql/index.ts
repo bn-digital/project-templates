@@ -2,19 +2,13 @@ import { printSchema } from 'graphql'
 
 import { readOnlyEntities, schemaExtension, writeOnlyEntities } from './extensions'
 
-/**
- * @param {Strapi.Strapi} strapi
- */
-function generateSchema(strapi: Strapi.Strapi): void {
+function generateSchema(strapi: Strapi): void {
   const schema = getContentApiService(strapi).buildSchema()
   strapi.fs.writeAppFile('./src/graphql/schema.graphqls', printSchema(schema))
   strapi.log.info('[graphql] Schema generated')
 }
 
-/**
- * @param {Strapi.Strapi} strapi
- */
-function extendSchema(strapi: Strapi.Strapi) {
+function extendSchema(strapi: Strapi) {
   const extensionService = getExtensionService(strapi)
   // Disabling CRUD operations for public-facing APIs
   readOnlyEntities.forEach(entity => extensionService.shadowCRUD(entity).disableMutations())
@@ -23,24 +17,15 @@ function extendSchema(strapi: Strapi.Strapi) {
   extensionService.use(schemaExtension)
 }
 
-/**
- * @param {Strapi.Strapi} strapi
- */
-function getGraphqlPlugin(strapi: Strapi.Strapi): Strapi.Graphql.Plugin {
+function getGraphqlPlugin(strapi: Strapi): Strapi.Graphql.Plugin {
   return strapi.plugin('graphql')
 }
 
-/**
- * @param {Strapi.Strapi} strapi
- */
-function getExtensionService(strapi: Strapi.Strapi): Strapi.Graphql.ExtensionService {
-  return strapi.service('plugin::graphql.extension')
+function getExtensionService(strapi: Strapi): Strapi.Graphql.ExtensionService {
+  return getGraphqlPlugin(strapi).service('extension')
 }
 
-/**
- * @param {Strapi.Strapi} strapi
- */
-function getContentApiService(strapi: Strapi.Strapi): Strapi.Graphql.ContentApiService {
+function getContentApiService(strapi: Strapi): Strapi.Graphql.ContentApiService {
   return getGraphqlPlugin(strapi).service('content-api')
 }
 

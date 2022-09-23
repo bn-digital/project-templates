@@ -12,6 +12,7 @@ const routes: RouteObject[] = [
   {
     path: '',
     element: <DefaultLayout />,
+
     children: [
       {
         element: <Home />,

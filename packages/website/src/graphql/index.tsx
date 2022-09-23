@@ -31,7 +31,6 @@ export type PossibleTypesResultData = {
       'MenusMenu',
       'MenusMenuItem',
       'Post',
-      'Translation',
       'UploadFile',
       'UploadFolder',
       'UsersPermissionsPermission',
@@ -68,7 +67,6 @@ const result: PossibleTypesResultData = {
       'MenusMenu',
       'MenusMenuItem',
       'Post',
-      'Translation',
       'UploadFile',
       'UploadFolder',
       'UsersPermissionsPermission',
@@ -81,13 +79,6 @@ const result: PossibleTypesResultData = {
 }
 export default result
 
-export const EntryFragmentDoc = gql`
-  fragment Entry on ComponentDataEntry {
-    id
-    key
-    value
-  }
-`
 export const HeadlineFragmentDoc = gql`
   fragment Headline on ComponentUiHeadline {
     id
@@ -260,6 +251,13 @@ export const ContactUsFragmentDoc = gql`
     }
   }
 `
+export const EntryFragmentDoc = gql`
+  fragment Entry on ComponentDataEntry {
+    id
+    key
+    value
+  }
+`
 export const WebsiteFragmentDoc = gql`
   fragment Website on WebsiteEntity {
     id
@@ -272,11 +270,15 @@ export const WebsiteFragmentDoc = gql`
         ...Home
         ...ContactUs
       }
+      translations {
+        ...Entry
+      }
     }
   }
   ${SeoFragmentDoc}
   ${HomeFragmentDoc}
   ${ContactUsFragmentDoc}
+  ${EntryFragmentDoc}
 `
 export const ForgotPasswordDocument = gql`
   mutation forgotPassword($email: String!) {
@@ -451,48 +453,6 @@ export function usePostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Post
 export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>
 export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>
 export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>
-export const TranslationsDocument = gql`
-  query translations {
-    translation {
-      data {
-        attributes {
-          locale
-          localizations {
-            data {
-              attributes {
-                locale
-                entry(pagination: { limit: 1000 }) {
-                  ...Entry
-                }
-              }
-            }
-          }
-          entry(pagination: { limit: 1000 }) {
-            ...Entry
-          }
-        }
-      }
-    }
-  }
-  ${EntryFragmentDoc}
-`
-export type TranslationsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<TranslationsQuery, TranslationsQueryVariables>, 'query'>
-
-export const TranslationsComponent = (props: TranslationsComponentProps) => (
-  <ApolloReactComponents.Query<TranslationsQuery, TranslationsQueryVariables> query={TranslationsDocument} {...props} />
-)
-
-export function useTranslationsQuery(baseOptions?: Apollo.QueryHookOptions<TranslationsQuery, TranslationsQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<TranslationsQuery, TranslationsQueryVariables>(TranslationsDocument, options)
-}
-export function useTranslationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TranslationsQuery, TranslationsQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<TranslationsQuery, TranslationsQueryVariables>(TranslationsDocument, options)
-}
-export type TranslationsQueryHookResult = ReturnType<typeof useTranslationsQuery>
-export type TranslationsLazyQueryHookResult = ReturnType<typeof useTranslationsLazyQuery>
-export type TranslationsQueryResult = Apollo.QueryResult<TranslationsQuery, TranslationsQueryVariables>
 export const WebsiteDocument = gql`
   query website {
     website {

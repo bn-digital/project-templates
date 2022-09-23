@@ -1,6 +1,7 @@
 fragment Website on WebsiteEntity {
   id
   attributes {
+    locale
     seo {
       ...Seo
     }
@@ -9,5 +10,9 @@ fragment Website on WebsiteEntity {
       ...Home
       ...ContactUs
     }
+    translations {
+      ...Entry
+    }
+    locale
   }
 }

@@ -1,17 +1,17 @@
-function getConfigSyncPlugin(strapi: Global['strapi']): Strapi.ConfigSync.Plugin {
+function getConfigSyncPlugin(strapi: Strapi): Strapi.ConfigSync.Plugin {
   return strapi.plugin('config-sync')
 }
 
-function getConfigSyncMainService(strapi: Global['strapi']) {
+function getConfigSyncMainService(strapi: Strapi) {
   return getConfigSyncPlugin(strapi).service<Strapi.ConfigSync.MainService>('main')
 }
 
-function exportConfigs(strapi: Global['strapi']): void {
+function exportConfigs(strapi: Strapi): void {
   getConfigSyncMainService(strapi).exportAllConfig()
   strapi.log.info(`[config-sync] Configurations were persisted into files`)
 }
 
-function importConfigs(strapi: Global['strapi']): void {
+function importConfigs(strapi: Strapi): void {
   getConfigSyncMainService(strapi).importAllConfig()
   strapi.log.info(`[config-sync] Configurations were imported into database`)
 }

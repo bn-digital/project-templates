@@ -5,15 +5,87 @@
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::contact.contact",
+      "subject": "api::category.category",
       "properties": {
         "fields": [
           "name",
-          "email",
-          "subject",
-          "text",
-          "status"
+          "posts",
+          "seo.canonicalURL",
+          "seo.keywords",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaRobots",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaTitle",
+          "seo.metaViewport",
+          "seo.structuredData",
+          "slug"
         ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::category.category",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::category.category",
+      "properties": {
+        "fields": [
+          "name",
+          "posts",
+          "seo.canonicalURL",
+          "seo.keywords",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaRobots",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaTitle",
+          "seo.metaViewport",
+          "seo.structuredData",
+          "slug"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::category.category",
+      "properties": {
+        "fields": [
+          "name",
+          "posts",
+          "seo.canonicalURL",
+          "seo.keywords",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaRobots",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaTitle",
+          "seo.metaViewport",
+          "seo.structuredData",
+          "slug"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::contact.contact",
+      "properties": {
+        "fields": ["name", "email", "subject", "text"]
       },
       "conditions": []
     },
@@ -27,13 +99,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "subject",
-          "text",
-          "status"
-        ]
+        "fields": ["name", "email", "subject", "text"]
       },
       "conditions": []
     },
@@ -41,13 +107,43 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": [
-          "name",
-          "email",
-          "subject",
-          "text",
-          "status"
-        ]
+        "fields": ["name", "email", "subject", "text"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::email.email",
+      "properties": {
+        "fields": ["status", "email"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::email.email",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::email.email",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::email.email",
+      "properties": {
+        "fields": ["status", "email"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::email.email",
+      "properties": {
+        "fields": ["status", "email"]
       },
       "conditions": []
     },
@@ -56,23 +152,25 @@
       "subject": "api::post.post",
       "properties": {
         "fields": [
-          "name",
-          "slug",
-          "teaser",
+          "background",
+          "category",
           "content",
           "cover",
-          "seo.metaTitle",
+          "name",
+          "seo.canonicalURL",
+          "seo.keywords",
           "seo.metaDescription",
           "seo.metaImage",
-          "seo.metaSocial.socialNetwork",
-          "seo.metaSocial.title",
+          "seo.metaRobots",
           "seo.metaSocial.description",
           "seo.metaSocial.image",
-          "seo.keywords",
-          "seo.metaRobots",
-          "seo.structuredData",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaTitle",
           "seo.metaViewport",
-          "seo.canonicalURL",
+          "seo.structuredData",
+          "slug",
+          "teaser",
           "uuid"
         ]
       },
@@ -95,23 +193,25 @@
       "subject": "api::post.post",
       "properties": {
         "fields": [
-          "name",
-          "slug",
-          "teaser",
+          "background",
+          "category",
           "content",
           "cover",
-          "seo.metaTitle",
+          "name",
+          "seo.canonicalURL",
+          "seo.keywords",
           "seo.metaDescription",
           "seo.metaImage",
-          "seo.metaSocial.socialNetwork",
-          "seo.metaSocial.title",
+          "seo.metaRobots",
           "seo.metaSocial.description",
           "seo.metaSocial.image",
-          "seo.keywords",
-          "seo.metaRobots",
-          "seo.structuredData",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaTitle",
           "seo.metaViewport",
-          "seo.canonicalURL",
+          "seo.structuredData",
+          "slug",
+          "teaser",
           "uuid"
         ]
       },
@@ -122,23 +222,25 @@
       "subject": "api::post.post",
       "properties": {
         "fields": [
-          "name",
-          "slug",
-          "teaser",
+          "background",
+          "category",
           "content",
           "cover",
-          "seo.metaTitle",
+          "name",
+          "seo.canonicalURL",
+          "seo.keywords",
           "seo.metaDescription",
           "seo.metaImage",
-          "seo.metaSocial.socialNetwork",
-          "seo.metaSocial.title",
+          "seo.metaRobots",
           "seo.metaSocial.description",
           "seo.metaSocial.image",
-          "seo.keywords",
-          "seo.metaRobots",
-          "seo.structuredData",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaTitle",
           "seo.metaViewport",
-          "seo.canonicalURL",
+          "seo.structuredData",
+          "slug",
+          "teaser",
           "uuid"
         ]
       },
@@ -146,106 +248,55 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::translation.translation",
+      "subject": "api::website.website",
       "properties": {
-        "fields": [
-          "entry.key",
-          "entry.value"
-        ]
+        "fields": ["content"]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::translation.translation",
+      "subject": "api::website.website",
       "properties": {
-        "fields": [
-          "entry.key",
-          "entry.value"
-        ]
+        "fields": ["content"]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::translation.translation",
+      "subject": "api::website.website",
       "properties": {
-        "fields": [
-          "entry.key",
-          "entry.value"
-        ]
+        "fields": ["content"]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::website.website",
+      "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": [
-          "content",
-          "seo.metaTitle",
-          "seo.metaDescription",
-          "seo.metaImage",
-          "seo.metaSocial.socialNetwork",
-          "seo.metaSocial.title",
-          "seo.metaSocial.description",
-          "seo.metaSocial.image",
-          "seo.keywords",
-          "seo.metaRobots",
-          "seo.structuredData",
-          "seo.metaViewport",
-          "seo.canonicalURL"
-        ]
+        "fields": ["blocked", "confirmationToken", "confirmed", "email", "password", "provider", "resetPasswordToken", "role", "username"]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::website.website",
+      "subject": "plugin::users-permissions.user",
       "properties": {},
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::website.website",
+      "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": [
-          "content",
-          "seo.metaTitle",
-          "seo.metaDescription",
-          "seo.metaImage",
-          "seo.metaSocial.socialNetwork",
-          "seo.metaSocial.title",
-          "seo.metaSocial.description",
-          "seo.metaSocial.image",
-          "seo.keywords",
-          "seo.metaRobots",
-          "seo.structuredData",
-          "seo.metaViewport",
-          "seo.canonicalURL"
-        ]
+        "fields": ["blocked", "confirmationToken", "confirmed", "email", "password", "provider", "resetPasswordToken", "role", "username"]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::website.website",
+      "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": [
-          "content",
-          "seo.metaTitle",
-          "seo.metaDescription",
-          "seo.metaImage",
-          "seo.metaSocial.socialNetwork",
-          "seo.metaSocial.title",
-          "seo.metaSocial.description",
-          "seo.metaSocial.image",
-          "seo.keywords",
-          "seo.metaRobots",
-          "seo.structuredData",
-          "seo.metaViewport",
-          "seo.canonicalURL"
-        ]
+        "fields": ["blocked", "confirmationToken", "confirmed", "email", "password", "provider", "resetPasswordToken", "role", "username"]
       },
       "conditions": []
     },

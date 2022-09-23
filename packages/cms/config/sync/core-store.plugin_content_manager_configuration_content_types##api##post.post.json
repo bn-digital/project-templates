@@ -180,7 +180,7 @@
       "edit": [
         [
           {
-            "name": "name",
+            "name": "uuid",
             "size": 6
           },
           {
@@ -189,6 +189,10 @@
           }
         ],
         [
+          {
+            "name": "name",
+            "size": 6
+          },
           {
             "name": "teaser",
             "size": 6
@@ -204,6 +208,10 @@
           {
             "name": "cover",
             "size": 6
+          },
+          {
+            "name": "background",
+            "size": 6
           }
         ],
         [
@@ -211,30 +219,10 @@
             "name": "seo",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "uuid",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "background",
-            "size": 6
-          }
         ]
       ],
-      "editRelations": [
-        "category"
-      ],
-      "list": [
-        "uuid",
-        "id",
-        "name",
-        "slug",
-        "teaser"
-      ]
+      "editRelations": ["category"],
+      "list": ["uuid", "id", "name", "slug", "teaser"]
     }
   },
   "type": "object",
