@@ -4,4 +4,4 @@ export default {
     maxLimit: 100,
     withCount: true,
   },
-} as Strapi.ApiConfig
+} as Strapi.Config.Api

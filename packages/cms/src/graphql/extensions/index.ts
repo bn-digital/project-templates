@@ -1,6 +1,6 @@
 import resolvers, { resolversConfig } from '../resolvers'
 
-const readOnlyEntities: Readonly<Strapi.EntityUID[]> = [
+const readOnlyEntities: (Strapi.CollectionTypeUIDs | Strapi.SingleTypeUIDs)[] = [
   'api::email.email',
   'api::post.post',
   'api::website.website',
@@ -10,9 +10,9 @@ const readOnlyEntities: Readonly<Strapi.EntityUID[]> = [
   'plugin::menus.menu-item',
   'plugin::users-permissions.permission',
   'plugin::users-permissions.role',
-] as const
+]
 
-const writeOnlyEntities: Readonly<Strapi.EntityUID[]> = ['api::contact.contact'] as const
+const writeOnlyEntities: (Strapi.CollectionTypeUIDs | Strapi.SingleTypeUIDs)[] = ['api::contact.contact']
 
 const schemaExtension: Strapi.Graphql.ExtensionCallback = ({ nexus }) => ({
   types: [

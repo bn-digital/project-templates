@@ -19,7 +19,7 @@ export default ({ proxies }: { proxies: { [key: string]: string } }) =>
               method: ctx.method as Method,
               params: ctx.URL.search,
               url: ctx.URL.pathname.replace(`/api/proxy/${key}/`, '/'),
-              data: ctx.request.body,
+              data: ctx.request.ctx.body,
               headers: Object.entries(ctx.request.headers).reduce((headers, [key, value]) => ({ ...headers, [key]: value }), {}),
             })
             .catch((error: AxiosError) => error.response)

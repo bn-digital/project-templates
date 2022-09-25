@@ -1,6 +1,6 @@
 import { domain, generateSecret, name } from './index'
 
-export default ({ env }: Strapi.Env): Strapi.PluginsConfig => ({
+export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
   'import-export-entries': {
     enabled: true,
     config: {

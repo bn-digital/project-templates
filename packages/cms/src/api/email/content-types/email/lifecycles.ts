@@ -2,7 +2,7 @@ export default {
   async afterCreate(event: Strapi.Database.AfterLifecycleEvent<Strapi.Email.EmailEntity>) {
     const emailService = strapi.service<Strapi.Email.EmailService>('api::email.email')
     const email: Strapi.Email.EmailEntity = await emailService.findOne(event.result.id)
-    await emailService.update(email.id, { status: 'queued' })
+    await emailService.update(email.id, { data: { status: 'queued' } })
   },
 
   async afterUpdate({ result }: Strapi.Database.AfterLifecycleEvent<Strapi.Email.EmailEntity>) {
@@ -10,10 +10,10 @@ export default {
     const emailService = strapi.service<Strapi.Email.EmailService>('api::email.email')
     const emailConfig: Strapi.Email.Settings = strapi.config.get('plugin.email').settings
     const email: Strapi.Email.EmailEntity = await emailService.findOne(result.id, { populate: 'template' })
-    let status: Strapi.Email.State = email.status
+    let status: Strapi.Email.Status = email.status
     const to = email.email ?? emailConfig.defaultReplyTo
     const from = emailConfig.defaultFrom
-    if (email.status === 'queued') {
+    if (status === 'queued') {
       try {
         if (!email.template) {
           status = 'new'

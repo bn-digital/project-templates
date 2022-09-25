@@ -16,4 +16,4 @@ export default {
       importConfigs(strapi)
     }
   },
-} as Strapi
+} as Strapi.Strapi

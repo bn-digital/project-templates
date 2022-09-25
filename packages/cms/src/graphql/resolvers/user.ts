@@ -1,7 +1,8 @@
 import { hashSync } from 'bcryptjs'
+import { FieldResolver } from 'nexus'
 
 function getUserService(): Strapi.UsersPermissions.UserService {
-  return strapi.plugin('users-permissions').service('plugin::users-permissions.user')
+  return strapi.plugin('users-permissions').service('user')
 }
 
 async function changePassword(root, args: { input: Strapi.UsersPermissions.ChangePasswordPayload }, ctx: Strapi.Graphql.ResolverContext): Promise<boolean> {
@@ -23,14 +24,15 @@ async function changePassword(root, args: { input: Strapi.UsersPermissions.Chang
   }
 }
 
-async function me(root, args, ctx: Strapi.Graphql.ResolverContext): Promise<Strapi.UsersPermissions.UserEntity> {
+const me: FieldResolver<'Query', 'me'> = async (root, args: null, ctx: Strapi.Graphql.ResolverContext) => {
+  if (!ctx.state.user) return null
   const userService = getUserService()
   const user = await userService.fetch(ctx.state.user.id, { populate: '*' })
   if (!user) return null
 
   return {
-    ...user,
     id: ctx.state.user.id,
+    ...user,
   }
 }
 
