@@ -262,6 +262,7 @@ export const WebsiteFragmentDoc = gql`
   fragment Website on WebsiteEntity {
     id
     attributes {
+      locale
       seo {
         ...Seo
       }
@@ -273,6 +274,7 @@ export const WebsiteFragmentDoc = gql`
       translations {
         ...Entry
       }
+      locale
     }
   }
   ${SeoFragmentDoc}
@@ -458,6 +460,13 @@ export const WebsiteDocument = gql`
     website {
       data {
         ...Website
+        attributes {
+          localizations {
+            data {
+              ...Website
+            }
+          }
+        }
       }
     }
   }

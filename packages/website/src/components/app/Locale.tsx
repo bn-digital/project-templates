@@ -4,7 +4,7 @@ import esES from 'antd/es/locale/es_ES'
 import { createContext, Dispatch, FC, PropsWithChildren, SetStateAction, useContext, useMemo, useState } from 'react'
 import { IntlProvider } from 'react-intl'
 
-import { useTranslationsQuery } from '../../graphql'
+import { useWebsiteQuery } from '../../graphql'
 
 const defaultLocale = 'en'
 
@@ -16,15 +16,15 @@ const Context = createContext<ContextProps>({ locale: defaultLocale, setLocale: 
 
 const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
   const [locale, setLocale] = useState<Locale>(defaultLocale)
-  const { data, loading } = useTranslationsQuery()
+  const { data, loading } = useWebsiteQuery()
   const messages = useMemo(() => {
     let messagesData: Maybe<EntryFragment>[] = []
-    if (data?.translation?.data?.attributes) {
+    if (data?.website?.data?.attributes?.translations) {
       messagesData =
         locale !== defaultLocale
-          ? data?.translation.data.attributes.localizations?.data?.find(it => it?.attributes?.locale === locale)?.attributes?.entry ??
-            data?.translation.data.attributes.entry
-          : data?.translation.data.attributes.entry
+          ? data.website.data.attributes.localizations?.data?.find(it => it?.attributes?.locale === locale)?.attributes?.translations ??
+            data.website.data.attributes.translations
+          : data.website.data.attributes.translations
     } else {
       messagesData = []
     }
@@ -37,7 +37,7 @@ const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
         {},
       ) ?? {}
     )
-  }, [data?.translation?.data?.attributes, locale])
+  }, [data?.website?.data?.attributes, locale])
 
   if (loading) return null
 
