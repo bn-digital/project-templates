@@ -1,9 +1,8 @@
-import resolvers from '../resolvers'
+import resolvers, { resolversConfig } from '../resolvers'
 
-const readOnlyEntities: Readonly<EntityUID[]> = [
+const readOnlyEntities: Readonly<Strapi.EntityUID[]> = [
   'api::email.email',
   'api::post.post',
-  'api::translation.translation',
   'api::website.website',
   'plugin::email-designer.email-template',
   'plugin::i18n.locale',
@@ -13,11 +12,11 @@ const readOnlyEntities: Readonly<EntityUID[]> = [
   'plugin::users-permissions.role',
 ] as const
 
-const writeOnlyEntities: Readonly<EntityUID[]> = ['api::contact.contact'] as const
+const writeOnlyEntities: Readonly<Strapi.EntityUID[]> = ['api::contact.contact'] as const
 
 const schemaExtension: Strapi.Graphql.ExtensionCallback = ({ nexus }) => ({
   types: [
-    nexus.extendType<'Query'>({
+    nexus.extendType({
       type: 'Query',
       definition: t => {
         t.field('me', {
@@ -28,8 +27,7 @@ const schemaExtension: Strapi.Graphql.ExtensionCallback = ({ nexus }) => ({
     nexus.extendType<'Mutation'>({
       type: 'Mutation',
       definition: t => {
-        t.field('changePassword', {
-          type: 'Boolean',
+        t.nonNull.boolean('changePassword', {
           args: {
             input: nexus.arg({ type: 'ChangePasswordInput' }),
           },
@@ -39,9 +37,7 @@ const schemaExtension: Strapi.Graphql.ExtensionCallback = ({ nexus }) => ({
     nexus.extendType<'UsersPermissionsUser'>({
       type: 'UsersPermissionsUser',
       definition: t => {
-        t.field('id', {
-          type: 'ID',
-        })
+        t.nonNull.id('id')
       },
     }),
     nexus.inputObjectType<'ChangePasswordInput'>({
@@ -53,6 +49,7 @@ const schemaExtension: Strapi.Graphql.ExtensionCallback = ({ nexus }) => ({
     }),
   ],
   resolvers,
+  resolversConfig,
 })
 
 export { readOnlyEntities, schemaExtension, writeOnlyEntities }

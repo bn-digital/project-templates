@@ -26,10 +26,6 @@
     },
     "text": {
       "type": "text"
-    },
-    "status": {
-      "type": "enumeration",
-      "enum": ["new", "sent", "failed"]
     }
   }
 }

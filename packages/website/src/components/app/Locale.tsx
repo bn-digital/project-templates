@@ -1,6 +1,6 @@
 import { ConfigProvider } from 'antd'
-import enUS from 'antd/lib/locale/en_US'
-import esES from 'antd/lib/locale/es_ES'
+import enUS from 'antd/es/locale/en_US'
+import esES from 'antd/es/locale/es_ES'
 import { createContext, Dispatch, FC, PropsWithChildren, SetStateAction, useContext, useMemo, useState } from 'react'
 import { IntlProvider } from 'react-intl'
 

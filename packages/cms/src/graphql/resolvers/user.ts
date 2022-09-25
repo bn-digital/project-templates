@@ -1,7 +1,7 @@
 import { hashSync } from 'bcryptjs'
 
-function getUserService() {
-  return strapi.service<Strapi.UsersPermissions.UserService>('plugin::users-permissions.user')
+function getUserService(): Strapi.UsersPermissions.UserService {
+  return strapi.plugin('users-permissions').service('plugin::users-permissions.user')
 }
 
 async function changePassword(root, args: { input: Strapi.UsersPermissions.ChangePasswordPayload }, ctx: Strapi.Graphql.ResolverContext): Promise<boolean> {

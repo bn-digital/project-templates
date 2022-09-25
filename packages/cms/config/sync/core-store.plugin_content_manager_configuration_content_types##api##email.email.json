@@ -20,16 +20,59 @@
           "sortable": true
         }
       },
-      "to": {
+      "email": {
         "edit": {
-          "label": "to",
+          "label": "email",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "to",
+          "label": "email",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "template": {
+        "edit": {
+          "label": "template",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "template",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "payload": {
+        "edit": {
+          "label": "payload",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "payload",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "status": {
+        "edit": {
+          "label": "status",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "status",
           "searchable": true,
           "sortable": true
         }
@@ -64,21 +107,26 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "to",
-        "createdAt",
-        "updatedAt"
-      ],
-      "editRelations": [],
+      "list": ["id", "createdAt", "updatedAt", "email"],
       "edit": [
         [
           {
-            "name": "to",
+            "name": "payload",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "status",
+            "size": 6
+          },
+          {
+            "name": "email",
             "size": 6
           }
         ]
-      ]
+      ],
+      "editRelations": ["template"]
     }
   },
   "type": "object",

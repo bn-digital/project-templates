@@ -34,14 +34,13 @@
     "extends": "@bn-digital/eslint-config"
   },
   "resolutions": {
-    "@strapi/typescript-utils": "4.3.2",
-    "@graphql-tools/merge": "8.3.0"
+    "@strapi/typescript-utils": "4.3.2"
   },
   "devDependencies": {
     "@bn-digital/commitlint-config": "^2.0.0",
-    "@bn-digital/eslint-config": "^2.0.2",
-    "@bn-digital/prettier-config": "^2.0.0",
-    "@bn-digital/stylelint-config": "^2.0.0",
+    "@bn-digital/eslint-config": "^2.0.3",
+    "@bn-digital/prettier-config": "^2.0.1",
+    "@bn-digital/stylelint-config": "^2.0.1",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3"
   },

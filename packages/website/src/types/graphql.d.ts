@@ -11,7 +11,6 @@ type Scalars = {
   Int: number
   Float: number
   DateTime: Date
-  I18NLocaleCode: string | 'en'
   JSON: Record<string, any | any[] | string | number | boolean | null | undefined> | any[]
   Upload: unknown
 }
@@ -116,12 +115,6 @@ type ComponentDataEntryFiltersInput = {
   not?: InputMaybe<ComponentDataEntryFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentDataEntryFiltersInput>>>
   value?: InputMaybe<StringFilterInput>
-}
-
-type ComponentDataEntryInput = {
-  id?: InputMaybe<Scalars['ID']>
-  key?: InputMaybe<Scalars['String']>
-  value?: InputMaybe<Scalars['String']>
 }
 
 type ComponentDataSet = {
@@ -301,7 +294,6 @@ type Contact = {
   createdAt?: Maybe<Scalars['DateTime']>
   email: Scalars['String']
   name: Scalars['String']
-  status?: Maybe<EnumContactStatus>
   subject?: Maybe<Scalars['String']>
   text?: Maybe<Scalars['String']>
   updatedAt?: Maybe<Scalars['DateTime']>
@@ -320,7 +312,6 @@ type ContactInput = {
   email?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
   sitemap_exclude?: InputMaybe<Scalars['Boolean']>
-  status?: InputMaybe<EnumContactStatus>
   subject?: InputMaybe<Scalars['String']>
   text?: InputMaybe<Scalars['String']>
 }
@@ -351,13 +342,14 @@ type DateTimeFilterInput = {
 
 type EnumComponentsharedmetasocialSocialnetwork = 'Facebook' | 'Twitter'
 
-type EnumContactStatus = 'failed' | 'new' | 'sent'
-
 type EnumMenusmenuitemTarget = 'blank' | 'parent' | 'self' | 'top'
 
 type Email = {
   createdAt?: Maybe<Scalars['DateTime']>
+  payload?: Maybe<Scalars['JSON']>
   publishedAt?: Maybe<Scalars['DateTime']>
+  status: EmailStatus
+  template?: Maybe<EmailDesignerEmailTemplateEntityResponse>
   to: Scalars['String']
   updatedAt?: Maybe<Scalars['DateTime']>
 }
@@ -427,11 +419,16 @@ type EmailFiltersInput = {
   id?: InputMaybe<IdFilterInput>
   not?: InputMaybe<EmailFiltersInput>
   or?: InputMaybe<Array<InputMaybe<EmailFiltersInput>>>
+  payload?: InputMaybe<JsonFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   sitemap_exclude?: InputMaybe<BooleanFilterInput>
+  status?: InputMaybe<StringFilterInput>
+  template?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
   to?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
+
+type EmailStatus = 'failed' | 'new' | 'queued' | 'sent'
 
 type Error = {
   code: Scalars['String']
@@ -492,7 +489,6 @@ type GenericMorph =
   | MenusMenu
   | MenusMenuItem
   | Post
-  | Translation
   | UploadFile
   | UploadFolder
   | UsersPermissionsPermission
@@ -694,7 +690,6 @@ type Mutation = {
   changePassword?: Maybe<Scalars['Boolean']>
   createCategory?: Maybe<CategoryEntityResponse>
   createContact?: Maybe<ContactEntityResponse>
-  createTranslationLocalization?: Maybe<TranslationEntityResponse>
   createUploadFile?: Maybe<UploadFileEntityResponse>
   createUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Create a new role */
@@ -742,12 +737,6 @@ type MutationCreateCategoryArgs = {
 
 type MutationCreateContactArgs = {
   data: ContactInput
-}
-
-type MutationCreateTranslationLocalizationArgs = {
-  data?: InputMaybe<TranslationInput>
-  id?: InputMaybe<Scalars['ID']>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
 type MutationCreateUploadFileArgs = {
@@ -950,7 +939,6 @@ type Query = {
   menusMenus?: Maybe<MenusMenuEntityResponseCollection>
   post?: Maybe<PostEntityResponse>
   posts?: Maybe<PostEntityResponseCollection>
-  translation?: Maybe<TranslationEntityResponse>
   uploadFile?: Maybe<UploadFileEntityResponse>
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>
   uploadFolder?: Maybe<UploadFolderEntityResponse>
@@ -1034,11 +1022,6 @@ type QueryPostsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
-type QueryTranslationArgs = {
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>
-  publicationState?: InputMaybe<PublicationState>
-}
-
 type QueryUploadFileArgs = {
   id?: InputMaybe<Scalars['ID']>
 }
@@ -1105,44 +1088,6 @@ type StringFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>
   or?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   startsWith?: InputMaybe<Scalars['String']>
-}
-
-type Translation = {
-  createdAt?: Maybe<Scalars['DateTime']>
-  entry: Array<Maybe<ComponentDataEntry>>
-  locale?: Maybe<Scalars['String']>
-  localizations?: Maybe<TranslationRelationResponseCollection>
-  publishedAt?: Maybe<Scalars['DateTime']>
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
-
-type TranslationEntryArgs = {
-  filters?: InputMaybe<ComponentDataEntryFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type TranslationLocalizationsArgs = {
-  publicationState?: InputMaybe<PublicationState>
-}
-
-type TranslationEntity = {
-  attributes?: Maybe<Translation>
-  id?: Maybe<Scalars['ID']>
-}
-
-type TranslationEntityResponse = {
-  data?: Maybe<TranslationEntity>
-}
-
-type TranslationInput = {
-  entry?: InputMaybe<Array<InputMaybe<ComponentDataEntryInput>>>
-  publishedAt?: InputMaybe<Scalars['DateTime']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
-}
-
-type TranslationRelationResponseCollection = {
-  data: Array<TranslationEntity>
 }
 
 type UploadFile = {
@@ -1877,6 +1822,7 @@ type WebsiteFragment = {
             >
           | null
           | undefined
+        translations?: Array<{ id: string; key?: string | null | undefined; value: string } | null | undefined> | null | undefined
       }
     | null
     | undefined
@@ -2090,42 +2036,6 @@ type PostsQuery = {
     | undefined
 }
 
-type TranslationsQueryVariables = Exact<{ [key: string]: never }>
-
-type TranslationsQuery = {
-  translation?:
-    | {
-        data?:
-          | {
-              attributes?:
-                | {
-                    locale?: string | null | undefined
-                    localizations?:
-                      | {
-                          data: Array<{
-                            attributes?:
-                              | {
-                                  locale?: string | null | undefined
-                                  entry: Array<{ id: string; key?: string | null | undefined; value: string } | null | undefined>
-                                }
-                              | null
-                              | undefined
-                          }>
-                        }
-                      | null
-                      | undefined
-                    entry: Array<{ id: string; key?: string | null | undefined; value: string } | null | undefined>
-                  }
-                | null
-                | undefined
-            }
-          | null
-          | undefined
-      }
-    | null
-    | undefined
-}
-
 type WebsiteQueryVariables = Exact<{ [key: string]: never }>
 
 type WebsiteQuery = {
@@ -2221,6 +2131,7 @@ type WebsiteQuery = {
                         >
                       | null
                       | undefined
+                    translations?: Array<{ id: string; key?: string | null | undefined; value: string } | null | undefined> | null | undefined
                   }
                 | null
                 | undefined

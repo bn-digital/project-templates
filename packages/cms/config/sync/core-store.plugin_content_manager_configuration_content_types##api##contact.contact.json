@@ -76,20 +76,6 @@
           "sortable": true
         }
       },
-      "status": {
-        "edit": {
-          "label": "status",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "status",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -120,13 +106,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "email",
-        "subject"
-      ],
-      "editRelations": [],
+      "list": ["id", "name", "email", "subject"],
       "edit": [
         [
           {
@@ -147,14 +127,9 @@
             "name": "text",
             "size": 6
           }
-        ],
-        [
-          {
-            "name": "status",
-            "size": 6
-          }
         ]
-      ]
+      ],
+      "editRelations": []
     }
   },
   "type": "object",

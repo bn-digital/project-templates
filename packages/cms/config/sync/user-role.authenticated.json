@@ -19,9 +19,6 @@
       "action": "api::post.post.findOne"
     },
     {
-      "action": "api::translation.translation.find"
-    },
-    {
       "action": "api::website.website.find"
     },
     {

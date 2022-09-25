@@ -1,72 +1,70 @@
 namespace Strapi {
-  import { GenericService } from '@strapi/strapi/lib'
+  import { CollectionTypeService } from '@strapi/strapi/lib/core-api/service'
+  import {} from '@strapi/strapi/lib/types'
+
   type Env = { env: EnvFunction & TypedEnvFunction }
 
-  namespace Db {
-    type Client = 'sqlite' | 'postgres' | 'mysql'
+  type LogLevel = 'info' | 'warn' | 'error'
+
+  type Primitive = string | number | null | boolean | unknown
+
+  type EnvVar<T = Primitive> = T
+
+  type EnvFunction = <T = EnvVar>(key: string, defaultValue?: T) => T
+
+  type TypedEnvFunction = Partial<{
+    int(key: string, defaultValue?: number): number
+    date(key: string, defaultValue?: Date): number
+    float(key: number, defaultValue?: number): number
+    bool(key: string, defaultValue?: boolean): boolean
+    array<T = EnvVar>(key: string, defaultValue?: T[]): T[]
+    json<T = { [key: string]: any }>(key: string, defaultValue?: T): T
+  }>
+
+  type EntityUID = Strapi.SingleTypeUIDs | Strapi.CollectionTypeUIDs
+
+  type Context = {
+    state: Strapi.UsersPermissions.AuthContext
+    args: any
   }
-
-  namespace ConfigSync {
-    type Plugin = {
-      service<T>(name: 'main'): T
-    }
-    type MainService = {
-      importAllConfig(): void
-      exportAllConfig(): void
-    }
+  type Config = {
+    server: Strapi.ServerConfig
+    admin: Strapi.AdminConfig
+    database: Strapi.Database.Config
+    api: Strapi.ApiConfig
+    get(path: string): any
   }
-
-  namespace TypeScript {
-    type Generator = {
-      generateSchemasDefinitions(options: { strapi: Strapi.Strapi; outDir?: string; file?: string }): Promise<void>
-    }
+  type ServerConfig = {
+    host: string
+    port: number
+    proxy?: boolean
+    cron?: { enabled: boolean; tasks: { [key: string]: unknown } }
+    admin?: { autoOpen?: boolean }
+    dirs?: { public?: string }
+    url?: string
+    app: { keys: string[] }
   }
-
-  namespace Graphql {
-    import { default as Nexus, FieldResolver, core } from 'nexus'
-    import { ParameterizedContext } from 'koa'
-
-    type Plugin = { service<T = any>(name: 'extension' | 'content-api' | 'type-registry'): T }
-    type ResolverContext = ParameterizedContext<Strapi.UsersPermissions.AuthContext>
-
-    interface SchemaExtension {
-      types: ReturnType<typeof core.objectType>[]
-      resolvers?: { [key: string]: { [key: string]: FieldResolver } }
+  type AdminConfig = {
+    auth: { secret: string }
+    apiToken: { salt: string }
+    watchIgnoreFiles?: string[]
+    forgotPassword?: {
+      from: string
+      replyTo: string
+      emailTemplate: unknown
     }
-
-    type ExtensionCallback = ({ nexus }: { nexus: typeof Nexus }) => Strapi.Graphql.SchemaExtension
-
-    type ExtensionService = GenericService & {
-      use(schemaExtensionCallback: ExtensionCallback): void
-      shadowCRUD(entityName: EntityUID): {
-        disableMutations()
-        disableQueries()
-        disable()
-      }
-    }
-    type ContentApiService = { buildSchema(): core.NexusGraphQLSchema }
-    type TypeRegistryService = { new: () => { types: any[] } }
+    url?: string
+    path?: string
   }
-
-  namespace UsersPermissions {
-    type UserEntity = {
-      id: string
-      username: string
-      email: string
-      resetPasswordToken?: string
-      password?: string
-    }
-    type ChangePasswordPayload = {
-      oldPassword: string
-      newPassword: string
-    }
-    type AuthContext = { user: UserEntity }
-    type UserService = GenericService & {
-      validatePassword(hash: string, newPassword: string): Promise<boolean>
-      edit(id: string, params: Partial<UserEntity>): Promise<any>
-      fetch(id: string, params?: { populate?: (keyof UserEntity | string)[] | string }): Promise<UserEntity | null>
+  type ApiConfig = {
+    rest: {
+      prefix: string
+      defaultLimit: number
+      maxLimit: null
+      withCount: boolean
     }
   }
+  type Service = CollectionTypeService
 
   type PluginsConfig = { [key: string]: Partial<{ enabled: boolean; resolve: string; config: Record<string, unknown> }> }
 }
