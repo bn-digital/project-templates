@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@bn-digital/strapi-plugin-field-uuid": "^1.1.4",
+    "@bn-digital/strapi-types": "^1.0.33",
     "@strapi/plugin-color-picker": "0.0.0",
     "@strapi/plugin-content-manager": "4.4.0-rc.1",
     "@strapi/plugin-content-type-builder": "4.4.0-rc.1",
@@ -34,7 +35,7 @@
     "pg": "^8.8.0",
     "strapi-plugin-config-sync": "^1.0.4",
     "strapi-plugin-email-designer": "^2.1.1",
-    "strapi-plugin-import-export-entries": "^1.14.1",
+    "strapi-plugin-import-export-entries": "^1.15.0",
     "strapi-plugin-menus": "^1.0.2",
     "strapi-plugin-sitemap": "^2.0.8",
     "strapi-plugin-wysiwyg-tui-editor": "^4.0.1",
@@ -45,7 +46,6 @@
     "@types/bcryptjs": "latest",
     "@types/node": "latest",
     "@types/uuid": "latest",
-    "nexus": "^1.3.0",
     "typescript": "^4.8.3"
   }
 }

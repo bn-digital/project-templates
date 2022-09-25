@@ -35,7 +35,6 @@ const client = new ApolloClient({
       headers: { Authorization: `Bearer  ${JSON.parse(localStorage.getItem('jwtToken') || '{}')}` },
     }),
   ),
-  defaultOptions: { query: { fetchPolicy: 'cache-first' }, watchQuery: { fetchPolicy: 'cache-only' } },
   connectToDevTools: import.meta.env.DEV,
   queryDeduplication: true,
   cache: new InMemoryCache({
@@ -44,12 +43,18 @@ const client = new ApolloClient({
   }),
 })
 
-function withLocalization(Wrapped: FC<PropsWithChildren>): FC<PropsWithChildren> {
-  return memo(props => (
-    <LocaleProvider>
-      <Wrapped {...props} />
-    </LocaleProvider>
-  ))
+const LocalizedApp: FC = () => {
+  return (
+    <ErrorBoundary>
+      <ApolloProvider client={client}>
+        <LocaleProvider>
+          <ContextProvider>
+            <Pages />
+          </ContextProvider>
+        </LocaleProvider>
+      </ApolloProvider>
+    </ErrorBoundary>
+  )
 }
 
 const App: FC = () => (
@@ -64,6 +69,6 @@ const App: FC = () => (
 
 const useApp = () => useContext<AppProps>(Context)
 
-export default withLocalization(App)
+export default LocalizedApp
 
 export { App, useApp }

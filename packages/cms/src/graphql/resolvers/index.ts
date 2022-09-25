@@ -10,9 +10,14 @@ const Mutation = {
 const UploadFile = {
   url,
 }
+
 export const resolversConfig: Strapi.Graphql.ResolverConfig = {
   'Mutation.changePassword': {
     auth: true,
   },
+  'Query.me': {
+    auth: true,
+  },
 }
+
 export default { Query, Mutation, UploadFile }

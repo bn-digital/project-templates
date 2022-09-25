@@ -5,7 +5,7 @@ import { domain, generateSecret, workingDir } from './'
 
 const forgotPasswordTemplate = fs.readFileSync(path.join(workingDir, 'src', 'templates', 'forgot-password.ejs'), { encoding: 'utf-8' })
 
-export default ({ env }: Strapi.Env): Strapi.AdminConfig => ({
+export default ({ env }: Strapi.Env): Strapi.Config.Admin => ({
   auth: {
     secret: env('AUTH_SECRET', generateSecret('AUTH_SECRET')),
   },

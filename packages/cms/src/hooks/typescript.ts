@@ -7,7 +7,7 @@ function getSchemaGenerator(): Strapi.TypeScript.Generator {
   return generators
 }
 
-function generateTypeDefinitions(strapi: Global['strapi']): void {
+function generateTypeDefinitions(strapi: Strapi.Strapi): void {
   getSchemaGenerator()
     .generateSchemasDefinitions({ strapi, file: 'api.d.ts', outDir: path.join(workingDir, 'src', 'types') })
     .then(() => strapi.log.info('[typescript] Type definitions were generated'))

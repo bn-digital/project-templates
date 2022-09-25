@@ -11,8 +11,10 @@ type Scalars = {
   Int: number
   Float: number
   DateTime: Date
+  I18NLocaleCode: string | 'en'
   JSON: Record<string, any | any[] | string | number | boolean | null | undefined> | any[]
   Upload: unknown
+  WebsiteContentDynamicZoneInput: any
 }
 
 type BooleanFilterInput = {
@@ -115,6 +117,12 @@ type ComponentDataEntryFiltersInput = {
   not?: InputMaybe<ComponentDataEntryFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentDataEntryFiltersInput>>>
   value?: InputMaybe<StringFilterInput>
+}
+
+type ComponentDataEntryInput = {
+  id?: InputMaybe<Scalars['ID']>
+  key?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['String']>
 }
 
 type ComponentDataSet = {
@@ -346,11 +354,11 @@ type EnumMenusmenuitemTarget = 'blank' | 'parent' | 'self' | 'top'
 
 type Email = {
   createdAt?: Maybe<Scalars['DateTime']>
+  email?: Maybe<Scalars['String']>
   payload?: Maybe<Scalars['JSON']>
   publishedAt?: Maybe<Scalars['DateTime']>
   status: EmailStatus
   template?: Maybe<EmailDesignerEmailTemplateEntityResponse>
-  to: Scalars['String']
   updatedAt?: Maybe<Scalars['DateTime']>
 }
 
@@ -416,6 +424,7 @@ type EmailEntityResponseCollection = {
 type EmailFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<EmailFiltersInput>>>
   createdAt?: InputMaybe<DateTimeFilterInput>
+  email?: InputMaybe<StringFilterInput>
   id?: InputMaybe<IdFilterInput>
   not?: InputMaybe<EmailFiltersInput>
   or?: InputMaybe<Array<InputMaybe<EmailFiltersInput>>>
@@ -424,7 +433,6 @@ type EmailFiltersInput = {
   sitemap_exclude?: InputMaybe<BooleanFilterInput>
   status?: InputMaybe<StringFilterInput>
   template?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
-  to?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
@@ -687,7 +695,7 @@ type MenusMenuItemRelationResponseCollection = {
 }
 
 type Mutation = {
-  changePassword?: Maybe<Scalars['Boolean']>
+  changePassword: Scalars['Boolean']
   createCategory?: Maybe<CategoryEntityResponse>
   createContact?: Maybe<ContactEntityResponse>
   createUploadFile?: Maybe<UploadFileEntityResponse>
@@ -696,6 +704,7 @@ type Mutation = {
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
+  createWebsiteLocalization?: Maybe<WebsiteEntityResponse>
   deleteCategory?: Maybe<CategoryEntityResponse>
   deleteContact?: Maybe<ContactEntityResponse>
   deleteUploadFile?: Maybe<UploadFileEntityResponse>
@@ -753,6 +762,12 @@ type MutationCreateUsersPermissionsRoleArgs = {
 
 type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput
+}
+
+type MutationCreateWebsiteLocalizationArgs = {
+  data?: InputMaybe<WebsiteInput>
+  id?: InputMaybe<Scalars['ID']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
 type MutationDeleteCategoryArgs = {
@@ -1060,6 +1075,10 @@ type QueryUsersPermissionsUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type QueryWebsiteArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
 type ResponseCollectionMeta = {
@@ -1380,7 +1399,7 @@ type UsersPermissionsUser = {
   confirmed?: Maybe<Scalars['Boolean']>
   createdAt?: Maybe<Scalars['DateTime']>
   email: Scalars['String']
-  id?: Maybe<Scalars['ID']>
+  id: Scalars['ID']
   provider?: Maybe<Scalars['String']>
   role?: Maybe<UsersPermissionsRoleEntityResponse>
   updatedAt?: Maybe<Scalars['DateTime']>
@@ -1440,6 +1459,8 @@ type UsersPermissionsUserRelationResponseCollection = {
 type Website = {
   content?: Maybe<Array<Maybe<WebsiteContentDynamicZone>>>
   createdAt?: Maybe<Scalars['DateTime']>
+  locale?: Maybe<Scalars['String']>
+  localizations?: Maybe<WebsiteRelationResponseCollection>
   seo?: Maybe<ComponentSharedSeo>
   translations?: Maybe<Array<Maybe<ComponentDataEntry>>>
   updatedAt?: Maybe<Scalars['DateTime']>
@@ -1460,6 +1481,17 @@ type WebsiteEntity = {
 
 type WebsiteEntityResponse = {
   data?: Maybe<WebsiteEntity>
+}
+
+type WebsiteInput = {
+  content?: InputMaybe<Array<Scalars['WebsiteContentDynamicZoneInput']>>
+  seo?: InputMaybe<ComponentSharedSeoInput>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+  translations?: InputMaybe<Array<InputMaybe<ComponentDataEntryInput>>>
+}
+
+type WebsiteRelationResponseCollection = {
+  data: Array<WebsiteEntity>
 }
 
 type CardFragment = {
@@ -1737,6 +1769,7 @@ type WebsiteFragment = {
   id?: string | null | undefined
   attributes?:
     | {
+        locale?: string | null | undefined
         seo?:
           | {
               id: string
@@ -2046,6 +2079,120 @@ type WebsiteQuery = {
               id?: string | null | undefined
               attributes?:
                 | {
+                    locale?: string | null | undefined
+                    localizations?:
+                      | {
+                          data: Array<{
+                            id?: string | null | undefined
+                            attributes?:
+                              | {
+                                  locale?: string | null | undefined
+                                  seo?:
+                                    | {
+                                        id: string
+                                        canonicalURL?: string | null | undefined
+                                        keywords?: string | null | undefined
+                                        metaTitle: string
+                                        metaViewport?: string | null | undefined
+                                        metaDescription?: string | null | undefined
+                                      }
+                                    | null
+                                    | undefined
+                                  content?:
+                                    | Array<
+                                        | {
+                                            __typename: 'ComponentPageContactUs'
+                                            id: string
+                                            pathname: string
+                                            contact?:
+                                              | {
+                                                  id: string
+                                                  address?: string | null | undefined
+                                                  email?: string | null | undefined
+                                                  phone?: string | null | undefined
+                                                }
+                                              | null
+                                              | undefined
+                                          }
+                                        | {
+                                            __typename: 'ComponentPageHome'
+                                            id: string
+                                            pathname: string
+                                            hero?:
+                                              | {
+                                                  subtitle?: string | null | undefined
+                                                  id: string
+                                                  description?: string | null | undefined
+                                                  title?: string | null | undefined
+                                                  media?:
+                                                    | {
+                                                        data?:
+                                                          | {
+                                                              id?: string | null | undefined
+                                                              attributes?:
+                                                                | {
+                                                                    previewUrl?: string | null | undefined
+                                                                    alternativeText?: string | null | undefined
+                                                                    url: string
+                                                                  }
+                                                                | null
+                                                                | undefined
+                                                            }
+                                                          | null
+                                                          | undefined
+                                                      }
+                                                    | null
+                                                    | undefined
+                                                }
+                                              | null
+                                              | undefined
+                                            features?:
+                                              | Array<
+                                                  | {
+                                                      id: string
+                                                      title?: string | null | undefined
+                                                      subtitle?: string | null | undefined
+                                                      description?: string | null | undefined
+                                                      media?:
+                                                        | {
+                                                            data?:
+                                                              | {
+                                                                  id?: string | null | undefined
+                                                                  attributes?:
+                                                                    | {
+                                                                        previewUrl?: string | null | undefined
+                                                                        alternativeText?: string | null | undefined
+                                                                        url: string
+                                                                      }
+                                                                    | null
+                                                                    | undefined
+                                                                }
+                                                              | null
+                                                              | undefined
+                                                          }
+                                                        | null
+                                                        | undefined
+                                                    }
+                                                  | null
+                                                  | undefined
+                                                >
+                                              | null
+                                              | undefined
+                                          }
+                                        | { __typename: 'Error' }
+                                        | null
+                                        | undefined
+                                      >
+                                    | null
+                                    | undefined
+                                  translations?: Array<{ id: string; key?: string | null | undefined; value: string } | null | undefined> | null | undefined
+                                }
+                              | null
+                              | undefined
+                          }>
+                        }
+                      | null
+                      | undefined
                     seo?:
                       | {
                           id: string
