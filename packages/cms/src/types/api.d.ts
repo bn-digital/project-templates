@@ -290,7 +290,7 @@ export interface ApiEmailEmail extends CollectionTypeSchema {
     email: EmailAttribute
     template: RelationAttribute<'api::email.email', 'oneToOne', 'plugin::email-designer.email-template'>
     payload: JSONAttribute
-    status: EnumerationAttribute<['new', 'queued', 'sent', 'failed']> & RequiredAttribute & DefaultTo<'new'>
+    status: EnumerationAttribute<['sent', 'failed', 'invalid']>
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     publishedAt: DateTimeAttribute

@@ -1,4 +1,6 @@
-import { domain, generateSecret, name } from './index'
+import path from 'path'
+
+import { domain, generateSecret, name, workingDir } from './index'
 
 export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
   'import-export-entries': {
@@ -14,6 +16,8 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
       shadowCRUD: true,
       subscriptions: true,
       playgroundAlways: true,
+      generateArtifacts: true,
+      artifacts: { schema: path.join(workingDir, 'src', 'graphql', 'schema.graphql') },
       apolloServer: {
         cache: 'bounded',
         persistedQueries: {

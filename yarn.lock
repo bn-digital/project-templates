@@ -1817,25 +1817,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/strapi-plugin-field-uuid@npm:^1.1.4":
-  version: 1.1.4
-  resolution: "@bn-digital/strapi-plugin-field-uuid@npm:1.1.4"
+"@bn-digital/strapi-plugin-field-uuid@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "@bn-digital/strapi-plugin-field-uuid@npm:1.1.5"
   dependencies:
     uuid: "npm:^9.0.0"
   peerDependencies:
-    "@strapi/strapi": ^4.4.0-beta.4
-  checksum: 3c922539aa854cdb205f0bf61799b30bfd3e02ad59a208e5587c23a57080d565833002f7f27765bf6776b7614d67f4b359a10c7a678ff71d5184fd64beb37452
+    "@strapi/strapi": ^4.4.0-rc.1
+  checksum: 8b5a9448e06b9054409e447d3d66640ec5022f88687c875e22e3c9c1edb9d3444de6d26c7a4bf297f5efcae6b570fad69964413dd9359d296c4c024cd81b134f
   languageName: node
   linkType: hard
 
-"@bn-digital/strapi-types@npm:^1.0.35":
-  version: 1.0.35
-  resolution: "@bn-digital/strapi-types@npm:1.0.35"
+"@bn-digital/strapi-types@npm:^1.0.38":
+  version: 1.0.38
+  resolution: "@bn-digital/strapi-types@npm:1.0.38"
   dependencies:
     "@strapi/database": "npm:^4.4.0-rc.1"
     "@strapi/strapi": "npm:^4.4.0-rc.1"
     nexus: "npm:^1.3.0"
-  checksum: 8f77a510f85fa6158b2eb6364b1f2a16bb786d288aa8dcb07e78413b32d490ddcb28444772050be0e783313ed9eb18a195bf2419877845f9d6e6aeab296c1bdb
+  checksum: 79f7064c0fb4f2e724255a55d6faba1a4d25b50f24e5e3c77c3eb479568791e1f9726082e4a88b7e6b2f6ac0ee76f83e15e650bdc709a9249b9c0439100ce474
   languageName: node
   linkType: hard
 
@@ -4035,8 +4035,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@project-templates/cms@workspace:packages/cms"
   dependencies:
-    "@bn-digital/strapi-plugin-field-uuid": "npm:^1.1.4"
-    "@bn-digital/strapi-types": "npm:^1.0.35"
+    "@bn-digital/strapi-plugin-field-uuid": "npm:^1.1.5"
+    "@bn-digital/strapi-types": "npm:^1.0.38"
     "@bn-digital/vault-env": "npm:^1.4.0"
     "@strapi/plugin-color-picker": "npm:0.0.0"
     "@strapi/plugin-content-manager": "npm:4.4.0-rc.1"
@@ -4075,8 +4075,8 @@ __metadata:
     "@bn-digital/sdk": "npm:^1.3.0"
     "@bn-digital/vault-env": "npm:^1.4.0"
     "@bn-digital/vite": "npm:^2.0.9"
-    "@types/react": "npm:latest"
-    "@types/react-dom": "npm:latest"
+    "@types/react": "npm:^18.0.21"
+    "@types/react-dom": "npm:^18.0.6"
     antd: "npm:^4.23.2"
     crypto-hash: "npm:^2.0.1"
     cypress: "npm:^10.8.0"
@@ -5769,7 +5769,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:latest":
+"@types/react-dom@npm:^18.0.6":
   version: 18.0.6
   resolution: "@types/react-dom@npm:18.0.6"
   dependencies:
@@ -5799,7 +5799,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:16 || 17 || 18, @types/react@npm:latest":
+"@types/react@npm:*, @types/react@npm:16 || 17 || 18":
   version: 18.0.20
   resolution: "@types/react@npm:18.0.20"
   dependencies:
@@ -5807,6 +5807,17 @@ __metadata:
     "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: fe7d9b466cbfeacf426a2a28c3def31e149f9496aa661315bdc1f406036c37b6a2d3dcbcdc9bbd29ee27dd02be3385174cf71b2a0c27ed38419354e44675f135
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.0.21":
+  version: 18.0.21
+  resolution: "@types/react@npm:18.0.21"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    "@types/scheduler": "npm:*"
+    csstype: "npm:^3.0.2"
+  checksum: 3880fd1a396920aedd195b7aefc9ee215e320f927697b072c8cf0e95a29c88736a4afcd2789630cffc15b5dbcf0cbf901f3bbf508fc6b7d188df32c076a95d1a
   languageName: node
   linkType: hard
 

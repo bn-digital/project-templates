@@ -1,3 +1,4 @@
+---
 helmfiles:
   - path: git::https://github.com/bn-digital/helm.git@helmfiles/load-balancer.yaml?ref=latest
   - path: git::https://github.com/bn-digital/helm.git@helmfiles/app.yaml?ref=latest

@@ -31,8 +31,8 @@
     "@bn-digital/sdk": "^1.3.0",
     "@bn-digital/vault-env": "^1.4.0",
     "@bn-digital/vite": "^2.0.9",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
     "cypress": "^10.8.0",
     "dotenv": "^16.0.2"
   }

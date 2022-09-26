@@ -1,4 +1,5 @@
 # nonk8s
+---
 apiVersion: skaffold/v2beta29
 kind: Config
 build:

@@ -1,25 +1,30 @@
-export default {
-  async afterCreate(event: Strapi.Database.AfterLifecycleEvent<Strapi.Email.EmailEntity>) {
-    const emailService = strapi.service<Strapi.Email.EmailService>('api::email.email')
-    const email: Strapi.Email.EmailEntity = await emailService.findOne(event.result.id)
-    await emailService.update(email.id, { data: { status: 'queued' } })
-  },
+import { getEmailContentApiService, getEmailDesignerEmailService } from '../../uid'
 
+export default {
+  beforeCreate(event: Strapi.Database.BeforeLifecycleEvent) {
+    event.params.data.publishedAt = null
+    event.params.data.status = null
+  },
+  beforeUpdate(event: Strapi.Database.BeforeLifecycleEvent) {
+    if (!event.params.data.publishedAt) {
+      event.params.data.status = null
+    }
+  },
   async afterUpdate({ result }: Strapi.Database.AfterLifecycleEvent<Strapi.Email.EmailEntity>) {
-    const emailTemplateService: Strapi.EmailDesigner.EmailService = strapi.plugin('email-designer').service('email')
-    const emailService = strapi.service<Strapi.Email.EmailService>('api::email.email')
+    const emailDesignerEmailService: Strapi.EmailDesigner.EmailService = getEmailDesignerEmailService(strapi)
+    const emailService = getEmailContentApiService(strapi)
     const emailConfig: Strapi.Email.Settings = strapi.config.get('plugin.email').settings
     const email: Strapi.Email.EmailEntity = await emailService.findOne(result.id, { populate: 'template' })
-    let status: Strapi.Email.Status = email.status
+    let deliveryStatus = email.status
     const to = email.email ?? emailConfig.defaultReplyTo
     const from = emailConfig.defaultFrom
-    if (status === 'queued') {
+    if (!deliveryStatus && email.publishedAt) {
       try {
         if (!email.template) {
-          status = 'new'
-          strapi.log.warn(`[email] No template configured for this email`)
+          deliveryStatus = 'invalid'
+          strapi.log.warn(`[email] No template configured for email #${email.id}`)
         } else {
-          const emailDelivery = await emailTemplateService.sendTemplatedEmail(
+          const emailDelivery = await emailDesignerEmailService.sendTemplatedEmail(
             {
               to,
               from,
@@ -31,14 +36,18 @@ export default {
             },
             email.payload ?? {},
           )
-          status = emailDelivery?.response.startsWith('250') ? 'sent' : 'failed'
-          strapi.log.info(`[email] Email was sent successfully to ${to}`)
+          deliveryStatus = emailDelivery?.response.startsWith('250') ? 'sent' : 'failed'
+          if (deliveryStatus === 'sent') {
+            strapi.log.info(`[email] Email #${email.id} was sent successfully to ${to}`)
+          } else {
+            strapi.log.error(`[email] Email #${email.id} was not delivered. Reason: ${emailDelivery.response}`)
+          }
+          await emailService.update(email.id, { data: { status: deliveryStatus, email: to, publishedAt: new Date() } })
         }
       } catch (e) {
-        strapi.log.error(`[email] Failed to find template for email ${email.id}`)
-        status = 'failed'
-      } finally {
-        emailService.update(email.id, { data: { status } })
+        deliveryStatus = 'failed'
+        strapi.log.error(`[email] Failed to find template for email #${email.id}`)
+        await emailService.update(email.id, { data: { status: deliveryStatus, email: to, publishedAt: new Date() } })
       }
     }
   },

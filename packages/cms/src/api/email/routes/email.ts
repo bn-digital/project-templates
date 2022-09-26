@@ -4,4 +4,6 @@
 
 import { factories } from '@strapi/strapi'
 
-export default factories.createCoreRouter('api::email.email')
+import ENTITY_UID from '../uid'
+
+export default factories.createCoreRouter(ENTITY_UID)
