@@ -4,7 +4,7 @@ import { readOnlyEntities, schemaExtension, writeOnlyEntities } from './extensio
 
 function generateSchema(strapi: Strapi.Strapi): void {
   const schema = getContentApiService(strapi).buildSchema()
-  strapi.fs.writeAppFile('./src/graphql/schema.graphqls', printSchema(schema))
+  strapi.fs.writeAppFile('./src/graphql/schema.graphql', printSchema(schema))
   strapi.log.info('[graphql] Schema generated')
 }
 

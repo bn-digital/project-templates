@@ -1,7 +1,7 @@
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'
 import { sha256 } from 'crypto-hash'
-import { createContext, FC, memo, PropsWithChildren, ReactNode, useContext } from 'react'
+import { createContext, FC, PropsWithChildren, ReactNode, useContext } from 'react'
 import { useLocalStorage, useToggle } from 'react-use'
 
 import introspection from '../../graphql'

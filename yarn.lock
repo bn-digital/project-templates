@@ -1828,14 +1828,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/strapi-types@npm:^1.0.33":
-  version: 1.0.33
-  resolution: "@bn-digital/strapi-types@npm:1.0.33"
+"@bn-digital/strapi-types@npm:^1.0.35":
+  version: 1.0.35
+  resolution: "@bn-digital/strapi-types@npm:1.0.35"
   dependencies:
     "@strapi/database": "npm:^4.4.0-rc.1"
     "@strapi/strapi": "npm:^4.4.0-rc.1"
     nexus: "npm:^1.3.0"
-  checksum: 513478084544643ece0866dc3dbb413fa4a1099bf684a4f075876aa59b9fb355745a9f7ce65bf330ceb229a541cb24151a4a61428d0c9580096e80ecbb3a0fbc
+  checksum: 8f77a510f85fa6158b2eb6364b1f2a16bb786d288aa8dcb07e78413b32d490ddcb28444772050be0e783313ed9eb18a195bf2419877845f9d6e6aeab296c1bdb
   languageName: node
   linkType: hard
 
@@ -4036,7 +4036,7 @@ __metadata:
   resolution: "@project-templates/cms@workspace:packages/cms"
   dependencies:
     "@bn-digital/strapi-plugin-field-uuid": "npm:^1.1.4"
-    "@bn-digital/strapi-types": "npm:^1.0.33"
+    "@bn-digital/strapi-types": "npm:^1.0.35"
     "@bn-digital/vault-env": "npm:^1.4.0"
     "@strapi/plugin-color-picker": "npm:0.0.0"
     "@strapi/plugin-content-manager": "npm:4.4.0-rc.1"
