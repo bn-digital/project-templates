@@ -1,0 +1,16 @@
+name: Quality
+on:
+  pull_request:
+    types:
+      - opened
+      - closed
+      - reopened
+      - review_requested
+jobs:
+  secrets:
+    uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
+    secrets: inherit
+  analyze:
+    needs: [ secrets ]
+    uses: bn-digital/coding-standard/.github/workflows/analyze-code.yml@latest
+    secrets: inherit

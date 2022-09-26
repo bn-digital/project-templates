@@ -24,10 +24,6 @@ jobs:
   secrets:
     uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
     secrets: inherit
-  analyze:
-    needs: [ secrets ]
-    uses: bn-digital/coding-standard/.github/workflows/analyze-code.yml@latest
-    secrets: inherit
   build:
     needs: [ secrets ]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
