@@ -8,6 +8,8 @@
 **/build
 **/dist
 **/node_modules
+.scannerwork
+.skaffold
 **/schema.graphqls
 .editorconfig
 .do
@@ -16,6 +18,7 @@
 .gradle
 .graphqlconfig
 .idea
+.husky
 docs
 gradle
 gradlew*
