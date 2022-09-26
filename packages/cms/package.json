@@ -27,15 +27,16 @@
     "@strapi/provider-email-nodemailer": "4.4.0-rc.1",
     "@strapi/provider-upload-aws-s3": "4.4.0-rc.1",
     "@strapi/strapi": "4.4.0-rc.1",
-    "@strapi/typescript-utils": "4.3.2",
     "bcryptjs": "^2.4.3",
     "better-sqlite3": "^7.6.2",
+    "hashids": "^2.2.10",
     "knex": "^2.3.0",
     "lodash": "^4.17.21",
     "pg": "^8.8.0",
     "strapi-plugin-config-sync": "^1.0.4",
     "strapi-plugin-email-designer": "^2.1.1",
     "strapi-plugin-import-export-entries": "^1.15.0",
+    "strapi-plugin-init-admin-user": "^0.1.3",
     "strapi-plugin-menus": "^1.0.2",
     "strapi-plugin-sitemap": "^2.0.8",
     "strapi-plugin-wysiwyg-tui-editor": "^4.0.1",
@@ -44,8 +45,6 @@
   "devDependencies": {
     "@bn-digital/vault-env": "^1.4.0",
     "@types/bcryptjs": "latest",
-    "@types/node": "latest",
-    "@types/uuid": "latest",
-    "typescript": "^4.8.3"
+    "@types/uuid": "latest"
   }
 }

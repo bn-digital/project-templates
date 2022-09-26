@@ -1,9 +1,11 @@
 import axios, { type Method, AxiosError } from 'axios'
-import type { Context } from 'koa'
+import type { Context, Next } from 'koa'
 import { parse } from 'url'
 
-export default ({ proxies }: { proxies: { [key: string]: string } }) =>
-  async (ctx: Context, next: CallableFunction) => {
+type Proxies = { [key: string]: string }
+
+export default ({ proxies }: { proxies: Proxies }) =>
+  async (ctx: Context, next: Next) => {
     if (
       ctx.URL.pathname.startsWith('/api/proxy') &&
       (ctx.headers.accept.match(/application\/(json|graphql|xml)/) || ctx.headers['content-type'].match(/application\/(json|graphql|xml)/))
@@ -22,7 +24,7 @@ export default ({ proxies }: { proxies: { [key: string]: string } }) =>
               data: ctx.request.ctx.body,
               headers: Object.entries(ctx.request.headers).reduce((headers, [key, value]) => ({ ...headers, [key]: value }), {}),
             })
-            .catch((error: AxiosError) => error.response)
+            .catch(error => error.response)
           ctx.response.body = response.data
           ctx.response.status = response.status
         }
