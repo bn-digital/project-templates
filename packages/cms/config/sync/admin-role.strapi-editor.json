@@ -85,7 +85,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": ["name", "email", "subject", "text"]
+        "fields": ["email", "name", "subject", "text"]
       },
       "conditions": []
     },
@@ -99,7 +99,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": ["name", "email", "subject", "text"]
+        "fields": ["email", "name", "subject", "text"]
       },
       "conditions": []
     },
@@ -107,7 +107,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": ["name", "email", "subject", "text"]
+        "fields": ["email", "name", "subject", "text"]
       },
       "conditions": []
     },
@@ -115,7 +115,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::email.email",
       "properties": {
-        "fields": ["status", "email"]
+        "fields": ["email", "payload", "status", "template"]
       },
       "conditions": []
     },
@@ -135,7 +135,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::email.email",
       "properties": {
-        "fields": ["status", "email"]
+        "fields": ["email", "payload", "status", "template"]
       },
       "conditions": []
     },
@@ -143,7 +143,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::email.email",
       "properties": {
-        "fields": ["status", "email"]
+        "fields": ["email", "payload", "status", "template"]
       },
       "conditions": []
     },
@@ -250,7 +250,32 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::website.website",
       "properties": {
-        "fields": ["content"]
+        "fields": [
+          "content",
+          "seo.canonicalURL",
+          "seo.keywords",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaRobots",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaTitle",
+          "seo.metaViewport",
+          "seo.structuredData",
+          "translations.key",
+          "translations.value"
+        ],
+        "locales": ["en", "es"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::website.website",
+      "properties": {
+        "locales": ["en", "es"]
       },
       "conditions": []
     },
@@ -258,7 +283,24 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::website.website",
       "properties": {
-        "fields": ["content"]
+        "fields": [
+          "content",
+          "seo.canonicalURL",
+          "seo.keywords",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaRobots",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaTitle",
+          "seo.metaViewport",
+          "seo.structuredData",
+          "translations.key",
+          "translations.value"
+        ],
+        "locales": ["en", "es"]
       },
       "conditions": []
     },
@@ -266,7 +308,54 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::website.website",
       "properties": {
-        "fields": ["content"]
+        "fields": [
+          "content",
+          "seo.canonicalURL",
+          "seo.keywords",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaRobots",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaTitle",
+          "seo.metaViewport",
+          "seo.structuredData",
+          "translations.key",
+          "translations.value"
+        ],
+        "locales": ["en", "es"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "plugin::email-designer.email-template",
+      "properties": {
+        "fields": ["bodyHtml", "bodyText", "design", "enabled", "name", "subject", "tags", "templateReferenceId"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "plugin::email-designer.email-template",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::email-designer.email-template",
+      "properties": {
+        "fields": ["bodyHtml", "bodyText", "design", "enabled", "name", "subject", "tags", "templateReferenceId"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "plugin::email-designer.email-template",
+      "properties": {
+        "fields": ["bodyHtml", "bodyText", "design", "enabled", "name", "subject", "tags", "templateReferenceId"]
       },
       "conditions": []
     },
