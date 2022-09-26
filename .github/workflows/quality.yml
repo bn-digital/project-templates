@@ -6,6 +6,7 @@ on:
       - closed
       - reopened
       - review_requested
+
 jobs:
   secrets:
     uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
