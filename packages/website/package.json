@@ -34,7 +34,6 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "cypress": "^10.8.0",
-    "dotenv": "^16.0.2",
-    "typescript": "^4.8.3"
+    "dotenv": "^16.0.2"
   }
 }

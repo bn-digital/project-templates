@@ -39,10 +39,12 @@
   "devDependencies": {
     "@bn-digital/commitlint-config": "^2.0.0",
     "@bn-digital/eslint-config": "^2.0.4",
-    "@bn-digital/prettier-config": "^2.0.1",
+    "@bn-digital/prettier-config": "^2.0.2",
     "@bn-digital/stylelint-config": "^2.0.1",
+    "@types/node": "latest",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.3"
+    "lint-staged": "^13.0.3",
+    "typescript": "^4.8.3"
   },
   "scripts": {
     "prettier": "node_modules/.bin/prettier",
