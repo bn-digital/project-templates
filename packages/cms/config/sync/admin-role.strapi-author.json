@@ -113,36 +113,6 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::email.email",
-      "properties": {
-        "fields": ["email", "payload", "status", "template"]
-      },
-      "conditions": ["admin::is-creator"]
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::email.email",
-      "properties": {},
-      "conditions": ["admin::is-creator"]
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::email.email",
-      "properties": {
-        "fields": ["email", "payload", "status", "template"]
-      },
-      "conditions": ["admin::is-creator"]
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::email.email",
-      "properties": {
-        "fields": ["email", "payload", "status", "template"]
-      },
-      "conditions": ["admin::is-creator"]
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
       "subject": "api::post.post",
       "properties": {
         "fields": [

@@ -20,7 +20,7 @@
     "hoistingLimits": "workspaces",
     "selfReferences": false
   },
-  "workspaces": ["packages/*"],
+  "workspaces": ["packages/*", "packages/cms/src/plugins/*"],
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,less,graphql}": ["yarn prettier --write"],
     "*.{js,jsx,ts,tsx}": ["yarn eslint --fix"],

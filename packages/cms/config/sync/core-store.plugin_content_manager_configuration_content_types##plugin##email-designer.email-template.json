@@ -162,26 +162,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "templateReferenceId",
-        "name",
-        "subject"
-      ],
-      "editRelations": [],
       "edit": [
-        [
-          {
-            "name": "templateReferenceId",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "design",
-            "size": 12
-          }
-        ],
         [
           {
             "name": "name",
@@ -190,6 +171,22 @@
           {
             "name": "subject",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "templateReferenceId",
+            "size": 4
+          },
+          {
+            "name": "enabled",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "design",
+            "size": 12
           }
         ],
         [
@@ -204,17 +201,13 @@
         ],
         [
           {
-            "name": "enabled",
-            "size": 4
-          }
-        ],
-        [
-          {
             "name": "tags",
             "size": 12
           }
         ]
-      ]
+      ],
+      "editRelations": [],
+      "list": ["id", "templateReferenceId", "name", "subject"]
     }
   },
   "type": "object",

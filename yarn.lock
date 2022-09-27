@@ -1817,6 +1817,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bn-digital/strapi-plugin-email-emitter@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "@bn-digital/strapi-plugin-email-emitter@npm:1.0.5"
+  dependencies:
+    "@strapi/helper-plugin": "npm:^4.0.0"
+  peerDependencies:
+    "@strapi/plugin-email": ^4.0.0
+    "@strapi/strapi": ^4.0.0
+    strapi-plugin-email-designer: ^2.0.0
+  checksum: 52014ed04e493ad877320ac8448e0e5979b479948e9f7bc083339aae0d98ef80f7270d9949056236631ebb6fadef2424a87aef7bbc5aaf6a6acb640bd5e5ea31
+  languageName: node
+  linkType: hard
+
 "@bn-digital/strapi-plugin-field-uuid@npm:^1.1.5":
   version: 1.1.5
   resolution: "@bn-digital/strapi-plugin-field-uuid@npm:1.1.5"
@@ -1828,14 +1841,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/strapi-types@npm:^1.0.38":
-  version: 1.0.38
-  resolution: "@bn-digital/strapi-types@npm:1.0.38"
+"@bn-digital/strapi-types@npm:^1.0.39":
+  version: 1.0.39
+  resolution: "@bn-digital/strapi-types@npm:1.0.39"
   dependencies:
     "@strapi/database": "npm:^4.4.0-rc.1"
     "@strapi/strapi": "npm:^4.4.0-rc.1"
     nexus: "npm:^1.3.0"
-  checksum: 79f7064c0fb4f2e724255a55d6faba1a4d25b50f24e5e3c77c3eb479568791e1f9726082e4a88b7e6b2f6ac0ee76f83e15e650bdc709a9249b9c0439100ce474
+  checksum: a7e565ab2803bc9002beaab689bf9183eae9aa9954ddd8b8c093ca10493326e220fd46dc8e48157b4e2de5b12fa83b8aaabe1037509c94ce248cb162b9569e0c
   languageName: node
   linkType: hard
 
@@ -4035,8 +4048,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@project-templates/cms@workspace:packages/cms"
   dependencies:
+    "@bn-digital/strapi-plugin-email-emitter": "npm:^1.0.5"
     "@bn-digital/strapi-plugin-field-uuid": "npm:^1.1.5"
-    "@bn-digital/strapi-types": "npm:^1.0.38"
+    "@bn-digital/strapi-types": "npm:^1.0.39"
     "@bn-digital/vault-env": "npm:^1.4.0"
     "@strapi/plugin-color-picker": "npm:0.0.0"
     "@strapi/plugin-content-manager": "npm:4.4.0-rc.1"
@@ -4717,6 +4731,36 @@ __metadata:
     styled-components: "npm:5.3.3"
     whatwg-fetch: "npm:^3.6.2"
   checksum: 16bbb2d925da6ef15d9ce929c90c2c93cf1794c3acb26bd3134fb3a6ca48de63ce66ca8aae5e4e0832761072922ed5848aac4e8ef1b290ec91cc837c161852e5
+  languageName: node
+  linkType: hard
+
+"@strapi/helper-plugin@npm:^4.0.0":
+  version: 4.3.9
+  resolution: "@strapi/helper-plugin@npm:4.3.9"
+  dependencies:
+    "@fortawesome/fontawesome-free": "npm:^5.15.2"
+    "@fortawesome/fontawesome-svg-core": "npm:6.1.2"
+    "@fortawesome/free-brands-svg-icons": "npm:^5.15.2"
+    "@fortawesome/free-solid-svg-icons": "npm:^5.15.3"
+    "@fortawesome/react-fontawesome": "npm:^0.2.0"
+    axios: "npm:0.27.2"
+    date-fns: "npm:2.29.2"
+    formik: "npm:^2.2.6"
+    immer: "npm:9.0.6"
+    invariant: "npm:^2.2.1"
+    lodash: "npm:4.17.21"
+    match-sorter: "npm:^4.0.2"
+    qs: "npm:6.10.1"
+    react: "npm:^17.0.2"
+    react-dom: "npm:^17.0.2"
+    react-helmet: "npm:^6.1.0"
+    react-intl: "npm:5.25.1"
+    react-router: "npm:^5.2.0"
+    react-router-dom: "npm:5.2.0"
+    react-select: "npm:4.0.2"
+    styled-components: "npm:5.3.3"
+    whatwg-fetch: "npm:^3.6.2"
+  checksum: 48af5e39bfec3ea3da304e42229728fd382408ae8f18c0416777b35fcf8adafe1a71d9b1c130833af1c5b8eca08c9c00e6ddc8487e00c231f1745494c6afb37c
   languageName: node
   linkType: hard
 
