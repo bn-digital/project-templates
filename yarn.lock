@@ -1817,16 +1817,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/strapi-plugin-email-emitter@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "@bn-digital/strapi-plugin-email-emitter@npm:1.0.5"
+"@bn-digital/strapi-plugin-email-emitter@npm:^1.0.16":
+  version: 1.0.16
+  resolution: "@bn-digital/strapi-plugin-email-emitter@npm:1.0.16"
   dependencies:
     "@strapi/helper-plugin": "npm:^4.0.0"
   peerDependencies:
     "@strapi/plugin-email": ^4.0.0
     "@strapi/strapi": ^4.0.0
     strapi-plugin-email-designer: ^2.0.0
-  checksum: 52014ed04e493ad877320ac8448e0e5979b479948e9f7bc083339aae0d98ef80f7270d9949056236631ebb6fadef2424a87aef7bbc5aaf6a6acb640bd5e5ea31
+  checksum: a94b1af4f4516d945b11b0d193a5790ed828b73c04739a978efd3b6856e8eb565a6843a6914d7144a97ea3ea083e55ea8e4c536296b2069bee6c4e758a64bb93
   languageName: node
   linkType: hard
 
@@ -4048,7 +4048,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@project-templates/cms@workspace:packages/cms"
   dependencies:
-    "@bn-digital/strapi-plugin-email-emitter": "npm:^1.0.5"
+    "@bn-digital/strapi-plugin-email-emitter": "npm:^1.0.16"
     "@bn-digital/strapi-plugin-field-uuid": "npm:^1.1.5"
     "@bn-digital/strapi-types": "npm:^1.0.39"
     "@bn-digital/vault-env": "npm:^1.4.0"
@@ -5743,10 +5743,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
-  version: 18.7.21
-  resolution: "@types/node@npm:18.7.21"
-  checksum: 3de253a220d6ddbc72811a6806ff43f2c5f038cd2e1ac573bc19fa78a5207a9db7a7216f5a94c329b8f9e738671633896e945c54e7c8c558d68a24e23e751ba2
+"@types/node@npm:*, @types/node@npm:^18.7.22":
+  version: 18.7.22
+  resolution: "@types/node@npm:18.7.22"
+  checksum: 6ad2ddf9e697936d16d90561019fe3b5f28d635f6140ba08d26a98395cfec255ea68116b15453933f16c39373a4319981d0b6ec4966279c4bfed4aaf675ff83b
   languageName: node
   linkType: hard
 
@@ -5768,13 +5768,6 @@ __metadata:
   version: 17.0.45
   resolution: "@types/node@npm:17.0.45"
   checksum: c0e9a6e94e1d37dd9ccb6be305f9a1500968624a58c93bc3cbffaebcebcb6774add768db664e74867d99185c7a66e00fb12df6185d4e46bde170159ef0990071
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^18.7.22":
-  version: 18.7.22
-  resolution: "@types/node@npm:18.7.22"
-  checksum: 6ad2ddf9e697936d16d90561019fe3b5f28d635f6140ba08d26a98395cfec255ea68116b15453933f16c39373a4319981d0b6ec4966279c4bfed4aaf675ff83b
   languageName: node
   linkType: hard
 
@@ -5843,18 +5836,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:16 || 17 || 18":
-  version: 18.0.20
-  resolution: "@types/react@npm:18.0.20"
-  dependencies:
-    "@types/prop-types": "npm:*"
-    "@types/scheduler": "npm:*"
-    csstype: "npm:^3.0.2"
-  checksum: fe7d9b466cbfeacf426a2a28c3def31e149f9496aa661315bdc1f406036c37b6a2d3dcbcdc9bbd29ee27dd02be3385174cf71b2a0c27ed38419354e44675f135
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^18.0.21":
+"@types/react@npm:*, @types/react@npm:16 || 17 || 18, @types/react@npm:^18.0.21":
   version: 18.0.21
   resolution: "@types/react@npm:18.0.21"
   dependencies:
