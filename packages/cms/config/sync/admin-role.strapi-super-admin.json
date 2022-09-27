@@ -113,42 +113,6 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::email.email",
-      "properties": {
-        "fields": ["email", "template", "payload", "status"]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::email.email",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.publish",
-      "subject": "api::email.email",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::email.email",
-      "properties": {
-        "fields": ["email", "template", "payload", "status"]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::email.email",
-      "properties": {
-        "fields": ["email", "template", "payload", "status"]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
       "subject": "api::post.post",
       "properties": {
         "fields": [
@@ -495,7 +459,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "plugin::email-designer.email-template",
       "properties": {
-        "fields": ["templateReferenceId", "design", "name", "subject", "bodyHtml", "bodyText", "enabled", "tags"]
+        "fields": ["templateReferenceId", "design", "subject", "bodyHtml", "bodyText", "enabled", "tags", "name"]
       },
       "conditions": []
     },
@@ -509,7 +473,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "plugin::email-designer.email-template",
       "properties": {
-        "fields": ["templateReferenceId", "design", "name", "subject", "bodyHtml", "bodyText", "enabled", "tags"]
+        "fields": ["templateReferenceId", "design", "subject", "bodyHtml", "bodyText", "enabled", "tags", "name"]
       },
       "conditions": []
     },
@@ -517,7 +481,43 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "plugin::email-designer.email-template",
       "properties": {
-        "fields": ["templateReferenceId", "design", "name", "subject", "bodyHtml", "bodyText", "enabled", "tags"]
+        "fields": ["templateReferenceId", "design", "subject", "bodyHtml", "bodyText", "enabled", "tags", "name"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "plugin::email-emitter.email",
+      "properties": {
+        "fields": ["email", "delivered", "scheduled", "template", "payload", "log"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "plugin::email-emitter.email",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "plugin::email-emitter.email",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::email-emitter.email",
+      "properties": {
+        "fields": ["email", "delivered", "scheduled", "template", "payload", "log"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "plugin::email-emitter.email",
+      "properties": {
+        "fields": ["email", "delivered", "scheduled", "template", "payload", "log"]
       },
       "conditions": []
     },

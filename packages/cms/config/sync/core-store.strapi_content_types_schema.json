@@ -999,120 +999,6 @@
       "actions": {},
       "lifecycles": {}
     },
-    "api::email.email": {
-      "kind": "collectionType",
-      "collectionName": "emails",
-      "info": {
-        "singularName": "email",
-        "pluralName": "emails",
-        "displayName": "Email",
-        "description": ""
-      },
-      "options": {
-        "draftAndPublish": true
-      },
-      "pluginOptions": {},
-      "attributes": {
-        "email": {
-          "type": "email"
-        },
-        "template": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "plugin::email-designer.email-template"
-        },
-        "payload": {
-          "type": "json",
-          "required": false
-        },
-        "status": {
-          "type": "enumeration",
-          "enum": ["sent", "failed", "invalid"],
-          "enumName": "EmailStatus"
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "publishedAt": {
-          "type": "datetime",
-          "configurable": false,
-          "writable": true,
-          "visible": false
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
-        }
-      },
-      "__schema__": {
-        "collectionName": "emails",
-        "info": {
-          "singularName": "email",
-          "pluralName": "emails",
-          "displayName": "Email",
-          "description": ""
-        },
-        "options": {
-          "draftAndPublish": true
-        },
-        "pluginOptions": {},
-        "attributes": {
-          "email": {
-            "type": "email"
-          },
-          "template": {
-            "type": "relation",
-            "relation": "oneToOne",
-            "target": "plugin::email-designer.email-template"
-          },
-          "payload": {
-            "type": "json",
-            "required": false
-          },
-          "status": {
-            "type": "enumeration",
-            "enum": ["sent", "failed", "invalid"],
-            "enumName": "EmailStatus"
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "email",
-      "connection": "default",
-      "uid": "api::email.email",
-      "apiName": "email",
-      "globalId": "Email",
-      "actions": {},
-      "lifecycles": {}
-    },
     "api::post.post": {
       "kind": "collectionType",
       "collectionName": "posts",
@@ -1878,6 +1764,141 @@
       "plugin": "upload",
       "globalId": "UploadFolder"
     },
+    "plugin::email-emitter.email": {
+      "kind": "collectionType",
+      "collectionName": "email_emitter_emails",
+      "info": {
+        "singularName": "email",
+        "pluralName": "emails",
+        "displayName": "Email",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": true
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "email": {
+          "type": "email"
+        },
+        "delivered": {
+          "type": "boolean",
+          "required": true,
+          "configurable": false,
+          "default": false
+        },
+        "scheduled": {
+          "type": "boolean",
+          "required": true,
+          "configurable": false,
+          "default": false
+        },
+        "template": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "plugin::email-designer.email-template"
+        },
+        "payload": {
+          "type": "json",
+          "required": false
+        },
+        "log": {
+          "type": "text",
+          "required": false
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "publishedAt": {
+          "type": "datetime",
+          "configurable": false,
+          "writable": true,
+          "visible": false
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "sitemap_exclude": {
+          "writable": true,
+          "private": true,
+          "configurable": false,
+          "visible": false,
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "__schema__": {
+        "collectionName": "email_emitter_emails",
+        "info": {
+          "singularName": "email",
+          "pluralName": "emails",
+          "displayName": "Email",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": true
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "email": {
+            "type": "email"
+          },
+          "delivered": {
+            "type": "boolean",
+            "required": true,
+            "configurable": false,
+            "default": false
+          },
+          "scheduled": {
+            "type": "boolean",
+            "required": true,
+            "configurable": false,
+            "default": false
+          },
+          "template": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "plugin::email-designer.email-template"
+          },
+          "payload": {
+            "type": "json",
+            "required": false
+          },
+          "log": {
+            "type": "text",
+            "required": false
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "email",
+      "connection": "default",
+      "uid": "plugin::email-emitter.email",
+      "plugin": "email-emitter",
+      "globalId": "EmailEmitterEmail",
+      "lifecycles": {}
+    },
     "plugin::users-permissions.permission": {
       "collectionName": "up_permissions",
       "info": {
@@ -2404,7 +2425,8 @@
         "singularName": "email-template",
         "pluralName": "email-templates",
         "displayName": "Email Template",
-        "name": "email-template"
+        "name": "email-template",
+        "description": ""
       },
       "pluginOptions": {
         "content-manager": {
@@ -2429,9 +2451,6 @@
         "design": {
           "type": "json"
         },
-        "name": {
-          "type": "string"
-        },
         "subject": {
           "type": "string"
         },
@@ -2447,6 +2466,10 @@
         },
         "tags": {
           "type": "json"
+        },
+        "name": {
+          "type": "enumeration",
+          "enum": ["contact-form"]
         },
         "createdAt": {
           "type": "datetime"
@@ -2490,7 +2513,8 @@
           "singularName": "email-template",
           "pluralName": "email-templates",
           "displayName": "Email Template",
-          "name": "email-template"
+          "name": "email-template",
+          "description": ""
         },
         "options": {
           "draftAndPublish": false,
@@ -2515,9 +2539,6 @@
           "design": {
             "type": "json"
           },
-          "name": {
-            "type": "string"
-          },
           "subject": {
             "type": "string"
           },
@@ -2533,6 +2554,10 @@
           },
           "tags": {
             "type": "json"
+          },
+          "name": {
+            "type": "enumeration",
+            "enum": ["contact-form"]
           }
         },
         "kind": "collectionType"

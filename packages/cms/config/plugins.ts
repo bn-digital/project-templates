@@ -3,6 +3,9 @@ import path from 'path'
 import { domain, generateSecret, name, workingDir } from './index'
 
 export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
+  'email-emitter': {
+    enabled: true,
+  },
   'import-export-entries': {
     enabled: true,
     config: {

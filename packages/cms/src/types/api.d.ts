@@ -276,30 +276,6 @@ export interface ApiContactContact extends CollectionTypeSchema {
   }
 }
 
-export interface ApiEmailEmail extends CollectionTypeSchema {
-  info: {
-    singularName: 'email'
-    pluralName: 'emails'
-    displayName: 'Email'
-    description: ''
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    email: EmailAttribute
-    template: RelationAttribute<'api::email.email', 'oneToOne', 'plugin::email-designer.email-template'>
-    payload: JSONAttribute
-    status: EnumerationAttribute<['sent', 'failed', 'invalid']>
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    publishedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'api::email.email', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'api::email.email', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
-  }
-}
-
 export interface ApiPostPost extends CollectionTypeSchema {
   info: {
     singularName: 'post'
@@ -458,6 +434,32 @@ export interface PluginUploadFolder extends CollectionTypeSchema {
   }
 }
 
+export interface PluginEmailEmitterEmail extends CollectionTypeSchema {
+  info: {
+    singularName: 'email'
+    pluralName: 'emails'
+    displayName: 'Email'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    email: EmailAttribute
+    delivered: BooleanAttribute & RequiredAttribute & DefaultTo<false>
+    scheduled: BooleanAttribute & RequiredAttribute & DefaultTo<false>
+    template: RelationAttribute<'plugin::email-emitter.email', 'oneToOne', 'plugin::email-designer.email-template'>
+    payload: JSONAttribute
+    log: TextAttribute
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<'plugin::email-emitter.email', 'oneToOne', 'admin::user'> & PrivateAttribute
+    updatedBy: RelationAttribute<'plugin::email-emitter.email', 'oneToOne', 'admin::user'> & PrivateAttribute
+    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
+  }
+}
+
 export interface PluginUsersPermissionsPermission extends CollectionTypeSchema {
   info: {
     name: 'permission'
@@ -599,6 +601,7 @@ export interface PluginEmailDesignerEmailTemplate extends CollectionTypeSchema {
     pluralName: 'email-templates'
     displayName: 'Email Template'
     name: 'email-template'
+    description: ''
   }
   options: {
     draftAndPublish: false
@@ -617,12 +620,12 @@ export interface PluginEmailDesignerEmailTemplate extends CollectionTypeSchema {
   attributes: {
     templateReferenceId: IntegerAttribute & UniqueAttribute
     design: JSONAttribute
-    name: StringAttribute
     subject: StringAttribute
     bodyHtml: TextAttribute
     bodyText: TextAttribute
     enabled: BooleanAttribute & DefaultTo<true>
     tags: JSONAttribute
+    name: EnumerationAttribute<['contact-form']>
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'plugin::email-designer.email-template', 'oneToOne', 'admin::user'> & PrivateAttribute
@@ -917,11 +920,11 @@ declare global {
       'admin::api-token-permission': AdminApiTokenPermission
       'api::category.category': ApiCategoryCategory
       'api::contact.contact': ApiContactContact
-      'api::email.email': ApiEmailEmail
       'api::post.post': ApiPostPost
       'api::website.website': ApiWebsiteWebsite
       'plugin::upload.file': PluginUploadFile
       'plugin::upload.folder': PluginUploadFolder
+      'plugin::email-emitter.email': PluginEmailEmitterEmail
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission
       'plugin::users-permissions.role': PluginUsersPermissionsRole
       'plugin::users-permissions.user': PluginUsersPermissionsUser

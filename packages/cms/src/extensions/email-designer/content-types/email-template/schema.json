@@ -5,7 +5,14 @@
     "singularName": "email-template",
     "pluralName": "email-templates",
     "displayName": "Email Template",
-    "name": "email-template"
+    "name": "email-template",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false,
+    "timestamps": true,
+    "increments": true,
+    "comment": ""
   },
   "pluginOptions": {
     "content-manager": {
@@ -15,12 +22,6 @@
       "visible": true
     }
   },
-  "options": {
-    "draftAndPublish": false,
-    "timestamps": true,
-    "increments": true,
-    "comment": ""
-  },
   "attributes": {
     "templateReferenceId": {
       "type": "integer",
@@ -29,9 +30,6 @@
     },
     "design": {
       "type": "json"
-    },
-    "name": {
-      "type": "string"
     },
     "subject": {
       "type": "string"
@@ -48,6 +46,10 @@
     },
     "tags": {
       "type": "json"
+    },
+    "name": {
+      "type": "enumeration",
+      "enum": ["contact-form"]
     }
   }
 }
