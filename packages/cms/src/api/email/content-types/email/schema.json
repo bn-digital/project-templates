@@ -26,9 +26,7 @@
     },
     "status": {
       "type": "enumeration",
-      "enum": ["new", "queued", "sent", "failed"],
-      "default": "new",
-      "required": true,
+      "enum": ["sent", "failed", "invalid"],
       "enumName": "EmailStatus"
     }
   }

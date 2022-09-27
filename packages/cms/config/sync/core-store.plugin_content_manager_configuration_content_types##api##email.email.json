@@ -7,9 +7,9 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "id",
-      "defaultSortBy": "id",
-      "defaultSortOrder": "ASC"
+      "mainField": "email",
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
@@ -69,7 +69,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": false
         },
         "list": {
           "label": "status",
@@ -107,26 +107,26 @@
       }
     },
     "layouts": {
-      "list": ["id", "createdAt", "updatedAt", "email"],
       "edit": [
+        [
+          {
+            "name": "email",
+            "size": 6
+          },
+          {
+            "name": "status",
+            "size": 6
+          }
+        ],
         [
           {
             "name": "payload",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "status",
-            "size": 6
-          },
-          {
-            "name": "email",
-            "size": 6
-          }
         ]
       ],
-      "editRelations": ["template"]
+      "editRelations": ["template"],
+      "list": ["id", "template", "email", "status"]
     }
   },
   "type": "object",

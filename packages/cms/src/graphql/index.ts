@@ -1,12 +1,4 @@
-import { printSchema } from 'graphql'
-
 import { readOnlyEntities, schemaExtension, writeOnlyEntities } from './extensions'
-
-function generateSchema(strapi: Strapi.Strapi): void {
-  const schema = getContentApiService(strapi).buildSchema()
-  strapi.fs.writeAppFile('./src/graphql/schema.graphql', printSchema(schema))
-  strapi.log.info('[graphql] Schema generated')
-}
 
 function extendSchema(strapi: Strapi.Strapi) {
   const extensionService = getExtensionService(strapi)
@@ -25,8 +17,4 @@ function getExtensionService(strapi: Strapi.Strapi): Strapi.Graphql.ExtensionSer
   return getGraphqlPlugin(strapi).service('extension')
 }
 
-function getContentApiService(strapi: Strapi.Strapi): Strapi.Graphql.ContentApiService {
-  return getGraphqlPlugin(strapi).service('content-api')
-}
-
-export { extendSchema, generateSchema }
+export { extendSchema }
