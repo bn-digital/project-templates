@@ -1,15 +1,15 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::email.email",
+  "key": "plugin_content_manager_configuration_content_types::plugin::email-emitter.email",
   "value": {
-    "uid": "api::email.email",
+    "uid": "plugin::email-emitter.email",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
       "mainField": "email",
-      "defaultSortBy": "updatedAt",
-      "defaultSortOrder": "DESC"
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
@@ -30,6 +30,34 @@
         },
         "list": {
           "label": "email",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "delivered": {
+        "edit": {
+          "label": "delivered",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "delivered",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "scheduled": {
+        "edit": {
+          "label": "scheduled",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "scheduled",
           "searchable": true,
           "sortable": true
         }
@@ -63,16 +91,16 @@
           "sortable": false
         }
       },
-      "status": {
+      "log": {
         "edit": {
-          "label": "status",
+          "label": "log",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": false
+          "editable": true
         },
         "list": {
-          "label": "status",
+          "label": "log",
           "searchable": true,
           "sortable": true
         }
@@ -111,11 +139,11 @@
         [
           {
             "name": "email",
-            "size": 6
+            "size": 4
           },
           {
-            "name": "status",
-            "size": 6
+            "name": "scheduled",
+            "size": 4
           }
         ],
         [
@@ -123,10 +151,20 @@
             "name": "payload",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "log",
+            "size": 6
+          },
+          {
+            "name": "delivered",
+            "size": 4
+          }
         ]
       ],
       "editRelations": ["template"],
-      "list": ["id", "template", "email", "status"]
+      "list": ["id", "scheduled", "email", "template", "delivered"]
     }
   },
   "type": "object",

@@ -15,8 +15,9 @@
     "extends": "@bn-digital/eslint-config/typescript"
   },
   "dependencies": {
+    "@bn-digital/strapi-plugin-email-emitter": "^1.0.16",
     "@bn-digital/strapi-plugin-field-uuid": "^1.1.5",
-    "@bn-digital/strapi-types": "^1.0.38",
+    "@bn-digital/strapi-types": "^1.0.39",
     "@strapi/plugin-color-picker": "0.0.0",
     "@strapi/plugin-content-manager": "4.4.0-rc.1",
     "@strapi/plugin-content-type-builder": "4.4.0-rc.1",
