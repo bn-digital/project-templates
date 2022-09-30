@@ -20,20 +20,6 @@
           "sortable": true
         }
       },
-      "email": {
-        "edit": {
-          "label": "email",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "email",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "delivered": {
         "edit": {
           "label": "delivered",
@@ -58,6 +44,20 @@
         },
         "list": {
           "label": "scheduled",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "email": {
+        "edit": {
+          "label": "email",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "email",
           "searchable": true,
           "sortable": true
         }
@@ -135,6 +135,7 @@
       }
     },
     "layouts": {
+      "list": ["id", "scheduled", "email", "template", "delivered"],
       "edit": [
         [
           {
@@ -163,8 +164,7 @@
           }
         ]
       ],
-      "editRelations": ["template"],
-      "list": ["id", "scheduled", "email", "template", "delivered"]
+      "editRelations": ["template"]
     }
   },
   "type": "object",

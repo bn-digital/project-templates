@@ -26,6 +26,10 @@
     },
     "text": {
       "type": "text"
+    },
+    "comment": {
+      "type": "string",
+      "required": true
     }
   }
 }

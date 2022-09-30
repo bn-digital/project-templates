@@ -1,13 +1,9 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "ES5",
     "resolveJsonModule": true,
-    "types": [
-      "cypress",
-      "node"
-    ]
+    "types": ["cypress", "node"]
   },
-  "include": [
-    "**/*.ts"
-  ]
+  "include": ["**/*.ts"]
 }

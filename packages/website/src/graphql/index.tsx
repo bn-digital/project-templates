@@ -349,8 +349,8 @@ export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<Reg
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>
 export const CategoriesDocument = gql`
-  query categories {
-    categories {
+  query categories($sort: [String] = ["id:DESC"]) {
+    categories(sort: $sort) {
       data {
         ...Category
         attributes {

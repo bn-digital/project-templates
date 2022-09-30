@@ -19,37 +19,45 @@
       "visible": true
     },
     "content-type-builder": {
-      "visible": true
+      "visible": false
     }
   },
   "attributes": {
     "templateReferenceId": {
-      "type": "integer",
-      "required": false,
-      "unique": true
+      "type": "uid",
+      "required": true,
+      "targetField": "name",
+      "configurable": false
     },
     "design": {
-      "type": "json"
+      "type": "json",
+      "configurable": false
     },
     "subject": {
-      "type": "string"
+      "type": "string",
+      "configurable": false
     },
     "bodyHtml": {
-      "type": "text"
+      "type": "text",
+      "configurable": false
     },
     "bodyText": {
-      "type": "text"
+      "type": "text",
+      "configurable": false
     },
     "enabled": {
       "type": "boolean",
-      "default": true
+      "default": true,
+      "configurable": false
     },
     "tags": {
-      "type": "json"
+      "type": "json",
+      "configurable": false
     },
     "name": {
-      "type": "enumeration",
-      "enum": ["contact-form"]
+      "type": "string",
+      "configurable": false,
+      "required": true
     }
   }
 }

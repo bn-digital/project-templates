@@ -1793,7 +1793,9 @@ type RegisterMutationVariables = Exact<{
 
 type RegisterMutation = { register: { jwt?: string | null | undefined } }
 
-type CategoriesQueryVariables = Exact<{ [key: string]: never }>
+type CategoriesQueryVariables = Exact<{
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>
+}>
 
 type CategoriesQuery = {
   categories?:

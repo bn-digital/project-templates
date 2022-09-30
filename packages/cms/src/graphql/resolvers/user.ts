@@ -6,7 +6,6 @@ function getUserService(): Strapi.UsersPermissions.UserService {
 }
 
 async function changePassword(root, args: { input: Strapi.UsersPermissions.ChangePasswordPayload }, ctx: Strapi.Graphql.ResolverContext): Promise<boolean> {
-  if (!ctx.state.user) return ctx.throw(401)
   const userId = ctx.state.user.id
   const currentPassword = ctx.state.user.password
   const oldPassword = args.input.oldPassword
@@ -25,7 +24,6 @@ async function changePassword(root, args: { input: Strapi.UsersPermissions.Chang
 }
 
 const me: FieldResolver<'Query', 'me'> = async (root, args: null, ctx: Strapi.Graphql.ResolverContext) => {
-  if (!ctx.state.user) return null
   const userService = getUserService()
   const user = await userService.fetch(ctx.state.user.id, { populate: '*' })
   if (!user) return null
