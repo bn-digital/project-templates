@@ -1866,14 +1866,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/strapi-plugin-field-uuid@npm:^1.1.6":
-  version: 1.1.6
-  resolution: "@bn-digital/strapi-plugin-field-uuid@npm:1.1.6"
+"@bn-digital/strapi-plugin-field-uuid@npm:^1.1.7":
+  version: 1.1.7
+  resolution: "@bn-digital/strapi-plugin-field-uuid@npm:1.1.7"
   dependencies:
     uuid: "npm:^9.0.0"
   peerDependencies:
     "@strapi/strapi": ^4.4.0
-  checksum: 86d00042a53b8f4b85e873d8b9489b297cf00537692b9b60b7c049bad92c4d2f9afe8a6a32d61e5fb823f85c61ef719aa3b2b70ebac500dd25bc6770af5097b9
+  checksum: 273d13c40559d63e25a1c58fd908b9e1988365871f184e51cd7dded6fd37593130f55cf5f7ad0c04044def605f5997ff0b1a079d1d3c782708f2fac29af82894
   languageName: node
   linkType: hard
 
@@ -4084,7 +4084,7 @@ __metadata:
   resolution: "@project-templates/cms@workspace:packages/cms"
   dependencies:
     "@bn-digital/strapi-plugin-email-emitter": "npm:^1.0.16"
-    "@bn-digital/strapi-plugin-field-uuid": "npm:^1.1.6"
+    "@bn-digital/strapi-plugin-field-uuid": "npm:^1.1.7"
     "@bn-digital/strapi-types": "npm:^1.0.40"
     "@bn-digital/vault-env": "npm:^1.4.0"
     "@strapi/plugin-color-picker": "npm:^4.4.1"
