@@ -76,6 +76,20 @@
           "sortable": true
         }
       },
+      "comment": {
+        "edit": {
+          "label": "comment",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "comment",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -125,6 +139,12 @@
           },
           {
             "name": "text",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "comment",
             "size": 6
           }
         ]

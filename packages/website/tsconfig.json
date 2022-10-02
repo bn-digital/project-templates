@@ -27,5 +27,5 @@
     "types": ["@bn-digital/vite", "vite/client", "vite-plugin-svgr/client", "vite-plugin-pwa/client"],
     "useDefineForClassFields": true
   },
-  "include": ["./src", "./cypress", "./package.json", "./vite.config.ts"]
+  "include": ["./src", "./cypress", "cypress.config.ts", "./package.json", "./vite.config.ts"]
 }

@@ -2,7 +2,7 @@ fragment MenuItem on MenusMenuItemEntity {
   id
   attributes {
     order
-    createdAt
+    created_at: createdAt
     url
     title
     target

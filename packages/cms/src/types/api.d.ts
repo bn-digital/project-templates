@@ -268,6 +268,7 @@ export interface ApiContactContact extends CollectionTypeSchema {
     email: EmailAttribute & RequiredAttribute
     subject: StringAttribute
     text: TextAttribute
+    comment: StringAttribute & RequiredAttribute
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'api::contact.contact', 'oneToOne', 'admin::user'> & PrivateAttribute
@@ -317,11 +318,6 @@ export interface ApiWebsiteWebsite extends SingleTypeSchema {
     populateCreatorFields: false
     draftAndPublish: false
   }
-  pluginOptions: {
-    i18n: {
-      localized: true
-    }
-  }
   attributes: {
     content: DynamicZoneAttribute<['page.contact-us', 'page.home']> &
       SetPluginOptions<{
@@ -345,8 +341,6 @@ export interface ApiWebsiteWebsite extends SingleTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'api::website.website', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'api::website.website', 'oneToOne', 'admin::user'> & PrivateAttribute
-    localizations: RelationAttribute<'api::website.website', 'oneToMany', 'api::website.website'>
-    locale: StringAttribute
     sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
@@ -614,18 +608,18 @@ export interface PluginEmailDesignerEmailTemplate extends CollectionTypeSchema {
       visible: true
     }
     'content-type-builder': {
-      visible: true
+      visible: false
     }
   }
   attributes: {
-    templateReferenceId: IntegerAttribute & UniqueAttribute
+    templateReferenceId: UIDAttribute<'plugin::email-designer.email-template', 'name'> & RequiredAttribute
     design: JSONAttribute
     subject: StringAttribute
     bodyHtml: TextAttribute
     bodyText: TextAttribute
     enabled: BooleanAttribute & DefaultTo<true>
     tags: JSONAttribute
-    name: EnumerationAttribute<['contact-form']>
+    name: StringAttribute & RequiredAttribute
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'plugin::email-designer.email-template', 'oneToOne', 'admin::user'> & PrivateAttribute

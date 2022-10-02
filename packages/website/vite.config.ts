@@ -1,14 +1,17 @@
 import { configureReact as configure } from '@bn-digital/vite'
+import { sha256 } from 'crypto-hash'
 
 import packageJson from './package.json'
 
 const name = packageJson.name.split('/')[0].replace('@', '')
 
-const env: (key: keyof typeof process.env) => string | null = key => process.env?.[key] ?? null
+const env: <T>(key: keyof typeof process.env, defaultValue?: T) => string | T | null = (key, defaultValue) => process.env?.[key] ?? defaultValue ?? null
 
 export default configure(
-  { appType: 'spa', ssr: { target: 'webworker' } },
+  { appType: 'spa' },
   {
+    react: { graphql: true },
+    analytics: {},
     sourceMaps: env('NODE_ENV') !== 'production',
     fonts: {
       google: {
@@ -28,9 +31,10 @@ export default configure(
       mode: env('NODE_ENV') !== 'production' ? 'development' : 'production',
       base: '/',
       workbox: {
-        cacheId: name,
+        cacheId: env('GITHUB_SHA', name),
         sourcemap: env('NODE_ENV') !== 'production',
         cleanupOutdatedCaches: true,
+        ignoreURLParametersMatching: [/(admin|api|graphql|)/],
         disableDevLogs: env('NODE_ENV') === 'production',
         runtimeCaching: [
           {

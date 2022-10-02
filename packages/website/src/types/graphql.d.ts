@@ -85,14 +85,6 @@ type CategoryFiltersInput = {
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
-type CategoryInput = {
-  name?: InputMaybe<Scalars['String']>
-  posts?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  seo?: InputMaybe<ComponentSharedSeoInput>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
-  slug?: InputMaybe<Scalars['String']>
-}
-
 type ChangePasswordInput = {
   newPassword: Scalars['String']
   oldPassword: Scalars['String']
@@ -299,6 +291,7 @@ type ComponentUiTextChildrenArgs = {
 }
 
 type Contact = {
+  comment: Scalars['String']
   createdAt?: Maybe<Scalars['DateTime']>
   email: Scalars['String']
   name: Scalars['String']
@@ -317,6 +310,7 @@ type ContactEntityResponse = {
 }
 
 type ContactInput = {
+  comment?: InputMaybe<Scalars['String']>
   email?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
   sitemap_exclude?: InputMaybe<Scalars['Boolean']>
@@ -350,17 +344,9 @@ type DateTimeFilterInput = {
 
 type EnumComponentsharedmetasocialSocialnetwork = 'Facebook' | 'Twitter'
 
-type EnumMenusmenuitemTarget = 'blank' | 'parent' | 'self' | 'top'
+type EnumEmaildesigneremailtemplateName = 'contact_form'
 
-type Email = {
-  createdAt?: Maybe<Scalars['DateTime']>
-  email?: Maybe<Scalars['String']>
-  payload?: Maybe<Scalars['JSON']>
-  publishedAt?: Maybe<Scalars['DateTime']>
-  status: EmailStatus
-  template?: Maybe<EmailDesignerEmailTemplateEntityResponse>
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
+type EnumMenusmenuitemTarget = 'blank' | 'parent' | 'self' | 'top'
 
 type EmailDesignerEmailTemplate = {
   bodyHtml?: Maybe<Scalars['String']>
@@ -368,7 +354,7 @@ type EmailDesignerEmailTemplate = {
   createdAt?: Maybe<Scalars['DateTime']>
   design?: Maybe<Scalars['JSON']>
   enabled?: Maybe<Scalars['Boolean']>
-  name?: Maybe<Scalars['String']>
+  name?: Maybe<EnumEmaildesigneremailtemplateName>
   subject?: Maybe<Scalars['String']>
   tags?: Maybe<Scalars['JSON']>
   templateReferenceId?: Maybe<Scalars['Int']>
@@ -407,36 +393,17 @@ type EmailDesignerEmailTemplateFiltersInput = {
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
-type EmailEntity = {
-  attributes?: Maybe<Email>
-  id?: Maybe<Scalars['ID']>
+type EmailEmitterEmail = {
+  createdAt?: Maybe<Scalars['DateTime']>
+  delivered: Scalars['Boolean']
+  email?: Maybe<Scalars['String']>
+  log?: Maybe<Scalars['String']>
+  payload?: Maybe<Scalars['JSON']>
+  publishedAt?: Maybe<Scalars['DateTime']>
+  scheduled: Scalars['Boolean']
+  template?: Maybe<EmailDesignerEmailTemplateEntityResponse>
+  updatedAt?: Maybe<Scalars['DateTime']>
 }
-
-type EmailEntityResponse = {
-  data?: Maybe<EmailEntity>
-}
-
-type EmailEntityResponseCollection = {
-  data: Array<EmailEntity>
-  meta: ResponseCollectionMeta
-}
-
-type EmailFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<EmailFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  email?: InputMaybe<StringFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  not?: InputMaybe<EmailFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<EmailFiltersInput>>>
-  payload?: InputMaybe<JsonFilterInput>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
-  status?: InputMaybe<StringFilterInput>
-  template?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type EmailStatus = 'failed' | 'new' | 'queued' | 'sent'
 
 type Error = {
   code: Scalars['String']
@@ -491,8 +458,8 @@ type GenericMorph =
   | ComponentUiTab
   | ComponentUiText
   | Contact
-  | Email
   | EmailDesignerEmailTemplate
+  | EmailEmitterEmail
   | I18NLocale
   | MenusMenu
   | MenusMenuItem
@@ -696,19 +663,15 @@ type MenusMenuItemRelationResponseCollection = {
 
 type Mutation = {
   changePassword: Scalars['Boolean']
-  createCategory?: Maybe<CategoryEntityResponse>
   createContact?: Maybe<ContactEntityResponse>
   createUploadFile?: Maybe<UploadFileEntityResponse>
-  createUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
   createWebsiteLocalization?: Maybe<WebsiteEntityResponse>
-  deleteCategory?: Maybe<CategoryEntityResponse>
   deleteContact?: Maybe<ContactEntityResponse>
   deleteUploadFile?: Maybe<UploadFileEntityResponse>
-  deleteUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>
   /** Delete an existing user */
@@ -724,11 +687,9 @@ type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>
-  updateCategory?: Maybe<CategoryEntityResponse>
   updateContact?: Maybe<ContactEntityResponse>
   updateFileInfo: UploadFileEntityResponse
   updateUploadFile?: Maybe<UploadFileEntityResponse>
-  updateUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>
   /** Update an existing user */
@@ -740,20 +701,12 @@ type MutationChangePasswordArgs = {
   input?: InputMaybe<ChangePasswordInput>
 }
 
-type MutationCreateCategoryArgs = {
-  data: CategoryInput
-}
-
 type MutationCreateContactArgs = {
   data: ContactInput
 }
 
 type MutationCreateUploadFileArgs = {
   data: UploadFileInput
-}
-
-type MutationCreateUploadFolderArgs = {
-  data: UploadFolderInput
 }
 
 type MutationCreateUsersPermissionsRoleArgs = {
@@ -770,19 +723,11 @@ type MutationCreateWebsiteLocalizationArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
-type MutationDeleteCategoryArgs = {
-  id: Scalars['ID']
-}
-
 type MutationDeleteContactArgs = {
   id: Scalars['ID']
 }
 
 type MutationDeleteUploadFileArgs = {
-  id: Scalars['ID']
-}
-
-type MutationDeleteUploadFolderArgs = {
   id: Scalars['ID']
 }
 
@@ -827,11 +772,6 @@ type MutationResetPasswordArgs = {
   passwordConfirmation: Scalars['String']
 }
 
-type MutationUpdateCategoryArgs = {
-  data: CategoryInput
-  id: Scalars['ID']
-}
-
 type MutationUpdateContactArgs = {
   data: ContactInput
   id: Scalars['ID']
@@ -844,11 +784,6 @@ type MutationUpdateFileInfoArgs = {
 
 type MutationUpdateUploadFileArgs = {
   data: UploadFileInput
-  id: Scalars['ID']
-}
-
-type MutationUpdateUploadFolderArgs = {
-  data: UploadFolderInput
   id: Scalars['ID']
 }
 
@@ -941,10 +876,8 @@ type PublicationState = 'LIVE' | 'PREVIEW'
 type Query = {
   categories?: Maybe<CategoryEntityResponseCollection>
   category?: Maybe<CategoryEntityResponse>
-  email?: Maybe<EmailEntityResponse>
   emailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
   emailDesignerEmailTemplates?: Maybe<EmailDesignerEmailTemplateEntityResponseCollection>
-  emails?: Maybe<EmailEntityResponseCollection>
   i18NLocale?: Maybe<I18NLocaleEntityResponse>
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>
   me?: Maybe<UsersPermissionsUser>
@@ -975,10 +908,6 @@ type QueryCategoryArgs = {
   id?: InputMaybe<Scalars['ID']>
 }
 
-type QueryEmailArgs = {
-  id?: InputMaybe<Scalars['ID']>
-}
-
 type QueryEmailDesignerEmailTemplateArgs = {
   id?: InputMaybe<Scalars['ID']>
 }
@@ -986,13 +915,6 @@ type QueryEmailDesignerEmailTemplateArgs = {
 type QueryEmailDesignerEmailTemplatesArgs = {
   filters?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type QueryEmailsArgs = {
-  filters?: InputMaybe<EmailFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
@@ -1244,16 +1166,6 @@ type UploadFolderFiltersInput = {
   pathId?: InputMaybe<IntFilterInput>
   sitemap_exclude?: InputMaybe<BooleanFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type UploadFolderInput = {
-  children?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  files?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  name?: InputMaybe<Scalars['String']>
-  parent?: InputMaybe<Scalars['ID']>
-  path?: InputMaybe<Scalars['String']>
-  pathId?: InputMaybe<Scalars['Int']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
 }
 
 type UploadFolderRelationResponseCollection = {
@@ -1611,10 +1523,10 @@ type MenuFragment = {
                 attributes?:
                   | {
                       order?: number | null | undefined
-                      createdAt?: Date | null | undefined
                       url?: string | null | undefined
                       title: string
                       target?: EnumMenusmenuitemTarget | null | undefined
+                      created_at?: Date | null | undefined
                       parent?:
                         | {
                             data?:
@@ -1623,10 +1535,10 @@ type MenuFragment = {
                                   attributes?:
                                     | {
                                         order?: number | null | undefined
-                                        createdAt?: Date | null | undefined
                                         url?: string | null | undefined
                                         title: string
                                         target?: EnumMenusmenuitemTarget | null | undefined
+                                        created_at?: Date | null | undefined
                                       }
                                     | null
                                     | undefined
@@ -1648,10 +1560,10 @@ type MenuFragment = {
                                             attributes?:
                                               | {
                                                   order?: number | null | undefined
-                                                  createdAt?: Date | null | undefined
                                                   url?: string | null | undefined
                                                   title: string
                                                   target?: EnumMenusmenuitemTarget | null | undefined
+                                                  created_at?: Date | null | undefined
                                                 }
                                               | null
                                               | undefined
@@ -1685,10 +1597,10 @@ type MenuItemFragment = {
   attributes?:
     | {
         order?: number | null | undefined
-        createdAt?: Date | null | undefined
         url?: string | null | undefined
         title: string
         target?: EnumMenusmenuitemTarget | null | undefined
+        created_at?: Date | null | undefined
       }
     | null
     | undefined
@@ -1881,7 +1793,9 @@ type RegisterMutationVariables = Exact<{
 
 type RegisterMutation = { register: { jwt?: string | null | undefined } }
 
-type CategoriesQueryVariables = Exact<{ [key: string]: never }>
+type CategoriesQueryVariables = Exact<{
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>
+}>
 
 type CategoriesQuery = {
   categories?:
@@ -1960,10 +1874,10 @@ type MenuQuery = {
                         attributes?:
                           | {
                               order?: number | null | undefined
-                              createdAt?: Date | null | undefined
                               url?: string | null | undefined
                               title: string
                               target?: EnumMenusmenuitemTarget | null | undefined
+                              created_at?: Date | null | undefined
                               parent?:
                                 | {
                                     data?:
@@ -1972,10 +1886,10 @@ type MenuQuery = {
                                           attributes?:
                                             | {
                                                 order?: number | null | undefined
-                                                createdAt?: Date | null | undefined
                                                 url?: string | null | undefined
                                                 title: string
                                                 target?: EnumMenusmenuitemTarget | null | undefined
+                                                created_at?: Date | null | undefined
                                               }
                                             | null
                                             | undefined
@@ -1997,10 +1911,10 @@ type MenuQuery = {
                                                     attributes?:
                                                       | {
                                                           order?: number | null | undefined
-                                                          createdAt?: Date | null | undefined
                                                           url?: string | null | undefined
                                                           title: string
                                                           target?: EnumMenusmenuitemTarget | null | undefined
+                                                          created_at?: Date | null | undefined
                                                         }
                                                       | null
                                                       | undefined

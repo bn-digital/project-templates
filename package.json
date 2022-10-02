@@ -41,10 +41,10 @@
     "@bn-digital/eslint-config": "^2.0.4",
     "@bn-digital/prettier-config": "^2.0.2",
     "@bn-digital/stylelint-config": "^2.0.1",
-    "@types/node": "^18.7.22",
+    "@types/node": "^18.7.23",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.4"
   },
   "scripts": {
     "prettier": "node_modules/.bin/prettier",

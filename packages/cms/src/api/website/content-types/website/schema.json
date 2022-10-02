@@ -11,11 +11,6 @@
     "populateCreatorFields": false,
     "draftAndPublish": false
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
   "attributes": {
     "content": {
       "type": "dynamiczone",

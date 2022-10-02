@@ -85,7 +85,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": ["name", "email", "subject", "text"]
+        "fields": ["name", "email", "subject", "text", "comment"]
       },
       "conditions": []
     },
@@ -99,7 +99,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": ["name", "email", "subject", "text"]
+        "fields": ["name", "email", "subject", "text", "comment"]
       },
       "conditions": []
     },
@@ -107,7 +107,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": ["name", "email", "subject", "text"]
+        "fields": ["name", "email", "subject", "text", "comment"]
       },
       "conditions": []
     },
@@ -230,17 +230,14 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ],
-        "locales": ["en", "es"]
+        ]
       },
       "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::website.website",
-      "properties": {
-        "locales": ["en", "es"]
-      },
+      "properties": {},
       "conditions": []
     },
     {
@@ -263,8 +260,7 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ],
-        "locales": ["en", "es"]
+        ]
       },
       "conditions": []
     },
@@ -288,8 +284,7 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ],
-        "locales": ["en", "es"]
+        ]
       },
       "conditions": []
     },

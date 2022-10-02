@@ -1,5 +1,5 @@
-query categories {
-  categories {
+query categories($sort: [String] = ["id:DESC"]) {
+  categories(sort: $sort) {
     data {
       ...Category
       attributes {

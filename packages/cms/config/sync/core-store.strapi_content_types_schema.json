@@ -924,6 +924,10 @@
         "text": {
           "type": "text"
         },
+        "comment": {
+          "type": "string",
+          "required": true
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -986,6 +990,10 @@
           },
           "text": {
             "type": "text"
+          },
+          "comment": {
+            "type": "string",
+            "required": true
           }
         },
         "kind": "collectionType"
@@ -1182,11 +1190,6 @@
         "populateCreatorFields": false,
         "draftAndPublish": false
       },
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "attributes": {
         "content": {
           "type": "dynamiczone",
@@ -1258,22 +1261,6 @@
           "useJoinTable": false,
           "private": true
         },
-        "localizations": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::website.website"
-        },
-        "locale": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "string"
-        },
         "sitemap_exclude": {
           "writable": true,
           "private": true,
@@ -1294,11 +1281,6 @@
         "options": {
           "populateCreatorFields": false,
           "draftAndPublish": false
-        },
-        "pluginOptions": {
-          "i18n": {
-            "localized": true
-          }
         },
         "attributes": {
           "content": {
@@ -2433,7 +2415,7 @@
           "visible": true
         },
         "content-type-builder": {
-          "visible": true
+          "visible": false
         }
       },
       "options": {
@@ -2444,32 +2426,40 @@
       },
       "attributes": {
         "templateReferenceId": {
-          "type": "integer",
-          "required": false,
-          "unique": true
+          "type": "uid",
+          "required": true,
+          "targetField": "name",
+          "configurable": false
         },
         "design": {
-          "type": "json"
+          "type": "json",
+          "configurable": false
         },
         "subject": {
-          "type": "string"
+          "type": "string",
+          "configurable": false
         },
         "bodyHtml": {
-          "type": "text"
+          "type": "text",
+          "configurable": false
         },
         "bodyText": {
-          "type": "text"
+          "type": "text",
+          "configurable": false
         },
         "enabled": {
           "type": "boolean",
-          "default": true
+          "default": true,
+          "configurable": false
         },
         "tags": {
-          "type": "json"
+          "type": "json",
+          "configurable": false
         },
         "name": {
-          "type": "enumeration",
-          "enum": ["contact-form"]
+          "type": "string",
+          "configurable": false,
+          "required": true
         },
         "createdAt": {
           "type": "datetime"
@@ -2527,37 +2517,45 @@
             "visible": true
           },
           "content-type-builder": {
-            "visible": true
+            "visible": false
           }
         },
         "attributes": {
           "templateReferenceId": {
-            "type": "integer",
-            "required": false,
-            "unique": true
+            "type": "uid",
+            "required": true,
+            "targetField": "name",
+            "configurable": false
           },
           "design": {
-            "type": "json"
+            "type": "json",
+            "configurable": false
           },
           "subject": {
-            "type": "string"
+            "type": "string",
+            "configurable": false
           },
           "bodyHtml": {
-            "type": "text"
+            "type": "text",
+            "configurable": false
           },
           "bodyText": {
-            "type": "text"
+            "type": "text",
+            "configurable": false
           },
           "enabled": {
             "type": "boolean",
-            "default": true
+            "default": true,
+            "configurable": false
           },
           "tags": {
-            "type": "json"
+            "type": "json",
+            "configurable": false
           },
           "name": {
-            "type": "enumeration",
-            "enum": ["contact-form"]
+            "type": "string",
+            "configurable": false,
+            "required": true
           }
         },
         "kind": "collectionType"

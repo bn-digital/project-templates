@@ -25,8 +25,8 @@ export type PossibleTypesResultData = {
       'ComponentUiTab',
       'ComponentUiText',
       'Contact',
-      'Email',
       'EmailDesignerEmailTemplate',
+      'EmailEmitterEmail',
       'I18NLocale',
       'MenusMenu',
       'MenusMenuItem',
@@ -61,8 +61,8 @@ const result: PossibleTypesResultData = {
       'ComponentUiTab',
       'ComponentUiText',
       'Contact',
-      'Email',
       'EmailDesignerEmailTemplate',
+      'EmailEmitterEmail',
       'I18NLocale',
       'MenusMenu',
       'MenusMenuItem',
@@ -98,7 +98,7 @@ export const MenuItemFragmentDoc = gql`
     id
     attributes {
       order
-      createdAt
+      created_at: createdAt
       url
       title
       target
@@ -349,8 +349,8 @@ export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<Reg
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>
 export const CategoriesDocument = gql`
-  query categories {
-    categories {
+  query categories($sort: [String] = ["id:DESC"]) {
+    categories(sort: $sort) {
       data {
         ...Category
         attributes {

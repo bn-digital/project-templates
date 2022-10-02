@@ -85,7 +85,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": ["email", "name", "subject", "text"]
+        "fields": ["name", "email", "subject", "text", "comment"]
       },
       "conditions": []
     },
@@ -99,7 +99,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": ["email", "name", "subject", "text"]
+        "fields": ["name", "email", "subject", "text", "comment"]
       },
       "conditions": []
     },
@@ -107,7 +107,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": ["email", "name", "subject", "text"]
+        "fields": ["name", "email", "subject", "text", "comment"]
       },
       "conditions": []
     },
