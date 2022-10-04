@@ -14,11 +14,7 @@ export default {
             text: result.text,
           },
           template: template.id,
-        },
-      })
-      await emailService.update(email.id, {
-        data: {
-          state: 'queued',
+          scheduled: true
         },
       })
     }
