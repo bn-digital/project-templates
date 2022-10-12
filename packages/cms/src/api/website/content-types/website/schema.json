@@ -11,10 +11,15 @@
     "populateCreatorFields": false,
     "draftAndPublish": false
   },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "content": {
       "type": "dynamiczone",
-      "components": ["page.contact-us", "page.home"],
+      "components": ["page.home", "page.contact-us"],
       "seo": {
         "type": "component",
         "repeatable": false,

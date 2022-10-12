@@ -4,23 +4,17 @@ export default {
     const emailService: Strapi.EmailEmitter.EmailService = strapi.plugin('email-emitter').services.email
     const { result } = event
     const template = await templateService.findOne({ name: 'contact-form' })
-    if (template) {
-      const email: { id?: string } = await emailService.create({
-        data: {
-          payload: {
-            name: result.name,
-            email: result.email,
-            subject: result.subject,
-            text: result.text,
-          },
-          template: template.id,
+    emailService.create({
+      data: {
+        payload: {
+          name: result.name,
+          email: result.email,
+          subject: result.subject,
+          text: result.text,
         },
-      })
-      await emailService.update(email.id, {
-        data: {
-          state: 'queued',
-        },
-      })
-    }
+        template: template?.id ?? null,
+        scheduled: true,
+      },
+    })
   },
 }

@@ -79,13 +79,6 @@ const result: PossibleTypesResultData = {
 }
 export default result
 
-export const HeadlineFragmentDoc = gql`
-  fragment Headline on ComponentUiHeadline {
-    id
-    title
-    subtitle
-  }
-`
 export const LinkFragmentDoc = gql`
   fragment Link on ComponentUiLink {
     id
@@ -217,27 +210,32 @@ export const SeoFragmentDoc = gql`
     metaDescription
   }
 `
+export const HeadlineFragmentDoc = gql`
+  fragment Headline on ComponentUiHeadline {
+    id
+    title
+    subtitle
+  }
+`
 export const HomeFragmentDoc = gql`
   fragment Home on ComponentPageHome {
     id
     pathname
     hero {
-      subtitle
-      id
-      description
-      title
-      media {
-        data {
-          ...File
-        }
-      }
+      ...Card
     }
-    features {
+    components {
+      ...Card
+    }
+    technology {
+      ...Headline
+    }
+    frameworks {
       ...Card
     }
   }
-  ${FileFragmentDoc}
   ${CardFragmentDoc}
+  ${HeadlineFragmentDoc}
 `
 export const ContactUsFragmentDoc = gql`
   fragment ContactUs on ComponentPageContactUs {

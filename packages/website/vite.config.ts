@@ -1,5 +1,4 @@
 import { configureReact as configure } from '@bn-digital/vite'
-import { sha256 } from 'crypto-hash'
 
 import packageJson from './package.json'
 
@@ -17,8 +16,8 @@ export default configure(
       google: {
         preconnect: true,
         families: [
-          { name: 'Roboto', styles: 'wght@400;500;600;700;900' },
-          { name: 'Lato', styles: 'wght@400;500;600;700;900' },
+          { name: 'Roboto', styles: 'wght@400;500;600;700;800;900' },
+          { name: 'Lato', styles: 'wght@400;500;600;700;800;900' },
         ],
         display: 'auto',
       },

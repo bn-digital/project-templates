@@ -1,7 +1,7 @@
 import { UnorderedListOutlined } from '@ant-design/icons'
 import { Button, Col, Row, Select } from 'antd'
 import { FC } from 'react'
-import { useLocalStorage, useToggle } from 'react-use'
+import { useCookie, useLocalStorage, useToggle } from 'react-use'
 
 import { useApp } from '../app'
 import { useLocale } from '../app/Locale'
@@ -32,7 +32,7 @@ const LanguageMenu: FC = () => {
 const Header: FC<{ renderMenu: FC }> = ({ renderMenu: HorizontalMenu }) => {
   const { isMobile } = useBreakpoints()
   const [visible, toggle] = useToggle(false)
-  const [token, setToken] = useLocalStorage<string | null>('jwtToken', null)
+  const [token, setToken] = useLocalStorage('jwtToken')
 
   return (
     <>

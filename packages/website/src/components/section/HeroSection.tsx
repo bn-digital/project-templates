@@ -7,17 +7,12 @@ const HeroSection: FC<CardFragment> = ({ title = '', description = '', subtitle 
       <Typography.Title level={2}>{title}</Typography.Title>
     </Col>
     <Col span={24}>
-      <Typography.Paragraph>{subtitle}</Typography.Paragraph>
+      <Typography.Title level={4}>{subtitle}</Typography.Title>
     </Col>
     <Col span={24}>
-      <Typography.Paragraph>
-        {description?.split('\n').map((it, index) => (
-          <span key={index}>
-            {it}
-            <br />
-          </span>
-        ))}
-      </Typography.Paragraph>
+      {description?.split('\n').map((it, index) => (
+        <Typography.Paragraph key={index}>{it}</Typography.Paragraph>
+      ))}
     </Col>
   </Row>
 )

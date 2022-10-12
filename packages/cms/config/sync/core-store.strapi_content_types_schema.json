@@ -1190,10 +1190,15 @@
         "populateCreatorFields": false,
         "draftAndPublish": false
       },
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "attributes": {
         "content": {
           "type": "dynamiczone",
-          "components": ["page.contact-us", "page.home"],
+          "components": ["page.home", "page.contact-us"],
           "seo": {
             "type": "component",
             "repeatable": false,
@@ -1261,6 +1266,22 @@
           "useJoinTable": false,
           "private": true
         },
+        "localizations": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::website.website"
+        },
+        "locale": {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "string"
+        },
         "sitemap_exclude": {
           "writable": true,
           "private": true,
@@ -1282,10 +1303,15 @@
           "populateCreatorFields": false,
           "draftAndPublish": false
         },
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
         "attributes": {
           "content": {
             "type": "dynamiczone",
-            "components": ["page.contact-us", "page.home"],
+            "components": ["page.home", "page.contact-us"],
             "seo": {
               "type": "component",
               "repeatable": false,
