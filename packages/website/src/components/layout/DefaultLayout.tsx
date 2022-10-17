@@ -32,7 +32,7 @@ const DefaultLayout: FC = () => {
   const { burger } = useApp()
 
   return (
-    <Layout>
+    <Layout className={'default'}>
       <Layout.Header>
         <Header renderMenu={() => <Navigation mode={'horizontal'} type={'header'} />} />
       </Layout.Header>

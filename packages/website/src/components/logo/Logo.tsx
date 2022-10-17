@@ -1,4 +1,4 @@
-import Icon, { AppleOutlined } from '@ant-design/icons'
+import Icon, { AppstoreFilled } from '@ant-design/icons'
 import { Space } from 'antd'
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom'
 const Logo: FC = () => {
   const navigate = useNavigate()
   return (
-    <Space direction={'horizontal'}>
-      <Icon component={() => <AppleOutlined />} onClick={() => navigate('/')} />
+    <Space direction={'horizontal'} align={'center'}>
+      <Icon component={() => <AppstoreFilled />} onClick={() => navigate('/')} />
     </Space>
   )
 }
