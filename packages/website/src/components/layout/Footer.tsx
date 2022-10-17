@@ -8,9 +8,7 @@ const Footer: FC = () => (
       <Link to={'/'}>{window.location.hostname}</Link>
     </Col>
     <Col>
-      <Typography.Link target={'_blank'} href={'https://github.com/bn-digital/'}>
-        {new Date().toUTCString()}
-      </Typography.Link>
+      <Typography.Text type={'secondary'}>{new Date().toUTCString()}</Typography.Text>
     </Col>
   </Row>
 )
