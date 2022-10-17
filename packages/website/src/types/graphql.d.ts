@@ -10,9 +10,19 @@ type Scalars = {
   Boolean: boolean
   Int: number
   Float: number
+  /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
+  Date: string
+  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: Date
+  /** A string used to identify an i18n locale */
   I18NLocaleCode: string | 'en'
+  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: Record<string, any | any[] | string | number | boolean | null | undefined> | any[]
+  /** The `BigInt` scalar type represents non-fractional signed whole numeric values. */
+  Long: number
+  /** A time string with format HH:mm:ss.SSS */
+  Time: string
+  /** The `Upload` scalar type represents a file upload. */
   Upload: unknown
   WebsiteContentDynamicZoneInput: any
 }
@@ -85,6 +95,18 @@ type CategoryFiltersInput = {
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
+type CategoryInput = {
+  name?: InputMaybe<Scalars['String']>
+  posts?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  seo?: InputMaybe<ComponentSharedSeoInput>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+  slug?: InputMaybe<Scalars['String']>
+}
+
+type CategoryRelationResponseCollection = {
+  data: Array<CategoryEntity>
+}
+
 type ChangePasswordInput = {
   newPassword: Scalars['String']
   oldPassword: Scalars['String']
@@ -95,6 +117,22 @@ type ComponentDataContact = {
   email?: Maybe<Scalars['String']>
   id: Scalars['ID']
   phone?: Maybe<Scalars['String']>
+}
+
+type ComponentDataContactFiltersInput = {
+  address?: InputMaybe<StringFilterInput>
+  and?: InputMaybe<Array<InputMaybe<ComponentDataContactFiltersInput>>>
+  email?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentDataContactFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentDataContactFiltersInput>>>
+  phone?: InputMaybe<StringFilterInput>
+}
+
+type ComponentDataContactInput = {
+  address?: InputMaybe<Scalars['String']>
+  email?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  phone?: InputMaybe<Scalars['String']>
 }
 
 type ComponentDataEntry = {
@@ -122,23 +160,71 @@ type ComponentDataSet = {
   value: Scalars['String']
 }
 
+type ComponentDataSetFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentDataSetFiltersInput>>>
+  not?: InputMaybe<ComponentDataSetFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentDataSetFiltersInput>>>
+  value?: InputMaybe<StringFilterInput>
+}
+
+type ComponentDataSetInput = {
+  id?: InputMaybe<Scalars['ID']>
+  value?: InputMaybe<Scalars['String']>
+}
+
 type ComponentPageContactUs = {
   contact?: Maybe<ComponentDataContact>
   id: Scalars['ID']
   pathname: Scalars['String']
 }
 
+type ComponentPageContactUsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentPageContactUsFiltersInput>>>
+  contact?: InputMaybe<ComponentDataContactFiltersInput>
+  not?: InputMaybe<ComponentPageContactUsFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentPageContactUsFiltersInput>>>
+  pathname?: InputMaybe<StringFilterInput>
+}
+
+type ComponentPageContactUsInput = {
+  contact?: InputMaybe<ComponentDataContactInput>
+  id?: InputMaybe<Scalars['ID']>
+  pathname?: InputMaybe<Scalars['String']>
+}
+
 type ComponentPageHome = {
-  features?: Maybe<Array<Maybe<ComponentUiCard>>>
+  components?: Maybe<Array<Maybe<ComponentUiCard>>>
+  frameworks?: Maybe<ComponentUiCard>
   hero?: Maybe<ComponentUiCard>
   id: Scalars['ID']
   pathname: Scalars['String']
+  technology?: Maybe<ComponentUiHeadline>
 }
 
-type ComponentPageHomeFeaturesArgs = {
+type ComponentPageHomeComponentsArgs = {
   filters?: InputMaybe<ComponentUiCardFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type ComponentPageHomeFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentPageHomeFiltersInput>>>
+  components?: InputMaybe<ComponentUiCardFiltersInput>
+  frameworks?: InputMaybe<ComponentUiCardFiltersInput>
+  hero?: InputMaybe<ComponentUiCardFiltersInput>
+  not?: InputMaybe<ComponentPageHomeFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentPageHomeFiltersInput>>>
+  pathname?: InputMaybe<StringFilterInput>
+  technology?: InputMaybe<ComponentUiHeadlineFiltersInput>
+}
+
+type ComponentPageHomeInput = {
+  components?: InputMaybe<Array<InputMaybe<ComponentUiCardInput>>>
+  frameworks?: InputMaybe<ComponentUiCardInput>
+  hero?: InputMaybe<ComponentUiCardInput>
+  id?: InputMaybe<Scalars['ID']>
+  pathname?: InputMaybe<Scalars['String']>
+  technology?: InputMaybe<ComponentUiHeadlineInput>
 }
 
 type ComponentSharedMetaSocial = {
@@ -229,6 +315,14 @@ type ComponentUiCardFiltersInput = {
   title?: InputMaybe<StringFilterInput>
 }
 
+type ComponentUiCardInput = {
+  description?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  media?: InputMaybe<Scalars['ID']>
+  subtitle?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+}
+
 type ComponentUiGrid = {
   children: Array<Maybe<ComponentDataEntry>>
   id: Scalars['ID']
@@ -241,16 +335,58 @@ type ComponentUiGridChildrenArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
+type ComponentUiGridFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentUiGridFiltersInput>>>
+  children?: InputMaybe<ComponentDataEntryFiltersInput>
+  not?: InputMaybe<ComponentUiGridFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentUiGridFiltersInput>>>
+  visible?: InputMaybe<BooleanFilterInput>
+}
+
+type ComponentUiGridInput = {
+  children?: InputMaybe<Array<InputMaybe<ComponentDataEntryInput>>>
+  id?: InputMaybe<Scalars['ID']>
+  visible?: InputMaybe<Scalars['Boolean']>
+}
+
 type ComponentUiHeadline = {
   id: Scalars['ID']
   subtitle?: Maybe<Scalars['String']>
   title?: Maybe<Scalars['String']>
 }
 
+type ComponentUiHeadlineFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentUiHeadlineFiltersInput>>>
+  not?: InputMaybe<ComponentUiHeadlineFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentUiHeadlineFiltersInput>>>
+  subtitle?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+type ComponentUiHeadlineInput = {
+  id?: InputMaybe<Scalars['ID']>
+  subtitle?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+}
+
 type ComponentUiLink = {
   id: Scalars['ID']
   title?: Maybe<Scalars['String']>
   url: Scalars['String']
+}
+
+type ComponentUiLinkFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentUiLinkFiltersInput>>>
+  not?: InputMaybe<ComponentUiLinkFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentUiLinkFiltersInput>>>
+  title?: InputMaybe<StringFilterInput>
+  url?: InputMaybe<StringFilterInput>
+}
+
+type ComponentUiLinkInput = {
+  id?: InputMaybe<Scalars['ID']>
+  title?: InputMaybe<Scalars['String']>
+  url?: InputMaybe<Scalars['String']>
 }
 
 type ComponentUiParagraph = {
@@ -265,6 +401,11 @@ type ComponentUiParagraphFiltersInput = {
   value?: InputMaybe<StringFilterInput>
 }
 
+type ComponentUiParagraphInput = {
+  id?: InputMaybe<Scalars['ID']>
+  value?: InputMaybe<Scalars['String']>
+}
+
 type ComponentUiSection = {
   button?: Maybe<ComponentUiLink>
   heading?: Maybe<ComponentUiCard>
@@ -272,10 +413,40 @@ type ComponentUiSection = {
   visible: Scalars['Boolean']
 }
 
+type ComponentUiSectionFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentUiSectionFiltersInput>>>
+  button?: InputMaybe<ComponentUiLinkFiltersInput>
+  heading?: InputMaybe<ComponentUiCardFiltersInput>
+  not?: InputMaybe<ComponentUiSectionFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentUiSectionFiltersInput>>>
+  visible?: InputMaybe<BooleanFilterInput>
+}
+
+type ComponentUiSectionInput = {
+  button?: InputMaybe<ComponentUiLinkInput>
+  heading?: InputMaybe<ComponentUiCardInput>
+  id?: InputMaybe<Scalars['ID']>
+  visible?: InputMaybe<Scalars['Boolean']>
+}
+
 type ComponentUiTab = {
   id: Scalars['ID']
   name: Scalars['String']
   pane: ComponentUiCard
+}
+
+type ComponentUiTabFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentUiTabFiltersInput>>>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentUiTabFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentUiTabFiltersInput>>>
+  pane?: InputMaybe<ComponentUiCardFiltersInput>
+}
+
+type ComponentUiTabInput = {
+  id?: InputMaybe<Scalars['ID']>
+  name?: InputMaybe<Scalars['String']>
+  pane?: InputMaybe<ComponentUiCardInput>
 }
 
 type ComponentUiText = {
@@ -288,6 +459,20 @@ type ComponentUiTextChildrenArgs = {
   filters?: InputMaybe<ComponentUiParagraphFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type ComponentUiTextFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentUiTextFiltersInput>>>
+  children?: InputMaybe<ComponentUiParagraphFiltersInput>
+  not?: InputMaybe<ComponentUiTextFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentUiTextFiltersInput>>>
+  visible?: InputMaybe<BooleanFilterInput>
+}
+
+type ComponentUiTextInput = {
+  children?: InputMaybe<Array<InputMaybe<ComponentUiParagraphInput>>>
+  id?: InputMaybe<Scalars['ID']>
+  visible?: InputMaybe<Scalars['Boolean']>
 }
 
 type Contact = {
@@ -309,6 +494,26 @@ type ContactEntityResponse = {
   data?: Maybe<ContactEntity>
 }
 
+type ContactEntityResponseCollection = {
+  data: Array<ContactEntity>
+  meta: ResponseCollectionMeta
+}
+
+type ContactFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>
+  comment?: InputMaybe<StringFilterInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  email?: InputMaybe<StringFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ContactFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>
+  sitemap_exclude?: InputMaybe<BooleanFilterInput>
+  subject?: InputMaybe<StringFilterInput>
+  text?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
 type ContactInput = {
   comment?: InputMaybe<Scalars['String']>
   email?: InputMaybe<Scalars['String']>
@@ -316,6 +521,34 @@ type ContactInput = {
   sitemap_exclude?: InputMaybe<Scalars['Boolean']>
   subject?: InputMaybe<Scalars['String']>
   text?: InputMaybe<Scalars['String']>
+}
+
+type ContactRelationResponseCollection = {
+  data: Array<ContactEntity>
+}
+
+type DateFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>
+  between?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>
+  contains?: InputMaybe<Scalars['Date']>
+  containsi?: InputMaybe<Scalars['Date']>
+  endsWith?: InputMaybe<Scalars['Date']>
+  eq?: InputMaybe<Scalars['Date']>
+  eqi?: InputMaybe<Scalars['Date']>
+  gt?: InputMaybe<Scalars['Date']>
+  gte?: InputMaybe<Scalars['Date']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>
+  lt?: InputMaybe<Scalars['Date']>
+  lte?: InputMaybe<Scalars['Date']>
+  ne?: InputMaybe<Scalars['Date']>
+  not?: InputMaybe<DateFilterInput>
+  notContains?: InputMaybe<Scalars['Date']>
+  notContainsi?: InputMaybe<Scalars['Date']>
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>
+  notNull?: InputMaybe<Scalars['Boolean']>
+  null?: InputMaybe<Scalars['Boolean']>
+  or?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>
+  startsWith?: InputMaybe<Scalars['Date']>
 }
 
 type DateTimeFilterInput = {
@@ -344,8 +577,6 @@ type DateTimeFilterInput = {
 
 type EnumComponentsharedmetasocialSocialnetwork = 'Facebook' | 'Twitter'
 
-type EnumEmaildesigneremailtemplateName = 'contact_form'
-
 type EnumMenusmenuitemTarget = 'blank' | 'parent' | 'self' | 'top'
 
 type EmailDesignerEmailTemplate = {
@@ -354,10 +585,10 @@ type EmailDesignerEmailTemplate = {
   createdAt?: Maybe<Scalars['DateTime']>
   design?: Maybe<Scalars['JSON']>
   enabled?: Maybe<Scalars['Boolean']>
-  name?: Maybe<EnumEmaildesigneremailtemplateName>
+  name: Scalars['String']
   subject?: Maybe<Scalars['String']>
   tags?: Maybe<Scalars['JSON']>
-  templateReferenceId?: Maybe<Scalars['Int']>
+  templateReferenceId: Scalars['String']
   updatedAt?: Maybe<Scalars['DateTime']>
 }
 
@@ -389,8 +620,24 @@ type EmailDesignerEmailTemplateFiltersInput = {
   sitemap_exclude?: InputMaybe<BooleanFilterInput>
   subject?: InputMaybe<StringFilterInput>
   tags?: InputMaybe<JsonFilterInput>
-  templateReferenceId?: InputMaybe<IntFilterInput>
+  templateReferenceId?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+type EmailDesignerEmailTemplateInput = {
+  bodyHtml?: InputMaybe<Scalars['String']>
+  bodyText?: InputMaybe<Scalars['String']>
+  design?: InputMaybe<Scalars['JSON']>
+  enabled?: InputMaybe<Scalars['Boolean']>
+  name?: InputMaybe<Scalars['String']>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+  subject?: InputMaybe<Scalars['String']>
+  tags?: InputMaybe<Scalars['JSON']>
+  templateReferenceId?: InputMaybe<Scalars['String']>
+}
+
+type EmailDesignerEmailTemplateRelationResponseCollection = {
+  data: Array<EmailDesignerEmailTemplateEntity>
 }
 
 type EmailEmitterEmail = {
@@ -403,6 +650,52 @@ type EmailEmitterEmail = {
   scheduled: Scalars['Boolean']
   template?: Maybe<EmailDesignerEmailTemplateEntityResponse>
   updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+type EmailEmitterEmailEntity = {
+  attributes?: Maybe<EmailEmitterEmail>
+  id?: Maybe<Scalars['ID']>
+}
+
+type EmailEmitterEmailEntityResponse = {
+  data?: Maybe<EmailEmitterEmailEntity>
+}
+
+type EmailEmitterEmailEntityResponseCollection = {
+  data: Array<EmailEmitterEmailEntity>
+  meta: ResponseCollectionMeta
+}
+
+type EmailEmitterEmailFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<EmailEmitterEmailFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  delivered?: InputMaybe<BooleanFilterInput>
+  email?: InputMaybe<StringFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  log?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<EmailEmitterEmailFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<EmailEmitterEmailFiltersInput>>>
+  payload?: InputMaybe<JsonFilterInput>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  scheduled?: InputMaybe<BooleanFilterInput>
+  sitemap_exclude?: InputMaybe<BooleanFilterInput>
+  template?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+type EmailEmitterEmailInput = {
+  delivered?: InputMaybe<Scalars['Boolean']>
+  email?: InputMaybe<Scalars['String']>
+  log?: InputMaybe<Scalars['String']>
+  payload?: InputMaybe<Scalars['JSON']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  scheduled?: InputMaybe<Scalars['Boolean']>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+  template?: InputMaybe<Scalars['ID']>
+}
+
+type EmailEmitterEmailRelationResponseCollection = {
+  data: Array<EmailEmitterEmailEntity>
 }
 
 type Error = {
@@ -503,6 +796,15 @@ type I18NLocaleFiltersInput = {
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
+type I18NLocaleInput = {
+  code?: InputMaybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']>
+}
+
+type I18NLocaleRelationResponseCollection = {
+  data: Array<I18NLocaleEntity>
+}
+
 type IdFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   between?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
@@ -575,6 +877,30 @@ type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']>
 }
 
+type LongFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars['Long']>>>
+  between?: InputMaybe<Array<InputMaybe<Scalars['Long']>>>
+  contains?: InputMaybe<Scalars['Long']>
+  containsi?: InputMaybe<Scalars['Long']>
+  endsWith?: InputMaybe<Scalars['Long']>
+  eq?: InputMaybe<Scalars['Long']>
+  eqi?: InputMaybe<Scalars['Long']>
+  gt?: InputMaybe<Scalars['Long']>
+  gte?: InputMaybe<Scalars['Long']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['Long']>>>
+  lt?: InputMaybe<Scalars['Long']>
+  lte?: InputMaybe<Scalars['Long']>
+  ne?: InputMaybe<Scalars['Long']>
+  not?: InputMaybe<LongFilterInput>
+  notContains?: InputMaybe<Scalars['Long']>
+  notContainsi?: InputMaybe<Scalars['Long']>
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['Long']>>>
+  notNull?: InputMaybe<Scalars['Boolean']>
+  null?: InputMaybe<Scalars['Boolean']>
+  or?: InputMaybe<Array<InputMaybe<Scalars['Long']>>>
+  startsWith?: InputMaybe<Scalars['Long']>
+}
+
 type MenusMenu = {
   createdAt?: Maybe<Scalars['DateTime']>
   items?: Maybe<MenusMenuItemRelationResponseCollection>
@@ -614,6 +940,13 @@ type MenusMenuFiltersInput = {
   slug?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+type MenusMenuInput = {
+  items?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+  slug?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
 }
 
 type MenusMenuItem = {
@@ -657,8 +990,22 @@ type MenusMenuItemFiltersInput = {
   url?: InputMaybe<StringFilterInput>
 }
 
+type MenusMenuItemInput = {
+  order?: InputMaybe<Scalars['Int']>
+  parent?: InputMaybe<Scalars['ID']>
+  root_menu?: InputMaybe<Scalars['ID']>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+  target?: InputMaybe<EnumMenusmenuitemTarget>
+  title?: InputMaybe<Scalars['String']>
+  url?: InputMaybe<Scalars['String']>
+}
+
 type MenusMenuItemRelationResponseCollection = {
   data: Array<MenusMenuItemEntity>
+}
+
+type MenusMenuRelationResponseCollection = {
+  data: Array<MenusMenuEntity>
 }
 
 type Mutation = {
@@ -867,6 +1214,20 @@ type PostFiltersInput = {
   uuid?: InputMaybe<StringFilterInput>
 }
 
+type PostInput = {
+  background?: InputMaybe<Scalars['String']>
+  category?: InputMaybe<Scalars['ID']>
+  content?: InputMaybe<Scalars['String']>
+  cover?: InputMaybe<Scalars['ID']>
+  name?: InputMaybe<Scalars['String']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  seo?: InputMaybe<ComponentSharedSeoInput>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+  slug?: InputMaybe<Scalars['String']>
+  teaser?: InputMaybe<Scalars['String']>
+  uuid?: InputMaybe<Scalars['String']>
+}
+
 type PostRelationResponseCollection = {
   data: Array<PostEntity>
 }
@@ -1031,6 +1392,30 @@ type StringFilterInput = {
   startsWith?: InputMaybe<Scalars['String']>
 }
 
+type TimeFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>
+  between?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>
+  contains?: InputMaybe<Scalars['Time']>
+  containsi?: InputMaybe<Scalars['Time']>
+  endsWith?: InputMaybe<Scalars['Time']>
+  eq?: InputMaybe<Scalars['Time']>
+  eqi?: InputMaybe<Scalars['Time']>
+  gt?: InputMaybe<Scalars['Time']>
+  gte?: InputMaybe<Scalars['Time']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>
+  lt?: InputMaybe<Scalars['Time']>
+  lte?: InputMaybe<Scalars['Time']>
+  ne?: InputMaybe<Scalars['Time']>
+  not?: InputMaybe<TimeFilterInput>
+  notContains?: InputMaybe<Scalars['Time']>
+  notContainsi?: InputMaybe<Scalars['Time']>
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>
+  notNull?: InputMaybe<Scalars['Boolean']>
+  null?: InputMaybe<Scalars['Boolean']>
+  or?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>
+  startsWith?: InputMaybe<Scalars['Time']>
+}
+
 type UploadFile = {
   alternativeText?: Maybe<Scalars['String']>
   caption?: Maybe<Scalars['String']>
@@ -1168,6 +1553,16 @@ type UploadFolderFiltersInput = {
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
+type UploadFolderInput = {
+  children?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  files?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  name?: InputMaybe<Scalars['String']>
+  parent?: InputMaybe<Scalars['ID']>
+  path?: InputMaybe<Scalars['String']>
+  pathId?: InputMaybe<Scalars['Int']>
+  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
+}
+
 type UploadFolderRelationResponseCollection = {
   data: Array<UploadFolderEntity>
 }
@@ -1223,6 +1618,15 @@ type UsersPermissionsPermissionEntity = {
   id?: Maybe<Scalars['ID']>
 }
 
+type UsersPermissionsPermissionEntityResponse = {
+  data?: Maybe<UsersPermissionsPermissionEntity>
+}
+
+type UsersPermissionsPermissionEntityResponseCollection = {
+  data: Array<UsersPermissionsPermissionEntity>
+  meta: ResponseCollectionMeta
+}
+
 type UsersPermissionsPermissionFiltersInput = {
   action?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<UsersPermissionsPermissionFiltersInput>>>
@@ -1232,6 +1636,11 @@ type UsersPermissionsPermissionFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<UsersPermissionsPermissionFiltersInput>>>
   role?: InputMaybe<UsersPermissionsRoleFiltersInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+type UsersPermissionsPermissionInput = {
+  action?: InputMaybe<Scalars['String']>
+  role?: InputMaybe<Scalars['ID']>
 }
 
 type UsersPermissionsPermissionRelationResponseCollection = {
@@ -1300,6 +1709,10 @@ type UsersPermissionsRoleInput = {
   permissions?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   type?: InputMaybe<Scalars['String']>
   users?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+}
+
+type UsersPermissionsRoleRelationResponseCollection = {
+  data: Array<UsersPermissionsRoleEntity>
 }
 
 type UsersPermissionsUpdateRolePayload = {
@@ -1395,6 +1808,24 @@ type WebsiteEntityResponse = {
   data?: Maybe<WebsiteEntity>
 }
 
+type WebsiteEntityResponseCollection = {
+  data: Array<WebsiteEntity>
+  meta: ResponseCollectionMeta
+}
+
+type WebsiteFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<WebsiteFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  locale?: InputMaybe<StringFilterInput>
+  localizations?: InputMaybe<WebsiteFiltersInput>
+  not?: InputMaybe<WebsiteFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<WebsiteFiltersInput>>>
+  seo?: InputMaybe<ComponentSharedSeoFiltersInput>
+  sitemap_exclude?: InputMaybe<BooleanFilterInput>
+  translations?: InputMaybe<ComponentDataEntryFiltersInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
 type WebsiteInput = {
   content?: InputMaybe<Array<Scalars['WebsiteContentDynamicZoneInput']>>
   seo?: InputMaybe<ComponentSharedSeoInput>
@@ -1459,10 +1890,10 @@ type HomeFragment = {
   pathname: string
   hero?:
     | {
-        subtitle?: string | null | undefined
         id: string
-        description?: string | null | undefined
         title?: string | null | undefined
+        subtitle?: string | null | undefined
+        description?: string | null | undefined
         media?:
           | {
               data?:
@@ -1478,7 +1909,7 @@ type HomeFragment = {
       }
     | null
     | undefined
-  features?:
+  components?:
     | Array<
         | {
             id: string
@@ -1503,6 +1934,28 @@ type HomeFragment = {
       >
     | null
     | undefined
+  technology?: { id: string; title?: string | null | undefined; subtitle?: string | null | undefined } | null | undefined
+  frameworks?:
+    | {
+        id: string
+        title?: string | null | undefined
+        subtitle?: string | null | undefined
+        description?: string | null | undefined
+        media?:
+          | {
+              data?:
+                | {
+                    id?: string | null | undefined
+                    attributes?: { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string } | null | undefined
+                  }
+                | null
+                | undefined
+            }
+          | null
+          | undefined
+      }
+    | null
+    | undefined
 }
 
 type HomeFragmentVariables = Exact<{ [key: string]: never }>
@@ -1516,6 +1969,7 @@ type MenuFragment = {
   attributes?:
     | {
         title: string
+        slug: string
         items?:
           | {
               data: Array<{
@@ -1553,6 +2007,7 @@ type MenuFragment = {
                           | {
                               attributes?:
                                 | {
+                                    slug: string
                                     items?:
                                       | {
                                           data: Array<{
@@ -1710,10 +2165,10 @@ type WebsiteFragment = {
                   pathname: string
                   hero?:
                     | {
-                        subtitle?: string | null | undefined
                         id: string
-                        description?: string | null | undefined
                         title?: string | null | undefined
+                        subtitle?: string | null | undefined
+                        description?: string | null | undefined
                         media?:
                           | {
                               data?:
@@ -1732,7 +2187,7 @@ type WebsiteFragment = {
                       }
                     | null
                     | undefined
-                  features?:
+                  components?:
                     | Array<
                         | {
                             id: string
@@ -1758,6 +2213,31 @@ type WebsiteFragment = {
                         | null
                         | undefined
                       >
+                    | null
+                    | undefined
+                  technology?: { id: string; title?: string | null | undefined; subtitle?: string | null | undefined } | null | undefined
+                  frameworks?:
+                    | {
+                        id: string
+                        title?: string | null | undefined
+                        subtitle?: string | null | undefined
+                        description?: string | null | undefined
+                        media?:
+                          | {
+                              data?:
+                                | {
+                                    id?: string | null | undefined
+                                    attributes?:
+                                      | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
+                                      | null
+                                      | undefined
+                                  }
+                                | null
+                                | undefined
+                            }
+                          | null
+                          | undefined
+                      }
                     | null
                     | undefined
                 }
@@ -1867,6 +2347,7 @@ type MenuQuery = {
           attributes?:
             | {
                 title: string
+                slug: string
                 items?:
                   | {
                       data: Array<{
@@ -1904,6 +2385,7 @@ type MenuQuery = {
                                   | {
                                       attributes?:
                                         | {
+                                            slug: string
                                             items?:
                                               | {
                                                   data: Array<{
@@ -2034,10 +2516,10 @@ type WebsiteQuery = {
                                             pathname: string
                                             hero?:
                                               | {
-                                                  subtitle?: string | null | undefined
                                                   id: string
-                                                  description?: string | null | undefined
                                                   title?: string | null | undefined
+                                                  subtitle?: string | null | undefined
+                                                  description?: string | null | undefined
                                                   media?:
                                                     | {
                                                         data?:
@@ -2060,7 +2542,7 @@ type WebsiteQuery = {
                                                 }
                                               | null
                                               | undefined
-                                            features?:
+                                            components?:
                                               | Array<
                                                   | {
                                                       id: string
@@ -2090,6 +2572,38 @@ type WebsiteQuery = {
                                                   | null
                                                   | undefined
                                                 >
+                                              | null
+                                              | undefined
+                                            technology?:
+                                              | { id: string; title?: string | null | undefined; subtitle?: string | null | undefined }
+                                              | null
+                                              | undefined
+                                            frameworks?:
+                                              | {
+                                                  id: string
+                                                  title?: string | null | undefined
+                                                  subtitle?: string | null | undefined
+                                                  description?: string | null | undefined
+                                                  media?:
+                                                    | {
+                                                        data?:
+                                                          | {
+                                                              id?: string | null | undefined
+                                                              attributes?:
+                                                                | {
+                                                                    previewUrl?: string | null | undefined
+                                                                    alternativeText?: string | null | undefined
+                                                                    url: string
+                                                                  }
+                                                                | null
+                                                                | undefined
+                                                            }
+                                                          | null
+                                                          | undefined
+                                                      }
+                                                    | null
+                                                    | undefined
+                                                }
                                               | null
                                               | undefined
                                           }
@@ -2135,10 +2649,10 @@ type WebsiteQuery = {
                               pathname: string
                               hero?:
                                 | {
-                                    subtitle?: string | null | undefined
                                     id: string
-                                    description?: string | null | undefined
                                     title?: string | null | undefined
+                                    subtitle?: string | null | undefined
+                                    description?: string | null | undefined
                                     media?:
                                       | {
                                           data?:
@@ -2157,7 +2671,7 @@ type WebsiteQuery = {
                                   }
                                 | null
                                 | undefined
-                              features?:
+                              components?:
                                 | Array<
                                     | {
                                         id: string
@@ -2183,6 +2697,31 @@ type WebsiteQuery = {
                                     | null
                                     | undefined
                                   >
+                                | null
+                                | undefined
+                              technology?: { id: string; title?: string | null | undefined; subtitle?: string | null | undefined } | null | undefined
+                              frameworks?:
+                                | {
+                                    id: string
+                                    title?: string | null | undefined
+                                    subtitle?: string | null | undefined
+                                    description?: string | null | undefined
+                                    media?:
+                                      | {
+                                          data?:
+                                            | {
+                                                id?: string | null | undefined
+                                                attributes?:
+                                                  | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
+                                                  | null
+                                                  | undefined
+                                              }
+                                            | null
+                                            | undefined
+                                        }
+                                      | null
+                                      | undefined
+                                  }
                                 | null
                                 | undefined
                             }

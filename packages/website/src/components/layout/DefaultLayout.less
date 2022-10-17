@@ -1,9 +1,18 @@
 @import '../../components/app/index';
 
 #root {
+  .default {
+    > .ant-layout-content,
+    > .ant-layout-header,
+    > .ant-layout-footer {
+      padding: 0 40px;
+    }
+  }
+
   .ant-layout {
     height: 100%;
     min-height: 100vh;
+    padding: 0;
   }
 
   .ant-layout-footer {

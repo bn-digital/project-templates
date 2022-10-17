@@ -6,6 +6,7 @@ import { useLocalStorage, useToggle } from 'react-use'
 
 import introspection from '../../graphql'
 import Pages from '../../pages'
+import { withAuth } from './Auth'
 import { ErrorBoundary } from './ErrorBoundary'
 import { LocaleProvider } from './Locale'
 
@@ -32,7 +33,11 @@ const client = new ApolloClient({
   link: createPersistedQueryLink({ sha256 }).concat(
     createHttpLink({
       uri: import.meta.env.WEBSITE_API_URL ?? '/graphql',
-      headers: { Authorization: `Bearer  ${JSON.parse(localStorage.getItem('jwtToken') || '{}')}` },
+      headers: localStorage.getItem('jwtToken')
+        ? {
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('jwtToken') ?? '')}`,
+          }
+        : {},
     }),
   ),
   connectToDevTools: import.meta.env.DEV,
@@ -49,7 +54,7 @@ const LocalizedApp: FC = () => {
       <ApolloProvider client={client}>
         <LocaleProvider>
           <ContextProvider>
-            <Pages />
+            <ProtectedPages />
           </ContextProvider>
         </LocaleProvider>
       </ApolloProvider>
@@ -57,11 +62,13 @@ const LocalizedApp: FC = () => {
   )
 }
 
+const ProtectedPages: FC = withAuth(Pages)
+
 const App: FC = () => (
   <ErrorBoundary>
     <ApolloProvider client={client}>
       <ContextProvider>
-        <Pages />
+        <ProtectedPages />
       </ContextProvider>
     </ApolloProvider>
   </ErrorBoundary>
@@ -69,6 +76,6 @@ const App: FC = () => (
 
 const useApp = () => useContext<AppProps>(Context)
 
-export default LocalizedApp
+export default App
 
-export { App, useApp }
+export { App, ContextProvider, LocalizedApp, useApp }

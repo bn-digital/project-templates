@@ -1,5 +1,4 @@
 import { configureReact as configure } from '@bn-digital/vite'
-import { sha256 } from 'crypto-hash'
 
 import packageJson from './package.json'
 
@@ -8,7 +7,7 @@ const name = packageJson.name.split('/')[0].replace('@', '')
 const env: <T>(key: keyof typeof process.env, defaultValue?: T) => string | T | null = (key, defaultValue) => process.env?.[key] ?? defaultValue ?? null
 
 export default configure(
-  { appType: 'spa' },
+  { experimental: { hmrPartialAccept: true }, json: { namedExports: true } },
   {
     react: { graphql: true },
     analytics: {},
@@ -17,8 +16,8 @@ export default configure(
       google: {
         preconnect: true,
         families: [
-          { name: 'Roboto', styles: 'wght@400;500;600;700;900' },
-          { name: 'Lato', styles: 'wght@400;500;600;700;900' },
+          { name: 'Roboto', styles: 'wght@400;500;600;700;800;900' },
+          { name: 'Lato', styles: 'wght@400;500;600;700;800;900' },
         ],
         display: 'auto',
       },

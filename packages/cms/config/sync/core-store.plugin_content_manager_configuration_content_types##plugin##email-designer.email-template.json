@@ -48,20 +48,6 @@
           "sortable": false
         }
       },
-      "name": {
-        "edit": {
-          "label": "name",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "name",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "subject": {
         "edit": {
           "label": "subject",
@@ -132,6 +118,20 @@
           "sortable": false
         }
       },
+      "name": {
+        "edit": {
+          "label": "name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -162,6 +162,7 @@
       }
     },
     "layouts": {
+      "list": ["id", "templateReferenceId", "name", "subject"],
       "edit": [
         [
           {
@@ -206,8 +207,7 @@
           }
         ]
       ],
-      "editRelations": [],
-      "list": ["id", "templateReferenceId", "name", "subject"]
+      "editRelations": []
     }
   },
   "type": "object",

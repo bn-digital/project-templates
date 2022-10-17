@@ -137,17 +137,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "pathId",
-        "parent"
-      ],
-      "editRelations": [
-        "parent",
-        "children",
-        "files"
-      ],
+      "list": ["id", "name", "pathId", "parent"],
       "edit": [
         [
           {
@@ -165,7 +155,8 @@
             "size": 6
           }
         ]
-      ]
+      ],
+      "editRelations": []
     }
   },
   "type": "object",

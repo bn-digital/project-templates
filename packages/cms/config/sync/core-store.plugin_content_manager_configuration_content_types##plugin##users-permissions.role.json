@@ -122,16 +122,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "description",
-        "type"
-      ],
-      "editRelations": [
-        "permissions",
-        "users"
-      ],
+      "list": ["id", "name", "description", "type"],
       "edit": [
         [
           {
@@ -149,7 +140,8 @@
             "size": 6
           }
         ]
-      ]
+      ],
+      "editRelations": []
     }
   },
   "type": "object",

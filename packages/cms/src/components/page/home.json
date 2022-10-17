@@ -17,9 +17,19 @@
       "repeatable": false,
       "component": "ui.card"
     },
-    "features": {
+    "components": {
       "type": "component",
       "repeatable": true,
+      "component": "ui.card"
+    },
+    "technology": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.headline"
+    },
+    "frameworks": {
+      "type": "component",
+      "repeatable": false,
       "component": "ui.card"
     }
   }

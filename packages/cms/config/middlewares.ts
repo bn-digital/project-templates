@@ -44,7 +44,10 @@ export default ({ env }: Strapi.Env) => {
     'strapi::cors',
     'strapi::logger',
     'strapi::query',
-    'strapi::session',
+    {
+      name: 'strapi::session',
+      config: { key: 'cms.sid', renew: true, rolling: true },
+    },
     {
       name: 'strapi::body',
       config: {

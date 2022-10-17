@@ -48,27 +48,51 @@
           "sortable": false
         }
       },
-      "features": {
+      "components": {
         "edit": {
-          "label": "features",
+          "label": "components",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "features",
+          "label": "components",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "technology": {
+        "edit": {
+          "label": "technology",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "technology",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "frameworks": {
+        "edit": {
+          "label": "frameworks",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "frameworks",
           "searchable": false,
           "sortable": false
         }
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "pathname",
-        "hero"
-      ],
+      "list": ["id", "pathname", "hero", "components"],
       "edit": [
         [
           {
@@ -84,7 +108,19 @@
         ],
         [
           {
-            "name": "features",
+            "name": "components",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "technology",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "frameworks",
             "size": 12
           }
         ]

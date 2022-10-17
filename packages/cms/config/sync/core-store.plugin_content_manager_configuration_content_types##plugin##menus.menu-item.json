@@ -136,16 +136,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "order",
-        "title",
-        "url"
-      ],
-      "editRelations": [
-        "root_menu",
-        "parent"
-      ],
+      "list": ["id", "order", "title", "url"],
       "edit": [
         [
           {
@@ -167,7 +158,8 @@
             "size": 6
           }
         ]
-      ]
+      ],
+      "editRelations": []
     }
   },
   "type": "object",

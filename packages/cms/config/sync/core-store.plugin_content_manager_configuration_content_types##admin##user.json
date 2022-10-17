@@ -205,15 +205,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "firstname",
-        "lastname",
-        "username"
-      ],
-      "editRelations": [
-        "roles"
-      ],
+      "list": ["id", "firstname", "lastname", "username"],
       "edit": [
         [
           {
@@ -265,7 +257,8 @@
             "size": 6
           }
         ]
-      ]
+      ],
+      "editRelations": []
     }
   },
   "type": "object",

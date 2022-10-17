@@ -8,8 +8,12 @@ export default {
   },
 
   bootstrap({ strapi }: Global) {
+    // TODO: Temporary disabled as regression since v4.4.3
+    const isStrapiTsIssueFixed = false
     if (process.env.NODE_ENV !== 'production') {
-      generateTypeDefinitions(strapi)
+      if (isStrapiTsIssueFixed) {
+        generateTypeDefinitions(strapi)
+      }
       exportConfigs(strapi)
     } else {
       importConfigs(strapi)

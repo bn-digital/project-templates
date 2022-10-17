@@ -275,12 +275,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "alternativeText",
-        "caption"
-      ],
+      "list": ["id", "name", "alternativeText", "caption"],
       "edit": [
         [
           {
@@ -363,9 +358,7 @@
           }
         ]
       ],
-      "editRelations": [
-        "folder"
-      ]
+      "editRelations": []
     }
   },
   "type": "object",

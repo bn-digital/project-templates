@@ -80,7 +80,6 @@
     },
     "layouts": {
       "list": ["id", "action", "token", "createdAt"],
-      "editRelations": ["token"],
       "edit": [
         [
           {
@@ -88,7 +87,8 @@
             "size": 6
           }
         ]
-      ]
+      ],
+      "editRelations": []
     }
   },
   "type": "object",

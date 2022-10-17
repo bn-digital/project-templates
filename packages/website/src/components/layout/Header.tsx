@@ -32,7 +32,7 @@ const LanguageMenu: FC = () => {
 const Header: FC<{ renderMenu: FC }> = ({ renderMenu: HorizontalMenu }) => {
   const { isMobile } = useBreakpoints()
   const [visible, toggle] = useToggle(false)
-  const [token, setToken] = useLocalStorage<string | null>('jwtToken', null)
+  const [token, setToken] = useLocalStorage('jwtToken')
 
   return (
     <>
