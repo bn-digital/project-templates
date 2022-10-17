@@ -1969,6 +1969,7 @@ type MenuFragment = {
   attributes?:
     | {
         title: string
+        slug: string
         items?:
           | {
               data: Array<{
@@ -2006,6 +2007,7 @@ type MenuFragment = {
                           | {
                               attributes?:
                                 | {
+                                    slug: string
                                     items?:
                                       | {
                                           data: Array<{
@@ -2345,6 +2347,7 @@ type MenuQuery = {
           attributes?:
             | {
                 title: string
+                slug: string
                 items?:
                   | {
                       data: Array<{
@@ -2382,6 +2385,7 @@ type MenuQuery = {
                                   | {
                                       attributes?:
                                         | {
+                                            slug: string
                                             items?:
                                               | {
                                                   data: Array<{

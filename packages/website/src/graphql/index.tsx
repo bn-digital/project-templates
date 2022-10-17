@@ -103,6 +103,7 @@ export const MenuFragmentDoc = gql`
     id
     attributes {
       title
+      slug
       items(sort: "order:ASC") {
         data {
           ...MenuItem
@@ -115,6 +116,7 @@ export const MenuFragmentDoc = gql`
             root_menu {
               data {
                 attributes {
+                  slug
                   items {
                     data {
                       ...MenuItem

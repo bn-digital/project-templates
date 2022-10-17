@@ -107,12 +107,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "slug",
-        "createdAt"
-      ],
+      "list": ["id", "name", "slug", "createdAt"],
       "edit": [
         [
           {
@@ -131,9 +126,7 @@
           }
         ]
       ],
-      "editRelations": [
-        "posts"
-      ]
+      "editRelations": []
     }
   },
   "type": "object",

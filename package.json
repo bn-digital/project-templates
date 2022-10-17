@@ -16,11 +16,7 @@
     "email": "vlad.volkov@bndigital.co",
     "url": "https://github.com/vladyslavvolkov"
   },
-  "installConfig": {
-    "hoistingLimits": "workspaces",
-    "selfReferences": false
-  },
-  "workspaces": ["packages/*", "packages/cms/src/plugins/*"],
+  "workspaces": ["packages/*"],
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json,css,sass,scss,less,graphql}": ["yarn prettier --write"],
     "**/*.{ts,tsx}": ["yarn eslint --fix"],
@@ -33,15 +29,13 @@
   "eslintConfig": {
     "extends": "@bn-digital/eslint-config"
   },
-  "resolutions": {
-    "typescript": "4.8.4"
-  },
   "devDependencies": {
     "@bn-digital/commitlint-config": "^2.0.0",
-    "@bn-digital/eslint-config": "^2.0.6",
-    "@bn-digital/prettier-config": "^2.0.3",
-    "@bn-digital/stylelint-config": "^2.0.8",
-    "@types/node": "^18.8.4",
+    "@bn-digital/eslint-config": "^2.0.7",
+    "@bn-digital/prettier-config": "^2.0.5",
+    "@bn-digital/stylelint-config": "^2.0.9",
+    "@bn-digital/vault-env": "^1.4.0",
+    "@types/node": "^18.11.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "typescript": "^4.8.4"

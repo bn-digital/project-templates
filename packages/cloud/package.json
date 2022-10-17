@@ -8,15 +8,18 @@
   "scripts": {
     "provision": "pulumi up --non-interactive --stack=production --yes"
   },
+  "peerDependencies": {
+    "@bn-digital/vault-env": "*",
+    "@types/node": "*",
+    "typescript": "*"
+  },
   "dependencies": {
-    "@bn-digital/vault-env": "^1.4.0",
     "@pulumi/digitalocean": "^4.16.0",
     "@pulumi/kubernetes": "^3.21.4",
     "@pulumi/pulumi": "^3.42.0",
     "@pulumi/vault": "^5.6.0"
   },
   "devDependencies": {
-    "@types/node": "^18.8.4",
     "dotenv": "^16.0.3"
   }
 }

@@ -93,15 +93,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "items"
-      ],
-      "editRelations": [
-        "items"
-      ],
+      "list": ["id", "title", "slug", "items"],
       "edit": [
         [
           {
@@ -113,7 +105,8 @@
             "size": 6
           }
         ]
-      ]
+      ],
+      "editRelations": []
     }
   },
   "type": "object",

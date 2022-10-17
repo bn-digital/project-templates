@@ -79,15 +79,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "action",
-        "role",
-        "createdAt"
-      ],
-      "editRelations": [
-        "role"
-      ],
+      "list": ["id", "action", "role", "createdAt"],
       "edit": [
         [
           {
@@ -95,7 +87,8 @@
             "size": 6
           }
         ]
-      ]
+      ],
+      "editRelations": []
     }
   },
   "type": "object",

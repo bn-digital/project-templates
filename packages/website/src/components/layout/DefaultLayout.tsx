@@ -10,10 +10,10 @@ import { Navigation } from '../menu/Navigation'
 import { Footer } from './Footer'
 import { Header } from './Header'
 
-type ContentProps = ContactUsFragment | HomeFragment
+type ContentProps = Maybe<ContactUsFragment | HomeFragment>
 
 function filterByPathname<T extends ContentProps>(pathname = '/', data: (T | null)[] = []): T | null {
-  return data?.find(it => it?.pathname === pathname) ?? null
+  return data.find(it => it?.pathname === pathname) ?? null
 }
 
 const Page = () => {

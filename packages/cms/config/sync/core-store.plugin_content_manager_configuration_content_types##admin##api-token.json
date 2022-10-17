@@ -202,7 +202,7 @@
           }
         ]
       ],
-      "editRelations": ["permissions"]
+      "editRelations": []
     }
   },
   "type": "object",

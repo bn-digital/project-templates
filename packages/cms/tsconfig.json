@@ -1,11 +1,13 @@
 {
-  "extends": "@strapi/typescript-utils/tsconfigs/server.json",
+  "extends": "@strapi/typescript-utils/tsconfigs/server",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": ".",
-    "resolveJsonModule": true,
-    "types": ["@bn-digital/strapi-types", "@bn-digital/strapi-plugin-email-emitter"]
+    "resolveJsonModule": true
   },
   "include": ["./", "src/**/*.json"],
-  "exclude": ["node_modules/", "build/", "dist/", ".cache/", ".tmp/", "src/admin/", "**/*.test.ts", "src/plugins/**"]
+  "exclude": ["node_modules/", "build/", "dist/", ".cache/", ".tmp/", "src/admin/", "**/*.test.ts", "src/plugins/**"],
+  "typeAcquisition": {
+    "enable": true
+  }
 }

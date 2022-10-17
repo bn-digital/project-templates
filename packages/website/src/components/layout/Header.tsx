@@ -1,7 +1,7 @@
 import { UnorderedListOutlined } from '@ant-design/icons'
 import { Button, Col, Row, Select } from 'antd'
 import { FC } from 'react'
-import { useCookie, useLocalStorage, useToggle } from 'react-use'
+import { useLocalStorage, useToggle } from 'react-use'
 
 import { useApp } from '../app'
 import { useLocale } from '../app/Locale'

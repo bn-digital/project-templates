@@ -1,5 +1,4 @@
-import process from 'process'
-import { v5 } from 'uuid'
+import { createHmac } from 'crypto'
 
 import packageMetadata from '../package.json'
 
@@ -10,11 +9,11 @@ const workingDir = process.cwd()
  * @type {string}
  */
 const name = process.env.APP_NAME ?? packageMetadata.name.split('/')?.[0].replace('@', '')
+
 const version = process.env.APP_VERSION ?? 'latest'
-const namespace = '85dacdac-285a-41e0-b2b7-50127c6f2871'
 
 const domain = process.env.DOMAIN ?? `${name}.bndigital.dev`
 
-const generateSecret = (secretName: string): string => v5(`${name}::${secretName}`, namespace)
+const generateSecret = (secretName: string): string => createHmac('sha256', name).update(secretName).digest('hex')
 
 export { domain, generateSecret, name, version, workingDir }

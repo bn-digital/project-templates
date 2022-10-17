@@ -7,7 +7,8 @@
   "extensions": {
     "endpoints": {
       "development": {
-        "url": "http://127.0.0.1:1337/graphql"
+        "url": "http://127.0.0.1:1337/graphql",
+        "introspect": true
       }
     }
   }

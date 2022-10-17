@@ -2,7 +2,6 @@ import { createContext, FC, PropsWithChildren, useContext } from 'react'
 import { useLocalStorage } from 'react-use'
 
 import { MeComponent } from '../../graphql'
-import { Loader } from '../layout/Loader'
 
 type ContextProps = Maybe<Partial<UsersPermissionsMe>>
 

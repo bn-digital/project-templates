@@ -2,6 +2,7 @@ fragment Menu on MenusMenuEntity {
   id
   attributes {
     title
+    slug
     items(sort: "order:ASC") {
       data {
         ...MenuItem
@@ -14,6 +15,7 @@ fragment Menu on MenusMenuEntity {
           root_menu {
             data {
               attributes {
+                slug
                 items {
                   data {
                     ...MenuItem

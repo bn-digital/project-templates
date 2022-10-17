@@ -20,6 +20,20 @@
           "sortable": true
         }
       },
+      "email": {
+        "edit": {
+          "label": "email",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "email",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "delivered": {
         "edit": {
           "label": "delivered",
@@ -44,20 +58,6 @@
         },
         "list": {
           "label": "scheduled",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "email": {
-        "edit": {
-          "label": "email",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "email",
           "searchable": true,
           "sortable": true
         }
@@ -164,7 +164,7 @@
           }
         ]
       ],
-      "editRelations": ["template"]
+      "editRelations": []
     }
   },
   "type": "object",

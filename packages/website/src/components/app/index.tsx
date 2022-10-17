@@ -76,6 +76,6 @@ const App: FC = () => (
 
 const useApp = () => useContext<AppProps>(Context)
 
-export default LocalizedApp
+export default App
 
-export { App, ContextProvider, useApp }
+export { App, ContextProvider, LocalizedApp, useApp }

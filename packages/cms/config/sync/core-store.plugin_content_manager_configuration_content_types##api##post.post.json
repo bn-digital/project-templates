@@ -119,20 +119,6 @@
           "sortable": true
         }
       },
-      "uuid": {
-        "edit": {
-          "label": "uuid",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": false
-        },
-        "list": {
-          "label": "uuid",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "background": {
         "edit": {
           "label": "background",
@@ -143,6 +129,20 @@
         },
         "list": {
           "label": "background",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "uuid": {
+        "edit": {
+          "label": "uuid",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": false
+        },
+        "list": {
+          "label": "uuid",
           "searchable": true,
           "sortable": true
         }
@@ -177,6 +177,7 @@
       }
     },
     "layouts": {
+      "list": ["uuid", "id", "name", "slug", "teaser"],
       "edit": [
         [
           {
@@ -221,8 +222,7 @@
           }
         ]
       ],
-      "editRelations": ["category"],
-      "list": ["uuid", "id", "name", "slug", "teaser"]
+      "editRelations": []
     }
   },
   "type": "object",

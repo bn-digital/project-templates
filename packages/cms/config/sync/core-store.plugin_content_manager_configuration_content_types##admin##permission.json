@@ -121,15 +121,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "action",
-        "subject",
-        "role"
-      ],
-      "editRelations": [
-        "role"
-      ],
+      "list": ["id", "action", "subject", "role"],
       "edit": [
         [
           {
@@ -153,7 +145,8 @@
             "size": 12
           }
         ]
-      ]
+      ],
+      "editRelations": []
     }
   },
   "type": "object",
