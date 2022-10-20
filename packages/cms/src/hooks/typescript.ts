@@ -9,7 +9,7 @@ function getSchemaGenerator(): Strapi.TypeScript.Generator {
 
 function generateTypeDefinitions(strapi: Strapi.Strapi): void {
   getSchemaGenerator()
-    .generateSchemasDefinitions({ strapi, file: 'api.d.ts', outDir: path.join(workingDir, 'src', 'types') })
+    .generateSchemasDefinitions({ strapi, file: 'schema.d.ts', outDir: path.join(workingDir, 'src', 'types') })
     .then(() => strapi.log.info('[typescript] Type definitions were generated'))
 }
 
