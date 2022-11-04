@@ -10,7 +10,7 @@ RUN yarn
 COPY packages packages
 RUN yarn build
 
-FROM dcr.bndigital.dev/library/nodejs:${version}
+FROM dcr.bndigital.dev/library/nodejs:${version} AS runtime
 COPY --from=build --chown=node /usr/local/src/packages/cms .
 COPY --from=build --chown=node /usr/local/src/packages/website/build public
 ENTRYPOINT ["yarn"]

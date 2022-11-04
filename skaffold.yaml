@@ -6,12 +6,9 @@ build:
   tagPolicy:
     sha256: { }
   artifacts:
-    - image: cms
+    - image: runtime
       docker:
-        target: cms
-    - image: website
-      docker:
-        target: website
+        target: runtime
 test:
   - image: website
     structureTests:
