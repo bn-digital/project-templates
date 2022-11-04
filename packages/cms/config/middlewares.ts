@@ -1,8 +1,16 @@
-export default ({ env }: Strapi.Env) => {
+import { formats, winston } from '@strapi/logger'
+import fs from 'fs'
+import { Middleware } from 'koa'
+import path from 'path'
+
+import { workingDir } from './index'
+
+type MiddlewareUIDs = `strapi::${string}` | `global::${string}` | `api::${string}` | `plugin::${string}`
+
+type MiddlewareType<T = unknown> = MiddlewareUIDs | { name: T; config: T } | Middleware
+export default ({ env }: Strapi.Env): MiddlewareType[] => {
   const bucket = env('S3_BUCKET', 'bn-dev')
   const region = env('S3_REGION', 'fra1')
-  const host = env('HOST', '127.0.0.1')
-  const port = env.int('PORT', 1337)
   return [
     'strapi::errors',
     {
@@ -42,7 +50,6 @@ export default ({ env }: Strapi.Env) => {
       },
     },
     'strapi::cors',
-    'strapi::logger',
     'strapi::query',
     {
       name: 'strapi::session',
@@ -54,15 +61,19 @@ export default ({ env }: Strapi.Env) => {
         jsonLimit: '5mb',
       },
     },
-    'strapi::public',
-    'strapi::favicon',
     {
-      name: 'global::proxies',
-      config: {
-        proxies: {
-          self: `http://${host}:${port}`,
-        },
-      },
+      name: 'strapi::compression',
+      config: {},
+    },
+    { name: 'strapi::favicon', config: { path: 'favicon.png' } },
+    // (ctx, next) =>
+    //   proxyMiddleware('/api/proxy', { target: ctx.req.url.replace('/api/proxy/', '/'), rewrite: path => path.replace('/api/proxy/', '/'), changeOrigin: true })(
+    //     ctx,
+    //     next,
+    //   ),
+    {
+      name: 'strapi::public',
+      config: fs.existsSync(path.join(workingDir, 'public', 'index.html')) ? { defer: true, index: 'index.html', maxAge: 3600 } : {},
     },
   ]
 }

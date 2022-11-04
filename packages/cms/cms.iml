@@ -11,6 +11,8 @@
       <excludeFolder url="file://$MODULE_DIR$/dist" />
       <excludeFolder url="file://$MODULE_DIR$/src/plugins/uuid/dist" />
       <excludeFolder url="file://$MODULE_DIR$/src/plugins/email-emitter/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/public/sitemap/xsl" />
+      <excludeFolder url="file://$MODULE_DIR$/public/assets" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

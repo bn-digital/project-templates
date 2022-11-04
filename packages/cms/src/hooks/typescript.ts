@@ -11,6 +11,7 @@ function generateTypeDefinitions(strapi: Strapi.Strapi): void {
   getSchemaGenerator()
     .generateSchemasDefinitions({ strapi, file: 'schema.d.ts', outDir: path.join(workingDir, 'src', 'types') })
     .then(() => strapi.log.info('[typescript] Type definitions were generated'))
+    .catch(strapi.log.error)
 }
 
 export { generateTypeDefinitions }
