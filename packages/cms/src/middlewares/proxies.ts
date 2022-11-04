@@ -1,4 +1,4 @@
-import axios, { type Method } from 'axios'
+import axios from 'axios'
 import type { Context, Next } from 'koa'
 import { parse } from 'url'
 
@@ -18,7 +18,7 @@ export default ({ proxies }: { proxies: Proxies }) =>
           const response = await axios
             .request({
               baseURL: baseURL.href,
-              method: ctx.method as Method,
+              method: ctx.method,
               params: ctx.URL.search,
               url: ctx.URL.pathname.replace(`/api/proxy/${key}/`, '/'),
               data: ctx.request.ctx.body,

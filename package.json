@@ -35,7 +35,7 @@
     "@bn-digital/prettier-config": "^2.0.5",
     "@bn-digital/stylelint-config": "^2.0.9",
     "@bn-digital/vault-env": "^1.4.0",
-    "@types/node": "^18.11.0",
+    "@types/node": "^18.11.3",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "typescript": "^4.8.4"
@@ -48,8 +48,8 @@
     "start:cms": "yarn workspace @project-templates/cms run start",
     "start:website": "yarn workspace @project-templates/website run start",
     "build": "yarn workspaces foreach --exclude=root run build",
-    "fix": "yarn prettier --write packages/*/src && yarn eslint --fix && yarn stylelint --fix packages/*/src/**/*.{css,scss,less,sass}",
-    "lint": "yarn prettier --check packages/*/src && yarn eslint && yarn stylelint packages/*/src/**/*.{css,scss,less,sass}"
+    "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src && yarn stylelint --fix packages/*/src/**/*.less",
+    "lint": "yarn prettier --check packages/*/src && yarn eslint packages/*/src && yarn stylelint packages/*/src/**/*.less"
   },
-  "packageManager": "yarn@4.0.0-rc.25"
+  "packageManager": "yarn@4.0.0-rc.27"
 }

@@ -20,7 +20,7 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
       subscriptions: true,
       playgroundAlways: true,
       generateArtifacts: true,
-      artifacts: { schema: path.join(workingDir, 'src', 'graphql', 'schema.graphql') },
+      artifacts: { schema: path.join(workingDir, 'src', 'graphql', 'schema.graphql'), typegen: path.join(workingDir, 'src', 'types', 'api.d.ts') },
       apolloServer: {
         cache: 'bounded',
         persistedQueries: {
