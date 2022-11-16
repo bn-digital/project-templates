@@ -1,5 +1,3 @@
-import './Content.less'
-
 import { Layout } from 'antd'
 import { FC, PropsWithChildren } from 'react'
 

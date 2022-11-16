@@ -11,11 +11,12 @@ import {
 import { onError } from '@apollo/client/link/error'
 import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'
 import { sha256 } from 'crypto-hash'
-import { createContext, FC, memo, PropsWithChildren, useContext } from 'react'
+import { createContext, FC, PropsWithChildren, useContext } from 'react'
+import { RouterProvider } from 'react-router-dom'
 import { useLocalStorage, useToggle } from 'react-use'
 
 import introspection from '../../graphql'
-import Pages from '../../pages'
+import router from '../../pages'
 import { withAuth } from './Auth'
 import { LocaleProvider } from './Locale'
 
@@ -44,14 +45,14 @@ const ContextProvider: FC<ContextProviderProps> = ({ children, ...props }) => {
   )
 }
 
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-  console.log(graphQLErrors)
-  console.log(networkError)
-  if ((networkError as ServerError).statusCode === 401) {
+const errorLink = onError(errorResponse => {
+  if ((errorResponse?.networkError as ServerError)?.statusCode === 401) {
     localStorage.removeItem('jwtToken')
   }
 })
+
 const link: ApolloLink = ApolloLink.from([
+  createPersistedQueryLink({ sha256 }),
   errorLink,
   createHttpLink({
     uri: import.meta.env.WEBSITE_API_URL ?? '/graphql',
@@ -61,7 +62,6 @@ const link: ApolloLink = ApolloLink.from([
         }
       : {},
   }),
-  createPersistedQueryLink({ sha256 }),
 ])
 
 const clientOptions: ApolloClientOptions<NormalizedCacheObject> = {
@@ -89,7 +89,7 @@ const LocalizedApp: FC = () => {
   )
 }
 
-const ProtectedPages: FC = withAuth(Pages)
+const ProtectedPages: FC = withAuth(() => <RouterProvider router={router} />)
 
 const App: FC = () => (
   <ApolloProvider client={client}>
@@ -103,4 +103,4 @@ const useApp = () => useContext<AppProps>(Context)
 
 export { App, ContextProvider, LocalizedApp, useApp }
 
-export default memo(App)
+export default App

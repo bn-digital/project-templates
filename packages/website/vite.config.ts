@@ -9,7 +9,7 @@ const env: <T>(key: keyof typeof process.env, defaultValue?: T) => string | T | 
 export default configure(
   {},
   {
-    react: { graphql: true },
+    react: { graphql: false },
     analytics: {},
     sourceMaps: env('NODE_ENV') !== 'production',
     fonts: {

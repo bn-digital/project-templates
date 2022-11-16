@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
-import * as ApolloReactComponents from '@apollo/client/react/components'
 import * as React from 'react'
+import * as ApolloReactComponents from '@apollo/client/react/components'
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 const defaultOptions = {} as const
 

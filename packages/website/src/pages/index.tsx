@@ -1,5 +1,5 @@
-import { FC, lazy, memo } from 'react'
-import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom'
+import { FC, lazy } from 'react'
+import { createBrowserRouter, RouteObject } from 'react-router-dom'
 
 import { DefaultLayout } from '../components/layout'
 
@@ -33,6 +33,9 @@ const routes: RouteObject[] = [
   },
 ]
 
-const Router = () => <RouterProvider router={createBrowserRouter(routes)} />
+const router = createBrowserRouter(routes)
 
-export default memo(Router)
+if (import.meta.hot) {
+  import.meta.hot.dispose(() => router.dispose())
+}
+export default router

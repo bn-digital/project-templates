@@ -65,7 +65,7 @@ export default ({ env }: Strapi.Env): MiddlewareType[] => {
       name: 'strapi::compression',
       config: {},
     },
-    { name: 'strapi::favicon', config: { path: 'favicon.png' } },
+    { name: 'strapi::favicon', config: { path: path.join(workingDir, 'public', 'favicon.png') } },
     // (ctx, next) =>
     //   proxyMiddleware('/api/proxy', { target: ctx.req.url.replace('/api/proxy/', '/'), rewrite: path => path.replace('/api/proxy/', '/'), changeOrigin: true })(
     //     ctx,
