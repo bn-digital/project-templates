@@ -64,11 +64,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "visible",
-        "heading"
-      ],
+      "list": ["id", "visible", "heading"],
       "edit": [
         [
           {
@@ -88,8 +84,7 @@
             "size": 12
           }
         ]
-      ],
-      "editRelations": []
+      ]
     },
     "isComponent": true
   },

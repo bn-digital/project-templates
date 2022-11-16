@@ -42,7 +42,6 @@ export interface NexusGenInputs {
     or?: Array<NexusGenInputs['CategoryFiltersInput'] | null> | null // [CategoryFiltersInput]
     posts?: NexusGenInputs['PostFiltersInput'] | null // PostFiltersInput
     seo?: NexusGenInputs['ComponentSharedSeoFiltersInput'] | null // ComponentSharedSeoFiltersInput
-    sitemap_exclude?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
     slug?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
   }
@@ -51,7 +50,6 @@ export interface NexusGenInputs {
     name?: string | null // String
     posts?: Array<string | null> | null // [ID]
     seo?: NexusGenInputs['ComponentSharedSeoInput'] | null // ComponentSharedSeoInput
-    sitemap_exclude?: boolean | null // Boolean
     slug?: string | null // String
   }
   ChangePasswordInput: {
@@ -304,7 +302,6 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     not?: NexusGenInputs['ContactFiltersInput'] | null // ContactFiltersInput
     or?: Array<NexusGenInputs['ContactFiltersInput'] | null> | null // [ContactFiltersInput]
-    sitemap_exclude?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
     subject?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     text?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
@@ -314,7 +311,6 @@ export interface NexusGenInputs {
     comment?: string | null // String
     email?: string | null // String
     name?: string | null // String
-    sitemap_exclude?: boolean | null // Boolean
     subject?: string | null // String
     text?: string | null // String
   }
@@ -378,7 +374,6 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     not?: NexusGenInputs['EmailDesignerEmailTemplateFiltersInput'] | null // EmailDesignerEmailTemplateFiltersInput
     or?: Array<NexusGenInputs['EmailDesignerEmailTemplateFiltersInput'] | null> | null // [EmailDesignerEmailTemplateFiltersInput]
-    sitemap_exclude?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
     subject?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     tags?: NexusGenInputs['JSONFilterInput'] | null // JSONFilterInput
     templateReferenceId?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
@@ -391,7 +386,6 @@ export interface NexusGenInputs {
     design?: NexusGenScalars['JSON'] | null // JSON
     enabled?: boolean | null // Boolean
     name?: string | null // String
-    sitemap_exclude?: boolean | null // Boolean
     subject?: string | null // String
     tags?: NexusGenScalars['JSON'] | null // JSON
     templateReferenceId?: string | null // String
@@ -409,7 +403,6 @@ export interface NexusGenInputs {
     payload?: NexusGenInputs['JSONFilterInput'] | null // JSONFilterInput
     publishedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
     scheduled?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
-    sitemap_exclude?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
     template?: NexusGenInputs['EmailDesignerEmailTemplateFiltersInput'] | null // EmailDesignerEmailTemplateFiltersInput
     updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
   }
@@ -421,7 +414,6 @@ export interface NexusGenInputs {
     payload?: NexusGenScalars['JSON'] | null // JSON
     publishedAt?: NexusGenScalars['DateTime'] | null // DateTime
     scheduled?: boolean | null // Boolean
-    sitemap_exclude?: boolean | null // Boolean
     template?: string | null // ID
   }
   FileInfoInput: {
@@ -574,7 +566,6 @@ export interface NexusGenInputs {
     items?: NexusGenInputs['MenusMenuItemFiltersInput'] | null // MenusMenuItemFiltersInput
     not?: NexusGenInputs['MenusMenuFiltersInput'] | null // MenusMenuFiltersInput
     or?: Array<NexusGenInputs['MenusMenuFiltersInput'] | null> | null // [MenusMenuFiltersInput]
-    sitemap_exclude?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
     slug?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     title?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
@@ -582,7 +573,6 @@ export interface NexusGenInputs {
   MenusMenuInput: {
     // input type
     items?: Array<string | null> | null // [ID]
-    sitemap_exclude?: boolean | null // Boolean
     slug?: string | null // String
     title?: string | null // String
   }
@@ -596,7 +586,6 @@ export interface NexusGenInputs {
     order?: NexusGenInputs['IntFilterInput'] | null // IntFilterInput
     parent?: NexusGenInputs['MenusMenuItemFiltersInput'] | null // MenusMenuItemFiltersInput
     root_menu?: NexusGenInputs['MenusMenuFiltersInput'] | null // MenusMenuFiltersInput
-    sitemap_exclude?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
     target?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     title?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
@@ -607,7 +596,6 @@ export interface NexusGenInputs {
     order?: number | null // Int
     parent?: string | null // ID
     root_menu?: string | null // ID
-    sitemap_exclude?: boolean | null // Boolean
     target?: NexusGenEnums['ENUM_MENUSMENUITEM_TARGET'] | null // ENUM_MENUSMENUITEM_TARGET
     title?: string | null // String
     url?: string | null // String
@@ -632,7 +620,6 @@ export interface NexusGenInputs {
     or?: Array<NexusGenInputs['PostFiltersInput'] | null> | null // [PostFiltersInput]
     publishedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
     seo?: NexusGenInputs['ComponentSharedSeoFiltersInput'] | null // ComponentSharedSeoFiltersInput
-    sitemap_exclude?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
     slug?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     teaser?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
@@ -647,7 +634,6 @@ export interface NexusGenInputs {
     name?: string | null // String
     publishedAt?: NexusGenScalars['DateTime'] | null // DateTime
     seo?: NexusGenInputs['ComponentSharedSeoInput'] | null // ComponentSharedSeoInput
-    sitemap_exclude?: boolean | null // Boolean
     slug?: string | null // String
     teaser?: string | null // String
     uuid?: string | null // String
@@ -720,7 +706,6 @@ export interface NexusGenInputs {
     previewUrl?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     provider?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     provider_metadata?: NexusGenInputs['JSONFilterInput'] | null // JSONFilterInput
-    sitemap_exclude?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
     size?: NexusGenInputs['FloatFilterInput'] | null // FloatFilterInput
     updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
     url?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
@@ -741,7 +726,6 @@ export interface NexusGenInputs {
     previewUrl?: string | null // String
     provider?: string | null // String
     provider_metadata?: NexusGenScalars['JSON'] | null // JSON
-    sitemap_exclude?: boolean | null // Boolean
     size?: number | null // Float
     url?: string | null // String
     width?: number | null // Int
@@ -759,7 +743,6 @@ export interface NexusGenInputs {
     parent?: NexusGenInputs['UploadFolderFiltersInput'] | null // UploadFolderFiltersInput
     path?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     pathId?: NexusGenInputs['IntFilterInput'] | null // IntFilterInput
-    sitemap_exclude?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
     updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
   }
   UploadFolderInput: {
@@ -770,7 +753,6 @@ export interface NexusGenInputs {
     parent?: string | null // ID
     path?: string | null // String
     pathId?: number | null // Int
-    sitemap_exclude?: boolean | null // Boolean
   }
   UsersPermissionsLoginInput: {
     // input type
@@ -837,7 +819,6 @@ export interface NexusGenInputs {
     provider?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     resetPasswordToken?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
     role?: NexusGenInputs['UsersPermissionsRoleFiltersInput'] | null // UsersPermissionsRoleFiltersInput
-    sitemap_exclude?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
     updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
     username?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
   }
@@ -851,7 +832,6 @@ export interface NexusGenInputs {
     provider?: string | null // String
     resetPasswordToken?: string | null // String
     role?: string | null // ID
-    sitemap_exclude?: boolean | null // Boolean
     username?: string | null // String
   }
   WebsiteFiltersInput: {
@@ -863,7 +843,6 @@ export interface NexusGenInputs {
     not?: NexusGenInputs['WebsiteFiltersInput'] | null // WebsiteFiltersInput
     or?: Array<NexusGenInputs['WebsiteFiltersInput'] | null> | null // [WebsiteFiltersInput]
     seo?: NexusGenInputs['ComponentSharedSeoFiltersInput'] | null // ComponentSharedSeoFiltersInput
-    sitemap_exclude?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
     translations?: NexusGenInputs['ComponentDataEntryFiltersInput'] | null // ComponentDataEntryFiltersInput
     updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
   }
@@ -871,7 +850,6 @@ export interface NexusGenInputs {
     // input type
     content?: NexusGenScalars['WebsiteContentDynamicZoneInput'][] | null // [WebsiteContentDynamicZoneInput!]
     seo?: NexusGenInputs['ComponentSharedSeoInput'] | null // ComponentSharedSeoInput
-    sitemap_exclude?: boolean | null // Boolean
     translations?: Array<NexusGenInputs['ComponentDataEntryInput'] | null> | null // [ComponentDataEntryInput]
   }
 }

@@ -148,12 +148,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "metaTitle",
-        "metaDescription",
-        "metaImage"
-      ],
+      "list": ["id", "metaTitle", "metaDescription", "metaImage"],
       "edit": [
         [
           {
@@ -203,8 +198,7 @@
             "size": 6
           }
         ]
-      ],
-      "editRelations": []
+      ]
     },
     "isComponent": true
   },

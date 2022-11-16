@@ -728,14 +728,6 @@
           "visible": false,
           "useJoinTable": false,
           "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
         }
       },
       "kind": "collectionType",
@@ -840,14 +832,6 @@
           "visible": false,
           "useJoinTable": false,
           "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
         }
       },
       "__schema__": {
@@ -953,14 +937,6 @@
           "visible": false,
           "useJoinTable": false,
           "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
         }
       },
       "__schema__": {
@@ -1097,14 +1073,6 @@
           "visible": false,
           "useJoinTable": false,
           "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
         }
       },
       "__schema__": {
@@ -1281,14 +1249,6 @@
           "configurable": false,
           "visible": false,
           "type": "string"
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
         }
       },
       "__schema__": {
@@ -1488,14 +1448,6 @@
           "visible": false,
           "useJoinTable": false,
           "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
         }
       },
       "indexes": [
@@ -1689,14 +1641,6 @@
           "visible": false,
           "useJoinTable": false,
           "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
         }
       },
       "indexes": [
@@ -1845,14 +1789,6 @@
           "visible": false,
           "useJoinTable": false,
           "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
         }
       },
       "__schema__": {
@@ -2226,14 +2162,6 @@
           "visible": false,
           "useJoinTable": false,
           "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
         }
       },
       "config": {
@@ -2512,14 +2440,6 @@
           "visible": false,
           "useJoinTable": false,
           "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
         }
       },
       "__filename__": "schema.json",
@@ -2654,14 +2574,6 @@
           "visible": false,
           "useJoinTable": false,
           "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
         }
       },
       "__schema__": {
@@ -2781,14 +2693,6 @@
           "visible": false,
           "useJoinTable": false,
           "private": true
-        },
-        "sitemap_exclude": {
-          "writable": true,
-          "private": true,
-          "configurable": false,
-          "visible": false,
-          "default": false,
-          "type": "boolean"
         }
       },
       "__schema__": {

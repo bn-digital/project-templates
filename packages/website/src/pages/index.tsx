@@ -1,5 +1,5 @@
 import { FC, lazy, memo } from 'react'
-import { createBrowserRouter, RouteObject,RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom'
 
 import { DefaultLayout } from '../components/layout'
 

@@ -73,7 +73,7 @@ export function run(name: string) {
     { ignoreChanges: ['name', 'region'] as (keyof SpacesBucketArgs)[] },
   )
 
-  const policy = new SpacesBucketPolicy(
+  new SpacesBucketPolicy(
     urn('storage', 'cms', 'policy'),
     { policy: JSON.stringify(getCmsPolicy(`${name}-cms`)), region, bucket: `${name}-cms` },
     {
@@ -100,7 +100,7 @@ export function run(name: string) {
     },
     { ignoreChanges: ['name'] as (keyof DomainArgs)[], dependsOn: [cdnRecord] },
   )
-  const cdn = new Cdn(
+  new Cdn(
     urn('storage', 'cms', 'cdn'),
     {
       origin: bucket.bucketDomainName,

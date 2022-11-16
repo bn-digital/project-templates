@@ -14,7 +14,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   return !token ? <>{children}</> : <MeComponent>{({ data }) => <AuthContext.Provider value={data?.me}>{children}</AuthContext.Provider>}</MeComponent>
 }
 
-function withAuth(Wrapped: FC): FC {
+function withAuth<T extends JSX.IntrinsicAttributes>(Wrapped: FC<T>): FC<T> {
   return props => (
     <AuthProvider>
       <Wrapped {...props} />

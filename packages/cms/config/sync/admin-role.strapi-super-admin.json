@@ -594,18 +594,6 @@
       "conditions": []
     },
     {
-      "action": "plugin::sitemap.menu-link",
-      "subject": null,
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::sitemap.settings.read",
-      "subject": null,
-      "properties": {},
-      "conditions": []
-    },
-    {
       "action": "plugin::upload.assets.copy-link",
       "subject": null,
       "properties": {},

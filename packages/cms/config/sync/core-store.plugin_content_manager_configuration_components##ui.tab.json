@@ -50,11 +50,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "pane"
-      ],
+      "list": ["id", "name", "pane"],
       "edit": [
         [
           {
@@ -68,8 +64,7 @@
             "size": 12
           }
         ]
-      ],
-      "editRelations": []
+      ]
     },
     "isComponent": true
   },

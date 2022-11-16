@@ -64,12 +64,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "email",
-        "phone",
-        "address"
-      ],
+      "list": ["id", "email", "phone", "address"],
       "edit": [
         [
           {
@@ -87,8 +82,7 @@
             "size": 6
           }
         ]
-      ],
-      "editRelations": []
+      ]
     },
     "isComponent": true
   },
