@@ -50,11 +50,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "visible",
-        "children"
-      ],
+      "list": ["id", "visible", "children"],
       "edit": [
         [
           {
@@ -68,8 +64,7 @@
             "size": 12
           }
         ]
-      ],
-      "editRelations": []
+      ]
     },
     "isComponent": true
   },

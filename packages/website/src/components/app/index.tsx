@@ -1,13 +1,22 @@
-import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
+import {
+  ApolloClient,
+  ApolloClientOptions,
+  ApolloLink,
+  ApolloProvider,
+  createHttpLink,
+  InMemoryCache,
+  NormalizedCacheObject,
+  ServerError,
+} from '@apollo/client'
+import { onError } from '@apollo/client/link/error'
 import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'
 import { sha256 } from 'crypto-hash'
-import { createContext, FC, PropsWithChildren, ReactNode, useContext } from 'react'
+import { createContext, FC, memo, PropsWithChildren, useContext } from 'react'
 import { useLocalStorage, useToggle } from 'react-use'
 
 import introspection from '../../graphql'
 import Pages from '../../pages'
 import { withAuth } from './Auth'
-import { ErrorBoundary } from './ErrorBoundary'
 import { LocaleProvider } from './Locale'
 
 type AppProps = {
@@ -22,60 +31,76 @@ const defaultValue: AppProps = {
 
 const Context = createContext<AppProps>(defaultValue)
 
-const ContextProvider: FC<PropsWithChildren<Partial<ReactNode>>> = ({ children }) => {
+type ContextProviderProps<T = JSX.IntrinsicAttributes> = PropsWithChildren<T>
+
+const ContextProvider: FC<ContextProviderProps> = ({ children, ...props }) => {
   const [opened, toggle] = useToggle(false)
   const [token] = useLocalStorage('jwtToken')
 
-  return <Context.Provider value={{ ...defaultValue, user: { authenticated: !!token, role: 'USER' }, burger: { opened, toggle } }}>{children}</Context.Provider>
+  return (
+    <Context.Provider value={{ ...defaultValue, user: { authenticated: !!token, role: 'USER' }, burger: { opened, toggle } }} {...props}>
+      {children}
+    </Context.Provider>
+  )
 }
 
-const client = new ApolloClient({
-  link: createPersistedQueryLink({ sha256 }).concat(
-    createHttpLink({
-      uri: import.meta.env.WEBSITE_API_URL ?? '/graphql',
-      headers: localStorage.getItem('jwtToken')
-        ? {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem('jwtToken') ?? '')}`,
-          }
-        : {},
-    }),
-  ),
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  console.log(graphQLErrors)
+  console.log(networkError)
+  if ((networkError as ServerError).statusCode === 401) {
+    localStorage.removeItem('jwtToken')
+  }
+})
+const link: ApolloLink = ApolloLink.from([
+  errorLink,
+  createHttpLink({
+    uri: import.meta.env.WEBSITE_API_URL ?? '/graphql',
+    headers: localStorage.getItem('jwtToken')
+      ? {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        }
+      : {},
+  }),
+  createPersistedQueryLink({ sha256 }),
+])
+
+const clientOptions: ApolloClientOptions<NormalizedCacheObject> = {
+  link,
   connectToDevTools: import.meta.env.DEV,
   queryDeduplication: true,
+  assumeImmutableResults: true,
   cache: new InMemoryCache({
     resultCaching: import.meta.env.PROD,
     possibleTypes: introspection.possibleTypes,
   }),
-})
+}
+
+const client = new ApolloClient(clientOptions)
 
 const LocalizedApp: FC = () => {
   return (
-    <ErrorBoundary>
-      <ApolloProvider client={client}>
-        <LocaleProvider>
-          <ContextProvider>
-            <ProtectedPages />
-          </ContextProvider>
-        </LocaleProvider>
-      </ApolloProvider>
-    </ErrorBoundary>
+    <ApolloProvider client={client}>
+      <LocaleProvider>
+        <ContextProvider>
+          <ProtectedPages />
+        </ContextProvider>
+      </LocaleProvider>
+    </ApolloProvider>
   )
 }
 
 const ProtectedPages: FC = withAuth(Pages)
 
 const App: FC = () => (
-  <ErrorBoundary>
-    <ApolloProvider client={client}>
-      <ContextProvider>
-        <ProtectedPages />
-      </ContextProvider>
-    </ApolloProvider>
-  </ErrorBoundary>
+  <ApolloProvider client={client}>
+    <ContextProvider>
+      <ProtectedPages />
+    </ContextProvider>
+  </ApolloProvider>
 )
 
 const useApp = () => useContext<AppProps>(Context)
 
-export default App
-
 export { App, ContextProvider, LocalizedApp, useApp }
+
+export default memo(App)

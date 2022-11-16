@@ -7,7 +7,7 @@ const name = packageJson.name.split('/')[0].replace('@', '')
 const env: <T>(key: keyof typeof process.env, defaultValue?: T) => string | T | null = (key, defaultValue) => process.env?.[key] ?? defaultValue ?? null
 
 export default configure(
-  { experimental: { hmrPartialAccept: true }, json: { namedExports: true } },
+  {},
   {
     react: { graphql: true },
     analytics: {},

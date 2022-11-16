@@ -78,12 +78,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "subtitle",
-        "description"
-      ],
+      "list": ["id", "title", "subtitle", "description"],
       "edit": [
         [
           {
@@ -105,8 +100,7 @@
             "size": 6
           }
         ]
-      ],
-      "editRelations": []
+      ]
     },
     "isComponent": true
   },

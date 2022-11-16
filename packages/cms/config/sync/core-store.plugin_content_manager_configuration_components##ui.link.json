@@ -50,11 +50,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "url",
-        "title"
-      ],
+      "list": ["id", "url", "title"],
       "edit": [
         [
           {
@@ -66,8 +62,7 @@
             "size": 6
           }
         ]
-      ],
-      "editRelations": []
+      ]
     },
     "isComponent": true
   },

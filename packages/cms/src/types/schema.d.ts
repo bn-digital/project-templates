@@ -226,7 +226,6 @@ export interface AdminApiTokenPermission extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'admin::api-token-permission', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'admin::api-token-permission', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 
@@ -249,7 +248,6 @@ export interface ApiCategoryCategory extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'api::category.category', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'api::category.category', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 
@@ -274,7 +272,6 @@ export interface ApiContactContact extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'api::contact.contact', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'api::contact.contact', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 
@@ -310,7 +307,6 @@ export interface ApiPostPost extends CollectionTypeSchema {
     publishedAt: DateTimeAttribute
     createdBy: RelationAttribute<'api::post.post', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'api::post.post', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 
@@ -355,7 +351,6 @@ export interface ApiWebsiteWebsite extends SingleTypeSchema {
     updatedBy: RelationAttribute<'api::website.website', 'oneToOne', 'admin::user'> & PrivateAttribute
     localizations: RelationAttribute<'api::website.website', 'oneToMany', 'api::website.website'>
     locale: StringAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 
@@ -401,7 +396,6 @@ export interface PluginUploadFile extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'plugin::upload.file', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'plugin::upload.file', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 
@@ -438,7 +432,6 @@ export interface PluginUploadFolder extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'plugin::upload.folder', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'plugin::upload.folder', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 
@@ -464,7 +457,6 @@ export interface PluginEmailEmitterEmail extends CollectionTypeSchema {
     publishedAt: DateTimeAttribute
     createdBy: RelationAttribute<'plugin::email-emitter.email', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'plugin::email-emitter.email', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 
@@ -566,7 +558,6 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'plugin::users-permissions.user', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'plugin::users-permissions.user', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 
@@ -638,7 +629,6 @@ export interface PluginEmailDesignerEmailTemplate extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'plugin::email-designer.email-template', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'plugin::email-designer.email-template', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 
@@ -668,7 +658,6 @@ export interface PluginMenusMenu extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'plugin::menus.menu', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'plugin::menus.menu', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 
@@ -701,7 +690,6 @@ export interface PluginMenusMenuItem extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'plugin::menus.menu-item', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'plugin::menus.menu-item', 'oneToOne', 'admin::user'> & PrivateAttribute
-    sitemap_exclude: BooleanAttribute & PrivateAttribute & DefaultTo<false>
   }
 }
 

@@ -1,24 +1,12 @@
 # nonk8s
 ---
-apiVersion: skaffold/v2beta29
+apiVersion: skaffold/v3alpha1
 kind: Config
 build:
-  tagPolicy:
-    sha256: { }
   artifacts:
-    - image: runtime
-      docker:
-        target: runtime
-test:
-  - image: website
-    structureTests:
-      - nodejs-container-tests.yaml
-      - website-container-tests.yaml
-  - image: cms
-    structureTests:
-      - nodejs-container-tests.yaml
-      - cms-container-tests.yaml
-
+    - image: app
+  tagPolicy:
+    sha256: {}
 profiles:
   - name: staging
     activation:
@@ -29,3 +17,4 @@ profiles:
         gitCommit:
           variant: Tags
           ignoreChanges: true
+

@@ -50,11 +50,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "pathname",
-        "contact"
-      ],
+      "list": ["id", "pathname", "contact"],
       "edit": [
         [
           {
@@ -68,8 +64,7 @@
             "size": 12
           }
         ]
-      ],
-      "editRelations": []
+      ]
     },
     "isComponent": true
   },

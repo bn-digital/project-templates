@@ -90,7 +90,6 @@ type CategoryFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>
   posts?: InputMaybe<PostFiltersInput>
   seo?: InputMaybe<ComponentSharedSeoFiltersInput>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
   slug?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -99,7 +98,6 @@ type CategoryInput = {
   name?: InputMaybe<Scalars['String']>
   posts?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   seo?: InputMaybe<ComponentSharedSeoInput>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
   slug?: InputMaybe<Scalars['String']>
 }
 
@@ -508,7 +506,6 @@ type ContactFiltersInput = {
   name?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ContactFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
   subject?: InputMaybe<StringFilterInput>
   text?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
@@ -518,7 +515,6 @@ type ContactInput = {
   comment?: InputMaybe<Scalars['String']>
   email?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
   subject?: InputMaybe<Scalars['String']>
   text?: InputMaybe<Scalars['String']>
 }
@@ -617,7 +613,6 @@ type EmailDesignerEmailTemplateFiltersInput = {
   name?: InputMaybe<StringFilterInput>
   not?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
   or?: InputMaybe<Array<InputMaybe<EmailDesignerEmailTemplateFiltersInput>>>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
   subject?: InputMaybe<StringFilterInput>
   tags?: InputMaybe<JsonFilterInput>
   templateReferenceId?: InputMaybe<StringFilterInput>
@@ -630,7 +625,6 @@ type EmailDesignerEmailTemplateInput = {
   design?: InputMaybe<Scalars['JSON']>
   enabled?: InputMaybe<Scalars['Boolean']>
   name?: InputMaybe<Scalars['String']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
   subject?: InputMaybe<Scalars['String']>
   tags?: InputMaybe<Scalars['JSON']>
   templateReferenceId?: InputMaybe<Scalars['String']>
@@ -678,7 +672,6 @@ type EmailEmitterEmailFiltersInput = {
   payload?: InputMaybe<JsonFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   scheduled?: InputMaybe<BooleanFilterInput>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
   template?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -690,7 +683,6 @@ type EmailEmitterEmailInput = {
   payload?: InputMaybe<Scalars['JSON']>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   scheduled?: InputMaybe<Scalars['Boolean']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
   template?: InputMaybe<Scalars['ID']>
 }
 
@@ -936,7 +928,6 @@ type MenusMenuFiltersInput = {
   items?: InputMaybe<MenusMenuItemFiltersInput>
   not?: InputMaybe<MenusMenuFiltersInput>
   or?: InputMaybe<Array<InputMaybe<MenusMenuFiltersInput>>>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
   slug?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
@@ -944,7 +935,6 @@ type MenusMenuFiltersInput = {
 
 type MenusMenuInput = {
   items?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
   slug?: InputMaybe<Scalars['String']>
   title?: InputMaybe<Scalars['String']>
 }
@@ -983,7 +973,6 @@ type MenusMenuItemFiltersInput = {
   order?: InputMaybe<IntFilterInput>
   parent?: InputMaybe<MenusMenuItemFiltersInput>
   root_menu?: InputMaybe<MenusMenuFiltersInput>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
   target?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
@@ -994,7 +983,6 @@ type MenusMenuItemInput = {
   order?: InputMaybe<Scalars['Int']>
   parent?: InputMaybe<Scalars['ID']>
   root_menu?: InputMaybe<Scalars['ID']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
   target?: InputMaybe<EnumMenusmenuitemTarget>
   title?: InputMaybe<Scalars['String']>
   url?: InputMaybe<Scalars['String']>
@@ -1207,7 +1195,6 @@ type PostFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<PostFiltersInput>>>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   seo?: InputMaybe<ComponentSharedSeoFiltersInput>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
   slug?: InputMaybe<StringFilterInput>
   teaser?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
@@ -1222,7 +1209,6 @@ type PostInput = {
   name?: InputMaybe<Scalars['String']>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   seo?: InputMaybe<ComponentSharedSeoInput>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
   slug?: InputMaybe<Scalars['String']>
   teaser?: InputMaybe<Scalars['String']>
   uuid?: InputMaybe<Scalars['String']>
@@ -1469,7 +1455,6 @@ type UploadFileFiltersInput = {
   previewUrl?: InputMaybe<StringFilterInput>
   provider?: InputMaybe<StringFilterInput>
   provider_metadata?: InputMaybe<JsonFilterInput>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
   size?: InputMaybe<FloatFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
   url?: InputMaybe<StringFilterInput>
@@ -1490,7 +1475,6 @@ type UploadFileInput = {
   previewUrl?: InputMaybe<Scalars['String']>
   provider?: InputMaybe<Scalars['String']>
   provider_metadata?: InputMaybe<Scalars['JSON']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
   size?: InputMaybe<Scalars['Float']>
   url?: InputMaybe<Scalars['String']>
   width?: InputMaybe<Scalars['Int']>
@@ -1549,7 +1533,6 @@ type UploadFolderFiltersInput = {
   parent?: InputMaybe<UploadFolderFiltersInput>
   path?: InputMaybe<StringFilterInput>
   pathId?: InputMaybe<IntFilterInput>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
@@ -1560,7 +1543,6 @@ type UploadFolderInput = {
   parent?: InputMaybe<Scalars['ID']>
   path?: InputMaybe<Scalars['String']>
   pathId?: InputMaybe<Scalars['Int']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
 }
 
 type UploadFolderRelationResponseCollection = {
@@ -1759,7 +1741,6 @@ type UsersPermissionsUserFiltersInput = {
   provider?: InputMaybe<StringFilterInput>
   resetPasswordToken?: InputMaybe<StringFilterInput>
   role?: InputMaybe<UsersPermissionsRoleFiltersInput>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
   username?: InputMaybe<StringFilterInput>
 }
@@ -1773,7 +1754,6 @@ type UsersPermissionsUserInput = {
   provider?: InputMaybe<Scalars['String']>
   resetPasswordToken?: InputMaybe<Scalars['String']>
   role?: InputMaybe<Scalars['ID']>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
   username?: InputMaybe<Scalars['String']>
 }
 
@@ -1821,7 +1801,6 @@ type WebsiteFiltersInput = {
   not?: InputMaybe<WebsiteFiltersInput>
   or?: InputMaybe<Array<InputMaybe<WebsiteFiltersInput>>>
   seo?: InputMaybe<ComponentSharedSeoFiltersInput>
-  sitemap_exclude?: InputMaybe<BooleanFilterInput>
   translations?: InputMaybe<ComponentDataEntryFiltersInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -1829,7 +1808,6 @@ type WebsiteFiltersInput = {
 type WebsiteInput = {
   content?: InputMaybe<Array<Scalars['WebsiteContentDynamicZoneInput']>>
   seo?: InputMaybe<ComponentSharedSeoInput>
-  sitemap_exclude?: InputMaybe<Scalars['Boolean']>
   translations?: InputMaybe<Array<InputMaybe<ComponentDataEntryInput>>>
 }
 

@@ -36,9 +36,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id"
-      ],
+      "list": ["id"],
       "edit": [
         [
           {
@@ -46,8 +44,7 @@
             "size": 12
           }
         ]
-      ],
-      "editRelations": []
+      ]
     },
     "isComponent": true
   },
