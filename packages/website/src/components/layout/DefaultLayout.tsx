@@ -1,8 +1,8 @@
 import './DefaultLayout.less'
 
-import { Drawer, Layout } from 'antd'
+import { Drawer, Layout, MenuProps } from 'antd'
 import { FC, Suspense, useMemo } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 
 import { useWebsiteQuery } from '../../graphql'
 import { useApp } from '../app'
@@ -28,13 +28,16 @@ const Page = () => {
   return <Outlet context={context} />
 }
 
+const headerMenu: MenuProps['items'] = [{ key: '/', label: <NavLink to={'/'}>Home</NavLink> }]
+const footerMenu: MenuProps['items'] = [{ key: '/', label: <NavLink to={'/'}>Home</NavLink> }]
+
 const DefaultLayout: FC = () => {
   const { burger } = useApp()
 
   return (
     <Layout className={'default'}>
       <Layout.Header>
-        <Header renderMenu={() => <Navigation mode={'horizontal'} type={'header'} />} />
+        <Header renderMenu={() => <Navigation mode={'horizontal'} items={headerMenu} />} />
       </Layout.Header>
       <Layout.Content>
         <Suspense fallback={null}>
@@ -45,7 +48,7 @@ const DefaultLayout: FC = () => {
         <Footer />
       </Layout.Footer>
       <Drawer width={'75%'} height={'100%'} onClose={burger.toggle} open={burger.opened}>
-        <Navigation mode={'vertical'} type={'header'} />
+        <Navigation mode={'vertical'} items={footerMenu} />
       </Drawer>
     </Layout>
   )

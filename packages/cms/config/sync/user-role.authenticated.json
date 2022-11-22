@@ -25,18 +25,6 @@
       "action": "plugin::i18n.locales.listLocales"
     },
     {
-      "action": "plugin::menus.menu-item.find"
-    },
-    {
-      "action": "plugin::menus.menu-item.findOne"
-    },
-    {
-      "action": "plugin::menus.menu.find"
-    },
-    {
-      "action": "plugin::menus.menu.findOne"
-    },
-    {
       "action": "plugin::users-permissions.auth.connect"
     },
     {

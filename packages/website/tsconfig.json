@@ -5,6 +5,7 @@
     "baseUrl": ".",
     "checkJs": false,
     "esModuleInterop": false,
+    "isolatedModules": true,
     "exactOptionalPropertyTypes": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
@@ -21,11 +22,8 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
     "target": "ESNext",
-    "types": ["@bn-digital/vite", "vite/client", "vite-plugin-svgr/client", "vite-plugin-pwa/client"],
     "useDefineForClassFields": true
   },
-  "include": ["./src", "./cypress", "cypress.config.ts", "./package.json", "./vite.config.ts"]
+  "include": ["./src", "./package.json", "./vite.config.ts"]
 }
