@@ -1,31 +1,32 @@
 import {
-  CollectionTypeSchema,
-  StringAttribute,
-  RequiredAttribute,
-  SetMinMaxLength,
-  JSONAttribute,
-  DefaultTo,
-  RelationAttribute,
-  DateTimeAttribute,
-  PrivateAttribute,
-  EmailAttribute,
-  UniqueAttribute,
-  PasswordAttribute,
+  BigIntegerAttribute,
   BooleanAttribute,
+  CollectionTypeSchema,
+  ComponentAttribute,
+  ComponentSchema,
+  CustomField,
+  DateTimeAttribute,
+  DecimalAttribute,
+  DefaultTo,
+  DynamicZoneAttribute,
+  EmailAttribute,
   EnumerationAttribute,
   IntegerAttribute,
-  UIDAttribute,
-  ComponentAttribute,
-  TextAttribute,
-  RichTextAttribute,
+  JSONAttribute,
   MediaAttribute,
-  CustomField,
-  SingleTypeSchema,
-  DynamicZoneAttribute,
-  SetPluginOptions,
-  DecimalAttribute,
+  PasswordAttribute,
+  PrivateAttribute,
+  RelationAttribute,
+  RequiredAttribute,
+  RichTextAttribute,
   SetMinMax,
-  ComponentSchema,
+  SetMinMaxLength,
+  SetPluginOptions,
+  SingleTypeSchema,
+  StringAttribute,
+  TextAttribute,
+  UIDAttribute,
+  UniqueAttribute,
 } from '@strapi/strapi'
 
 export interface AdminPermission extends CollectionTypeSchema {
@@ -191,7 +192,7 @@ export interface AdminApiToken extends CollectionTypeSchema {
     lastUsedAt: DateTimeAttribute
     permissions: RelationAttribute<'admin::api-token', 'oneToMany', 'admin::api-token-permission'>
     expiresAt: DateTimeAttribute
-    lifespan: IntegerAttribute
+    lifespan: BigIntegerAttribute
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'admin::api-token', 'oneToOne', 'admin::user'> & PrivateAttribute
