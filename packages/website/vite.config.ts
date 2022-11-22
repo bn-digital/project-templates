@@ -9,16 +9,15 @@ const env: <T>(key: keyof typeof process.env, defaultValue?: T) => string | T | 
 export default configure(
   {},
   {
-    react: { graphql: false },
+    lint: { enabled: true },
+    react: { graphql: true },
     analytics: {},
     sourceMaps: env('NODE_ENV') !== 'production',
     fonts: {
       google: {
         preconnect: true,
-        families: [
-          { name: 'Roboto', styles: 'wght@400;500;600;700;800;900' },
-          { name: 'Lato', styles: 'wght@400;500;600;700;800;900' },
-        ],
+        families: [{ name: 'Lato', styles: 'wght@400;500;600;700;800;900' }],
+        injectTo: 'head',
         display: 'auto',
       },
     },
@@ -33,7 +32,7 @@ export default configure(
         cacheId: env('GITHUB_SHA', name),
         sourcemap: env('NODE_ENV') !== 'production',
         cleanupOutdatedCaches: true,
-        ignoreURLParametersMatching: [/(admin|api|graphql|)/],
+        ignoreURLParametersMatching: [/^admin$/, /^upload$/, /^api$/, /^graphql$/],
         disableDevLogs: env('NODE_ENV') === 'production',
         runtimeCaching: [
           {
