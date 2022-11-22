@@ -177,7 +177,6 @@
       }
     },
     "layouts": {
-      "list": ["uuid", "id", "name", "slug", "teaser"],
       "edit": [
         [
           {
@@ -220,8 +219,15 @@
             "name": "seo",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "category",
+            "size": 6
+          }
         ]
-      ]
+      ],
+      "list": ["uuid", "id", "name", "slug", "teaser"]
     }
   },
   "type": "object",

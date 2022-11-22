@@ -1,4 +1,5 @@
 import {
+  BigIntegerAttribute,
   BooleanAttribute,
   CollectionTypeSchema,
   ComponentAttribute,
@@ -191,7 +192,7 @@ export interface AdminApiToken extends CollectionTypeSchema {
     lastUsedAt: DateTimeAttribute
     permissions: RelationAttribute<'admin::api-token', 'oneToMany', 'admin::api-token-permission'>
     expiresAt: DateTimeAttribute
-    lifespan: IntegerAttribute
+    lifespan: BigIntegerAttribute
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'admin::api-token', 'oneToOne', 'admin::user'> & PrivateAttribute

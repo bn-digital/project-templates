@@ -107,7 +107,6 @@
       }
     },
     "layouts": {
-      "list": ["id", "name", "slug", "createdAt"],
       "edit": [
         [
           {
@@ -124,8 +123,15 @@
             "name": "seo",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "posts",
+            "size": 6
+          }
         ]
-      ]
+      ],
+      "list": ["id", "name", "slug", "createdAt"]
     }
   },
   "type": "object",

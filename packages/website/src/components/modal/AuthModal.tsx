@@ -6,8 +6,8 @@ import { useToggle } from 'react-use'
 
 import { useLoginMutation } from '../../graphql'
 
-const AuthModal: FC<Pick<ModalProps, 'open'> & { toggle: (state: boolean) => void; tokenDispatcher: Dispatch<string> }> = ({
-  tokenDispatcher,
+const AuthModal: FC<Pick<ModalProps, 'open'> & { toggle?: (state: boolean) => void; tokenDispatcher?: Dispatch<string> }> = ({
+  tokenDispatcher = () => undefined,
   open = false,
   toggle = () => undefined,
 }) => {

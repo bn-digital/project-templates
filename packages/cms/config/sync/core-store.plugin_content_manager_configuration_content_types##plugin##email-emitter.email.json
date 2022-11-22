@@ -135,7 +135,6 @@
       }
     },
     "layouts": {
-      "list": ["id", "scheduled", "email", "template", "delivered"],
       "edit": [
         [
           {
@@ -145,6 +144,20 @@
           {
             "name": "scheduled",
             "size": 4
+          },
+          {
+            "name": "delivered",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "template",
+            "size": 6
+          },
+          {
+            "name": "log",
+            "size": 6
           }
         ],
         [
@@ -152,18 +165,9 @@
             "name": "payload",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "log",
-            "size": 6
-          },
-          {
-            "name": "delivered",
-            "size": 4
-          }
         ]
-      ]
+      ],
+      "list": ["id", "scheduled", "email", "template", "delivered"]
     }
   },
   "type": "object",

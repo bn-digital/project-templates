@@ -1,6 +1,3 @@
 build
 .cache
-cypress/videos
-cypress/screenshots
-cypress/downloads
 dev-dist

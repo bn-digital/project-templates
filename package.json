@@ -30,10 +30,10 @@
     "extends": "@bn-digital/eslint-config"
   },
   "devDependencies": {
-    "@bn-digital/commitlint-config": "^2.0.0",
-    "@bn-digital/eslint-config": "^2.0.7",
-    "@bn-digital/prettier-config": "^2.0.5",
-    "@bn-digital/stylelint-config": "^2.0.9",
+    "@bn-digital/commitlint-config": "^2.0.1",
+    "@bn-digital/eslint-config": "^2.0.8",
+    "@bn-digital/prettier-config": "^2.0.7",
+    "@bn-digital/stylelint-config": "^2.0.10",
     "@bn-digital/vault-env": "^1.4.0",
     "@types/node": "^18.11.9",
     "husky": "^8.0.2",
@@ -51,5 +51,5 @@
     "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src && yarn stylelint --fix packages/*/src/**/*.less",
     "lint": "yarn prettier --check packages/*/src && yarn eslint packages/*/src && yarn stylelint packages/*/src/**/*.less"
   },
-  "packageManager": "yarn@4.0.0-rc.28"
+  "packageManager": "yarn@4.0.0-rc.30"
 }

@@ -231,7 +231,7 @@
           "seo.metaViewport",
           "seo.canonicalURL"
         ],
-        "locales": ["en", "es"]
+        "locales": ["en"]
       },
       "conditions": []
     },
@@ -239,7 +239,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::website.website",
       "properties": {
-        "locales": ["en", "es"]
+        "locales": ["en"]
       },
       "conditions": []
     },
@@ -264,7 +264,7 @@
           "seo.metaViewport",
           "seo.canonicalURL"
         ],
-        "locales": ["en", "es"]
+        "locales": ["en"]
       },
       "conditions": []
     },
@@ -289,7 +289,7 @@
           "seo.metaViewport",
           "seo.canonicalURL"
         ],
-        "locales": ["en", "es"]
+        "locales": ["en"]
       },
       "conditions": []
     },
