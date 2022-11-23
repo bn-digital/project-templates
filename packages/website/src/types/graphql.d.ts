@@ -573,8 +573,6 @@ type DateTimeFilterInput = {
 
 type EnumComponentsharedmetasocialSocialnetwork = 'Facebook' | 'Twitter'
 
-type EnumMenusmenuitemTarget = 'blank' | 'parent' | 'self' | 'top'
-
 type EmailDesignerEmailTemplate = {
   bodyHtml?: Maybe<Scalars['String']>
   bodyText?: Maybe<Scalars['String']>
@@ -746,8 +744,6 @@ type GenericMorph =
   | EmailDesignerEmailTemplate
   | EmailEmitterEmail
   | I18NLocale
-  | MenusMenu
-  | MenusMenuItem
   | Post
   | UploadFile
   | UploadFolder
@@ -891,109 +887,6 @@ type LongFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>
   or?: InputMaybe<Array<InputMaybe<Scalars['Long']>>>
   startsWith?: InputMaybe<Scalars['Long']>
-}
-
-type MenusMenu = {
-  createdAt?: Maybe<Scalars['DateTime']>
-  items?: Maybe<MenusMenuItemRelationResponseCollection>
-  slug: Scalars['String']
-  title: Scalars['String']
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
-
-type MenusMenuItemsArgs = {
-  filters?: InputMaybe<MenusMenuItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type MenusMenuEntity = {
-  attributes?: Maybe<MenusMenu>
-  id?: Maybe<Scalars['ID']>
-}
-
-type MenusMenuEntityResponse = {
-  data?: Maybe<MenusMenuEntity>
-}
-
-type MenusMenuEntityResponseCollection = {
-  data: Array<MenusMenuEntity>
-  meta: ResponseCollectionMeta
-}
-
-type MenusMenuFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<MenusMenuFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  items?: InputMaybe<MenusMenuItemFiltersInput>
-  not?: InputMaybe<MenusMenuFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<MenusMenuFiltersInput>>>
-  slug?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type MenusMenuInput = {
-  items?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  slug?: InputMaybe<Scalars['String']>
-  title?: InputMaybe<Scalars['String']>
-}
-
-type MenusMenuItem = {
-  createdAt?: Maybe<Scalars['DateTime']>
-  order?: Maybe<Scalars['Int']>
-  parent?: Maybe<MenusMenuItemEntityResponse>
-  root_menu: MenusMenuEntityResponse
-  target?: Maybe<EnumMenusmenuitemTarget>
-  title: Scalars['String']
-  updatedAt?: Maybe<Scalars['DateTime']>
-  url?: Maybe<Scalars['String']>
-}
-
-type MenusMenuItemEntity = {
-  attributes?: Maybe<MenusMenuItem>
-  id?: Maybe<Scalars['ID']>
-}
-
-type MenusMenuItemEntityResponse = {
-  data?: Maybe<MenusMenuItemEntity>
-}
-
-type MenusMenuItemEntityResponseCollection = {
-  data: Array<MenusMenuItemEntity>
-  meta: ResponseCollectionMeta
-}
-
-type MenusMenuItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<MenusMenuItemFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  not?: InputMaybe<MenusMenuItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<MenusMenuItemFiltersInput>>>
-  order?: InputMaybe<IntFilterInput>
-  parent?: InputMaybe<MenusMenuItemFiltersInput>
-  root_menu?: InputMaybe<MenusMenuFiltersInput>
-  target?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-  url?: InputMaybe<StringFilterInput>
-}
-
-type MenusMenuItemInput = {
-  order?: InputMaybe<Scalars['Int']>
-  parent?: InputMaybe<Scalars['ID']>
-  root_menu?: InputMaybe<Scalars['ID']>
-  target?: InputMaybe<EnumMenusmenuitemTarget>
-  title?: InputMaybe<Scalars['String']>
-  url?: InputMaybe<Scalars['String']>
-}
-
-type MenusMenuItemRelationResponseCollection = {
-  data: Array<MenusMenuItemEntity>
-}
-
-type MenusMenuRelationResponseCollection = {
-  data: Array<MenusMenuEntity>
 }
 
 type Mutation = {
@@ -1228,10 +1121,6 @@ type Query = {
   i18NLocale?: Maybe<I18NLocaleEntityResponse>
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>
   me?: Maybe<UsersPermissionsUser>
-  menusMenu?: Maybe<MenusMenuEntityResponse>
-  menusMenuItem?: Maybe<MenusMenuItemEntityResponse>
-  menusMenuItems?: Maybe<MenusMenuItemEntityResponseCollection>
-  menusMenus?: Maybe<MenusMenuEntityResponseCollection>
   post?: Maybe<PostEntityResponse>
   posts?: Maybe<PostEntityResponseCollection>
   uploadFile?: Maybe<UploadFileEntityResponse>
@@ -1271,26 +1160,6 @@ type QueryI18NLocaleArgs = {
 
 type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type QueryMenusMenuArgs = {
-  id?: InputMaybe<Scalars['ID']>
-}
-
-type QueryMenusMenuItemArgs = {
-  id?: InputMaybe<Scalars['ID']>
-}
-
-type QueryMenusMenuItemsArgs = {
-  filters?: InputMaybe<MenusMenuItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type QueryMenusMenusArgs = {
-  filters?: InputMaybe<MenusMenuFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
@@ -1942,105 +1811,6 @@ type LinkFragment = { id: string; title?: string | null | undefined; url: string
 
 type LinkFragmentVariables = Exact<{ [key: string]: never }>
 
-type MenuFragment = {
-  id?: string | null | undefined
-  attributes?:
-    | {
-        title: string
-        slug: string
-        items?:
-          | {
-              data: Array<{
-                id?: string | null | undefined
-                attributes?:
-                  | {
-                      order?: number | null | undefined
-                      url?: string | null | undefined
-                      title: string
-                      target?: EnumMenusmenuitemTarget | null | undefined
-                      created_at?: Date | null | undefined
-                      parent?:
-                        | {
-                            data?:
-                              | {
-                                  id?: string | null | undefined
-                                  attributes?:
-                                    | {
-                                        order?: number | null | undefined
-                                        url?: string | null | undefined
-                                        title: string
-                                        target?: EnumMenusmenuitemTarget | null | undefined
-                                        created_at?: Date | null | undefined
-                                      }
-                                    | null
-                                    | undefined
-                                }
-                              | null
-                              | undefined
-                          }
-                        | null
-                        | undefined
-                      root_menu: {
-                        data?:
-                          | {
-                              attributes?:
-                                | {
-                                    slug: string
-                                    items?:
-                                      | {
-                                          data: Array<{
-                                            id?: string | null | undefined
-                                            attributes?:
-                                              | {
-                                                  order?: number | null | undefined
-                                                  url?: string | null | undefined
-                                                  title: string
-                                                  target?: EnumMenusmenuitemTarget | null | undefined
-                                                  created_at?: Date | null | undefined
-                                                }
-                                              | null
-                                              | undefined
-                                          }>
-                                        }
-                                      | null
-                                      | undefined
-                                  }
-                                | null
-                                | undefined
-                            }
-                          | null
-                          | undefined
-                      }
-                    }
-                  | null
-                  | undefined
-              }>
-            }
-          | null
-          | undefined
-      }
-    | null
-    | undefined
-}
-
-type MenuFragmentVariables = Exact<{ [key: string]: never }>
-
-type MenuItemFragment = {
-  id?: string | null | undefined
-  attributes?:
-    | {
-        order?: number | null | undefined
-        url?: string | null | undefined
-        title: string
-        target?: EnumMenusmenuitemTarget | null | undefined
-        created_at?: Date | null | undefined
-      }
-    | null
-    | undefined
-}
-
-type MenuItemFragmentVariables = Exact<{ [key: string]: never }>
-
 type ParagraphFragment = { id: string; value: string }
 
 type ParagraphFragmentVariables = Exact<{ [key: string]: never }>
@@ -2312,98 +2082,6 @@ type CategoriesQuery = {
 type MeQueryVariables = Exact<{ [key: string]: never }>
 
 type MeQuery = { me?: { email: string } | null | undefined }
-
-type MenuQueryVariables = Exact<{
-  filters?: InputMaybe<MenusMenuFiltersInput>
-}>
-
-type MenuQuery = {
-  menusMenus?:
-    | {
-        data: Array<{
-          id?: string | null | undefined
-          attributes?:
-            | {
-                title: string
-                slug: string
-                items?:
-                  | {
-                      data: Array<{
-                        id?: string | null | undefined
-                        attributes?:
-                          | {
-                              order?: number | null | undefined
-                              url?: string | null | undefined
-                              title: string
-                              target?: EnumMenusmenuitemTarget | null | undefined
-                              created_at?: Date | null | undefined
-                              parent?:
-                                | {
-                                    data?:
-                                      | {
-                                          id?: string | null | undefined
-                                          attributes?:
-                                            | {
-                                                order?: number | null | undefined
-                                                url?: string | null | undefined
-                                                title: string
-                                                target?: EnumMenusmenuitemTarget | null | undefined
-                                                created_at?: Date | null | undefined
-                                              }
-                                            | null
-                                            | undefined
-                                        }
-                                      | null
-                                      | undefined
-                                  }
-                                | null
-                                | undefined
-                              root_menu: {
-                                data?:
-                                  | {
-                                      attributes?:
-                                        | {
-                                            slug: string
-                                            items?:
-                                              | {
-                                                  data: Array<{
-                                                    id?: string | null | undefined
-                                                    attributes?:
-                                                      | {
-                                                          order?: number | null | undefined
-                                                          url?: string | null | undefined
-                                                          title: string
-                                                          target?: EnumMenusmenuitemTarget | null | undefined
-                                                          created_at?: Date | null | undefined
-                                                        }
-                                                      | null
-                                                      | undefined
-                                                  }>
-                                                }
-                                              | null
-                                              | undefined
-                                          }
-                                        | null
-                                        | undefined
-                                    }
-                                  | null
-                                  | undefined
-                              }
-                            }
-                          | null
-                          | undefined
-                      }>
-                    }
-                  | null
-                  | undefined
-              }
-            | null
-            | undefined
-        }>
-      }
-    | null
-    | undefined
-}
 
 type PostsQueryVariables = Exact<{
   filters?: InputMaybe<PostFiltersInput>

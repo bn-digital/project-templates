@@ -1,7 +1,0 @@
-query menu($filters: MenusMenuFiltersInput) {
-  menusMenus(filters: $filters) {
-    data {
-      ...Menu
-    }
-  }
-}

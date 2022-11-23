@@ -1,4 +1,3 @@
-import { formats, winston } from '@strapi/logger'
 import fs from 'fs'
 import { Middleware } from 'koa'
 import path from 'path'
@@ -66,11 +65,6 @@ export default ({ env }: Strapi.Env): MiddlewareType[] => {
       config: {},
     },
     { name: 'strapi::favicon', config: { path: path.join(workingDir, 'public', 'favicon.png') } },
-    // (ctx, next) =>
-    //   proxyMiddleware('/api/proxy', { target: ctx.req.url.replace('/api/proxy/', '/'), rewrite: path => path.replace('/api/proxy/', '/'), changeOrigin: true })(
-    //     ctx,
-    //     next,
-    //   ),
     {
       name: 'strapi::public',
       config: fs.existsSync(path.join(workingDir, 'public', 'index.html')) ? { defer: true, index: 'index.html', maxAge: 3600 } : {},

@@ -558,48 +558,6 @@ export interface NexusGenInputs {
     or?: Array<NexusGenScalars['Long'] | null> | null // [Long]
     startsWith?: NexusGenScalars['Long'] | null // Long
   }
-  MenusMenuFiltersInput: {
-    // input type
-    and?: Array<NexusGenInputs['MenusMenuFiltersInput'] | null> | null // [MenusMenuFiltersInput]
-    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-    id?: NexusGenInputs['IDFilterInput'] | null // IDFilterInput
-    items?: NexusGenInputs['MenusMenuItemFiltersInput'] | null // MenusMenuItemFiltersInput
-    not?: NexusGenInputs['MenusMenuFiltersInput'] | null // MenusMenuFiltersInput
-    or?: Array<NexusGenInputs['MenusMenuFiltersInput'] | null> | null // [MenusMenuFiltersInput]
-    slug?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    title?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-  }
-  MenusMenuInput: {
-    // input type
-    items?: Array<string | null> | null // [ID]
-    slug?: string | null // String
-    title?: string | null // String
-  }
-  MenusMenuItemFiltersInput: {
-    // input type
-    and?: Array<NexusGenInputs['MenusMenuItemFiltersInput'] | null> | null // [MenusMenuItemFiltersInput]
-    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-    id?: NexusGenInputs['IDFilterInput'] | null // IDFilterInput
-    not?: NexusGenInputs['MenusMenuItemFiltersInput'] | null // MenusMenuItemFiltersInput
-    or?: Array<NexusGenInputs['MenusMenuItemFiltersInput'] | null> | null // [MenusMenuItemFiltersInput]
-    order?: NexusGenInputs['IntFilterInput'] | null // IntFilterInput
-    parent?: NexusGenInputs['MenusMenuItemFiltersInput'] | null // MenusMenuItemFiltersInput
-    root_menu?: NexusGenInputs['MenusMenuFiltersInput'] | null // MenusMenuFiltersInput
-    target?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    title?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-    url?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-  }
-  MenusMenuItemInput: {
-    // input type
-    order?: number | null // Int
-    parent?: string | null // ID
-    root_menu?: string | null // ID
-    target?: NexusGenEnums['ENUM_MENUSMENUITEM_TARGET'] | null // ENUM_MENUSMENUITEM_TARGET
-    title?: string | null // String
-    url?: string | null // String
-  }
   PaginationArg: {
     // input type
     limit?: number | null // Int
@@ -856,7 +814,6 @@ export interface NexusGenInputs {
 
 export interface NexusGenEnums {
   ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK: 'Facebook' | 'Twitter'
-  ENUM_MENUSMENUITEM_TARGET: '_blank' | '_parent' | '_self' | '_top'
   PublicationState: 'live' | 'preview'
 }
 
@@ -1039,30 +996,6 @@ export interface NexusGenObjects {
   I18NLocaleEntityResponse: {}
   I18NLocaleEntityResponseCollection: {}
   I18NLocaleRelationResponseCollection: {}
-  MenusMenu: {
-    // root type
-    createdAt?: NexusGenScalars['DateTime'] | null // DateTime
-    slug: string // String!
-    title: string // String!
-    updatedAt?: NexusGenScalars['DateTime'] | null // DateTime
-  }
-  MenusMenuEntity: {}
-  MenusMenuEntityResponse: {}
-  MenusMenuEntityResponseCollection: {}
-  MenusMenuItem: {
-    // root type
-    createdAt?: NexusGenScalars['DateTime'] | null // DateTime
-    order?: number | null // Int
-    target?: NexusGenEnums['ENUM_MENUSMENUITEM_TARGET'] | null // ENUM_MENUSMENUITEM_TARGET
-    title: string // String!
-    updatedAt?: NexusGenScalars['DateTime'] | null // DateTime
-    url?: string | null // String
-  }
-  MenusMenuItemEntity: {}
-  MenusMenuItemEntityResponse: {}
-  MenusMenuItemEntityResponseCollection: {}
-  MenusMenuItemRelationResponseCollection: {}
-  MenusMenuRelationResponseCollection: {}
   Mutation: {}
   Pagination: {
     // root type
@@ -1233,8 +1166,6 @@ export interface NexusGenUnions {
     | NexusGenRootTypes['EmailDesignerEmailTemplate']
     | NexusGenRootTypes['EmailEmitterEmail']
     | NexusGenRootTypes['I18NLocale']
-    | NexusGenRootTypes['MenusMenu']
-    | NexusGenRootTypes['MenusMenuItem']
     | NexusGenRootTypes['Post']
     | NexusGenRootTypes['UploadFile']
     | NexusGenRootTypes['UploadFolder']
@@ -1500,61 +1431,6 @@ export interface NexusGenFieldTypes {
     // field return type
     data: NexusGenRootTypes['I18NLocaleEntity'][] // [I18NLocaleEntity!]!
   }
-  MenusMenu: {
-    // field return type
-    createdAt: NexusGenScalars['DateTime'] | null // DateTime
-    items: NexusGenRootTypes['MenusMenuItemRelationResponseCollection'] | null // MenusMenuItemRelationResponseCollection
-    slug: string // String!
-    title: string // String!
-    updatedAt: NexusGenScalars['DateTime'] | null // DateTime
-  }
-  MenusMenuEntity: {
-    // field return type
-    attributes: NexusGenRootTypes['MenusMenu'] | null // MenusMenu
-    id: string | null // ID
-  }
-  MenusMenuEntityResponse: {
-    // field return type
-    data: NexusGenRootTypes['MenusMenuEntity'] | null // MenusMenuEntity
-  }
-  MenusMenuEntityResponseCollection: {
-    // field return type
-    data: NexusGenRootTypes['MenusMenuEntity'][] // [MenusMenuEntity!]!
-    meta: NexusGenRootTypes['ResponseCollectionMeta'] // ResponseCollectionMeta!
-  }
-  MenusMenuItem: {
-    // field return type
-    createdAt: NexusGenScalars['DateTime'] | null // DateTime
-    order: number | null // Int
-    parent: NexusGenRootTypes['MenusMenuItemEntityResponse'] | null // MenusMenuItemEntityResponse
-    root_menu: NexusGenRootTypes['MenusMenuEntityResponse'] // MenusMenuEntityResponse!
-    target: NexusGenEnums['ENUM_MENUSMENUITEM_TARGET'] | null // ENUM_MENUSMENUITEM_TARGET
-    title: string // String!
-    updatedAt: NexusGenScalars['DateTime'] | null // DateTime
-    url: string | null // String
-  }
-  MenusMenuItemEntity: {
-    // field return type
-    attributes: NexusGenRootTypes['MenusMenuItem'] | null // MenusMenuItem
-    id: string | null // ID
-  }
-  MenusMenuItemEntityResponse: {
-    // field return type
-    data: NexusGenRootTypes['MenusMenuItemEntity'] | null // MenusMenuItemEntity
-  }
-  MenusMenuItemEntityResponseCollection: {
-    // field return type
-    data: NexusGenRootTypes['MenusMenuItemEntity'][] // [MenusMenuItemEntity!]!
-    meta: NexusGenRootTypes['ResponseCollectionMeta'] // ResponseCollectionMeta!
-  }
-  MenusMenuItemRelationResponseCollection: {
-    // field return type
-    data: NexusGenRootTypes['MenusMenuItemEntity'][] // [MenusMenuItemEntity!]!
-  }
-  MenusMenuRelationResponseCollection: {
-    // field return type
-    data: NexusGenRootTypes['MenusMenuEntity'][] // [MenusMenuEntity!]!
-  }
   Mutation: {
     // field return type
     changePassword: boolean // Boolean!
@@ -1630,10 +1506,6 @@ export interface NexusGenFieldTypes {
     i18NLocale: NexusGenRootTypes['I18NLocaleEntityResponse'] | null // I18NLocaleEntityResponse
     i18NLocales: NexusGenRootTypes['I18NLocaleEntityResponseCollection'] | null // I18NLocaleEntityResponseCollection
     me: NexusGenRootTypes['UsersPermissionsUser'] | null // UsersPermissionsUser
-    menusMenu: NexusGenRootTypes['MenusMenuEntityResponse'] | null // MenusMenuEntityResponse
-    menusMenuItem: NexusGenRootTypes['MenusMenuItemEntityResponse'] | null // MenusMenuItemEntityResponse
-    menusMenuItems: NexusGenRootTypes['MenusMenuItemEntityResponseCollection'] | null // MenusMenuItemEntityResponseCollection
-    menusMenus: NexusGenRootTypes['MenusMenuEntityResponseCollection'] | null // MenusMenuEntityResponseCollection
     post: NexusGenRootTypes['PostEntityResponse'] | null // PostEntityResponse
     posts: NexusGenRootTypes['PostEntityResponseCollection'] | null // PostEntityResponseCollection
     uploadFile: NexusGenRootTypes['UploadFileEntityResponse'] | null // UploadFileEntityResponse
@@ -2118,61 +1990,6 @@ export interface NexusGenFieldTypeNames {
     // field return type name
     data: 'I18NLocaleEntity'
   }
-  MenusMenu: {
-    // field return type name
-    createdAt: 'DateTime'
-    items: 'MenusMenuItemRelationResponseCollection'
-    slug: 'String'
-    title: 'String'
-    updatedAt: 'DateTime'
-  }
-  MenusMenuEntity: {
-    // field return type name
-    attributes: 'MenusMenu'
-    id: 'ID'
-  }
-  MenusMenuEntityResponse: {
-    // field return type name
-    data: 'MenusMenuEntity'
-  }
-  MenusMenuEntityResponseCollection: {
-    // field return type name
-    data: 'MenusMenuEntity'
-    meta: 'ResponseCollectionMeta'
-  }
-  MenusMenuItem: {
-    // field return type name
-    createdAt: 'DateTime'
-    order: 'Int'
-    parent: 'MenusMenuItemEntityResponse'
-    root_menu: 'MenusMenuEntityResponse'
-    target: 'ENUM_MENUSMENUITEM_TARGET'
-    title: 'String'
-    updatedAt: 'DateTime'
-    url: 'String'
-  }
-  MenusMenuItemEntity: {
-    // field return type name
-    attributes: 'MenusMenuItem'
-    id: 'ID'
-  }
-  MenusMenuItemEntityResponse: {
-    // field return type name
-    data: 'MenusMenuItemEntity'
-  }
-  MenusMenuItemEntityResponseCollection: {
-    // field return type name
-    data: 'MenusMenuItemEntity'
-    meta: 'ResponseCollectionMeta'
-  }
-  MenusMenuItemRelationResponseCollection: {
-    // field return type name
-    data: 'MenusMenuItemEntity'
-  }
-  MenusMenuRelationResponseCollection: {
-    // field return type name
-    data: 'MenusMenuEntity'
-  }
   Mutation: {
     // field return type name
     changePassword: 'Boolean'
@@ -2248,10 +2065,6 @@ export interface NexusGenFieldTypeNames {
     i18NLocale: 'I18NLocaleEntityResponse'
     i18NLocales: 'I18NLocaleEntityResponseCollection'
     me: 'UsersPermissionsUser'
-    menusMenu: 'MenusMenuEntityResponse'
-    menusMenuItem: 'MenusMenuItemEntityResponse'
-    menusMenuItems: 'MenusMenuItemEntityResponseCollection'
-    menusMenus: 'MenusMenuEntityResponseCollection'
     post: 'PostEntityResponse'
     posts: 'PostEntityResponseCollection'
     uploadFile: 'UploadFileEntityResponse'
@@ -2527,14 +2340,6 @@ export interface NexusGenArgTypes {
       sort: Array<string | null> | null // [String]
     }
   }
-  MenusMenu: {
-    items: {
-      // args
-      filters?: NexusGenInputs['MenusMenuItemFiltersInput'] | null // MenusMenuItemFiltersInput
-      pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
-      sort: Array<string | null> | null // [String]
-    }
-  }
   Mutation: {
     changePassword: {
       // args
@@ -2676,26 +2481,6 @@ export interface NexusGenArgTypes {
       pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
       sort: Array<string | null> | null // [String]
     }
-    menusMenu: {
-      // args
-      id?: string | null // ID
-    }
-    menusMenuItem: {
-      // args
-      id?: string | null // ID
-    }
-    menusMenuItems: {
-      // args
-      filters?: NexusGenInputs['MenusMenuItemFiltersInput'] | null // MenusMenuItemFiltersInput
-      pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
-      sort: Array<string | null> | null // [String]
-    }
-    menusMenus: {
-      // args
-      filters?: NexusGenInputs['MenusMenuFiltersInput'] | null // MenusMenuFiltersInput
-      pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
-      sort: Array<string | null> | null // [String]
-    }
     post: {
       // args
       id?: string | null // ID
@@ -2812,8 +2597,6 @@ export interface NexusGenAbstractTypeMembers {
     | 'EmailDesignerEmailTemplate'
     | 'EmailEmitterEmail'
     | 'I18NLocale'
-    | 'MenusMenu'
-    | 'MenusMenuItem'
     | 'Post'
     | 'UploadFile'
     | 'UploadFolder'
@@ -2883,14 +2666,9 @@ export interface NexusGenTypes {
 
 declare global {
   interface NexusGenPluginTypeConfig<TypeName extends string> {}
-
   interface NexusGenPluginInputTypeConfig<TypeName extends string> {}
-
   interface NexusGenPluginFieldConfig<TypeName extends string, FieldName extends string> {}
-
   interface NexusGenPluginInputFieldConfig<TypeName extends string, FieldName extends string> {}
-
   interface NexusGenPluginSchemaConfig {}
-
   interface NexusGenPluginArgConfig {}
 }
