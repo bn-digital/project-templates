@@ -1,12 +1,15 @@
 # nonk8s
 ---
-apiVersion: skaffold/v3alpha1
+apiVersion: skaffold/v3
 kind: Config
 build:
   artifacts:
     - image: app
   tagPolicy:
     sha256: {}
+  local:
+    useBuildkit: true
+    push: false
 profiles:
   - name: staging
     activation:

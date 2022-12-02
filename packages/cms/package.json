@@ -19,15 +19,15 @@
   "dependencies": {
     "@bn-digital/strapi-plugin-email-emitter": "^1.0.16",
     "@bn-digital/strapi-plugin-field-uuid": "^1.1.7",
-    "@strapi/plugin-color-picker": "^4.5.2",
-    "@strapi/plugin-content-manager": "^4.5.2",
-    "@strapi/plugin-content-type-builder": "^4.5.2",
-    "@strapi/plugin-graphql": "^4.5.2",
-    "@strapi/plugin-i18n": "^4.5.2",
-    "@strapi/plugin-users-permissions": "^4.5.2",
-    "@strapi/provider-email-nodemailer": "^4.5.2",
-    "@strapi/provider-upload-aws-s3": "^4.5.2",
-    "@strapi/strapi": "^4.5.2",
+    "@strapi/plugin-color-picker": "^4.5.3",
+    "@strapi/plugin-content-manager": "^4.5.3",
+    "@strapi/plugin-content-type-builder": "^4.5.3",
+    "@strapi/plugin-graphql": "^4.5.3",
+    "@strapi/plugin-i18n": "^4.5.3",
+    "@strapi/plugin-users-permissions": "^4.5.3",
+    "@strapi/provider-email-nodemailer": "^4.5.3",
+    "@strapi/provider-upload-aws-s3": "^4.5.3",
+    "@strapi/strapi": "^4.5.3",
     "better-sqlite3": "^8.0.0",
     "hashids": "^2.2.10",
     "knex": "^2.3.0",
@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@bn-digital/strapi-types": "^1.0.45",
-    "@bn-digital/vault-env": "^1.4.0"
+    "@bn-digital/vault-env": "^1.4.0",
+    "@strapi/typescript-utils": "^4.5.3"
   }
 }

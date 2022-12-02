@@ -8,11 +8,7 @@ export default {
   },
 
   bootstrap({ strapi }: Global) {
-    if (process.env.NODE_ENV !== 'production') {
-      generateTypeDefinitions(strapi)
-      exportConfigs(strapi)
-    } else {
-      importConfigs(strapi)
-    }
+    if (process.env.STRAPI_GENERATE_TYPES) generateTypeDefinitions(strapi)
+    process.env.NODE_ENV !== 'production' ? exportConfigs(strapi) : importConfigs(strapi)
   },
 } as Strapi.Strapi

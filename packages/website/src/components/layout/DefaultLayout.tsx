@@ -17,7 +17,8 @@ function filterByPathname<T extends ContentProps>(pathname = '/', data: (T | nul
 }
 
 const Page = () => {
-  const { data } = useWebsiteQuery()
+  const { app } = useApp()
+  const { data } = useWebsiteQuery({ skip: !app.api })
   const { pathname } = useLocation()
 
   const context = useMemo(

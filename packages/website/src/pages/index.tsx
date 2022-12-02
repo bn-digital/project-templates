@@ -2,32 +2,24 @@ import { FC, lazy } from 'react'
 import { createBrowserRouter, RouteObject } from 'react-router-dom'
 
 import { DefaultLayout } from '../components/layout'
+import { Loader } from '../components/layout/Loader'
 
-const Post = lazy<FC>(() => import('./post'))
 const Home = lazy<FC>(() => import('./home'))
 const NotFound = lazy<FC>(() => import('./not-found'))
 
 const routes: RouteObject[] = [
   {
-    path: '',
     element: <DefaultLayout />,
-
+    loader: Loader,
+    path: '',
     children: [
       {
         element: <Home />,
+        path: '',
         index: true,
       },
       {
-        element: <Post />,
-        path: 'posts/:slug',
-      },
-      {
-        element: <Home />,
-        path: 'contact-us',
-      },
-      {
         element: <NotFound />,
-        path: '*',
       },
     ],
   },
