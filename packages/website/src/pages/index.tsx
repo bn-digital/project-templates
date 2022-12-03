@@ -20,6 +20,7 @@ const routes: RouteObject[] = [
       },
       {
         element: <NotFound />,
+        path: '*',
       },
     ],
   },

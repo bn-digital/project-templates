@@ -1,6 +1,15 @@
-import * as ReactDOM from 'react-dom/client'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 
 import App from './components/app'
+import reportWebVitals from './web-vitals'
 
 const rootElement = document.querySelector('#root') as HTMLElement
-ReactDOM.createRoot(rootElement).render(<App />)
+
+createRoot(rootElement).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+
+reportWebVitals()

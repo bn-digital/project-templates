@@ -9,7 +9,20 @@ type NodeEnv = 'development' | 'production' | 'test'
 const env: <T>(key: keyof typeof process.env, defaultValue?: T) => string | T | null = (key, defaultValue) => process.env?.[key] ?? defaultValue ?? null
 
 export default configure(
-  { appType: 'spa', clearScreen: false },
+  {
+    json: { stringify: true },
+    appType: 'spa',
+    base: `/`,
+    define: {
+      'process.env': {
+        NODE_ENV: JSON.stringify(env<NodeEnv>('NODE_ENV', 'development')),
+        APP_ENV: env('APP_ENV') ?? env('NODE_ENV') ?? 'development',
+        APP_NAME: name,
+        APP_VERSION: (env('APP_VERSION') ?? packageJson.version ?? Date.now()) as string,
+      },
+    },
+    worker: { format: 'es' },
+  },
   {
     lint: { enabled: true },
     react: { graphql: true },
@@ -49,7 +62,12 @@ export default configure(
         scope: '/',
         icons: [
           { src: 'icon.png', sizes: '512x512', type: 'image/png' },
-          { src: 'icon.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          {
+            src: 'icon.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
         ],
         theme_color: '#ffffff',
         categories: ['Web Application'],

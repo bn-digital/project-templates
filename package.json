@@ -30,7 +30,6 @@
     "extends": "@bn-digital/eslint-config"
   },
   "resolutions": {
-    "typescript": "4.9",
     "antd": "4"
   },
   "devDependencies": {

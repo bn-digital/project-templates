@@ -11,8 +11,8 @@ RUN yarn
 COPY packages packages
 RUN yarn build
 
-FROM dcr.bndigital.dev/library/nodejs:${version}
+FROM gcr.io/distroless/nodejs18-debian11:nonroot
 COPY --from=build --chown=node /usr/local/src/packages/cms .
 COPY --from=build --chown=node /usr/local/src/packages/website/build public
-ENTRYPOINT ["yarn"]
-CMD ["serve"]
+ENTRYPOINT ["node_modules/.bin/strapi"]
+CMD ["start"]

@@ -10,9 +10,9 @@ import {
 } from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
 import { ApolloProviderProps } from '@apollo/client/react/context'
-import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from 'react'
+import { createContext, FC, memo, PropsWithChildren, useContext, useEffect, useState } from 'react'
 import { RouterProvider } from 'react-router-dom'
-import { useEffectOnce, useLocalStorage, useToggle } from 'react-use'
+import { useEffectOnce, useLocalStorage, useNetworkState, useToggle } from 'react-use'
 
 import introspection from '../../graphql'
 import router from '../../pages'
@@ -96,31 +96,29 @@ const LocalizedApp: FC = () => {
 const ProtectedPages: FC = withAuth(() => <RouterProvider router={router} />)
 
 const ApiProvider: FC<Partial<ApolloProviderProps<NormalizedCacheObject>>> = ({ children }) => {
-  const [offline, setOffline] = useState<boolean>()
-  useEffectOnce(() => {
+  const { online } = useNetworkState()
+  const [offline, setOffline] = useState<boolean>(!online)
+  useEffect(() => {
     fetch(apiUrl, { method: 'POST', body: JSON.stringify({ query: '{__typename}' }), headers: { 'Content-Type': 'application/json' } })
       .then(response => setOffline(!response.ok))
       .catch(() => setOffline(true))
-  })
-  if (typeof offline !== 'boolean') return null
-  console.log('offline', offline)
+  }, [])
   return (
     <ContextProvider app={{ api: !offline }}>
-      <ApolloProvider client={apolloClient}>{children}</ApolloProvider>{' '}
+      <ApolloProvider client={apolloClient}>{children}</ApolloProvider>
     </ContextProvider>
   )
-  // return !offline ? <ApolloProvider client={apolloClient}>{children}</ApolloProvider> : <Fragment>{children}</Fragment>
 }
 
 const App: FC = () => (
-  <ContextProvider {...defaultValue}>
-    <ApiProvider>
+  <ApiProvider>
+    <ContextProvider {...defaultValue}>
       <ProtectedPages />
-    </ApiProvider>
-  </ContextProvider>
+    </ContextProvider>
+  </ApiProvider>
 )
 
-const useApp = () => useContext<AppProps>(Context)
+const useApp = () => useContext(Context)
 
 export { App, ContextProvider, LocalizedApp, useApp }
 

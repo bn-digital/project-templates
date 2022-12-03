@@ -37,7 +37,7 @@ node_modules
 !.yarn/versions
 
 # Build
-tsconfig.tsbuildinfo
+**/*.tsbuildinfo
 
 # Environmnet
 .env
