@@ -17,6 +17,8 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
     config: {
       endpoint: '/graphql',
       shadowCRUD: true,
+      defaultLimit: 10,
+      maxLimit: 100,
       subscriptions: true,
       playgroundAlways: true,
       generateArtifacts: true,

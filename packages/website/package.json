@@ -3,34 +3,35 @@
   "description": "Frontend application based on Ant Design React components",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "vite": "node_modules/.bin/vite",
     "env": "yarn vault-env",
     "build": "yarn vite build",
-    "serve": "yarn dlx serve --single build",
-    "start": "yarn vite serve --host=127.0.0.1"
+    "serve": "yarn dlx serve --listen=5000 --single build",
+    "start": "yarn vite serve"
   },
   "eslintConfig": {
-    "extends": "@bn-digital/eslint-config/react",
-    "ignorePatterns": ["src/dev/Palette.tsx"]
+    "extends": "@bn-digital/eslint-config/react"
   },
   "proxy": "http://127.0.0.1:1337",
   "dependencies": {
     "@apollo/client": "^3.7.1",
-    "antd": "^4.24.3",
+    "antd": "^4.24.4",
     "crypto-hash": "^2.0.1",
     "history": "^5.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-intl": "^6.2.1",
-    "react-markdown": "^8.0.3",
-    "react-responsive": "^9.0.0",
-    "react-router-dom": "^6.4.3",
-    "react-use": "^17.4.0"
+    "react-intl": "^6.2.5",
+    "react-markdown": "^8.0.4",
+    "react-responsive": "^9.0.2",
+    "react-router-dom": "^6.4.4",
+    "react-use": "^17.4.0",
+    "web-vitals": "^3.1.0"
   },
   "devDependencies": {
-    "@bn-digital/vite": "^2.0.18",
-    "@types/react": "^18.0.25",
+    "@bn-digital/vite": "^2.0.22",
+    "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9"
   }
 }

@@ -1,5 +1,5 @@
-import webpack from 'webpack'
+import { type Configuration } from 'webpack'
 
-export default (config: webpack.Configuration) => {
-  return { ...config, output: { ...config.output, hashFunction: 'sha256' } }
+export default (config: Configuration) => {
+  return { ...config, output: { ...config?.output, hashFunction: 'sha256' } }
 }

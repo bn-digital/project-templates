@@ -1,12 +1,12 @@
 import './DefaultLayout.less'
 
-import { Drawer, Layout, MenuProps } from 'antd'
-import { FC, Suspense, useMemo } from 'react'
+import { Layout, MenuProps } from 'antd'
+import React, { FC, memo, Suspense, useMemo } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 
 import { useWebsiteQuery } from '../../graphql'
 import { useApp } from '../app'
-import { Navigation } from '../menu/Navigation'
+import { default as Navigation } from '../menu/Navigation'
 import { Footer } from './Footer'
 import { Header } from './Header'
 
@@ -17,41 +17,33 @@ function filterByPathname<T extends ContentProps>(pathname = '/', data: (T | nul
 }
 
 const Page = () => {
-  const { data } = useWebsiteQuery()
+  const { app } = useApp()
   const { pathname } = useLocation()
 
+  const { data, loading } = useWebsiteQuery({ skip: !app.api })
+
   const context = useMemo(
-    () => (data?.website?.data?.attributes?.content ? filterByPathname(pathname, data?.website?.data.attributes?.content as ContentProps[]) : null),
+    () => (pathname && data?.website?.data?.attributes?.content ? filterByPathname(pathname, data?.website?.data.attributes?.content as ContentProps[]) : null),
     [data?.website?.data?.attributes?.content, pathname],
   )
-
-  return <Outlet context={context} />
+  return loading ? null : <Outlet context={context} />
 }
 
 const headerMenu: MenuProps['items'] = [{ key: '/', label: <NavLink to={'/'}>Home</NavLink> }]
-const footerMenu: MenuProps['items'] = [{ key: '/', label: <NavLink to={'/'}>Home</NavLink> }]
+const DefaultLayout: FC = () => (
+  <Layout className={'default'}>
+    <Layout.Header>
+      <Header renderMenu={() => <Navigation mode={'horizontal'} items={headerMenu} />} />
+    </Layout.Header>
+    <Layout.Content>
+      <Suspense fallback={null}>
+        <Page />
+      </Suspense>
+    </Layout.Content>
+    <Layout.Footer>
+      <Footer />
+    </Layout.Footer>
+  </Layout>
+)
 
-const DefaultLayout: FC = () => {
-  const { burger } = useApp()
-
-  return (
-    <Layout className={'default'}>
-      <Layout.Header>
-        <Header renderMenu={() => <Navigation mode={'horizontal'} items={headerMenu} />} />
-      </Layout.Header>
-      <Layout.Content>
-        <Suspense fallback={null}>
-          <Page />
-        </Suspense>
-      </Layout.Content>
-      <Layout.Footer>
-        <Footer />
-      </Layout.Footer>
-      <Drawer width={'75%'} height={'100%'} onClose={burger.toggle} open={burger.opened}>
-        <Navigation mode={'vertical'} items={footerMenu} />
-      </Drawer>
-    </Layout>
-  )
-}
-
-export { DefaultLayout }
+export default memo(DefaultLayout)

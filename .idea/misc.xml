@@ -9,7 +9,7 @@
     <option name="id" value="jpab" />
   </component>
   <component name="ViteConfiguration">
-    <option name="mode" value="MANUAL" />
+    <option name="mode" value="AUTO" />
     <option name="path" value="$PROJECT_DIR$/packages/website/vite.config.ts" />
   </component>
 </project>
