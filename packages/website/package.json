@@ -8,7 +8,6 @@
     "vite": "node_modules/.bin/vite",
     "env": "yarn vault-env",
     "build": "yarn vite build",
-    "serve": "yarn dlx serve --listen=5000 --single build",
     "start": "yarn vite serve"
   },
   "eslintConfig": {
@@ -16,7 +15,7 @@
   },
   "proxy": "http://127.0.0.1:1337",
   "dependencies": {
-    "@apollo/client": "^3.7.1",
+    "@apollo/client": "^3.7.2",
     "antd": "^4.24.4",
     "crypto-hash": "^2.0.1",
     "history": "^5.3.0",

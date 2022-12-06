@@ -1,18 +1,18 @@
 import {
+  type ApolloClientOptions,
+  type NormalizedCacheObject,
+  type ServerError,
   ApolloClient,
-  ApolloClientOptions,
   ApolloLink,
   ApolloProvider,
   createHttpLink,
   InMemoryCache,
-  NormalizedCacheObject,
-  ServerError,
 } from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
-import { ApolloProviderProps } from '@apollo/client/react/context'
-import { createContext, FC, memo, PropsWithChildren, useContext, useEffect, useState } from 'react'
+import { type ApolloProviderProps } from '@apollo/client/react/context'
+import { type FC, type PropsWithChildren, createContext, useContext, useEffect, useState } from 'react'
 import { RouterProvider } from 'react-router-dom'
-import { useEffectOnce, useLocalStorage, useNetworkState, useToggle } from 'react-use'
+import { useLocalStorage, useNetworkState, useToggle } from 'react-use'
 
 import introspection from '../../graphql'
 import router from '../../pages'
