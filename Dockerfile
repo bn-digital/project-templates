@@ -12,7 +12,11 @@ COPY packages packages
 RUN yarn build
 
 FROM gcr.io/distroless/nodejs18-debian11:nonroot
-COPY --from=build --chown=node /usr/local/src/packages/cms .
-COPY --from=build --chown=node /usr/local/src/packages/website/build public
-ENTRYPOINT ["node_modules/.bin/strapi"]
-CMD ["start"]
+WORKDIR /usr/local/src
+COPY --from=build /usr/local/src/packages/cms .
+COPY --from=build /usr/local/src/packages/website/build public
+ENV NODE_ENV=production \
+    HOST=0.0.0.0 \
+    PORT=5000
+EXPOSE 5000
+CMD ["node_modules/@strapi/strapi/bin/strapi.js", "start"]

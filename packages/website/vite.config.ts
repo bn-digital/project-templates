@@ -39,14 +39,13 @@ export default configure(
       injectRegister: 'inline',
       registerType: 'autoUpdate',
       includeManifestIcons: true,
-      selfDestroying: env('NODE_ENV') !== 'production',
       mode: env<NodeEnv>('NODE_ENV') !== 'production' ? 'development' : 'production',
       workbox: {
         cacheId: env('GITHUB_SHA', name),
         sourcemap: env<NodeEnv>('NODE_ENV') !== 'production',
         cleanupOutdatedCaches: true,
         mode: env<NodeEnv>('NODE_ENV') === 'production' ? 'production' : 'development',
-        ignoreURLParametersMatching: [/^admin$/, /^upload$/, /^api$/, /^graphql$/],
+        ignoreURLParametersMatching: [/\/admin$/, /\/graphql/, /\/upload$/, /\/api/],
         disableDevLogs: env<NodeEnv>('NODE_ENV') === 'production',
         runtimeCaching: [
           {

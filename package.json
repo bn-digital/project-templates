@@ -38,9 +38,9 @@
     "@bn-digital/prettier-config": "^2.0.10",
     "@bn-digital/stylelint-config": "^2.0.10",
     "@bn-digital/vault-env": "^1.4.0",
-    "@types/node": "^18.11.10",
+    "@types/node": "^18.11.11",
     "husky": "^8.0.2",
-    "lint-staged": "^13.0.4",
+    "lint-staged": "^13.1.0",
     "typescript": "^4.9.3"
   },
   "scripts": {
@@ -54,5 +54,5 @@
     "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src && yarn stylelint --fix packages/*/src/**/*.less",
     "lint": "yarn prettier --check packages/*/src && yarn eslint packages/*/src && yarn stylelint packages/*/src/**/*.less"
   },
-  "packageManager": "yarn@4.0.0-rc.31"
+  "packageManager": "yarn@4.0.0-rc.32"
 }
