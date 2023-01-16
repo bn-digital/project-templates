@@ -4,4 +4,5 @@
 
 declare interface ImportMetaEnv extends ImportMetaEnv {
   readonly WEBSITE_API_URL: string
+  readonly APP_NAME: string
 }

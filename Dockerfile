@@ -1,18 +1,18 @@
 # syntax=docker/dockerfile:latest
 
-ARG version=2.9.0
+ARG version=2.12.0
 FROM dcr.bndigital.dev/library/yarn:${version} AS build
-COPY .yarn .yarn
-COPY package.json yarn.lock .yarnrc.yml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY packages/cms/package.json packages/cms/package.json
 COPY packages/website/package.json packages/website/package.json
-ENV YARN_CHECKSUM_BEHAVIOR=ignore
-RUN yarn
+COPY packages/cloud/package.json packages/cloud/package.json
+RUN pnpm install
 COPY packages packages
-RUN yarn build
+RUN pnpm run -r build
 
 FROM gcr.io/distroless/nodejs18-debian11:nonroot
 WORKDIR /usr/local/src
+COPY --from=build /usr/local/src/node_modules packages/cms/node_modules
 COPY --from=build /usr/local/src/packages/cms .
 COPY --from=build /usr/local/src/packages/website/build public
 ENV NODE_ENV=production \

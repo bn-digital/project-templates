@@ -4,9 +4,11 @@ import path from 'path'
 
 import { workingDir } from './index'
 
-type MiddlewareUIDs = `strapi::${string}` | `global::${string}` | `api::${string}` | `plugin::${string}`
+type Scope = 'strapi' | 'global' | 'api' | 'plugin'
 
-type MiddlewareType<T = unknown> = MiddlewareUIDs | { name: T; config: T } | Middleware
+type MiddlewareUIDs = `${Scope}::${string}`
+
+type MiddlewareType<ID = MiddlewareUIDs, T = unknown> = { config?: T; name: ID } | Middleware | ID
 export default ({ env }: Strapi.Env): MiddlewareType[] => {
   const bucket = env('S3_BUCKET', 'bn-dev')
   const region = env('S3_REGION', 'fra1')
@@ -27,6 +29,7 @@ export default ({ env }: Strapi.Env): MiddlewareType[] => {
               'blob:',
               `https://dl.airtable.com`,
               `https://editor.unlayer.com`,
+              `https://${bucket}.${region}.cdn.digitaloceanspaces.com`,
               `https://${bucket}.${region}.digitaloceanspaces.com`,
               `https://${bucket}.blob.core.windows.net`,
               `https://${bucket}.s3.amazonaws.com`,
@@ -38,6 +41,7 @@ export default ({ env }: Strapi.Env): MiddlewareType[] => {
               'blob:',
               `https://dl.airtable.com`,
               `https://editor.unlayer.com`,
+              `https://${bucket}.${region}.cdn.digitaloceanspaces.com`,
               `https://${bucket}.${region}.digitaloceanspaces.com`,
               `https://${bucket}.blob.core.windows.net`,
               `https://${bucket}.s3.amazonaws.com`,
@@ -51,10 +55,6 @@ export default ({ env }: Strapi.Env): MiddlewareType[] => {
     'strapi::cors',
     'strapi::query',
     {
-      name: 'strapi::session',
-      config: { key: 'cms.sid', renew: true, rolling: true },
-    },
-    {
       name: 'strapi::body',
       config: {
         jsonLimit: '5mb',
@@ -64,10 +64,12 @@ export default ({ env }: Strapi.Env): MiddlewareType[] => {
       name: 'strapi::compression',
       config: {},
     },
-    { name: 'strapi::favicon', config: { path: path.join(workingDir, 'public', 'favicon.png') } },
+    { name: 'strapi::favicon' },
     {
       name: 'strapi::public',
-      config: fs.existsSync(path.join(workingDir, 'public', 'index.html')) ? { defer: true, index: 'index.html', maxAge: 3600 } : {},
+      config: fs.existsSync(path.join(workingDir, 'public', 'index.html'))
+        ? { defer: true, index: 'index.html', maxAge: 3600 }
+        : {},
     },
   ]
 }

@@ -58,7 +58,7 @@ export function run(name: string) {
       version,
       tags,
     },
-    { ignoreChanges: ['name', 'version', 'region'] as (keyof KubernetesClusterArgs)[] },
+    { ignoreChanges: ['name', 'version', 'region'] as (keyof KubernetesClusterArgs)[] }
   )
 
   const bucket = new SpacesBucket(
@@ -70,7 +70,7 @@ export function run(name: string) {
       versioning: { enabled: false },
       forceDestroy: true,
     },
-    { ignoreChanges: ['name', 'region'] as (keyof SpacesBucketArgs)[] },
+    { ignoreChanges: ['name', 'region'] as (keyof SpacesBucketArgs)[] }
   )
 
   new SpacesBucketPolicy(
@@ -78,7 +78,7 @@ export function run(name: string) {
     { policy: JSON.stringify(getCmsPolicy(`${name}-cms`)), region, bucket: `${name}-cms` },
     {
       dependsOn: [bucket],
-    },
+    }
   )
   const domain = new Domain(urn('dns'), {
     name: dns,
@@ -89,7 +89,7 @@ export function run(name: string) {
     {
       ignoreChanges: [] as (keyof DnsRecordArgs)[],
       dependsOn: [domain],
-    },
+    }
   )
   const certificate = new Certificate(
     urn('storage', 'cms', 'cdn', 'certificate'),
@@ -98,7 +98,7 @@ export function run(name: string) {
       name,
       type: 'lets_encrypt',
     },
-    { ignoreChanges: ['name'] as (keyof DomainArgs)[], dependsOn: [cdnRecord] },
+    { ignoreChanges: ['name'] as (keyof DomainArgs)[], dependsOn: [cdnRecord] }
   )
   new Cdn(
     urn('storage', 'cms', 'cdn'),
@@ -107,7 +107,7 @@ export function run(name: string) {
       customDomain: cdnRecord.fqdn,
       certificateName: certificate.name,
     },
-    { ignoreChanges: [] as (keyof CdnArgs)[], dependsOn: [certificate, cdnRecord, bucket] },
+    { ignoreChanges: [] as (keyof CdnArgs)[], dependsOn: [certificate, cdnRecord, bucket] }
   )
   return new Project(
     urn('project'),
@@ -117,6 +117,6 @@ export function run(name: string) {
       purpose: 'Web Application',
       resources: [cluster.clusterUrn, bucket.bucketUrn, domain.domainUrn],
     },
-    { ignoreChanges: [] as (keyof ProjectArgs)[], dependsOn: [cluster, bucket, domain] },
+    { ignoreChanges: [] as (keyof ProjectArgs)[], dependsOn: [cluster, bucket, domain] }
   )
 }

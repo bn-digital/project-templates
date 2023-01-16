@@ -16,11 +16,24 @@
     "email": "vlad.volkov@bndigital.co",
     "url": "https://github.com/vladyslavvolkov"
   },
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,json,css,sass,scss,less,graphql}": ["yarn prettier --write"],
-    "**/*.{ts,tsx}": ["yarn eslint --fix"],
-    "**/*.{scss,sass,css,less}": ["yarn stylelint --fix"]
+    "**/*.{js,jsx,ts,tsx,json,css,sass,scss,less,graphql}": [
+      "prettier --write"
+    ],
+    "**/*.{ts,tsx}": [
+      "eslint --fix"
+    ],
+    "**/*.{scss,sass,css,less}": [
+      "stylelint --fix"
+    ]
+  },
+  "bin": {
+    "eslint": "node_modules/eslint/bin/eslint.js",
+    "prettier": "node_modules/prettier/bin-prettier.js",
+    "stylelint": "node_modules/stylelint/bin/stylelint.js"
   },
   "prettier": "@bn-digital/prettier-config",
   "stylelint": {
@@ -29,30 +42,25 @@
   "eslintConfig": {
     "extends": "@bn-digital/eslint-config"
   },
-  "resolutions": {
-    "antd": "4"
-  },
   "devDependencies": {
     "@bn-digital/commitlint-config": "^2.0.1",
-    "@bn-digital/eslint-config": "^2.0.12",
-    "@bn-digital/prettier-config": "^2.0.10",
-    "@bn-digital/stylelint-config": "^2.0.10",
+    "@bn-digital/eslint-config": "^2.0.27",
+    "@bn-digital/prettier-config": "^2.1.9",
+    "@bn-digital/stylelint-config": "^2.0.14",
     "@bn-digital/vault-env": "^1.4.0",
-    "@types/node": "^18.11.11",
-    "husky": "^8.0.2",
+    "@types/node": "^18.11.18",
+    "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
-    "typescript": "^4.9.3"
+    "projen": "^0.66.16",
+    "typescript": "^4.9.4"
   },
   "scripts": {
-    "prettier": "node_modules/.bin/prettier",
-    "stylelint": "node_modules/.bin/stylelint",
-    "eslint": "node_modules/.bin/eslint",
     "start": "yarn workspaces foreach --exclude=root --parallel --interlaced run start",
     "start:cms": "yarn workspace @project-templates/cms run start",
     "start:website": "yarn workspace @project-templates/website run start",
     "build": "yarn workspaces foreach --exclude=root run build",
-    "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src && yarn stylelint --fix packages/*/src/**/*.less",
-    "lint": "yarn prettier --check packages/*/src && yarn eslint packages/*/src && yarn stylelint packages/*/src/**/*.less"
+    "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src && yarn stylelint --fix packages/*/src/**/*.{scss,sass,css,less}",
+    "lint": "yarn eslint packages/*/src && yarn stylelint packages/*/src && yarn prettier --check packages/*/src/**/*.{scss,sass,css,less}"
   },
-  "packageManager": "yarn@4.0.0-rc.32"
+  "packageManager": "yarn@4.0.0-rc.34"
 }

@@ -1,7 +1,7 @@
 import './DefaultLayout.less'
 
 import { Layout, MenuProps } from 'antd'
-import React, { FC, memo, Suspense, useMemo } from 'react'
+import { FC, Suspense, useMemo } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 
 import { useWebsiteQuery } from '../../graphql'
@@ -23,14 +23,18 @@ const Page = () => {
   const { data, loading } = useWebsiteQuery({ skip: !app.api })
 
   const context = useMemo(
-    () => (pathname && data?.website?.data?.attributes?.content ? filterByPathname(pathname, data?.website?.data.attributes?.content as ContentProps[]) : null),
-    [data?.website?.data?.attributes?.content, pathname],
+    () =>
+      pathname && data?.website?.data?.attributes?.content
+        ? filterByPathname(pathname, data?.website?.data.attributes?.content as ContentProps[])
+        : { pathname, hero: { title: `URI: ${pathname}`, subtitle: '' } },
+    [data?.website?.data?.attributes?.content, pathname]
   )
   return loading ? null : <Outlet context={context} />
 }
 
 const headerMenu: MenuProps['items'] = [{ key: '/', label: <NavLink to={'/'}>Home</NavLink> }]
-const DefaultLayout: FC = () => (
+
+export const DefaultLayout: FC = () => (
   <Layout className={'default'}>
     <Layout.Header>
       <Header renderMenu={() => <Navigation mode={'horizontal'} items={headerMenu} />} />
@@ -45,5 +49,3 @@ const DefaultLayout: FC = () => (
     </Layout.Footer>
   </Layout>
 )
-
-export default memo(DefaultLayout)

@@ -113,6 +113,36 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::credential.credential",
+      "properties": {
+        "fields": ["credentials.name", "credentials.value"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::credential.credential",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::credential.credential",
+      "properties": {
+        "fields": ["credentials.name", "credentials.value"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::credential.credential",
+      "properties": {
+        "fields": ["credentials.name", "credentials.value"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::post.post",
       "properties": {
         "fields": [
@@ -525,7 +555,17 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": ["username", "email", "provider", "password", "resetPasswordToken", "confirmationToken", "confirmed", "blocked", "role"]
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role"
+        ]
       },
       "conditions": []
     },
@@ -539,7 +579,17 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": ["username", "email", "provider", "password", "resetPasswordToken", "confirmationToken", "confirmed", "blocked", "role"]
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role"
+        ]
       },
       "conditions": []
     },
@@ -547,7 +597,17 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": ["username", "email", "provider", "password", "resetPasswordToken", "confirmationToken", "confirmed", "blocked", "role"]
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role"
+        ]
       },
       "conditions": []
     },
@@ -613,6 +673,12 @@
     },
     {
       "action": "plugin::upload.assets.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.configure-view",
       "subject": null,
       "properties": {},
       "conditions": []

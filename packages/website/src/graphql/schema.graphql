@@ -1,0 +1,5 @@
+extend type Query {
+  authenticated: Boolean!
+}
+
+directive @client on FIELD

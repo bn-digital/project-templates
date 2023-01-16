@@ -1,5 +1,0 @@
-mutation register($input: UsersPermissionsRegisterInput!) {
-  register(input: $input) {
-    jwt
-  }
-}

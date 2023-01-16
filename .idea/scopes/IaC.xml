@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="IaC" pattern="file:helmfile.yaml||file:docker-compose.yml||file:skaffold.yaml||file:Dockerfile||file:*-container-tests.yaml||file:.github/workflows/*.yml" />
-</component>

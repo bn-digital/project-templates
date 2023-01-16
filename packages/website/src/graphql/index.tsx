@@ -1,6 +1,5 @@
 import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
-import * as React from 'react'
 import * as ApolloReactComponents from '@apollo/client/react/components'
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 const defaultOptions = {} as const
@@ -16,6 +15,8 @@ export type PossibleTypesResultData = {
       'ComponentPageHome',
       'ComponentSharedMetaSocial',
       'ComponentSharedSeo',
+      'ComponentSystemEnvironment',
+      'ComponentSystemSecret',
       'ComponentUiCard',
       'ComponentUiGrid',
       'ComponentUiHeadline',
@@ -25,6 +26,7 @@ export type PossibleTypesResultData = {
       'ComponentUiTab',
       'ComponentUiText',
       'Contact',
+      'Credential',
       'EmailDesignerEmailTemplate',
       'EmailEmitterEmail',
       'I18NLocale',
@@ -34,7 +36,7 @@ export type PossibleTypesResultData = {
       'UsersPermissionsPermission',
       'UsersPermissionsRole',
       'UsersPermissionsUser',
-      'Website',
+      'Website'
     ]
     WebsiteContentDynamicZone: ['ComponentPageContactUs', 'ComponentPageHome', 'Error']
   }
@@ -50,6 +52,8 @@ const result: PossibleTypesResultData = {
       'ComponentPageHome',
       'ComponentSharedMetaSocial',
       'ComponentSharedSeo',
+      'ComponentSystemEnvironment',
+      'ComponentSystemSecret',
       'ComponentUiCard',
       'ComponentUiGrid',
       'ComponentUiHeadline',
@@ -59,6 +63,7 @@ const result: PossibleTypesResultData = {
       'ComponentUiTab',
       'ComponentUiText',
       'Contact',
+      'Credential',
       'EmailDesignerEmailTemplate',
       'EmailEmitterEmail',
       'I18NLocale',
@@ -246,10 +251,15 @@ export type ForgotPasswordComponentProps = Omit<
 >
 
 export const ForgotPasswordComponent = (props: ForgotPasswordComponentProps) => (
-  <ApolloReactComponents.Mutation<ForgotPasswordMutation, ForgotPasswordMutationVariables> mutation={ForgotPasswordDocument} {...props} />
+  <ApolloReactComponents.Mutation<ForgotPasswordMutation, ForgotPasswordMutationVariables>
+    mutation={ForgotPasswordDocument}
+    {...props}
+  />
 )
 
-export function useForgotPasswordMutation(baseOptions?: Apollo.MutationHookOptions<ForgotPasswordMutation, ForgotPasswordMutationVariables>) {
+export function useForgotPasswordMutation(
+  baseOptions?: Apollo.MutationHookOptions<ForgotPasswordMutation, ForgotPasswordMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<ForgotPasswordMutation, ForgotPasswordMutationVariables>(ForgotPasswordDocument, options)
 }
@@ -266,7 +276,10 @@ export const LoginDocument = gql`
   }
 `
 export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>
-export type LoginComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<LoginMutation, LoginMutationVariables>, 'mutation'>
+export type LoginComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<LoginMutation, LoginMutationVariables>,
+  'mutation'
+>
 
 export const LoginComponent = (props: LoginComponentProps) => (
   <ApolloReactComponents.Mutation<LoginMutation, LoginMutationVariables> mutation={LoginDocument} {...props} />
@@ -286,18 +299,55 @@ export const RegisterDocument = gql`
   }
 `
 export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, RegisterMutationVariables>
-export type RegisterComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<RegisterMutation, RegisterMutationVariables>, 'mutation'>
+export type RegisterComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<RegisterMutation, RegisterMutationVariables>,
+  'mutation'
+>
 
 export const RegisterComponent = (props: RegisterComponentProps) => (
   <ApolloReactComponents.Mutation<RegisterMutation, RegisterMutationVariables> mutation={RegisterDocument} {...props} />
 )
 
-export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<RegisterMutation, RegisterMutationVariables>) {
+export function useRegisterMutation(
+  baseOptions?: Apollo.MutationHookOptions<RegisterMutation, RegisterMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, options)
 }
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>
+export const AuthenticatedDocument = gql`
+  query authenticated {
+    authenticated @client
+  }
+`
+export type AuthenticatedComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<AuthenticatedQuery, AuthenticatedQueryVariables>,
+  'query'
+>
+
+export const AuthenticatedComponent = (props: AuthenticatedComponentProps) => (
+  <ApolloReactComponents.Query<AuthenticatedQuery, AuthenticatedQueryVariables>
+    query={AuthenticatedDocument}
+    {...props}
+  />
+)
+
+export function useAuthenticatedQuery(
+  baseOptions?: Apollo.QueryHookOptions<AuthenticatedQuery, AuthenticatedQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<AuthenticatedQuery, AuthenticatedQueryVariables>(AuthenticatedDocument, options)
+}
+export function useAuthenticatedLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<AuthenticatedQuery, AuthenticatedQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<AuthenticatedQuery, AuthenticatedQueryVariables>(AuthenticatedDocument, options)
+}
+export type AuthenticatedQueryHookResult = ReturnType<typeof useAuthenticatedQuery>
+export type AuthenticatedLazyQueryHookResult = ReturnType<typeof useAuthenticatedLazyQuery>
+export type AuthenticatedQueryResult = Apollo.QueryResult<AuthenticatedQuery, AuthenticatedQueryVariables>
 export const CategoriesDocument = gql`
   query categories($sort: [String] = ["id:DESC"]) {
     categories(sort: $sort) {
@@ -316,7 +366,10 @@ export const CategoriesDocument = gql`
   ${CategoryFragmentDoc}
   ${PostFragmentDoc}
 `
-export type CategoriesComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<CategoriesQuery, CategoriesQueryVariables>, 'query'>
+export type CategoriesComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<CategoriesQuery, CategoriesQueryVariables>,
+  'query'
+>
 
 export const CategoriesComponent = (props: CategoriesComponentProps) => (
   <ApolloReactComponents.Query<CategoriesQuery, CategoriesQueryVariables> query={CategoriesDocument} {...props} />
@@ -326,7 +379,9 @@ export function useCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<Categor
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options)
 }
-export function useCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
+export function useCategoriesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<CategoriesQuery, CategoriesQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options)
 }
@@ -342,7 +397,9 @@ export const MeDocument = gql`
 `
 export type MeComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MeQuery, MeQueryVariables>, 'query'>
 
-export const MeComponent = (props: MeComponentProps) => <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
+export const MeComponent = (props: MeComponentProps) => (
+  <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
+)
 
 export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
@@ -365,9 +422,14 @@ export const PostsDocument = gql`
   }
   ${PostFragmentDoc}
 `
-export type PostsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<PostsQuery, PostsQueryVariables>, 'query'>
+export type PostsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<PostsQuery, PostsQueryVariables>,
+  'query'
+>
 
-export const PostsComponent = (props: PostsComponentProps) => <ApolloReactComponents.Query<PostsQuery, PostsQueryVariables> query={PostsDocument} {...props} />
+export const PostsComponent = (props: PostsComponentProps) => (
+  <ApolloReactComponents.Query<PostsQuery, PostsQueryVariables> query={PostsDocument} {...props} />
+)
 
 export function usePostsQuery(baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
@@ -397,7 +459,10 @@ export const WebsiteDocument = gql`
   }
   ${WebsiteFragmentDoc}
 `
-export type WebsiteComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<WebsiteQuery, WebsiteQueryVariables>, 'query'>
+export type WebsiteComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<WebsiteQuery, WebsiteQueryVariables>,
+  'query'
+>
 
 export const WebsiteComponent = (props: WebsiteComponentProps) => (
   <ApolloReactComponents.Query<WebsiteQuery, WebsiteQueryVariables> query={WebsiteDocument} {...props} />

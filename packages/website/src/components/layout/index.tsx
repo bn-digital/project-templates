@@ -1,4 +1,3 @@
 import './index.less'
 
-export { Content } from './Content'
-export { default as DefaultLayout } from './DefaultLayout'
+export { DefaultLayout as default } from './DefaultLayout'

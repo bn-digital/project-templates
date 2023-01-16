@@ -6,10 +6,9 @@ build:
   artifacts:
     - image: app
   tagPolicy:
-    sha256: {}
+    sha256: { }
   local:
     useBuildkit: true
-    push: false
 profiles:
   - name: staging
     activation:

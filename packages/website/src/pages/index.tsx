@@ -1,16 +1,15 @@
-import { FC, lazy } from 'react'
-import { createBrowserRouter, RouteObject } from 'react-router-dom'
+import { FC, lazy, memo } from 'react'
+import { createBrowserRouter, Outlet, RouteObject, RouterProvider } from 'react-router-dom'
 
-import { DefaultLayout } from '../components/layout'
+import DefaultLayout from '../components/layout'
 import { Loader } from '../components/layout/Loader'
 
 const Home = lazy<FC>(() => import('./home'))
-const NotFound = lazy<FC>(() => import('./not-found'))
 
 const routes: RouteObject[] = [
   {
     element: <DefaultLayout />,
-    loader: Loader,
+    loader: () => <Loader spinning />,
     path: '',
     children: [
       {
@@ -19,7 +18,7 @@ const routes: RouteObject[] = [
         index: true,
       },
       {
-        element: <NotFound />,
+        element: <Outlet />,
         path: '*',
       },
     ],
@@ -31,4 +30,7 @@ const router = createBrowserRouter(routes)
 if (import.meta.hot) {
   import.meta.hot.dispose(() => router.dispose())
 }
-export default router
+
+const PageProvider = () => <RouterProvider router={router} />
+
+export default memo(PageProvider)

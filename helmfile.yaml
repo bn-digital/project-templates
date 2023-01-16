@@ -1,34 +1,6 @@
----
 helmfiles:
-  - path: git::https://github.com/bn-digital/helm.git@helmfiles/load-balancer.yaml?ref=latest
   - path: git::https://github.com/bn-digital/helm.git@helmfiles/app.yaml?ref=latest
 
 helmDefaults:
   createNamespace: true
   cleanupOnFail: true
-
-environments:
-  default:
-    values:
-      - database:
-          enabled: false
-        tlsIssuer:
-          enabled: false
-        ingressController:
-          enabled: false
-  staging:
-    values:
-      - database:
-          enabled: false
-        tlsIssuer:
-          enabled: true
-        ingressController:
-          enabled: false
-  production:
-    values:
-      - database:
-          enabled: true
-        tlsIssuer:
-          enabled: true
-        ingressController:
-          enabled: true

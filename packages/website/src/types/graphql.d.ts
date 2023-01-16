@@ -296,6 +296,46 @@ type ComponentSharedSeoInput = {
   structuredData?: InputMaybe<Scalars['JSON']>
 }
 
+type ComponentSystemEnvironment = {
+  id: Scalars['ID']
+  name: Scalars['String']
+  value: Scalars['String']
+}
+
+type ComponentSystemEnvironmentFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSystemEnvironmentFiltersInput>>>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSystemEnvironmentFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSystemEnvironmentFiltersInput>>>
+  value?: InputMaybe<StringFilterInput>
+}
+
+type ComponentSystemEnvironmentInput = {
+  id?: InputMaybe<Scalars['ID']>
+  name?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['String']>
+}
+
+type ComponentSystemSecret = {
+  id: Scalars['ID']
+  name: Scalars['String']
+  value?: Maybe<Scalars['String']>
+}
+
+type ComponentSystemSecretFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSystemSecretFiltersInput>>>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSystemSecretFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSystemSecretFiltersInput>>>
+  value?: InputMaybe<StringFilterInput>
+}
+
+type ComponentSystemSecretInput = {
+  id?: InputMaybe<Scalars['ID']>
+  name?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['String']>
+}
+
 type ComponentUiCard = {
   description?: Maybe<Scalars['String']>
   id: Scalars['ID']
@@ -523,6 +563,49 @@ type ContactRelationResponseCollection = {
   data: Array<ContactEntity>
 }
 
+type Credential = {
+  createdAt?: Maybe<Scalars['DateTime']>
+  credentials?: Maybe<Array<Maybe<ComponentSystemEnvironment>>>
+  updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+type CredentialCredentialsArgs = {
+  filters?: InputMaybe<ComponentSystemEnvironmentFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+type CredentialEntity = {
+  attributes?: Maybe<Credential>
+  id?: Maybe<Scalars['ID']>
+}
+
+type CredentialEntityResponse = {
+  data?: Maybe<CredentialEntity>
+}
+
+type CredentialEntityResponseCollection = {
+  data: Array<CredentialEntity>
+  meta: ResponseCollectionMeta
+}
+
+type CredentialFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<CredentialFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  credentials?: InputMaybe<ComponentSystemEnvironmentFiltersInput>
+  not?: InputMaybe<CredentialFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<CredentialFiltersInput>>>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+type CredentialInput = {
+  credentials?: InputMaybe<Array<InputMaybe<ComponentSystemEnvironmentInput>>>
+}
+
+type CredentialRelationResponseCollection = {
+  data: Array<CredentialEntity>
+}
+
 type DateFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>
   between?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>
@@ -732,6 +815,8 @@ type GenericMorph =
   | ComponentPageHome
   | ComponentSharedMetaSocial
   | ComponentSharedSeo
+  | ComponentSystemEnvironment
+  | ComponentSystemSecret
   | ComponentUiCard
   | ComponentUiGrid
   | ComponentUiHeadline
@@ -741,6 +826,7 @@ type GenericMorph =
   | ComponentUiTab
   | ComponentUiText
   | Contact
+  | Credential
   | EmailDesignerEmailTemplate
   | EmailEmitterEmail
   | I18NLocale
@@ -899,6 +985,7 @@ type Mutation = {
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
   createWebsiteLocalization?: Maybe<WebsiteEntityResponse>
   deleteContact?: Maybe<ContactEntityResponse>
+  deleteCredential?: Maybe<CredentialEntityResponse>
   deleteUploadFile?: Maybe<UploadFileEntityResponse>
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>
@@ -916,6 +1003,7 @@ type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>
   updateContact?: Maybe<ContactEntityResponse>
+  updateCredential?: Maybe<CredentialEntityResponse>
   updateFileInfo: UploadFileEntityResponse
   updateUploadFile?: Maybe<UploadFileEntityResponse>
   /** Update an existing role */
@@ -1003,6 +1091,10 @@ type MutationResetPasswordArgs = {
 type MutationUpdateContactArgs = {
   data: ContactInput
   id: Scalars['ID']
+}
+
+type MutationUpdateCredentialArgs = {
+  data: CredentialInput
 }
 
 type MutationUpdateFileInfoArgs = {
@@ -1114,8 +1206,10 @@ type PostRelationResponseCollection = {
 type PublicationState = 'LIVE' | 'PREVIEW'
 
 type Query = {
+  authenticated: Scalars['Boolean']
   categories?: Maybe<CategoryEntityResponseCollection>
   category?: Maybe<CategoryEntityResponse>
+  credential?: Maybe<CredentialEntityResponse>
   emailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
   emailDesignerEmailTemplates?: Maybe<EmailDesignerEmailTemplateEntityResponseCollection>
   i18NLocale?: Maybe<I18NLocaleEntityResponse>
@@ -1694,7 +1788,10 @@ type CardFragment = {
         data?:
           | {
               id?: string | null | undefined
-              attributes?: { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string } | null | undefined
+              attributes?:
+                | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
+                | null
+                | undefined
             }
           | null
           | undefined
@@ -1705,14 +1802,25 @@ type CardFragment = {
 
 type CardFragmentVariables = Exact<{ [key: string]: never }>
 
-type CategoryFragment = { id?: string | null | undefined; attributes?: { name: string; slug: string } | null | undefined }
+type CategoryFragment = {
+  id?: string | null | undefined
+  attributes?: { name: string; slug: string } | null | undefined
+}
 
 type CategoryFragmentVariables = Exact<{ [key: string]: never }>
 
 type ContactUsFragment = {
   id: string
   pathname: string
-  contact?: { id: string; address?: string | null | undefined; email?: string | null | undefined; phone?: string | null | undefined } | null | undefined
+  contact?:
+    | {
+        id: string
+        address?: string | null | undefined
+        email?: string | null | undefined
+        phone?: string | null | undefined
+      }
+    | null
+    | undefined
 }
 
 type ContactUsFragmentVariables = Exact<{ [key: string]: never }>
@@ -1723,7 +1831,10 @@ type EntryFragmentVariables = Exact<{ [key: string]: never }>
 
 type FileFragment = {
   id?: string | null | undefined
-  attributes?: { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string } | null | undefined
+  attributes?:
+    | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
+    | null
+    | undefined
 }
 
 type FileFragmentVariables = Exact<{ [key: string]: never }>
@@ -1746,7 +1857,14 @@ type HomeFragment = {
               data?:
                 | {
                     id?: string | null | undefined
-                    attributes?: { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string } | null | undefined
+                    attributes?:
+                      | {
+                          previewUrl?: string | null | undefined
+                          alternativeText?: string | null | undefined
+                          url: string
+                        }
+                      | null
+                      | undefined
                   }
                 | null
                 | undefined
@@ -1768,7 +1886,14 @@ type HomeFragment = {
                   data?:
                     | {
                         id?: string | null | undefined
-                        attributes?: { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string } | null | undefined
+                        attributes?:
+                          | {
+                              previewUrl?: string | null | undefined
+                              alternativeText?: string | null | undefined
+                              url: string
+                            }
+                          | null
+                          | undefined
                       }
                     | null
                     | undefined
@@ -1781,7 +1906,10 @@ type HomeFragment = {
       >
     | null
     | undefined
-  technology?: { id: string; title?: string | null | undefined; subtitle?: string | null | undefined } | null | undefined
+  technology?:
+    | { id: string; title?: string | null | undefined; subtitle?: string | null | undefined }
+    | null
+    | undefined
   frameworks?:
     | {
         id: string
@@ -1793,7 +1921,14 @@ type HomeFragment = {
               data?:
                 | {
                     id?: string | null | undefined
-                    attributes?: { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string } | null | undefined
+                    attributes?:
+                      | {
+                          previewUrl?: string | null | undefined
+                          alternativeText?: string | null | undefined
+                          url: string
+                        }
+                      | null
+                      | undefined
                   }
                 | null
                 | undefined
@@ -1826,7 +1961,14 @@ type PostFragment = {
               data?:
                 | {
                     id?: string | null | undefined
-                    attributes?: { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string } | null | undefined
+                    attributes?:
+                      | {
+                          previewUrl?: string | null | undefined
+                          alternativeText?: string | null | undefined
+                          url: string
+                        }
+                      | null
+                      | undefined
                   }
                 | null
                 | undefined
@@ -1834,7 +1976,12 @@ type PostFragment = {
           | null
           | undefined
         category?:
-          | { data?: { id?: string | null | undefined; attributes?: { name: string; slug: string } | null | undefined } | null | undefined }
+          | {
+              data?:
+                | { id?: string | null | undefined; attributes?: { name: string; slug: string } | null | undefined }
+                | null
+                | undefined
+            }
           | null
           | undefined
       }
@@ -1868,7 +2015,10 @@ type TabFragment = {
           data?:
             | {
                 id?: string | null | undefined
-                attributes?: { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string } | null | undefined
+                attributes?:
+                  | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
+                  | null
+                  | undefined
               }
             | null
             | undefined
@@ -1903,7 +2053,12 @@ type WebsiteFragment = {
                   id: string
                   pathname: string
                   contact?:
-                    | { id: string; address?: string | null | undefined; email?: string | null | undefined; phone?: string | null | undefined }
+                    | {
+                        id: string
+                        address?: string | null | undefined
+                        email?: string | null | undefined
+                        phone?: string | null | undefined
+                      }
                     | null
                     | undefined
                 }
@@ -1923,7 +2078,11 @@ type WebsiteFragment = {
                                 | {
                                     id?: string | null | undefined
                                     attributes?:
-                                      | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
+                                      | {
+                                          previewUrl?: string | null | undefined
+                                          alternativeText?: string | null | undefined
+                                          url: string
+                                        }
                                       | null
                                       | undefined
                                   }
@@ -1948,7 +2107,11 @@ type WebsiteFragment = {
                                     | {
                                         id?: string | null | undefined
                                         attributes?:
-                                          | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
+                                          | {
+                                              previewUrl?: string | null | undefined
+                                              alternativeText?: string | null | undefined
+                                              url: string
+                                            }
                                           | null
                                           | undefined
                                       }
@@ -1963,7 +2126,10 @@ type WebsiteFragment = {
                       >
                     | null
                     | undefined
-                  technology?: { id: string; title?: string | null | undefined; subtitle?: string | null | undefined } | null | undefined
+                  technology?:
+                    | { id: string; title?: string | null | undefined; subtitle?: string | null | undefined }
+                    | null
+                    | undefined
                   frameworks?:
                     | {
                         id: string
@@ -1976,7 +2142,11 @@ type WebsiteFragment = {
                                 | {
                                     id?: string | null | undefined
                                     attributes?:
-                                      | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
+                                      | {
+                                          previewUrl?: string | null | undefined
+                                          alternativeText?: string | null | undefined
+                                          url: string
+                                        }
                                       | null
                                       | undefined
                                   }
@@ -1995,7 +2165,10 @@ type WebsiteFragment = {
             >
           | null
           | undefined
-        translations?: Array<{ id: string; key?: string | null | undefined; value: string } | null | undefined> | null | undefined
+        translations?:
+          | Array<{ id: string; key?: string | null | undefined; value: string } | null | undefined>
+          | null
+          | undefined
       }
     | null
     | undefined
@@ -2020,6 +2193,10 @@ type RegisterMutationVariables = Exact<{
 }>
 
 type RegisterMutation = { register: { jwt?: string | null | undefined } }
+
+type AuthenticatedQueryVariables = Exact<{ [key: string]: never }>
+
+type AuthenticatedQuery = { authenticated: boolean }
 
 type CategoriesQueryVariables = Exact<{
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>
@@ -2048,7 +2225,11 @@ type CategoriesQuery = {
                                       | {
                                           id?: string | null | undefined
                                           attributes?:
-                                            | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
+                                            | {
+                                                previewUrl?: string | null | undefined
+                                                alternativeText?: string | null | undefined
+                                                url: string
+                                              }
                                             | null
                                             | undefined
                                         }
@@ -2059,7 +2240,13 @@ type CategoriesQuery = {
                                 | undefined
                               category?:
                                 | {
-                                    data?: { id?: string | null | undefined; attributes?: { name: string; slug: string } | null | undefined } | null | undefined
+                                    data?:
+                                      | {
+                                          id?: string | null | undefined
+                                          attributes?: { name: string; slug: string } | null | undefined
+                                        }
+                                      | null
+                                      | undefined
                                   }
                                 | null
                                 | undefined
@@ -2101,7 +2288,14 @@ type PostsQuery = {
                       data?:
                         | {
                             id?: string | null | undefined
-                            attributes?: { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string } | null | undefined
+                            attributes?:
+                              | {
+                                  previewUrl?: string | null | undefined
+                                  alternativeText?: string | null | undefined
+                                  url: string
+                                }
+                              | null
+                              | undefined
                           }
                         | null
                         | undefined
@@ -2109,7 +2303,15 @@ type PostsQuery = {
                   | null
                   | undefined
                 category?:
-                  | { data?: { id?: string | null | undefined; attributes?: { name: string; slug: string } | null | undefined } | null | undefined }
+                  | {
+                      data?:
+                        | {
+                            id?: string | null | undefined
+                            attributes?: { name: string; slug: string } | null | undefined
+                          }
+                        | null
+                        | undefined
+                    }
                   | null
                   | undefined
               }
@@ -2231,7 +2433,11 @@ type WebsiteQuery = {
                                               | null
                                               | undefined
                                             technology?:
-                                              | { id: string; title?: string | null | undefined; subtitle?: string | null | undefined }
+                                              | {
+                                                  id: string
+                                                  title?: string | null | undefined
+                                                  subtitle?: string | null | undefined
+                                                }
                                               | null
                                               | undefined
                                             frameworks?:
@@ -2269,7 +2475,14 @@ type WebsiteQuery = {
                                       >
                                     | null
                                     | undefined
-                                  translations?: Array<{ id: string; key?: string | null | undefined; value: string } | null | undefined> | null | undefined
+                                  translations?:
+                                    | Array<
+                                        | { id: string; key?: string | null | undefined; value: string }
+                                        | null
+                                        | undefined
+                                      >
+                                    | null
+                                    | undefined
                                 }
                               | null
                               | undefined
@@ -2295,7 +2508,12 @@ type WebsiteQuery = {
                               id: string
                               pathname: string
                               contact?:
-                                | { id: string; address?: string | null | undefined; email?: string | null | undefined; phone?: string | null | undefined }
+                                | {
+                                    id: string
+                                    address?: string | null | undefined
+                                    email?: string | null | undefined
+                                    phone?: string | null | undefined
+                                  }
                                 | null
                                 | undefined
                             }
@@ -2315,7 +2533,11 @@ type WebsiteQuery = {
                                             | {
                                                 id?: string | null | undefined
                                                 attributes?:
-                                                  | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
+                                                  | {
+                                                      previewUrl?: string | null | undefined
+                                                      alternativeText?: string | null | undefined
+                                                      url: string
+                                                    }
                                                   | null
                                                   | undefined
                                               }
@@ -2340,7 +2562,11 @@ type WebsiteQuery = {
                                                 | {
                                                     id?: string | null | undefined
                                                     attributes?:
-                                                      | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
+                                                      | {
+                                                          previewUrl?: string | null | undefined
+                                                          alternativeText?: string | null | undefined
+                                                          url: string
+                                                        }
                                                       | null
                                                       | undefined
                                                   }
@@ -2355,7 +2581,14 @@ type WebsiteQuery = {
                                   >
                                 | null
                                 | undefined
-                              technology?: { id: string; title?: string | null | undefined; subtitle?: string | null | undefined } | null | undefined
+                              technology?:
+                                | {
+                                    id: string
+                                    title?: string | null | undefined
+                                    subtitle?: string | null | undefined
+                                  }
+                                | null
+                                | undefined
                               frameworks?:
                                 | {
                                     id: string
@@ -2368,7 +2601,11 @@ type WebsiteQuery = {
                                             | {
                                                 id?: string | null | undefined
                                                 attributes?:
-                                                  | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
+                                                  | {
+                                                      previewUrl?: string | null | undefined
+                                                      alternativeText?: string | null | undefined
+                                                      url: string
+                                                    }
                                                   | null
                                                   | undefined
                                               }
@@ -2387,7 +2624,10 @@ type WebsiteQuery = {
                         >
                       | null
                       | undefined
-                    translations?: Array<{ id: string; key?: string | null | undefined; value: string } | null | undefined> | null | undefined
+                    translations?:
+                      | Array<{ id: string; key?: string | null | undefined; value: string } | null | undefined>
+                      | null
+                      | undefined
                   }
                 | null
                 | undefined

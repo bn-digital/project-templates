@@ -2,11 +2,7 @@
 <project version="4">
   <component name="SharedFileColors">
     <fileColor scope="Production" color="Blue" />
-    <fileColor scope="IaC" color="Violet" />
     <fileColor scope="Tests" color="Green" />
-    <fileColor scope="Components" color="Blue" />
-    <fileColor scope="Styles" color="Rose" />
-    <fileColor scope="GraphQL" color="Orange" />
     <fileColor scope="Non-Project Files" color="Yellow" />
   </component>
 </project>
