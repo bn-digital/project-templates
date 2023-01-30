@@ -62,5 +62,5 @@
     "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src && yarn stylelint --fix packages/*/src/**/*.{scss,sass,css,less}",
     "lint": "yarn eslint packages/*/src && yarn stylelint packages/*/src && yarn prettier --check packages/*/src/**/*.{scss,sass,css,less}"
   },
-  "packageManager": "yarn@4.0.0-rc.34"
+  "packageManager": "yarn@4.0.0-rc.37"
 }

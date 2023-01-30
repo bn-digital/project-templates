@@ -13,16 +13,7 @@ const HeroSection: FC<CardFragment> = ({ title = '', description = '', subtitle 
       <Col span={24}>
         <Typography.Paragraph>
           <Typography.Text>
-            To edit this section, open
-            <Typography.Link
-              href={import.meta.url.replace(
-                window.location.href,
-                `http://localhost:63342/${import.meta.env.APP_NAME}/packages/website/`
-              )}
-            >
-              Section.tsx
-            </Typography.Link>{' '}
-            file
+            To edit this section, open <Typography.Link href={import.meta.url}>Section.tsx</Typography.Link> file
           </Typography.Text>
         </Typography.Paragraph>
         <Typography.Paragraph>{description}</Typography.Paragraph>
