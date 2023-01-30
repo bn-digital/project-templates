@@ -6,11 +6,9 @@ import { useToggle } from 'react-use'
 
 import { useLoginMutation } from '../../graphql'
 
-const AuthModal: FC<Pick<ModalProps, 'open'> & { toggle?: (state: boolean) => void; tokenDispatcher?: Dispatch<string> }> = ({
-  tokenDispatcher = () => undefined,
-  open = false,
-  toggle = () => undefined,
-}) => {
+const AuthModal: FC<
+  Pick<ModalProps, 'open'> & { toggle?: (state: boolean) => void; tokenDispatcher?: Dispatch<string> }
+> = ({ tokenDispatcher = () => undefined, open = false, toggle = () => undefined }) => {
   const [loginMutation, { loading }] = useLoginMutation()
   const [notifier, context] = notification.useNotification()
   const [hidden, togglePassword] = useToggle(true)

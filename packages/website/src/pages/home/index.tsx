@@ -11,7 +11,9 @@ const Home: FC = () => {
     <Layout.Content>
       {props?.hero && <HeroSection {...props.hero} />}
       <Row>
-        <Col span={24}>{props?.components && <Components style={{ textAlign: 'center' }} dataSource={props.components} />}</Col>
+        <Col span={24}>
+          {props?.components && <Components style={{ textAlign: 'center' }} dataSource={props.components} />}
+        </Col>
       </Row>
     </Layout.Content>
   )

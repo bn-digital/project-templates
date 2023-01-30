@@ -6,7 +6,7 @@ import { workingDir } from './index'
 
 type MiddlewareUIDs = `strapi::${string}` | `global::${string}` | `api::${string}` | `plugin::${string}`
 
-type MiddlewareType<T = unknown> = MiddlewareUIDs | { name: T; config: T } | Middleware
+type MiddlewareType<T = unknown> = MiddlewareUIDs | { name: T; config?: T } | Middleware
 export default ({ env }: Strapi.Env): MiddlewareType[] => {
   const bucket = env('S3_BUCKET', 'bn-dev')
   const region = env('S3_REGION', 'fra1')
@@ -64,10 +64,12 @@ export default ({ env }: Strapi.Env): MiddlewareType[] => {
       name: 'strapi::compression',
       config: {},
     },
-    { name: 'strapi::favicon', config: { path: path.join(workingDir, 'public', 'favicon.png') } },
+    { name: 'strapi::favicon' },
     {
       name: 'strapi::public',
-      config: fs.existsSync(path.join(workingDir, 'public', 'index.html')) ? { defer: true, index: 'index.html', maxAge: 3600 } : {},
+      config: fs.existsSync(path.join(workingDir, 'public', 'index.html'))
+        ? { defer: true, index: 'index.html', maxAge: 3600 }
+        : {},
     },
   ]
 }

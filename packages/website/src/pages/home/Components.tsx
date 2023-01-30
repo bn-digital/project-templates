@@ -13,7 +13,14 @@ const Components: FC<ListProps<Maybe<CardFragment>>> = ({ ...props }) => {
             hoverable={false}
             bordered={false}
             title={<Typography.Title level={4}>{it?.title}</Typography.Title>}
-            cover={<Avatar style={{ display: 'inline-block', marginTop: 24 }} src={it?.media?.data?.attributes?.url} shape={'square'} size={64} />}
+            cover={
+              <Avatar
+                style={{ display: 'inline-block', marginTop: 24 }}
+                src={it?.media?.data?.attributes?.url}
+                shape={'square'}
+                size={64}
+              />
+            }
           >
             <Space direction={'vertical'} align={'center'} style={{ height: 64 }}>
               <Typography.Text>{it?.description}</Typography.Text>

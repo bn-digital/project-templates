@@ -1,5 +1,9 @@
 export default {
-  config: {},
+  config: {
+    head: {
+      favicon: null,
+    },
+  },
   bootstrap() {
     console.log()
   },

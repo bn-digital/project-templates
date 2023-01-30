@@ -23,8 +23,11 @@ const Page = () => {
   const { data, loading } = useWebsiteQuery({ skip: !app.api })
 
   const context = useMemo(
-    () => (pathname && data?.website?.data?.attributes?.content ? filterByPathname(pathname, data?.website?.data.attributes?.content as ContentProps[]) : null),
-    [data?.website?.data?.attributes?.content, pathname],
+    () =>
+      pathname && data?.website?.data?.attributes?.content
+        ? filterByPathname(pathname, data?.website?.data.attributes?.content as ContentProps[])
+        : null,
+    [data?.website?.data?.attributes?.content, pathname]
   )
   return loading ? null : <Outlet context={context} />
 }

@@ -13,6 +13,9 @@
   "eslintConfig": {
     "extends": "@bn-digital/eslint-config/react"
   },
+  "stylelint": {
+    "extends": "@bn-digital/stylelint-config/less"
+  },
   "proxy": "http://127.0.0.1:1337",
   "dependencies": {
     "@apollo/client": "^3.7.5",

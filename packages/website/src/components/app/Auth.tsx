@@ -11,7 +11,11 @@ const AuthContext = createContext<ContextProps>(defaultValue)
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [token] = useLocalStorage('jwtToken')
-  return !token ? <>{children}</> : <MeComponent>{({ data }) => <AuthContext.Provider value={data?.me}>{children}</AuthContext.Provider>}</MeComponent>
+  return !token ? (
+    <>{children}</>
+  ) : (
+    <MeComponent>{({ data }) => <AuthContext.Provider value={data?.me}>{children}</AuthContext.Provider>}</MeComponent>
+  )
 }
 
 function withAuth<T extends JSX.IntrinsicAttributes>(Wrapped: FC<T>): FC<T> {

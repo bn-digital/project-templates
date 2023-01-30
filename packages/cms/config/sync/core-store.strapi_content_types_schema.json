@@ -530,7 +530,11 @@
         },
         "type": {
           "type": "enumeration",
-          "enum": ["read-only", "full-access", "custom"],
+          "enum": [
+            "read-only",
+            "full-access",
+            "custom"
+          ],
           "configurable": false,
           "required": true,
           "default": "read-only"
@@ -627,7 +631,11 @@
           },
           "type": {
             "type": "enumeration",
-            "enum": ["read-only", "full-access", "custom"],
+            "enum": [
+              "read-only",
+              "full-access",
+              "custom"
+            ],
             "configurable": false,
             "required": true,
             "default": "read-only"
@@ -1017,7 +1025,9 @@
           "type": "media",
           "multiple": false,
           "required": false,
-          "allowedTypes": ["images"]
+          "allowedTypes": [
+            "images"
+          ]
         },
         "seo": {
           "type": "component",
@@ -1108,7 +1118,9 @@
             "type": "media",
             "multiple": false,
             "required": false,
-            "allowedTypes": ["images"]
+            "allowedTypes": [
+              "images"
+            ]
           },
           "seo": {
             "type": "component",
@@ -1166,7 +1178,10 @@
       "attributes": {
         "content": {
           "type": "dynamiczone",
-          "components": ["page.home", "page.contact-us"],
+          "components": [
+            "page.home",
+            "page.contact-us"
+          ],
           "seo": {
             "type": "component",
             "repeatable": false,
@@ -1271,7 +1286,10 @@
         "attributes": {
           "content": {
             "type": "dynamiczone",
-            "components": ["page.home", "page.contact-us"],
+            "components": [
+              "page.home",
+              "page.contact-us"
+            ],
             "seo": {
               "type": "component",
               "repeatable": false,
@@ -1453,7 +1471,44 @@
       "indexes": [
         {
           "name": "upload_files_folder_path_index",
-          "columns": ["folder_path"],
+          "columns": [
+            "folder_path"
+          ],
+          "type": null
+        },
+        {
+          "name": "upload_files_created_at_index",
+          "columns": [
+            "created_at"
+          ],
+          "type": null
+        },
+        {
+          "name": "upload_files_updated_at_index",
+          "columns": [
+            "updated_at"
+          ],
+          "type": null
+        },
+        {
+          "name": "upload_files_name_index",
+          "columns": [
+            "name"
+          ],
+          "type": null
+        },
+        {
+          "name": "upload_files_size_index",
+          "columns": [
+            "size"
+          ],
+          "type": null
+        },
+        {
+          "name": "upload_files_ext_index",
+          "columns": [
+            "ext"
+          ],
           "type": null
         }
       ],
@@ -1646,12 +1701,16 @@
       "indexes": [
         {
           "name": "upload_folders_path_id_index",
-          "columns": ["path_id"],
+          "columns": [
+            "path_id"
+          ],
           "type": "unique"
         },
         {
           "name": "upload_folders_path_index",
-          "columns": ["path"],
+          "columns": [
+            "path"
+          ],
           "type": "unique"
         }
       ],

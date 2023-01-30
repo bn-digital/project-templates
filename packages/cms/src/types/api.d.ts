@@ -1173,7 +1173,10 @@ export interface NexusGenUnions {
     | NexusGenRootTypes['UsersPermissionsRole']
     | NexusGenRootTypes['UsersPermissionsUser']
     | NexusGenRootTypes['Website']
-  WebsiteContentDynamicZone: NexusGenRootTypes['ComponentPageContactUs'] | NexusGenRootTypes['ComponentPageHome'] | NexusGenRootTypes['Error']
+  WebsiteContentDynamicZone:
+    | NexusGenRootTypes['ComponentPageContactUs']
+    | NexusGenRootTypes['ComponentPageHome']
+    | NexusGenRootTypes['Error']
 }
 
 export type NexusGenRootTypes = NexusGenObjects & NexusGenUnions

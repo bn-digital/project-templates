@@ -4608,10 +4608,10 @@ __metadata:
   resolution: "@project-templates/cloud@workspace:packages/cloud"
   dependencies:
     "@pulumi/digitalocean": "npm:^4.16.0"
-    "@pulumi/kubernetes": "npm:^3.22.1"
-    "@pulumi/pulumi": "npm:^3.48.0"
-    "@pulumi/vault": "npm:^5.7.1"
-    "@types/node": "npm:^18.11.11"
+    "@pulumi/kubernetes": "npm:^3.23.1"
+    "@pulumi/pulumi": "npm:^3.53.1"
+    "@pulumi/vault": "npm:^5.8.0"
+    "@types/node": "npm:^18.11.18"
     dotenv: "npm:^16.0.3"
   languageName: unknown
   linkType: soft
@@ -4750,9 +4750,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/kubernetes@npm:^3.22.1":
-  version: 3.22.1
-  resolution: "@pulumi/kubernetes@npm:3.22.1"
+"@pulumi/kubernetes@npm:^3.23.1":
+  version: 3.23.1
+  resolution: "@pulumi/kubernetes@npm:3.23.1"
   dependencies:
     "@pulumi/pulumi": "npm:^3.25.0"
     "@types/glob": "npm:^5.0.35"
@@ -4762,7 +4762,7 @@ __metadata:
     node-fetch: "npm:^2.3.0"
     shell-quote: "npm:^1.6.1"
     tmp: "npm:^0.0.33"
-  checksum: 6964362e55d970389452002dabc40f12e62ec58810fd5b0d5d6c5057edfe3eb2511d02f844fb3fc76fc82b1c963b973bbd949955c5b677c9147b97e95a1a63c0
+  checksum: 1fdbc44e222a782c6ff551fc219e09bd400471fc0885f67bf6a8dca1d79861d3bdd513e1bd9a021711532bb5f8503b609b3fe14c02e729f699769ff48d426600
   languageName: node
   linkType: hard
 
@@ -4797,9 +4797,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/pulumi@npm:^3.48.0":
-  version: 3.48.0
-  resolution: "@pulumi/pulumi@npm:3.48.0"
+"@pulumi/pulumi@npm:^3.53.1":
+  version: 3.53.1
+  resolution: "@pulumi/pulumi@npm:3.53.1"
   dependencies:
     "@grpc/grpc-js": "npm:~1.3.8"
     "@logdna/tail-file": "npm:^2.0.6"
@@ -4824,7 +4824,7 @@ __metadata:
     ts-node: "npm:^7.0.1"
     typescript: "npm:~3.8.3"
     upath: "npm:^1.1.0"
-  checksum: d482e2c5ee7128f64e266671baaacd37e61e279de86c6fee167cfd50e54f41906a12bac4546202a0ab441ab84d1b46db4db0651aa859497118524b4320854be9
+  checksum: ded82dba22531876e7f9ffa6376c516a0a289bccddabf069b0558cf3c59207d0a27901bada568d47f36849eb28fff8855b557794382fcc1c84a043c6c6858217
   languageName: node
   linkType: hard
 
@@ -4835,12 +4835,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/vault@npm:^5.7.1":
-  version: 5.7.1
-  resolution: "@pulumi/vault@npm:5.7.1"
+"@pulumi/vault@npm:^5.8.0":
+  version: 5.8.0
+  resolution: "@pulumi/vault@npm:5.8.0"
   dependencies:
     "@pulumi/pulumi": "npm:^3.0.0"
-  checksum: 5d6fbaca468e5ce6d49afac8755ba1a6c402dc6bc56332cba2418872b4f59220c7036bef8d529143d53d29a90ac44c5465d4fe4555527ae5e87d01cb04662fcd
+  checksum: 6db1f94340398a934c853e83f94fecaed18a6494a0f2f444ff3b7bd115a73ba7639b7032a014cc103b190fba30bc1bbf35f9229bd099c6ad1394814cf01f2975
   languageName: node
   linkType: hard
 
@@ -6881,13 +6881,6 @@ __metadata:
   version: 14.18.26
   resolution: "@types/node@npm:14.18.26"
   checksum: 7ed44aa4a0a0f6574b5c260b00657c3480ee079953faf76659b8300441a68b1d8b503b6212521491a28121463be772d65c713e1de74fbef6fbf8e560425d587b
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^18.11.11":
-  version: 18.11.11
-  resolution: "@types/node@npm:18.11.11"
-  checksum: 7ff6dfb616544cf046b95a988435b2eddf31ea839864454fedb9b0512bbe0b9abbf7f61c3e9d3c6160b626ec8d15cf6b2255a242827ba8e599c5525952b696a5
   languageName: node
   linkType: hard
 

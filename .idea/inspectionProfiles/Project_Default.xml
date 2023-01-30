@@ -564,6 +564,7 @@
     </inspection_tool>
     <inspection_tool class="BooleanParameter" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="BooleanVariableAlwaysNegated" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="BoundFieldAssignment" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="BoundedWildcard" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="BoxingBoxedValue" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="BreakStatement" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -973,6 +974,7 @@
     <inspection_tool class="DuplicateDefinitionReference" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="DuplicateExpressions" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="DuplicateKeyInSection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="DuplicateMnemonic" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="DuplicatePipelineVariable" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="DuplicatePropertyInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="DuplicateSectionInFile" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -1178,6 +1180,7 @@
     <inspection_tool class="ForLoopWithMissingComponent" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ForeachStatement" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ForeignDelegate" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="FormSpellChecking" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="FormTypeAsClassConstant" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="FormTypeBuilderInstance" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="FormViewTemplate" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1256,6 +1259,7 @@
     <inspection_tool class="GoTemplateDuplicateVariable" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="GoTemplateUnknownVariable" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="GoTestName" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="GoTypeParameterInLowerCase" enabled="false" level="INFORMATION" enabled_by_default="false" />
     <inspection_tool class="GoUnhandledErrorResult" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="GoUnitSpecificDurationSuffix" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="GoUnnecessarilyExportedIdentifiers" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
@@ -1569,6 +1573,7 @@
         </list>
       </option>
     </inspection_tool>
+    <inspection_tool class="I18nForm" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="IOResource" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="ignoredTypesString" value="java.io.ByteArrayOutputStream,java.io.ByteArrayInputStream,java.io.StringBufferInputStream,java.io.CharArrayWriter,java.io.CharArrayReader,java.io.StringWriter,java.io.StringReader" />
       <option name="insideTryAllowed" value="false" />
@@ -1694,6 +1699,7 @@
     <inspection_tool class="InvalidComparatorMethodReference" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="InvalidFileLocation" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="InvalidParameterAnnotations" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="InvalidPropertyKeyForm" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="IsInstanceOf" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="IterableUsedAsVararg" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="IteratorHasNextCallsIteratorNext" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1784,7 +1790,7 @@
     <inspection_tool class="JSUnresolvedReactComponent" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="JSUnresolvedVariable" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="JSUnusedAssignment" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="JSUnusedGlobalSymbols" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="JSUnusedGlobalSymbols" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="JSUnusedLocalSymbols" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="JSUrlImportUsage" enabled="true" level="INFORMATION" enabled_by_default="true" />
     <inspection_tool class="JSValidateJSDoc" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -2079,6 +2085,7 @@
     <inspection_tool class="MissingDeprecatedAnnotationOnScheduledForRemovalApi" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="MissingFinalNewline" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="MissingJavadoc" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="MissingMnemonic" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="MissingOverrideAnnotation" enabled="true" level="INFORMATION" enabled_by_default="true">
       <option name="ignoreObjectMethods" value="true" />
       <option name="ignoreAnonymousClassMethods" value="false" />
@@ -2177,8 +2184,11 @@
     <inspection_tool class="NewMethodNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NewObjectEquality" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NewStringBufferWithCharArgument" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="NoButtonGroup" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NoConstructorMigration" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="NoExplicitFinalizeCalls" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="NoLabelFor" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="NoScrollPane" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NoTailRecursionAnnotation" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NoTargetNameAnnotationForOperatorLikeDefinition" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="NodeCoreCodingAssistance" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -2274,6 +2284,7 @@
     <inspection_tool class="OctalAndDecimalIntegersMixed" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="OctalLiteral" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="OnDemandImport" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="OneButtonGroup" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="OnlyOneElementUsed" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="OptionEqualsSome" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="OptionalAssignedToNull" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -3239,6 +3250,7 @@
     <inspection_tool class="ScalaUnresolvedPropertyKey" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ScalaUnusedExpression" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="ScalaUnusedSymbol" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="ScalaWeakerAccess" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ScalaXmlUnmatchedTag" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ScheduledMethodInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ScheduledThreadPoolExecutorWithZeroCoreThreads" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -3537,6 +3549,7 @@
     <inspection_tool class="SuspiciousToArrayCall" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SuspiciousTypeOfGuard" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SuspiciousVarProperty" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="SvelteUnresolvedComponent" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="SwJsonMaybeSpecificationInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SwYamlMaybeSpecificationInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SwitchExpressionCanBePushedDown" enabled="false" level="INFORMATION" enabled_by_default="false" />
@@ -3890,6 +3903,7 @@
     <inspection_tool class="VariablePatternShadow" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="VariableTypeCanBeExplicit" enabled="true" level="INFORMATION" enabled_by_default="true" />
     <inspection_tool class="VerboseNullabilityAndEmptiness" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="VgoMigrateFromReplacesToWorkspace" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="VgoUnusedDependency" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="VoidExpressionJS" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="VolatileArrayField" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -3999,6 +4013,12 @@
     <inspection_tool class="com.haulmont.jpb.SpringDataModifyingAnnotationMissing" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="com.haulmont.jpb.SpringDataPageableParameterMissing" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="com.haulmont.jpb.UnsupportedTypeWithoutConverterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="com.haulmont.rcb.ArrayToJSXMapInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="com.haulmont.rcb.EmptyHandlerLocalInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="com.haulmont.rcb.EmptyRefInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="com.haulmont.rcb.ExhaustiveDepsInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="com.haulmont.rcb.NonExistentPropUsageInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="com.haulmont.rcb.PaletteExtLocalInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="scala2InSource3" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="unused" enabled="true" level="WARNING" enabled_by_default="true" checkParameterExcludingHierarchy="false">
       <option name="LOCAL_VARIABLE" value="true" />
@@ -4011,6 +4031,7 @@
       <option name="ADD_APPLET_TO_ENTRIES" value="true" />
       <option name="ADD_SERVLET_TO_ENTRIES" value="true" />
       <option name="ADD_NONJAVA_TO_ENTRIES" value="true" />
+      <option name="selected" value="true" />
     </inspection_tool>
   </profile>
 </component>

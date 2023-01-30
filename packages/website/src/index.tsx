@@ -8,5 +8,5 @@ const rootElement = document.querySelector('#root') as HTMLElement
 createRoot(rootElement).render(
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 )

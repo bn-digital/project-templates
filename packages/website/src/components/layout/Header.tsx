@@ -1,10 +1,9 @@
 import { UnorderedListOutlined } from '@ant-design/icons'
-import { Button, Col, Row, Select } from 'antd'
+import { Button, Col, Row } from 'antd'
 import { FC } from 'react'
 import { useLocalStorage, useToggle } from 'react-use'
 
 import { useApp } from '../app'
-import { useLocale } from '../app/Locale'
 import { Logo } from '../logo/Logo'
 import { AuthModal } from '../modal/AuthModal'
 import { useBreakpoints } from '../screen'
@@ -12,21 +11,6 @@ import { useBreakpoints } from '../screen'
 const BurgerMenu: FC = () => {
   const { burger } = useApp()
   return <UnorderedListOutlined onClick={burger.toggle} />
-}
-
-const LanguageMenu: FC = () => {
-  const { locale, setLocale } = useLocale()
-
-  return (
-    <Select
-      defaultValue={locale}
-      options={[
-        { value: 'en', label: 'English' },
-        { value: 'es', label: 'Español' },
-      ]}
-      onSelect={setLocale}
-    />
-  )
 }
 
 const Header: FC<{ renderMenu: FC }> = ({ renderMenu: HorizontalMenu }) => {
@@ -51,9 +35,6 @@ const Header: FC<{ renderMenu: FC }> = ({ renderMenu: HorizontalMenu }) => {
                   Login
                 </Button>
               )}
-            </Col>
-            <Col xs={0} sm={0} md={0} lg={2} xl={2} xxl={2}>
-              <LanguageMenu />
             </Col>
             <Col xs={1} sm={1} md={1} lg={0} xl={0} xxl={0}>
               {isMobile && <BurgerMenu />}

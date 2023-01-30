@@ -85,7 +85,13 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": ["name", "email", "subject", "text", "comment"]
+        "fields": [
+          "name",
+          "email",
+          "subject",
+          "text",
+          "comment"
+        ]
       },
       "conditions": []
     },
@@ -99,7 +105,13 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": ["name", "email", "subject", "text", "comment"]
+        "fields": [
+          "name",
+          "email",
+          "subject",
+          "text",
+          "comment"
+        ]
       },
       "conditions": []
     },
@@ -107,7 +119,13 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::contact.contact",
       "properties": {
-        "fields": ["name", "email", "subject", "text", "comment"]
+        "fields": [
+          "name",
+          "email",
+          "subject",
+          "text",
+          "comment"
+        ]
       },
       "conditions": []
     },
@@ -231,7 +249,9 @@
           "seo.metaViewport",
           "seo.canonicalURL"
         ],
-        "locales": ["en"]
+        "locales": [
+          "en"
+        ]
       },
       "conditions": []
     },
@@ -239,7 +259,9 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::website.website",
       "properties": {
-        "locales": ["en"]
+        "locales": [
+          "en"
+        ]
       },
       "conditions": []
     },
@@ -264,7 +286,9 @@
           "seo.metaViewport",
           "seo.canonicalURL"
         ],
-        "locales": ["en"]
+        "locales": [
+          "en"
+        ]
       },
       "conditions": []
     },
@@ -289,7 +313,9 @@
           "seo.metaViewport",
           "seo.canonicalURL"
         ],
-        "locales": ["en"]
+        "locales": [
+          "en"
+        ]
       },
       "conditions": []
     },
@@ -459,7 +485,16 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "plugin::email-designer.email-template",
       "properties": {
-        "fields": ["templateReferenceId", "design", "subject", "bodyHtml", "bodyText", "enabled", "tags", "name"]
+        "fields": [
+          "templateReferenceId",
+          "design",
+          "subject",
+          "bodyHtml",
+          "bodyText",
+          "enabled",
+          "tags",
+          "name"
+        ]
       },
       "conditions": []
     },
@@ -473,7 +508,16 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "plugin::email-designer.email-template",
       "properties": {
-        "fields": ["templateReferenceId", "design", "subject", "bodyHtml", "bodyText", "enabled", "tags", "name"]
+        "fields": [
+          "templateReferenceId",
+          "design",
+          "subject",
+          "bodyHtml",
+          "bodyText",
+          "enabled",
+          "tags",
+          "name"
+        ]
       },
       "conditions": []
     },
@@ -481,7 +525,16 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "plugin::email-designer.email-template",
       "properties": {
-        "fields": ["templateReferenceId", "design", "subject", "bodyHtml", "bodyText", "enabled", "tags", "name"]
+        "fields": [
+          "templateReferenceId",
+          "design",
+          "subject",
+          "bodyHtml",
+          "bodyText",
+          "enabled",
+          "tags",
+          "name"
+        ]
       },
       "conditions": []
     },
@@ -489,7 +542,14 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "plugin::email-emitter.email",
       "properties": {
-        "fields": ["email", "delivered", "scheduled", "template", "payload", "log"]
+        "fields": [
+          "email",
+          "delivered",
+          "scheduled",
+          "template",
+          "payload",
+          "log"
+        ]
       },
       "conditions": []
     },
@@ -509,7 +569,14 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "plugin::email-emitter.email",
       "properties": {
-        "fields": ["email", "delivered", "scheduled", "template", "payload", "log"]
+        "fields": [
+          "email",
+          "delivered",
+          "scheduled",
+          "template",
+          "payload",
+          "log"
+        ]
       },
       "conditions": []
     },
@@ -517,7 +584,14 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "plugin::email-emitter.email",
       "properties": {
-        "fields": ["email", "delivered", "scheduled", "template", "payload", "log"]
+        "fields": [
+          "email",
+          "delivered",
+          "scheduled",
+          "template",
+          "payload",
+          "log"
+        ]
       },
       "conditions": []
     },
@@ -525,7 +599,17 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": ["username", "email", "provider", "password", "resetPasswordToken", "confirmationToken", "confirmed", "blocked", "role"]
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role"
+        ]
       },
       "conditions": []
     },
@@ -539,7 +623,17 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": ["username", "email", "provider", "password", "resetPasswordToken", "confirmationToken", "confirmed", "blocked", "role"]
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role"
+        ]
       },
       "conditions": []
     },
@@ -547,7 +641,17 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": ["username", "email", "provider", "password", "resetPasswordToken", "confirmationToken", "confirmed", "blocked", "role"]
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role"
+        ]
       },
       "conditions": []
     },
@@ -613,6 +717,12 @@
     },
     {
       "action": "plugin::upload.assets.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.configure-view",
       "subject": null,
       "properties": {},
       "conditions": []

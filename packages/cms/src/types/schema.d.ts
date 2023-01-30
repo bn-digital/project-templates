@@ -511,7 +511,11 @@ export interface PluginUsersPermissionsRole extends CollectionTypeSchema {
       }>
     description: StringAttribute
     type: StringAttribute & UniqueAttribute
-    permissions: RelationAttribute<'plugin::users-permissions.role', 'oneToMany', 'plugin::users-permissions.permission'>
+    permissions: RelationAttribute<
+      'plugin::users-permissions.role',
+      'oneToMany',
+      'plugin::users-permissions.permission'
+    >
     users: RelationAttribute<'plugin::users-permissions.role', 'oneToMany', 'plugin::users-permissions.user'>
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute

@@ -41,7 +41,9 @@ const ContextProvider: FC<ContextProviderProps> = ({ children, ...props }) => {
   const [token] = useToken()
 
   return (
-    <Context.Provider value={{ ...defaultValue, ...props, burger: { opened, toggle }, user: { authenticated: !!token, role: 'USER' } }}>
+    <Context.Provider
+      value={{ ...defaultValue, ...props, burger: { opened, toggle }, user: { authenticated: !!token, role: 'USER' } }}
+    >
       {children}
     </Context.Provider>
   )
@@ -86,7 +88,11 @@ const ApiProvider: FC<Partial<ApolloProviderProps<NormalizedCacheObject>>> = ({ 
   const { online } = useNetworkState()
   const [offline, setOffline] = useState<boolean>(!online)
   useEffect(() => {
-    fetch(apiUrl, { method: 'POST', body: JSON.stringify({ query: '{__typename}' }), headers: { 'Content-Type': 'application/json' } })
+    fetch(apiUrl, {
+      method: 'POST',
+      body: JSON.stringify({ query: '{__typename}' }),
+      headers: { 'Content-Type': 'application/json' },
+    })
       .then(response => setOffline(!response.ok))
       .catch(() => setOffline(true))
   }, [])
