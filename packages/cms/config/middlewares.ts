@@ -49,10 +49,11 @@ export default ({ env }: Strapi.Env): MiddlewareType[] => {
       },
     },
     'strapi::cors',
+    'strapi::logger',
     'strapi::query',
-    'strapi::session',
     'strapi::compression',
     'strapi::body',
+    'strapi::session',
     'strapi::favicon',
     {
       name: 'strapi::public',
