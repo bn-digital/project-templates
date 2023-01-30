@@ -17,7 +17,6 @@ import { useLocalStorage, useNetworkState, useToggle } from 'react-use'
 import introspection from '../../graphql'
 import router from '../../pages'
 import { withAuth } from './Auth'
-import { LocaleProvider } from './Locale'
 
 type AppProps = {
   burger: { opened: boolean; toggle: VoidFunction }
@@ -81,18 +80,6 @@ const clientOptions: ApolloClientOptions<NormalizedCacheObject> = {
 
 const apolloClient = new ApolloClient(clientOptions)
 
-const LocalizedApp: FC = () => {
-  return (
-    <ApiProvider>
-      <LocaleProvider>
-        <ContextProvider>
-          <ProtectedPages />
-        </ContextProvider>
-      </LocaleProvider>
-    </ApiProvider>
-  )
-}
-
 const ProtectedPages: FC = withAuth(() => <RouterProvider router={router} />)
 
 const ApiProvider: FC<Partial<ApolloProviderProps<NormalizedCacheObject>>> = ({ children }) => {
@@ -120,6 +107,6 @@ const App: FC = () => (
 
 const useApp = () => useContext(Context)
 
-export { App, ContextProvider, LocalizedApp, useApp }
+export { App, ContextProvider, useApp }
 
 export default App

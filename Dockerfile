@@ -2,11 +2,11 @@
 
 ARG version=2.9.0
 FROM dcr.bndigital.dev/library/yarn:${version} AS build
+USER root
 COPY .yarn .yarn
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY packages/cms/package.json packages/cms/package.json
 COPY packages/website/package.json packages/website/package.json
-ENV YARN_CHECKSUM_BEHAVIOR=ignore
 RUN yarn
 COPY packages packages
 RUN yarn build
