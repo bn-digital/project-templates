@@ -50,21 +50,10 @@ export default ({ env }: Strapi.Env): MiddlewareType[] => {
     },
     'strapi::cors',
     'strapi::query',
-    {
-      name: 'strapi::session',
-      config: { key: 'cms.sid', renew: true, rolling: true },
-    },
-    {
-      name: 'strapi::body',
-      config: {
-        jsonLimit: '5mb',
-      },
-    },
-    {
-      name: 'strapi::compression',
-      config: {},
-    },
-    { name: 'strapi::favicon' },
+    'strapi::session',
+    'strapi::compression',
+    'strapi::body',
+    'strapi::favicon',
     {
       name: 'strapi::public',
       config: fs.existsSync(path.join(workingDir, 'public', 'index.html'))
