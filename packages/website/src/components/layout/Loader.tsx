@@ -1,12 +1,6 @@
 import { Spin } from 'antd'
 import { FC } from 'react'
 
-import { Content } from './Content'
-
-const Loader: FC = () => (
-  <Content>
-    <Spin size={'small'} />
-  </Content>
-)
+const Loader: FC<typeof Spin.defaultProps> = props => <Spin size={'small'} {...props} />
 
 export { Loader }

@@ -1,7 +1,0 @@
-query posts($filters: PostFiltersInput) {
-  posts(publicationState: LIVE, filters: $filters) {
-    data {
-      ...Post
-    }
-  }
-}

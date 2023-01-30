@@ -1,4 +1,4 @@
-import { createHmac } from 'crypto'
+import { createHmac } from 'node:crypto'
 
 import packageMetadata from '../package.json'
 
@@ -14,6 +14,6 @@ const version = process.env.APP_VERSION ?? 'latest'
 
 const domain = process.env.DOMAIN ?? `${name}.bndigital.dev`
 
-const generateSecret = (secretName: string): string => createHmac('sha256', name).update(secretName).digest('hex')
+const generateSecret = (secretName: string): string => createHmac('sha3-256', name).update(secretName).digest('hex')
 
 export { domain, generateSecret, name, version, workingDir }

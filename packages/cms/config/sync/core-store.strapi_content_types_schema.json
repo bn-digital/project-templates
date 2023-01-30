@@ -991,6 +991,82 @@
       "actions": {},
       "lifecycles": {}
     },
+    "api::credential.credential": {
+      "kind": "singleType",
+      "collectionName": "credentials",
+      "info": {
+        "singularName": "credential",
+        "pluralName": "credentials",
+        "displayName": "Credential",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": false
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "credentials": {
+          "type": "component",
+          "repeatable": true,
+          "component": "system.environment"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "__schema__": {
+        "collectionName": "credentials",
+        "info": {
+          "singularName": "credential",
+          "pluralName": "credentials",
+          "displayName": "Credential",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": false
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "credentials": {
+            "type": "component",
+            "repeatable": true,
+            "component": "system.environment"
+          }
+        },
+        "kind": "singleType"
+      },
+      "modelType": "contentType",
+      "modelName": "credential",
+      "connection": "default",
+      "uid": "api::credential.credential",
+      "apiName": "credential",
+      "globalId": "Credential",
+      "actions": {},
+      "lifecycles": {}
+    },
     "api::post.post": {
       "kind": "collectionType",
       "collectionName": "posts",
@@ -1509,6 +1585,31 @@
           "columns": [
             "ext"
           ],
+          "type": null
+        },
+        {
+          "name": "upload_files_created_at_index",
+          "columns": ["created_at"],
+          "type": null
+        },
+        {
+          "name": "upload_files_updated_at_index",
+          "columns": ["updated_at"],
+          "type": null
+        },
+        {
+          "name": "upload_files_name_index",
+          "columns": ["name"],
+          "type": null
+        },
+        {
+          "name": "upload_files_size_index",
+          "columns": ["size"],
+          "type": null
+        },
+        {
+          "name": "upload_files_ext_index",
+          "columns": ["ext"],
           "type": null
         }
       ],

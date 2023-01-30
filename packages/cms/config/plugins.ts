@@ -3,9 +3,6 @@ import path from 'path'
 import { domain, generateSecret, name, workingDir } from './index'
 
 export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
-  'email-emitter': {
-    enabled: true,
-  },
   'import-export-entries': {
     enabled: true,
     config: {
@@ -22,7 +19,10 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
       subscriptions: true,
       playgroundAlways: true,
       generateArtifacts: true,
-      artifacts: { schema: path.join(workingDir, 'src', 'graphql', 'schema.graphql'), typegen: path.join(workingDir, 'src', 'types', 'api.d.ts') },
+      artifacts: {
+        schema: path.join(workingDir, 'src', 'graphql', 'schema.graphql'),
+        typegen: path.join(workingDir, 'src', 'types', 'graphql.d.ts'),
+      },
       apolloServer: {
         cache: 'bounded',
         persistedQueries: {

@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="Styles" pattern="file:*.less||file:*.scss||file:*.css" />
-</component>

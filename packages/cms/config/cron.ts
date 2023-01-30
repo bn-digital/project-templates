@@ -1,3 +1,6 @@
 export default {
-  '* * * * *': ({ strapi }: Global) => (strapi.service('plugin::email-emitter.emitter') as Strapi.EmailEmitter.EmitterService).sendScheduled(),
+  '* * * * *': ({ strapi }: Global) => {
+    const emitter: Strapi.EmailEmitter.EmitterService = strapi.plugin('email-emitter').service('emitter')
+    return emitter.sendScheduled()
+  },
 }

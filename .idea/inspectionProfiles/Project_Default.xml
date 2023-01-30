@@ -1484,6 +1484,7 @@
     <inspection_tool class="HasPlatformType" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="HashCodeUsesNonFinalVariable" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="HashCodeUsesVar" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="HbEmptyBlock" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="HeadOrLastOption" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="HelmChartMissingKeys" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="HelmChartUnknownKeys" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1790,7 +1791,7 @@
     <inspection_tool class="JSUnresolvedReactComponent" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="JSUnresolvedVariable" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="JSUnusedAssignment" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="JSUnusedGlobalSymbols" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="JSUnusedGlobalSymbols" enabled="true" level="INFORMATION" enabled_by_default="true" />
     <inspection_tool class="JSUnusedLocalSymbols" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="JSUrlImportUsage" enabled="true" level="INFORMATION" enabled_by_default="true" />
     <inspection_tool class="JSValidateJSDoc" enabled="true" level="WARNING" enabled_by_default="true" />

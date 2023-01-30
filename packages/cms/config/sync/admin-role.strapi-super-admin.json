@@ -131,6 +131,36 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::credential.credential",
+      "properties": {
+        "fields": ["credentials.name", "credentials.value"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::credential.credential",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::credential.credential",
+      "properties": {
+        "fields": ["credentials.name", "credentials.value"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::credential.credential",
+      "properties": {
+        "fields": ["credentials.name", "credentials.value"]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::post.post",
       "properties": {
         "fields": [

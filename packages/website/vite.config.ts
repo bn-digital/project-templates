@@ -1,9 +1,10 @@
-import { configureReact as configure } from '@bn-digital/vite'
+import { configureReact } from '@bn-digital/vite'
+import { defineConfig } from 'vite'
 
-export default configure(
-  {},
+const config = configureReact(
+  { server: { watch: { interval: 1000 } } },
   {
-    lint: { enabled: false },
+    lint: { enabled: true },
     react: { graphql: true },
     analytics: { enableDev: false },
     fonts: {
@@ -15,3 +16,5 @@ export default configure(
     },
   }
 )
+
+export default defineConfig(config)
