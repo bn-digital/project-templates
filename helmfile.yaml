@@ -1,5 +1,5 @@
 helmfiles:
-  - path: git::https://github.com/bn-digital/helm.git@helmfiles/app.yaml?ref=latest
+  - path: git::https://github.com/bn-digital/helm.git@helmfiles/nodejs.yaml?ref=latest
 
 helmDefaults:
   createNamespace: true
