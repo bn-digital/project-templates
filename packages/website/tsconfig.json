@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": ".",
-    "outDir": "build"
+    "outDir": "build",
+    "noUnusedLocals": false
   },
   "include": ["src", "./vite.config.ts", "./package.json"]
 }
