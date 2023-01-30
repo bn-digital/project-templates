@@ -4,3 +4,12 @@ helmfiles:
 helmDefaults:
   createNamespace: true
   cleanupOnFail: true
+
+environments:
+  default:
+    values: []
+  staging:
+    values: []
+  production:
+    values: []
+
