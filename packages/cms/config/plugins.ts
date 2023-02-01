@@ -16,7 +16,7 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
       shadowCRUD: true,
       defaultLimit: 10,
       maxLimit: 100,
-      subscriptions: true,
+      subscriptions: false,
       playgroundAlways: true,
       generateArtifacts: true,
       artifacts: {

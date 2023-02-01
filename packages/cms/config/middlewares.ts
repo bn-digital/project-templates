@@ -12,6 +12,7 @@ type MiddlewareType<ID = MiddlewareUIDs, T = unknown> = { config?: T; name: ID }
 export default ({ env }: Strapi.Env): MiddlewareType[] => {
   const bucket = env('S3_BUCKET', 'bn-dev')
   const region = env('S3_REGION', 'fra1')
+  const maxAge = 30 * 24 * 60 * 60 * 1000
   return [
     'strapi::errors',
     {
@@ -62,13 +63,13 @@ export default ({ env }: Strapi.Env): MiddlewareType[] => {
     },
     {
       name: 'strapi::compression',
-      config: {},
+      config: { gzip: true },
     },
     { name: 'strapi::favicon' },
     {
       name: 'strapi::public',
       config: fs.existsSync(path.join(workingDir, 'public', 'index.html'))
-        ? { defer: true, index: 'index.html', maxAge: 3600 }
+        ? { defer: true, index: 'index.html', maxAge }
         : {},
     },
   ]

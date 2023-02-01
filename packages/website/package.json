@@ -14,17 +14,17 @@
   },
   "proxy": "http://127.0.0.1:1337",
   "dependencies": {
-    "@apollo/client": "^3.7.4",
+    "@apollo/client": "^3.7.6",
     "antd": "latest-4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-responsive": "^9.0.2",
-    "react-router-dom": "^6.6.2",
+    "react-router-dom": "^6.8.0",
     "react-use": "^17.4.0"
   },
   "devDependencies": {
-    "@bn-digital/vite": "^2.2.21",
-    "@types/react": "^18.0.26",
+    "@bn-digital/vite": "^2.2.24",
+    "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10"
   }
 }
