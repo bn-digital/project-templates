@@ -25,7 +25,13 @@ jobs:
   secrets:
     uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
     secrets: inherit
+    with:
+      secrets: |
+        infrastructure/data/digitalocean    projects-cluster  KUBERNETES_CLUSTER ;
   deploy:
     needs: [ secrets ]
     uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
     secrets: inherit
+    with:
+      secrets: |
+        infrastructure/data/digitalocean    projects-cluster  KUBERNETES_CLUSTER ;
