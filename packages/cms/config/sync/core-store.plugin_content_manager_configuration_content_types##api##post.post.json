@@ -119,34 +119,6 @@
           "sortable": true
         }
       },
-      "background": {
-        "edit": {
-          "label": "background",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "background",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "uuid": {
-        "edit": {
-          "label": "uuid",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": false
-        },
-        "list": {
-          "label": "uuid",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -177,12 +149,9 @@
       }
     },
     "layouts": {
+      "list": ["id", "name", "slug", "teaser"],
       "edit": [
         [
-          {
-            "name": "uuid",
-            "size": 6
-          },
           {
             "name": "slug",
             "size": 6
@@ -208,10 +177,6 @@
           {
             "name": "cover",
             "size": 6
-          },
-          {
-            "name": "background",
-            "size": 6
           }
         ],
         [
@@ -226,8 +191,7 @@
             "size": 6
           }
         ]
-      ],
-      "list": ["uuid", "id", "name", "slug", "teaser"]
+      ]
     }
   },
   "type": "object",

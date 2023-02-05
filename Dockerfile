@@ -7,17 +7,20 @@ COPY .yarn .yarn
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY packages/cms/package.json packages/cms/package.json
 COPY packages/website/package.json packages/website/package.json
-ENV YARN_CACHE_FOLDER=/root
 RUN yarn
-COPY packages packages
-RUN yarn build
+COPY packages/website packages/website
+COPY packages/cms packages/cms
+RUN yarn build \
+ && yarn workspaces focus --production --all
 
-FROM gcr.io/distroless/nodejs18-debian11:nonroot
+FROM dcr.bndigital.dev/library/nodejs:${version}
 WORKDIR /usr/local/src
-COPY --from=build /usr/local/src/packages/cms .
-COPY --from=build /usr/local/src/packages/website/build public
+USER node
+COPY --from=build --chown=node /usr/local/src/packages/cms .
+COPY --from=build --chown=node /usr/local/src/packages/website/build public
 ENV NODE_ENV=production \
     HOST=0.0.0.0 \
     PORT=5000
 EXPOSE 5000
+ENTRYPOINT ["node"]
 CMD ["node_modules/@strapi/strapi/bin/strapi.js", "start"]

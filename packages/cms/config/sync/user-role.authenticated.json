@@ -10,9 +10,6 @@
       "action": "api::category.category.findOne"
     },
     {
-      "action": "api::contact.contact.create"
-    },
-    {
       "action": "api::post.post.find"
     },
     {

@@ -1,0 +1,17 @@
+{
+  "extends": "@bn-digital/typescript-config/standard",
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    {
+      "path": "packages/cloud/tsconfig.json"
+    },
+    {
+      "path": "packages/cms/tsconfig.json"
+    },
+    {
+      "path": "packages/website/tsconfig.json"
+    }
+  ]
+}

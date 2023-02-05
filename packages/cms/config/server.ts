@@ -1,4 +1,4 @@
-import { generateSecret } from './'
+import { generateSecret } from '../src/hooks'
 import tasks from './cron'
 
 export default ({ env }: Strapi.Env): Strapi.Config.Server => {
@@ -7,7 +7,7 @@ export default ({ env }: Strapi.Env): Strapi.Config.Server => {
   return {
     host,
     port,
-    url: env('DOMAIN', '') ? `https://${env('DOMAIN')}` : env('CMS_PUBLIC_URL', ''),
+    url: env('DOMAIN') ? `https://${env('DOMAIN')}` : env('CMS_PUBLIC_URL', ''),
     admin: { autoOpen: false },
     cron: {
       enabled: true,

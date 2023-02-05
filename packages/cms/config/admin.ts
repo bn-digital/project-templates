@@ -1,4 +1,4 @@
-import { generateSecret } from './'
+import { generateSecret } from '../src/hooks'
 
 export default ({ env }: Strapi.Env): Strapi.Config.Admin => ({
   auth: {

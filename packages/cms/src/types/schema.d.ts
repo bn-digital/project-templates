@@ -1,32 +1,31 @@
 import {
-  BigIntegerAttribute,
-  BooleanAttribute,
   CollectionTypeSchema,
-  ComponentAttribute,
-  ComponentSchema,
-  CustomField,
-  DateTimeAttribute,
-  DecimalAttribute,
-  DefaultTo,
-  DynamicZoneAttribute,
-  EmailAttribute,
-  EnumerationAttribute,
-  IntegerAttribute,
-  JSONAttribute,
-  MediaAttribute,
-  PasswordAttribute,
-  PrivateAttribute,
-  RelationAttribute,
-  RequiredAttribute,
-  RichTextAttribute,
-  SetMinMax,
-  SetMinMaxLength,
-  SetPluginOptions,
-  SingleTypeSchema,
   StringAttribute,
-  TextAttribute,
-  UIDAttribute,
+  RequiredAttribute,
+  SetMinMaxLength,
+  JSONAttribute,
+  DefaultTo,
+  RelationAttribute,
+  DateTimeAttribute,
+  PrivateAttribute,
+  EmailAttribute,
   UniqueAttribute,
+  PasswordAttribute,
+  BooleanAttribute,
+  EnumerationAttribute,
+  BigIntegerAttribute,
+  UIDAttribute,
+  ComponentAttribute,
+  TextAttribute,
+  RichTextAttribute,
+  MediaAttribute,
+  SingleTypeSchema,
+  DynamicZoneAttribute,
+  SetPluginOptions,
+  IntegerAttribute,
+  DecimalAttribute,
+  SetMinMax,
+  ComponentSchema,
 } from '@strapi/strapi'
 
 export interface AdminPermission extends CollectionTypeSchema {
@@ -295,14 +294,6 @@ export interface ApiPostPost extends CollectionTypeSchema {
     cover: MediaAttribute
     seo: ComponentAttribute<'shared.seo'>
     category: RelationAttribute<'api::post.post', 'manyToOne', 'api::category.category'>
-    background: StringAttribute &
-      CustomField<
-        'plugin::color-picker.color',
-        {
-          format: 'rgba'
-        }
-      >
-    uuid: UIDAttribute & RequiredAttribute & CustomField<'plugin::field-uuid.uuid'>
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     publishedAt: DateTimeAttribute
@@ -433,31 +424,6 @@ export interface PluginUploadFolder extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'plugin::upload.folder', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'plugin::upload.folder', 'oneToOne', 'admin::user'> & PrivateAttribute
-  }
-}
-
-export interface PluginEmailEmitterEmail extends CollectionTypeSchema {
-  info: {
-    singularName: 'email'
-    pluralName: 'emails'
-    displayName: 'Email'
-    description: ''
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    email: EmailAttribute
-    delivered: BooleanAttribute & RequiredAttribute & DefaultTo<false>
-    scheduled: BooleanAttribute & RequiredAttribute & DefaultTo<false>
-    template: RelationAttribute<'plugin::email-emitter.email', 'oneToOne', 'plugin::email-designer.email-template'>
-    payload: JSONAttribute
-    log: TextAttribute
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    publishedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'plugin::email-emitter.email', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'plugin::email-emitter.email', 'oneToOne', 'admin::user'> & PrivateAttribute
   }
 }
 
@@ -634,67 +600,6 @@ export interface PluginEmailDesignerEmailTemplate extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<'plugin::email-designer.email-template', 'oneToOne', 'admin::user'> & PrivateAttribute
     updatedBy: RelationAttribute<'plugin::email-designer.email-template', 'oneToOne', 'admin::user'> & PrivateAttribute
-  }
-}
-
-export interface PluginMenusMenu extends CollectionTypeSchema {
-  info: {
-    displayName: 'Menu'
-    singularName: 'menu'
-    pluralName: 'menus'
-    tableName: 'menus'
-  }
-  options: {
-    draftAndPublish: false
-  }
-  pluginOptions: {
-    'content-manager': {
-      visible: false
-    }
-    'content-type-builder': {
-      visible: false
-    }
-  }
-  attributes: {
-    title: StringAttribute & RequiredAttribute
-    slug: UIDAttribute<'plugin::menus.menu', 'title'> & RequiredAttribute
-    items: RelationAttribute<'plugin::menus.menu', 'oneToMany', 'plugin::menus.menu-item'>
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'plugin::menus.menu', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'plugin::menus.menu', 'oneToOne', 'admin::user'> & PrivateAttribute
-  }
-}
-
-export interface PluginMenusMenuItem extends CollectionTypeSchema {
-  info: {
-    displayName: 'Menu Item'
-    singularName: 'menu-item'
-    pluralName: 'menu-items'
-    tableName: 'menu_items'
-  }
-  options: {
-    draftAndPublish: false
-  }
-  pluginOptions: {
-    'content-manager': {
-      visible: false
-    }
-    'content-type-builder': {
-      visible: false
-    }
-  }
-  attributes: {
-    order: IntegerAttribute
-    title: StringAttribute & RequiredAttribute
-    url: StringAttribute
-    target: EnumerationAttribute<['_blank', '_parent', '_self', '_top']>
-    root_menu: RelationAttribute<'plugin::menus.menu-item', 'manyToOne', 'plugin::menus.menu'> & RequiredAttribute
-    parent: RelationAttribute<'plugin::menus.menu-item', 'oneToOne', 'plugin::menus.menu-item'>
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'plugin::menus.menu-item', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'plugin::menus.menu-item', 'oneToOne', 'admin::user'> & PrivateAttribute
   }
 }
 
@@ -927,14 +832,11 @@ declare global {
       'api::website.website': ApiWebsiteWebsite
       'plugin::upload.file': PluginUploadFile
       'plugin::upload.folder': PluginUploadFolder
-      'plugin::email-emitter.email': PluginEmailEmitterEmail
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission
       'plugin::users-permissions.role': PluginUsersPermissionsRole
       'plugin::users-permissions.user': PluginUsersPermissionsUser
       'plugin::i18n.locale': PluginI18NLocale
       'plugin::email-designer.email-template': PluginEmailDesignerEmailTemplate
-      'plugin::menus.menu': PluginMenusMenu
-      'plugin::menus.menu-item': PluginMenusMenuItem
       'data.contact': DataContact
       'data.entry': DataEntry
       'data.set': DataSet

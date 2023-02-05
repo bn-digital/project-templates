@@ -1,6 +1,6 @@
 import path from 'path'
 
-import { domain, generateSecret, name, workingDir } from './index'
+import app, { generateSecret } from '../src/hooks'
 
 export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
   'import-export-entries': {
@@ -20,8 +20,8 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
       playgroundAlways: true,
       generateArtifacts: true,
       artifacts: {
-        schema: path.join(workingDir, 'src', 'graphql', 'schema.graphql'),
-        typegen: path.join(workingDir, 'src', 'types', 'graphql.d.ts'),
+        schema: path.join(app.workingDir, 'src', 'graphql', 'schema.graphql'),
+        typegen: path.join(app.workingDir, 'src', 'types', 'graphql.d.ts'),
       },
       apolloServer: {
         cache: 'bounded',
@@ -46,7 +46,7 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
         secretAccessKey: env('S3_SECRET_ACCESS_KEY'),
         endpoint: env('S3_ENDPOINT'),
         params: {
-          Bucket: `${env('S3_BUCKET', 'bn-dev')}/${name}/uploads`,
+          Bucket: `${env('S3_BUCKET', 'bn-dev')}/${app.name}/uploads`,
         },
       },
     },
@@ -64,8 +64,8 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin => ({
         },
       },
       settings: {
-        defaultFrom: env('SMTP_MAIL_FROM', `no-reply@${domain}`),
-        defaultReplyTo: env('SMTP_MAIL_TO', `no-reply@${domain}`),
+        defaultFrom: env('SMTP_MAIL_FROM', `no-reply@${app.domain}`),
+        defaultReplyTo: env('SMTP_MAIL_TO', `no-reply@${app.domain}`),
       },
     },
   },

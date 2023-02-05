@@ -56,7 +56,7 @@ services:
   #      traefik.http.routers.cms.tls: 'true'
 
   database:
-    image: postgres:14.4
+    image: postgres:15.1
     env_file:
       - .env
     environment:

@@ -44,18 +44,6 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "posts"
-    },
-    "background": {
-      "type": "customField",
-      "options": {
-        "format": "rgba"
-      },
-      "customField": "plugin::color-picker.color"
-    },
-    "uuid": {
-      "type": "customField",
-      "required": true,
-      "customField": "plugin::field-uuid.uuid"
     }
   }
 }

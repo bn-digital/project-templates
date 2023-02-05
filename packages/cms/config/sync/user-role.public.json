@@ -10,9 +10,6 @@
       "action": "api::category.category.findOne"
     },
     {
-      "action": "api::contact.contact.create"
-    },
-    {
       "action": "api::post.post.find"
     },
     {
@@ -20,9 +17,6 @@
     },
     {
       "action": "api::website.website.find"
-    },
-    {
-      "action": "plugin::i18n.locales.listLocales"
     },
     {
       "action": "plugin::upload.content-api.upload"

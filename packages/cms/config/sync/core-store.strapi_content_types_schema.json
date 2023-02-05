@@ -530,11 +530,7 @@
         },
         "type": {
           "type": "enumeration",
-          "enum": [
-            "read-only",
-            "full-access",
-            "custom"
-          ],
+          "enum": ["read-only", "full-access", "custom"],
           "configurable": false,
           "required": true,
           "default": "read-only"
@@ -631,11 +627,7 @@
           },
           "type": {
             "type": "enumeration",
-            "enum": [
-              "read-only",
-              "full-access",
-              "custom"
-            ],
+            "enum": ["read-only", "full-access", "custom"],
             "configurable": false,
             "required": true,
             "default": "read-only"
@@ -887,186 +879,6 @@
       "actions": {},
       "lifecycles": {}
     },
-    "api::contact.contact": {
-      "kind": "collectionType",
-      "collectionName": "contacts",
-      "info": {
-        "singularName": "contact",
-        "pluralName": "contacts",
-        "displayName": "Contact",
-        "description": ""
-      },
-      "options": {
-        "populateCreatorFields": false,
-        "draftAndPublish": false
-      },
-      "pluginOptions": {},
-      "attributes": {
-        "name": {
-          "type": "string",
-          "required": true
-        },
-        "email": {
-          "type": "email",
-          "required": true
-        },
-        "subject": {
-          "type": "string"
-        },
-        "text": {
-          "type": "text"
-        },
-        "comment": {
-          "type": "string",
-          "required": true
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        }
-      },
-      "__schema__": {
-        "collectionName": "contacts",
-        "info": {
-          "singularName": "contact",
-          "pluralName": "contacts",
-          "displayName": "Contact",
-          "description": ""
-        },
-        "options": {
-          "populateCreatorFields": false,
-          "draftAndPublish": false
-        },
-        "pluginOptions": {},
-        "attributes": {
-          "name": {
-            "type": "string",
-            "required": true
-          },
-          "email": {
-            "type": "email",
-            "required": true
-          },
-          "subject": {
-            "type": "string"
-          },
-          "text": {
-            "type": "text"
-          },
-          "comment": {
-            "type": "string",
-            "required": true
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "contact",
-      "connection": "default",
-      "uid": "api::contact.contact",
-      "apiName": "contact",
-      "globalId": "Contact",
-      "actions": {},
-      "lifecycles": {}
-    },
-    "api::credential.credential": {
-      "kind": "singleType",
-      "collectionName": "credentials",
-      "info": {
-        "singularName": "credential",
-        "pluralName": "credentials",
-        "displayName": "Credential",
-        "description": ""
-      },
-      "options": {
-        "draftAndPublish": false
-      },
-      "pluginOptions": {},
-      "attributes": {
-        "credentials": {
-          "type": "component",
-          "repeatable": true,
-          "component": "system.environment"
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        }
-      },
-      "__schema__": {
-        "collectionName": "credentials",
-        "info": {
-          "singularName": "credential",
-          "pluralName": "credentials",
-          "displayName": "Credential",
-          "description": ""
-        },
-        "options": {
-          "draftAndPublish": false
-        },
-        "pluginOptions": {},
-        "attributes": {
-          "credentials": {
-            "type": "component",
-            "repeatable": true,
-            "component": "system.environment"
-          }
-        },
-        "kind": "singleType"
-      },
-      "modelType": "contentType",
-      "modelName": "credential",
-      "connection": "default",
-      "uid": "api::credential.credential",
-      "apiName": "credential",
-      "globalId": "Credential",
-      "actions": {},
-      "lifecycles": {}
-    },
     "api::post.post": {
       "kind": "collectionType",
       "collectionName": "posts",
@@ -1101,9 +913,7 @@
           "type": "media",
           "multiple": false,
           "required": false,
-          "allowedTypes": [
-            "images"
-          ]
+          "allowedTypes": ["images"]
         },
         "seo": {
           "type": "component",
@@ -1115,18 +925,6 @@
           "relation": "manyToOne",
           "target": "api::category.category",
           "inversedBy": "posts"
-        },
-        "background": {
-          "type": "string",
-          "options": {
-            "format": "rgba"
-          },
-          "customField": "plugin::color-picker.color"
-        },
-        "uuid": {
-          "type": "uid",
-          "required": true,
-          "customField": "plugin::field-uuid.uuid"
         },
         "createdAt": {
           "type": "datetime"
@@ -1194,9 +992,7 @@
             "type": "media",
             "multiple": false,
             "required": false,
-            "allowedTypes": [
-              "images"
-            ]
+            "allowedTypes": ["images"]
           },
           "seo": {
             "type": "component",
@@ -1208,18 +1004,6 @@
             "relation": "manyToOne",
             "target": "api::category.category",
             "inversedBy": "posts"
-          },
-          "background": {
-            "type": "customField",
-            "options": {
-              "format": "rgba"
-            },
-            "customField": "plugin::color-picker.color"
-          },
-          "uuid": {
-            "type": "customField",
-            "required": true,
-            "customField": "plugin::field-uuid.uuid"
           }
         },
         "kind": "collectionType"
@@ -1254,10 +1038,7 @@
       "attributes": {
         "content": {
           "type": "dynamiczone",
-          "components": [
-            "page.home",
-            "page.contact-us"
-          ],
+          "components": ["page.home", "page.contact-us"],
           "seo": {
             "type": "component",
             "repeatable": false,
@@ -1324,22 +1105,6 @@
           "visible": false,
           "useJoinTable": false,
           "private": true
-        },
-        "localizations": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "relation",
-          "relation": "oneToMany",
-          "target": "api::website.website"
-        },
-        "locale": {
-          "writable": true,
-          "private": false,
-          "configurable": false,
-          "visible": false,
-          "type": "string"
         }
       },
       "__schema__": {
@@ -1362,10 +1127,7 @@
         "attributes": {
           "content": {
             "type": "dynamiczone",
-            "components": [
-              "page.home",
-              "page.contact-us"
-            ],
+            "components": ["page.home", "page.contact-us"],
             "seo": {
               "type": "component",
               "repeatable": false,
@@ -1547,44 +1309,32 @@
       "indexes": [
         {
           "name": "upload_files_folder_path_index",
-          "columns": [
-            "folder_path"
-          ],
+          "columns": ["folder_path"],
           "type": null
         },
         {
           "name": "upload_files_created_at_index",
-          "columns": [
-            "created_at"
-          ],
+          "columns": ["created_at"],
           "type": null
         },
         {
           "name": "upload_files_updated_at_index",
-          "columns": [
-            "updated_at"
-          ],
+          "columns": ["updated_at"],
           "type": null
         },
         {
           "name": "upload_files_name_index",
-          "columns": [
-            "name"
-          ],
+          "columns": ["name"],
           "type": null
         },
         {
           "name": "upload_files_size_index",
-          "columns": [
-            "size"
-          ],
+          "columns": ["size"],
           "type": null
         },
         {
           "name": "upload_files_ext_index",
-          "columns": [
-            "ext"
-          ],
+          "columns": ["ext"],
           "type": null
         }
       ],
@@ -1777,16 +1527,12 @@
       "indexes": [
         {
           "name": "upload_folders_path_id_index",
-          "columns": [
-            "path_id"
-          ],
+          "columns": ["path_id"],
           "type": "unique"
         },
         {
           "name": "upload_folders_path_index",
-          "columns": [
-            "path"
-          ],
+          "columns": ["path"],
           "type": "unique"
         }
       ],
@@ -2260,234 +2006,6 @@
       "uid": "plugin::users-permissions.user",
       "plugin": "users-permissions",
       "globalId": "UsersPermissionsUser"
-    },
-    "plugin::email-emitter.email": {
-      "kind": "collectionType",
-      "collectionName": "email_emitter_emails",
-      "info": {
-        "singularName": "email",
-        "pluralName": "emails",
-        "displayName": "Email",
-        "description": ""
-      },
-      "options": {
-        "draftAndPublish": true
-      },
-      "pluginOptions": {},
-      "attributes": {
-        "email": {
-          "type": "email"
-        },
-        "delivered": {
-          "type": "boolean",
-          "required": true,
-          "configurable": false,
-          "default": false
-        },
-        "scheduled": {
-          "type": "boolean",
-          "required": true,
-          "configurable": false,
-          "default": false
-        },
-        "template": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "plugin::email-designer.email-template"
-        },
-        "payload": {
-          "type": "json",
-          "required": false
-        },
-        "log": {
-          "type": "text",
-          "required": false
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "publishedAt": {
-          "type": "datetime",
-          "configurable": false,
-          "writable": true,
-          "visible": false
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        }
-      },
-      "__schema__": {
-        "collectionName": "email_emitter_emails",
-        "info": {
-          "singularName": "email",
-          "pluralName": "emails",
-          "displayName": "Email",
-          "description": ""
-        },
-        "options": {
-          "draftAndPublish": true
-        },
-        "pluginOptions": {},
-        "attributes": {
-          "email": {
-            "type": "email"
-          },
-          "delivered": {
-            "type": "boolean",
-            "required": true,
-            "configurable": false,
-            "default": false
-          },
-          "scheduled": {
-            "type": "boolean",
-            "required": true,
-            "configurable": false,
-            "default": false
-          },
-          "template": {
-            "type": "relation",
-            "relation": "oneToOne",
-            "target": "plugin::email-designer.email-template"
-          },
-          "payload": {
-            "type": "json",
-            "required": false
-          },
-          "log": {
-            "type": "text",
-            "required": false
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "email",
-      "connection": "default",
-      "uid": "plugin::email-emitter.email",
-      "plugin": "email-emitter",
-      "globalId": "EmailEmitterEmail",
-      "lifecycles": {}
-    },
-    "plugin::i18n.locale": {
-      "info": {
-        "singularName": "locale",
-        "pluralName": "locales",
-        "collectionName": "locales",
-        "displayName": "Locale",
-        "description": ""
-      },
-      "options": {
-        "draftAndPublish": false
-      },
-      "pluginOptions": {
-        "content-manager": {
-          "visible": false
-        },
-        "content-type-builder": {
-          "visible": false
-        }
-      },
-      "attributes": {
-        "name": {
-          "type": "string",
-          "min": 1,
-          "max": 50,
-          "configurable": false
-        },
-        "code": {
-          "type": "string",
-          "unique": true,
-          "configurable": false
-        },
-        "createdAt": {
-          "type": "datetime"
-        },
-        "updatedAt": {
-          "type": "datetime"
-        },
-        "createdBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        },
-        "updatedBy": {
-          "type": "relation",
-          "relation": "oneToOne",
-          "target": "admin::user",
-          "configurable": false,
-          "writable": false,
-          "visible": false,
-          "useJoinTable": false,
-          "private": true
-        }
-      },
-      "kind": "collectionType",
-      "__schema__": {
-        "info": {
-          "singularName": "locale",
-          "pluralName": "locales",
-          "collectionName": "locales",
-          "displayName": "Locale",
-          "description": ""
-        },
-        "options": {
-          "draftAndPublish": false
-        },
-        "pluginOptions": {
-          "content-manager": {
-            "visible": false
-          },
-          "content-type-builder": {
-            "visible": false
-          }
-        },
-        "attributes": {
-          "name": {
-            "type": "string",
-            "min": 1,
-            "max": 50,
-            "configurable": false
-          },
-          "code": {
-            "type": "string",
-            "unique": true,
-            "configurable": false
-          }
-        },
-        "kind": "collectionType"
-      },
-      "modelType": "contentType",
-      "modelName": "locale",
-      "connection": "default",
-      "uid": "plugin::i18n.locale",
-      "plugin": "i18n",
-      "collectionName": "i18n_locale",
-      "globalId": "I18NLocale"
     },
     "plugin::email-designer.email-template": {
       "kind": "collectionType",

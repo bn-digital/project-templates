@@ -83,84 +83,6 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::contact.contact",
-      "properties": {
-        "fields": [
-          "name",
-          "email",
-          "subject",
-          "text",
-          "comment"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::contact.contact",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::contact.contact",
-      "properties": {
-        "fields": [
-          "name",
-          "email",
-          "subject",
-          "text",
-          "comment"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::contact.contact",
-      "properties": {
-        "fields": [
-          "name",
-          "email",
-          "subject",
-          "text",
-          "comment"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::credential.credential",
-      "properties": {
-        "fields": ["credentials.name", "credentials.value"]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::credential.credential",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::credential.credential",
-      "properties": {
-        "fields": ["credentials.name", "credentials.value"]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::credential.credential",
-      "properties": {
-        "fields": ["credentials.name", "credentials.value"]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
       "subject": "api::post.post",
       "properties": {
         "fields": [
@@ -181,9 +103,7 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL",
-          "category",
-          "background",
-          "uuid"
+          "category"
         ]
       },
       "conditions": []
@@ -222,9 +142,7 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL",
-          "category",
-          "background",
-          "uuid"
+          "category"
         ]
       },
       "conditions": []
@@ -251,9 +169,7 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL",
-          "category",
-          "background",
-          "uuid"
+          "category"
         ]
       },
       "conditions": []
@@ -278,9 +194,6 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ],
-        "locales": [
-          "en"
         ]
       },
       "conditions": []
@@ -288,11 +201,7 @@
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::website.website",
-      "properties": {
-        "locales": [
-          "en"
-        ]
-      },
+      "properties": {},
       "conditions": []
     },
     {
@@ -315,9 +224,6 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ],
-        "locales": [
-          "en"
         ]
       },
       "conditions": []
@@ -342,9 +248,6 @@
           "seo.structuredData",
           "seo.metaViewport",
           "seo.canonicalURL"
-        ],
-        "locales": [
-          "en"
         ]
       },
       "conditions": []
@@ -515,16 +418,7 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "plugin::email-designer.email-template",
       "properties": {
-        "fields": [
-          "templateReferenceId",
-          "design",
-          "subject",
-          "bodyHtml",
-          "bodyText",
-          "enabled",
-          "tags",
-          "name"
-        ]
+        "fields": ["templateReferenceId", "design", "subject", "bodyHtml", "bodyText", "enabled", "tags", "name"]
       },
       "conditions": []
     },
@@ -538,16 +432,7 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "plugin::email-designer.email-template",
       "properties": {
-        "fields": [
-          "templateReferenceId",
-          "design",
-          "subject",
-          "bodyHtml",
-          "bodyText",
-          "enabled",
-          "tags",
-          "name"
-        ]
+        "fields": ["templateReferenceId", "design", "subject", "bodyHtml", "bodyText", "enabled", "tags", "name"]
       },
       "conditions": []
     },
@@ -555,73 +440,7 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "plugin::email-designer.email-template",
       "properties": {
-        "fields": [
-          "templateReferenceId",
-          "design",
-          "subject",
-          "bodyHtml",
-          "bodyText",
-          "enabled",
-          "tags",
-          "name"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "plugin::email-emitter.email",
-      "properties": {
-        "fields": [
-          "email",
-          "delivered",
-          "scheduled",
-          "template",
-          "payload",
-          "log"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "plugin::email-emitter.email",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.publish",
-      "subject": "plugin::email-emitter.email",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "plugin::email-emitter.email",
-      "properties": {
-        "fields": [
-          "email",
-          "delivered",
-          "scheduled",
-          "template",
-          "payload",
-          "log"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "plugin::email-emitter.email",
-      "properties": {
-        "fields": [
-          "email",
-          "delivered",
-          "scheduled",
-          "template",
-          "payload",
-          "log"
-        ]
+        "fields": ["templateReferenceId", "design", "subject", "bodyHtml", "bodyText", "enabled", "tags", "name"]
       },
       "conditions": []
     },
@@ -699,30 +518,6 @@
     },
     {
       "action": "plugin::email.settings.read",
-      "subject": null,
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::i18n.locale.create",
-      "subject": null,
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::i18n.locale.delete",
-      "subject": null,
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::i18n.locale.read",
-      "subject": null,
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::i18n.locale.update",
       "subject": null,
       "properties": {},
       "conditions": []

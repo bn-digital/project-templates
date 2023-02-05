@@ -83,59 +83,27 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::contact.contact",
-      "properties": {
-        "fields": ["name", "email", "subject", "text", "comment"]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::contact.contact",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::contact.contact",
-      "properties": {
-        "fields": ["name", "email", "subject", "text", "comment"]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::contact.contact",
-      "properties": {
-        "fields": ["name", "email", "subject", "text", "comment"]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
       "subject": "api::post.post",
       "properties": {
         "fields": [
-          "background",
-          "category",
-          "content",
-          "cover",
           "name",
-          "seo.canonicalURL",
-          "seo.keywords",
-          "seo.metaDescription",
-          "seo.metaImage",
-          "seo.metaRobots",
-          "seo.metaSocial.description",
-          "seo.metaSocial.image",
-          "seo.metaSocial.socialNetwork",
-          "seo.metaSocial.title",
-          "seo.metaTitle",
-          "seo.metaViewport",
-          "seo.structuredData",
           "slug",
           "teaser",
-          "uuid"
+          "content",
+          "cover",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL",
+          "category"
         ]
       },
       "conditions": []
@@ -157,26 +125,24 @@
       "subject": "api::post.post",
       "properties": {
         "fields": [
-          "background",
-          "category",
-          "content",
-          "cover",
           "name",
-          "seo.canonicalURL",
-          "seo.keywords",
-          "seo.metaDescription",
-          "seo.metaImage",
-          "seo.metaRobots",
-          "seo.metaSocial.description",
-          "seo.metaSocial.image",
-          "seo.metaSocial.socialNetwork",
-          "seo.metaSocial.title",
-          "seo.metaTitle",
-          "seo.metaViewport",
-          "seo.structuredData",
           "slug",
           "teaser",
-          "uuid"
+          "content",
+          "cover",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL",
+          "category"
         ]
       },
       "conditions": []
@@ -186,26 +152,24 @@
       "subject": "api::post.post",
       "properties": {
         "fields": [
-          "background",
-          "category",
-          "content",
-          "cover",
           "name",
-          "seo.canonicalURL",
-          "seo.keywords",
-          "seo.metaDescription",
-          "seo.metaImage",
-          "seo.metaRobots",
-          "seo.metaSocial.description",
-          "seo.metaSocial.image",
-          "seo.metaSocial.socialNetwork",
-          "seo.metaSocial.title",
-          "seo.metaTitle",
-          "seo.metaViewport",
-          "seo.structuredData",
           "slug",
           "teaser",
-          "uuid"
+          "content",
+          "cover",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.metaSocial.socialNetwork",
+          "seo.metaSocial.title",
+          "seo.metaSocial.description",
+          "seo.metaSocial.image",
+          "seo.keywords",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "seo.metaViewport",
+          "seo.canonicalURL",
+          "category"
         ]
       },
       "conditions": []
@@ -327,7 +291,17 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": ["blocked", "confirmationToken", "confirmed", "email", "password", "provider", "resetPasswordToken", "role", "username"]
+        "fields": [
+          "blocked",
+          "confirmationToken",
+          "confirmed",
+          "email",
+          "password",
+          "provider",
+          "resetPasswordToken",
+          "role",
+          "username"
+        ]
       },
       "conditions": []
     },
@@ -341,7 +315,17 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": ["blocked", "confirmationToken", "confirmed", "email", "password", "provider", "resetPasswordToken", "role", "username"]
+        "fields": [
+          "blocked",
+          "confirmationToken",
+          "confirmed",
+          "email",
+          "password",
+          "provider",
+          "resetPasswordToken",
+          "role",
+          "username"
+        ]
       },
       "conditions": []
     },
@@ -349,7 +333,17 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "plugin::users-permissions.user",
       "properties": {
-        "fields": ["blocked", "confirmationToken", "confirmed", "email", "password", "provider", "resetPasswordToken", "role", "username"]
+        "fields": [
+          "blocked",
+          "confirmationToken",
+          "confirmed",
+          "email",
+          "password",
+          "provider",
+          "resetPasswordToken",
+          "role",
+          "username"
+        ]
       },
       "conditions": []
     },

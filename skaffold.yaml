@@ -1,13 +1,14 @@
 # nonk8s
 ---
-apiVersion: skaffold/v3
+apiVersion: skaffold/v4beta2
 kind: Config
 build:
   artifacts:
     - image: app
   tagPolicy:
-    sha256: { }
+    sha256:  {}
   local:
+    useDockerCLI: true
     useBuildkit: true
 profiles:
   - name: staging
@@ -18,5 +19,3 @@ profiles:
       tagPolicy:
         gitCommit:
           variant: Tags
-          ignoreChanges: true
-

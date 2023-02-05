@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": ".",
-    "types": ["@bn-digital/strapi-types", "@bn-digital/strapi-plugin-email-emitter"]
+    "types": ["@bn-digital/strapi-types"]
   },
   "include": ["./", "src/**/*.json"],
   "exclude": [
