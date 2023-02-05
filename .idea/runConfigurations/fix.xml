@@ -6,6 +6,7 @@
       <script value="fix" />
     </scripts>
     <node-interpreter value="project" />
+    <package-manager value="D:\github\bn-digital\project-templates\.yarn\releases\yarn-4.0.0-rc.37.cjs" />
     <envs />
     <method v="2" />
   </configuration>

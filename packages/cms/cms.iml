@@ -7,10 +7,8 @@
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/.cache" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/src/plugins/uuid/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/src/plugins/email-emitter/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/public/sitemap/xsl" />
-      <excludeFolder url="file://$MODULE_DIR$/public/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/public/sitemap" />
+      <excludeFolder url="file://$MODULE_DIR$/public/uploads" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
