@@ -4,9 +4,9 @@ export default () => async (ctx: Context, next: Next) => {
   if (ctx.method.match(/get/i)) {
     try {
       ctx.url = '/index.html'
-      ctx.body = strapi.middlewares['strapi::public'](ctx)
+      ctx.status = 404
     } catch (e) {
-      strapi.log.error(`[proxy] Failed to parse url: ${e?.message}`)
+      strapi.log.error(`[404] Not found`)
     }
   }
   return await next()

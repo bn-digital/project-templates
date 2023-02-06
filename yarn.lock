@@ -1886,7 +1886,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/eslint-config@npm:^2.0.29, @bn-digital/eslint-config@npm:^2.0.30":
+"@bn-digital/eslint-config@npm:^2.0.30":
   version: 2.0.30
   resolution: "@bn-digital/eslint-config@npm:2.0.30"
   dependencies:
@@ -1910,7 +1910,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/graphql-config@npm:^2.0.20":
+"@bn-digital/graphql-config@npm:^2.1.1":
   version: 2.1.1
   resolution: "@bn-digital/graphql-config@npm:2.1.1"
   dependencies:
@@ -1965,6 +1965,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bn-digital/projen@npm:^0.4.18":
+  version: 0.4.18
+  resolution: "@bn-digital/projen@npm:0.4.18"
+  peerDependencies:
+    projen: 0.66.11
+  checksum: ddab6fe319e0a57abb40266a143ad31ecf96ed236d644ce240544228d4a626089a7e75705d0beec0a07274b13dd2a26cba3acf0f156ba869cebeb34cd9d868dd
+  languageName: node
+  linkType: hard
+
 "@bn-digital/strapi-types@npm:^1.0.45":
   version: 1.0.45
   resolution: "@bn-digital/strapi-types@npm:1.0.45"
@@ -1994,19 +2003,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/typescript-config@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@bn-digital/typescript-config@npm:1.1.0"
-  dependencies:
-    ts-node: "npm:^10.9.1"
-    typescript: "npm:^4.9.4"
-  peerDependencies:
-    "@types/node": "*"
-    typescript: "*"
-  checksum: 4debb15cc3ea24ab6dc9676d063dc3d850d52d167be77e34b9e40f36fcb9a8ba3b2bc77954fb4869630281b38d04ec948761f26080035866a0470618c02ceeda
-  languageName: node
-  linkType: hard
-
 "@bn-digital/typescript-config@npm:^1.1.1":
   version: 1.1.1
   resolution: "@bn-digital/typescript-config@npm:1.1.1"
@@ -2031,27 +2027,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/vite@npm:^2.2.25":
-  version: 2.2.25
-  resolution: "@bn-digital/vite@npm:2.2.25"
+"@bn-digital/vite@npm:^2.2.26":
+  version: 2.2.26
+  resolution: "@bn-digital/vite@npm:2.2.26"
   dependencies:
-    "@bn-digital/eslint-config": "npm:^2.0.29"
-    "@bn-digital/graphql-config": "npm:^2.0.20"
+    "@bn-digital/eslint-config": "npm:^2.0.30"
+    "@bn-digital/graphql-config": "npm:^2.1.1"
     "@bn-digital/postcss-config": "npm:^2.0.9"
     "@bn-digital/stylelint-config": "npm:^2.0.15"
-    "@bn-digital/typescript-config": "npm:^1.1.0"
+    "@bn-digital/typescript-config": "npm:^1.1.1"
     "@vitejs/plugin-react": "npm:^3.1.0"
     "@vitejs/plugin-react-swc": "npm:^3.1.0"
-    terser: "npm:^5.16.2"
+    terser: "npm:^5.16.3"
     vite: "npm:^4.1.1"
     vite-plugin-checker: "npm:^0.5.5"
     vite-plugin-fonts: "npm:^0.7.0"
-    vite-plugin-graphql-codegen: "npm:^3.0.1"
+    vite-plugin-graphql-codegen: "npm:^3.1.0"
     vite-plugin-pwa: "npm:^0.14.1"
     vite-plugin-radar: "npm:^0.7.0"
     vite-plugin-svgr: "npm:^2.4.0"
     vite-tsconfig-paths: "npm:^4.0.5"
-  checksum: 1dbb0df864d521ae5aff5ad5bab88649c91a9b18f4bad83c0c02a2eb88ac6b94579437f1dc1fb7ee962503cb4f84492b368449bc32242f1952cb49456e147d0f
+  checksum: 1a1c67b76179ea68151d7b2d2fee6692b8136d1e0cff49fe65326a45e283ea562887f90fe63b6f7cc986802aa038c7b0e1fdcefbfe38cf04489eb80d83684576
   languageName: node
   linkType: hard
 
@@ -4657,7 +4653,7 @@ __metadata:
   resolution: "@project-templates/website@workspace:packages/website"
   dependencies:
     "@apollo/client": "npm:^3.7.7"
-    "@bn-digital/vite": "npm:^2.2.25"
+    "@bn-digital/vite": "npm:^2.2.26"
     "@types/react": "npm:^18.0.27"
     "@types/react-dom": "npm:^18.0.10"
     antd: "npm:latest-4"
@@ -20689,6 +20685,7 @@ __metadata:
     "@bn-digital/commitlint-config": "npm:^2.0.3"
     "@bn-digital/eslint-config": "npm:^2.0.30"
     "@bn-digital/prettier-config": "npm:^2.1.10"
+    "@bn-digital/projen": "npm:^0.4.18"
     "@bn-digital/stylelint-config": "npm:^2.0.15"
     "@bn-digital/typescript-config": "npm:^1.1.1"
     "@bn-digital/vault-env": "npm:^1.4.0"
@@ -25086,9 +25083,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"terser@npm:^5.16.2":
-  version: 5.16.2
-  resolution: "terser@npm:5.16.2"
+"terser@npm:^5.16.3":
+  version: 5.16.3
+  resolution: "terser@npm:5.16.3"
   dependencies:
     "@jridgewell/source-map": "npm:^0.3.2"
     acorn: "npm:^8.5.0"
@@ -25096,7 +25093,7 @@ __metadata:
     source-map-support: "npm:~0.5.20"
   bin:
     terser: bin/terser
-  checksum: 136572595487836e067a9c899750bee49e96c90529aabb7d3b249750c7b488e0ec584273550cae4c932fbaba12d7ad5a97153d566e8a961dc53cec0993436e1d
+  checksum: c2b3d3d083d0fa4974d3e8460d94e1e58ace839fb186b134621e31d3bc0499eccae48a259ec5d34432ec6450f4a8db1208a39206a1cf47f5ddb114a95da1abc9
   languageName: node
   linkType: hard
 
@@ -25627,7 +25624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.6.4, typescript@npm:^4.9.4":
+"typescript@npm:^4.6.4":
   version: 4.9.4
   resolution: "typescript@npm:4.9.4"
   bin:
@@ -25667,7 +25664,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^4.6.4#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.9.4#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^4.6.4#optional!builtin<compat/typescript>":
   version: 4.9.4
   resolution: "typescript@patch:typescript@npm%3A4.9.4#optional!builtin<compat/typescript>::version=4.9.4&hash=23ec76"
   bin:
@@ -26334,14 +26331,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-graphql-codegen@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "vite-plugin-graphql-codegen@npm:3.0.1"
+"vite-plugin-graphql-codegen@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "vite-plugin-graphql-codegen@npm:3.1.0"
   peerDependencies:
-    "@graphql-codegen/cli": ^1.0.0 || ^2.0.0
+    "@graphql-codegen/cli": ^1.0.0 || ^2.0.0 || ^3.0.0
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     vite: ^2.7.0 || ^3.0.0 || ^4.0.0
-  checksum: 6f02f973137d39ea29f73664d55080f1a4ddd439f85d057f0f3582bcb17f59c4b887dfd0e886c74249df765c7878a8ae718608779446da9da6dc0ae10f68fdbc
+  checksum: 913fc439da50cf119df1f97adc860b6090ac8b80bb142513226670fe4333ab7006a4532eea69604b771d9e8c6cdf28e8fa0872938241670fa4bb94c0dc3d90b9
   languageName: node
   linkType: hard
 

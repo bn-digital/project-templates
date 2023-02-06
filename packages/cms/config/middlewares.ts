@@ -45,8 +45,11 @@ export default (): MiddlewareType[] => {
     {
       name: 'strapi::public',
       config: fs.existsSync(path.join(app.workingDir, 'public', 'index.html'))
-        ? { defer: true, index: 'index.html', maxAge }
+        ? { defer: false, index: 'index.html', maxAge }
         : {},
+    },
+    {
+      name: 'global::404',
     },
   ]
 }

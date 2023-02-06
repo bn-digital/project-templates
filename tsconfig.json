@@ -1,8 +1,10 @@
 {
   "extends": "@bn-digital/typescript-config/standard",
   "compilerOptions": {
-    "composite": true
+    "composite": true,
+    "noEmit": true
   },
+  "include": [".projenrc.ts"],
   "references": [
     {
       "path": "packages/cloud/tsconfig.json"

@@ -19,9 +19,6 @@
       "action": "api::website.website.find"
     },
     {
-      "action": "plugin::i18n.locales.listLocales"
-    },
-    {
       "action": "plugin::users-permissions.auth.connect"
     },
     {

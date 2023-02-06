@@ -23,7 +23,7 @@
     "react-use": "^17.4.0"
   },
   "devDependencies": {
-    "@bn-digital/vite": "^2.2.25",
+    "@bn-digital/vite": "^2.2.26",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10"
   }
