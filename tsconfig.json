@@ -1,5 +1,4 @@
 {
-  "extends": "@bn-digital/typescript-config/standard",
   "compilerOptions": {
     "composite": true,
     "noEmit": true

@@ -6,6 +6,7 @@ import {
   type DnsRecordArgs,
   Domain,
   type DomainArgs,
+  DropletSlug,
   KubernetesCluster,
   type KubernetesClusterArgs,
   Project,
@@ -13,8 +14,10 @@ import {
   SpacesBucket,
   type SpacesBucketArgs,
   SpacesBucketPolicy,
+  SshKey,
 } from '@pulumi/digitalocean'
 import { Input, Output } from '@pulumi/pulumi'
+import { PrivateKey } from '@pulumi/tls'
 
 import packageMetadata from '../package.json'
 
@@ -26,7 +29,7 @@ const dnsZone = 'bndigital.ai'
 const dns = `${process.env.APP_DOMAIN ?? [name, dnsZone].join('.')}` as const
 const tags = ['provisioner:pulumi', `environment:${environment}`, `app:${name}`]
 
-type ResourceID = 'provider' | 'cluster' | 'storage' | 'cdn' | 'dns' | 'project' | 'certificate' | 'policy'
+type ResourceID = 'provider' | 'cluster' | 'storage' | 'cdn' | 'dns' | 'ssh-key' | 'project' | 'certificate' | 'policy'
 
 function urn(resource: ResourceID, ...tags: string[]) {
   return [['bn', name, environment].join(':'), [resource as string].concat(tags).filter(Boolean).join(':')].join('/')
@@ -118,7 +121,13 @@ function createCluster(name: string): KubernetesCluster {
       surgeUpgrade: true,
       autoUpgrade: false,
       name,
-      nodePool: { name: 'workers', size: 's-1vcpu-2gb-intel', minNodes: 1, maxNodes: 2, autoScale: true },
+      nodePool: {
+        name: 'workers',
+        size: DropletSlug.DropletS2VCPU4GB_INTEL,
+        minNodes: 1,
+        maxNodes: 2,
+        autoScale: true,
+      },
       region,
       version,
       tags,
@@ -135,6 +144,17 @@ function createProject(resources: Output<string>[]): Project {
       name,
       purpose: 'Web Application',
       resources,
+    },
+    { ignoreChanges: [] as (keyof ProjectArgs)[] }
+  )
+}
+export function createSshKey(): SshKey {
+  const key = new PrivateKey('private-key', { algorithm: 'rsa', rsaBits: 3 * 1024 })
+  return new SshKey(
+    urn('ssh-key'),
+    {
+      name: 'pulumi',
+      publicKey: key.publicKeyPem,
     },
     { ignoreChanges: [] as (keyof ProjectArgs)[] }
   )

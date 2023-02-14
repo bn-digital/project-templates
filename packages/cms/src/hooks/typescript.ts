@@ -1,5 +1,6 @@
+import path from 'node:path'
+
 import { generators } from '@strapi/typescript-utils'
-import path from 'path'
 
 import app from './index'
 

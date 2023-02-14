@@ -4,21 +4,6 @@
   "type": "public",
   "permissions": [
     {
-      "action": "api::category.category.find"
-    },
-    {
-      "action": "api::category.category.findOne"
-    },
-    {
-      "action": "api::post.post.find"
-    },
-    {
-      "action": "api::post.post.findOne"
-    },
-    {
-      "action": "api::website.website.find"
-    },
-    {
       "action": "plugin::upload.content-api.upload"
     },
     {

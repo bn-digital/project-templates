@@ -15,26 +15,26 @@
   "eslintConfig": {
     "extends": "@bn-digital/eslint-config/strapi",
     "ignorePatterns": [
+      "src/types/schema.d.ts",
       "src/types/graphql.d.ts"
     ]
   },
   "dependencies": {
-    "@strapi/plugin-content-manager": "^4.6.0",
-    "@strapi/plugin-content-type-builder": "^4.6.0",
-    "@strapi/plugin-graphql": "^4.6.0",
-    "@strapi/plugin-users-permissions": "^4.6.0",
-    "@strapi/provider-email-nodemailer": "^4.6.0",
-    "@strapi/provider-upload-aws-s3": "^4.6.0",
-    "@strapi/strapi": "^4.6.0",
+    "@strapi/plugin-content-manager": "^4.6.1",
+    "@strapi/plugin-content-type-builder": "^4.6.1",
+    "@strapi/plugin-graphql": "^4.6.1",
+    "@strapi/plugin-users-permissions": "^4.6.1",
+    "@strapi/provider-email-nodemailer": "^4.6.1",
+    "@strapi/provider-upload-aws-s3": "^4.6.1",
+    "@strapi/strapi": "^4.6.1",
     "pg": "^8.9.0",
-    "strapi-plugin-config-sync": "^1.1.0",
-    "strapi-plugin-email-designer": "^2.1.2",
+    "strapi-plugin-config-sync": "^1.1.1",
     "strapi-plugin-import-export-entries": "^1.18.0"
   },
   "devDependencies": {
     "@bn-digital/strapi-types": "^1.0.45",
-    "@bn-digital/typescript-config": "^1.1.1",
+    "@bn-digital/typescript-config": "^1.2.1",
     "@bn-digital/vault-env": "^1.4.0",
-    "better-sqlite3": "^8.0.1"
+    "better-sqlite3": "^8.1.0"
   }
 }

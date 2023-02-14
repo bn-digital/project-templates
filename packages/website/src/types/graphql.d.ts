@@ -14,8 +14,6 @@ type Scalars = {
   Date: string
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: Date
-  /** A string used to identify an i18n locale */
-  I18NLocaleCode: string | 'en'
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: Record<string, any | any[] | string | number | boolean | null | undefined> | any[]
   /** The `BigInt` scalar type represents non-fractional signed whole numeric values. */
@@ -24,7 +22,6 @@ type Scalars = {
   Time: string
   /** The `Upload` scalar type represents a file upload. */
   Upload: unknown
-  WebsiteContentDynamicZoneInput: any
 }
 
 type BooleanFilterInput = {
@@ -49,60 +46,6 @@ type BooleanFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>
   or?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>
   startsWith?: InputMaybe<Scalars['Boolean']>
-}
-
-type Category = {
-  createdAt?: Maybe<Scalars['DateTime']>
-  name: Scalars['String']
-  posts?: Maybe<PostRelationResponseCollection>
-  seo?: Maybe<ComponentSharedSeo>
-  slug: Scalars['String']
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
-
-type CategoryPostsArgs = {
-  filters?: InputMaybe<PostFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type CategoryEntity = {
-  attributes?: Maybe<Category>
-  id?: Maybe<Scalars['ID']>
-}
-
-type CategoryEntityResponse = {
-  data?: Maybe<CategoryEntity>
-}
-
-type CategoryEntityResponseCollection = {
-  data: Array<CategoryEntity>
-  meta: ResponseCollectionMeta
-}
-
-type CategoryFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  name?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<CategoryFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>
-  posts?: InputMaybe<PostFiltersInput>
-  seo?: InputMaybe<ComponentSharedSeoFiltersInput>
-  slug?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type CategoryInput = {
-  name?: InputMaybe<Scalars['String']>
-  posts?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  seo?: InputMaybe<ComponentSharedSeoInput>
-  slug?: InputMaybe<Scalars['String']>
-}
-
-type CategoryRelationResponseCollection = {
-  data: Array<CategoryEntity>
 }
 
 type ChangePasswordInput = {
@@ -223,117 +166,6 @@ type ComponentPageHomeInput = {
   id?: InputMaybe<Scalars['ID']>
   pathname?: InputMaybe<Scalars['String']>
   technology?: InputMaybe<ComponentUiHeadlineInput>
-}
-
-type ComponentSharedMetaSocial = {
-  description: Scalars['String']
-  id: Scalars['ID']
-  image?: Maybe<UploadFileEntityResponse>
-  socialNetwork: EnumComponentsharedmetasocialSocialnetwork
-  title: Scalars['String']
-}
-
-type ComponentSharedMetaSocialFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSharedMetaSocialFiltersInput>>>
-  description?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentSharedMetaSocialFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSharedMetaSocialFiltersInput>>>
-  socialNetwork?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-type ComponentSharedMetaSocialInput = {
-  description?: InputMaybe<Scalars['String']>
-  id?: InputMaybe<Scalars['ID']>
-  image?: InputMaybe<Scalars['ID']>
-  socialNetwork?: InputMaybe<EnumComponentsharedmetasocialSocialnetwork>
-  title?: InputMaybe<Scalars['String']>
-}
-
-type ComponentSharedSeo = {
-  canonicalURL?: Maybe<Scalars['String']>
-  id: Scalars['ID']
-  keywords?: Maybe<Scalars['String']>
-  metaDescription?: Maybe<Scalars['String']>
-  metaImage?: Maybe<UploadFileEntityResponse>
-  metaRobots?: Maybe<Scalars['String']>
-  metaSocial?: Maybe<Array<Maybe<ComponentSharedMetaSocial>>>
-  metaTitle: Scalars['String']
-  metaViewport?: Maybe<Scalars['String']>
-  structuredData?: Maybe<Scalars['JSON']>
-}
-
-type ComponentSharedSeoMetaSocialArgs = {
-  filters?: InputMaybe<ComponentSharedMetaSocialFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type ComponentSharedSeoFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSharedSeoFiltersInput>>>
-  canonicalURL?: InputMaybe<StringFilterInput>
-  keywords?: InputMaybe<StringFilterInput>
-  metaDescription?: InputMaybe<StringFilterInput>
-  metaRobots?: InputMaybe<StringFilterInput>
-  metaSocial?: InputMaybe<ComponentSharedMetaSocialFiltersInput>
-  metaTitle?: InputMaybe<StringFilterInput>
-  metaViewport?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentSharedSeoFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSharedSeoFiltersInput>>>
-  structuredData?: InputMaybe<JsonFilterInput>
-}
-
-type ComponentSharedSeoInput = {
-  canonicalURL?: InputMaybe<Scalars['String']>
-  id?: InputMaybe<Scalars['ID']>
-  keywords?: InputMaybe<Scalars['String']>
-  metaDescription?: InputMaybe<Scalars['String']>
-  metaImage?: InputMaybe<Scalars['ID']>
-  metaRobots?: InputMaybe<Scalars['String']>
-  metaSocial?: InputMaybe<Array<InputMaybe<ComponentSharedMetaSocialInput>>>
-  metaTitle?: InputMaybe<Scalars['String']>
-  metaViewport?: InputMaybe<Scalars['String']>
-  structuredData?: InputMaybe<Scalars['JSON']>
-}
-
-type ComponentSystemEnvironment = {
-  id: Scalars['ID']
-  name: Scalars['String']
-  value: Scalars['String']
-}
-
-type ComponentSystemEnvironmentFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSystemEnvironmentFiltersInput>>>
-  name?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentSystemEnvironmentFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSystemEnvironmentFiltersInput>>>
-  value?: InputMaybe<StringFilterInput>
-}
-
-type ComponentSystemEnvironmentInput = {
-  id?: InputMaybe<Scalars['ID']>
-  name?: InputMaybe<Scalars['String']>
-  value?: InputMaybe<Scalars['String']>
-}
-
-type ComponentSystemSecret = {
-  id: Scalars['ID']
-  name: Scalars['String']
-  value?: Maybe<Scalars['String']>
-}
-
-type ComponentSystemSecretFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSystemSecretFiltersInput>>>
-  name?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentSystemSecretFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSystemSecretFiltersInput>>>
-  value?: InputMaybe<StringFilterInput>
-}
-
-type ComponentSystemSecretInput = {
-  id?: InputMaybe<Scalars['ID']>
-  name?: InputMaybe<Scalars['String']>
-  value?: InputMaybe<Scalars['String']>
 }
 
 type ComponentUiCard = {
@@ -513,99 +345,6 @@ type ComponentUiTextInput = {
   visible?: InputMaybe<Scalars['Boolean']>
 }
 
-type Contact = {
-  comment: Scalars['String']
-  createdAt?: Maybe<Scalars['DateTime']>
-  email: Scalars['String']
-  name: Scalars['String']
-  subject?: Maybe<Scalars['String']>
-  text?: Maybe<Scalars['String']>
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
-
-type ContactEntity = {
-  attributes?: Maybe<Contact>
-  id?: Maybe<Scalars['ID']>
-}
-
-type ContactEntityResponse = {
-  data?: Maybe<ContactEntity>
-}
-
-type ContactEntityResponseCollection = {
-  data: Array<ContactEntity>
-  meta: ResponseCollectionMeta
-}
-
-type ContactFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>
-  comment?: InputMaybe<StringFilterInput>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  email?: InputMaybe<StringFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  name?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ContactFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>
-  subject?: InputMaybe<StringFilterInput>
-  text?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type ContactInput = {
-  comment?: InputMaybe<Scalars['String']>
-  email?: InputMaybe<Scalars['String']>
-  name?: InputMaybe<Scalars['String']>
-  subject?: InputMaybe<Scalars['String']>
-  text?: InputMaybe<Scalars['String']>
-}
-
-type ContactRelationResponseCollection = {
-  data: Array<ContactEntity>
-}
-
-type Credential = {
-  createdAt?: Maybe<Scalars['DateTime']>
-  credentials?: Maybe<Array<Maybe<ComponentSystemEnvironment>>>
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
-
-type CredentialCredentialsArgs = {
-  filters?: InputMaybe<ComponentSystemEnvironmentFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type CredentialEntity = {
-  attributes?: Maybe<Credential>
-  id?: Maybe<Scalars['ID']>
-}
-
-type CredentialEntityResponse = {
-  data?: Maybe<CredentialEntity>
-}
-
-type CredentialEntityResponseCollection = {
-  data: Array<CredentialEntity>
-  meta: ResponseCollectionMeta
-}
-
-type CredentialFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<CredentialFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  credentials?: InputMaybe<ComponentSystemEnvironmentFiltersInput>
-  not?: InputMaybe<CredentialFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<CredentialFiltersInput>>>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type CredentialInput = {
-  credentials?: InputMaybe<Array<InputMaybe<ComponentSystemEnvironmentInput>>>
-}
-
-type CredentialRelationResponseCollection = {
-  data: Array<CredentialEntity>
-}
-
 type DateFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>
   between?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>
@@ -654,123 +393,6 @@ type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']>
 }
 
-type EnumComponentsharedmetasocialSocialnetwork = 'Facebook' | 'Twitter'
-
-type EmailDesignerEmailTemplate = {
-  bodyHtml?: Maybe<Scalars['String']>
-  bodyText?: Maybe<Scalars['String']>
-  createdAt?: Maybe<Scalars['DateTime']>
-  design?: Maybe<Scalars['JSON']>
-  enabled?: Maybe<Scalars['Boolean']>
-  name: Scalars['String']
-  subject?: Maybe<Scalars['String']>
-  tags?: Maybe<Scalars['JSON']>
-  templateReferenceId: Scalars['String']
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
-
-type EmailDesignerEmailTemplateEntity = {
-  attributes?: Maybe<EmailDesignerEmailTemplate>
-  id?: Maybe<Scalars['ID']>
-}
-
-type EmailDesignerEmailTemplateEntityResponse = {
-  data?: Maybe<EmailDesignerEmailTemplateEntity>
-}
-
-type EmailDesignerEmailTemplateEntityResponseCollection = {
-  data: Array<EmailDesignerEmailTemplateEntity>
-  meta: ResponseCollectionMeta
-}
-
-type EmailDesignerEmailTemplateFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<EmailDesignerEmailTemplateFiltersInput>>>
-  bodyHtml?: InputMaybe<StringFilterInput>
-  bodyText?: InputMaybe<StringFilterInput>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  design?: InputMaybe<JsonFilterInput>
-  enabled?: InputMaybe<BooleanFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  name?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<EmailDesignerEmailTemplateFiltersInput>>>
-  subject?: InputMaybe<StringFilterInput>
-  tags?: InputMaybe<JsonFilterInput>
-  templateReferenceId?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type EmailDesignerEmailTemplateInput = {
-  bodyHtml?: InputMaybe<Scalars['String']>
-  bodyText?: InputMaybe<Scalars['String']>
-  design?: InputMaybe<Scalars['JSON']>
-  enabled?: InputMaybe<Scalars['Boolean']>
-  name?: InputMaybe<Scalars['String']>
-  subject?: InputMaybe<Scalars['String']>
-  tags?: InputMaybe<Scalars['JSON']>
-  templateReferenceId?: InputMaybe<Scalars['String']>
-}
-
-type EmailDesignerEmailTemplateRelationResponseCollection = {
-  data: Array<EmailDesignerEmailTemplateEntity>
-}
-
-type EmailEmitterEmail = {
-  createdAt?: Maybe<Scalars['DateTime']>
-  delivered: Scalars['Boolean']
-  email?: Maybe<Scalars['String']>
-  log?: Maybe<Scalars['String']>
-  payload?: Maybe<Scalars['JSON']>
-  publishedAt?: Maybe<Scalars['DateTime']>
-  scheduled: Scalars['Boolean']
-  template?: Maybe<EmailDesignerEmailTemplateEntityResponse>
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
-
-type EmailEmitterEmailEntity = {
-  attributes?: Maybe<EmailEmitterEmail>
-  id?: Maybe<Scalars['ID']>
-}
-
-type EmailEmitterEmailEntityResponse = {
-  data?: Maybe<EmailEmitterEmailEntity>
-}
-
-type EmailEmitterEmailEntityResponseCollection = {
-  data: Array<EmailEmitterEmailEntity>
-  meta: ResponseCollectionMeta
-}
-
-type EmailEmitterEmailFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<EmailEmitterEmailFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  delivered?: InputMaybe<BooleanFilterInput>
-  email?: InputMaybe<StringFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  log?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<EmailEmitterEmailFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<EmailEmitterEmailFiltersInput>>>
-  payload?: InputMaybe<JsonFilterInput>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  scheduled?: InputMaybe<BooleanFilterInput>
-  template?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type EmailEmitterEmailInput = {
-  delivered?: InputMaybe<Scalars['Boolean']>
-  email?: InputMaybe<Scalars['String']>
-  log?: InputMaybe<Scalars['String']>
-  payload?: InputMaybe<Scalars['JSON']>
-  publishedAt?: InputMaybe<Scalars['DateTime']>
-  scheduled?: InputMaybe<Scalars['Boolean']>
-  template?: InputMaybe<Scalars['ID']>
-}
-
-type EmailEmitterEmailRelationResponseCollection = {
-  data: Array<EmailEmitterEmailEntity>
-}
-
 type Error = {
   code: Scalars['String']
   message?: Maybe<Scalars['String']>
@@ -807,16 +429,11 @@ type FloatFilterInput = {
 }
 
 type GenericMorph =
-  | Category
   | ComponentDataContact
   | ComponentDataEntry
   | ComponentDataSet
   | ComponentPageContactUs
   | ComponentPageHome
-  | ComponentSharedMetaSocial
-  | ComponentSharedSeo
-  | ComponentSystemEnvironment
-  | ComponentSystemSecret
   | ComponentUiCard
   | ComponentUiGrid
   | ComponentUiHeadline
@@ -825,59 +442,11 @@ type GenericMorph =
   | ComponentUiSection
   | ComponentUiTab
   | ComponentUiText
-  | Contact
-  | Credential
-  | EmailDesignerEmailTemplate
-  | EmailEmitterEmail
-  | I18NLocale
-  | Post
   | UploadFile
   | UploadFolder
   | UsersPermissionsPermission
   | UsersPermissionsRole
   | UsersPermissionsUser
-  | Website
-
-type I18NLocale = {
-  code?: Maybe<Scalars['String']>
-  createdAt?: Maybe<Scalars['DateTime']>
-  name?: Maybe<Scalars['String']>
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
-
-type I18NLocaleEntity = {
-  attributes?: Maybe<I18NLocale>
-  id?: Maybe<Scalars['ID']>
-}
-
-type I18NLocaleEntityResponse = {
-  data?: Maybe<I18NLocaleEntity>
-}
-
-type I18NLocaleEntityResponseCollection = {
-  data: Array<I18NLocaleEntity>
-  meta: ResponseCollectionMeta
-}
-
-type I18NLocaleFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<I18NLocaleFiltersInput>>>
-  code?: InputMaybe<StringFilterInput>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  name?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<I18NLocaleFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<I18NLocaleFiltersInput>>>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type I18NLocaleInput = {
-  code?: InputMaybe<Scalars['String']>
-  name?: InputMaybe<Scalars['String']>
-}
-
-type I18NLocaleRelationResponseCollection = {
-  data: Array<I18NLocaleEntity>
-}
 
 type IdFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
@@ -977,15 +546,11 @@ type LongFilterInput = {
 
 type Mutation = {
   changePassword: Scalars['Boolean']
-  createContact?: Maybe<ContactEntityResponse>
   createUploadFile?: Maybe<UploadFileEntityResponse>
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
-  createWebsiteLocalization?: Maybe<WebsiteEntityResponse>
-  deleteContact?: Maybe<ContactEntityResponse>
-  deleteCredential?: Maybe<CredentialEntityResponse>
   deleteUploadFile?: Maybe<UploadFileEntityResponse>
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>
@@ -1002,8 +567,6 @@ type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>
-  updateContact?: Maybe<ContactEntityResponse>
-  updateCredential?: Maybe<CredentialEntityResponse>
   updateFileInfo: UploadFileEntityResponse
   updateUploadFile?: Maybe<UploadFileEntityResponse>
   /** Update an existing role */
@@ -1017,10 +580,6 @@ type MutationChangePasswordArgs = {
   input?: InputMaybe<ChangePasswordInput>
 }
 
-type MutationCreateContactArgs = {
-  data: ContactInput
-}
-
 type MutationCreateUploadFileArgs = {
   data: UploadFileInput
 }
@@ -1031,16 +590,6 @@ type MutationCreateUsersPermissionsRoleArgs = {
 
 type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput
-}
-
-type MutationCreateWebsiteLocalizationArgs = {
-  data?: InputMaybe<WebsiteInput>
-  id?: InputMaybe<Scalars['ID']>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>
-}
-
-type MutationDeleteContactArgs = {
-  id: Scalars['ID']
 }
 
 type MutationDeleteUploadFileArgs = {
@@ -1088,15 +637,6 @@ type MutationResetPasswordArgs = {
   passwordConfirmation: Scalars['String']
 }
 
-type MutationUpdateContactArgs = {
-  data: ContactInput
-  id: Scalars['ID']
-}
-
-type MutationUpdateCredentialArgs = {
-  data: CredentialInput
-}
-
 type MutationUpdateFileInfoArgs = {
   id: Scalars['ID']
   info?: InputMaybe<FileInfoInput>
@@ -1139,134 +679,17 @@ type PaginationArg = {
   start?: InputMaybe<Scalars['Int']>
 }
 
-type Post = {
-  background?: Maybe<Scalars['String']>
-  category?: Maybe<CategoryEntityResponse>
-  content?: Maybe<Scalars['String']>
-  cover?: Maybe<UploadFileEntityResponse>
-  createdAt?: Maybe<Scalars['DateTime']>
-  name: Scalars['String']
-  publishedAt?: Maybe<Scalars['DateTime']>
-  seo?: Maybe<ComponentSharedSeo>
-  slug: Scalars['String']
-  teaser?: Maybe<Scalars['String']>
-  updatedAt?: Maybe<Scalars['DateTime']>
-  uuid: Scalars['String']
-}
-
-type PostEntity = {
-  attributes?: Maybe<Post>
-  id?: Maybe<Scalars['ID']>
-}
-
-type PostEntityResponse = {
-  data?: Maybe<PostEntity>
-}
-
-type PostEntityResponseCollection = {
-  data: Array<PostEntity>
-  meta: ResponseCollectionMeta
-}
-
-type PostFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<PostFiltersInput>>>
-  background?: InputMaybe<StringFilterInput>
-  category?: InputMaybe<CategoryFiltersInput>
-  content?: InputMaybe<StringFilterInput>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  name?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<PostFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<PostFiltersInput>>>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  seo?: InputMaybe<ComponentSharedSeoFiltersInput>
-  slug?: InputMaybe<StringFilterInput>
-  teaser?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-  uuid?: InputMaybe<StringFilterInput>
-}
-
-type PostInput = {
-  background?: InputMaybe<Scalars['String']>
-  category?: InputMaybe<Scalars['ID']>
-  content?: InputMaybe<Scalars['String']>
-  cover?: InputMaybe<Scalars['ID']>
-  name?: InputMaybe<Scalars['String']>
-  publishedAt?: InputMaybe<Scalars['DateTime']>
-  seo?: InputMaybe<ComponentSharedSeoInput>
-  slug?: InputMaybe<Scalars['String']>
-  teaser?: InputMaybe<Scalars['String']>
-  uuid?: InputMaybe<Scalars['String']>
-}
-
-type PostRelationResponseCollection = {
-  data: Array<PostEntity>
-}
-
 type PublicationState = 'LIVE' | 'PREVIEW'
 
 type Query = {
   authenticated: Scalars['Boolean']
-  categories?: Maybe<CategoryEntityResponseCollection>
-  category?: Maybe<CategoryEntityResponse>
-  credential?: Maybe<CredentialEntityResponse>
-  emailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>
-  emailDesignerEmailTemplates?: Maybe<EmailDesignerEmailTemplateEntityResponseCollection>
-  i18NLocale?: Maybe<I18NLocaleEntityResponse>
-  i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>
   me?: Maybe<UsersPermissionsUser>
-  post?: Maybe<PostEntityResponse>
-  posts?: Maybe<PostEntityResponseCollection>
   uploadFile?: Maybe<UploadFileEntityResponse>
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>
-  uploadFolder?: Maybe<UploadFolderEntityResponse>
-  uploadFolders?: Maybe<UploadFolderEntityResponseCollection>
   usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>
-  website?: Maybe<WebsiteEntityResponse>
-}
-
-type QueryCategoriesArgs = {
-  filters?: InputMaybe<CategoryFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type QueryCategoryArgs = {
-  id?: InputMaybe<Scalars['ID']>
-}
-
-type QueryEmailDesignerEmailTemplateArgs = {
-  id?: InputMaybe<Scalars['ID']>
-}
-
-type QueryEmailDesignerEmailTemplatesArgs = {
-  filters?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type QueryI18NLocaleArgs = {
-  id?: InputMaybe<Scalars['ID']>
-}
-
-type QueryI18NLocalesArgs = {
-  filters?: InputMaybe<I18NLocaleFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type QueryPostArgs = {
-  id?: InputMaybe<Scalars['ID']>
-}
-
-type QueryPostsArgs = {
-  filters?: InputMaybe<PostFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
 type QueryUploadFileArgs = {
@@ -1275,16 +698,6 @@ type QueryUploadFileArgs = {
 
 type QueryUploadFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type QueryUploadFolderArgs = {
-  id?: InputMaybe<Scalars['ID']>
-}
-
-type QueryUploadFoldersArgs = {
-  filters?: InputMaybe<UploadFolderFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
@@ -1307,10 +720,6 @@ type QueryUsersPermissionsUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type QueryWebsiteArgs = {
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
 type ResponseCollectionMeta = {
@@ -1724,60 +1133,6 @@ type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>
 }
 
-type Website = {
-  content?: Maybe<Array<Maybe<WebsiteContentDynamicZone>>>
-  createdAt?: Maybe<Scalars['DateTime']>
-  locale?: Maybe<Scalars['String']>
-  localizations?: Maybe<WebsiteRelationResponseCollection>
-  seo?: Maybe<ComponentSharedSeo>
-  translations?: Maybe<Array<Maybe<ComponentDataEntry>>>
-  updatedAt?: Maybe<Scalars['DateTime']>
-}
-
-type WebsiteTranslationsArgs = {
-  filters?: InputMaybe<ComponentDataEntryFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-type WebsiteContentDynamicZone = ComponentPageContactUs | ComponentPageHome | Error
-
-type WebsiteEntity = {
-  attributes?: Maybe<Website>
-  id?: Maybe<Scalars['ID']>
-}
-
-type WebsiteEntityResponse = {
-  data?: Maybe<WebsiteEntity>
-}
-
-type WebsiteEntityResponseCollection = {
-  data: Array<WebsiteEntity>
-  meta: ResponseCollectionMeta
-}
-
-type WebsiteFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<WebsiteFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  locale?: InputMaybe<StringFilterInput>
-  localizations?: InputMaybe<WebsiteFiltersInput>
-  not?: InputMaybe<WebsiteFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<WebsiteFiltersInput>>>
-  seo?: InputMaybe<ComponentSharedSeoFiltersInput>
-  translations?: InputMaybe<ComponentDataEntryFiltersInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type WebsiteInput = {
-  content?: InputMaybe<Array<Scalars['WebsiteContentDynamicZoneInput']>>
-  seo?: InputMaybe<ComponentSharedSeoInput>
-  translations?: InputMaybe<Array<InputMaybe<ComponentDataEntryInput>>>
-}
-
-type WebsiteRelationResponseCollection = {
-  data: Array<WebsiteEntity>
-}
-
 type CardFragment = {
   id: string
   title?: string | null | undefined
@@ -1801,29 +1156,6 @@ type CardFragment = {
 }
 
 type CardFragmentVariables = Exact<{ [key: string]: never }>
-
-type CategoryFragment = {
-  id?: string | null | undefined
-  attributes?: { name: string; slug: string } | null | undefined
-}
-
-type CategoryFragmentVariables = Exact<{ [key: string]: never }>
-
-type ContactUsFragment = {
-  id: string
-  pathname: string
-  contact?:
-    | {
-        id: string
-        address?: string | null | undefined
-        email?: string | null | undefined
-        phone?: string | null | undefined
-      }
-    | null
-    | undefined
-}
-
-type ContactUsFragmentVariables = Exact<{ [key: string]: never }>
 
 type EntryFragment = { id: string; key?: string | null | undefined; value: string }
 
@@ -1950,58 +1282,6 @@ type ParagraphFragment = { id: string; value: string }
 
 type ParagraphFragmentVariables = Exact<{ [key: string]: never }>
 
-type PostFragment = {
-  id?: string | null | undefined
-  attributes?:
-    | {
-        content?: string | null | undefined
-        slug: string
-        cover?:
-          | {
-              data?:
-                | {
-                    id?: string | null | undefined
-                    attributes?:
-                      | {
-                          previewUrl?: string | null | undefined
-                          alternativeText?: string | null | undefined
-                          url: string
-                        }
-                      | null
-                      | undefined
-                  }
-                | null
-                | undefined
-            }
-          | null
-          | undefined
-        category?:
-          | {
-              data?:
-                | { id?: string | null | undefined; attributes?: { name: string; slug: string } | null | undefined }
-                | null
-                | undefined
-            }
-          | null
-          | undefined
-      }
-    | null
-    | undefined
-}
-
-type PostFragmentVariables = Exact<{ [key: string]: never }>
-
-type SeoFragment = {
-  id: string
-  canonicalURL?: string | null | undefined
-  keywords?: string | null | undefined
-  metaTitle: string
-  metaViewport?: string | null | undefined
-  metaDescription?: string | null | undefined
-}
-
-type SeoFragmentVariables = Exact<{ [key: string]: never }>
-
 type TabFragment = {
   id: string
   name: string
@@ -2029,465 +1309,3 @@ type TabFragment = {
 }
 
 type TabFragmentVariables = Exact<{ [key: string]: never }>
-
-type WebsiteFragment = {
-  id?: string | null | undefined
-  attributes?:
-    | {
-        locale?: string | null | undefined
-        seo?:
-          | {
-              id: string
-              canonicalURL?: string | null | undefined
-              keywords?: string | null | undefined
-              metaTitle: string
-              metaViewport?: string | null | undefined
-              metaDescription?: string | null | undefined
-            }
-          | null
-          | undefined
-        content?:
-          | Array<
-              | {
-                  __typename: 'ComponentPageContactUs'
-                  id: string
-                  pathname: string
-                  contact?:
-                    | {
-                        id: string
-                        address?: string | null | undefined
-                        email?: string | null | undefined
-                        phone?: string | null | undefined
-                      }
-                    | null
-                    | undefined
-                }
-              | {
-                  __typename: 'ComponentPageHome'
-                  id: string
-                  pathname: string
-                  hero?:
-                    | {
-                        id: string
-                        title?: string | null | undefined
-                        subtitle?: string | null | undefined
-                        description?: string | null | undefined
-                        media?:
-                          | {
-                              data?:
-                                | {
-                                    id?: string | null | undefined
-                                    attributes?:
-                                      | {
-                                          previewUrl?: string | null | undefined
-                                          alternativeText?: string | null | undefined
-                                          url: string
-                                        }
-                                      | null
-                                      | undefined
-                                  }
-                                | null
-                                | undefined
-                            }
-                          | null
-                          | undefined
-                      }
-                    | null
-                    | undefined
-                  components?:
-                    | Array<
-                        | {
-                            id: string
-                            title?: string | null | undefined
-                            subtitle?: string | null | undefined
-                            description?: string | null | undefined
-                            media?:
-                              | {
-                                  data?:
-                                    | {
-                                        id?: string | null | undefined
-                                        attributes?:
-                                          | {
-                                              previewUrl?: string | null | undefined
-                                              alternativeText?: string | null | undefined
-                                              url: string
-                                            }
-                                          | null
-                                          | undefined
-                                      }
-                                    | null
-                                    | undefined
-                                }
-                              | null
-                              | undefined
-                          }
-                        | null
-                        | undefined
-                      >
-                    | null
-                    | undefined
-                  technology?:
-                    | { id: string; title?: string | null | undefined; subtitle?: string | null | undefined }
-                    | null
-                    | undefined
-                  frameworks?:
-                    | {
-                        id: string
-                        title?: string | null | undefined
-                        subtitle?: string | null | undefined
-                        description?: string | null | undefined
-                        media?:
-                          | {
-                              data?:
-                                | {
-                                    id?: string | null | undefined
-                                    attributes?:
-                                      | {
-                                          previewUrl?: string | null | undefined
-                                          alternativeText?: string | null | undefined
-                                          url: string
-                                        }
-                                      | null
-                                      | undefined
-                                  }
-                                | null
-                                | undefined
-                            }
-                          | null
-                          | undefined
-                      }
-                    | null
-                    | undefined
-                }
-              | { __typename: 'Error' }
-              | null
-              | undefined
-            >
-          | null
-          | undefined
-        translations?:
-          | Array<{ id: string; key?: string | null | undefined; value: string } | null | undefined>
-          | null
-          | undefined
-      }
-    | null
-    | undefined
-}
-
-type WebsiteFragmentVariables = Exact<{ [key: string]: never }>
-
-type WebsiteQueryVariables = Exact<{ [key: string]: never }>
-
-type WebsiteQuery = {
-  website?:
-    | {
-        data?:
-          | {
-              id?: string | null | undefined
-              attributes?:
-                | {
-                    locale?: string | null | undefined
-                    localizations?:
-                      | {
-                          data: Array<{
-                            id?: string | null | undefined
-                            attributes?:
-                              | {
-                                  locale?: string | null | undefined
-                                  seo?:
-                                    | {
-                                        id: string
-                                        canonicalURL?: string | null | undefined
-                                        keywords?: string | null | undefined
-                                        metaTitle: string
-                                        metaViewport?: string | null | undefined
-                                        metaDescription?: string | null | undefined
-                                      }
-                                    | null
-                                    | undefined
-                                  content?:
-                                    | Array<
-                                        | {
-                                            __typename: 'ComponentPageContactUs'
-                                            id: string
-                                            pathname: string
-                                            contact?:
-                                              | {
-                                                  id: string
-                                                  address?: string | null | undefined
-                                                  email?: string | null | undefined
-                                                  phone?: string | null | undefined
-                                                }
-                                              | null
-                                              | undefined
-                                          }
-                                        | {
-                                            __typename: 'ComponentPageHome'
-                                            id: string
-                                            pathname: string
-                                            hero?:
-                                              | {
-                                                  id: string
-                                                  title?: string | null | undefined
-                                                  subtitle?: string | null | undefined
-                                                  description?: string | null | undefined
-                                                  media?:
-                                                    | {
-                                                        data?:
-                                                          | {
-                                                              id?: string | null | undefined
-                                                              attributes?:
-                                                                | {
-                                                                    previewUrl?: string | null | undefined
-                                                                    alternativeText?: string | null | undefined
-                                                                    url: string
-                                                                  }
-                                                                | null
-                                                                | undefined
-                                                            }
-                                                          | null
-                                                          | undefined
-                                                      }
-                                                    | null
-                                                    | undefined
-                                                }
-                                              | null
-                                              | undefined
-                                            components?:
-                                              | Array<
-                                                  | {
-                                                      id: string
-                                                      title?: string | null | undefined
-                                                      subtitle?: string | null | undefined
-                                                      description?: string | null | undefined
-                                                      media?:
-                                                        | {
-                                                            data?:
-                                                              | {
-                                                                  id?: string | null | undefined
-                                                                  attributes?:
-                                                                    | {
-                                                                        previewUrl?: string | null | undefined
-                                                                        alternativeText?: string | null | undefined
-                                                                        url: string
-                                                                      }
-                                                                    | null
-                                                                    | undefined
-                                                                }
-                                                              | null
-                                                              | undefined
-                                                          }
-                                                        | null
-                                                        | undefined
-                                                    }
-                                                  | null
-                                                  | undefined
-                                                >
-                                              | null
-                                              | undefined
-                                            technology?:
-                                              | {
-                                                  id: string
-                                                  title?: string | null | undefined
-                                                  subtitle?: string | null | undefined
-                                                }
-                                              | null
-                                              | undefined
-                                            frameworks?:
-                                              | {
-                                                  id: string
-                                                  title?: string | null | undefined
-                                                  subtitle?: string | null | undefined
-                                                  description?: string | null | undefined
-                                                  media?:
-                                                    | {
-                                                        data?:
-                                                          | {
-                                                              id?: string | null | undefined
-                                                              attributes?:
-                                                                | {
-                                                                    previewUrl?: string | null | undefined
-                                                                    alternativeText?: string | null | undefined
-                                                                    url: string
-                                                                  }
-                                                                | null
-                                                                | undefined
-                                                            }
-                                                          | null
-                                                          | undefined
-                                                      }
-                                                    | null
-                                                    | undefined
-                                                }
-                                              | null
-                                              | undefined
-                                          }
-                                        | { __typename: 'Error' }
-                                        | null
-                                        | undefined
-                                      >
-                                    | null
-                                    | undefined
-                                  translations?:
-                                    | Array<
-                                        | { id: string; key?: string | null | undefined; value: string }
-                                        | null
-                                        | undefined
-                                      >
-                                    | null
-                                    | undefined
-                                }
-                              | null
-                              | undefined
-                          }>
-                        }
-                      | null
-                      | undefined
-                    seo?:
-                      | {
-                          id: string
-                          canonicalURL?: string | null | undefined
-                          keywords?: string | null | undefined
-                          metaTitle: string
-                          metaViewport?: string | null | undefined
-                          metaDescription?: string | null | undefined
-                        }
-                      | null
-                      | undefined
-                    content?:
-                      | Array<
-                          | {
-                              __typename: 'ComponentPageContactUs'
-                              id: string
-                              pathname: string
-                              contact?:
-                                | {
-                                    id: string
-                                    address?: string | null | undefined
-                                    email?: string | null | undefined
-                                    phone?: string | null | undefined
-                                  }
-                                | null
-                                | undefined
-                            }
-                          | {
-                              __typename: 'ComponentPageHome'
-                              id: string
-                              pathname: string
-                              hero?:
-                                | {
-                                    id: string
-                                    title?: string | null | undefined
-                                    subtitle?: string | null | undefined
-                                    description?: string | null | undefined
-                                    media?:
-                                      | {
-                                          data?:
-                                            | {
-                                                id?: string | null | undefined
-                                                attributes?:
-                                                  | {
-                                                      previewUrl?: string | null | undefined
-                                                      alternativeText?: string | null | undefined
-                                                      url: string
-                                                    }
-                                                  | null
-                                                  | undefined
-                                              }
-                                            | null
-                                            | undefined
-                                        }
-                                      | null
-                                      | undefined
-                                  }
-                                | null
-                                | undefined
-                              components?:
-                                | Array<
-                                    | {
-                                        id: string
-                                        title?: string | null | undefined
-                                        subtitle?: string | null | undefined
-                                        description?: string | null | undefined
-                                        media?:
-                                          | {
-                                              data?:
-                                                | {
-                                                    id?: string | null | undefined
-                                                    attributes?:
-                                                      | {
-                                                          previewUrl?: string | null | undefined
-                                                          alternativeText?: string | null | undefined
-                                                          url: string
-                                                        }
-                                                      | null
-                                                      | undefined
-                                                  }
-                                                | null
-                                                | undefined
-                                            }
-                                          | null
-                                          | undefined
-                                      }
-                                    | null
-                                    | undefined
-                                  >
-                                | null
-                                | undefined
-                              technology?:
-                                | {
-                                    id: string
-                                    title?: string | null | undefined
-                                    subtitle?: string | null | undefined
-                                  }
-                                | null
-                                | undefined
-                              frameworks?:
-                                | {
-                                    id: string
-                                    title?: string | null | undefined
-                                    subtitle?: string | null | undefined
-                                    description?: string | null | undefined
-                                    media?:
-                                      | {
-                                          data?:
-                                            | {
-                                                id?: string | null | undefined
-                                                attributes?:
-                                                  | {
-                                                      previewUrl?: string | null | undefined
-                                                      alternativeText?: string | null | undefined
-                                                      url: string
-                                                    }
-                                                  | null
-                                                  | undefined
-                                              }
-                                            | null
-                                            | undefined
-                                        }
-                                      | null
-                                      | undefined
-                                  }
-                                | null
-                                | undefined
-                            }
-                          | { __typename: 'Error' }
-                          | null
-                          | undefined
-                        >
-                      | null
-                      | undefined
-                    translations?:
-                      | Array<{ id: string; key?: string | null | undefined; value: string } | null | undefined>
-                      | null
-                      | undefined
-                  }
-                | null
-                | undefined
-            }
-          | null
-          | undefined
-      }
-    | null
-    | undefined
-}

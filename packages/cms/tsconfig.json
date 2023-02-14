@@ -1,11 +1,13 @@
 {
   "extends": "@bn-digital/typescript-config/strapi-server.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "outDir": "dist",
-    "rootDir": ".",
+    "incremental": true,
+    "strictNullChecks": false,
     "types": ["@bn-digital/strapi-types"]
   },
-  "include": ["./", "src/**/*.json"],
+  "include": ["./", "./src/**/*.json"],
   "exclude": [
     "node_modules/",
     "build/",

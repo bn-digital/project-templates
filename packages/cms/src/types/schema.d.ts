@@ -14,18 +14,14 @@ import {
   BooleanAttribute,
   EnumerationAttribute,
   BigIntegerAttribute,
-  UIDAttribute,
-  ComponentAttribute,
-  TextAttribute,
-  RichTextAttribute,
-  MediaAttribute,
-  SingleTypeSchema,
-  DynamicZoneAttribute,
-  SetPluginOptions,
   IntegerAttribute,
   DecimalAttribute,
   SetMinMax,
   ComponentSchema,
+  TextAttribute,
+  ComponentAttribute,
+  MediaAttribute,
+  RichTextAttribute,
 } from '@strapi/strapi'
 
 export interface AdminPermission extends CollectionTypeSchema {
@@ -229,123 +225,6 @@ export interface AdminApiTokenPermission extends CollectionTypeSchema {
   }
 }
 
-export interface ApiCategoryCategory extends CollectionTypeSchema {
-  info: {
-    singularName: 'category'
-    pluralName: 'categories'
-    displayName: 'Category'
-    description: ''
-  }
-  options: {
-    draftAndPublish: false
-  }
-  attributes: {
-    name: StringAttribute & RequiredAttribute
-    slug: UIDAttribute<'api::category.category', 'name'> & RequiredAttribute
-    posts: RelationAttribute<'api::category.category', 'oneToMany', 'api::post.post'>
-    seo: ComponentAttribute<'shared.seo'>
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'api::category.category', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'api::category.category', 'oneToOne', 'admin::user'> & PrivateAttribute
-  }
-}
-
-export interface ApiContactContact extends CollectionTypeSchema {
-  info: {
-    singularName: 'contact'
-    pluralName: 'contacts'
-    displayName: 'Contact'
-    description: ''
-  }
-  options: {
-    populateCreatorFields: false
-    draftAndPublish: false
-  }
-  attributes: {
-    name: StringAttribute & RequiredAttribute
-    email: EmailAttribute & RequiredAttribute
-    subject: StringAttribute
-    text: TextAttribute
-    comment: StringAttribute & RequiredAttribute
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'api::contact.contact', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'api::contact.contact', 'oneToOne', 'admin::user'> & PrivateAttribute
-  }
-}
-
-export interface ApiPostPost extends CollectionTypeSchema {
-  info: {
-    singularName: 'post'
-    pluralName: 'posts'
-    displayName: 'Post'
-    description: ''
-  }
-  options: {
-    populateCreatorFields: false
-    draftAndPublish: true
-  }
-  attributes: {
-    name: StringAttribute & RequiredAttribute
-    slug: UIDAttribute<'api::post.post', 'name'> & RequiredAttribute
-    teaser: TextAttribute
-    content: RichTextAttribute
-    cover: MediaAttribute
-    seo: ComponentAttribute<'shared.seo'>
-    category: RelationAttribute<'api::post.post', 'manyToOne', 'api::category.category'>
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    publishedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'api::post.post', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'api::post.post', 'oneToOne', 'admin::user'> & PrivateAttribute
-  }
-}
-
-export interface ApiWebsiteWebsite extends SingleTypeSchema {
-  info: {
-    singularName: 'website'
-    pluralName: 'websites'
-    displayName: 'Website'
-    description: ''
-  }
-  options: {
-    populateCreatorFields: false
-    draftAndPublish: false
-  }
-  pluginOptions: {
-    i18n: {
-      localized: true
-    }
-  }
-  attributes: {
-    content: DynamicZoneAttribute<['page.home', 'page.contact-us']> &
-      SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    translations: ComponentAttribute<'data.entry', true> &
-      SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    seo: ComponentAttribute<'shared.seo'> &
-      SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'api::website.website', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'api::website.website', 'oneToOne', 'admin::user'> & PrivateAttribute
-    localizations: RelationAttribute<'api::website.website', 'oneToMany', 'api::website.website'>
-    locale: StringAttribute
-  }
-}
-
 export interface PluginUploadFile extends CollectionTypeSchema {
   info: {
     singularName: 'file'
@@ -532,77 +411,6 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
   }
 }
 
-export interface PluginI18NLocale extends CollectionTypeSchema {
-  info: {
-    singularName: 'locale'
-    pluralName: 'locales'
-    collectionName: 'locales'
-    displayName: 'Locale'
-    description: ''
-  }
-  options: {
-    draftAndPublish: false
-  }
-  pluginOptions: {
-    'content-manager': {
-      visible: false
-    }
-    'content-type-builder': {
-      visible: false
-    }
-  }
-  attributes: {
-    name: StringAttribute &
-      SetMinMax<{
-        min: 1
-        max: 50
-      }>
-    code: StringAttribute & UniqueAttribute
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'plugin::i18n.locale', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'plugin::i18n.locale', 'oneToOne', 'admin::user'> & PrivateAttribute
-  }
-}
-
-export interface PluginEmailDesignerEmailTemplate extends CollectionTypeSchema {
-  info: {
-    singularName: 'email-template'
-    pluralName: 'email-templates'
-    displayName: 'Email Template'
-    name: 'email-template'
-    description: ''
-  }
-  options: {
-    draftAndPublish: false
-    timestamps: true
-    increments: true
-    comment: ''
-  }
-  pluginOptions: {
-    'content-manager': {
-      visible: true
-    }
-    'content-type-builder': {
-      visible: false
-    }
-  }
-  attributes: {
-    templateReferenceId: UIDAttribute<'plugin::email-designer.email-template', 'name'> & RequiredAttribute
-    design: JSONAttribute
-    subject: StringAttribute
-    bodyHtml: TextAttribute
-    bodyText: TextAttribute
-    enabled: BooleanAttribute & DefaultTo<true>
-    tags: JSONAttribute
-    name: StringAttribute & RequiredAttribute
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    createdBy: RelationAttribute<'plugin::email-designer.email-template', 'oneToOne', 'admin::user'> & PrivateAttribute
-    updatedBy: RelationAttribute<'plugin::email-designer.email-template', 'oneToOne', 'admin::user'> & PrivateAttribute
-  }
-}
-
 export interface DataContact extends ComponentSchema {
   info: {
     displayName: 'Contact'
@@ -662,54 +470,6 @@ export interface PageHome extends ComponentSchema {
     components: ComponentAttribute<'ui.card', true>
     technology: ComponentAttribute<'ui.headline'>
     frameworks: ComponentAttribute<'ui.card'>
-  }
-}
-
-export interface SharedMetaSocial extends ComponentSchema {
-  info: {
-    displayName: 'metaSocial'
-    icon: 'project-diagram'
-  }
-  attributes: {
-    socialNetwork: EnumerationAttribute<['Facebook', 'Twitter']> & RequiredAttribute
-    title: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        maxLength: 60
-      }>
-    description: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        maxLength: 65
-      }>
-    image: MediaAttribute
-  }
-}
-
-export interface SharedSeo extends ComponentSchema {
-  info: {
-    displayName: 'seo'
-    icon: 'search'
-    description: ''
-  }
-  attributes: {
-    metaTitle: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        maxLength: 60
-      }>
-    metaDescription: StringAttribute &
-      SetMinMaxLength<{
-        minLength: 25
-        maxLength: 160
-      }>
-    metaImage: MediaAttribute
-    metaSocial: ComponentAttribute<'shared.meta-social', true>
-    keywords: TextAttribute
-    metaRobots: StringAttribute
-    structuredData: JSONAttribute
-    metaViewport: StringAttribute
-    canonicalURL: StringAttribute
   }
 }
 
@@ -826,24 +586,16 @@ declare global {
       'admin::role': AdminRole
       'admin::api-token': AdminApiToken
       'admin::api-token-permission': AdminApiTokenPermission
-      'api::category.category': ApiCategoryCategory
-      'api::contact.contact': ApiContactContact
-      'api::post.post': ApiPostPost
-      'api::website.website': ApiWebsiteWebsite
       'plugin::upload.file': PluginUploadFile
       'plugin::upload.folder': PluginUploadFolder
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission
       'plugin::users-permissions.role': PluginUsersPermissionsRole
       'plugin::users-permissions.user': PluginUsersPermissionsUser
-      'plugin::i18n.locale': PluginI18NLocale
-      'plugin::email-designer.email-template': PluginEmailDesignerEmailTemplate
       'data.contact': DataContact
       'data.entry': DataEntry
       'data.set': DataSet
       'page.contact-us': PageContactUs
       'page.home': PageHome
-      'shared.meta-social': SharedMetaSocial
-      'shared.seo': SharedSeo
       'ui.card': UiCard
       'ui.grid': UiGrid
       'ui.headline': UiHeadline

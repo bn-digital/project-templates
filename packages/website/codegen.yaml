@@ -12,7 +12,7 @@ config:
   scalars:
     Date: string
     DateTime: Date
-    I18NLocaleCode: string | 'en'
+    I18NLocaleCode: string
     JSON: Record<string, any|any[]|string|number|boolean|null|undefined>|any[]
     Long: number
     Time: string

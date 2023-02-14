@@ -1,34 +1,29 @@
-export { exportConfigs, importConfigs } from './config-sync'
-export { generateTypeDefinitions } from './typescript'
-
-import { createHmac } from 'node:crypto'
+import { join } from 'node:path'
 
 import packageMetadata from '../../package.json'
+import { generateSecret } from './config'
 
-const workingDir = process.cwd()
-
-/**
- * Name is generated from package scope name, defined in package.json, i.e. leading chunk before slash (@app/cms - app)
- * @type {string}
- */
-const name = process.env.APP_NAME ?? packageMetadata.name.split('/')?.[0].replace('@', '')
-
-const version = process.env.APP_VERSION ?? 'latest'
-
-const domain = process.env.DOMAIN ?? `${name}.bndigital.dev`
-
-const generateSecret = (secretName: string): string => createHmac('sha3-256', name).update(secretName).digest('hex')
-
-function appInfo(strapi: Strapi.Strapi) {
-  strapi.log.info(`[app] ${name}:${version}`)
+const name = `${process.env.APP_NAME ?? packageMetadata.name.split('/')?.[0].replace('@', '')}` as const
+const dnsZone = `bndigital.dev` as const
+const app: Strapi.App.Metadata = {
+  workingDir: `${process.cwd()}`,
+  name: process.env.APP_NAME ?? packageMetadata.name.split('/')?.[0].replace('@', ''),
+  version: process.env.APP_VERSION ?? 'latest',
+  domain: process.env.DOMAIN ?? `${name}.${dnsZone}`,
+}
+function appInfo({ domain, name, version, database }: Strapi.App.Metadata) {
+  strapi.log.info(`[app] Application: ${name}, version: ${version}`)
   strapi.log.info(`[app] Production domain: ${domain}`)
-  strapi.log.info(`[database] Engine: ${strapi.config.database.connection.client}`)
+  strapi.log.info(`[app] Database Engine: ${database}`)
 }
 
-const app = {
-  workingDir,
-  name,
-  version,
-  domain,
+const resolvePath = (...workingDirRelative: string[]): string => {
+  return join(app.workingDir, ...workingDirRelative)
 }
-export { appInfo, app as default, generateSecret }
+
+const randomSecret = (name: string): string => generateSecret(name, app.name)
+
+export { appInfo, app as default, randomSecret, resolvePath }
+export { cspDirectives } from './config'
+export { exportConfigs, importConfigs } from './config-sync'
+export { generateTypeDefinitions } from './typescript'

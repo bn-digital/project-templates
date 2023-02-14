@@ -1,8 +1,8 @@
 import { configureReact } from '@bn-digital/vite'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 
-const config = configureReact(
-  { server: { watch: { interval: 1000 } } },
+const defaultConfig = configureReact(
+  {},
   {
     lint: { enabled: true },
     react: { graphql: true },
@@ -16,5 +16,15 @@ const config = configureReact(
     },
   }
 )
-
-export default defineConfig(config)
+export default defineConfig(({ mode }) => {
+  // Load env file based on `mode` in the current working directory.
+  // Set the third parameter to '' to load all env regardless of the `VITE_` prefix.
+  const env = loadEnv('', process.cwd(), ['APP_', 'WEBSITE_', 'VITE_', 'REACT_APP_'])
+  console.log(env)
+  return {
+    ...defaultConfig,
+    define: {
+      __APP_ENV__: env.APP_ENV,
+    },
+  }
+})

@@ -1,47 +1,21 @@
 import './DefaultLayout.less'
 
-import { Layout, MenuProps } from 'antd'
-import { FC, Suspense, useMemo } from 'react'
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { Layout } from 'antd'
+import { FC, Suspense } from 'react'
+import { Outlet } from 'react-router-dom'
 
-import { useWebsiteQuery } from '../../graphql'
-import { useApp } from '../app'
-import { default as Navigation } from '../menu/Navigation'
+import { HeaderMenu } from '../menu'
 import { Footer } from './Footer'
 import { Header } from './Header'
-
-type ContentProps = Maybe<ContactUsFragment | HomeFragment>
-
-function filterByPathname<T extends ContentProps>(pathname = '/', data: (T | null)[] = []): T | null {
-  return data.find(it => it?.pathname === pathname) ?? null
-}
-
-const Page = () => {
-  const { app } = useApp()
-  const { pathname } = useLocation()
-
-  const { data, loading } = useWebsiteQuery({ skip: !app.api })
-
-  const context = useMemo(
-    () =>
-      pathname && data?.website?.data?.attributes?.content
-        ? filterByPathname(pathname, data?.website?.data.attributes?.content as ContentProps[])
-        : { pathname, hero: { title: `URI: ${pathname}`, subtitle: '' } },
-    [data?.website?.data?.attributes?.content, pathname]
-  )
-  return loading ? null : <Outlet context={context} />
-}
-
-const headerMenu: MenuProps['items'] = [{ key: '/', label: <NavLink to={'/'}>Home</NavLink> }]
 
 export const DefaultLayout: FC = () => (
   <Layout className={'default'}>
     <Layout.Header>
-      <Header renderMenu={() => <Navigation mode={'horizontal'} items={headerMenu} />} />
+      <Header renderMenu={HeaderMenu} />
     </Layout.Header>
     <Layout.Content>
-      <Suspense fallback={null}>
-        <Page />
+      <Suspense>
+        <Outlet />
       </Suspense>
     </Layout.Content>
     <Layout.Footer>

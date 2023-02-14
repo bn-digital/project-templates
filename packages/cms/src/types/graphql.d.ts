@@ -32,26 +32,6 @@ export interface NexusGenInputs {
     or?: Array<boolean | null> | null // [Boolean]
     startsWith?: boolean | null // Boolean
   }
-  CategoryFiltersInput: {
-    // input type
-    and?: Array<NexusGenInputs['CategoryFiltersInput'] | null> | null // [CategoryFiltersInput]
-    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-    id?: NexusGenInputs['IDFilterInput'] | null // IDFilterInput
-    name?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    not?: NexusGenInputs['CategoryFiltersInput'] | null // CategoryFiltersInput
-    or?: Array<NexusGenInputs['CategoryFiltersInput'] | null> | null // [CategoryFiltersInput]
-    posts?: NexusGenInputs['PostFiltersInput'] | null // PostFiltersInput
-    seo?: NexusGenInputs['ComponentSharedSeoFiltersInput'] | null // ComponentSharedSeoFiltersInput
-    slug?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-  }
-  CategoryInput: {
-    // input type
-    name?: string | null // String
-    posts?: Array<string | null> | null // [ID]
-    seo?: NexusGenInputs['ComponentSharedSeoInput'] | null // ComponentSharedSeoInput
-    slug?: string | null // String
-  }
   ChangePasswordInput: {
     // input type
     newPassword: string // String!
@@ -132,50 +112,6 @@ export interface NexusGenInputs {
     id?: string | null // ID
     pathname?: string | null // String
     technology?: NexusGenInputs['ComponentUiHeadlineInput'] | null // ComponentUiHeadlineInput
-  }
-  ComponentSharedMetaSocialFiltersInput: {
-    // input type
-    and?: Array<NexusGenInputs['ComponentSharedMetaSocialFiltersInput'] | null> | null // [ComponentSharedMetaSocialFiltersInput]
-    description?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    not?: NexusGenInputs['ComponentSharedMetaSocialFiltersInput'] | null // ComponentSharedMetaSocialFiltersInput
-    or?: Array<NexusGenInputs['ComponentSharedMetaSocialFiltersInput'] | null> | null // [ComponentSharedMetaSocialFiltersInput]
-    socialNetwork?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    title?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-  }
-  ComponentSharedMetaSocialInput: {
-    // input type
-    description?: string | null // String
-    id?: string | null // ID
-    image?: string | null // ID
-    socialNetwork?: NexusGenEnums['ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK'] | null // ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK
-    title?: string | null // String
-  }
-  ComponentSharedSeoFiltersInput: {
-    // input type
-    and?: Array<NexusGenInputs['ComponentSharedSeoFiltersInput'] | null> | null // [ComponentSharedSeoFiltersInput]
-    canonicalURL?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    keywords?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    metaDescription?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    metaRobots?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    metaSocial?: NexusGenInputs['ComponentSharedMetaSocialFiltersInput'] | null // ComponentSharedMetaSocialFiltersInput
-    metaTitle?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    metaViewport?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    not?: NexusGenInputs['ComponentSharedSeoFiltersInput'] | null // ComponentSharedSeoFiltersInput
-    or?: Array<NexusGenInputs['ComponentSharedSeoFiltersInput'] | null> | null // [ComponentSharedSeoFiltersInput]
-    structuredData?: NexusGenInputs['JSONFilterInput'] | null // JSONFilterInput
-  }
-  ComponentSharedSeoInput: {
-    // input type
-    canonicalURL?: string | null // String
-    id?: string | null // ID
-    keywords?: string | null // String
-    metaDescription?: string | null // String
-    metaImage?: string | null // ID
-    metaRobots?: string | null // String
-    metaSocial?: Array<NexusGenInputs['ComponentSharedMetaSocialInput'] | null> | null // [ComponentSharedMetaSocialInput]
-    metaTitle?: string | null // String
-    metaViewport?: string | null // String
-    structuredData?: NexusGenScalars['JSON'] | null // JSON
   }
   ComponentUiCardFiltersInput: {
     // input type
@@ -340,34 +276,6 @@ export interface NexusGenInputs {
     or?: Array<NexusGenScalars['DateTime'] | null> | null // [DateTime]
     startsWith?: NexusGenScalars['DateTime'] | null // DateTime
   }
-  EmailDesignerEmailTemplateFiltersInput: {
-    // input type
-    and?: Array<NexusGenInputs['EmailDesignerEmailTemplateFiltersInput'] | null> | null // [EmailDesignerEmailTemplateFiltersInput]
-    bodyHtml?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    bodyText?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-    design?: NexusGenInputs['JSONFilterInput'] | null // JSONFilterInput
-    enabled?: NexusGenInputs['BooleanFilterInput'] | null // BooleanFilterInput
-    id?: NexusGenInputs['IDFilterInput'] | null // IDFilterInput
-    name?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    not?: NexusGenInputs['EmailDesignerEmailTemplateFiltersInput'] | null // EmailDesignerEmailTemplateFiltersInput
-    or?: Array<NexusGenInputs['EmailDesignerEmailTemplateFiltersInput'] | null> | null // [EmailDesignerEmailTemplateFiltersInput]
-    subject?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    tags?: NexusGenInputs['JSONFilterInput'] | null // JSONFilterInput
-    templateReferenceId?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-  }
-  EmailDesignerEmailTemplateInput: {
-    // input type
-    bodyHtml?: string | null // String
-    bodyText?: string | null // String
-    design?: NexusGenScalars['JSON'] | null // JSON
-    enabled?: boolean | null // Boolean
-    name?: string | null // String
-    subject?: string | null // String
-    tags?: NexusGenScalars['JSON'] | null // JSON
-    templateReferenceId?: string | null // String
-  }
   FileInfoInput: {
     // input type
     alternativeText?: string | null // String
@@ -500,33 +408,6 @@ export interface NexusGenInputs {
     page?: number | null // Int
     pageSize?: number | null // Int
     start?: number | null // Int
-  }
-  PostFiltersInput: {
-    // input type
-    and?: Array<NexusGenInputs['PostFiltersInput'] | null> | null // [PostFiltersInput]
-    category?: NexusGenInputs['CategoryFiltersInput'] | null // CategoryFiltersInput
-    content?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-    id?: NexusGenInputs['IDFilterInput'] | null // IDFilterInput
-    name?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    not?: NexusGenInputs['PostFiltersInput'] | null // PostFiltersInput
-    or?: Array<NexusGenInputs['PostFiltersInput'] | null> | null // [PostFiltersInput]
-    publishedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-    seo?: NexusGenInputs['ComponentSharedSeoFiltersInput'] | null // ComponentSharedSeoFiltersInput
-    slug?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    teaser?: NexusGenInputs['StringFilterInput'] | null // StringFilterInput
-    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-  }
-  PostInput: {
-    // input type
-    category?: string | null // ID
-    content?: string | null // String
-    cover?: string | null // ID
-    name?: string | null // String
-    publishedAt?: NexusGenScalars['DateTime'] | null // DateTime
-    seo?: NexusGenInputs['ComponentSharedSeoInput'] | null // ComponentSharedSeoInput
-    slug?: string | null // String
-    teaser?: string | null // String
   }
   StringFilterInput: {
     // input type
@@ -724,26 +605,9 @@ export interface NexusGenInputs {
     role?: string | null // ID
     username?: string | null // String
   }
-  WebsiteFiltersInput: {
-    // input type
-    and?: Array<NexusGenInputs['WebsiteFiltersInput'] | null> | null // [WebsiteFiltersInput]
-    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-    not?: NexusGenInputs['WebsiteFiltersInput'] | null // WebsiteFiltersInput
-    or?: Array<NexusGenInputs['WebsiteFiltersInput'] | null> | null // [WebsiteFiltersInput]
-    seo?: NexusGenInputs['ComponentSharedSeoFiltersInput'] | null // ComponentSharedSeoFiltersInput
-    translations?: NexusGenInputs['ComponentDataEntryFiltersInput'] | null // ComponentDataEntryFiltersInput
-    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null // DateTimeFilterInput
-  }
-  WebsiteInput: {
-    // input type
-    content?: NexusGenScalars['WebsiteContentDynamicZoneInput'][] | null // [WebsiteContentDynamicZoneInput!]
-    seo?: NexusGenInputs['ComponentSharedSeoInput'] | null // ComponentSharedSeoInput
-    translations?: Array<NexusGenInputs['ComponentDataEntryInput'] | null> | null // [ComponentDataEntryInput]
-  }
 }
 
 export interface NexusGenEnums {
-  ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK: 'Facebook' | 'Twitter'
   PublicationState: 'live' | 'preview'
 }
 
@@ -759,21 +623,9 @@ export interface NexusGenScalars {
   Long: any
   Time: any
   Upload: any
-  WebsiteContentDynamicZoneInput: any
 }
 
 export interface NexusGenObjects {
-  Category: {
-    // root type
-    createdAt?: NexusGenScalars['DateTime'] | null // DateTime
-    name: string // String!
-    slug: string // String!
-    updatedAt?: NexusGenScalars['DateTime'] | null // DateTime
-  }
-  CategoryEntity: {}
-  CategoryEntityResponse: {}
-  CategoryEntityResponseCollection: {}
-  CategoryRelationResponseCollection: {}
   ComponentDataContact: {
     // root type
     address?: string | null // String
@@ -801,24 +653,6 @@ export interface NexusGenObjects {
     // root type
     id: string // ID!
     pathname: string // String!
-  }
-  ComponentSharedMetaSocial: {
-    // root type
-    description: string // String!
-    id: string // ID!
-    socialNetwork: NexusGenEnums['ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK'] // ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK!
-    title: string // String!
-  }
-  ComponentSharedSeo: {
-    // root type
-    canonicalURL?: string | null // String
-    id: string // ID!
-    keywords?: string | null // String
-    metaDescription?: string | null // String
-    metaRobots?: string | null // String
-    metaTitle: string // String!
-    metaViewport?: string | null // String
-    structuredData?: NexusGenScalars['JSON'] | null // JSON
   }
   ComponentUiCard: {
     // root type
@@ -864,23 +698,6 @@ export interface NexusGenObjects {
     id: string // ID!
     visible: boolean // Boolean!
   }
-  EmailDesignerEmailTemplate: {
-    // root type
-    bodyHtml?: string | null // String
-    bodyText?: string | null // String
-    createdAt?: NexusGenScalars['DateTime'] | null // DateTime
-    design?: NexusGenScalars['JSON'] | null // JSON
-    enabled?: boolean | null // Boolean
-    name: string // String!
-    subject?: string | null // String
-    tags?: NexusGenScalars['JSON'] | null // JSON
-    templateReferenceId: string // String!
-    updatedAt?: NexusGenScalars['DateTime'] | null // DateTime
-  }
-  EmailDesignerEmailTemplateEntity: {}
-  EmailDesignerEmailTemplateEntityResponse: {}
-  EmailDesignerEmailTemplateEntityResponseCollection: {}
-  EmailDesignerEmailTemplateRelationResponseCollection: {}
   Error: {
     // root type
     message?: string | null // String
@@ -893,20 +710,6 @@ export interface NexusGenObjects {
     pageSize: number // Int!
     total: number // Int!
   }
-  Post: {
-    // root type
-    content?: string | null // String
-    createdAt?: NexusGenScalars['DateTime'] | null // DateTime
-    name: string // String!
-    publishedAt?: NexusGenScalars['DateTime'] | null // DateTime
-    slug: string // String!
-    teaser?: string | null // String
-    updatedAt?: NexusGenScalars['DateTime'] | null // DateTime
-  }
-  PostEntity: {}
-  PostEntityResponse: {}
-  PostEntityResponseCollection: {}
-  PostRelationResponseCollection: {}
   Query: {}
   ResponseCollectionMeta: {}
   UploadFile: {
@@ -1017,29 +820,17 @@ export interface NexusGenObjects {
   UsersPermissionsUserEntityResponse: {}
   UsersPermissionsUserEntityResponseCollection: {}
   UsersPermissionsUserRelationResponseCollection: {}
-  Website: {
-    // root type
-    createdAt?: NexusGenScalars['DateTime'] | null // DateTime
-    updatedAt?: NexusGenScalars['DateTime'] | null // DateTime
-  }
-  WebsiteEntity: {}
-  WebsiteEntityResponse: {}
-  WebsiteEntityResponseCollection: {}
-  WebsiteRelationResponseCollection: {}
 }
 
 export interface NexusGenInterfaces {}
 
 export interface NexusGenUnions {
   GenericMorph:
-    | NexusGenRootTypes['Category']
     | NexusGenRootTypes['ComponentDataContact']
     | NexusGenRootTypes['ComponentDataEntry']
     | NexusGenRootTypes['ComponentDataSet']
     | NexusGenRootTypes['ComponentPageContactUs']
     | NexusGenRootTypes['ComponentPageHome']
-    | NexusGenRootTypes['ComponentSharedMetaSocial']
-    | NexusGenRootTypes['ComponentSharedSeo']
     | NexusGenRootTypes['ComponentUiCard']
     | NexusGenRootTypes['ComponentUiGrid']
     | NexusGenRootTypes['ComponentUiHeadline']
@@ -1048,18 +839,11 @@ export interface NexusGenUnions {
     | NexusGenRootTypes['ComponentUiSection']
     | NexusGenRootTypes['ComponentUiTab']
     | NexusGenRootTypes['ComponentUiText']
-    | NexusGenRootTypes['EmailDesignerEmailTemplate']
-    | NexusGenRootTypes['Post']
     | NexusGenRootTypes['UploadFile']
     | NexusGenRootTypes['UploadFolder']
     | NexusGenRootTypes['UsersPermissionsPermission']
     | NexusGenRootTypes['UsersPermissionsRole']
     | NexusGenRootTypes['UsersPermissionsUser']
-    | NexusGenRootTypes['Website']
-  WebsiteContentDynamicZone:
-    | NexusGenRootTypes['ComponentPageContactUs']
-    | NexusGenRootTypes['ComponentPageHome']
-    | NexusGenRootTypes['Error']
 }
 
 export type NexusGenRootTypes = NexusGenObjects & NexusGenUnions
@@ -1067,33 +851,6 @@ export type NexusGenRootTypes = NexusGenObjects & NexusGenUnions
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
-  Category: {
-    // field return type
-    createdAt: NexusGenScalars['DateTime'] | null // DateTime
-    name: string // String!
-    posts: NexusGenRootTypes['PostRelationResponseCollection'] | null // PostRelationResponseCollection
-    seo: NexusGenRootTypes['ComponentSharedSeo'] | null // ComponentSharedSeo
-    slug: string // String!
-    updatedAt: NexusGenScalars['DateTime'] | null // DateTime
-  }
-  CategoryEntity: {
-    // field return type
-    attributes: NexusGenRootTypes['Category'] | null // Category
-    id: string | null // ID
-  }
-  CategoryEntityResponse: {
-    // field return type
-    data: NexusGenRootTypes['CategoryEntity'] | null // CategoryEntity
-  }
-  CategoryEntityResponseCollection: {
-    // field return type
-    data: NexusGenRootTypes['CategoryEntity'][] // [CategoryEntity!]!
-    meta: NexusGenRootTypes['ResponseCollectionMeta'] // ResponseCollectionMeta!
-  }
-  CategoryRelationResponseCollection: {
-    // field return type
-    data: NexusGenRootTypes['CategoryEntity'][] // [CategoryEntity!]!
-  }
   ComponentDataContact: {
     // field return type
     address: string | null // String
@@ -1126,27 +883,6 @@ export interface NexusGenFieldTypes {
     id: string // ID!
     pathname: string // String!
     technology: NexusGenRootTypes['ComponentUiHeadline'] | null // ComponentUiHeadline
-  }
-  ComponentSharedMetaSocial: {
-    // field return type
-    description: string // String!
-    id: string // ID!
-    image: NexusGenRootTypes['UploadFileEntityResponse'] | null // UploadFileEntityResponse
-    socialNetwork: NexusGenEnums['ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK'] // ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK!
-    title: string // String!
-  }
-  ComponentSharedSeo: {
-    // field return type
-    canonicalURL: string | null // String
-    id: string // ID!
-    keywords: string | null // String
-    metaDescription: string | null // String
-    metaImage: NexusGenRootTypes['UploadFileEntityResponse'] | null // UploadFileEntityResponse
-    metaRobots: string | null // String
-    metaSocial: Array<NexusGenRootTypes['ComponentSharedMetaSocial'] | null> | null // [ComponentSharedMetaSocial]
-    metaTitle: string // String!
-    metaViewport: string | null // String
-    structuredData: NexusGenScalars['JSON'] | null // JSON
   }
   ComponentUiCard: {
     // field return type
@@ -1198,37 +934,6 @@ export interface NexusGenFieldTypes {
     id: string // ID!
     visible: boolean // Boolean!
   }
-  EmailDesignerEmailTemplate: {
-    // field return type
-    bodyHtml: string | null // String
-    bodyText: string | null // String
-    createdAt: NexusGenScalars['DateTime'] | null // DateTime
-    design: NexusGenScalars['JSON'] | null // JSON
-    enabled: boolean | null // Boolean
-    name: string // String!
-    subject: string | null // String
-    tags: NexusGenScalars['JSON'] | null // JSON
-    templateReferenceId: string // String!
-    updatedAt: NexusGenScalars['DateTime'] | null // DateTime
-  }
-  EmailDesignerEmailTemplateEntity: {
-    // field return type
-    attributes: NexusGenRootTypes['EmailDesignerEmailTemplate'] | null // EmailDesignerEmailTemplate
-    id: string | null // ID
-  }
-  EmailDesignerEmailTemplateEntityResponse: {
-    // field return type
-    data: NexusGenRootTypes['EmailDesignerEmailTemplateEntity'] | null // EmailDesignerEmailTemplateEntity
-  }
-  EmailDesignerEmailTemplateEntityResponseCollection: {
-    // field return type
-    data: NexusGenRootTypes['EmailDesignerEmailTemplateEntity'][] // [EmailDesignerEmailTemplateEntity!]!
-    meta: NexusGenRootTypes['ResponseCollectionMeta'] // ResponseCollectionMeta!
-  }
-  EmailDesignerEmailTemplateRelationResponseCollection: {
-    // field return type
-    data: NexusGenRootTypes['EmailDesignerEmailTemplateEntity'][] // [EmailDesignerEmailTemplateEntity!]!
-  }
   Error: {
     // field return type
     code: string // String!
@@ -1263,55 +968,15 @@ export interface NexusGenFieldTypes {
     pageSize: number // Int!
     total: number // Int!
   }
-  Post: {
-    // field return type
-    category: NexusGenRootTypes['CategoryEntityResponse'] | null // CategoryEntityResponse
-    content: string | null // String
-    cover: NexusGenRootTypes['UploadFileEntityResponse'] | null // UploadFileEntityResponse
-    createdAt: NexusGenScalars['DateTime'] | null // DateTime
-    name: string // String!
-    publishedAt: NexusGenScalars['DateTime'] | null // DateTime
-    seo: NexusGenRootTypes['ComponentSharedSeo'] | null // ComponentSharedSeo
-    slug: string // String!
-    teaser: string | null // String
-    updatedAt: NexusGenScalars['DateTime'] | null // DateTime
-  }
-  PostEntity: {
-    // field return type
-    attributes: NexusGenRootTypes['Post'] | null // Post
-    id: string | null // ID
-  }
-  PostEntityResponse: {
-    // field return type
-    data: NexusGenRootTypes['PostEntity'] | null // PostEntity
-  }
-  PostEntityResponseCollection: {
-    // field return type
-    data: NexusGenRootTypes['PostEntity'][] // [PostEntity!]!
-    meta: NexusGenRootTypes['ResponseCollectionMeta'] // ResponseCollectionMeta!
-  }
-  PostRelationResponseCollection: {
-    // field return type
-    data: NexusGenRootTypes['PostEntity'][] // [PostEntity!]!
-  }
   Query: {
     // field return type
-    categories: NexusGenRootTypes['CategoryEntityResponseCollection'] | null // CategoryEntityResponseCollection
-    category: NexusGenRootTypes['CategoryEntityResponse'] | null // CategoryEntityResponse
-    emailDesignerEmailTemplate: NexusGenRootTypes['EmailDesignerEmailTemplateEntityResponse'] | null // EmailDesignerEmailTemplateEntityResponse
-    emailDesignerEmailTemplates: NexusGenRootTypes['EmailDesignerEmailTemplateEntityResponseCollection'] | null // EmailDesignerEmailTemplateEntityResponseCollection
     me: NexusGenRootTypes['UsersPermissionsUser'] | null // UsersPermissionsUser
-    post: NexusGenRootTypes['PostEntityResponse'] | null // PostEntityResponse
-    posts: NexusGenRootTypes['PostEntityResponseCollection'] | null // PostEntityResponseCollection
     uploadFile: NexusGenRootTypes['UploadFileEntityResponse'] | null // UploadFileEntityResponse
     uploadFiles: NexusGenRootTypes['UploadFileEntityResponseCollection'] | null // UploadFileEntityResponseCollection
-    uploadFolder: NexusGenRootTypes['UploadFolderEntityResponse'] | null // UploadFolderEntityResponse
-    uploadFolders: NexusGenRootTypes['UploadFolderEntityResponseCollection'] | null // UploadFolderEntityResponseCollection
     usersPermissionsRole: NexusGenRootTypes['UsersPermissionsRoleEntityResponse'] | null // UsersPermissionsRoleEntityResponse
     usersPermissionsRoles: NexusGenRootTypes['UsersPermissionsRoleEntityResponseCollection'] | null // UsersPermissionsRoleEntityResponseCollection
     usersPermissionsUser: NexusGenRootTypes['UsersPermissionsUserEntityResponse'] | null // UsersPermissionsUserEntityResponse
     usersPermissionsUsers: NexusGenRootTypes['UsersPermissionsUserEntityResponseCollection'] | null // UsersPermissionsUserEntityResponseCollection
-    website: NexusGenRootTypes['WebsiteEntityResponse'] | null // WebsiteEntityResponse
   }
   ResponseCollectionMeta: {
     // field return type
@@ -1504,62 +1169,9 @@ export interface NexusGenFieldTypes {
     // field return type
     data: NexusGenRootTypes['UsersPermissionsUserEntity'][] // [UsersPermissionsUserEntity!]!
   }
-  Website: {
-    // field return type
-    content: Array<NexusGenRootTypes['WebsiteContentDynamicZone'] | null> | null // [WebsiteContentDynamicZone]
-    createdAt: NexusGenScalars['DateTime'] | null // DateTime
-    seo: NexusGenRootTypes['ComponentSharedSeo'] | null // ComponentSharedSeo
-    translations: Array<NexusGenRootTypes['ComponentDataEntry'] | null> | null // [ComponentDataEntry]
-    updatedAt: NexusGenScalars['DateTime'] | null // DateTime
-  }
-  WebsiteEntity: {
-    // field return type
-    attributes: NexusGenRootTypes['Website'] | null // Website
-    id: string | null // ID
-  }
-  WebsiteEntityResponse: {
-    // field return type
-    data: NexusGenRootTypes['WebsiteEntity'] | null // WebsiteEntity
-  }
-  WebsiteEntityResponseCollection: {
-    // field return type
-    data: NexusGenRootTypes['WebsiteEntity'][] // [WebsiteEntity!]!
-    meta: NexusGenRootTypes['ResponseCollectionMeta'] // ResponseCollectionMeta!
-  }
-  WebsiteRelationResponseCollection: {
-    // field return type
-    data: NexusGenRootTypes['WebsiteEntity'][] // [WebsiteEntity!]!
-  }
 }
 
 export interface NexusGenFieldTypeNames {
-  Category: {
-    // field return type name
-    createdAt: 'DateTime'
-    name: 'String'
-    posts: 'PostRelationResponseCollection'
-    seo: 'ComponentSharedSeo'
-    slug: 'String'
-    updatedAt: 'DateTime'
-  }
-  CategoryEntity: {
-    // field return type name
-    attributes: 'Category'
-    id: 'ID'
-  }
-  CategoryEntityResponse: {
-    // field return type name
-    data: 'CategoryEntity'
-  }
-  CategoryEntityResponseCollection: {
-    // field return type name
-    data: 'CategoryEntity'
-    meta: 'ResponseCollectionMeta'
-  }
-  CategoryRelationResponseCollection: {
-    // field return type name
-    data: 'CategoryEntity'
-  }
   ComponentDataContact: {
     // field return type name
     address: 'String'
@@ -1592,27 +1204,6 @@ export interface NexusGenFieldTypeNames {
     id: 'ID'
     pathname: 'String'
     technology: 'ComponentUiHeadline'
-  }
-  ComponentSharedMetaSocial: {
-    // field return type name
-    description: 'String'
-    id: 'ID'
-    image: 'UploadFileEntityResponse'
-    socialNetwork: 'ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK'
-    title: 'String'
-  }
-  ComponentSharedSeo: {
-    // field return type name
-    canonicalURL: 'String'
-    id: 'ID'
-    keywords: 'String'
-    metaDescription: 'String'
-    metaImage: 'UploadFileEntityResponse'
-    metaRobots: 'String'
-    metaSocial: 'ComponentSharedMetaSocial'
-    metaTitle: 'String'
-    metaViewport: 'String'
-    structuredData: 'JSON'
   }
   ComponentUiCard: {
     // field return type name
@@ -1664,37 +1255,6 @@ export interface NexusGenFieldTypeNames {
     id: 'ID'
     visible: 'Boolean'
   }
-  EmailDesignerEmailTemplate: {
-    // field return type name
-    bodyHtml: 'String'
-    bodyText: 'String'
-    createdAt: 'DateTime'
-    design: 'JSON'
-    enabled: 'Boolean'
-    name: 'String'
-    subject: 'String'
-    tags: 'JSON'
-    templateReferenceId: 'String'
-    updatedAt: 'DateTime'
-  }
-  EmailDesignerEmailTemplateEntity: {
-    // field return type name
-    attributes: 'EmailDesignerEmailTemplate'
-    id: 'ID'
-  }
-  EmailDesignerEmailTemplateEntityResponse: {
-    // field return type name
-    data: 'EmailDesignerEmailTemplateEntity'
-  }
-  EmailDesignerEmailTemplateEntityResponseCollection: {
-    // field return type name
-    data: 'EmailDesignerEmailTemplateEntity'
-    meta: 'ResponseCollectionMeta'
-  }
-  EmailDesignerEmailTemplateRelationResponseCollection: {
-    // field return type name
-    data: 'EmailDesignerEmailTemplateEntity'
-  }
   Error: {
     // field return type name
     code: 'String'
@@ -1729,55 +1289,15 @@ export interface NexusGenFieldTypeNames {
     pageSize: 'Int'
     total: 'Int'
   }
-  Post: {
-    // field return type name
-    category: 'CategoryEntityResponse'
-    content: 'String'
-    cover: 'UploadFileEntityResponse'
-    createdAt: 'DateTime'
-    name: 'String'
-    publishedAt: 'DateTime'
-    seo: 'ComponentSharedSeo'
-    slug: 'String'
-    teaser: 'String'
-    updatedAt: 'DateTime'
-  }
-  PostEntity: {
-    // field return type name
-    attributes: 'Post'
-    id: 'ID'
-  }
-  PostEntityResponse: {
-    // field return type name
-    data: 'PostEntity'
-  }
-  PostEntityResponseCollection: {
-    // field return type name
-    data: 'PostEntity'
-    meta: 'ResponseCollectionMeta'
-  }
-  PostRelationResponseCollection: {
-    // field return type name
-    data: 'PostEntity'
-  }
   Query: {
     // field return type name
-    categories: 'CategoryEntityResponseCollection'
-    category: 'CategoryEntityResponse'
-    emailDesignerEmailTemplate: 'EmailDesignerEmailTemplateEntityResponse'
-    emailDesignerEmailTemplates: 'EmailDesignerEmailTemplateEntityResponseCollection'
     me: 'UsersPermissionsUser'
-    post: 'PostEntityResponse'
-    posts: 'PostEntityResponseCollection'
     uploadFile: 'UploadFileEntityResponse'
     uploadFiles: 'UploadFileEntityResponseCollection'
-    uploadFolder: 'UploadFolderEntityResponse'
-    uploadFolders: 'UploadFolderEntityResponseCollection'
     usersPermissionsRole: 'UsersPermissionsRoleEntityResponse'
     usersPermissionsRoles: 'UsersPermissionsRoleEntityResponseCollection'
     usersPermissionsUser: 'UsersPermissionsUserEntityResponse'
     usersPermissionsUsers: 'UsersPermissionsUserEntityResponseCollection'
-    website: 'WebsiteEntityResponse'
   }
   ResponseCollectionMeta: {
     // field return type name
@@ -1970,56 +1490,13 @@ export interface NexusGenFieldTypeNames {
     // field return type name
     data: 'UsersPermissionsUserEntity'
   }
-  Website: {
-    // field return type name
-    content: 'WebsiteContentDynamicZone'
-    createdAt: 'DateTime'
-    seo: 'ComponentSharedSeo'
-    translations: 'ComponentDataEntry'
-    updatedAt: 'DateTime'
-  }
-  WebsiteEntity: {
-    // field return type name
-    attributes: 'Website'
-    id: 'ID'
-  }
-  WebsiteEntityResponse: {
-    // field return type name
-    data: 'WebsiteEntity'
-  }
-  WebsiteEntityResponseCollection: {
-    // field return type name
-    data: 'WebsiteEntity'
-    meta: 'ResponseCollectionMeta'
-  }
-  WebsiteRelationResponseCollection: {
-    // field return type name
-    data: 'WebsiteEntity'
-  }
 }
 
 export interface NexusGenArgTypes {
-  Category: {
-    posts: {
-      // args
-      filters?: NexusGenInputs['PostFiltersInput'] | null // PostFiltersInput
-      pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
-      publicationState: NexusGenEnums['PublicationState'] | null // PublicationState
-      sort: Array<string | null> | null // [String]
-    }
-  }
   ComponentPageHome: {
     components: {
       // args
       filters?: NexusGenInputs['ComponentUiCardFiltersInput'] | null // ComponentUiCardFiltersInput
-      pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
-      sort: Array<string | null> | null // [String]
-    }
-  }
-  ComponentSharedSeo: {
-    metaSocial: {
-      // args
-      filters?: NexusGenInputs['ComponentSharedMetaSocialFiltersInput'] | null // ComponentSharedMetaSocialFiltersInput
       pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
       sort: Array<string | null> | null // [String]
     }
@@ -2132,37 +1609,6 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
-    categories: {
-      // args
-      filters?: NexusGenInputs['CategoryFiltersInput'] | null // CategoryFiltersInput
-      pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
-      sort: Array<string | null> | null // [String]
-    }
-    category: {
-      // args
-      id?: string | null // ID
-    }
-    emailDesignerEmailTemplate: {
-      // args
-      id?: string | null // ID
-    }
-    emailDesignerEmailTemplates: {
-      // args
-      filters?: NexusGenInputs['EmailDesignerEmailTemplateFiltersInput'] | null // EmailDesignerEmailTemplateFiltersInput
-      pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
-      sort: Array<string | null> | null // [String]
-    }
-    post: {
-      // args
-      id?: string | null // ID
-    }
-    posts: {
-      // args
-      filters?: NexusGenInputs['PostFiltersInput'] | null // PostFiltersInput
-      pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
-      publicationState: NexusGenEnums['PublicationState'] | null // PublicationState
-      sort: Array<string | null> | null // [String]
-    }
     uploadFile: {
       // args
       id?: string | null // ID
@@ -2170,16 +1616,6 @@ export interface NexusGenArgTypes {
     uploadFiles: {
       // args
       filters?: NexusGenInputs['UploadFileFiltersInput'] | null // UploadFileFiltersInput
-      pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
-      sort: Array<string | null> | null // [String]
-    }
-    uploadFolder: {
-      // args
-      id?: string | null // ID
-    }
-    uploadFolders: {
-      // args
-      filters?: NexusGenInputs['UploadFolderFiltersInput'] | null // UploadFolderFiltersInput
       pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
       sort: Array<string | null> | null // [String]
     }
@@ -2232,26 +1668,15 @@ export interface NexusGenArgTypes {
       sort: Array<string | null> | null // [String]
     }
   }
-  Website: {
-    translations: {
-      // args
-      filters?: NexusGenInputs['ComponentDataEntryFiltersInput'] | null // ComponentDataEntryFiltersInput
-      pagination: NexusGenInputs['PaginationArg'] | null // PaginationArg
-      sort: Array<string | null> | null // [String]
-    }
-  }
 }
 
 export interface NexusGenAbstractTypeMembers {
   GenericMorph:
-    | 'Category'
     | 'ComponentDataContact'
     | 'ComponentDataEntry'
     | 'ComponentDataSet'
     | 'ComponentPageContactUs'
     | 'ComponentPageHome'
-    | 'ComponentSharedMetaSocial'
-    | 'ComponentSharedSeo'
     | 'ComponentUiCard'
     | 'ComponentUiGrid'
     | 'ComponentUiHeadline'
@@ -2260,15 +1685,11 @@ export interface NexusGenAbstractTypeMembers {
     | 'ComponentUiSection'
     | 'ComponentUiTab'
     | 'ComponentUiText'
-    | 'EmailDesignerEmailTemplate'
-    | 'Post'
     | 'UploadFile'
     | 'UploadFolder'
     | 'UsersPermissionsPermission'
     | 'UsersPermissionsRole'
     | 'UsersPermissionsUser'
-    | 'Website'
-  WebsiteContentDynamicZone: 'ComponentPageContactUs' | 'ComponentPageHome' | 'Error'
 }
 
 export interface NexusGenTypeInterfaces {}
@@ -2287,7 +1708,7 @@ export type NexusGenUnionNames = keyof NexusGenUnions
 
 export type NexusGenObjectsUsingAbstractStrategyIsTypeOf = never
 
-export type NexusGenAbstractsUsingStrategyResolveType = 'GenericMorph' | 'WebsiteContentDynamicZone'
+export type NexusGenAbstractsUsingStrategyResolveType = 'GenericMorph'
 
 export type NexusGenFeaturesConfig = {
   abstractTypeStrategies: {

@@ -5,8 +5,8 @@ export default () => async (ctx: Context, next: Next) => {
     try {
       ctx.url = '/index.html'
       ctx.body = strapi.middlewares['strapi::public'](ctx)
-    } catch (e) {
-      strapi.log.error(`[proxy] Failed to parse url: ${e?.message}`)
+    } catch (e: unknown) {
+      strapi.log.error(`[proxy] Failed to parse url: ${e}`)
     }
   }
   return await next()

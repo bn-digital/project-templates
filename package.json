@@ -44,16 +44,15 @@
   },
   "devDependencies": {
     "@bn-digital/commitlint-config": "^2.0.3",
-    "@bn-digital/eslint-config": "^2.0.30",
-    "@bn-digital/prettier-config": "^2.1.10",
+    "@bn-digital/eslint-config": "^2.0.31",
+    "@bn-digital/prettier-config": "^2.1.11",
     "@bn-digital/projen": "^0.4.18",
     "@bn-digital/stylelint-config": "^2.0.15",
-    "@bn-digital/typescript-config": "^1.1.1",
     "@bn-digital/vault-env": "^1.4.0",
-    "@types/node": "^18.11.19",
+    "@types/node": "^18.13.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.1.0",
-    "projen": "^0.67.34",
+    "lint-staged": "^13.1.1",
+    "projen": "^0.67.42",
     "typescript": "^4.9.5"
   },
   "scripts": {
@@ -66,5 +65,5 @@
     "fix": "yarn prettier --write packages/*/src && yarn eslint --fix packages/*/src && yarn stylelint --fix packages/*/src/**/*.{scss,sass,css,less}",
     "lint": "yarn eslint packages/*/src && yarn stylelint packages/*/src/**/*.{scss,sass,css,less} && yarn prettier --check packages/*/src"
   },
-  "packageManager": "yarn@4.0.0-rc.38"
+  "packageManager": "yarn@4.0.0-rc.39"
 }

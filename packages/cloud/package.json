@@ -9,14 +9,15 @@
     "provision": "pulumi up --non-interactive --stack=production --yes"
   },
   "dependencies": {
-    "@pulumi/digitalocean": "^4.17.0",
-    "@pulumi/kubernetes": "^3.23.1",
-    "@pulumi/pulumi": "^3.53.1",
-    "@pulumi/vault": "^5.8.0",
-    "dotenv": "^16.0.3"
+    "@pulumi/digitalocean": "^4.18.0",
+    "@pulumi/kubernetes": "^3.24.0",
+    "@pulumi/pulumi": "^3.54.0",
+    "@pulumi/tls": "^4.8.0",
+    "@pulumi/vault": "^5.8.0"
   },
   "devDependencies": {
-    "@bn-digital/typescript-config": "^1.1.1",
-    "@types/node": "^18.11.19"
+    "@bn-digital/typescript-config": "^1.2.1",
+    "@types/node": "^18.13.0",
+    "cross-env": "^7.0.3"
   }
 }
