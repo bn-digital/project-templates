@@ -10,6 +10,7 @@ const app: Strapi.App.Metadata = {
   name: process.env.APP_NAME ?? packageMetadata.name.split('/')?.[0].replace('@', ''),
   version: process.env.APP_VERSION ?? 'latest',
   domain: process.env.DOMAIN ?? `${name}.${dnsZone}`,
+  dnsZone,
 }
 function appInfo({ domain, name, version, database }: Strapi.App.Metadata) {
   strapi.log.info(`[app] Application: ${name}, version: ${version}`)

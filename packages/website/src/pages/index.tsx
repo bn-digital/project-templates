@@ -1,7 +1,7 @@
 import { FC, lazy, memo } from 'react'
 import { createBrowserRouter, Outlet, RouteObject, RouterProvider } from 'react-router-dom'
 
-import DefaultLayout from '../components/layout'
+import { DefaultLayout } from '../components/layout'
 import { Loader } from '../components/layout/Loader'
 
 const Home = lazy<FC>(() => import('./home'))

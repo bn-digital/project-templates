@@ -10,8 +10,7 @@ RUN yarn
 COPY packages packages
 RUN yarn build
 
-FROM dcr.bndigital.dev/library/nodejs:${version}
-USER node
+FROM node:18-bullseye-slim
 WORKDIR /usr/local/src
 COPY --from=build --chown=node /usr/local/src/packages/cms .
 COPY --from=build --chown=node /usr/local/src/packages/website/build public

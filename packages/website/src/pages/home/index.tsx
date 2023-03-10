@@ -5,7 +5,7 @@ import { useOutletContext } from 'react-router-dom'
 import { HeroSection } from '../../components/section'
 
 const Home: FC = () => {
-  const props = useOutletContext<Maybe<HomeFragment>>()
+  const props = useOutletContext<{ hero: ComponentUiCard }>()
   return <Layout.Content>{props?.hero && <HeroSection {...props.hero} />}</Layout.Content>
 }
 

@@ -6,18 +6,18 @@
     "extends": "@bn-digital/eslint-config/typescript"
   },
   "scripts": {
-    "provision": "pulumi up --non-interactive --stack=production --yes"
+    "provision": "cross-env pulumi up --non-interactive --stack=production --yes"
   },
   "dependencies": {
     "@pulumi/digitalocean": "^4.18.0",
-    "@pulumi/kubernetes": "^3.24.0",
-    "@pulumi/pulumi": "^3.54.0",
-    "@pulumi/tls": "^4.8.0",
+    "@pulumi/kubernetes": "^3.24.1",
+    "@pulumi/aws": "^5.31.0",
+    "@pulumi/pulumi": "^3.56.0",
+    "@pulumi/tls": "^4.10.0",
     "@pulumi/vault": "^5.8.0"
   },
   "devDependencies": {
-    "@bn-digital/typescript-config": "^1.2.1",
-    "@types/node": "^18.13.0",
+    "@types/node": "^18.14.6",
     "cross-env": "^7.0.3"
   }
 }

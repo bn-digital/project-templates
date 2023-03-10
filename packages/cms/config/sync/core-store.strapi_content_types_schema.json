@@ -773,6 +773,270 @@
       "plugin": "admin",
       "globalId": "AdminApiTokenPermission"
     },
+    "admin::transfer-token": {
+      "collectionName": "strapi_transfer_tokens",
+      "info": {
+        "name": "Transfer Token",
+        "singularName": "transfer-token",
+        "pluralName": "transfer-tokens",
+        "displayName": "Transfer Token",
+        "description": ""
+      },
+      "options": {},
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      },
+      "attributes": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "configurable": false,
+          "required": true,
+          "unique": true
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "configurable": false,
+          "required": false,
+          "default": ""
+        },
+        "accessKey": {
+          "type": "string",
+          "minLength": 1,
+          "configurable": false,
+          "required": true
+        },
+        "lastUsedAt": {
+          "type": "datetime",
+          "configurable": false,
+          "required": false
+        },
+        "permissions": {
+          "type": "relation",
+          "target": "admin::transfer-token-permission",
+          "relation": "oneToMany",
+          "mappedBy": "token",
+          "configurable": false,
+          "required": false
+        },
+        "expiresAt": {
+          "type": "datetime",
+          "configurable": false,
+          "required": false
+        },
+        "lifespan": {
+          "type": "biginteger",
+          "configurable": false,
+          "required": false
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "kind": "collectionType",
+      "__schema__": {
+        "collectionName": "strapi_transfer_tokens",
+        "info": {
+          "name": "Transfer Token",
+          "singularName": "transfer-token",
+          "pluralName": "transfer-tokens",
+          "displayName": "Transfer Token",
+          "description": ""
+        },
+        "options": {},
+        "pluginOptions": {
+          "content-manager": {
+            "visible": false
+          },
+          "content-type-builder": {
+            "visible": false
+          }
+        },
+        "attributes": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "configurable": false,
+            "required": true,
+            "unique": true
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "configurable": false,
+            "required": false,
+            "default": ""
+          },
+          "accessKey": {
+            "type": "string",
+            "minLength": 1,
+            "configurable": false,
+            "required": true
+          },
+          "lastUsedAt": {
+            "type": "datetime",
+            "configurable": false,
+            "required": false
+          },
+          "permissions": {
+            "type": "relation",
+            "target": "admin::transfer-token-permission",
+            "relation": "oneToMany",
+            "mappedBy": "token",
+            "configurable": false,
+            "required": false
+          },
+          "expiresAt": {
+            "type": "datetime",
+            "configurable": false,
+            "required": false
+          },
+          "lifespan": {
+            "type": "biginteger",
+            "configurable": false,
+            "required": false
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "transfer-token",
+      "connection": "default",
+      "uid": "admin::transfer-token",
+      "plugin": "admin",
+      "globalId": "AdminTransferToken"
+    },
+    "admin::transfer-token-permission": {
+      "collectionName": "strapi_transfer_token_permissions",
+      "info": {
+        "name": "Transfer Token Permission",
+        "description": "",
+        "singularName": "transfer-token-permission",
+        "pluralName": "transfer-token-permissions",
+        "displayName": "Transfer Token Permission"
+      },
+      "options": {},
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      },
+      "attributes": {
+        "action": {
+          "type": "string",
+          "minLength": 1,
+          "configurable": false,
+          "required": true
+        },
+        "token": {
+          "configurable": false,
+          "type": "relation",
+          "relation": "manyToOne",
+          "inversedBy": "permissions",
+          "target": "admin::transfer-token"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "kind": "collectionType",
+      "__schema__": {
+        "collectionName": "strapi_transfer_token_permissions",
+        "info": {
+          "name": "Transfer Token Permission",
+          "description": "",
+          "singularName": "transfer-token-permission",
+          "pluralName": "transfer-token-permissions",
+          "displayName": "Transfer Token Permission"
+        },
+        "options": {},
+        "pluginOptions": {
+          "content-manager": {
+            "visible": false
+          },
+          "content-type-builder": {
+            "visible": false
+          }
+        },
+        "attributes": {
+          "action": {
+            "type": "string",
+            "minLength": 1,
+            "configurable": false,
+            "required": true
+          },
+          "token": {
+            "configurable": false,
+            "type": "relation",
+            "relation": "manyToOne",
+            "inversedBy": "permissions",
+            "target": "admin::transfer-token"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "transfer-token-permission",
+      "connection": "default",
+      "uid": "admin::transfer-token-permission",
+      "plugin": "admin",
+      "globalId": "AdminTransferTokenPermission"
+    },
     "plugin::upload.file": {
       "collectionName": "files",
       "info": {

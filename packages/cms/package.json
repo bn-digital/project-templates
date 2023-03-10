@@ -6,8 +6,7 @@
   "scripts": {
     "env": "vault-env",
     "build": "strapi build",
-    "start": "vault-env && strapi develop",
-    "serve": "strapi start"
+    "start": "vault-env && strapi develop"
   },
   "strapi": {
     "id": "68be1d7d-5510-45e4-a7fb-a93f6bb691f2"
@@ -20,21 +19,19 @@
     ]
   },
   "dependencies": {
-    "@strapi/plugin-content-manager": "^4.6.1",
-    "@strapi/plugin-content-type-builder": "^4.6.1",
-    "@strapi/plugin-graphql": "^4.6.1",
-    "@strapi/plugin-users-permissions": "^4.6.1",
-    "@strapi/provider-email-nodemailer": "^4.6.1",
-    "@strapi/provider-upload-aws-s3": "^4.6.1",
-    "@strapi/strapi": "^4.6.1",
-    "pg": "^8.9.0",
-    "strapi-plugin-config-sync": "^1.1.1",
-    "strapi-plugin-import-export-entries": "^1.18.0"
+    "@strapi/plugin-content-manager": "^4.7.1",
+    "@strapi/plugin-content-type-builder": "^4.7.1",
+    "@strapi/plugin-graphql": "^4.7.1",
+    "@strapi/plugin-users-permissions": "^4.7.1",
+    "@strapi/provider-email-nodemailer": "^4.7.1",
+    "@strapi/provider-upload-aws-s3": "^4.7.1",
+    "@strapi/strapi": "^4.7.1",
+    "pg": "^8.10.0",
+    "strapi-plugin-config-sync": "^1.1.1"
   },
   "devDependencies": {
     "@bn-digital/strapi-types": "^1.0.45",
-    "@bn-digital/typescript-config": "^1.2.1",
     "@bn-digital/vault-env": "^1.4.0",
-    "better-sqlite3": "^8.1.0"
+    "better-sqlite3": "^8.2.0"
   }
 }

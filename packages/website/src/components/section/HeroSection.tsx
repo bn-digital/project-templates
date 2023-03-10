@@ -1,7 +1,7 @@
 import { Col, Row, Typography } from 'antd'
 import { FC } from 'react'
 
-const HeroSection: FC<CardFragment> = ({ title = '', description = '', subtitle = '' }) => {
+const HeroSection: FC<ComponentUiCard> = ({ title = '', description = '', subtitle = '' }) => {
   return (
     <Row align={'middle'} justify={'center'}>
       <Col span={24}>

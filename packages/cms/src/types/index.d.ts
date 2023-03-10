@@ -8,7 +8,7 @@ declare global {
     namespace Middleware {
       type CspDirective = 'default-src' | 'script-src' | 'style-src' | 'connect-src' | 'img-src' | 'frame-src'
 
-      type UIDs = `strapi::${string}`
+      type UIDs = `strapi::${string}` | `global::${string}` | `plugin::${string}.${string}`
 
       type Definition<ID = UIDs, T = unknown> = { config?: T; name: ID } | Middleware<Context> | ID
     }
@@ -17,6 +17,7 @@ declare global {
         name: string
         version: string
         domain: string
+        dnsZone: string
         database?: 'sqlite' | 'postgres' | 'mysql'
       } & { [key: string]: any }
 

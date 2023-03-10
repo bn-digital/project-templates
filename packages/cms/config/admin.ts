@@ -1,6 +1,6 @@
 import { randomSecret } from '../src/hooks'
 
-export default ({ env }: Strapi.Env): Strapi.Config.Admin => ({
+export default ({ env }: Strapi.Env) => ({
   auth: {
     secret: env('AUTH_SECRET', randomSecret('AUTH_SECRET')),
   },

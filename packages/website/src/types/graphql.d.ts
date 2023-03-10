@@ -682,7 +682,6 @@ type PaginationArg = {
 type PublicationState = 'LIVE' | 'PREVIEW'
 
 type Query = {
-  authenticated: Scalars['Boolean']
   me?: Maybe<UsersPermissionsUser>
   uploadFile?: Maybe<UploadFileEntityResponse>
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>
@@ -1309,3 +1308,7 @@ type TabFragment = {
 }
 
 type TabFragmentVariables = Exact<{ [key: string]: never }>
+
+type MeQueryVariables = Exact<{ [key: string]: never }>
+
+type MeQuery = { me?: { id: string } | null | undefined }

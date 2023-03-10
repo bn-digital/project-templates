@@ -23,3 +23,4 @@ export const DefaultLayout: FC = () => (
     </Layout.Footer>
   </Layout>
 )
+export default DefaultLayout

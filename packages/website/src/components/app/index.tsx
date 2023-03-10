@@ -23,7 +23,7 @@ const ContextProvider: FC<ContextProviderProps> = ({ children, ...props }) => {
   return <Context.Provider value={{ ...defaultValue, ...props }}>{children}</Context.Provider>
 }
 
-const apiUrl = `${import.meta.env.WEBSITE_API_URL ?? 'graphql'}` as const
+const apiUrl = `${import.meta.env.WEBSITE_API_URL ?? '/graphql'}` as const
 
 const clientOptions: ConstructorParameters<typeof ApolloClient>[0] = {
   link: createHttpLink({

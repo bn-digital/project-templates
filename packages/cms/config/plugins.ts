@@ -2,14 +2,9 @@ import path from 'path'
 
 import app, { randomSecret } from '../src/hooks'
 
-export default ({ env }: Strapi.Env): Strapi.Config.Plugin =>
-  ({
-    'import-export-entries': {
-      enabled: true,
-      config: {
-        serverPublicHostname: env('S3_PUBLIC_URL', `https://${env('S3_BUCKET')}.${env('S3_ENDPOINT')}`),
-      },
-    },
+export default ({ env }: Strapi.Env): Strapi.Config.Plugin => {
+  const isDev = env('NODE_ENV') === 'development' || env('APP_ENV') === 'staging'
+  return {
     'graphql': {
       enabled: true,
       config: {
@@ -25,6 +20,7 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin =>
           typegen: path.join(app.workingDir, 'src', 'types', 'graphql.d.ts'),
         },
         apolloServer: {
+          introspection: isDev,
           cache: 'bounded',
           persistedQueries: {
             ttl: 3600,
@@ -39,7 +35,7 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin =>
       },
     },
     'upload': {
-      enabled: true,
+      enabled: env('S3_ACCESS_KEY_ID') && env('S3_SECRET_ACCESS_KEY'),
       config: {
         provider: 'aws-s3',
         providerOptions: {
@@ -53,15 +49,15 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin =>
       },
     },
     'email': {
-      enabled: true,
+      enabled: env('SMTP_USERNAME') && env('SMTP_PASSWORD'),
       config: {
         provider: 'nodemailer',
         providerOptions: {
           host: env('SMTP_HOST', 'bndigital.dev'),
           port: env.int('SMTP_PORT', 1025),
           auth: {
-            user: env('SMTP_USERNAME', ''),
-            pass: env('SMTP_PASSWORD', ''),
+            user: env('SMTP_USERNAME'),
+            pass: env('SMTP_PASSWORD'),
           },
         },
         settings: {
@@ -70,4 +66,5 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin =>
         },
       },
     },
-  } as Strapi.App.PluginConfiguration)
+  } as Strapi.App.PluginConfiguration
+}

@@ -3,7 +3,7 @@
     "composite": true,
     "noEmit": true
   },
-  "include": [".projenrc.ts"],
+  "include": [".projenrc.ts", "graphql.config.ts", "./src"],
   "references": [
     {
       "path": "packages/cloud/tsconfig.json"

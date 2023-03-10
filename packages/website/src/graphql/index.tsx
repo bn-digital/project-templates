@@ -1,4 +1,9 @@
 import { gql } from '@apollo/client'
+import * as React from 'react'
+import * as Apollo from '@apollo/client'
+import * as ApolloReactComponents from '@apollo/client/react/components'
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+const defaultOptions = {} as const
 
 export type PossibleTypesResultData = {
   possibleTypes: {
@@ -131,3 +136,27 @@ export const TabFragmentDoc = gql`
   }
   ${CardFragmentDoc}
 `
+export const MeDocument = gql`
+  query me {
+    me {
+      id
+    }
+  }
+`
+export type MeComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MeQuery, MeQueryVariables>, 'query'>
+
+export const MeComponent = (props: MeComponentProps) => (
+  <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
+)
+
+export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options)
+}
+export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options)
+}
+export type MeQueryHookResult = ReturnType<typeof useMeQuery>
+export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>
+export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>

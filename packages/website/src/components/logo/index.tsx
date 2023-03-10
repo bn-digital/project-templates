@@ -1,12 +1,13 @@
-import Icon, { AppstoreFilled } from '@ant-design/icons'
 import { Space, Typography } from 'antd'
 import { FC } from 'react'
+
+import { ReactComponent as LogoImage } from './Logo.svg'
 
 const Logo: FC = () => {
   return (
     <Space direction={'horizontal'} align={'center'}>
       <Typography.Link href={'/'}>
-        <Icon component={() => <AppstoreFilled />} />
+        <LogoImage />
       </Typography.Link>
     </Space>
   )

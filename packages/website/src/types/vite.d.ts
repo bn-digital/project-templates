@@ -1,8 +1,5 @@
-/// <reference types="vite/client" />
-/// <reference types="vite-plugin-svgr/client" />
-/// <reference types="vite-plugin-pwa/" />
-
-declare interface ImportMetaEnv extends ImportMetaEnv {
-  readonly WEBSITE_API_URL: string
-  readonly APP_NAME: string
-}
+import '@bn-digital/vite'
+import 'vite/client'
+import 'vite-plugin-svgr/client'
+import 'vite-plugin-pwa/client'
+import 'vite-plugin-info/client'

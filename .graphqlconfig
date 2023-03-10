@@ -1,14 +1,19 @@
 {
-  "name": "GraphQL API",
-  "schemaPath": "./packages/cms/src/graphql/schema.graphql",
-  "includes": [
-    "./packages/website/src/graphql/**/*.graphql"
+  "schemaPath": "packages/cms/src/graphql/schema.graphql",
+  "documents": [
+    "**/src/graphql/fragments/*.graphql"
+  ],
+  "include": [
+    "**/src/graphql/queries/*.graphql",
+    "**/src/graphql/mutations/*.graphql"
   ],
   "extensions": {
     "endpoints": {
       "development": {
-        "url": "http://127.0.0.1:8080/graphql",
-        "introspect": true
+        "url": "http://127.0.0.1:1337/graphql"
+      },
+      "staging": {
+        "url": "https://project-templates.bndigital.dev/graphql"
       }
     }
   }
