@@ -1,0 +1,5 @@
+{
+  "view": "browser",
+  "startScript": "start",
+  "node": "16"
+}
