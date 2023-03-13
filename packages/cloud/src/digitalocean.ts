@@ -40,7 +40,7 @@ export function run({
   region,
   environment,
   tags,
-  dns,
+  domain,
 }: {
   name: string
   environment: string
@@ -162,5 +162,5 @@ export function run({
   createProject()
   createSshKey()
   createCluster(name)
-  createDomain(dns).name.apply(createBucket)
+  createDomain(domain).name.apply(createBucket)
 }

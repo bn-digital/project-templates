@@ -20,28 +20,28 @@ const strapiRoutes = [
   'users-permissions',
 ]
 const extensions = [
-  'js',
+  'bmp',
   'css',
+  'gif',
+  'ico',
+  'jpeg',
+  'jpg',
+  'js',
+  'mov',
+  'mp4',
+  'otf',
+  'pdf',
+  'png',
+  'svg',
+  'tiff',
   'ttf',
   'woff',
-  'jpg',
-  'jpeg',
-  'bmp',
-  'png',
-  'ico',
-  'svg',
-  'gif',
-  'tiff',
-  'mp4',
-  'mov',
-  'pdf',
+  'woff2',
 ]
 export default () => (ctx: Context, next: Next) => {
-  if (
-    ctx.method.toLowerCase() === 'get' &&
-    !ctx.URL.pathname.match(new RegExp(`/(${strapiRoutes.join('|')})(.*).(${extensions.join('|')})`))
-  ) {
-    if (ctx.response.status === 404 || ctx.url === '/') {
+  const { method, response, url } = ctx
+  if (!strapiRoutes.some(it => url.startsWith(`/${it}`) && !extensions.some(it => url.endsWith(`.${it}`)))) {
+    if ((method.toLowerCase() === 'get' && response.status === 404) || url === '/') {
       ctx.url = '/index.html'
       ctx.type = 'html'
       return next()
