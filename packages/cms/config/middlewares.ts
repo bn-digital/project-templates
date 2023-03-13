@@ -1,4 +1,4 @@
-import app, { cspDirectives } from '../src/hooks'
+import { cspDirectives } from '../src/hooks'
 
 export default (): Strapi.Middleware.Definition[] => {
   return [
@@ -18,12 +18,9 @@ export default (): Strapi.Middleware.Definition[] => {
     { name: 'strapi::logger' },
     { name: 'strapi::cors' },
     { name: 'strapi::query' },
-    {
-      name: 'strapi::body',
-      config: { jsonLimit: '5mb' },
-    },
+    { name: 'strapi::body' },
     { name: 'strapi::favicon' },
     { name: 'global::website' },
-    { name: 'strapi::public' },
+    { name: 'strapi::public', config: { defer: true } },
   ]
 }

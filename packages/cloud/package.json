@@ -9,9 +9,9 @@
     "provision": "cross-env pulumi up --non-interactive --stack=production --yes"
   },
   "dependencies": {
+    "@pulumi/aws": "^5.31.0",
     "@pulumi/digitalocean": "^4.18.0",
     "@pulumi/kubernetes": "^3.24.1",
-    "@pulumi/aws": "^5.31.0",
     "@pulumi/pulumi": "^3.56.0",
     "@pulumi/tls": "^4.10.0",
     "@pulumi/vault": "^5.8.0"

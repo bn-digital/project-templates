@@ -7,6 +7,7 @@ export default ({ env }: Strapi.Env): Strapi.Config.Server => {
   return {
     host,
     port,
+    proxy: true,
     admin: { autoOpen: false },
     cron: {
       enabled: true,

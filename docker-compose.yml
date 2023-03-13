@@ -5,7 +5,7 @@ volumes:
 
 services:
   traeffik:
-    image: traefik:v2.8.1
+    image: traefik:v
     command:
       #      - '--certificatesresolvers.letsencrypt.acme.email=admin@$DOMAIN'
       #      - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=http'

@@ -3,4 +3,4 @@ import 'vite-plugin-svgr/client'
 import 'vite-plugin-pwa/client'
 import 'vite-plugin-info/client'
 
-namespace App {}
+declare namespace App {}

@@ -3,7 +3,6 @@ import path from 'path'
 import app, { randomSecret } from '../src/hooks'
 
 export default ({ env }: Strapi.Env): Strapi.Config.Plugin => {
-  const isDev = env('NODE_ENV') === 'development' || env('APP_ENV') === 'staging'
   return {
     'graphql': {
       enabled: true,
@@ -20,7 +19,7 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin => {
           typegen: path.join(app.workingDir, 'src', 'types', 'graphql.d.ts'),
         },
         apolloServer: {
-          introspection: isDev,
+          introspection: !app.env.isProd(),
           cache: 'bounded',
           persistedQueries: {
             ttl: 3600,

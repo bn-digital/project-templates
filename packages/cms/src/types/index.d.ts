@@ -6,15 +6,24 @@ declare global {
     import { type Context, type Middleware } from 'koa'
 
     namespace Middleware {
-      type CspDirective = 'default-src' | 'script-src' | 'style-src' | 'connect-src' | 'img-src' | 'frame-src'
-
+      type CspDirectiveType = 'default-src' | 'script-src' | 'style-src' | 'connect-src' | 'img-src' | 'frame-src'
+      type CspDirectives = { [key in CspDirectiveType]: string[] }
       type UIDs = `strapi::${string}` | `global::${string}` | `plugin::${string}.${string}`
 
       type Definition<ID = UIDs, T = unknown> = { config?: T; name: ID } | Middleware<Context> | ID
     }
     namespace App {
+      type Mode = 'development' | 'staging' | 'production'
+      type Env = {
+        mode: Mode
+        isDev(): boolean
+        isProd(): boolean
+        isTest(): boolean
+      }
       type Metadata = {
         name: string
+        env: Env
+        workingDir: string
         version: string
         domain: string
         dnsZone: string

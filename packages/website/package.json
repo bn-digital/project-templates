@@ -7,6 +7,7 @@
     "vite": "node_modules/.bin/vite",
     "env": "yarn vault-env",
     "build": "yarn vite build",
+    "serve": "yarn vite preview",
     "start": "yarn vite serve"
   },
   "eslintConfig": {
@@ -19,7 +20,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-responsive": "^9.0.2",
-    "react-router-dom": "^6.8.2",
+    "react-router-dom": "^6.9.0",
     "react-use": "^17.4.0"
   },
   "devDependencies": {

@@ -1082,6 +1082,7 @@ type UsersPermissionsUser = {
   role?: Maybe<UsersPermissionsRoleEntityResponse>
   updatedAt?: Maybe<Scalars['DateTime']>
   username: Scalars['String']
+  uuid: Scalars['String']
 }
 
 type UsersPermissionsUserEntity = {
@@ -1114,6 +1115,7 @@ type UsersPermissionsUserFiltersInput = {
   role?: InputMaybe<UsersPermissionsRoleFiltersInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
   username?: InputMaybe<StringFilterInput>
+  uuid?: InputMaybe<StringFilterInput>
 }
 
 type UsersPermissionsUserInput = {
@@ -1126,6 +1128,7 @@ type UsersPermissionsUserInput = {
   resetPasswordToken?: InputMaybe<Scalars['String']>
   role?: InputMaybe<Scalars['ID']>
   username?: InputMaybe<Scalars['String']>
+  uuid?: InputMaybe<Scalars['String']>
 }
 
 type UsersPermissionsUserRelationResponseCollection = {

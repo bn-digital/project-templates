@@ -5,9 +5,7 @@ const generateSecret: (secretName: string, namespace: string) => string = (secre
 }
 
 // @formatter:off
-const cspDirectives: Partial<
-  { [key in Strapi.Middleware.CspDirective]: string[] } & { upgradeInsecureRequests: boolean }
-> = {
+const cspDirectives: Strapi.Middleware.CspDirectives = {
   'default-src': ['*', "'self'", "'unsafe-inline'", "'unsafe-eval'"],
   'script-src': ['*', "'unsafe-inline'", "'unsafe-eval'"],
   'style-src': ['*', "'unsafe-inline'"],
