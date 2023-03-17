@@ -40,13 +40,12 @@ const extensions = [
 ]
 export default () => (ctx: Context, next: Next) => {
   const { method, response, url } = ctx
-  if (!strapiRoutes.some(it => url.startsWith(`/${it}`) && !extensions.some(it => url.endsWith(`.${it}`)))) {
-    if ((method.toLowerCase() === 'get' && response.status === 404) || url === '/') {
-      ctx.url = '/index.html'
-      ctx.type = 'html'
-      return next()
-    }
-  } else {
+  if (strapiRoutes.some(it => url.startsWith(`/${it}`) || extensions.some(it => url.endsWith(`.${it}`)))) {
+    return next()
+  }
+  if ((method.toLowerCase() === 'get' && response.status === 404) || url === '/') {
+    ctx.url = '/index.html'
+    ctx.type = 'html'
     return next()
   }
 }

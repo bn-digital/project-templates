@@ -44,18 +44,18 @@
   },
   "devDependencies": {
     "@bn-digital/commitlint-config": "^2.0.3",
-    "@bn-digital/eslint-config": "^2.0.34",
-    "@bn-digital/graphql-config": "^2.2.5",
-    "@bn-digital/prettier-config": "^2.1.12",
-    "@bn-digital/projen": "^0.4.34",
+    "@bn-digital/eslint-config": "^2.0.35",
+    "@bn-digital/graphql-config": "^2.2.6",
+    "@bn-digital/prettier-config": "^2.1.13",
+    "@bn-digital/projen": "^0.5.0",
     "@bn-digital/stylelint-config": "^2.0.18",
-    "@bn-digital/typescript-config": "^1.2.5",
+    "@bn-digital/typescript-config": "^1.2.6",
     "@bn-digital/vault-env": "^1.4.0",
-    "@types/node": "^18.15.1",
+    "@types/node": "^18.15.3",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
-    "projen": "^0.67.84",
-    "typescript": "^4.9.5"
+    "projen": "^0.68.9",
+    "typescript": "^5.0.2"
   },
   "scripts": {
     "postinstall": "husky install",
