@@ -3,6 +3,7 @@ import buildInfo from 'vite-plugin-info'
 export default configureReact(
   { plugins: [buildInfo()] },
   {
+  //  react: { swc: true },
     lint: { enabled: true },
     graphql: { enabled: true },
     analytics: { enableDev: false },
