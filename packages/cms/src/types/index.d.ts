@@ -1,9 +1,17 @@
-import { Context, Middleware } from 'koa'
-declare module '@strapi/typescript-utils'
-
+import '@bn-digital/strapi-types'
 declare global {
   export namespace Strapi {
     import { type Context, type Middleware } from 'koa'
+
+    interface Route {
+      methods: string[]
+      opts: { ignoreCaptures: boolean; prefix?: string }
+      path: string
+    }
+
+    interface Server {
+      listRoutes(): Route[]
+    }
 
     namespace Middleware {
       type CspDirectiveType = 'default-src' | 'script-src' | 'style-src' | 'connect-src' | 'img-src' | 'frame-src'
@@ -12,6 +20,7 @@ declare global {
 
       type Definition<ID = UIDs, T = unknown> = { config?: T; name: ID } | Middleware<Context> | ID
     }
+
     namespace App {
       type Mode = 'development' | 'staging' | 'production'
       type Env = {
