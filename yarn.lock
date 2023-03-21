@@ -4488,14 +4488,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@project-templates/cloud@workspace:packages/cloud"
   dependencies:
-    "@pulumi/aws": "npm:^5.31.0"
-    "@pulumi/digitalocean": "npm:^4.18.0"
-    "@pulumi/kubernetes": "npm:^3.24.1"
-    "@pulumi/pulumi": "npm:^3.56.0"
+    "@pulumi/aws": "npm:^5.32.0"
+    "@pulumi/digitalocean": "npm:^4.19.0"
+    "@pulumi/kubernetes": "npm:^3.24.2"
+    "@pulumi/pulumi": "npm:^3.58.0"
     "@pulumi/tls": "npm:^4.10.0"
-    "@pulumi/vault": "npm:^5.8.0"
-    "@types/node": "npm:^18.14.6"
+    "@pulumi/vault": "npm:^5.9.0"
+    "@types/node": "npm:^18.15.5"
     cross-env: "npm:^7.0.3"
+    dotenv: "npm:^16.0.3"
+    typescript: "npm:^4.9.5"
   languageName: unknown
   linkType: soft
 
@@ -4609,9 +4611,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/aws@npm:^5.31.0":
-  version: 5.31.0
-  resolution: "@pulumi/aws@npm:5.31.0"
+"@pulumi/aws@npm:^5.32.0":
+  version: 5.32.0
+  resolution: "@pulumi/aws@npm:5.32.0"
   dependencies:
     "@pulumi/pulumi": "npm:^3.0.0"
     aws-sdk: "npm:^2.0.0"
@@ -4619,25 +4621,25 @@ __metadata:
     mime: "npm:^2.0.0"
     read-package-tree: "npm:^5.2.1"
     resolve: "npm:^1.7.1"
-  checksum: 1c86463ffdeae5682ecb4976bcbf8bd42ebbabcca5dbcfb3857d2df51ede9b438174fe38bafb28c656bcdc804085a4c00406a3becafbd30d6c71f483740470a8
+  checksum: 94059f421fb2d9c408248326fe169e5084fabda654081d9f06b58dcc1e3821806e9e136f53f0a21f686dc22207c3ce1d1085059463dd8cb7d501d1710684028a
   languageName: node
   linkType: hard
 
-"@pulumi/digitalocean@npm:^4.18.0":
-  version: 4.18.0
-  resolution: "@pulumi/digitalocean@npm:4.18.0"
+"@pulumi/digitalocean@npm:^4.19.0":
+  version: 4.19.0
+  resolution: "@pulumi/digitalocean@npm:4.19.0"
   dependencies:
     "@pulumi/pulumi": "npm:^3.0.0"
     builtin-modules: "npm:3.0.0"
     read-package-tree: "npm:^5.2.1"
     resolve: "npm:^1.7.1"
-  checksum: cbe00aa53e302b15fb1e283ecdadca5dd650a1b64fa03fdab08b35118fe82f333349b1255cf80ade370f9f6ccfa427760c1758e00dc0ad82a2aa05d434fe7aeb
+  checksum: 7d29e491adca054c30d314651a435abec9e1397353c3d07d5da732d4f022c40083e2feb4afaef0a2dd0452eaec6faf967448166c314b5bb83d31cab85feb08d3
   languageName: node
   linkType: hard
 
-"@pulumi/kubernetes@npm:^3.24.1":
-  version: 3.24.1
-  resolution: "@pulumi/kubernetes@npm:3.24.1"
+"@pulumi/kubernetes@npm:^3.24.2":
+  version: 3.24.2
+  resolution: "@pulumi/kubernetes@npm:3.24.2"
   dependencies:
     "@pulumi/pulumi": "npm:^3.25.0"
     "@types/glob": "npm:^5.0.35"
@@ -4647,7 +4649,7 @@ __metadata:
     node-fetch: "npm:^2.3.0"
     shell-quote: "npm:^1.6.1"
     tmp: "npm:^0.0.33"
-  checksum: 178353eb2f143bb645eeb6d763b2b3362ea10fb402ca517a1a02768c576dca906e25488bfefc8e9b46de3439cbe7c45fb6c06375f964a131c359238fb69a7b1f
+  checksum: c0e4bd4161df368d0a687523813cbdcd944d33f45a26ae47810816845e4ad46efd34311a536537e3885f455450a28bc0213287605aa3118f098a3a26cc156ab1
   languageName: node
   linkType: hard
 
@@ -4682,9 +4684,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/pulumi@npm:^3.56.0":
-  version: 3.56.0
-  resolution: "@pulumi/pulumi@npm:3.56.0"
+"@pulumi/pulumi@npm:^3.58.0":
+  version: 3.58.0
+  resolution: "@pulumi/pulumi@npm:3.58.0"
   dependencies:
     "@grpc/grpc-js": "npm:^1.3.8"
     "@logdna/tail-file": "npm:^2.0.6"
@@ -4709,7 +4711,7 @@ __metadata:
     ts-node: "npm:^7.0.1"
     typescript: "npm:~3.8.3"
     upath: "npm:^1.1.0"
-  checksum: e7ae48ff93c70eb32d5d0998fd2a78aba7edb678c81e67d6a3edee2c735afac9a60826ec934978bf3d28e5cff8215bc3a36c9a7141a58ede575689eb0be31181
+  checksum: e74053c211868e65710f254d8c53b983baadda1a0d4c04db9f837d6ceb9dce31b48fdfbf716ca9a1be47324891547467d62c6757005d51a8f085f3efcb034c0f
   languageName: node
   linkType: hard
 
@@ -4729,12 +4731,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/vault@npm:^5.8.0":
-  version: 5.8.0
-  resolution: "@pulumi/vault@npm:5.8.0"
+"@pulumi/vault@npm:^5.9.0":
+  version: 5.9.0
+  resolution: "@pulumi/vault@npm:5.9.0"
   dependencies:
     "@pulumi/pulumi": "npm:^3.0.0"
-  checksum: 6db1f94340398a934c853e83f94fecaed18a6494a0f2f444ff3b7bd115a73ba7639b7032a014cc103b190fba30bc1bbf35f9229bd099c6ad1394814cf01f2975
+  checksum: 435dd513da7503eae94d392e55ae44b25677e4549dd53bc4c261bd9cb74c640f6ab32161d5fccd704d5b7a451a09c0ca3680e54555c554e3178712baf012ee9b
   languageName: node
   linkType: hard
 
@@ -6858,7 +6860,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:>=13.7.0, @types/node@npm:^18.14.6":
+"@types/node@npm:>=13.7.0":
   version: 18.14.6
   resolution: "@types/node@npm:18.14.6"
   checksum: 4bbd9fe4cb1b31afe4f76b0b37fe51e46199dc57ab519811f61456cb267d7590323e6c687041f5a73872858d9eb64fdd158e9f669bbb36979d59ec7a91396dfa
@@ -6876,6 +6878,13 @@ __metadata:
   version: 18.15.3
   resolution: "@types/node@npm:18.15.3"
   checksum: 658d687cb6d88ccbb7d073fc583a0c88eb75936b64a6d43a6f06e320bf39384e35e3f5f4c88aa65c833a25cbe76080414bbfde54207050399b350e08aea70ada
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^18.15.5":
+  version: 18.15.5
+  resolution: "@types/node@npm:18.15.5"
+  checksum: b046d8e4ebb94c1f811743d8be63b7e76fa03db9117ae1a7bc4589fddbb13b70c24fd5d2d4f674032b8a0ceb4db2e74725d241ccdf99f8ec61e357de2e2bbebb
   languageName: node
   linkType: hard
 
@@ -20380,6 +20389,7 @@ __metadata:
     typescript: "npm:^5.0.2"
   bin:
     eslint: node_modules/eslint/bin/eslint.js
+    husky: node_modules/husky/bin/eslint.js
     prettier: node_modules/prettier/bin-prettier.js
     stylelint: node_modules/stylelint/bin/stylelint.js
   languageName: unknown
@@ -25145,7 +25155,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.6.4":
+"typescript@npm:^4.6.4, typescript@npm:^4.9.5":
   version: 4.9.5
   resolution: "typescript@npm:4.9.5"
   bin:
@@ -25185,7 +25195,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^4.6.4#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^4.6.4#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.9.5#optional!builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=23ec76"
   bin:
@@ -25197,11 +25207,11 @@ __metadata:
 
 "typescript@patch:typescript@npm%3A^5.0.2#optional!builtin<compat/typescript>":
   version: 5.0.2
-  resolution: "typescript@patch:typescript@npm%3A5.0.2#optional!builtin<compat/typescript>::version=5.0.2&hash=1f5320"
+  resolution: "typescript@patch:typescript@npm%3A5.0.2#optional!builtin<compat/typescript>::version=5.0.2&hash=85af82"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 31dbad12f89374659895753700df361b121b35a789a956fc7d9a2f4f8fa0bf897bd289133a6989829d106d58a5f044b201b7fce0a26cf652e95299228e4268d7
+  checksum: 152c6851fd46cd63988ae112ede3b64aab3b10f9a33f5c8c5bab41af3bc0ec59dd265349da67890c80f1eba156a5beb0fb78ece94b40b3031c1eea3cece1e233
   languageName: node
   linkType: hard
 

@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "outDir": "build",
+    "lib": ["esnext", "dom"],
     "noEmit": true,
     "target": "ESNext"
   },

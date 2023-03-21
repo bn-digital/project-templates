@@ -45,6 +45,7 @@ function createSshKey(name: string) {
     tags: getTags(name),
   })
 }
+
 function createContainerRegistry(name: string) {
   return new ecr.Repository('repository', {
     name,
@@ -55,6 +56,7 @@ function createContainerRegistry(name: string) {
     tags: getTags(name),
   })
 }
+
 function createSecurityGroup(name: string) {
   return new ec2.SecurityGroup('security-group', {
     name,
@@ -79,6 +81,7 @@ function createInstance(name: string, securityGroupId: Output<string> | string, 
     tags: getTags(name),
   })
 }
+
 function getCmsPolicy(bucket: string): ConstructorParameters<typeof s3.BucketPolicy>[1]['policy'] {
   return {
     Version: '2012-10-17',
@@ -93,19 +96,21 @@ function getCmsPolicy(bucket: string): ConstructorParameters<typeof s3.BucketPol
     ],
   }
 }
+
 function createS3Bucket(name: string) {
   return new s3.Bucket('bucket', {
     bucket: name,
+    versioning: { enabled: false },
     policy: getCmsPolicy(name),
     tags: getTags(name),
   })
 }
 
-function run(appName: string) {
-  createContainerRegistry(appName)
-  createS3Bucket(appName)
-  createSecurityGroup(appName).id.apply(securityGroupId =>
-    createSshKey(appName).id.apply(sshKeyId => createInstance(appName, securityGroupId, sshKeyId))
+function run({ name }: { name: string; tags: Record<string, string> }) {
+  createContainerRegistry(name)
+  createS3Bucket(name)
+  createSecurityGroup(name).id.apply(securityGroupId =>
+    createSshKey(name).id.apply(sshKeyId => createInstance(name, securityGroupId, sshKeyId))
   )
 }
 

@@ -9,12 +9,6 @@ jobs:
   secrets:
     uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
     secrets: inherit
-  provision:
-    needs: [ secrets ]
-    uses: bn-digital/terraform/.github/workflows/provision-infrastructure.yml@latest
-    secrets: inherit
-    with:
-      environment: production
   build:
     needs: [ secrets ]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
@@ -22,7 +16,7 @@ jobs:
     with:
       environment: production
   deploy:
-    needs: [ provision, build ]
+    needs: [ build ]
     uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
     secrets: inherit
     with:

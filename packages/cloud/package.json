@@ -9,15 +9,17 @@
     "provision": "cross-env pulumi up --non-interactive --stack=production --yes"
   },
   "dependencies": {
-    "@pulumi/aws": "^5.31.0",
-    "@pulumi/digitalocean": "^4.18.0",
-    "@pulumi/kubernetes": "^3.24.1",
-    "@pulumi/pulumi": "^3.56.0",
+    "@pulumi/aws": "^5.32.0",
+    "@pulumi/digitalocean": "^4.19.0",
+    "@pulumi/kubernetes": "^3.24.2",
+    "@pulumi/pulumi": "^3.58.0",
     "@pulumi/tls": "^4.10.0",
-    "@pulumi/vault": "^5.8.0"
+    "@pulumi/vault": "^5.9.0"
   },
   "devDependencies": {
-    "@types/node": "^18.14.6",
-    "cross-env": "^7.0.3"
+    "@types/node": "^18.15.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "typescript": "^4.9.5"
   }
 }

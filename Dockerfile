@@ -8,7 +8,8 @@ COPY packages/cms/package.json packages/cms/package.json
 COPY packages/website/package.json packages/website/package.json
 RUN yarn
 COPY packages packages
-RUN yarn build
+RUN yarn build \
+ && yarn workspaces focus
 
 FROM dcr.bndigital.dev/library/nodejs:${version}
 WORKDIR /usr/local/src

@@ -11,6 +11,7 @@ import {
   type KubernetesClusterArgs,
   Project,
   type ProjectArgs,
+  Region,
   SpacesBucket,
   type SpacesBucketArgs,
   SpacesBucketPolicy,
@@ -37,20 +38,21 @@ function getCmsPolicy(bucket: string | Input<string>) {
 
 export function run({
   name,
-  region,
   environment,
   tags,
   domain,
+  region = Region.NYC3,
 }: {
   name: string
   environment: string
   tags: string[]
-  region: string
   domain: string
+  region?: string
 }) {
   function urn(resource: ResourceID, ...tags: string[]) {
     return [['bn', name, environment].join(':'), [resource as string].concat(tags).filter(Boolean).join(':')].join('/')
   }
+
   /**
    * Create a DigitalOcean Spaces bucket required for CMS uploads and assets
    * @param {Domain} domain
@@ -136,6 +138,7 @@ export function run({
       { ignoreChanges: ['name', 'version', 'region'] as (keyof KubernetesClusterArgs)[] }
     )
   }
+
   function createProject(...resources: Output<string>[]): Project {
     return new Project(
       urn('project'),
@@ -148,6 +151,7 @@ export function run({
       { ignoreChanges: [] as (keyof ProjectArgs)[] }
     )
   }
+
   function createSshKey(): SshKey {
     const key = new PrivateKey('private-key', { algorithm: 'rsa', rsaBits: 3 * 1024 })
     return new SshKey(
@@ -159,6 +163,7 @@ export function run({
       { ignoreChanges: [] as (keyof ProjectArgs)[] }
     )
   }
+
   createProject()
   createSshKey()
   createCluster(name)

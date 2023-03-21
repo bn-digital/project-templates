@@ -1,11 +1,10 @@
 ---
 name: Deployment
 on:
+  workflow_dispatch: {}
   push:
     branches:
       - latest
-      - main
-      - master
     paths:
       - '.github/workflows/deployment.yml'
       - 'skaffold.yaml'
@@ -17,21 +16,11 @@ on:
       - 'packages/website/public/**/*'
       - 'packages/website/src/**/*'
       - 'packages/cms/config/**/*'
-      - 'packages/cms/database/**/*'
-      - 'packages/cms/public/**/*'
       - 'packages/cms/src/**/*'
 
 jobs:
-  secrets:
-    uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
-    secrets: inherit
-    with:
-      secrets: |
-        infrastructure/data/digitalocean    projects-cluster    |   KUBERNETES_CLUSTER ;
   deploy:
     needs: [ secrets ]
-    uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
+    if: github.events.pull_request.merged || github.event_name == 'workflow_dispatch'
+    uses: bn-digital/helm/.github/workflows/deploy-charts.yml@optimize-delivery
     secrets: inherit
-    with:
-      secrets: |
-        infrastructure/data/digitalocean    projects-cluster    |   KUBERNETES_CLUSTER ;
