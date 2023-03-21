@@ -9,7 +9,12 @@ COPY packages/website/package.json packages/website/package.json
 RUN yarn
 COPY packages packages
 RUN yarn build \
- && yarn workspaces focus
+ && rm -rf packages/cms/tsconfig.json \
+ && rm -rf packages/cms/src/* \
+ && rm -rf packages/cms/config \
+ && rm -rf packages/cms/public \
+ && mv -v packages/cms/dist/* packages/cms \
+ && yarn workspaces focus --production --all
 
 FROM dcr.bndigital.dev/library/nodejs:${version}
 WORKDIR /usr/local/src

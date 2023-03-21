@@ -1,0 +1,9 @@
+app:
+  app:
+    name: {{ .Values.vars.APP_NAME }}
+  image:
+    repository: app
+    tag: latest
+    pullPolicy: IfNotPresent
+vars:
+  APP_NAME: app

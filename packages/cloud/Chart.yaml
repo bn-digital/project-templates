@@ -1,0 +1,8 @@
+apiVersion: v2
+name: project-templates
+version: 1.0.0
+type: application
+dependencies:
+  - name: app
+    version: 2.0.1
+    repository: https://bn-digital.github.io/helm

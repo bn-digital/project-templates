@@ -32,7 +32,7 @@
   },
   "bin": {
     "eslint": "node_modules/eslint/bin/eslint.js",
-    "husky": "node_modules/husky/bin/eslint.js",
+    "husky": "node_modules/husky/lib/bin.js",
     "prettier": "node_modules/prettier/bin-prettier.js",
     "stylelint": "node_modules/stylelint/bin/stylelint.js"
   },
@@ -52,14 +52,13 @@
     "@bn-digital/stylelint-config": "^2.0.18",
     "@bn-digital/typescript-config": "^1.2.6",
     "@bn-digital/vault-env": "^1.4.0",
-    "@types/node": "^18.15.3",
+    "@types/node": "^18.15.5",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
-    "projen": "^0.68.9",
+    "projen": "^0.68.16",
     "typescript": "^5.0.2"
   },
   "scripts": {
-    "postinstall": "yarn husky install",
     "graphql-codegen": "node_modules/.bin/graphql-codegen",
     "generate": "yarn graphql-codegen && yarn projen",
     "start": "yarn workspaces foreach --exclude=root --parallel --interlaced run start",

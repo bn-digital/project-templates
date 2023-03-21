@@ -4,7 +4,7 @@ export default configureReact(
   {},
   {
     //  react: { swc: true },
-    buildInfo: { enabled: true },
+    buildInfo: { enabled: true, meta: { APP_ENV: process.env.APP_ENV } },
     lint: { enabled: true },
     graphql: { enabled: true },
     analytics: { enableDev: false },

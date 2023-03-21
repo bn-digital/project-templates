@@ -6,7 +6,7 @@ build:
   artifacts:
     - image: app
   tagPolicy:
-    sha256:  {}
+    sha256: { }
   local:
     useDockerCLI: true
     useBuildkit: true
@@ -14,6 +14,13 @@ profiles:
   - name: staging
     activation:
       - env: CI=true
+    build:
+      tagPolicy:
+        inputDigest: {}
+    test:
+      - image: app
+        structureTests:
+          - container-structure-test.yaml
   - name: production
     build:
       tagPolicy:

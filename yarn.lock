@@ -4490,6 +4490,7 @@ __metadata:
   dependencies:
     "@pulumi/aws": "npm:^5.32.0"
     "@pulumi/digitalocean": "npm:^4.19.0"
+    "@pulumi/github": "npm:^5.6.0"
     "@pulumi/kubernetes": "npm:^3.24.2"
     "@pulumi/pulumi": "npm:^3.58.0"
     "@pulumi/tls": "npm:^4.10.0"
@@ -4497,7 +4498,7 @@ __metadata:
     "@types/node": "npm:^18.15.5"
     cross-env: "npm:^7.0.3"
     dotenv: "npm:^16.0.3"
-    typescript: "npm:^4.9.5"
+    typescript: "npm:4.9.5"
   languageName: unknown
   linkType: soft
 
@@ -4507,6 +4508,7 @@ __metadata:
   dependencies:
     "@bn-digital/strapi-plugin-field-uuid": "npm:^1.1.7"
     "@bn-digital/strapi-types": "npm:^1.0.45"
+    "@bn-digital/typescript-config": "npm:^1.2.6"
     "@bn-digital/vault-env": "npm:^1.4.0"
     "@strapi/plugin-content-manager": "npm:^4.8.2"
     "@strapi/plugin-content-type-builder": "npm:^4.8.2"
@@ -4515,6 +4517,7 @@ __metadata:
     "@strapi/provider-email-nodemailer": "npm:^4.8.2"
     "@strapi/provider-upload-aws-s3": "npm:^4.8.2"
     "@strapi/strapi": "npm:^4.8.2"
+    "@types/node": "npm:^18.15.5"
     better-sqlite3: "npm:^8.2.0"
     pg: "npm:^8.10.0"
     strapi-plugin-multi-select: "npm:^1.1.0"
@@ -4634,6 +4637,15 @@ __metadata:
     read-package-tree: "npm:^5.2.1"
     resolve: "npm:^1.7.1"
   checksum: 7d29e491adca054c30d314651a435abec9e1397353c3d07d5da732d4f022c40083e2feb4afaef0a2dd0452eaec6faf967448166c314b5bb83d31cab85feb08d3
+  languageName: node
+  linkType: hard
+
+"@pulumi/github@npm:^5.6.0":
+  version: 5.6.0
+  resolution: "@pulumi/github@npm:5.6.0"
+  dependencies:
+    "@pulumi/pulumi": "npm:^3.0.0"
+  checksum: 2c664b907443483d3f7275d9af491a9d4149c200419c9655943b9de973b7a75f0be1cf6393fa28f55a64657be5c99255a4696b8dd16c9b6d8822cb4b8c1e0193
   languageName: node
   linkType: hard
 
@@ -6871,13 +6883,6 @@ __metadata:
   version: 10.17.60
   resolution: "@types/node@npm:10.17.60"
   checksum: 40a5535f8a2d839799b41557a170a334415bab485ee73dd30534eefad9a63254d12d2faf61ce7cbce2521d736ed0570e18f75d780daad2129d6ca21e8d1811ef
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^18.15.3":
-  version: 18.15.3
-  resolution: "@types/node@npm:18.15.3"
-  checksum: 658d687cb6d88ccbb7d073fc583a0c88eb75936b64a6d43a6f06e320bf39384e35e3f5f4c88aa65c833a25cbe76080414bbfde54207050399b350e08aea70ada
   languageName: node
   linkType: hard
 
@@ -20382,22 +20387,22 @@ __metadata:
     "@bn-digital/stylelint-config": "npm:^2.0.18"
     "@bn-digital/typescript-config": "npm:^1.2.6"
     "@bn-digital/vault-env": "npm:^1.4.0"
-    "@types/node": "npm:^18.15.3"
+    "@types/node": "npm:^18.15.5"
     husky: "npm:^8.0.3"
     lint-staged: "npm:^13.2.0"
-    projen: "npm:^0.68.9"
+    projen: "npm:^0.68.16"
     typescript: "npm:^5.0.2"
   bin:
     eslint: node_modules/eslint/bin/eslint.js
-    husky: node_modules/husky/bin/eslint.js
+    husky: node_modules/husky/lib/bin.js
     prettier: node_modules/prettier/bin-prettier.js
     stylelint: node_modules/stylelint/bin/stylelint.js
   languageName: unknown
   linkType: soft
 
-"projen@npm:^0.68.9":
-  version: 0.68.9
-  resolution: "projen@npm:0.68.9"
+"projen@npm:^0.68.16":
+  version: 0.68.16
+  resolution: "projen@npm:0.68.16"
   dependencies:
     "@iarna/toml": "npm:^2.2.5"
     case: "npm:^1.6.3"
@@ -20416,7 +20421,7 @@ __metadata:
     zlib: "npm:^1.0.5"
   bin:
     projen: bin/projen
-  checksum: 8823e4aab1a00cf0dfe04d0509e6631b00ea851457d896fe9548422ef28cc46aec877c85af5e8c5c2288478463fc48a08e4556cd3972d7ced4118c1b5c4fde66
+  checksum: d3a7f8ef5a7d597d5c60f1e56c40c4462ae094663d4143c3012a2869338ee36cd47abc71b3bc7d210819ccac4bf3831dfeecd2bca8b203ef5fe07a80e8079f72
   languageName: node
   linkType: hard
 
@@ -25155,7 +25160,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.6.4, typescript@npm:^4.9.5":
+"typescript@npm:4.9.5, typescript@npm:^4.6.4":
   version: 4.9.5
   resolution: "typescript@npm:4.9.5"
   bin:
@@ -25195,7 +25200,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^4.6.4#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.9.5#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.6.4#optional!builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=23ec76"
   bin:
