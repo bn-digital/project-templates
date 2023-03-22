@@ -7,7 +7,7 @@ function strapiRouteMatcher(route: Strapi.Route): boolean {
   return !methodsToIgnore.some(method => route.methods.includes(method))
 }
 
-function pathConditionFilter(path: string): boolean {
+function urlPrefixMatcher(path: string): boolean {
   const pathsToIgnore = ['/]*)', '/index.html', '/', '/]*)', '/((?!uploads']
 
   return !pathsToIgnore.some(one => path === one)
@@ -27,7 +27,7 @@ function strapiRoutePrefixes(server: Strapi.Server) {
     .filter(strapiRouteMatcher)
     .map(strapiRouteToPrefix)
     .filter(distinctValues)
-    .filter(pathConditionFilter)
+    .filter(urlPrefixMatcher)
 }
 
 export default () => (ctx: Context, next: Next) => {
