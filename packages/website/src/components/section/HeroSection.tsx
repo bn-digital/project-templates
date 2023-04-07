@@ -1,9 +1,9 @@
-import { Col, Row, Typography } from 'antd'
-import { FC } from 'react'
+import { Col, Row, Typography } from "antd"
+import { FC } from "react"
 
-const HeroSection: FC<ComponentUiCard> = ({ title = '', description = '', subtitle = '' }) => {
+const HeroSection: FC<ComponentUiCard> = ({ title = "", description = "", subtitle = "" }) => {
   return (
-    <Row align={'middle'} justify={'center'}>
+    <Row align={"middle"} justify={"center"}>
       <Col span={24}>
         <Typography.Title level={2}>{title}</Typography.Title>
       </Col>

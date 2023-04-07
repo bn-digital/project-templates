@@ -22,11 +22,14 @@ generates:
     plugins:
       - fragment-matcher:
           useExplicitTyping: true
+          apolloClientVersion: 3
+          module: es2015
       - typescript-react-apollo:
           addDocBlocks: false
           withComponent: true
           withHooks: true
           withMutationOptionsType: false
+      - typescript-apollo-client-helpers
   src/types/graphql.d.ts:
     config:
       noExport: true

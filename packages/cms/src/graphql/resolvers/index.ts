@@ -1,5 +1,5 @@
-import { url } from './upload-file'
-import { me } from './user'
+import { url } from "./upload-file"
+import { me } from "./user"
 
 const Query = {
   me,
@@ -12,7 +12,7 @@ const UploadFile = {
 }
 
 export const resolversConfig: Strapi.Graphql.ResolverConfig = {
-  'Query.me': {
+  "Query.me": {
     auth: true,
   },
 }

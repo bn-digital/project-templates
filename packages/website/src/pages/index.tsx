@@ -1,25 +1,25 @@
-import { FC, lazy, memo } from 'react'
-import { createBrowserRouter, Outlet, RouteObject, RouterProvider } from 'react-router-dom'
+import { FC, lazy, memo } from "react"
+import { Outlet, RouteObject, RouterProvider, createBrowserRouter } from "react-router-dom"
 
-import { DefaultLayout } from '../components/layout'
-import { Loader } from '../components/layout/Loader'
+import { DefaultLayout } from "../components/layout"
+import { Loader } from "../components/layout/Loader"
 
-const Home = lazy<FC>(() => import('./home'))
+const Home = lazy<FC>(() => import("./home"))
 
 const routes: RouteObject[] = [
   {
     element: <DefaultLayout />,
     loader: () => <Loader spinning />,
-    path: '',
+    path: "",
     children: [
       {
         element: <Home />,
-        path: '',
+        path: "",
         index: true,
       },
       {
         element: <Outlet />,
-        path: '*',
+        path: "*",
       },
     ],
   },

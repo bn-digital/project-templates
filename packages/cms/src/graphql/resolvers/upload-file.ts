@@ -1,4 +1,4 @@
-import { parse } from 'url'
+import { parse } from "url"
 
 const url = async (root: { url: string }): Promise<string> => {
   let url = parse(root.url, true)

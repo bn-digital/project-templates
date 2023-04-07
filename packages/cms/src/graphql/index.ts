@@ -1,4 +1,4 @@
-import { readOnlyEntities, schemaExtension, writeOnlyEntities } from './extensions'
+import { readOnlyEntities, schemaExtension, writeOnlyEntities } from "./extensions"
 
 function extendSchema(strapi: Strapi.Strapi) {
   const extensionService = getExtensionService(strapi)
@@ -10,11 +10,11 @@ function extendSchema(strapi: Strapi.Strapi) {
 }
 
 function getGraphqlPlugin(strapi: Strapi.Strapi): Strapi.Graphql.Plugin {
-  return strapi.plugin('graphql')
+  return strapi.plugin("graphql")
 }
 
 function getExtensionService(strapi: Strapi.Strapi): Strapi.Graphql.ExtensionService {
-  return getGraphqlPlugin(strapi).service('extension')
+  return getGraphqlPlugin(strapi).service("extension")
 }
 
 export { extendSchema }

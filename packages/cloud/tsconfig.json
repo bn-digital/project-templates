@@ -1,12 +1,9 @@
 {
-  "extends": "@bn-digital/typescript-config/pulumi.json",
+  "extends": "@bn-digital/typescript-config/pulumi",
   "compilerOptions": {
     "baseUrl": ".",
-    "esModuleInterop": true,
-    "outDir": "build",
-    "lib": ["esnext", "dom"],
-    "noEmit": true,
-    "target": "ESNext"
+    "outDir": "bin",
+    "lib": ["esnext", "dom"]
   },
   "include": ["src", "./package.json"]
 }

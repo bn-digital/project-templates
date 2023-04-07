@@ -4,6 +4,4 @@ root = true
 indent_size = tab
 tab_width = 2
 max_line_length = 160
-
-ij_any_spaces_within_braces = true
-ij_any_spaces_within_brackets = true
+ij_any_keep_line_breaks = false

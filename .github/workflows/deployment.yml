@@ -19,8 +19,10 @@ on:
       - 'packages/cms/src/**/*'
 
 jobs:
+  secrets:
+    uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
+    secrets: inherit
   deploy:
     needs: [ secrets ]
-    if: github.events.pull_request.merged || github.event_name == 'workflow_dispatch'
-    uses: bn-digital/helm/.github/workflows/deploy-charts.yml@optimize-delivery
+    uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
     secrets: inherit

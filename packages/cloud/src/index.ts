@@ -1,43 +1,16 @@
-import { Config } from '@pulumi/pulumi'
-import { config as dotenv } from 'dotenv'
+import { getStack } from "@pulumi/pulumi"
+import { DotenvConfigOutput, config as envConfig } from "dotenv"
 
-import { run as aws } from './aws'
-import { run as digitalocean } from './digitalocean'
+import { Environment as Staging } from "./staging"
 
-dotenv()
+const env: DotenvConfigOutput = envConfig()
+process.env = { ...process.env, ...env.parsed }
 
-const provisioners = { aws, digitalocean }
-
-const config = new Config()
-const name = config.name
-const provider = config.getObject<{ name: 'aws' | 'digitalocean' }>('provider')
-const region = config.get('region')
-const environment = `${process.env.APP_ENV ?? 'production'}` as const
-const domain = `${process.env.DOMAIN ?? [name, 'bndigital.ai'].join('.')}` as const
-const tags = {
-  Name: name,
-  Environment: 'production',
-  Provisioner: 'pulumi',
-}
-
-let provisioner: VoidFunction = () => undefined
-
-switch (provider?.name) {
-  case 'digitalocean':
-    provisioner = () =>
-      provisioners.digitalocean({
-        name,
-        domain,
-        region,
-        environment,
-        tags: Object.entries(tags).map(([key, value]) => `${key}=${value}`.toLowerCase()),
-      })
+switch (getStack()) {
+  case "staging":
+    new Staging().connect().then(env => env.provision())
     break
-  case 'aws':
-    provisioner = () => aws({ name, tags })
-    break
+  case "production":
   default:
     break
 }
-
-provisioner()

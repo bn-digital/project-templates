@@ -1,17 +1,17 @@
-import { createHmac } from 'node:crypto'
+import { createHmac } from "node:crypto"
 
 const generateSecret: (secretName: string, namespace: string) => string = (secretName, namespace) => {
-  return createHmac('sha3-256', namespace).update(secretName).digest('hex')
+  return createHmac("sha3-256", namespace).update(secretName).digest("hex")
 }
 
 // @formatter:off
-const cspDirectives: Strapi.Middleware.CspDirectives = {
-  'default-src': ['*', "'self'", "'unsafe-inline'", "'unsafe-eval'"],
-  'script-src': ['*', "'unsafe-inline'", "'unsafe-eval'"],
-  'style-src': ['*', "'unsafe-inline'"],
-  'connect-src': ['*', "'unsafe-inline'"],
-  'img-src': ['*', 'data:', 'blob:', "'unsafe-inline'"],
-  'frame-src': ['*'],
+const cspDirectives: Strapi.Server.Middleware.CspDirectives = {
+  "default-src": ["*", "'self'", "'unsafe-inline'", "'unsafe-eval'"],
+  "script-src": ["*", "'unsafe-inline'", "'unsafe-eval'"],
+  "style-src": ["*", "'unsafe-inline'"],
+  "connect-src": ["*", "'unsafe-inline'"],
+  "img-src": ["*", "data:", "blob:", "'unsafe-inline'"],
+  "frame-src": ["*"],
 }
 // @formatter:on
 

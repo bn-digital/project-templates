@@ -4,37 +4,29 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "env": "vault-env",
-    "build": "strapi build",
-    "start": "vault-env && strapi develop"
+    "env": "npx vault-env",
+    "build": "npx strapi build",
+    "start": "npx vault-env && npx strapi develop"
   },
   "strapi": {
     "id": "68be1d7d-5510-45e4-a7fb-a93f6bb691f2"
   },
-  "eslintConfig": {
-    "extends": "@bn-digital/eslint-config/strapi",
-    "ignorePatterns": [
-      "src/types/schema.d.ts",
-      "src/types/graphql.d.ts"
-    ]
-  },
   "dependencies": {
-    "@bn-digital/strapi-plugin-field-uuid": "^1.1.7",
-    "@strapi/plugin-content-manager": "^4.8.2",
-    "@strapi/plugin-content-type-builder": "^4.8.2",
-    "@strapi/plugin-graphql": "^4.8.2",
-    "@strapi/plugin-users-permissions": "^4.8.2",
-    "@strapi/provider-email-nodemailer": "^4.8.2",
-    "@strapi/provider-upload-aws-s3": "^4.8.2",
-    "@strapi/strapi": "^4.8.2",
+    "@bn-digital/strapi-plugin-field-uuid": "^1.2.0",
+    "@strapi/plugin-content-manager": "^4.9.0",
+    "@strapi/plugin-content-type-builder": "^4.9.0",
+    "@strapi/plugin-graphql": "^4.9.0",
+    "@strapi/plugin-upload": "^4.9.0",
+    "@strapi/plugin-users-permissions": "^4.9.0",
+    "@strapi/provider-email-nodemailer": "^4.9.0",
+    "@strapi/provider-upload-aws-s3": "^4.9.0",
+    "@strapi/provider-upload-local": "^4.9.0",
+    "@strapi/strapi": "^4.9.0",
     "better-sqlite3": "^8.2.0",
-    "pg": "^8.10.0",
-    "strapi-plugin-multi-select": "^1.1.0"
+    "pg": "^8.10.0"
   },
   "devDependencies": {
-    "@bn-digital/strapi-types": "^1.0.45",
-    "@bn-digital/typescript-config": "^1.2.6",
-    "@bn-digital/vault-env": "^1.4.0",
-    "@types/node": "^18.15.5"
+    "@bn-digital/strapi-types": "^1.0.50",
+    "@bn-digital/vault-env": "^1.4.0"
   }
 }

@@ -1,26 +1,26 @@
-import { cspDirectives } from '../src/hooks'
+import { cspDirectives } from "../src/hooks"
 
-export default (): Strapi.Middleware.Definition[] => {
+export default (): Strapi.Server.Middleware.Definition[] => {
   return [
-    { name: 'strapi::errors' },
+    { name: "strapi::errors" },
     {
-      name: 'strapi::security',
+      name: "strapi::security",
       config: {
         contentSecurityPolicy: {
           useDefaults: false,
           directives: {
             upgradeInsecureRequests: null,
             ...cspDirectives,
-          } as typeof cspDirectives,
+          },
         },
       },
     },
-    { name: 'strapi::logger' },
-    { name: 'strapi::cors' },
-    { name: 'strapi::query' },
-    { name: 'strapi::body' },
-    { name: 'strapi::favicon' },
-    { name: 'global::website' },
-    { name: 'strapi::public', config: { defer: true } },
+    { name: "strapi::logger" },
+    { name: "strapi::cors" },
+    { name: "strapi::query" },
+    { name: "strapi::body" },
+    { name: "strapi::favicon" },
+    { name: "global::website" },
+    { name: "strapi::public", config: { defer: true } },
   ]
 }

@@ -2,25 +2,20 @@
   "name": "@project-templates/cloud",
   "version": "1.0.0",
   "main": "src/index.ts",
-  "eslintConfig": {
-    "extends": "@bn-digital/eslint-config/typescript"
-  },
   "scripts": {
-    "provision": "cross-env pulumi up --non-interactive --stack=production --yes"
+    "pulumi": "cross-env pulumi",
+    "provision": "yarn pulumi up --yes"
   },
   "dependencies": {
-    "@pulumi/aws": "^5.32.0",
-    "@pulumi/digitalocean": "^4.19.0",
+    "@bn-digital/pulumi": "^1.0.2",
     "@pulumi/github": "^5.6.0",
-    "@pulumi/kubernetes": "^3.24.2",
-    "@pulumi/pulumi": "^3.58.0",
-    "@pulumi/tls": "^4.10.0",
-    "@pulumi/vault": "^5.9.0"
+    "@pulumi/postgresql": "^3.8.0",
+    "@pulumi/pulumi": "^3.61.0",
+    "@pulumi/vault": "^5.10.0",
+    "@pulumiverse/harbor": "^3.8.4"
   },
   "devDependencies": {
-    "@types/node": "^18.15.5",
     "cross-env": "^7.0.3",
-    "dotenv": "^16.0.3",
-    "typescript": "4.9.5"
+    "dotenv": "^16.0.3"
   }
 }

@@ -1,4 +1,4 @@
-import { useMediaQuery } from 'react-responsive'
+import { useMediaQuery } from "react-responsive"
 
 enum Breakpoints {
   XS = 480,
@@ -20,7 +20,7 @@ const sizes: SizeMap = {
   XXL: Breakpoints.XXL,
 } as const
 
-type DeviceType = 'mobile' | 'desktop' | 'tablet'
+type DeviceType = "mobile" | "desktop" | "tablet"
 
 type BreakpointHook = { [key in `is${Capitalize<DeviceType>}`]: boolean } & { sizes: SizeMap }
 

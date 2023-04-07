@@ -1,5 +1,5 @@
-import { extendSchema } from './graphql'
-import { appInfo, generateTypeDefinitions } from './hooks'
+import { extendSchema } from "./graphql"
+import { default as app, appInfo, generateTypeDefinitions } from "./hooks"
 
 export default {
   register({ strapi }: Global) {
@@ -8,6 +8,6 @@ export default {
   },
 
   bootstrap({ strapi }: Global) {
-    generateTypeDefinitions(strapi)
+    app.env.isDev() && generateTypeDefinitions(strapi)
   },
-} as Strapi.Strapi
+}
