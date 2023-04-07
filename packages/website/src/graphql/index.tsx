@@ -1,55 +1,55 @@
-import { gql } from '@apollo/client'
-import * as React from 'react'
-import * as Apollo from '@apollo/client'
-import * as ApolloReactComponents from '@apollo/client/react/components'
+import * as Apollo from "@apollo/client"
+import { gql } from "@apollo/client"
+import * as ApolloReactComponents from "@apollo/client/react/components"
+import * as React from "react"
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 const defaultOptions = {} as const
 
 export type PossibleTypesResultData = {
   possibleTypes: {
     GenericMorph: [
-      'ComponentDataContact',
-      'ComponentDataEntry',
-      'ComponentDataSet',
-      'ComponentPageContactUs',
-      'ComponentPageHome',
-      'ComponentUiCard',
-      'ComponentUiGrid',
-      'ComponentUiHeadline',
-      'ComponentUiLink',
-      'ComponentUiParagraph',
-      'ComponentUiSection',
-      'ComponentUiTab',
-      'ComponentUiText',
-      'UploadFile',
-      'UploadFolder',
-      'UsersPermissionsPermission',
-      'UsersPermissionsRole',
-      'UsersPermissionsUser'
+      "ComponentDataContact",
+      "ComponentDataEntry",
+      "ComponentDataSet",
+      "ComponentPageContactUs",
+      "ComponentPageHome",
+      "ComponentUiCard",
+      "ComponentUiGrid",
+      "ComponentUiHeadline",
+      "ComponentUiLink",
+      "ComponentUiParagraph",
+      "ComponentUiSection",
+      "ComponentUiTab",
+      "ComponentUiText",
+      "UploadFile",
+      "UploadFolder",
+      "UsersPermissionsPermission",
+      "UsersPermissionsRole",
+      "UsersPermissionsUser"
     ]
   }
 }
 const result: PossibleTypesResultData = {
   possibleTypes: {
     GenericMorph: [
-      'ComponentDataContact',
-      'ComponentDataEntry',
-      'ComponentDataSet',
-      'ComponentPageContactUs',
-      'ComponentPageHome',
-      'ComponentUiCard',
-      'ComponentUiGrid',
-      'ComponentUiHeadline',
-      'ComponentUiLink',
-      'ComponentUiParagraph',
-      'ComponentUiSection',
-      'ComponentUiTab',
-      'ComponentUiText',
-      'UploadFile',
-      'UploadFolder',
-      'UsersPermissionsPermission',
-      'UsersPermissionsRole',
-      'UsersPermissionsUser',
+      "ComponentDataContact",
+      "ComponentDataEntry",
+      "ComponentDataSet",
+      "ComponentPageContactUs",
+      "ComponentPageHome",
+      "ComponentUiCard",
+      "ComponentUiGrid",
+      "ComponentUiHeadline",
+      "ComponentUiLink",
+      "ComponentUiParagraph",
+      "ComponentUiSection",
+      "ComponentUiTab",
+      "ComponentUiText",
+      "UploadFile",
+      "UploadFolder",
+      "UsersPermissionsPermission",
+      "UsersPermissionsRole",
+      "UsersPermissionsUser",
     ],
   },
 }
@@ -143,7 +143,7 @@ export const MeDocument = gql`
     }
   }
 `
-export type MeComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MeQuery, MeQueryVariables>, 'query'>
+export type MeComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<MeQuery, MeQueryVariables>, "query">
 
 export const MeComponent = (props: MeComponentProps) => (
   <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
