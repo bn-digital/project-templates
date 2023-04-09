@@ -78,8 +78,6 @@
     "typescript": "^5.0.4"
   },
   "scripts": {
-    "graphql-codegen": "node_modules/.bin/graphql-codegen",
-    "generate": "yarn graphql-codegen && yarn projen",
     "start": "yarn workspaces foreach --exclude=root --parallel --interlaced run start",
     "start:cms": "yarn workspace @project-templates/cms run start",
     "start:website": "yarn workspace @project-templates/website run start",
