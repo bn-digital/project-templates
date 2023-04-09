@@ -5,6 +5,7 @@ import { DefaultLayout } from "../components/layout"
 import { Loader } from "../components/layout/Loader"
 
 const Home = lazy<FC>(() => import("./home"))
+const Health = lazy<FC>(() => import("./home"))
 
 const routes: RouteObject[] = [
   {
@@ -22,6 +23,10 @@ const routes: RouteObject[] = [
         path: "*",
       },
     ],
+  },
+  {
+    path: "health",
+    element: <Health />,
   },
 ]
 

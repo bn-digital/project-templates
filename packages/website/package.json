@@ -15,11 +15,12 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-responsive": "^9.0.2",
+    "react-router": "^6.10.0",
     "react-router-dom": "^6.10.0",
     "react-use": "^17.4.0"
   },
   "devDependencies": {
-    "@bn-digital/vite": "^2.2.77",
+    "@bn-digital/vite": "^2.2.93",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11"
   }
