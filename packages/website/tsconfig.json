@@ -4,5 +4,5 @@
     "baseUrl": ".",
     "outDir": "build"
   },
-  "include": ["./src", "./vite.config.ts", "./package.json"]
+  "include": ["src", "vite.config.ts"]
 }

@@ -19,6 +19,7 @@ RUN yarn build \
 FROM dcr.bndigital.dev/library/nodejs:${version}
 LABEL org.opencontainers.image.source=https://github.com/bn-digital/project-templates \
       org.opencontainers.image.authors="BN Digital <dev@bndigital.co>"
+USER node
 WORKDIR /usr/local/src
 COPY --from=build --chown=node /usr/local/src/node_modules /usr/local/src/node_modules
 COPY --from=build --chown=node /usr/local/src/packages/cms .
@@ -30,4 +31,4 @@ ENV NODE_ENV=production \
 EXPOSE $PORT
 ENTRYPOINT ["node"]
 CMD ["node_modules/@strapi/strapi/bin/strapi.js", "start"]
-HEALTHCHECK --interval=10s --timeout=10s --start-period=10s --retries=3 CMD wget --no-verbose --tries=1 --spider http://$HOST:$PORT/_health || exit 1
+HEALTHCHECK --interval=10s --timeout=10s --start-period=10s --retries=3 CMD wget --method=HEAD --no-verbose --tries=1 --spider http://$HOST:$PORT/_health || exit 1

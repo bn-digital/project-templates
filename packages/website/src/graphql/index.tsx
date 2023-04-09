@@ -85,7 +85,6 @@ export const CardFragmentDoc = gql`
       }
     }
   }
-  ${FileFragmentDoc}
 `
 export const HeadlineFragmentDoc = gql`
   fragment Headline on ComponentUiHeadline {
@@ -111,8 +110,6 @@ export const HomeFragmentDoc = gql`
       ...Card
     }
   }
-  ${CardFragmentDoc}
-  ${HeadlineFragmentDoc}
 `
 export const LinkFragmentDoc = gql`
   fragment Link on ComponentUiLink {
@@ -135,7 +132,6 @@ export const TabFragmentDoc = gql`
       ...Card
     }
   }
-  ${CardFragmentDoc}
 `
 export const MeDocument = gql`
   query me {

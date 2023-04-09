@@ -1,19 +1,1 @@
-import { configureReact } from "@bn-digital/vite"
-
-export default configureReact(
-  {},
-  {
-    //  react: { swc: true },
-    buildInfo: { enabled: true, meta: { APP_ENV: process.env.APP_ENV ?? "staging" } },
-    lint: { enabled: true },
-    graphql: { enabled: true },
-    analytics: { enableDev: false },
-    fonts: {
-      google: {
-        preconnect: true,
-        families: [{ name: "Lato", styles: "wght@400;500;600;700;800;900" }],
-        display: "auto",
-      },
-    },
-  }
-)
+import { configureReact } from "@bn-digital/vite"export default configureReact(  {},  {    react: { swc: { enabled: true }, svg: { enabled: true, memo: true } },    buildInfo: {      enabled: true,      meta: {        gitCommit: process.env.GITHUB_SHA ?? "",        gitBranch: process.env.GITHUB_REF ?? "",        env: process.env.APP_ENV ?? "",        buildTime: new Date().toUTCString(),      },    },    lint: { enabled: true },    graphql: { enabled: true },    analytics: { enableDev: false },    fonts: {      google: {        preconnect: true,        families: [{ name: "Lato", styles: "wght@400;500;600;700;800;900" }],        display: "auto",      },    },  })
