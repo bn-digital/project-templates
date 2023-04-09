@@ -30,4 +30,4 @@ ENV NODE_ENV=production \
 EXPOSE $PORT
 ENTRYPOINT ["node"]
 CMD ["node_modules/@strapi/strapi/bin/strapi.js", "start"]
-HEALTHCHECK --interval=2s --timeout=15s --start-period=5s --retries=3 CMD wget --no-verbose --tries=1 --spider http://$HOST:$PORT/ || exit 1
+HEALTHCHECK --interval=10s --timeout=10s --start-period=10s --retries=3 CMD wget --no-verbose --tries=1 --spider http://$HOST:$PORT/_health || exit 1
