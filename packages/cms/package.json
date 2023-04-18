@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "env": "npx vault-env",
-    "build": "npx strapi build",
-    "start": "npx vault-env && npx strapi develop"
+    "env": "vault-env",
+    "build": "strapi build",
+    "start": "vault-env && strapi develop"
   },
   "strapi": {
     "id": "68be1d7d-5510-45e4-a7fb-a93f6bb691f2"
