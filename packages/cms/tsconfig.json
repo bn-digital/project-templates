@@ -6,7 +6,7 @@
     "strictNullChecks": false,
     "types": ["@bn-digital/strapi-types"]
   },
-  "include": ["src", "config"],
+  "include": ["src", "config", "./src/**/*.json"],
   "exclude": [
     "node_modules/",
     "build/",
