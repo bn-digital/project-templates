@@ -21,13 +21,7 @@
   ],
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json,css,sass,scss,less,graphql}": [
-      "prettier --write"
-    ],
-    "**/*.{ts,tsx}": [
-      "eslint --no-ignore --fix"
-    ],
-    "**/*.{scss,sass,css,less}": [
-      "stylelint --fix"
+      "npx lint ts less --fix"
     ]
   },
   "prettier": "@bn-digital/prettier-config",
