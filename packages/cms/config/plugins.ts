@@ -2,7 +2,7 @@ import { join } from "path"
 
 import app, { randomSecret } from "../src/hooks"
 
-export default ({ env }: Strapi.Env): Strapi.Config.Plugin => {
+export default ({ env }: Strapi.Env): Config.Plugin => {
   return {
     "graphql": {
       enabled: true,
@@ -38,11 +38,13 @@ export default ({ env }: Strapi.Env): Strapi.Config.Plugin => {
       config: {
         provider: "aws-s3",
         providerOptions: {
-          accessKeyId: env("S3_ACCESS_KEY_ID"),
-          secretAccessKey: env("S3_SECRET_ACCESS_KEY"),
-          endpoint: env("S3_ENDPOINT"),
-          params: {
-            Bucket: `${env("S3_BUCKET", "bn-dev")}/${app.name}/uploads`,
+          s3Options: {
+            accessKeyId: env("S3_ACCESS_KEY_ID"),
+            secretAccessKey: env("S3_SECRET_ACCESS_KEY"),
+            endpoint: env("S3_ENDPOINT"),
+            params: {
+              Bucket: `${env("S3_BUCKET", "bn-dev")}/${app.name}/uploads`,
+            },
           },
         },
       },

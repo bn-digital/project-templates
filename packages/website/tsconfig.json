@@ -1,8 +1,0 @@
-{
-  "extends": "@bn-digital/typescript-config/react.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "build"
-  },
-  "include": ["src", "vite.config.ts"]
-}

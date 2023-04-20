@@ -3,19 +3,12 @@ interface ProcessEnv {
   APP_ENV: "development" | "staging" | "production"
   DOMAIN: string
   APP_VERSION: string
-  DATABASE_CLIENT: Strapi.Database.Client
+  DATABASE_CLIENT: Database.Client
   NODE_ENV: "development" | "production"
 }
 declare global {
-  namespace Strapi {
-    import { Strapi, StrapiDirectories } from "@strapi/strapi"
-    import koa from "koa"
-
-    interface StrapiInterface extends Strapi {
-      app: koa.Application
-      dirs: StrapiDirectories
-    }
-  }
+  declare namespace Strapi {}
+  const strapi: Strapi.Strapi
 }
 namespace App {
   type Mode = "development" | "staging" | "production"
@@ -34,16 +27,7 @@ namespace App {
     dnsZone: string
     database?: "sqlite" | "postgres" | "mysql"
   } & { [key: string]: unknown }
-
-  type PluginUIDs = "users-permissions" | "graphql" | "email" | "import-export-entries" | "upload" | string
-
-  type PluginConfig<T = any> = {
-    enabled: boolean
-    resolve?: string
-    config?: T
-  }
-
-  type PluginConfiguration<ID extends PluginUIDs = PluginUIDs> = {
-    [key in ID]: PluginConfig
-  }
+}
+interface Global {
+  strapi: Strapi.StrapiInterface & Strapi.Strapi
 }

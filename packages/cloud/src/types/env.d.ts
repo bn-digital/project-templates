@@ -8,6 +8,6 @@ type ProcessEnv = {
   HARBOR_USERNAME: string
   HARBOR_PASSWORD: string
   HARBOR_URL: string
-  VAULT_URL: string
+  VAULT_ADDR: string
   VAULT_TOKEN: string
 }

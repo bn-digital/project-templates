@@ -1,40 +1,38 @@
-import { Knex } from 'knex'
+import { Knex } from "knex"
 
-import app, { resolvePath } from '../src/hooks'
-/**
- *
- * @param {(key: string, defaultValue?: string)=> string} env
- */
-export default ({ env }: Strapi.Env): Strapi.Database.Config => {
-  const client = env<Strapi.Database.Client>('DATABASE_CLIENT', 'sqlite')
-  const connection: Knex.Sqlite3ConnectionConfig | Knex.StaticConnectionConfig =
-    client === 'sqlite'
-      ? ({
-          options: {
-            nativeBinding: resolvePath('node_modules', 'better-sqlite3', 'lib'),
+import app, { resolvePath } from "../src/hooks"
+
+export default ({ env }: Strapi.Env): Knex.Config => {
+  const client = env<Database.Client>("DATABASE_CLIENT", "sqlite")
+  const config: Knex.Config =
+    client === "sqlite"
+      ? {
+          connection: {
+            filename: resolvePath(...(env<string>("DATABASE_FILENAME") ?? ["database", "data.sqlite"])),
           },
-          filename: resolvePath(...(env<string>('DATABASE_FILENAME') ?? ['database', 'data.sqlite'])),
-        } as Knex.Sqlite3ConnectionConfig)
-      : {
-          charset: 'utf8',
-
-          ssl: env.bool('DATABASE_SSL', false),
-          decimalNumbers: true,
-          ...(env('DATABASE_URL')
-            ? { connectionString: env('DATABASE_URL') }
-            : {
-                user: env('DATABASE_USERNAME', 'postgres'),
-                password: env('DATABASE_PASSWORD', ''),
-                database: env('DATABASE_NAME', app.name),
-                host: env('DATABASE_HOST', 'localhost'),
-                port: env.int('DATABASE_PORT', 5432),
-              }),
+          useNullAsDefault: true,
         }
-  return {
-    connection: {
-      client,
-      connection,
-      useNullAsDefault: true,
-    },
-  }
+      : {
+          jsonbSupport: client === "postgres",
+          connection: {
+            charset: "utf8",
+            ssl: env.bool("DATABASE_SSL", false),
+            decimalNumbers: true,
+            parseJSON: true,
+            options: { useUTC: true },
+            supportBigNumbers: true,
+            compress: true,
+            ...(env("DATABASE_URL")
+              ? { connectionString: env("DATABASE_URL") }
+              : {
+                  user: env("DATABASE_USERNAME", "postgres"),
+                  password: env("DATABASE_PASSWORD", ""),
+                  database: env("DATABASE_NAME", app.name),
+                  host: env("DATABASE_HOST", "localhost"),
+                  port: env.int("DATABASE_PORT", 5432),
+                }),
+          },
+          pool: { min: env.int("DATABASE_POOL_MIN", 2), max: env.int("DATABASE_POOL_MAX", 10) },
+        }
+  return { connection: { client, ...config } }
 }

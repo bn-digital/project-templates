@@ -480,7 +480,7 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
     confirmed: BooleanAttribute & DefaultTo<false>
     blocked: BooleanAttribute & DefaultTo<false>
     role: RelationAttribute<"plugin::users-permissions.user", "manyToOne", "plugin::users-permissions.role">
-    uuid: UIDAttribute & RequiredAttribute & CustomField<"plugin::field-uuid.uuid">
+    uuid: UIDAttribute & CustomField<"plugin::field-uuid.uuid">
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<"plugin::users-permissions.user", "oneToOne", "admin::user"> & PrivateAttribute

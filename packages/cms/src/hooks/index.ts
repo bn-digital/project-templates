@@ -27,7 +27,7 @@ const app: App.Metadata = {
   dnsZone,
 }
 
-function appInfo(strapi: Strapi.Strapi) {
+function appInfo(strapi: Strapi.StrapiInterface) {
   strapi.log.info(`[app] Application: ${app.name}, version: ${app.version}`)
   strapi.log.info(`[app] Production domain: ${app.domain}`)
   strapi.log.info(`[app] Database Engine: ${process.env.DATABASE_CLIENT}`)

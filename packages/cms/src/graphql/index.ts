@@ -9,12 +9,8 @@ function extendSchema(strapi: Strapi.Strapi) {
   extensionService.use(schemaExtension)
 }
 
-function getGraphqlPlugin(strapi: Strapi.Strapi): Strapi.Graphql.Plugin {
-  return strapi.plugin("graphql")
-}
-
-function getExtensionService(strapi: Strapi.Strapi): Strapi.Graphql.ExtensionService {
-  return getGraphqlPlugin(strapi).service("extension")
+function getExtensionService(strapi: Strapi.Strapi) {
+  return strapi.plugin<Graphql.Plugin>("graphql").service<Graphql.ExtensionService>("extension")
 }
 
 export { extendSchema }

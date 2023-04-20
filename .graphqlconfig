@@ -3,6 +3,7 @@
   "documents": [
     "**/src/graphql/fragments/*.graphql"
   ],
+  "excludes": ["packages/cms/src/graphql/extension.graphql"],
   "include": [
     "**/src/graphql/queries/*.graphql",
     "**/src/graphql/mutations/*.graphql"

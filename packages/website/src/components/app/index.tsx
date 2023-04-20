@@ -41,9 +41,7 @@ const apolloClient = new ApolloClient(clientOptions)
 const App: FC = () => (
   <ApolloProvider client={apolloClient}>
     <ContextProvider>
-      <ConfigProvider>
-        <PageProvider />
-      </ConfigProvider>
+      <PageProvider />
     </ContextProvider>
   </ApolloProvider>
 )

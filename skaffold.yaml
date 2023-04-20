@@ -21,14 +21,14 @@ portForward:
   - localPort: 5000
     port: 5000
     resourceName: app
+test:
+  - image: app
+    structureTests:
+      - container-structure-test.yaml
 profiles:
   - name: staging
     activation:
       - env: CI=true
-    test:
-      - image: app
-        structureTests:
-          - container-structure-test.yaml
   - name: production
     build:
       tagPolicy:
