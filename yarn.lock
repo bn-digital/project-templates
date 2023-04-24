@@ -75,9 +75,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/client@npm:^3.7.11":
-  version: 3.7.11
-  resolution: "@apollo/client@npm:3.7.11"
+"@apollo/client@npm:^3.7.12":
+  version: 3.7.12
+  resolution: "@apollo/client@npm:3.7.12"
   dependencies:
     "@graphql-typed-document-node/core": "npm:^3.1.1"
     "@wry/context": "npm:^0.7.0"
@@ -107,7 +107,7 @@ __metadata:
       optional: true
     subscriptions-transport-ws:
       optional: true
-  checksum: 7c7db7a6eabbc5d7e136f3046e2ae7030801ecfbc13dbdfae7ff0a4c59145c4fa115a913f63c9b728f50a9ed18ce82b8d0cacb2cca80cdafd461efd5f6302247
+  checksum: ba53ce6f1f4e89bbb3195b1a0deffa82e546d2356015ae27d5285addec3a9424c708514f21550967b3456f10bd3a0d688b88f39958d67a4261743595acf0e3a5
   languageName: node
   linkType: hard
 
@@ -4706,7 +4706,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@project-templates/website@workspace:packages/website"
   dependencies:
-    "@apollo/client": "npm:^3.7.11"
+    "@apollo/client": "npm:^3.7.12"
     "@bn-digital/vite": "npm:^2.2.93"
     "@types/react": "npm:^18.0.33"
     "@types/react-dom": "npm:^18.0.11"
