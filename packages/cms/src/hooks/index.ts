@@ -27,14 +27,6 @@ const app: App.Metadata = {
   dnsZone,
 }
 
-function appInfo(strapi: Strapi.StrapiInterface) {
-  strapi.log.info(`[app] Application: ${app.name}, version: ${app.version}`)
-  strapi.log.info(`[app] Production domain: ${app.domain}`)
-  strapi.log.info(`[app] Database Engine: ${process.env.DATABASE_CLIENT}`)
-
-  return app
-}
-
 const resolvePath = (...workingDirRelative: string[]): string => {
   return join(app.workingDir, ...workingDirRelative)
 }
@@ -43,4 +35,4 @@ const randomSecret = (name: string): string => generateSecret(name, app.name)
 
 export { cspDirectives } from "./config"
 export { generateTypeDefinitions } from "./typescript"
-export { appInfo, app as default, randomSecret, resolvePath }
+export { app as default, randomSecret, resolvePath }

@@ -1,12 +1,1 @@
-import { extendSchema } from "./graphql"
-import { default as app, appInfo, generateTypeDefinitions } from "./hooks"
-export default {
-  register({ strapi }: Global) {
-    appInfo(strapi)
-    extendSchema(strapi)
-  },
-
-  bootstrap({ strapi }: Global) {
-    app.env.isDev() && generateTypeDefinitions(strapi)
-  },
-}
+import { extendSchema } from "./graphql"import { default as app, generateTypeDefinitions } from "./hooks"export default {  register({ strapi }: StrapiGlobal) {    strapi.log.info(`[app] Application: ${app.name}, version: ${app.version}`)    strapi.log.info(`[app] Production domain: ${app.domain}`)    strapi.log.info(`[app] Database Engine: ${process.env.DATABASE_CLIENT}`)    extendSchema(strapi)    return strapi  },  bootstrap({ strapi }: StrapiGlobal) {    app.env.isDev() && generateTypeDefinitions(strapi)  },}

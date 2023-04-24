@@ -32,22 +32,6 @@ export interface NexusGenInputs {
     or?: Array<boolean | null> | null // [Boolean]
     startsWith?: boolean | null // Boolean
   }
-  ComponentDataContactFiltersInput: {
-    // input type
-    address?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
-    and?: Array<NexusGenInputs["ComponentDataContactFiltersInput"] | null> | null // [ComponentDataContactFiltersInput]
-    email?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
-    not?: NexusGenInputs["ComponentDataContactFiltersInput"] | null // ComponentDataContactFiltersInput
-    or?: Array<NexusGenInputs["ComponentDataContactFiltersInput"] | null> | null // [ComponentDataContactFiltersInput]
-    phone?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
-  }
-  ComponentDataContactInput: {
-    // input type
-    address?: string | null // String
-    email?: string | null // String
-    id?: string | null // ID
-    phone?: string | null // String
-  }
   ComponentDataEntryFiltersInput: {
     // input type
     and?: Array<NexusGenInputs["ComponentDataEntryFiltersInput"] | null> | null // [ComponentDataEntryFiltersInput]
@@ -73,40 +57,6 @@ export interface NexusGenInputs {
     // input type
     id?: string | null // ID
     value?: string | null // String
-  }
-  ComponentPageContactUsFiltersInput: {
-    // input type
-    and?: Array<NexusGenInputs["ComponentPageContactUsFiltersInput"] | null> | null // [ComponentPageContactUsFiltersInput]
-    contact?: NexusGenInputs["ComponentDataContactFiltersInput"] | null // ComponentDataContactFiltersInput
-    not?: NexusGenInputs["ComponentPageContactUsFiltersInput"] | null // ComponentPageContactUsFiltersInput
-    or?: Array<NexusGenInputs["ComponentPageContactUsFiltersInput"] | null> | null // [ComponentPageContactUsFiltersInput]
-    pathname?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
-  }
-  ComponentPageContactUsInput: {
-    // input type
-    contact?: NexusGenInputs["ComponentDataContactInput"] | null // ComponentDataContactInput
-    id?: string | null // ID
-    pathname?: string | null // String
-  }
-  ComponentPageHomeFiltersInput: {
-    // input type
-    and?: Array<NexusGenInputs["ComponentPageHomeFiltersInput"] | null> | null // [ComponentPageHomeFiltersInput]
-    components?: NexusGenInputs["ComponentUiCardFiltersInput"] | null // ComponentUiCardFiltersInput
-    frameworks?: NexusGenInputs["ComponentUiCardFiltersInput"] | null // ComponentUiCardFiltersInput
-    hero?: NexusGenInputs["ComponentUiCardFiltersInput"] | null // ComponentUiCardFiltersInput
-    not?: NexusGenInputs["ComponentPageHomeFiltersInput"] | null // ComponentPageHomeFiltersInput
-    or?: Array<NexusGenInputs["ComponentPageHomeFiltersInput"] | null> | null // [ComponentPageHomeFiltersInput]
-    pathname?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
-    technology?: NexusGenInputs["ComponentUiHeadlineFiltersInput"] | null // ComponentUiHeadlineFiltersInput
-  }
-  ComponentPageHomeInput: {
-    // input type
-    components?: Array<NexusGenInputs["ComponentUiCardInput"] | null> | null // [ComponentUiCardInput]
-    frameworks?: NexusGenInputs["ComponentUiCardInput"] | null // ComponentUiCardInput
-    hero?: NexusGenInputs["ComponentUiCardInput"] | null // ComponentUiCardInput
-    id?: string | null // ID
-    pathname?: string | null // String
-    technology?: NexusGenInputs["ComponentUiHeadlineInput"] | null // ComponentUiHeadlineInput
   }
   ComponentUiCardFiltersInput: {
     // input type
@@ -158,12 +108,14 @@ export interface NexusGenInputs {
     and?: Array<NexusGenInputs["ComponentUiLinkFiltersInput"] | null> | null // [ComponentUiLinkFiltersInput]
     not?: NexusGenInputs["ComponentUiLinkFiltersInput"] | null // ComponentUiLinkFiltersInput
     or?: Array<NexusGenInputs["ComponentUiLinkFiltersInput"] | null> | null // [ComponentUiLinkFiltersInput]
+    target?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
     title?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
     url?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
   }
   ComponentUiLinkInput: {
     // input type
     id?: string | null // ID
+    target?: NexusGenEnums["ENUM_COMPONENTUILINK_TARGET"] | null // ENUM_COMPONENTUILINK_TARGET
     title?: string | null // String
     url?: string | null // String
   }
@@ -372,6 +324,19 @@ export interface NexusGenInputs {
     null?: boolean | null // Boolean
     or?: Array<NexusGenScalars["JSON"] | null> | null // [JSON]
     startsWith?: NexusGenScalars["JSON"] | null // JSON
+  }
+  LayoutFiltersInput: {
+    // input type
+    and?: Array<NexusGenInputs["LayoutFiltersInput"] | null> | null // [LayoutFiltersInput]
+    createdAt?: NexusGenInputs["DateTimeFilterInput"] | null // DateTimeFilterInput
+    headerMenu?: NexusGenInputs["ComponentUiLinkFiltersInput"] | null // ComponentUiLinkFiltersInput
+    not?: NexusGenInputs["LayoutFiltersInput"] | null // LayoutFiltersInput
+    or?: Array<NexusGenInputs["LayoutFiltersInput"] | null> | null // [LayoutFiltersInput]
+    updatedAt?: NexusGenInputs["DateTimeFilterInput"] | null // DateTimeFilterInput
+  }
+  LayoutInput: {
+    // input type
+    headerMenu?: Array<NexusGenInputs["ComponentUiLinkInput"] | null> | null // [ComponentUiLinkInput]
   }
   LongFilterInput: {
     // input type
@@ -605,6 +570,7 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  ENUM_COMPONENTUILINK_TARGET: "blank" | "parent" | "self" | "top"
   PublicationState: "live" | "preview"
 }
 
@@ -623,13 +589,6 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
-  ComponentDataContact: {
-    // root type
-    address?: string | null // String
-    email?: string | null // String
-    id: string // ID!
-    phone?: string | null // String
-  }
   ComponentDataEntry: {
     // root type
     id: string // ID!
@@ -640,16 +599,6 @@ export interface NexusGenObjects {
     // root type
     id: string // ID!
     value: string // String!
-  }
-  ComponentPageContactUs: {
-    // root type
-    id: string // ID!
-    pathname: string // String!
-  }
-  ComponentPageHome: {
-    // root type
-    id: string // ID!
-    pathname: string // String!
   }
   ComponentUiCard: {
     // root type
@@ -672,6 +621,7 @@ export interface NexusGenObjects {
   ComponentUiLink: {
     // root type
     id: string // ID!
+    target: NexusGenEnums["ENUM_COMPONENTUILINK_TARGET"] // ENUM_COMPONENTUILINK_TARGET!
     title?: string | null // String
     url: string // String!
   }
@@ -699,6 +649,15 @@ export interface NexusGenObjects {
     // root type
     message?: string | null // String
   }
+  Layout: {
+    // root type
+    createdAt?: NexusGenScalars["DateTime"] | null // DateTime
+    updatedAt?: NexusGenScalars["DateTime"] | null // DateTime
+  }
+  LayoutEntity: {}
+  LayoutEntityResponse: {}
+  LayoutEntityResponseCollection: {}
+  LayoutRelationResponseCollection: {}
   Mutation: {}
   Pagination: {
     // root type
@@ -824,11 +783,8 @@ export interface NexusGenInterfaces {}
 
 export interface NexusGenUnions {
   GenericMorph:
-    | NexusGenRootTypes["ComponentDataContact"]
     | NexusGenRootTypes["ComponentDataEntry"]
     | NexusGenRootTypes["ComponentDataSet"]
-    | NexusGenRootTypes["ComponentPageContactUs"]
-    | NexusGenRootTypes["ComponentPageHome"]
     | NexusGenRootTypes["ComponentUiCard"]
     | NexusGenRootTypes["ComponentUiGrid"]
     | NexusGenRootTypes["ComponentUiHeadline"]
@@ -837,6 +793,7 @@ export interface NexusGenUnions {
     | NexusGenRootTypes["ComponentUiSection"]
     | NexusGenRootTypes["ComponentUiTab"]
     | NexusGenRootTypes["ComponentUiText"]
+    | NexusGenRootTypes["Layout"]
     | NexusGenRootTypes["UploadFile"]
     | NexusGenRootTypes["UploadFolder"]
     | NexusGenRootTypes["UsersPermissionsPermission"]
@@ -849,13 +806,6 @@ export type NexusGenRootTypes = NexusGenObjects & NexusGenUnions
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
-  ComponentDataContact: {
-    // field return type
-    address: string | null // String
-    email: string | null // String
-    id: string // ID!
-    phone: string | null // String
-  }
   ComponentDataEntry: {
     // field return type
     id: string // ID!
@@ -866,21 +816,6 @@ export interface NexusGenFieldTypes {
     // field return type
     id: string // ID!
     value: string // String!
-  }
-  ComponentPageContactUs: {
-    // field return type
-    contact: NexusGenRootTypes["ComponentDataContact"] | null // ComponentDataContact
-    id: string // ID!
-    pathname: string // String!
-  }
-  ComponentPageHome: {
-    // field return type
-    components: Array<NexusGenRootTypes["ComponentUiCard"] | null> | null // [ComponentUiCard]
-    frameworks: NexusGenRootTypes["ComponentUiCard"] | null // ComponentUiCard
-    hero: NexusGenRootTypes["ComponentUiCard"] | null // ComponentUiCard
-    id: string // ID!
-    pathname: string // String!
-    technology: NexusGenRootTypes["ComponentUiHeadline"] | null // ComponentUiHeadline
   }
   ComponentUiCard: {
     // field return type
@@ -905,6 +840,7 @@ export interface NexusGenFieldTypes {
   ComponentUiLink: {
     // field return type
     id: string // ID!
+    target: NexusGenEnums["ENUM_COMPONENTUILINK_TARGET"] // ENUM_COMPONENTUILINK_TARGET!
     title: string | null // String
     url: string // String!
   }
@@ -937,12 +873,37 @@ export interface NexusGenFieldTypes {
     code: string // String!
     message: string | null // String
   }
+  Layout: {
+    // field return type
+    createdAt: NexusGenScalars["DateTime"] | null // DateTime
+    headerMenu: Array<NexusGenRootTypes["ComponentUiLink"] | null> | null // [ComponentUiLink]
+    updatedAt: NexusGenScalars["DateTime"] | null // DateTime
+  }
+  LayoutEntity: {
+    // field return type
+    attributes: NexusGenRootTypes["Layout"] | null // Layout
+    id: string | null // ID
+  }
+  LayoutEntityResponse: {
+    // field return type
+    data: NexusGenRootTypes["LayoutEntity"] | null // LayoutEntity
+  }
+  LayoutEntityResponseCollection: {
+    // field return type
+    data: NexusGenRootTypes["LayoutEntity"][] // [LayoutEntity!]!
+    meta: NexusGenRootTypes["ResponseCollectionMeta"] // ResponseCollectionMeta!
+  }
+  LayoutRelationResponseCollection: {
+    // field return type
+    data: NexusGenRootTypes["LayoutEntity"][] // [LayoutEntity!]!
+  }
   Mutation: {
     // field return type
     changePassword: NexusGenRootTypes["UsersPermissionsLoginPayload"] | null // UsersPermissionsLoginPayload
     createUploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     createUsersPermissionsRole: NexusGenRootTypes["UsersPermissionsCreateRolePayload"] | null // UsersPermissionsCreateRolePayload
     createUsersPermissionsUser: NexusGenRootTypes["UsersPermissionsUserEntityResponse"] // UsersPermissionsUserEntityResponse!
+    deleteLayout: NexusGenRootTypes["LayoutEntityResponse"] | null // LayoutEntityResponse
     deleteUploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     deleteUsersPermissionsRole: NexusGenRootTypes["UsersPermissionsDeleteRolePayload"] | null // UsersPermissionsDeleteRolePayload
     deleteUsersPermissionsUser: NexusGenRootTypes["UsersPermissionsUserEntityResponse"] // UsersPermissionsUserEntityResponse!
@@ -954,6 +915,7 @@ export interface NexusGenFieldTypes {
     removeFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     resetPassword: NexusGenRootTypes["UsersPermissionsLoginPayload"] | null // UsersPermissionsLoginPayload
     updateFileInfo: NexusGenRootTypes["UploadFileEntityResponse"] // UploadFileEntityResponse!
+    updateLayout: NexusGenRootTypes["LayoutEntityResponse"] | null // LayoutEntityResponse
     updateUploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     updateUsersPermissionsRole: NexusGenRootTypes["UsersPermissionsUpdateRolePayload"] | null // UsersPermissionsUpdateRolePayload
     updateUsersPermissionsUser: NexusGenRootTypes["UsersPermissionsUserEntityResponse"] // UsersPermissionsUserEntityResponse!
@@ -968,6 +930,7 @@ export interface NexusGenFieldTypes {
   }
   Query: {
     // field return type
+    layout: NexusGenRootTypes["LayoutEntityResponse"] | null // LayoutEntityResponse
     me: NexusGenRootTypes["UsersPermissionsUser"] | null // UsersPermissionsUser
     uploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     uploadFiles: NexusGenRootTypes["UploadFileEntityResponseCollection"] | null // UploadFileEntityResponseCollection
@@ -1171,13 +1134,6 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
-  ComponentDataContact: {
-    // field return type name
-    address: "String"
-    email: "String"
-    id: "ID"
-    phone: "String"
-  }
   ComponentDataEntry: {
     // field return type name
     id: "ID"
@@ -1188,21 +1144,6 @@ export interface NexusGenFieldTypeNames {
     // field return type name
     id: "ID"
     value: "String"
-  }
-  ComponentPageContactUs: {
-    // field return type name
-    contact: "ComponentDataContact"
-    id: "ID"
-    pathname: "String"
-  }
-  ComponentPageHome: {
-    // field return type name
-    components: "ComponentUiCard"
-    frameworks: "ComponentUiCard"
-    hero: "ComponentUiCard"
-    id: "ID"
-    pathname: "String"
-    technology: "ComponentUiHeadline"
   }
   ComponentUiCard: {
     // field return type name
@@ -1227,6 +1168,7 @@ export interface NexusGenFieldTypeNames {
   ComponentUiLink: {
     // field return type name
     id: "ID"
+    target: "ENUM_COMPONENTUILINK_TARGET"
     title: "String"
     url: "String"
   }
@@ -1259,12 +1201,37 @@ export interface NexusGenFieldTypeNames {
     code: "String"
     message: "String"
   }
+  Layout: {
+    // field return type name
+    createdAt: "DateTime"
+    headerMenu: "ComponentUiLink"
+    updatedAt: "DateTime"
+  }
+  LayoutEntity: {
+    // field return type name
+    attributes: "Layout"
+    id: "ID"
+  }
+  LayoutEntityResponse: {
+    // field return type name
+    data: "LayoutEntity"
+  }
+  LayoutEntityResponseCollection: {
+    // field return type name
+    data: "LayoutEntity"
+    meta: "ResponseCollectionMeta"
+  }
+  LayoutRelationResponseCollection: {
+    // field return type name
+    data: "LayoutEntity"
+  }
   Mutation: {
     // field return type name
     changePassword: "UsersPermissionsLoginPayload"
     createUploadFile: "UploadFileEntityResponse"
     createUsersPermissionsRole: "UsersPermissionsCreateRolePayload"
     createUsersPermissionsUser: "UsersPermissionsUserEntityResponse"
+    deleteLayout: "LayoutEntityResponse"
     deleteUploadFile: "UploadFileEntityResponse"
     deleteUsersPermissionsRole: "UsersPermissionsDeleteRolePayload"
     deleteUsersPermissionsUser: "UsersPermissionsUserEntityResponse"
@@ -1276,6 +1243,7 @@ export interface NexusGenFieldTypeNames {
     removeFile: "UploadFileEntityResponse"
     resetPassword: "UsersPermissionsLoginPayload"
     updateFileInfo: "UploadFileEntityResponse"
+    updateLayout: "LayoutEntityResponse"
     updateUploadFile: "UploadFileEntityResponse"
     updateUsersPermissionsRole: "UsersPermissionsUpdateRolePayload"
     updateUsersPermissionsUser: "UsersPermissionsUserEntityResponse"
@@ -1290,6 +1258,7 @@ export interface NexusGenFieldTypeNames {
   }
   Query: {
     // field return type name
+    layout: "LayoutEntityResponse"
     me: "UsersPermissionsUser"
     uploadFile: "UploadFileEntityResponse"
     uploadFiles: "UploadFileEntityResponseCollection"
@@ -1493,14 +1462,6 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
-  ComponentPageHome: {
-    components: {
-      // args
-      filters?: NexusGenInputs["ComponentUiCardFiltersInput"] | null // ComponentUiCardFiltersInput
-      pagination: NexusGenInputs["PaginationArg"] | null // PaginationArg
-      sort: Array<string | null> | null // [String]
-    }
-  }
   ComponentUiGrid: {
     children: {
       // args
@@ -1513,6 +1474,14 @@ export interface NexusGenArgTypes {
     children: {
       // args
       filters?: NexusGenInputs["ComponentUiParagraphFiltersInput"] | null // ComponentUiParagraphFiltersInput
+      pagination: NexusGenInputs["PaginationArg"] | null // PaginationArg
+      sort: Array<string | null> | null // [String]
+    }
+  }
+  Layout: {
+    headerMenu: {
+      // args
+      filters?: NexusGenInputs["ComponentUiLinkFiltersInput"] | null // ComponentUiLinkFiltersInput
       pagination: NexusGenInputs["PaginationArg"] | null // PaginationArg
       sort: Array<string | null> | null // [String]
     }
@@ -1585,6 +1554,10 @@ export interface NexusGenArgTypes {
       // args
       id: string // ID!
       info?: NexusGenInputs["FileInfoInput"] | null // FileInfoInput
+    }
+    updateLayout: {
+      // args
+      data: NexusGenInputs["LayoutInput"] // LayoutInput!
     }
     updateUploadFile: {
       // args
@@ -1674,11 +1647,8 @@ export interface NexusGenArgTypes {
 
 export interface NexusGenAbstractTypeMembers {
   GenericMorph:
-    | "ComponentDataContact"
     | "ComponentDataEntry"
     | "ComponentDataSet"
-    | "ComponentPageContactUs"
-    | "ComponentPageHome"
     | "ComponentUiCard"
     | "ComponentUiGrid"
     | "ComponentUiHeadline"
@@ -1687,6 +1657,7 @@ export interface NexusGenAbstractTypeMembers {
     | "ComponentUiSection"
     | "ComponentUiTab"
     | "ComponentUiText"
+    | "Layout"
     | "UploadFile"
     | "UploadFolder"
     | "UsersPermissionsPermission"

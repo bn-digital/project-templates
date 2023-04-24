@@ -12,8 +12,8 @@ export default ({ env }: Strapi.Env): Config.Plugin => {
         defaultLimit: 10,
         maxLimit: 100,
         subscriptions: false,
-        playgroundAlways: true,
-        generateArtifacts: true,
+        playgroundAlways: !app.env.isProd(),
+        generateArtifacts: app.env.isDev(),
         artifacts: {
           schema: join(app.workingDir, "src", "graphql", "schema.graphql"),
           typegen: join(app.workingDir, "src", "types", "graphql.d.ts"),

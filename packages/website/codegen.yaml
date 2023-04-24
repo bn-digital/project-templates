@@ -26,6 +26,7 @@ generates:
           module: es2015
       - typescript-react-apollo:
           dedupeFragments: true
+          emitLegacyCommonJSImports: true
           reactApolloVersion: 3
           addDocBlocks: false
           withComponent: true

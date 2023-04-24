@@ -1,14 +1,17 @@
 import { Knex } from "knex"
 
+import * as process from "process"
 import app, { resolvePath } from "../src/hooks"
 
 export default ({ env }: Strapi.Env): Knex.Config => {
-  const client = env<Database.Client>("DATABASE_CLIENT", "sqlite")
+  const client = env("DATABASE_CLIENT", "sqlite") ?? "sqlite"
   const config: Knex.Config =
     client === "sqlite"
       ? {
           connection: {
-            filename: resolvePath(...(env<string>("DATABASE_FILENAME") ?? ["database", "data.sqlite"])),
+            filename: resolvePath(
+              ...(env<string>("DATABASE_FILENAME") ?? ["database", `${process.env.NODE_ENV}.sqlite`])
+            ),
           },
           useNullAsDefault: true,
         }

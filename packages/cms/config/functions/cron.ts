@@ -1,5 +1,5 @@
 export default {
-  // '* * * * *': ({ strapi }) => {
+  // '0 0 1 * * 1': ({ strapi }) => {
   //   console.log('Running cron job every minute')
   // },
 } as Record<string, ({ strapi }: { strapi: Strapi.Strapi }) => void>

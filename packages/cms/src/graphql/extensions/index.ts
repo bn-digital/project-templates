@@ -1,12 +1,12 @@
 import resolvers, { resolversConfig } from "../resolvers"
-const readOnlyEntities: Strapi.ContentTypeUIDs[] = [
+const readOnlyEntities = [
   "plugin::users-permissions.permission",
   "plugin::users-permissions.role",
   "plugin::upload.folder",
   "plugin::users-permissions.user",
 ]
 
-const writeOnlyEntities: Strapi.ContentTypeUIDs[] = ["plugin::upload.folder"]
+const writeOnlyEntities = ["plugin::upload.folder"]
 
 const schemaExtension: Graphql.ExtensionCallback = ({ nexus }) => ({
   types: [

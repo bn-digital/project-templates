@@ -5,6 +5,9 @@ kind: Config
 build:
   artifacts:
     - image: app
+      docker:
+        cacheFrom:
+          - dcr.bndigital.dev/library/yarn:3.4.0
   tagPolicy:
     sha256: { }
   local:

@@ -42,6 +42,9 @@ class RouteResolver {
       .filter(this.urlPrefixMatcher)
   }
 
+  private get isGraphql(): boolean {
+    return this.strapiRoutePrefixes(strapi.server).some(prefix => this.ctx.url.startsWith(prefix))
+  }
   private get isStrapiInternal(): boolean {
     return this.strapiRoutePrefixes(strapi.server).some(prefix => this.ctx.url.startsWith(prefix))
   }
@@ -59,7 +62,7 @@ class RouteResolver {
   }
 
   get shouldRedirectToIndex(): boolean {
-    return !this.isStrapiInternal && !this.isStatic && !this.isWellKnown && this.spaEntryExists
+    return !this.isStrapiInternal && !this.isGraphql && !this.isStatic && !this.isWellKnown && this.spaEntryExists
   }
 }
 
