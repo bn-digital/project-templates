@@ -68,7 +68,7 @@
     "@types/node": "^18.15.11",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
-    "projen": "^0.71.7",
+    "projen": "^0.71.23",
     "typescript": "^5.0.4"
   },
   "scripts": {
