@@ -4,4 +4,6 @@ declare interface ImportMetaEnv {
 
 interface ProcessEnv {
   readonly APP_ENV?: string
+  readonly GITHUB_SHA?: string
+  readonly GITHUB_REF?: string
 }

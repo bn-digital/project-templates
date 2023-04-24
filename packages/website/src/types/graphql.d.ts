@@ -48,11 +48,6 @@ type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars["Boolean"]>
 }
 
-type ChangePasswordInput = {
-  newPassword: Scalars["String"]
-  oldPassword: Scalars["String"]
-}
-
 type ComponentDataContact = {
   address?: Maybe<Scalars["String"]>
   email?: Maybe<Scalars["String"]>
@@ -545,7 +540,8 @@ type LongFilterInput = {
 }
 
 type Mutation = {
-  changePassword: Scalars["Boolean"]
+  /** Change user password. Confirm with the current password. */
+  changePassword?: Maybe<UsersPermissionsLoginPayload>
   createUploadFile?: Maybe<UploadFileEntityResponse>
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
@@ -577,7 +573,9 @@ type Mutation = {
 }
 
 type MutationChangePasswordArgs = {
-  input?: InputMaybe<ChangePasswordInput>
+  currentPassword: Scalars["String"]
+  password: Scalars["String"]
+  passwordConfirmation: Scalars["String"]
 }
 
 type MutationCreateUploadFileArgs = {
@@ -1082,7 +1080,7 @@ type UsersPermissionsUser = {
   role?: Maybe<UsersPermissionsRoleEntityResponse>
   updatedAt?: Maybe<Scalars["DateTime"]>
   username: Scalars["String"]
-  uuid: Scalars["String"]
+  uuid?: Maybe<Scalars["String"]>
 }
 
 type UsersPermissionsUserEntity = {
