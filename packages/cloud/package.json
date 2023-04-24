@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "@bn-digital/pulumi": "^1.0.2",
-    "@pulumi/github": "^5.6.0",
+    "@pulumi/github": "^5.8.0",
     "@pulumi/postgresql": "^3.8.0",
-    "@pulumi/pulumi": "^3.61.0",
+    "@pulumi/pulumi": "^3.64.0",
     "@pulumi/vault": "^5.10.0",
     "@pulumiverse/harbor": "^3.8.4"
   },

@@ -32,11 +32,6 @@ export interface NexusGenInputs {
     or?: Array<boolean | null> | null // [Boolean]
     startsWith?: boolean | null // Boolean
   }
-  ChangePasswordInput: {
-    // input type
-    newPassword: string // String!
-    oldPassword: string // String!
-  }
   ComponentDataContactFiltersInput: {
     // input type
     address?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
@@ -817,7 +812,7 @@ export interface NexusGenObjects {
     provider?: string | null // String
     updatedAt?: NexusGenScalars["DateTime"] | null // DateTime
     username: string // String!
-    uuid: string // String!
+    uuid?: string | null // String
   }
   UsersPermissionsUserEntity: {}
   UsersPermissionsUserEntityResponse: {}
@@ -944,7 +939,7 @@ export interface NexusGenFieldTypes {
   }
   Mutation: {
     // field return type
-    changePassword: boolean // Boolean!
+    changePassword: NexusGenRootTypes["UsersPermissionsLoginPayload"] | null // UsersPermissionsLoginPayload
     createUploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     createUsersPermissionsRole: NexusGenRootTypes["UsersPermissionsCreateRolePayload"] | null // UsersPermissionsCreateRolePayload
     createUsersPermissionsUser: NexusGenRootTypes["UsersPermissionsUserEntityResponse"] // UsersPermissionsUserEntityResponse!
@@ -1153,7 +1148,7 @@ export interface NexusGenFieldTypes {
     role: NexusGenRootTypes["UsersPermissionsRoleEntityResponse"] | null // UsersPermissionsRoleEntityResponse
     updatedAt: NexusGenScalars["DateTime"] | null // DateTime
     username: string // String!
-    uuid: string // String!
+    uuid: string | null // String
   }
   UsersPermissionsUserEntity: {
     // field return type
@@ -1266,7 +1261,7 @@ export interface NexusGenFieldTypeNames {
   }
   Mutation: {
     // field return type name
-    changePassword: "Boolean"
+    changePassword: "UsersPermissionsLoginPayload"
     createUploadFile: "UploadFileEntityResponse"
     createUsersPermissionsRole: "UsersPermissionsCreateRolePayload"
     createUsersPermissionsUser: "UsersPermissionsUserEntityResponse"
@@ -1525,7 +1520,9 @@ export interface NexusGenArgTypes {
   Mutation: {
     changePassword: {
       // args
-      input?: NexusGenInputs["ChangePasswordInput"] | null // ChangePasswordInput
+      currentPassword: string // String!
+      password: string // String!
+      passwordConfirmation: string // String!
     }
     createUploadFile: {
       // args

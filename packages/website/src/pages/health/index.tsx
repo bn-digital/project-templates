@@ -1,8 +1,7 @@
 import { Result, Typography } from "antd"
-import meta from "~build/meta"
 
 const Health = () => {
-  const { buildTime } = meta as any
+  const { buildTime } = {} as any
 
   return (
     <Result status={"success"} title={"Status page"}>

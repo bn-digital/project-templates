@@ -12,21 +12,21 @@
     "id": "68be1d7d-5510-45e4-a7fb-a93f6bb691f2"
   },
   "dependencies": {
-    "@bn-digital/strapi-plugin-field-uuid": "^1.2.0",
-    "@strapi/plugin-content-manager": "^4.9.1",
-    "@strapi/plugin-content-type-builder": "^4.9.1",
-    "@strapi/plugin-graphql": "^4.9.1",
-    "@strapi/plugin-upload": "^4.9.1",
-    "@strapi/plugin-users-permissions": "^4.9.1",
-    "@strapi/provider-email-nodemailer": "^4.9.1",
-    "@strapi/provider-upload-aws-s3": "^4.9.1",
-    "@strapi/provider-upload-local": "^4.9.1",
-    "@strapi/strapi": "^4.9.1",
+    "@bn-digital/strapi-plugin-field-uuid": "^1.2.12",
+    "@bn-digital/strapi-types": "^1.0.64",
+    "@strapi/plugin-content-manager": "^4.9.2",
+    "@strapi/plugin-content-type-builder": "^4.9.2",
+    "@strapi/plugin-graphql": "^4.9.2",
+    "@strapi/plugin-upload": "^4.9.2",
+    "@strapi/plugin-users-permissions": "^4.9.2",
+    "@strapi/provider-email-nodemailer": "^4.9.2",
+    "@strapi/provider-upload-aws-s3": "^4.9.2",
+    "@strapi/provider-upload-local": "^4.9.2",
+    "@strapi/strapi": "^4.9.2",
     "better-sqlite3": "^8.3.0",
     "pg": "^8.10.0"
   },
   "devDependencies": {
-    "@bn-digital/strapi-types": "^1.0.50",
     "@bn-digital/vault-env": "^1.4.0"
   }
 }

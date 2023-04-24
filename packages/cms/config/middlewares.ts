@@ -1,6 +1,6 @@
 import { cspDirectives } from "../src/hooks"
 
-export default (): Strapi.Server.Middleware.Definition[] => {
+export default () => {
   return [
     { name: "strapi::errors" },
     {

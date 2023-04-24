@@ -1,34 +1,23 @@
 # nonk8s
 ---
-apiVersion: skaffold/v4beta3
+apiVersion: skaffold/v4beta4
 kind: Config
 build:
   artifacts:
     - image: app
-      sync:
-        auto: true
-        manual:
-          - dest: /usr/local/src
-            src: packages/cms/dist
-          - dest: /usr/local/src/public
-            src: packages/website/builds
   tagPolicy:
     sha256: { }
   local:
     useDockerCLI: true
     useBuildkit: true
-portForward:
-  - localPort: 5000
-    port: 5000
-    resourceName: app
+test:
+  - image: app
+    structureTests:
+      - container-structure-test.yaml
 profiles:
   - name: staging
     activation:
       - env: CI=true
-    test:
-      - image: app
-        structureTests:
-          - container-structure-test.yaml
   - name: production
     build:
       tagPolicy:

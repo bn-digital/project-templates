@@ -11,7 +11,7 @@ const UploadFile = {
   url,
 }
 
-export const resolversConfig: Strapi.Graphql.ResolverConfig = {
+export const resolversConfig: Graphql.ResolverConfig = {
   "Query.me": {
     auth: true,
   },
