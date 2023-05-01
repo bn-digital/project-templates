@@ -1,7 +1,7 @@
 import { Result, Typography } from "antd"
 
 const Health = () => {
-  const { buildTime } = {} as any
+  const { buildTime } = { buildTime: "N/A" }
 
   return (
     <Result status={"success"} title={"Status page"}>

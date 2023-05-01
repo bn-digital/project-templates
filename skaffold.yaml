@@ -1,31 +1,39 @@
 # nonk8s
----
 apiVersion: skaffold/v4beta4
 kind: Config
 build:
   artifacts:
     - image: app
+      docker:
+        pullParent: true
+        cacheFrom:
+          - dcr.bndigital.dev/library/yarn:3.5.0
+      sync:
+        hooks:
+          before:
+            - host:
+                command: [yarn]
+        infer:
+          - 'packages/*/src/**/*'
+          - 'packages/*/public/**/*'
+          - 'packages/*/config/**/*'
   tagPolicy:
-    sha256: { }
+    envTemplate:
+      template: "{{.APP_VERSION}}"
   local:
+    useDockerCLI: false
     useBuildkit: true
+    push: false
 test:
   - image: app
     structureTests:
       - container-structure-test.yaml
-profiles:
-  - name: staging
-    activation:
-      - env: CI=true
-    build:
-      tagPolicy:
-        sha256: { }
-  - name: production
-    build:
-      tagPolicy:
-        gitCommit:
-          variant: Tags
 deploy:
   docker:
     images:
       - app
+portForward:
+  - port: 5000
+    resourceName: app
+    address: 127.0.0.1
+    resourceType: Container

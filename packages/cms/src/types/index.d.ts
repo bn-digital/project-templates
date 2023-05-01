@@ -5,9 +5,9 @@ declare namespace App {
   type Mode = "development" | "staging" | "production" | "test"
   type Env = {
     mode: Mode
-    isDev(): boolean
-    isProd(): boolean
-    isTest(): boolean
+    development: boolean
+    production: boolean
+    testing: boolean
   }
   type Metadata = {
     name: string

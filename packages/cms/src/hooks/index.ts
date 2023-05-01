@@ -4,14 +4,14 @@ import packageMetadata from "../../package.json"
 import { generateSecret } from "./config"
 
 const env: App.Env = {
-  isDev() {
+  get development() {
     return this.mode === "development"
   },
-  isProd() {
+  get production() {
     return this.mode === "production"
   },
-  isTest() {
-    return this.mode === "staging"
+  get testing() {
+    return this.mode === "staging" || this.mode === "test"
   },
   mode: process.env.NODE_ENV as App.Mode,
 }
@@ -27,7 +27,7 @@ const app: App.Metadata = {
   dnsZone,
 }
 
-const resolvePath = (...workingDirRelative: string[]): string => {
+const workdirResolve = (...workingDirRelative: string[]): string => {
   return join(app.workingDir, ...workingDirRelative)
 }
 
@@ -35,4 +35,4 @@ const randomSecret = (name: string): string => generateSecret(name, app.name)
 
 export { cspDirectives } from "./config"
 export { generateTypeDefinitions } from "./typescript"
-export { app as default, randomSecret, resolvePath }
+export { app as default, randomSecret, workdirResolve }

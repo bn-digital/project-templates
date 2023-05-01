@@ -2,10 +2,6 @@
 name: Integration
 on:
   pull_request:
-    branches:
-      - latest
-      - main
-      - master
     paths:
       - '.github/workflows/integration.yml'
       - 'skaffold.yaml'

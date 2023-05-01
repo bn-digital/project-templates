@@ -1,8 +1,7 @@
 schema: packages/cms/src/graphql/schema.graphql
-exclude: packages/cms/src/graphql/extension.graphql
+include:
+  - packages/website/src/graphql/*/*.graphql
+  - packages/website/src/graphql/index.tsx
 extensions:
   endpoints:
-    development:
-      url: http://127.0.0.1:1337/graphql
-    staging:
-      url: https://project-templates.bndigital.dev/graphql
+    cms: http://localhost:1337/graphql

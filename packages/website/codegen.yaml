@@ -2,7 +2,10 @@ schema:
   - ../cms/src/graphql/schema.graphql
   - src/graphql/schema.graphql
 documents:
-  - src/graphql/*/*.graphql
+  - src/graphql/**/*.graphql
+hooks:
+  afterAllFileWrite:
+    - npx lint tsx --fix
 config:
   namingConvention:
     transformUnderscore: true
@@ -22,17 +25,16 @@ generates:
     plugins:
       - fragment-matcher:
           useExplicitTyping: true
-          apolloClientVersion: 3
-          module: es2015
       - typescript-react-apollo:
           dedupeFragments: true
           emitLegacyCommonJSImports: true
           reactApolloVersion: 3
           addDocBlocks: false
-          withComponent: true
+          withComponent: false
+          optimizeDocumentNode: true
+          documentMode: documentNodeImportFragments
           withHooks: true
           withMutationOptionsType: false
-      - typescript-apollo-client-helpers
   src/types/graphql.d.ts:
     config:
       noExport: true

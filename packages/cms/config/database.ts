@@ -1,6 +1,6 @@
 import { Knex } from "knex"
 
-import app, { resolvePath } from "../src/hooks"
+import app, { workdirResolve } from "../src/hooks"
 
 export default ({ env }: Strapi.Env): Knex.Config => {
   const client = env("DATABASE_CLIENT", "sqlite")
@@ -8,7 +8,9 @@ export default ({ env }: Strapi.Env): Knex.Config => {
     client === "sqlite"
       ? {
           connection: {
-            filename: resolvePath(...(env<string>("DATABASE_FILENAME") ?? ["database", `${env("NODE_ENV")}.sqlite`])),
+            filename: workdirResolve(
+              ...(env<string>("DATABASE_FILENAME") ?? ["database", `${env("NODE_ENV")}.sqlite`])
+            ),
           },
           useNullAsDefault: true,
         }
