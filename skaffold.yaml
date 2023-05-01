@@ -5,13 +5,9 @@ kind: Config
 build:
   artifacts:
     - image: app
-      docker:
-        cacheFrom:
-          - dcr.bndigital.dev/library/yarn:3.4.0
   tagPolicy:
     sha256: { }
   local:
-    useDockerCLI: true
     useBuildkit: true
 test:
   - image: app
@@ -21,8 +17,15 @@ profiles:
   - name: staging
     activation:
       - env: CI=true
+    build:
+      tagPolicy:
+        sha256: { }
   - name: production
     build:
       tagPolicy:
         gitCommit:
           variant: Tags
+deploy:
+  docker:
+    images:
+      - app
