@@ -302,6 +302,24 @@ export interface AdminTransferTokenPermission extends CollectionTypeSchema {
   }
 }
 
+export interface ApiHomeHome extends SingleTypeSchema {
+  info: {
+    singularName: "home"
+    pluralName: "homes"
+    displayName: "Home"
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    hero: ComponentAttribute<"ui.section">
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    createdBy: RelationAttribute<"api::home.home", "oneToOne", "admin::user"> & PrivateAttribute
+    updatedBy: RelationAttribute<"api::home.home", "oneToOne", "admin::user"> & PrivateAttribute
+  }
+}
+
 export interface ApiLayoutLayout extends SingleTypeSchema {
   info: {
     singularName: "layout"
@@ -646,6 +664,7 @@ declare global {
       "admin::api-token-permission": AdminApiTokenPermission
       "admin::transfer-token": AdminTransferToken
       "admin::transfer-token-permission": AdminTransferTokenPermission
+      "api::home.home": ApiHomeHome
       "api::layout.layout": ApiLayoutLayout
       "plugin::upload.file": PluginUploadFile
       "plugin::upload.folder": PluginUploadFolder

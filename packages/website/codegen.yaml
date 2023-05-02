@@ -21,7 +21,7 @@ config:
     Time: string
     Upload: unknown
 generates:
-  src/graphql/index.tsx:
+  src/graphql/index.ts:
     plugins:
       - fragment-matcher:
           useExplicitTyping: true

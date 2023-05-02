@@ -1914,6 +1914,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bn-digital/eslint-config@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "@bn-digital/eslint-config@npm:2.2.2"
+  dependencies:
+    "@babel/eslint-parser": ^7.21.3
+    "@eslint/create-config": ^0.4.3
+    "@eslint/eslintrc": ^2.0.2
+    "@eslint/js": ^8.39.0
+    "@inventi/eslint-plugin-graphql-codegen": ^3.0.1
+    "@types/eslint": ^8.37.0
+    "@typescript-eslint/eslint-plugin": ^5.59.2
+    "@typescript-eslint/parser": ^5.59.2
+    "@typescript-eslint/utils": ^5.59.2
+    eslint: ^8.39.0
+    eslint-config-prettier: ^8.8.0
+    eslint-plugin-import: ^2.27.5
+    eslint-plugin-jsx-a11y: ^6.7.1
+    eslint-plugin-node: ^11.1.0
+    eslint-plugin-react: ^7.32.2
+    eslint-plugin-react-hooks: ^4.6.0
+    eslint-plugin-react-refresh: ^0.4.0
+    eslint-plugin-unicorn: ^46.0.0
+  bin:
+    eslint: ./bin/eslint.js
+  checksum: 54665298d9ed8c6a7a3a958a348c5782db73e663b272a7c65641870626542cd6c1fdfddc65f6c8e4dfe39316fb415e58b1a5a91e6ee30c085e116f2358e81559
+  languageName: node
+  linkType: hard
+
 "@bn-digital/graphql-config@npm:^2.3.2":
   version: 2.3.2
   resolution: "@bn-digital/graphql-config@npm:2.3.2"
@@ -2082,11 +2110,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/vite@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "@bn-digital/vite@npm:2.3.0"
+"@bn-digital/vite@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "@bn-digital/vite@npm:2.3.1"
   dependencies:
-    "@bn-digital/eslint-config": ^2.2.1
+    "@bn-digital/eslint-config": ^2.2.2
     "@bn-digital/graphql-config": ^2.3.2
     "@bn-digital/postcss-config": ^2.0.13
     "@bn-digital/stylelint-config": ^2.2.0
@@ -2107,7 +2135,7 @@ __metadata:
     vite-tsconfig-paths: ^4.2.0
   bin:
     vite: ./node_modules/.bin/vite
-  checksum: a86588d0919dbf28e507380e509362a70ddc2631b7042efc81f98a645c980887034f84bf71650c19a1362e13af0e1821512cb0b917ff5e5900e476fe6b875791
+  checksum: 132ebf05019ef8869d6ce88710b18637466a17c0f32f2f2d2555e3b4349f4ced74d79f69537f8053db86917b772f5360be8a9976783542eed57d54f034d59951
   languageName: node
   linkType: hard
 
@@ -4837,7 +4865,7 @@ __metadata:
   resolution: "@project-templates/website@workspace:packages/website"
   dependencies:
     "@apollo/client": ^3.7.13
-    "@bn-digital/vite": ^2.3.0
+    "@bn-digital/vite": ^2.3.1
     "@types/react": ^18.2.0
     "@types/react-dom": ^18.2.1
     antd: latest-4
@@ -11635,6 +11663,15 @@ __metadata:
   peerDependencies:
     eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
   checksum: 23001801f14c1d16bf0a837ca7970d9dd94e7b560384b41db378b49b6e32dc43d6e2790de1bd737a652a86f81a08d6a91f402525061b47719328f586a57e86c3
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-react-refresh@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "eslint-plugin-react-refresh@npm:0.4.0"
+  peerDependencies:
+    eslint: ">=7"
+  checksum: fd8b9f81c469ec2a74afa9404e48ea8f443df54163739b4da9ef9e65ae5f19a523d7a1e70b78f12ddb2a00b40d77f980619f33677e059ad493297ed8d727fc31
   languageName: node
   linkType: hard
 

@@ -1,0 +1,11 @@
+query home {
+  home {
+    data {
+      attributes {
+        hero {
+          ...Section
+        }
+      }
+    }
+  }
+}

@@ -253,6 +253,19 @@ export interface NexusGenInputs {
     or?: Array<number | null> | null // [Float]
     startsWith?: number | null // Float
   }
+  HomeFiltersInput: {
+    // input type
+    and?: Array<NexusGenInputs["HomeFiltersInput"] | null> | null // [HomeFiltersInput]
+    createdAt?: NexusGenInputs["DateTimeFilterInput"] | null // DateTimeFilterInput
+    hero?: NexusGenInputs["ComponentUiSectionFiltersInput"] | null // ComponentUiSectionFiltersInput
+    not?: NexusGenInputs["HomeFiltersInput"] | null // HomeFiltersInput
+    or?: Array<NexusGenInputs["HomeFiltersInput"] | null> | null // [HomeFiltersInput]
+    updatedAt?: NexusGenInputs["DateTimeFilterInput"] | null // DateTimeFilterInput
+  }
+  HomeInput: {
+    // input type
+    hero?: NexusGenInputs["ComponentUiSectionInput"] | null // ComponentUiSectionInput
+  }
   IDFilterInput: {
     // input type
     and?: Array<string | null> | null // [ID]
@@ -649,6 +662,15 @@ export interface NexusGenObjects {
     // root type
     message?: string | null // String
   }
+  Home: {
+    // root type
+    createdAt?: NexusGenScalars["DateTime"] | null // DateTime
+    updatedAt?: NexusGenScalars["DateTime"] | null // DateTime
+  }
+  HomeEntity: {}
+  HomeEntityResponse: {}
+  HomeEntityResponseCollection: {}
+  HomeRelationResponseCollection: {}
   Layout: {
     // root type
     createdAt?: NexusGenScalars["DateTime"] | null // DateTime
@@ -793,6 +815,7 @@ export interface NexusGenUnions {
     | NexusGenRootTypes["ComponentUiSection"]
     | NexusGenRootTypes["ComponentUiTab"]
     | NexusGenRootTypes["ComponentUiText"]
+    | NexusGenRootTypes["Home"]
     | NexusGenRootTypes["Layout"]
     | NexusGenRootTypes["UploadFile"]
     | NexusGenRootTypes["UploadFolder"]
@@ -873,6 +896,30 @@ export interface NexusGenFieldTypes {
     code: string // String!
     message: string | null // String
   }
+  Home: {
+    // field return type
+    createdAt: NexusGenScalars["DateTime"] | null // DateTime
+    hero: NexusGenRootTypes["ComponentUiSection"] | null // ComponentUiSection
+    updatedAt: NexusGenScalars["DateTime"] | null // DateTime
+  }
+  HomeEntity: {
+    // field return type
+    attributes: NexusGenRootTypes["Home"] | null // Home
+    id: string | null // ID
+  }
+  HomeEntityResponse: {
+    // field return type
+    data: NexusGenRootTypes["HomeEntity"] | null // HomeEntity
+  }
+  HomeEntityResponseCollection: {
+    // field return type
+    data: NexusGenRootTypes["HomeEntity"][] // [HomeEntity!]!
+    meta: NexusGenRootTypes["ResponseCollectionMeta"] // ResponseCollectionMeta!
+  }
+  HomeRelationResponseCollection: {
+    // field return type
+    data: NexusGenRootTypes["HomeEntity"][] // [HomeEntity!]!
+  }
   Layout: {
     // field return type
     createdAt: NexusGenScalars["DateTime"] | null // DateTime
@@ -903,6 +950,7 @@ export interface NexusGenFieldTypes {
     createUploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     createUsersPermissionsRole: NexusGenRootTypes["UsersPermissionsCreateRolePayload"] | null // UsersPermissionsCreateRolePayload
     createUsersPermissionsUser: NexusGenRootTypes["UsersPermissionsUserEntityResponse"] // UsersPermissionsUserEntityResponse!
+    deleteHome: NexusGenRootTypes["HomeEntityResponse"] | null // HomeEntityResponse
     deleteLayout: NexusGenRootTypes["LayoutEntityResponse"] | null // LayoutEntityResponse
     deleteUploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     deleteUsersPermissionsRole: NexusGenRootTypes["UsersPermissionsDeleteRolePayload"] | null // UsersPermissionsDeleteRolePayload
@@ -915,6 +963,7 @@ export interface NexusGenFieldTypes {
     removeFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     resetPassword: NexusGenRootTypes["UsersPermissionsLoginPayload"] | null // UsersPermissionsLoginPayload
     updateFileInfo: NexusGenRootTypes["UploadFileEntityResponse"] // UploadFileEntityResponse!
+    updateHome: NexusGenRootTypes["HomeEntityResponse"] | null // HomeEntityResponse
     updateLayout: NexusGenRootTypes["LayoutEntityResponse"] | null // LayoutEntityResponse
     updateUploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     updateUsersPermissionsRole: NexusGenRootTypes["UsersPermissionsUpdateRolePayload"] | null // UsersPermissionsUpdateRolePayload
@@ -930,6 +979,7 @@ export interface NexusGenFieldTypes {
   }
   Query: {
     // field return type
+    home: NexusGenRootTypes["HomeEntityResponse"] | null // HomeEntityResponse
     layout: NexusGenRootTypes["LayoutEntityResponse"] | null // LayoutEntityResponse
     me: NexusGenRootTypes["UsersPermissionsUser"] | null // UsersPermissionsUser
     uploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
@@ -1201,6 +1251,30 @@ export interface NexusGenFieldTypeNames {
     code: "String"
     message: "String"
   }
+  Home: {
+    // field return type name
+    createdAt: "DateTime"
+    hero: "ComponentUiSection"
+    updatedAt: "DateTime"
+  }
+  HomeEntity: {
+    // field return type name
+    attributes: "Home"
+    id: "ID"
+  }
+  HomeEntityResponse: {
+    // field return type name
+    data: "HomeEntity"
+  }
+  HomeEntityResponseCollection: {
+    // field return type name
+    data: "HomeEntity"
+    meta: "ResponseCollectionMeta"
+  }
+  HomeRelationResponseCollection: {
+    // field return type name
+    data: "HomeEntity"
+  }
   Layout: {
     // field return type name
     createdAt: "DateTime"
@@ -1231,6 +1305,7 @@ export interface NexusGenFieldTypeNames {
     createUploadFile: "UploadFileEntityResponse"
     createUsersPermissionsRole: "UsersPermissionsCreateRolePayload"
     createUsersPermissionsUser: "UsersPermissionsUserEntityResponse"
+    deleteHome: "HomeEntityResponse"
     deleteLayout: "LayoutEntityResponse"
     deleteUploadFile: "UploadFileEntityResponse"
     deleteUsersPermissionsRole: "UsersPermissionsDeleteRolePayload"
@@ -1243,6 +1318,7 @@ export interface NexusGenFieldTypeNames {
     removeFile: "UploadFileEntityResponse"
     resetPassword: "UsersPermissionsLoginPayload"
     updateFileInfo: "UploadFileEntityResponse"
+    updateHome: "HomeEntityResponse"
     updateLayout: "LayoutEntityResponse"
     updateUploadFile: "UploadFileEntityResponse"
     updateUsersPermissionsRole: "UsersPermissionsUpdateRolePayload"
@@ -1258,6 +1334,7 @@ export interface NexusGenFieldTypeNames {
   }
   Query: {
     // field return type name
+    home: "HomeEntityResponse"
     layout: "LayoutEntityResponse"
     me: "UsersPermissionsUser"
     uploadFile: "UploadFileEntityResponse"
@@ -1555,6 +1632,10 @@ export interface NexusGenArgTypes {
       id: string // ID!
       info?: NexusGenInputs["FileInfoInput"] | null // FileInfoInput
     }
+    updateHome: {
+      // args
+      data: NexusGenInputs["HomeInput"] // HomeInput!
+    }
     updateLayout: {
       // args
       data: NexusGenInputs["LayoutInput"] // LayoutInput!
@@ -1657,6 +1738,7 @@ export interface NexusGenAbstractTypeMembers {
     | "ComponentUiSection"
     | "ComponentUiTab"
     | "ComponentUiText"
+    | "Home"
     | "Layout"
     | "UploadFile"
     | "UploadFolder"
