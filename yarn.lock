@@ -2023,15 +2023,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/pulumi@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@bn-digital/pulumi@npm:1.0.2"
+"@bn-digital/pulumi@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "@bn-digital/pulumi@npm:1.2.4"
   dependencies:
-    "@pulumi/github": ^5.6.0
-    "@pulumi/pulumi": ^3.59.0
+    "@pulumi/aws": ^5.39.0
+    "@pulumi/digitalocean": ^4.19.1
+    "@pulumi/github": ^5.8.0
+    "@pulumi/postgresql": ^3.8.0
+    "@pulumi/pulumi": ^3.65.1
     "@pulumi/tls": ^4.10.0
-    "@pulumi/vault": ^5.10.0
-  checksum: c2114fda3eb536a2b0a9baaf30c24925247d8a64358087e3ec891d32bcafbfacf1c24bd389bfa62cacaf29f88ba8f9b2962684a9ced0f1f1182f9defbfe6768f
+    "@pulumi/vault": ^5.11.0
+    "@pulumiverse/harbor": ^3.8.4
+  checksum: ecd0fbb4f580ce7e570e4a3977abf825348d1d0b9f04270a5a1b039ece45a9a1e0413611fdc7dc3f0d0bc67e8a304c06533d56fb7ce5270918d62a62461fc408
   languageName: node
   linkType: hard
 
@@ -4831,12 +4835,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@project-templates/cloud@workspace:packages/cloud"
   dependencies:
-    "@bn-digital/pulumi": ^1.0.2
-    "@pulumi/github": ^5.8.0
-    "@pulumi/postgresql": ^3.8.0
+    "@bn-digital/pulumi": ^1.2.4
     "@pulumi/pulumi": ^3.65.1
-    "@pulumi/vault": ^5.11.0
-    "@pulumiverse/harbor": ^3.8.4
     cross-env: ^7.0.3
     dotenv: ^16.0.3
   languageName: unknown
@@ -4950,7 +4950,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/github@npm:^5.6.0, @pulumi/github@npm:^5.8.0":
+"@pulumi/aws@npm:^5.39.0":
+  version: 5.39.0
+  resolution: "@pulumi/aws@npm:5.39.0"
+  dependencies:
+    "@pulumi/pulumi": ^3.0.0
+    aws-sdk: ^2.0.0
+    builtin-modules: 3.0.0
+    mime: ^2.0.0
+    read-package-tree: ^5.2.1
+    resolve: ^1.7.1
+  checksum: b0f7213ec4557d1afb12e57a639f92dc14af3041952ad27cb23996da156fd827305b0b841bc9e6d76347096b76e25b7e394e733b5f9d0532c88645c1058cbb18
+  languageName: node
+  linkType: hard
+
+"@pulumi/digitalocean@npm:^4.19.1":
+  version: 4.19.1
+  resolution: "@pulumi/digitalocean@npm:4.19.1"
+  dependencies:
+    "@pulumi/pulumi": ^3.0.0
+    builtin-modules: 3.0.0
+    read-package-tree: ^5.2.1
+    resolve: ^1.7.1
+  checksum: bff628e2386ae5f63a49da9b702e1aacd1ca6677c0b27c5125fbc997691a3b33637aa5a3eaf30c010d6bb797bf06e3a21bef2d3800551fa82d7d966ee12399f8
+  languageName: node
+  linkType: hard
+
+"@pulumi/github@npm:^5.8.0":
   version: 5.8.0
   resolution: "@pulumi/github@npm:5.8.0"
   dependencies:
@@ -4968,7 +4994,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/pulumi@npm:^3.0.0, @pulumi/pulumi@npm:^3.59.0":
+"@pulumi/pulumi@npm:^3.0.0":
   version: 3.64.0
   resolution: "@pulumi/pulumi@npm:3.64.0"
   dependencies:
@@ -5043,15 +5069,6 @@ __metadata:
   dependencies:
     "@pulumi/pulumi": ^3.0.0
   checksum: 410880bdcd729bde540e2593d75fc904689d5ed4b7d2a6e17142ee59d4893bfa6494393d361214fd313ae4799fe46d597c072c7c93f9d63fc2d87155b370201f
-  languageName: node
-  linkType: hard
-
-"@pulumi/vault@npm:^5.10.0":
-  version: 5.10.0
-  resolution: "@pulumi/vault@npm:5.10.0"
-  dependencies:
-    "@pulumi/pulumi": ^3.0.0
-  checksum: 9d3b12b3bf45da7fd949e51a4098cd3bb2227206385be722dda642eefc11333c544c393ef1ed8308be12fa6e87eff887bda335e0d36e6fc72bb74a0b41d49e1a
   languageName: node
   linkType: hard
 
@@ -8280,6 +8297,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"aws-sdk@npm:^2.0.0":
+  version: 2.1370.0
+  resolution: "aws-sdk@npm:2.1370.0"
+  dependencies:
+    buffer: 4.9.2
+    events: 1.1.1
+    ieee754: 1.1.13
+    jmespath: 0.16.0
+    querystring: 0.2.0
+    sax: 1.2.1
+    url: 0.10.3
+    util: ^0.12.4
+    uuid: 8.0.0
+    xml2js: 0.5.0
+  checksum: 6f4170efb47c1e9731afbf48928d365231f348f0245a6c36a4284fa2aed07571c20f64f805c309bc73b288c1d345aaf90a5394520b4ca15b9259807f766f719f
+  languageName: node
+  linkType: hard
+
 "aws-sign2@npm:~0.7.0":
   version: 0.7.0
   resolution: "aws-sign2@npm:0.7.0"
@@ -8795,6 +8830,13 @@ __metadata:
     nodemailer-fetch: 1.6.0
     nodemailer-shared: 1.1.0
   checksum: 95ff27f2517c1a9c45b8bef5e2397d4fb5d63beff25cdc76ef5162fb262787dc4ffdb10149cf0ac1f56ae28e3a08355c5470b6b641c4ef10a92dae3e18fa26b1
+  languageName: node
+  linkType: hard
+
+"builtin-modules@npm:3.0.0":
+  version: 3.0.0
+  resolution: "builtin-modules@npm:3.0.0"
+  checksum: f6644a378fbca2df26b49979b4e589d70f6f2d4069c371edd34910f1c774f6207ed18868242f6dfc7b2e4212a9e87f2ea1006ae9e98813b5d2de951ec47fc2b4
   languageName: node
   linkType: hard
 
@@ -16938,6 +16980,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mime@npm:^2.0.0":
+  version: 2.6.0
+  resolution: "mime@npm:2.6.0"
+  bin:
+    mime: cli.js
+  checksum: 1497ba7b9f6960694268a557eae24b743fd2923da46ec392b042469f4b901721ba0adcf8b0d3c2677839d0e243b209d76e5edcbd09cfdeffa2dfb6bb4df4b862
+  languageName: node
+  linkType: hard
+
 "mimic-fn@npm:^1.0.0":
   version: 1.2.0
   resolution: "mimic-fn@npm:1.2.0"
@@ -20771,7 +20822,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"read-package-tree@npm:^5.3.1":
+"read-package-tree@npm:^5.2.1, read-package-tree@npm:^5.3.1":
   version: 5.3.1
   resolution: "read-package-tree@npm:5.3.1"
   dependencies:
@@ -21424,7 +21475,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.1.6, resolve@npm:^1.1.7, resolve@npm:^1.10.0, resolve@npm:^1.10.1, resolve@npm:^1.12.0, resolve@npm:^1.14.2, resolve@npm:^1.19.0, resolve@npm:^1.20.0, resolve@npm:^1.22.1":
+"resolve@npm:^1.1.6, resolve@npm:^1.1.7, resolve@npm:^1.10.0, resolve@npm:^1.10.1, resolve@npm:^1.12.0, resolve@npm:^1.14.2, resolve@npm:^1.19.0, resolve@npm:^1.20.0, resolve@npm:^1.22.1, resolve@npm:^1.7.1":
   version: 1.22.3
   resolution: "resolve@npm:1.22.3"
   dependencies:
@@ -21460,7 +21511,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.1.6#~builtin<compat/resolve>, resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.12.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.1.6#~builtin<compat/resolve>, resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.12.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.7.1#~builtin<compat/resolve>":
   version: 1.22.3
   resolution: "resolve@patch:resolve@npm%3A1.22.3#~builtin<compat/resolve>::version=1.22.3&hash=c3c19d"
   dependencies:
@@ -25676,6 +25727,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"xml2js@npm:0.5.0":
+  version: 0.5.0
+  resolution: "xml2js@npm:0.5.0"
+  dependencies:
+    sax: ">=0.6.0"
+    xmlbuilder: ~11.0.0
+  checksum: 1aa71d62e5bc2d89138e3929b9ea46459157727759cbc62ef99484b778641c0cd21fb637696c052d901a22f82d092a3e740a16b4ce218e81ac59b933535124ea
+  languageName: node
+  linkType: hard
+
 "xmlbuilder2@npm:^2.4.1":
   version: 2.4.1
   resolution: "xmlbuilder2@npm:2.4.1"
@@ -25686,6 +25747,13 @@ __metadata:
     "@types/node": "*"
     js-yaml: 3.14.0
   checksum: 1e00a96ac49e462f4d1a3790b63554b9421363bfdef971f5d54c8b34bfd7d00cd26fffbf8ff47cad85bb826dcb9bd0ed4714f5e59607b02878717dab3ca399f4
+  languageName: node
+  linkType: hard
+
+"xmlbuilder@npm:~11.0.0":
+  version: 11.0.1
+  resolution: "xmlbuilder@npm:11.0.1"
+  checksum: 7152695e16f1a9976658215abab27e55d08b1b97bca901d58b048d2b6e106b5af31efccbdecf9b07af37c8377d8e7e821b494af10b3a68b0ff4ae60331b415b0
   languageName: node
   linkType: hard
 

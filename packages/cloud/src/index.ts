@@ -1,16 +1,46 @@
-import { getStack } from "@pulumi/pulumi"
-import { DotenvConfigOutput, config as envConfig } from "dotenv"
+import { digitalocean, harbor, postgresql } from "@bn-digital/pulumi"
+import { Config, getStack } from "@pulumi/pulumi"
 
-import { Environment as Staging } from "./staging"
+const config = new Config()
+const name = config.name
+const environment = getStack()
 
-const env: DotenvConfigOutput = envConfig()
-process.env = { ...process.env, ...env.parsed }
+const infrastructure = {
+  /**
+   * Creates a DigitalOcean project with a Spaces bucket, Kubernetes cluster, and DNS domain inside customer's production environment
+   */
+  production(): void {
+    const { region, domain } = config.requireObject<Partial<digitalocean.ProductionConfig>>("digitalocean")
 
-switch (getStack()) {
-  case "staging":
-    new Staging().connect().then(env => env.provision())
-    break
+    digitalocean.createProject({
+      name,
+      environment,
+      resources: [
+        digitalocean.createBucket({ name, region }).bucketUrn,
+        digitalocean.createCluster({ name, region }).clusterUrn,
+        digitalocean.createDomain({ name: domain ?? `${name}.bndigital.ai` }).domainUrn,
+      ],
+    })
+  },
+
+  /**
+   * Creates container registry & database inside bndigital staging environment
+   *
+   * TODO: Extend with extra staging steps required (e.g. Vault/Github secrets provisioning)
+   */
+  staging(): void {
+    harbor.createProject({ name })
+    postgresql.createDatabase({ name })
+  },
+}
+
+switch (environment) {
   case "production":
+    infrastructure.production()
+    break
+  case "staging":
+    infrastructure.staging()
+    break
   default:
     break
 }
