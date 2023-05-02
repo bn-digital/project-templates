@@ -5,28 +5,22 @@ import { DefaultLayout } from "../components/layout"
 import { Loader } from "../components/layout/Loader"
 
 const Home = lazy<FC>(() => import("./home"))
-const Health = lazy<FC>(() => import("./home"))
 
 const routes: RouteObject[] = [
   {
-    element: <DefaultLayout />,
+    Component: DefaultLayout,
     loader: () => <Loader spinning />,
-    path: "",
     children: [
       {
-        element: <Home />,
+        Component: Home,
         path: "",
         index: true,
       },
       {
-        element: <Outlet />,
+        Component: Outlet,
         path: "*",
       },
     ],
-  },
-  {
-    path: "health",
-    element: <Health />,
   },
 ]
 
