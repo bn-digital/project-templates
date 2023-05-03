@@ -11,6 +11,7 @@
     "@pulumi/pulumi": "^3.65.1"
   },
   "devDependencies": {
+    "@bn-digital/typescript-config": "1.3.1",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3"
   }
