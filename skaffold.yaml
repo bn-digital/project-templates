@@ -4,34 +4,14 @@ kind: Config
 build:
   artifacts:
     - image: app
-      docker:
-        pullParent: true
-        cacheFrom:
-          - dcr.bndigital.dev/library/yarn:3.5.0
-      sync:
-        hooks:
-          before:
-            - host:
-                command: [yarn]
-        infer:
-          - 'packages/*/src/**/*'
-          - 'packages/*/public/**/*'
-          - 'packages/*/config/**/*'
-  tagPolicy:
-    envTemplate:
-      template: "{{.APP_VERSION}}"
   local:
-    useDockerCLI: false
     useBuildkit: true
-    push: false
 test:
   - image: app
-    structureTests:
-      - container-structure-test.yaml
+    structureTests: [container-structure-test.yaml]
 deploy:
   docker:
-    images:
-      - app
+    images: [app]
 portForward:
   - port: 5000
     resourceName: app
