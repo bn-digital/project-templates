@@ -25,4 +25,4 @@ const Home: FC = () => {
   )
 }
 
-export { Home as default }
+export default Home

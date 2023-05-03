@@ -10,10 +10,16 @@ type Scalars = {
   Boolean: boolean
   Int: number
   Float: number
+  /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
+  Date: string
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: Date
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: Record<string, any | any[] | string | number | boolean | null | undefined> | any[]
+  /** The `BigInt` scalar type represents non-fractional signed whole numeric values. */
+  Long: number
+  /** A time string with format HH:mm:ss.SSS */
+  Time: string
   /** The `Upload` scalar type represents a file upload. */
   Upload: unknown
 }
@@ -56,9 +62,27 @@ type ComponentDataEntryFiltersInput = {
   value?: InputMaybe<StringFilterInput>
 }
 
+type ComponentDataEntryInput = {
+  id?: InputMaybe<Scalars["ID"]>
+  key?: InputMaybe<Scalars["String"]>
+  value?: InputMaybe<Scalars["String"]>
+}
+
 type ComponentDataSet = {
   id: Scalars["ID"]
   value: Scalars["String"]
+}
+
+type ComponentDataSetFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentDataSetFiltersInput>>>
+  not?: InputMaybe<ComponentDataSetFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentDataSetFiltersInput>>>
+  value?: InputMaybe<StringFilterInput>
+}
+
+type ComponentDataSetInput = {
+  id?: InputMaybe<Scalars["ID"]>
+  value?: InputMaybe<Scalars["String"]>
 }
 
 type ComponentUiCard = {
@@ -67,6 +91,15 @@ type ComponentUiCard = {
   media?: Maybe<UploadFileEntityResponse>
   subtitle?: Maybe<Scalars["String"]>
   title?: Maybe<Scalars["String"]>
+}
+
+type ComponentUiCardFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentUiCardFiltersInput>>>
+  description?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentUiCardFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentUiCardFiltersInput>>>
+  subtitle?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
 }
 
 type ComponentUiCardInput = {
@@ -89,10 +122,38 @@ type ComponentUiGridChildrenArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
 }
 
+type ComponentUiGridFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentUiGridFiltersInput>>>
+  children?: InputMaybe<ComponentDataEntryFiltersInput>
+  not?: InputMaybe<ComponentUiGridFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentUiGridFiltersInput>>>
+  visible?: InputMaybe<BooleanFilterInput>
+}
+
+type ComponentUiGridInput = {
+  children?: InputMaybe<Array<InputMaybe<ComponentDataEntryInput>>>
+  id?: InputMaybe<Scalars["ID"]>
+  visible?: InputMaybe<Scalars["Boolean"]>
+}
+
 type ComponentUiHeadline = {
   id: Scalars["ID"]
   subtitle?: Maybe<Scalars["String"]>
   title?: Maybe<Scalars["String"]>
+}
+
+type ComponentUiHeadlineFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentUiHeadlineFiltersInput>>>
+  not?: InputMaybe<ComponentUiHeadlineFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentUiHeadlineFiltersInput>>>
+  subtitle?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+type ComponentUiHeadlineInput = {
+  id?: InputMaybe<Scalars["ID"]>
+  subtitle?: InputMaybe<Scalars["String"]>
+  title?: InputMaybe<Scalars["String"]>
 }
 
 type ComponentUiLink = {
@@ -130,11 +191,25 @@ type ComponentUiParagraphFiltersInput = {
   value?: InputMaybe<StringFilterInput>
 }
 
+type ComponentUiParagraphInput = {
+  id?: InputMaybe<Scalars["ID"]>
+  value?: InputMaybe<Scalars["String"]>
+}
+
 type ComponentUiSection = {
   button?: Maybe<ComponentUiLink>
   heading?: Maybe<ComponentUiCard>
   id: Scalars["ID"]
   visible: Scalars["Boolean"]
+}
+
+type ComponentUiSectionFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentUiSectionFiltersInput>>>
+  button?: InputMaybe<ComponentUiLinkFiltersInput>
+  heading?: InputMaybe<ComponentUiCardFiltersInput>
+  not?: InputMaybe<ComponentUiSectionFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentUiSectionFiltersInput>>>
+  visible?: InputMaybe<BooleanFilterInput>
 }
 
 type ComponentUiSectionInput = {
@@ -150,6 +225,20 @@ type ComponentUiTab = {
   pane: ComponentUiCard
 }
 
+type ComponentUiTabFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentUiTabFiltersInput>>>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentUiTabFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentUiTabFiltersInput>>>
+  pane?: InputMaybe<ComponentUiCardFiltersInput>
+}
+
+type ComponentUiTabInput = {
+  id?: InputMaybe<Scalars["ID"]>
+  name?: InputMaybe<Scalars["String"]>
+  pane?: InputMaybe<ComponentUiCardInput>
+}
+
 type ComponentUiText = {
   children: Array<Maybe<ComponentUiParagraph>>
   id: Scalars["ID"]
@@ -160,6 +249,44 @@ type ComponentUiTextChildrenArgs = {
   filters?: InputMaybe<ComponentUiParagraphFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
+}
+
+type ComponentUiTextFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentUiTextFiltersInput>>>
+  children?: InputMaybe<ComponentUiParagraphFiltersInput>
+  not?: InputMaybe<ComponentUiTextFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentUiTextFiltersInput>>>
+  visible?: InputMaybe<BooleanFilterInput>
+}
+
+type ComponentUiTextInput = {
+  children?: InputMaybe<Array<InputMaybe<ComponentUiParagraphInput>>>
+  id?: InputMaybe<Scalars["ID"]>
+  visible?: InputMaybe<Scalars["Boolean"]>
+}
+
+type DateFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>
+  between?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>
+  contains?: InputMaybe<Scalars["Date"]>
+  containsi?: InputMaybe<Scalars["Date"]>
+  endsWith?: InputMaybe<Scalars["Date"]>
+  eq?: InputMaybe<Scalars["Date"]>
+  eqi?: InputMaybe<Scalars["Date"]>
+  gt?: InputMaybe<Scalars["Date"]>
+  gte?: InputMaybe<Scalars["Date"]>
+  in?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>
+  lt?: InputMaybe<Scalars["Date"]>
+  lte?: InputMaybe<Scalars["Date"]>
+  ne?: InputMaybe<Scalars["Date"]>
+  not?: InputMaybe<DateFilterInput>
+  notContains?: InputMaybe<Scalars["Date"]>
+  notContainsi?: InputMaybe<Scalars["Date"]>
+  notIn?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>
+  notNull?: InputMaybe<Scalars["Boolean"]>
+  null?: InputMaybe<Scalars["Boolean"]>
+  or?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>
+  startsWith?: InputMaybe<Scalars["Date"]>
 }
 
 type DateTimeFilterInput = {
@@ -187,6 +314,11 @@ type DateTimeFilterInput = {
 }
 
 type EnumComponentuilinkTarget = "blank" | "parent" | "self" | "top"
+
+type Error = {
+  code: Scalars["String"]
+  message?: Maybe<Scalars["String"]>
+}
 
 type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars["String"]>
@@ -252,8 +384,26 @@ type HomeEntityResponse = {
   data?: Maybe<HomeEntity>
 }
 
+type HomeEntityResponseCollection = {
+  data: Array<HomeEntity>
+  meta: ResponseCollectionMeta
+}
+
+type HomeFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<HomeFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  hero?: InputMaybe<ComponentUiSectionFiltersInput>
+  not?: InputMaybe<HomeFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<HomeFiltersInput>>>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
 type HomeInput = {
   hero?: InputMaybe<ComponentUiSectionInput>
+}
+
+type HomeRelationResponseCollection = {
+  data: Array<HomeEntity>
 }
 
 type IdFilterInput = {
@@ -349,8 +499,50 @@ type LayoutEntityResponse = {
   data?: Maybe<LayoutEntity>
 }
 
+type LayoutEntityResponseCollection = {
+  data: Array<LayoutEntity>
+  meta: ResponseCollectionMeta
+}
+
+type LayoutFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<LayoutFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  headerMenu?: InputMaybe<ComponentUiLinkFiltersInput>
+  not?: InputMaybe<LayoutFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<LayoutFiltersInput>>>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
 type LayoutInput = {
   headerMenu?: InputMaybe<Array<InputMaybe<ComponentUiLinkInput>>>
+}
+
+type LayoutRelationResponseCollection = {
+  data: Array<LayoutEntity>
+}
+
+type LongFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars["Long"]>>>
+  between?: InputMaybe<Array<InputMaybe<Scalars["Long"]>>>
+  contains?: InputMaybe<Scalars["Long"]>
+  containsi?: InputMaybe<Scalars["Long"]>
+  endsWith?: InputMaybe<Scalars["Long"]>
+  eq?: InputMaybe<Scalars["Long"]>
+  eqi?: InputMaybe<Scalars["Long"]>
+  gt?: InputMaybe<Scalars["Long"]>
+  gte?: InputMaybe<Scalars["Long"]>
+  in?: InputMaybe<Array<InputMaybe<Scalars["Long"]>>>
+  lt?: InputMaybe<Scalars["Long"]>
+  lte?: InputMaybe<Scalars["Long"]>
+  ne?: InputMaybe<Scalars["Long"]>
+  not?: InputMaybe<LongFilterInput>
+  notContains?: InputMaybe<Scalars["Long"]>
+  notContainsi?: InputMaybe<Scalars["Long"]>
+  notIn?: InputMaybe<Array<InputMaybe<Scalars["Long"]>>>
+  notNull?: InputMaybe<Scalars["Boolean"]>
+  null?: InputMaybe<Scalars["Boolean"]>
+  or?: InputMaybe<Array<InputMaybe<Scalars["Long"]>>>
+  startsWith?: InputMaybe<Scalars["Long"]>
 }
 
 type Mutation = {
@@ -503,6 +695,8 @@ type PaginationArg = {
   start?: InputMaybe<Scalars["Int"]>
 }
 
+type PublicationState = "LIVE" | "PREVIEW"
+
 type Query = {
   home?: Maybe<HomeEntityResponse>
   layout?: Maybe<LayoutEntityResponse>
@@ -571,6 +765,30 @@ type StringFilterInput = {
   null?: InputMaybe<Scalars["Boolean"]>
   or?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
   startsWith?: InputMaybe<Scalars["String"]>
+}
+
+type TimeFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars["Time"]>>>
+  between?: InputMaybe<Array<InputMaybe<Scalars["Time"]>>>
+  contains?: InputMaybe<Scalars["Time"]>
+  containsi?: InputMaybe<Scalars["Time"]>
+  endsWith?: InputMaybe<Scalars["Time"]>
+  eq?: InputMaybe<Scalars["Time"]>
+  eqi?: InputMaybe<Scalars["Time"]>
+  gt?: InputMaybe<Scalars["Time"]>
+  gte?: InputMaybe<Scalars["Time"]>
+  in?: InputMaybe<Array<InputMaybe<Scalars["Time"]>>>
+  lt?: InputMaybe<Scalars["Time"]>
+  lte?: InputMaybe<Scalars["Time"]>
+  ne?: InputMaybe<Scalars["Time"]>
+  not?: InputMaybe<TimeFilterInput>
+  notContains?: InputMaybe<Scalars["Time"]>
+  notContainsi?: InputMaybe<Scalars["Time"]>
+  notIn?: InputMaybe<Array<InputMaybe<Scalars["Time"]>>>
+  notNull?: InputMaybe<Scalars["Boolean"]>
+  null?: InputMaybe<Scalars["Boolean"]>
+  or?: InputMaybe<Array<InputMaybe<Scalars["Time"]>>>
+  startsWith?: InputMaybe<Scalars["Time"]>
 }
 
 type UploadFile = {
@@ -687,6 +905,11 @@ type UploadFolderEntityResponse = {
   data?: Maybe<UploadFolderEntity>
 }
 
+type UploadFolderEntityResponseCollection = {
+  data: Array<UploadFolderEntity>
+  meta: ResponseCollectionMeta
+}
+
 type UploadFolderFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<UploadFolderFiltersInput>>>
   children?: InputMaybe<UploadFolderFiltersInput>
@@ -700,6 +923,15 @@ type UploadFolderFiltersInput = {
   path?: InputMaybe<StringFilterInput>
   pathId?: InputMaybe<IntFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+type UploadFolderInput = {
+  children?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>
+  files?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>
+  name?: InputMaybe<Scalars["String"]>
+  parent?: InputMaybe<Scalars["ID"]>
+  path?: InputMaybe<Scalars["String"]>
+  pathId?: InputMaybe<Scalars["Int"]>
 }
 
 type UploadFolderRelationResponseCollection = {
@@ -757,6 +989,15 @@ type UsersPermissionsPermissionEntity = {
   id?: Maybe<Scalars["ID"]>
 }
 
+type UsersPermissionsPermissionEntityResponse = {
+  data?: Maybe<UsersPermissionsPermissionEntity>
+}
+
+type UsersPermissionsPermissionEntityResponseCollection = {
+  data: Array<UsersPermissionsPermissionEntity>
+  meta: ResponseCollectionMeta
+}
+
 type UsersPermissionsPermissionFiltersInput = {
   action?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<UsersPermissionsPermissionFiltersInput>>>
@@ -766,6 +1007,11 @@ type UsersPermissionsPermissionFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<UsersPermissionsPermissionFiltersInput>>>
   role?: InputMaybe<UsersPermissionsRoleFiltersInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+type UsersPermissionsPermissionInput = {
+  action?: InputMaybe<Scalars["String"]>
+  role?: InputMaybe<Scalars["ID"]>
 }
 
 type UsersPermissionsPermissionRelationResponseCollection = {
@@ -834,6 +1080,10 @@ type UsersPermissionsRoleInput = {
   permissions?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>
   type?: InputMaybe<Scalars["String"]>
   users?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>
+}
+
+type UsersPermissionsRoleRelationResponseCollection = {
+  data: Array<UsersPermissionsRoleEntity>
 }
 
 type UsersPermissionsUpdateRolePayload = {

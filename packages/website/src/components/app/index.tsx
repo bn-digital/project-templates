@@ -1,5 +1,5 @@
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from "@apollo/client"
-import { createContext, memo, useContext, type FC, type PropsWithChildren } from "react"
+import { createContext, memo, type FC, type PropsWithChildren } from "react"
 
 import introspection from "../../graphql"
 import PageProvider from "../../pages"
@@ -37,16 +37,14 @@ const clientOptions: ConstructorParameters<typeof ApolloClient>[0] = {
 
 const apolloClient = new ApolloClient(clientOptions)
 
-const App: FC = () => (
+const App: FC = memo(() => (
   <ApolloProvider client={apolloClient}>
     <ContextProvider>
       <PageProvider />
     </ContextProvider>
   </ApolloProvider>
-)
+))
 
-const useApp = () => useContext(Context)
+export { ContextProvider }
 
-export { ContextProvider, useApp }
-
-export default memo(App)
+export default App

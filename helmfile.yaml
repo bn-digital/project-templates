@@ -1,3 +1,5 @@
+helmfiles:
+  - path: git::https://github.com/bn-digital/helm.git@helmfiles/nodejs.yaml?ref=latest
 
 helmDefaults:
   createNamespace: true
@@ -10,5 +12,3 @@ environments:
     values: []
   production:
     values: []
-
-releases:

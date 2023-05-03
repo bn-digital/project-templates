@@ -30,6 +30,6 @@ if (import.meta.hot) {
   import.meta.hot.dispose(() => router.dispose())
 }
 
-const PageProvider = () => <RouterProvider router={router} />
+const PageProvider = memo(() => <RouterProvider router={router} />)
 
-export default memo(PageProvider)
+export default PageProvider
