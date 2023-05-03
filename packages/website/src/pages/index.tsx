@@ -26,10 +26,6 @@ const routes: RouteObject[] = [
 
 const router = createBrowserRouter(routes)
 
-if (import.meta.hot) {
-  import.meta.hot.dispose(() => router.dispose())
-}
-
 const PageProvider = memo(() => <RouterProvider router={router} />)
 
 export default PageProvider

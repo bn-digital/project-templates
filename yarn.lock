@@ -2023,9 +2023,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/pulumi@npm:^1.2.4":
-  version: 1.2.4
-  resolution: "@bn-digital/pulumi@npm:1.2.4"
+"@bn-digital/pulumi@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "@bn-digital/pulumi@npm:1.3.0"
   dependencies:
     "@pulumi/aws": ^5.39.0
     "@pulumi/digitalocean": ^4.19.1
@@ -2035,7 +2035,7 @@ __metadata:
     "@pulumi/tls": ^4.10.0
     "@pulumi/vault": ^5.11.0
     "@pulumiverse/harbor": ^3.8.4
-  checksum: ecd0fbb4f580ce7e570e4a3977abf825348d1d0b9f04270a5a1b039ece45a9a1e0413611fdc7dc3f0d0bc67e8a304c06533d56fb7ce5270918d62a62461fc408
+  checksum: f4dc7c3737278e2cc9a04c9250db768beb67819ce85074e0d7c814a2d8e8b89810fa1b5c1d27eb4836a76eeb9e702d9c9c971927a0f8b4d11b14bc2074f887f4
   languageName: node
   linkType: hard
 
@@ -4835,7 +4835,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@project-templates/cloud@workspace:packages/cloud"
   dependencies:
-    "@bn-digital/pulumi": ^1.2.4
+    "@bn-digital/pulumi": ^1.3.0
     "@pulumi/pulumi": ^3.65.1
     cross-env: ^7.0.3
     dotenv: ^16.0.3
