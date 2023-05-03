@@ -19541,14 +19541,14 @@ __metadata:
     "@bn-digital/projen": ^0.9.2
     "@bn-digital/vault-env": ^1.4.0
     "@types/node": ^18.16.3
-    projen: ^0.71.34
+    projen: ^0.71.37
     typescript: ^5.0.4
   languageName: unknown
   linkType: soft
 
-"projen@npm:^0.71.34":
-  version: 0.71.34
-  resolution: "projen@npm:0.71.34"
+"projen@npm:^0.71.37":
+  version: 0.71.37
+  resolution: "projen@npm:0.71.37"
   dependencies:
     "@iarna/toml": ^2.2.5
     case: ^1.6.3
@@ -19565,7 +19565,7 @@ __metadata:
     yargs: ^16.2.0
   bin:
     projen: bin/projen
-  checksum: aa8eb1efd64d3fec96e91b0fa0ea0f9bd29a3f3e9fc3669862daad7d47bd4f2f0c4b90c98715e34d735e7d547c9f95556bf16c28fcc1a78688cb5687ad26f28e
+  checksum: 88d6c309b612635a75a79305c837697abed0c1e116a6daeea519ac6c4a51b23e366ffb3ea4937529073cee0af600f1df919b4de93f76cdfbd2421d762e6fbf9d
   languageName: node
   linkType: hard
 
