@@ -1,13 +1,12 @@
-import tasks from "../config/cron"
 import { randomSecret } from "../src/hooks"
+import tasks from "./functions/cron"
 
-export default ({ env }: Strapi.Env): Config.Server => {
+export default ({ env }: Strapi.Env) => {
   const host = env("HOST", "127.0.0.1")
-  const port = env.int("PORT", 1337)
+  const port = env("PORT", "1337")
   return {
     host,
     port,
-    admin: { autoOpen: false },
     cron: {
       enabled: Object.entries(tasks).length > 0,
       tasks,

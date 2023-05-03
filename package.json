@@ -29,33 +29,14 @@
     "extends": "@bn-digital/stylelint-config"
   },
   "eslintConfig": {
-    "overrides": [
-      {
-        "files": [
-          "*.ts"
-        ],
-        "extends": "@bn-digital/eslint-config/typescript"
-      },
-      {
-        "files": [
-          "packages/cms/**/*.ts"
-        ],
-        "extends": "@bn-digital/eslint-config/strapi"
-      },
-      {
-        "files": [
-          "packages/**/src/**/*.tsx"
-        ],
-        "extends": "@bn-digital/eslint-config/react"
-      }
-    ]
+    "extends": "@bn-digital/eslint-config"
   },
   "devDependencies": {
-    "@bn-digital/cosmiconfig": "^1.0.4",
+    "@bn-digital/cosmiconfig": "^1.0.6",
     "@bn-digital/projen": "^0.9.2",
     "@bn-digital/vault-env": "^1.4.0",
-    "@types/node": "^18.16.0",
-    "projen": "^0.71.23",
+    "@types/node": "^18.16.3",
+    "projen": "^0.71.37",
     "typescript": "^5.0.4"
   },
   "scripts": {
@@ -63,8 +44,8 @@
     "start:cms": "yarn workspace @project-templates/cms run start",
     "start:website": "yarn workspace @project-templates/website run start",
     "build": "yarn workspaces foreach --exclude=root run build",
-    "fix": "npx lint ts less --fix",
-    "lint": "npx lint ts less"
+    "lint": "npx lint ts less",
+    "fix": "npx lint ts less --fix"
   },
   "packageManager": "yarn@3.5.0"
 }

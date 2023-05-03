@@ -1,6 +1,5 @@
 # syntax=docker/dockerfile:latest
-
-ARG version=3.0.0
+ARG version=3.5.0
 FROM dcr.bndigital.dev/library/yarn:${version} AS build
 COPY .yarn .yarn
 COPY package.json yarn.lock .yarnrc.yml ./
@@ -8,7 +7,8 @@ COPY packages/cms/package.json packages/cms/package.json
 COPY packages/website/package.json packages/website/package.json
 RUN yarn
 COPY packages packages
-RUN yarn build \
+RUN --mount=type=cache,target=/var/cache/yarn \
+    yarn build \
  && rm -rf packages/cms/tsconfig.json \
  && rm -rf packages/cms/src/* \
  && rm -rf packages/cms/config \
@@ -29,6 +29,7 @@ ENV NODE_ENV=production \
     HOST=0.0.0.0 \
     PORT=5000
 EXPOSE $PORT
-ENTRYPOINT ["node"]
-CMD ["node_modules/@strapi/strapi/bin/strapi.js", "start"]
-HEALTHCHECK --interval=10s --timeout=10s --start-period=10s --retries=3 CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:$PORT || exit 1
+ENTRYPOINT ["npx"]
+CMD ["strapi", "start"]
+HEALTHCHECK --interval=10s --timeout=10s --start-period=10s --retries=3 \
+        CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:$PORT || exit 1

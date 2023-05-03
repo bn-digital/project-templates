@@ -1,5 +1,4 @@
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from "@apollo/client"
-import { ConfigProvider } from "antd"
 import { createContext, memo, useContext, type FC, type PropsWithChildren } from "react"
 
 import introspection from "../../graphql"

@@ -1,25 +1,19 @@
 # nonk8s
----
 apiVersion: skaffold/v4beta4
 kind: Config
 build:
   artifacts:
     - image: app
-  tagPolicy:
-    sha256: { }
   local:
-    useDockerCLI: true
     useBuildkit: true
 test:
   - image: app
-    structureTests:
-      - container-structure-test.yaml
-profiles:
-  - name: staging
-    activation:
-      - env: CI=true
-  - name: production
-    build:
-      tagPolicy:
-        gitCommit:
-          variant: Tags
+    structureTests: [container-structure-test.yaml]
+deploy:
+  docker:
+    images: [app]
+portForward:
+  - port: 5000
+    resourceName: app
+    address: 127.0.0.1
+    resourceType: Container

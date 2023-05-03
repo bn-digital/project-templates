@@ -13,8 +13,6 @@ jobs:
     needs: [ secrets ]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
     secrets: inherit
-    with:
-      environment: production
   deploy:
     needs: [ build ]
     uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest

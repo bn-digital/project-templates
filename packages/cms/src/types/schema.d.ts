@@ -20,6 +20,7 @@ import {
   RichTextAttribute,
   SetMinMax,
   SetMinMaxLength,
+  SingleTypeSchema,
   StringAttribute,
   TextAttribute,
   UIDAttribute,
@@ -301,6 +302,43 @@ export interface AdminTransferTokenPermission extends CollectionTypeSchema {
   }
 }
 
+export interface ApiHomeHome extends SingleTypeSchema {
+  info: {
+    singularName: "home"
+    pluralName: "homes"
+    displayName: "Home"
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    hero: ComponentAttribute<"ui.section">
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    createdBy: RelationAttribute<"api::home.home", "oneToOne", "admin::user"> & PrivateAttribute
+    updatedBy: RelationAttribute<"api::home.home", "oneToOne", "admin::user"> & PrivateAttribute
+  }
+}
+
+export interface ApiLayoutLayout extends SingleTypeSchema {
+  info: {
+    singularName: "layout"
+    pluralName: "layouts"
+    displayName: "Layout"
+    description: "Used for common layout components data"
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    headerMenu: ComponentAttribute<"ui.link", true>
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    createdBy: RelationAttribute<"api::layout.layout", "oneToOne", "admin::user"> & PrivateAttribute
+    updatedBy: RelationAttribute<"api::layout.layout", "oneToOne", "admin::user"> & PrivateAttribute
+  }
+}
+
 export interface PluginUploadFile extends CollectionTypeSchema {
   info: {
     singularName: "file"
@@ -488,19 +526,6 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
   }
 }
 
-export interface DataContact extends ComponentSchema {
-  info: {
-    displayName: "Contact"
-    icon: "address-book"
-    description: ""
-  }
-  attributes: {
-    email: EmailAttribute
-    phone: StringAttribute
-    address: TextAttribute
-  }
-}
-
 export interface DataEntry extends ComponentSchema {
   info: {
     displayName: "Entry"
@@ -520,33 +545,6 @@ export interface DataSet extends ComponentSchema {
   }
   attributes: {
     value: StringAttribute & RequiredAttribute
-  }
-}
-
-export interface PageContactUs extends ComponentSchema {
-  info: {
-    displayName: "Contact Us"
-    icon: "mail-bulk"
-    description: ""
-  }
-  attributes: {
-    pathname: StringAttribute & RequiredAttribute & DefaultTo<"/">
-    contact: ComponentAttribute<"data.contact">
-  }
-}
-
-export interface PageHome extends ComponentSchema {
-  info: {
-    displayName: "Home"
-    icon: "home"
-    description: ""
-  }
-  attributes: {
-    pathname: StringAttribute & RequiredAttribute & DefaultTo<"/">
-    hero: ComponentAttribute<"ui.card">
-    components: ComponentAttribute<"ui.card", true>
-    technology: ComponentAttribute<"ui.headline">
-    frameworks: ComponentAttribute<"ui.card">
   }
 }
 
@@ -601,6 +599,7 @@ export interface UiLink extends ComponentSchema {
   attributes: {
     url: StringAttribute & RequiredAttribute
     title: StringAttribute
+    target: EnumerationAttribute<["blank", "self", "parent", "top"]> & RequiredAttribute & DefaultTo<"self">
   }
 }
 
@@ -665,16 +664,15 @@ declare global {
       "admin::api-token-permission": AdminApiTokenPermission
       "admin::transfer-token": AdminTransferToken
       "admin::transfer-token-permission": AdminTransferTokenPermission
+      "api::home.home": ApiHomeHome
+      "api::layout.layout": ApiLayoutLayout
       "plugin::upload.file": PluginUploadFile
       "plugin::upload.folder": PluginUploadFolder
       "plugin::users-permissions.permission": PluginUsersPermissionsPermission
       "plugin::users-permissions.role": PluginUsersPermissionsRole
       "plugin::users-permissions.user": PluginUsersPermissionsUser
-      "data.contact": DataContact
       "data.entry": DataEntry
       "data.set": DataSet
-      "page.contact-us": PageContactUs
-      "page.home": PageHome
       "ui.card": UiCard
       "ui.grid": UiGrid
       "ui.headline": UiHeadline

@@ -1,48 +1,65 @@
+
 version: '3.x'
 
 volumes:
   database:
+  pki:
+  uploads:
 
 services:
-  traeffik:
+  traefik:
     image: traefik:v3.0
+    restart: unless-stopped
     command:
-      #      - '--certificatesresolvers.letsencrypt.acme.email=admin@$DOMAIN'
-      #      - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=http'
-      #      - '--certificatesresolvers.letsencrypt.acme.storage=acme.json'
-      #      - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
+      - '--certificatesresolvers.letsencrypt.acme.email=admin@$DOMAIN'
+      - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=http'
+      - '--certificatesresolvers.letsencrypt.acme.storage=/etc/pki/acme.json'
+      - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
+      - '--entrypoints.http.http.redirections.entrypoint.to=https'
+      - '--entrypoints.http.http.redirections.entrypoint.scheme=https'
+      - '--log.level=DEBUG'
       - '--entrypoints.http.address=:80'
       - '--entrypoints.https.address=:443'
       - '--providers.docker.exposedbydefault=false'
       - '--providers.docker=true'
-    #    volumes:
-    #      - /var/run/docker.sock:/var/run/docker.sock:ro
+    volumes:
+      - pki:/etc/pki
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - '80:80'
       - '443:443'
 
-  website:
-    #    build:
-    #      args:
-    #        api_url: $DOMAIN/graphql
-    #      target: website
+  app:
     image: ${DOCKER_REPOSITORY}/app:${APP_VERSION:-latest}
+    build:
+      context: .
+    restart: unless-stopped
+    cap_add:
+      - SYS_ADMIN
     labels:
       traefik.enable: 'true'
-      traefik.http.routers.website.entrypoints: 'http'
-      traefik.http.routers.website.rule: 'Host(`app.aws.bndigital.dev`)'
-  #      traefik.http.routers.website.tls.certresolver: 'letsencrypt'
-  #      traefik.http.routers.website.tls.domains[0].main: '$DOMAIN'
-  #      traefik.http.routers.website.tls: 'true'
+      traefik.http.routers.app.entrypoints: 'https'
+      traefik.http.routers.app.tls: 'true'
+      traefik.http.routers.app.tls.certresolver: 'letsencrypt'
+      traefik.http.routers.app.rule: 'Host(`$DOMAIN`) || Host(`www.$DOMAIN`)'
+      traefik.http.routers.app.tls.domains[0].main: $DOMAIN
+      traefik.http.routers.app.tls.domains[0].sans: www.$DOMAIN
+      traefik.http.routers.app.middlewares: 'compress,www-alias'
+      traefik.http.middlewares.compress.compress: 'true'
+      traefik.http.middlewares.www-alias.redirectregex.regex: '^http(s?)://$$DOMAIN.com/(.*)'
+      traefik.http.middlewares.www-alias.redirectregex.replacement: 'https://www.$$DOMAIN/$${2}'
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_NAME: ${DATABASE_NAME:-app}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-password}
+      DOMAIN: ${DOMAIN}
 
   database:
-    image: postgres:15.1
-    env_file:
-      - .env
+    image: postgres:15.2
+    restart: unless-stopped
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
-      POSTGRES_DB: app
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ${DATABASE_NAME:-app}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-password}
     volumes:
       - database:/var/lib/postgresql
-#      - ./packages/cms/database/dumps:/docker-entrypoint-initdb.d:ro

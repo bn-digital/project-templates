@@ -10,16 +10,10 @@ type Scalars = {
   Boolean: boolean
   Int: number
   Float: number
-  /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
-  Date: string
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: Date
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: Record<string, any | any[] | string | number | boolean | null | undefined> | any[]
-  /** The `BigInt` scalar type represents non-fractional signed whole numeric values. */
-  Long: number
-  /** A time string with format HH:mm:ss.SSS */
-  Time: string
   /** The `Upload` scalar type represents a file upload. */
   Upload: unknown
 }
@@ -48,29 +42,6 @@ type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars["Boolean"]>
 }
 
-type ComponentDataContact = {
-  address?: Maybe<Scalars["String"]>
-  email?: Maybe<Scalars["String"]>
-  id: Scalars["ID"]
-  phone?: Maybe<Scalars["String"]>
-}
-
-type ComponentDataContactFiltersInput = {
-  address?: InputMaybe<StringFilterInput>
-  and?: InputMaybe<Array<InputMaybe<ComponentDataContactFiltersInput>>>
-  email?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentDataContactFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentDataContactFiltersInput>>>
-  phone?: InputMaybe<StringFilterInput>
-}
-
-type ComponentDataContactInput = {
-  address?: InputMaybe<Scalars["String"]>
-  email?: InputMaybe<Scalars["String"]>
-  id?: InputMaybe<Scalars["ID"]>
-  phone?: InputMaybe<Scalars["String"]>
-}
-
 type ComponentDataEntry = {
   id: Scalars["ID"]
   key?: Maybe<Scalars["String"]>
@@ -85,82 +56,9 @@ type ComponentDataEntryFiltersInput = {
   value?: InputMaybe<StringFilterInput>
 }
 
-type ComponentDataEntryInput = {
-  id?: InputMaybe<Scalars["ID"]>
-  key?: InputMaybe<Scalars["String"]>
-  value?: InputMaybe<Scalars["String"]>
-}
-
 type ComponentDataSet = {
   id: Scalars["ID"]
   value: Scalars["String"]
-}
-
-type ComponentDataSetFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentDataSetFiltersInput>>>
-  not?: InputMaybe<ComponentDataSetFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentDataSetFiltersInput>>>
-  value?: InputMaybe<StringFilterInput>
-}
-
-type ComponentDataSetInput = {
-  id?: InputMaybe<Scalars["ID"]>
-  value?: InputMaybe<Scalars["String"]>
-}
-
-type ComponentPageContactUs = {
-  contact?: Maybe<ComponentDataContact>
-  id: Scalars["ID"]
-  pathname: Scalars["String"]
-}
-
-type ComponentPageContactUsFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentPageContactUsFiltersInput>>>
-  contact?: InputMaybe<ComponentDataContactFiltersInput>
-  not?: InputMaybe<ComponentPageContactUsFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentPageContactUsFiltersInput>>>
-  pathname?: InputMaybe<StringFilterInput>
-}
-
-type ComponentPageContactUsInput = {
-  contact?: InputMaybe<ComponentDataContactInput>
-  id?: InputMaybe<Scalars["ID"]>
-  pathname?: InputMaybe<Scalars["String"]>
-}
-
-type ComponentPageHome = {
-  components?: Maybe<Array<Maybe<ComponentUiCard>>>
-  frameworks?: Maybe<ComponentUiCard>
-  hero?: Maybe<ComponentUiCard>
-  id: Scalars["ID"]
-  pathname: Scalars["String"]
-  technology?: Maybe<ComponentUiHeadline>
-}
-
-type ComponentPageHomeComponentsArgs = {
-  filters?: InputMaybe<ComponentUiCardFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
-}
-
-type ComponentPageHomeFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentPageHomeFiltersInput>>>
-  components?: InputMaybe<ComponentUiCardFiltersInput>
-  frameworks?: InputMaybe<ComponentUiCardFiltersInput>
-  hero?: InputMaybe<ComponentUiCardFiltersInput>
-  not?: InputMaybe<ComponentPageHomeFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentPageHomeFiltersInput>>>
-  pathname?: InputMaybe<StringFilterInput>
-  technology?: InputMaybe<ComponentUiHeadlineFiltersInput>
-}
-
-type ComponentPageHomeInput = {
-  components?: InputMaybe<Array<InputMaybe<ComponentUiCardInput>>>
-  frameworks?: InputMaybe<ComponentUiCardInput>
-  hero?: InputMaybe<ComponentUiCardInput>
-  id?: InputMaybe<Scalars["ID"]>
-  pathname?: InputMaybe<Scalars["String"]>
-  technology?: InputMaybe<ComponentUiHeadlineInput>
 }
 
 type ComponentUiCard = {
@@ -169,15 +67,6 @@ type ComponentUiCard = {
   media?: Maybe<UploadFileEntityResponse>
   subtitle?: Maybe<Scalars["String"]>
   title?: Maybe<Scalars["String"]>
-}
-
-type ComponentUiCardFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentUiCardFiltersInput>>>
-  description?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentUiCardFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentUiCardFiltersInput>>>
-  subtitle?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
 }
 
 type ComponentUiCardInput = {
@@ -200,42 +89,15 @@ type ComponentUiGridChildrenArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
 }
 
-type ComponentUiGridFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentUiGridFiltersInput>>>
-  children?: InputMaybe<ComponentDataEntryFiltersInput>
-  not?: InputMaybe<ComponentUiGridFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentUiGridFiltersInput>>>
-  visible?: InputMaybe<BooleanFilterInput>
-}
-
-type ComponentUiGridInput = {
-  children?: InputMaybe<Array<InputMaybe<ComponentDataEntryInput>>>
-  id?: InputMaybe<Scalars["ID"]>
-  visible?: InputMaybe<Scalars["Boolean"]>
-}
-
 type ComponentUiHeadline = {
   id: Scalars["ID"]
   subtitle?: Maybe<Scalars["String"]>
   title?: Maybe<Scalars["String"]>
 }
 
-type ComponentUiHeadlineFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentUiHeadlineFiltersInput>>>
-  not?: InputMaybe<ComponentUiHeadlineFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentUiHeadlineFiltersInput>>>
-  subtitle?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-type ComponentUiHeadlineInput = {
-  id?: InputMaybe<Scalars["ID"]>
-  subtitle?: InputMaybe<Scalars["String"]>
-  title?: InputMaybe<Scalars["String"]>
-}
-
 type ComponentUiLink = {
   id: Scalars["ID"]
+  target: EnumComponentuilinkTarget
   title?: Maybe<Scalars["String"]>
   url: Scalars["String"]
 }
@@ -244,12 +106,14 @@ type ComponentUiLinkFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentUiLinkFiltersInput>>>
   not?: InputMaybe<ComponentUiLinkFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentUiLinkFiltersInput>>>
+  target?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   url?: InputMaybe<StringFilterInput>
 }
 
 type ComponentUiLinkInput = {
   id?: InputMaybe<Scalars["ID"]>
+  target?: InputMaybe<EnumComponentuilinkTarget>
   title?: InputMaybe<Scalars["String"]>
   url?: InputMaybe<Scalars["String"]>
 }
@@ -266,25 +130,11 @@ type ComponentUiParagraphFiltersInput = {
   value?: InputMaybe<StringFilterInput>
 }
 
-type ComponentUiParagraphInput = {
-  id?: InputMaybe<Scalars["ID"]>
-  value?: InputMaybe<Scalars["String"]>
-}
-
 type ComponentUiSection = {
   button?: Maybe<ComponentUiLink>
   heading?: Maybe<ComponentUiCard>
   id: Scalars["ID"]
   visible: Scalars["Boolean"]
-}
-
-type ComponentUiSectionFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentUiSectionFiltersInput>>>
-  button?: InputMaybe<ComponentUiLinkFiltersInput>
-  heading?: InputMaybe<ComponentUiCardFiltersInput>
-  not?: InputMaybe<ComponentUiSectionFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentUiSectionFiltersInput>>>
-  visible?: InputMaybe<BooleanFilterInput>
 }
 
 type ComponentUiSectionInput = {
@@ -300,20 +150,6 @@ type ComponentUiTab = {
   pane: ComponentUiCard
 }
 
-type ComponentUiTabFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentUiTabFiltersInput>>>
-  name?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentUiTabFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentUiTabFiltersInput>>>
-  pane?: InputMaybe<ComponentUiCardFiltersInput>
-}
-
-type ComponentUiTabInput = {
-  id?: InputMaybe<Scalars["ID"]>
-  name?: InputMaybe<Scalars["String"]>
-  pane?: InputMaybe<ComponentUiCardInput>
-}
-
 type ComponentUiText = {
   children: Array<Maybe<ComponentUiParagraph>>
   id: Scalars["ID"]
@@ -324,44 +160,6 @@ type ComponentUiTextChildrenArgs = {
   filters?: InputMaybe<ComponentUiParagraphFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
-}
-
-type ComponentUiTextFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentUiTextFiltersInput>>>
-  children?: InputMaybe<ComponentUiParagraphFiltersInput>
-  not?: InputMaybe<ComponentUiTextFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentUiTextFiltersInput>>>
-  visible?: InputMaybe<BooleanFilterInput>
-}
-
-type ComponentUiTextInput = {
-  children?: InputMaybe<Array<InputMaybe<ComponentUiParagraphInput>>>
-  id?: InputMaybe<Scalars["ID"]>
-  visible?: InputMaybe<Scalars["Boolean"]>
-}
-
-type DateFilterInput = {
-  and?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>
-  between?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>
-  contains?: InputMaybe<Scalars["Date"]>
-  containsi?: InputMaybe<Scalars["Date"]>
-  endsWith?: InputMaybe<Scalars["Date"]>
-  eq?: InputMaybe<Scalars["Date"]>
-  eqi?: InputMaybe<Scalars["Date"]>
-  gt?: InputMaybe<Scalars["Date"]>
-  gte?: InputMaybe<Scalars["Date"]>
-  in?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>
-  lt?: InputMaybe<Scalars["Date"]>
-  lte?: InputMaybe<Scalars["Date"]>
-  ne?: InputMaybe<Scalars["Date"]>
-  not?: InputMaybe<DateFilterInput>
-  notContains?: InputMaybe<Scalars["Date"]>
-  notContainsi?: InputMaybe<Scalars["Date"]>
-  notIn?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>
-  notNull?: InputMaybe<Scalars["Boolean"]>
-  null?: InputMaybe<Scalars["Boolean"]>
-  or?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>
-  startsWith?: InputMaybe<Scalars["Date"]>
 }
 
 type DateTimeFilterInput = {
@@ -388,10 +186,7 @@ type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars["DateTime"]>
 }
 
-type Error = {
-  code: Scalars["String"]
-  message?: Maybe<Scalars["String"]>
-}
+type EnumComponentuilinkTarget = "blank" | "parent" | "self" | "top"
 
 type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars["String"]>
@@ -424,11 +219,8 @@ type FloatFilterInput = {
 }
 
 type GenericMorph =
-  | ComponentDataContact
   | ComponentDataEntry
   | ComponentDataSet
-  | ComponentPageContactUs
-  | ComponentPageHome
   | ComponentUiCard
   | ComponentUiGrid
   | ComponentUiHeadline
@@ -437,11 +229,32 @@ type GenericMorph =
   | ComponentUiSection
   | ComponentUiTab
   | ComponentUiText
+  | Home
+  | Layout
   | UploadFile
   | UploadFolder
   | UsersPermissionsPermission
   | UsersPermissionsRole
   | UsersPermissionsUser
+
+type Home = {
+  createdAt?: Maybe<Scalars["DateTime"]>
+  hero?: Maybe<ComponentUiSection>
+  updatedAt?: Maybe<Scalars["DateTime"]>
+}
+
+type HomeEntity = {
+  attributes?: Maybe<Home>
+  id?: Maybe<Scalars["ID"]>
+}
+
+type HomeEntityResponse = {
+  data?: Maybe<HomeEntity>
+}
+
+type HomeInput = {
+  hero?: InputMaybe<ComponentUiSectionInput>
+}
 
 type IdFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>
@@ -515,28 +328,29 @@ type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars["JSON"]>
 }
 
-type LongFilterInput = {
-  and?: InputMaybe<Array<InputMaybe<Scalars["Long"]>>>
-  between?: InputMaybe<Array<InputMaybe<Scalars["Long"]>>>
-  contains?: InputMaybe<Scalars["Long"]>
-  containsi?: InputMaybe<Scalars["Long"]>
-  endsWith?: InputMaybe<Scalars["Long"]>
-  eq?: InputMaybe<Scalars["Long"]>
-  eqi?: InputMaybe<Scalars["Long"]>
-  gt?: InputMaybe<Scalars["Long"]>
-  gte?: InputMaybe<Scalars["Long"]>
-  in?: InputMaybe<Array<InputMaybe<Scalars["Long"]>>>
-  lt?: InputMaybe<Scalars["Long"]>
-  lte?: InputMaybe<Scalars["Long"]>
-  ne?: InputMaybe<Scalars["Long"]>
-  not?: InputMaybe<LongFilterInput>
-  notContains?: InputMaybe<Scalars["Long"]>
-  notContainsi?: InputMaybe<Scalars["Long"]>
-  notIn?: InputMaybe<Array<InputMaybe<Scalars["Long"]>>>
-  notNull?: InputMaybe<Scalars["Boolean"]>
-  null?: InputMaybe<Scalars["Boolean"]>
-  or?: InputMaybe<Array<InputMaybe<Scalars["Long"]>>>
-  startsWith?: InputMaybe<Scalars["Long"]>
+type Layout = {
+  createdAt?: Maybe<Scalars["DateTime"]>
+  headerMenu?: Maybe<Array<Maybe<ComponentUiLink>>>
+  updatedAt?: Maybe<Scalars["DateTime"]>
+}
+
+type LayoutHeaderMenuArgs = {
+  filters?: InputMaybe<ComponentUiLinkFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
+}
+
+type LayoutEntity = {
+  attributes?: Maybe<Layout>
+  id?: Maybe<Scalars["ID"]>
+}
+
+type LayoutEntityResponse = {
+  data?: Maybe<LayoutEntity>
+}
+
+type LayoutInput = {
+  headerMenu?: InputMaybe<Array<InputMaybe<ComponentUiLinkInput>>>
 }
 
 type Mutation = {
@@ -547,6 +361,8 @@ type Mutation = {
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
+  deleteHome?: Maybe<HomeEntityResponse>
+  deleteLayout?: Maybe<LayoutEntityResponse>
   deleteUploadFile?: Maybe<UploadFileEntityResponse>
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>
@@ -564,6 +380,8 @@ type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>
   updateFileInfo: UploadFileEntityResponse
+  updateHome?: Maybe<HomeEntityResponse>
+  updateLayout?: Maybe<LayoutEntityResponse>
   updateUploadFile?: Maybe<UploadFileEntityResponse>
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>
@@ -640,6 +458,14 @@ type MutationUpdateFileInfoArgs = {
   info?: InputMaybe<FileInfoInput>
 }
 
+type MutationUpdateHomeArgs = {
+  data: HomeInput
+}
+
+type MutationUpdateLayoutArgs = {
+  data: LayoutInput
+}
+
 type MutationUpdateUploadFileArgs = {
   data: UploadFileInput
   id: Scalars["ID"]
@@ -677,9 +503,9 @@ type PaginationArg = {
   start?: InputMaybe<Scalars["Int"]>
 }
 
-type PublicationState = "LIVE" | "PREVIEW"
-
 type Query = {
+  home?: Maybe<HomeEntityResponse>
+  layout?: Maybe<LayoutEntityResponse>
   me?: Maybe<UsersPermissionsUser>
   uploadFile?: Maybe<UploadFileEntityResponse>
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>
@@ -745,30 +571,6 @@ type StringFilterInput = {
   null?: InputMaybe<Scalars["Boolean"]>
   or?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
   startsWith?: InputMaybe<Scalars["String"]>
-}
-
-type TimeFilterInput = {
-  and?: InputMaybe<Array<InputMaybe<Scalars["Time"]>>>
-  between?: InputMaybe<Array<InputMaybe<Scalars["Time"]>>>
-  contains?: InputMaybe<Scalars["Time"]>
-  containsi?: InputMaybe<Scalars["Time"]>
-  endsWith?: InputMaybe<Scalars["Time"]>
-  eq?: InputMaybe<Scalars["Time"]>
-  eqi?: InputMaybe<Scalars["Time"]>
-  gt?: InputMaybe<Scalars["Time"]>
-  gte?: InputMaybe<Scalars["Time"]>
-  in?: InputMaybe<Array<InputMaybe<Scalars["Time"]>>>
-  lt?: InputMaybe<Scalars["Time"]>
-  lte?: InputMaybe<Scalars["Time"]>
-  ne?: InputMaybe<Scalars["Time"]>
-  not?: InputMaybe<TimeFilterInput>
-  notContains?: InputMaybe<Scalars["Time"]>
-  notContainsi?: InputMaybe<Scalars["Time"]>
-  notIn?: InputMaybe<Array<InputMaybe<Scalars["Time"]>>>
-  notNull?: InputMaybe<Scalars["Boolean"]>
-  null?: InputMaybe<Scalars["Boolean"]>
-  or?: InputMaybe<Array<InputMaybe<Scalars["Time"]>>>
-  startsWith?: InputMaybe<Scalars["Time"]>
 }
 
 type UploadFile = {
@@ -885,11 +687,6 @@ type UploadFolderEntityResponse = {
   data?: Maybe<UploadFolderEntity>
 }
 
-type UploadFolderEntityResponseCollection = {
-  data: Array<UploadFolderEntity>
-  meta: ResponseCollectionMeta
-}
-
 type UploadFolderFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<UploadFolderFiltersInput>>>
   children?: InputMaybe<UploadFolderFiltersInput>
@@ -903,15 +700,6 @@ type UploadFolderFiltersInput = {
   path?: InputMaybe<StringFilterInput>
   pathId?: InputMaybe<IntFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type UploadFolderInput = {
-  children?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>
-  files?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>
-  name?: InputMaybe<Scalars["String"]>
-  parent?: InputMaybe<Scalars["ID"]>
-  path?: InputMaybe<Scalars["String"]>
-  pathId?: InputMaybe<Scalars["Int"]>
 }
 
 type UploadFolderRelationResponseCollection = {
@@ -969,15 +757,6 @@ type UsersPermissionsPermissionEntity = {
   id?: Maybe<Scalars["ID"]>
 }
 
-type UsersPermissionsPermissionEntityResponse = {
-  data?: Maybe<UsersPermissionsPermissionEntity>
-}
-
-type UsersPermissionsPermissionEntityResponseCollection = {
-  data: Array<UsersPermissionsPermissionEntity>
-  meta: ResponseCollectionMeta
-}
-
 type UsersPermissionsPermissionFiltersInput = {
   action?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<UsersPermissionsPermissionFiltersInput>>>
@@ -987,11 +766,6 @@ type UsersPermissionsPermissionFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<UsersPermissionsPermissionFiltersInput>>>
   role?: InputMaybe<UsersPermissionsRoleFiltersInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-type UsersPermissionsPermissionInput = {
-  action?: InputMaybe<Scalars["String"]>
-  role?: InputMaybe<Scalars["ID"]>
 }
 
 type UsersPermissionsPermissionRelationResponseCollection = {
@@ -1060,10 +834,6 @@ type UsersPermissionsRoleInput = {
   permissions?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>
   type?: InputMaybe<Scalars["String"]>
   users?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>
-}
-
-type UsersPermissionsRoleRelationResponseCollection = {
-  data: Array<UsersPermissionsRoleEntity>
 }
 
 type UsersPermissionsUpdateRolePayload = {
@@ -1175,74 +945,21 @@ type HeadlineFragment = { id: string; title?: string | null | undefined; subtitl
 
 type HeadlineFragmentVariables = Exact<{ [key: string]: never }>
 
-type HomeFragment = {
+type LinkFragment = { id: string; title?: string | null | undefined; url: string; target: EnumComponentuilinkTarget }
+
+type LinkFragmentVariables = Exact<{ [key: string]: never }>
+
+type ParagraphFragment = { id: string; value: string }
+
+type ParagraphFragmentVariables = Exact<{ [key: string]: never }>
+
+type SectionFragment = {
   id: string
-  pathname: string
-  hero?:
-    | {
-        id: string
-        title?: string | null | undefined
-        subtitle?: string | null | undefined
-        description?: string | null | undefined
-        media?:
-          | {
-              data?:
-                | {
-                    id?: string | null | undefined
-                    attributes?:
-                      | {
-                          previewUrl?: string | null | undefined
-                          alternativeText?: string | null | undefined
-                          url: string
-                        }
-                      | null
-                      | undefined
-                  }
-                | null
-                | undefined
-            }
-          | null
-          | undefined
-      }
+  button?:
+    | { id: string; title?: string | null | undefined; url: string; target: EnumComponentuilinkTarget }
     | null
     | undefined
-  components?:
-    | Array<
-        | {
-            id: string
-            title?: string | null | undefined
-            subtitle?: string | null | undefined
-            description?: string | null | undefined
-            media?:
-              | {
-                  data?:
-                    | {
-                        id?: string | null | undefined
-                        attributes?:
-                          | {
-                              previewUrl?: string | null | undefined
-                              alternativeText?: string | null | undefined
-                              url: string
-                            }
-                          | null
-                          | undefined
-                      }
-                    | null
-                    | undefined
-                }
-              | null
-              | undefined
-          }
-        | null
-        | undefined
-      >
-    | null
-    | undefined
-  technology?:
-    | { id: string; title?: string | null | undefined; subtitle?: string | null | undefined }
-    | null
-    | undefined
-  frameworks?:
+  heading?:
     | {
         id: string
         title?: string | null | undefined
@@ -1272,15 +989,7 @@ type HomeFragment = {
     | undefined
 }
 
-type HomeFragmentVariables = Exact<{ [key: string]: never }>
-
-type LinkFragment = { id: string; title?: string | null | undefined; url: string }
-
-type LinkFragmentVariables = Exact<{ [key: string]: never }>
-
-type ParagraphFragment = { id: string; value: string }
-
-type ParagraphFragmentVariables = Exact<{ [key: string]: never }>
+type SectionFragmentVariables = Exact<{ [key: string]: never }>
 
 type TabFragment = {
   id: string
@@ -1309,6 +1018,69 @@ type TabFragment = {
 }
 
 type TabFragmentVariables = Exact<{ [key: string]: never }>
+
+type HomeQueryVariables = Exact<{ [key: string]: never }>
+
+type HomeQuery = {
+  home?:
+    | {
+        data?:
+          | {
+              attributes?:
+                | {
+                    hero?:
+                      | {
+                          id: string
+                          button?:
+                            | {
+                                id: string
+                                title?: string | null | undefined
+                                url: string
+                                target: EnumComponentuilinkTarget
+                              }
+                            | null
+                            | undefined
+                          heading?:
+                            | {
+                                id: string
+                                title?: string | null | undefined
+                                subtitle?: string | null | undefined
+                                description?: string | null | undefined
+                                media?:
+                                  | {
+                                      data?:
+                                        | {
+                                            id?: string | null | undefined
+                                            attributes?:
+                                              | {
+                                                  previewUrl?: string | null | undefined
+                                                  alternativeText?: string | null | undefined
+                                                  url: string
+                                                }
+                                              | null
+                                              | undefined
+                                          }
+                                        | null
+                                        | undefined
+                                    }
+                                  | null
+                                  | undefined
+                              }
+                            | null
+                            | undefined
+                        }
+                      | null
+                      | undefined
+                  }
+                | null
+                | undefined
+            }
+          | null
+          | undefined
+      }
+    | null
+    | undefined
+}
 
 type MeQueryVariables = Exact<{ [key: string]: never }>
 

@@ -1,22 +1,13 @@
-interface ProcessEnv {
-  APP_NAME: string
-  APP_ENV: "development" | "staging" | "production"
-  DOMAIN: string
-  APP_VERSION: string
-  DATABASE_CLIENT: Database.Client
-  NODE_ENV: "development" | "production"
-}
-declare global {
-  declare namespace Strapi {}
-  const strapi: Strapi.Strapi
-}
-namespace App {
-  type Mode = "development" | "staging" | "production"
+/// <reference types="@strapi/strapi" />
+/// <reference types="@bn-digital/strapi-types/index" />
+
+declare namespace App {
+  type Mode = "development" | "staging" | "production" | "test"
   type Env = {
     mode: Mode
-    isDev(): boolean
-    isProd(): boolean
-    isTest(): boolean
+    development: boolean
+    production: boolean
+    testing: boolean
   }
   type Metadata = {
     name: string
@@ -28,6 +19,6 @@ namespace App {
     database?: "sqlite" | "postgres" | "mysql"
   } & { [key: string]: unknown }
 }
-interface Global {
-  strapi: Strapi.StrapiInterface & Strapi.Strapi
+declare interface StrapiGlobal {
+  strapi: Omit<Global["strapi"], keyof Strapi.Strapi> & Strapi.Strapi
 }

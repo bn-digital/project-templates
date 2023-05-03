@@ -13,6 +13,17 @@
     },
     "title": {
       "type": "string"
+    },
+    "target": {
+      "type": "enumeration",
+      "enum": [
+        "blank",
+        "self",
+        "parent",
+        "top"
+      ],
+      "default": "self",
+      "required": true
     }
   }
 }

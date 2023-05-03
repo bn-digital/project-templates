@@ -13,12 +13,14 @@ fileExistenceTests:
     shouldExist: true
     uid: 1000
 metadataTest:
-  entrypoint:
-    - node
+  entrypoint: [npx]
+  cmd:
+    - strapi
+    - start
   exposedPorts:
     - '5000'
   workdir: /usr/local/src
-  env:
+  envVars:
     - key: NODE_ENV
       value: production
     - key: HOST
