@@ -19,10 +19,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
-  },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json,css,sass,scss,less,graphql}": [
       "yarn fix"
