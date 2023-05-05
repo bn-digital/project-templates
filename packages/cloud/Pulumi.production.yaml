@@ -1,11 +1,5 @@
-encryptionsalt: v1:kweRapn8vKo=:v1:FqderYqeZchkvx0k:CHawwvQv97f1XbcZfFn8bbasxN9jZw==
 config:
   digitalocean:
-    region: fra1
     domain: app.bndigital.dev
-  digitalocean:spaces_access_id:
-    secure: v1:8Vrixl9i5edTI1ds:wGcH79ELqFM46dXWRzN/Utz0Yme71AbWkHgz+SPSxEZ2P1lt
-  digitalocean:spaces_secret_key:
-    secure: v1:T0Ftm1miDIJlKfPw:Tu2jtKLZrtKPV1WQkL63xLJPWsxFkNrLPHU1vIUWWT/F5rGvfOW/HNsVDDya0+H+PgGlhMtkoL2kAU8=
-  digitalocean:token:
-    secure: v1:O6pawPJZqGgp/tF8:/YIedvNC7DWe21A7DDNn/S+2F7yjlWzKtBZUXg56LMeFVfsMJCRIniTFGWyNJVTnBcKSQg0fZr7mWp2Fk08zs9qoJ0TeIZkqpBsxediDvGU=
+    region: fra1
+
