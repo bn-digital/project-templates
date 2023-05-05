@@ -1,4 +1,5 @@
 helmfiles:
+  - path: git::https://github.com/bn-digital/helm.git@helmfiles/load-balancer.yaml?ref=latest
   - path: git::https://github.com/bn-digital/helm.git@helmfiles/nodejs.yaml?ref=latest
 
 helmDefaults:
@@ -7,8 +8,26 @@ helmDefaults:
 
 environments:
   default:
-    values: []
+    values:
+    - tlsIssuer:
+        enabled: false
+      ingressController:
+        enabled: false
+      database:
+        enabled: false
   staging:
-    values: []
+    values:
+      - tlsIssuer:
+          enabled: true
+        ingressController:
+          enabled: false
+        database:
+          enabled: false
   production:
-    values: []
+    values:
+      - tlsIssuer:
+          enabled: true
+        ingressController:
+          enabled: true
+        database:
+          enabled: true

@@ -1,0 +1,25 @@
+encryptionsalt: v1:8J7e0ux0EPQ=:v1:e2A/27j373bc2hQd:4CDq5ojR2M7e24MbJ+wujfoeOdwngg==
+config:
+  project-templates:secrets:
+    /infrastructure/data/digitalocean:
+      token:
+        - DIGITALOCEAN_TOKEN
+    /infrastructure/data/registry:
+      password:
+        - DOCKER_PASSWORD
+      url:
+        - DOCKER_REGISTRY
+      username:
+        - DOCKER_USERNAME
+    /infrastructure/data/sonarqube:
+      token:
+        - SONAR_TOKEN
+      url:
+        - SONAR_HOST_URL
+    /infrastructure/data/spaces:
+      access-key-id:
+        - SPACES_ACCESS_KEY_ID
+        - AWS_ACCESS_KEY_ID
+      secret-access-key:
+        - SPACES_SECRET_ACCESS_KEY
+        - AWS_SECRET_ACCESS_KEY

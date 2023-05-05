@@ -1,5 +1,7 @@
 import { digitalocean, github, harbor, postgresql, vault } from "@bn-digital/pulumi"
-import { Config, Resource, getStack } from "@pulumi/pulumi"
+import { Config, Output, Resource, all, getStack } from "@pulumi/pulumi"
+import { kv } from "@pulumi/vault"
+import * as path from "path"
 
 const config = new Config()
 const name = config.name
@@ -28,27 +30,22 @@ const infrastructure = {
    * TODO: Extend with extra staging steps required (e.g. Vault/Github secrets provisioning)
    */
   staging(): Resource[] {
-    const requiredSecrerts: { [key: string]: string } = {
-      DOCKER_REGISTRY: "infrastructure/data/registry/url",
-      DOCKER_USERNAME: "infrastructure/data/registry/username",
-      DOCKER_PASSWORD: "infrastructure/data/registry/password",
-      KUBERNETES_CLUSTER: "infrastructure/data/digitalocean/kubernetes",
-      DIGITALOCEAN_TOKEN: "infrastructure/data/digitalocean/token",
-      AWS_ACCESS_KEY_ID: "infrastructure/data/spaces/access-key-id",
-      AWS_SECRET_ACCESS_KEY: "infrastructure/data/spaces/secret-access-key",
-      SPACES_ACCESS_KEY_ID: "infrastructure/data/spaces/access-key-id",
-      SPACES_SECRET_ACCESS_KEY: "infrastructure/data/spaces/secret-access-key",
-      SONAR_HOST_URL: "infrastructure/data/sonarqube/url",
-      SONAR_TOKEN: "infrastructure/data/sonarqube/token",
-    }
+    const requiredSecrets: { [key: string]: { [key: string]: string[] } } = config.requireObject("secrets")
     const containerRegistry: Resource = harbor.createProject({ name })
     const database: Resource = postgresql.createDatabase({ name })
-    const secrets = Object.entries(requiredSecrerts)
-      .map(([key, path]) => ({ [key]: vault.getSecret(path) }))
-      .flatMap(Object.entries)
-      .map(([key, value]) => github.createSecret({ key, value }))
+    const resources = [containerRegistry, database]
+    Object.entries(requiredSecrets).forEach(([path, mapping]) =>
+      kv.getSecretOutput({ path }).apply(result => {
+        const config = result.dataJson ? JSON.parse(result.dataJson)?.data : {}
+        Object.entries(mapping).forEach(([key, envVars]) =>
+          envVars
+            .map<[string, string | null]>(envVar => [envVar, config[key]?.toString() ?? null])
+            .forEach(([key, value]) => value && resources.push(github.createSecret({ key, value })))
+        )
+      })
+    )
 
-    return Array.of(containerRegistry, database, ...secrets)
+    return resources
   },
 }
 

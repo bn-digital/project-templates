@@ -1,9 +1,16 @@
-*.sqlite                                      -text
+* text=auto
+
+*.sqlite  binary
+*.gif     binary
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.pdf     binary
+*.ico     binary
 
 packages/cms/database/*.sqlite                merge=ours
-packages/cms/config/sync/*.json               merge=ours
 packages/cms/src/types/graphql.d.ts           merge=ours
 packages/cms/src/types/schema.d.ts            merge=ours
 packages/website/src/graphql/index.ts         merge=ours
 packages/website/src/types/graphql.d.ts       merge=ours
-
+yarn.lock                                     merge=ours
