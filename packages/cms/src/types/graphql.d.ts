@@ -258,6 +258,7 @@ export interface NexusGenInputs {
     and?: Array<NexusGenInputs["HomeFiltersInput"] | null> | null // [HomeFiltersInput]
     createdAt?: NexusGenInputs["DateTimeFilterInput"] | null // DateTimeFilterInput
     hero?: NexusGenInputs["ComponentUiSectionFiltersInput"] | null // ComponentUiSectionFiltersInput
+    key?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
     not?: NexusGenInputs["HomeFiltersInput"] | null // HomeFiltersInput
     or?: Array<NexusGenInputs["HomeFiltersInput"] | null> | null // [HomeFiltersInput]
     updatedAt?: NexusGenInputs["DateTimeFilterInput"] | null // DateTimeFilterInput
@@ -265,6 +266,7 @@ export interface NexusGenInputs {
   HomeInput: {
     // input type
     hero?: NexusGenInputs["ComponentUiSectionInput"] | null // ComponentUiSectionInput
+    key?: string | null // String
   }
   IDFilterInput: {
     // input type
@@ -665,6 +667,7 @@ export interface NexusGenObjects {
   Home: {
     // root type
     createdAt?: NexusGenScalars["DateTime"] | null // DateTime
+    key?: string | null // String
     updatedAt?: NexusGenScalars["DateTime"] | null // DateTime
   }
   HomeEntity: {}
@@ -900,6 +903,7 @@ export interface NexusGenFieldTypes {
     // field return type
     createdAt: NexusGenScalars["DateTime"] | null // DateTime
     hero: NexusGenRootTypes["ComponentUiSection"] | null // ComponentUiSection
+    key: string | null // String
     updatedAt: NexusGenScalars["DateTime"] | null // DateTime
   }
   HomeEntity: {
@@ -1255,6 +1259,7 @@ export interface NexusGenFieldTypeNames {
     // field return type name
     createdAt: "DateTime"
     hero: "ComponentUiSection"
+    key: "String"
     updatedAt: "DateTime"
   }
   HomeEntity: {

@@ -1,27 +1,29 @@
-import { digitalocean, github, harbor, postgresql, vault } from "@bn-digital/pulumi"
-import { Config, Output, Resource, all, getStack } from "@pulumi/pulumi"
-import { kv } from "@pulumi/vault"
-import * as path from "path"
+import { digitalocean, harbor, postgresql, vault } from "@bn-digital/pulumi"
+
+import { Config, getStack } from "@pulumi/pulumi"
+
+import { config as readFromEnvFile } from "dotenv"
 
 const config = new Config()
 const name = config.name
 const environment = getStack()
 
+readFromEnvFile()
+
 const infrastructure = {
   /**
    * Creates a DigitalOcean project with a Spaces bucket, Kubernetes cluster, and DNS domain inside customer's production environment
    */
-  production(): Resource[] {
+  production(): void {
     const { region, domain } = config.requireObject<Partial<digitalocean.ProductionConfig>>("digitalocean")
     const bucket = digitalocean.createBucket({ name, region })
     const cluster = digitalocean.createCluster({ name, region })
     const dns = digitalocean.createDomain({ name: domain ?? `${name}.bndigital.ai` })
-    const project = digitalocean.createProject({
+    digitalocean.createProject({
       name,
       environment,
       resources: [bucket.bucketUrn, cluster.clusterUrn, dns.domainUrn],
     })
-    return [project, bucket, cluster, dns]
   },
 
   /**
@@ -29,23 +31,11 @@ const infrastructure = {
    *
    * TODO: Extend with extra staging steps required (e.g. Vault/Github secrets provisioning)
    */
-  staging(): Resource[] {
-    const requiredSecrets: { [key: string]: { [key: string]: string[] } } = config.requireObject("secrets")
-    const containerRegistry: Resource = harbor.createProject({ name })
-    const database: Resource = postgresql.createDatabase({ name })
-    const resources = [containerRegistry, database]
-    Object.entries(requiredSecrets).forEach(([path, mapping]) =>
-      kv.getSecretOutput({ path }).apply(result => {
-        const config = result.dataJson ? JSON.parse(result.dataJson)?.data : {}
-        Object.entries(mapping).forEach(([key, envVars]) =>
-          envVars
-            .map<[string, string | null]>(envVar => [envVar, config[key]?.toString() ?? null])
-            .forEach(([key, value]) => value && resources.push(github.createSecret({ key, value })))
-        )
-      })
-    )
-
-    return resources
+  staging: function (): void {
+    const requiredSecrets: { [key: string]: string } = config.requireObject("secrets")
+    Object.entries(requiredSecrets).forEach(([key, path]) => vault.copyToGithubSecrets(key, path))
+    harbor.createProject({ name })
+    postgresql.createDatabase({ name })
   },
 }
 

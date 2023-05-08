@@ -4883,7 +4883,7 @@ __metadata:
   dependencies:
     "@apollo/client": ^3.7.14
     "@bn-digital/vite": ^2.3.5
-    "@types/react": ^18.2.5
+    "@types/react": ^18.2.6
     "@types/react-dom": ^18.2.4
     antd: latest-4
     react: ^18.2.0
@@ -7195,6 +7195,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^20.1.0":
+  version: 20.1.0
+  resolution: "@types/node@npm:20.1.0"
+  checksum: c6d9afa9aa78b4b4348c69ece94975be70346b144c278f1395694a10ef919d7db300018101b6f9245e6bdd76674a5327d2d14829092f3d5295e858cff5f22a66
+  languageName: node
+  linkType: hard
+
 "@types/normalize-package-data@npm:^2.4.0":
   version: 2.4.1
   resolution: "@types/normalize-package-data@npm:2.4.1"
@@ -7259,14 +7266,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.2.5":
-  version: 18.2.5
-  resolution: "@types/react@npm:18.2.5"
+"@types/react@npm:^18.2.6":
+  version: 18.2.6
+  resolution: "@types/react@npm:18.2.6"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 97c4534e849edf991be0820b0911d036e794b8e2599a1544f500c769acbcb4f443ccde1a3f22298f22ce368ee7757f746e4a529e889567fc142a627698e2de39
+  checksum: dea9d232d8df7ac357367a69dcb557711ab3d5501807ffa77cebeee73d49ee94d095f298e36853c63ed47cce097eee4c7eae2aaa8c02fac3f0171ec1b523a819
   languageName: node
   linkType: hard
 
@@ -20074,15 +20081,15 @@ __metadata:
     "@bn-digital/cosmiconfig": ^1.0.8
     "@bn-digital/projen": ^0.9.2
     "@bn-digital/vault-env": ^1.4.0
-    "@types/node": ^20.0.0
-    projen: ^0.71.42
+    "@types/node": ^20.1.0
+    projen: ^0.71.45
     typescript: ^5.0.4
   languageName: unknown
   linkType: soft
 
-"projen@npm:^0.71.42":
-  version: 0.71.42
-  resolution: "projen@npm:0.71.42"
+"projen@npm:^0.71.45":
+  version: 0.71.45
+  resolution: "projen@npm:0.71.45"
   dependencies:
     "@iarna/toml": ^2.2.5
     case: ^1.6.3
@@ -20099,7 +20106,7 @@ __metadata:
     yargs: ^17.7.2
   bin:
     projen: bin/projen
-  checksum: 81f935b6626caff66c0bc6623f004cf30179fefe905ea93dbffb93cb40ef6fe85dc8352f39de92b503766787203d7a3f202557ada1f38612788a286bef00c436
+  checksum: 0887683108df470f74a2c7e73b3482d071747c95de7dd41602cb2ea02d45c1f41b5b23de10b3fabfce2e83c248e27e30800a8b0eb7c8216953d9a2f0efc74c75
   languageName: node
   linkType: hard
 
