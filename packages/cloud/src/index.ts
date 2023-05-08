@@ -29,8 +29,9 @@ const infrastructure = {
    */
   staging: function (): void {
     const requiredSecrets: { [key: string]: string } = config.requireObject("secrets")
+    const requiredVars: { [key: string]: string } = config.requireObject("vars")
     Object.entries(requiredSecrets).forEach(([key, path]) => github.createSecret([key, vault.getSecret(path)]))
-    Object.entries(requiredSecrets).forEach(([key, value]) => github.createVariable([key, value]))
+    Object.entries(requiredVars).forEach(([key, value]) => github.createVariable([key, value]))
     harbor.createProject({ name })
     postgresql.createDatabase({ name })
   },
