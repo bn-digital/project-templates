@@ -5,5 +5,5 @@
     "outDir": "bin",
     "lib": ["esnext", "dom"]
   },
-  "include": ["src", "./package.json"]
+  "include": ["./src", "./package.json"]
 }

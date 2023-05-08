@@ -1,0 +1,16 @@
+secretsprovider: hashivault://pulumi
+encryptedkey: dmF1bHQ6djE6b0VZQStZSXFhbks0dC95MVlNdi9JSFBRT2syanE3eGpLd0h6VmtXRlhqbGpObHFFUzU0VFdVZlFlSkdUWEhRZlFaWFVQaEZjZHZHK256VnM=
+config:
+  project-templates:secrets:
+    VAULT_ENDPOINT: /infrastructure/data/vault/url
+    VAULT_TOKEN: /infrastructure/data/vault/github-token
+    DIGITALOCEAN_TOKEN: /infrastructure/data/digitalocean/token
+    DOCKER_PASSWORD: /infrastructure/data/registry/password
+    DOCKER_REGISTRY: /infrastructure/data/registry/url
+    DOCKER_USERNAME: /infrastructure/data/registry/username
+    SONAR_TOKEN: /infrastructure/data/sonarqube/token
+    SONAR_HOST_URL: /infrastructure/data/sonarqube/url
+    SPACES_ACCESS_KEY_ID: /infrastructure/data/spaces/access-key-id
+    SPACES_SECRET_ACCESS_KEY: /infrastructure/data/spaces/secret-access-key
+  project-templates:vars:
+    KUBERNETES_CLUSTER: bndigital
