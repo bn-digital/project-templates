@@ -1,5 +1,0 @@
-config:
-  digitalocean:
-    domain: app.bndigital.dev
-    region: fra1
-
