@@ -1,0 +1,20 @@
+---
+name: Bootstrap
+on:
+  push:
+    branches:
+      - latest
+    paths:
+      - '.github/workflows/bootstrap.yml'
+      - 'packages/cloud/**/*'
+
+jobs:
+  secrets:
+    uses: bn-digital/infrastructure/.github/workflows/sync.yml@latest
+    secrets: inherit
+  provision:
+    needs: [ secrets ]
+    uses: bn-digital/pulumi/.github/workflows/provision-infrastructure.yml@latest
+    secrets: inherit
+    with:
+      environment: staging
