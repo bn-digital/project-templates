@@ -307,12 +307,14 @@ export interface ApiHomeHome extends SingleTypeSchema {
     singularName: "home"
     pluralName: "homes"
     displayName: "Home"
+    description: ""
   }
   options: {
     draftAndPublish: false
   }
   attributes: {
     hero: ComponentAttribute<"ui.section">
+    key: UIDAttribute & CustomField<"plugin::field-uuid.uuid">
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<"api::home.home", "oneToOne", "admin::user"> & PrivateAttribute

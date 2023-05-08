@@ -12,12 +12,6 @@ jobs:
     with:
       secrets: |
         projects/data/${{ github.event.repository.name }}/production/pulumi               passphrase    | PULUMI_CONFIG_PASSPHRASE ;
-  provision:
-    needs: [ secrets ]
-    uses: bn-digital/pulumi/.github/workflows/provision-infrastructure.yml@latest
-    secrets: inherit
-    with:
-      environment: production
   build:
     needs: [ secrets ]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
