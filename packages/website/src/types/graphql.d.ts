@@ -372,6 +372,7 @@ type GenericMorph =
 type Home = {
   createdAt?: Maybe<Scalars["DateTime"]>
   hero?: Maybe<ComponentUiSection>
+  key?: Maybe<Scalars["String"]>
   updatedAt?: Maybe<Scalars["DateTime"]>
 }
 
@@ -393,6 +394,7 @@ type HomeFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<HomeFiltersInput>>>
   createdAt?: InputMaybe<DateTimeFilterInput>
   hero?: InputMaybe<ComponentUiSectionFiltersInput>
+  key?: InputMaybe<StringFilterInput>
   not?: InputMaybe<HomeFiltersInput>
   or?: InputMaybe<Array<InputMaybe<HomeFiltersInput>>>
   updatedAt?: InputMaybe<DateTimeFilterInput>
@@ -400,6 +402,7 @@ type HomeFiltersInput = {
 
 type HomeInput = {
   hero?: InputMaybe<ComponentUiSectionInput>
+  key?: InputMaybe<Scalars["String"]>
 }
 
 type HomeRelationResponseCollection = {
@@ -1256,4 +1259,82 @@ type TabFragment = {
                 id?: string | null | undefined
                 attributes?:
                   | { previewUrl?: string | null | undefined; alternativeText?: string | null | undefined; url: string }
-                  | nu
+                  | null
+                  | undefined
+              }
+            | null
+            | undefined
+        }
+      | null
+      | undefined
+  }
+}
+
+type TabFragmentVariables = Exact<{ [key: string]: never }>
+
+type HomeQueryVariables = Exact<{ [key: string]: never }>
+
+type HomeQuery = {
+  home?:
+    | {
+        data?:
+          | {
+              attributes?:
+                | {
+                    hero?:
+                      | {
+                          id: string
+                          button?:
+                            | {
+                                id: string
+                                title?: string | null | undefined
+                                url: string
+                                target: EnumComponentuilinkTarget
+                              }
+                            | null
+                            | undefined
+                          heading?:
+                            | {
+                                id: string
+                                title?: string | null | undefined
+                                subtitle?: string | null | undefined
+                                description?: string | null | undefined
+                                media?:
+                                  | {
+                                      data?:
+                                        | {
+                                            id?: string | null | undefined
+                                            attributes?:
+                                              | {
+                                                  previewUrl?: string | null | undefined
+                                                  alternativeText?: string | null | undefined
+                                                  url: string
+                                                }
+                                              | null
+                                              | undefined
+                                          }
+                                        | null
+                                        | undefined
+                                    }
+                                  | null
+                                  | undefined
+                              }
+                            | null
+                            | undefined
+                        }
+                      | null
+                      | undefined
+                  }
+                | null
+                | undefined
+            }
+          | null
+          | undefined
+      }
+    | null
+    | undefined
+}
+
+type MeQueryVariables = Exact<{ [key: string]: never }>
+
+type MeQuery = { me?: { id: string } | null | undefined }

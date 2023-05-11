@@ -5,6 +5,9 @@ helmfiles:
 helmDefaults:
   createNamespace: true
   cleanupOnFail: true
+  historyMax: 3
+  timeout: 300
+  waitForJobs: false
 
 environments:
   default:
