@@ -5,7 +5,7 @@ on:
       environment:
         type: choice
         default: staging
-        description: Environment to transfer to
+        description: "Environment to transfer to. Warning: that will purge target environment database and all related CMS data!"
         options:
           - "development ➔ staging"
           - "staging ➔ production"
@@ -27,4 +27,4 @@ jobs:
         if: ${{ inputs.environment == 'development ➔ staging' }}
         working-directory: packages/cms
         run: |
-          yarn strapi transfer --to=${{ github.event.repository.name }}.bndigital.dev --to-token=${{ secrets.STRAPI_STAGING_TRANSFER_TOKEN }} --force
+          yarn strapi transfer --to=https://${{ github.event.repository.name }}.bndigital.dev/admin --to-token=${{ secrets.STRAPI_STAGING_TRANSFER_TOKEN }} --force
