@@ -10,10 +10,12 @@ on:
       - 'Dockerfile'
       - '.dockerignore'
       - 'yarn.lock'
-      - 'packages/*/public/**/*'
-      - 'packages/*/src/**/*'
-      - 'packages/*/config/**/*'
-      - 'packages/*/database/**/*'
+      - 'packages/website/public/**/*'
+      - 'packages/website/src/**/*'
+      - 'packages/cms/config/**/*'
+      - 'packages/cms/src/**/*'
+      - 'packages/cms/public/**/*'
+      - 'packages/cms/database/**/*'
 
 jobs:
   secrets:
