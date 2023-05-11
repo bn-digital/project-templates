@@ -6,7 +6,7 @@ on:
       - latest
     paths:
       - '.github/workflows/bootstrap.yml'
-
+ 
 jobs:
   secrets:
     uses: bn-digital/infrastructure/.github/workflows/sync.yml@latest
