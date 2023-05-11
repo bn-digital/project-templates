@@ -20,8 +20,11 @@ jobs:
       - name: Setup CMS
         env:
           YARN_NM_HOISTING_LIMITS: workspaces
-        run: yarn workspaces focus ${{ github.event.repository.name }}/cms
+        run: |
+          yarn workspaces focus @${{ github.event.repository.name }}/cms
 
       - name: Staging DB transfer
         if: ${{ inputs.environment == 'development ➔ staging' }}
-        run: yarn strapi transfer --to=${{ github.event.repository.name }}.bndigital.dev --to-token=${{ secrets.STRAPI_STAGING_TRANSFER_TOKEN }} --force
+        working-directory: packages/cms
+        run: |
+          yarn strapi transfer --to=${{ github.event.repository.name }}.bndigital.dev --to-token=${{ secrets.STRAPI_STAGING_TRANSFER_TOKEN }} --force
