@@ -2,11 +2,11 @@
 name: Integration
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
   pull_request:
     branches:
       - latest
-    branches-ignore:
-      - dependabot/**
     paths:
       - '.github/workflows/integration.yml'
       - 'skaffold.yaml'
