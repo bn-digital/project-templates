@@ -4,4 +4,5 @@ root = true
 indent_size = tab
 tab_width = 2
 max_line_length = 160
+ij_any_blank_lines_after_imports = 0
 ij_any_keep_line_breaks = false
