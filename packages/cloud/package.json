@@ -3,12 +3,18 @@
   "main": "src/index.ts",
   "scripts": {
     "pulumi": "pulumi",
+    "test": "pulumi up --policy-pack=tests",
     "provision": "yarn pulumi up --yes"
   },
   "dependencies": {
-    "@bn-digital/pulumi": "^1.3.14",
-    "@bn-digital/typescript-config": "^1.3.4",
+    "@bn-digital/pulumi": "1.4.49",
+    "@pulumi/docker": "^4.2.0",
     "@pulumi/pulumi": "^3.66.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@bn-digital/typescript-config": "^1.3.4",
+    "@pulumi/policy": "^1.5.0"
   }
 }
