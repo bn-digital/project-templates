@@ -1,0 +1,27 @@
+name: Transfer
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        default: staging
+        description: Environment to transfer to
+        options:
+          - "development ➔ staging"
+          - "staging ➔ production"
+
+jobs:
+  strapi:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+
+      - name: Setup CMS
+        env:
+          YARN_NM_HOISTING_LIMITS: workspaces
+        run: yarn workspaces focus ${{ github.event.repository.name }}/cms
+
+      - name: Staging DB transfer
+        if: ${{ inputs.environment == 'development ➔ staging' }}
+        run: yarn strapi transfer --to=${{ github.event.repository.name }}.bndigital.dev --to-token=${{ secrets.STRAPI_STAGING_TRANSFER_TOKEN }} --force
