@@ -3,3 +3,7 @@ build
 dev-dist
 vite.config.d.ts
 vite.config.js
+/public/uploads/**
+/public/sitemap/**
+!/public/sitemap/.gitkeep
+!/public/uploads/.gitkeep
