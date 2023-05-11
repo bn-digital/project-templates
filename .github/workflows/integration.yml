@@ -2,11 +2,9 @@
 name: Integration
 on:
   workflow_dispatch:
-
-  push:
-    branches-ignore:
-      - dependabot/**
   pull_request:
+    branches:
+      - latest
     branches-ignore:
       - dependabot/**
     paths:

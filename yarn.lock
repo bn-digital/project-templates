@@ -75,9 +75,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/client@npm:3.8.0-alpha.13":
-  version: 3.8.0-alpha.13
-  resolution: "@apollo/client@npm:3.8.0-alpha.13"
+"@apollo/client@npm:^3.7.14":
+  version: 3.7.14
+  resolution: "@apollo/client@npm:3.7.14"
   dependencies:
     "@graphql-typed-document-node/core": ^3.1.1
     "@wry/context": ^0.7.0
@@ -85,7 +85,7 @@ __metadata:
     "@wry/trie": ^0.3.0
     graphql-tag: ^2.12.6
     hoist-non-react-statics: ^3.3.2
-    optimism: ^0.17.0
+    optimism: ^0.16.2
     prop-types: ^15.7.2
     response-iterator: ^0.2.6
     symbol-observable: ^4.0.0
@@ -107,7 +107,7 @@ __metadata:
       optional: true
     subscriptions-transport-ws:
       optional: true
-  checksum: c451551240affd272482db54a6566bfd78d66f0fdc8b3085dd332f5761bc8fd113b3f39093fb2ab8aa9feb05b821e1410ccded4898d8e627a9f5dc9d5a893cbf
+  checksum: eaa8af74450fee4d4761d25fb8fe752788517b27ebb46a51b6496950c5b73f48b6ba3e4f3474b6e4a4f310916dc3fcf079306c35f16d4284b96c7fdbb8539fde
   languageName: node
   linkType: hard
 
@@ -4975,7 +4975,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@project-templates/website@workspace:packages/website"
   dependencies:
-    "@apollo/client": 3.8.0-alpha.13
+    "@apollo/client": ^3.7.14
     "@bn-digital/vite": ^2.3.8
     "@types/react": ^18.2.6
     "@types/react-dom": ^18.2.4
@@ -7775,7 +7775,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.1.1":
+"@types/node@npm:^20.1.2":
   version: 20.1.2
   resolution: "@types/node@npm:20.1.2"
   checksum: 9bb2cf0a846e60cc06c44a5622c1998d8373c8675b24d11c86845a29f32c60f5bca9627f2a2535640f902be3dbcc60f126a895abe8e10f12e1467ae3deaba56d
@@ -19467,14 +19467,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"optimism@npm:^0.17.0":
-  version: 0.17.1
-  resolution: "optimism@npm:0.17.1"
+"optimism@npm:^0.16.2":
+  version: 0.16.2
+  resolution: "optimism@npm:0.16.2"
   dependencies:
     "@wry/context": ^0.7.0
     "@wry/trie": ^0.3.0
-    tslib: ^2.3.0
-  checksum: 15e34e9b1ffef876cdc403cceb3e3dec6728dfd61ebc4538ef4ba92019f756030c433738c4d294a8ccb3b3d5a7a08c7de836d494e9d87876050b96e01ec9b72f
+  checksum: a98ed9a0b8ee2b031010222099b60860d52860bf8182889f2695a7cf2185f21aca59020f78e2b47c0ae7697843caa576798d792967314ff59f6aa7c5d9de7f3a
   languageName: node
   linkType: hard
 
@@ -20966,13 +20965,13 @@ __metadata:
     "@bn-digital/cosmiconfig": ^1.0.8
     "@bn-digital/projen": ^0.9.2
     "@bn-digital/vault-env": ^1.4.0
-    "@types/node": ^20.1.1
-    projen: ^0.71.46
+    "@types/node": ^20.1.2
+    projen: ^0.71.52
     typescript: ^5.0.4
   languageName: unknown
   linkType: soft
 
-"projen@npm:^0.71.46":
+"projen@npm:^0.71.52":
   version: 0.71.52
   resolution: "projen@npm:0.71.52"
   dependencies:

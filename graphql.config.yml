@@ -1,7 +1,7 @@
 schema: packages/cms/src/graphql/schema.graphql
 include:
   - packages/website/src/graphql/*/*.graphql
-  - packages/website/src/graphql/index.tsx
+  - packages/website/src/graphql/index.ts
 extensions:
   endpoints:
     cms: http://localhost:1337/graphql

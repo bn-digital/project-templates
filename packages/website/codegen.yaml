@@ -27,12 +27,10 @@ generates:
           useExplicitTyping: true
       - typescript-react-apollo:
           dedupeFragments: true
-          emitLegacyCommonJSImports: true
           reactApolloVersion: 3
           addDocBlocks: false
           withComponent: false
           optimizeDocumentNode: true
-          documentMode: documentNodeImportFragments
           withHooks: true
           withMutationOptionsType: false
   src/types/graphql.d.ts:
