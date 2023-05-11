@@ -2026,19 +2026,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/pulumi@npm:^1.3.14":
-  version: 1.3.14
-  resolution: "@bn-digital/pulumi@npm:1.3.14"
+"@bn-digital/pulumi@npm:^1.4.30":
+  version: 1.4.30
+  resolution: "@bn-digital/pulumi@npm:1.4.30"
   dependencies:
     "@pulumi/aws": ^5.40.0
     "@pulumi/digitalocean": ^4.19.1
     "@pulumi/github": ^5.8.0
+    "@pulumi/kubernetes": ^3.27.0
     "@pulumi/postgresql": ^3.8.0
     "@pulumi/pulumi": ^3.66.0
+    "@pulumi/random": ^4.13.0
     "@pulumi/tls": ^4.10.0
     "@pulumi/vault": ^5.11.0
     "@pulumiverse/harbor": ^3.8.4
-  checksum: 9a582d77c01f898526824d107f9a3601139509a8fecd3a0d80863450dc1d87865216ba4394d606ba2812489fd2bb2eb0b89887500bd4afd21916f7c39c6e8280
+  checksum: 2775e2f279ddde4c97aea830ba67cf4f9153ce52dfb71291a13014964d4751d232b14608c5cb3b0bc26dfb0cc55ca90d362a3043d2cd247f37100f394a844724
   languageName: node
   linkType: hard
 
@@ -4851,7 +4853,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@project-templates/cloud@workspace:packages/cloud"
   dependencies:
-    "@bn-digital/pulumi": ^1.3.14
+    "@bn-digital/pulumi": ^1.4.30
     "@bn-digital/typescript-config": ^1.3.4
     "@pulumi/pulumi": ^3.66.0
     dotenv: ^16.0.3
@@ -5001,6 +5003,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@pulumi/kubernetes@npm:^3.27.0":
+  version: 3.27.0
+  resolution: "@pulumi/kubernetes@npm:3.27.0"
+  dependencies:
+    "@pulumi/pulumi": ^3.25.0
+    "@types/glob": ^5.0.35
+    "@types/node-fetch": ^2.1.4
+    "@types/tmp": ^0.0.33
+    glob: ^7.1.2
+    node-fetch: ^2.3.0
+    shell-quote: ^1.6.1
+    tmp: ^0.0.33
+  checksum: e664035719e2b83cbd27c4dc223041e77217d716c9ca663f7f050587763ab217a34d2cd161cd2230a16e666a500b05d001d19aa677046a4534bc84b8500ac40a
+  languageName: node
+  linkType: hard
+
 "@pulumi/postgresql@npm:^3.8.0":
   version: 3.8.0
   resolution: "@pulumi/postgresql@npm:3.8.0"
@@ -5041,7 +5059,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/pulumi@npm:^3.66.0":
+"@pulumi/pulumi@npm:^3.25.0, @pulumi/pulumi@npm:^3.66.0":
   version: 3.66.0
   resolution: "@pulumi/pulumi@npm:3.66.0"
   dependencies:
@@ -5076,6 +5094,15 @@ __metadata:
   version: 0.3.0
   resolution: "@pulumi/query@npm:0.3.0"
   checksum: 4e579c56937313a4e60211510dd0dcb71bb3014707f727015f5458d5f1e227a83b3a15bfd97c5b44500d022ee15f81917d45de0f6c2b11d47e6fba333b3b6195
+  languageName: node
+  linkType: hard
+
+"@pulumi/random@npm:^4.13.0":
+  version: 4.13.0
+  resolution: "@pulumi/random@npm:4.13.0"
+  dependencies:
+    "@pulumi/pulumi": ^3.0.0
+  checksum: 930d92f48699eea3e92d5746efe350ee50ea7f756357249a93ca57dc3fec64a3ed5e664a596d714e8379a720af54bc0ec26febc0b9fc4c858a5b8ea35ac67c21
   languageName: node
   linkType: hard
 
@@ -6924,6 +6951,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/glob@npm:^5.0.35":
+  version: 5.0.38
+  resolution: "@types/glob@npm:5.0.38"
+  dependencies:
+    "@types/minimatch": "*"
+    "@types/node": "*"
+  checksum: 57d92cbe75d03b0b68ebf9d2caf9a36a9da4790c18c88982eb98fa14706ba8231a9d59688c002286fb792197d78c7ccc057075ada90afe00a4702b3ec2593724
+  languageName: node
+  linkType: hard
+
 "@types/glob@npm:^7.1.1":
   version: 7.2.0
   resolution: "@types/glob@npm:7.2.0"
@@ -7142,6 +7179,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node-fetch@npm:^2.1.4":
+  version: 2.6.3
+  resolution: "@types/node-fetch@npm:2.6.3"
+  dependencies:
+    "@types/node": "*"
+    form-data: ^3.0.0
+  checksum: b68cda58e91535a42dd5337932443c37f8e198ca1e8deeb95bd92a64a9a84d92071867b91c5eb84ee8e13f33d45a70549fe2bc11dd070a894dd561909f4d39f5
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0":
   version: 18.16.0
   resolution: "@types/node@npm:18.16.0"
@@ -7318,6 +7365,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 9578470db0b527c26e246a1220ae9bffc6bf47f20f89c54aac467c083ab1f7e16c00d9a7b4bb6cb4e2dfae465027270827e5908a6236063f6214625e50585d78
+  languageName: node
+  linkType: hard
+
+"@types/tmp@npm:^0.0.33":
+  version: 0.0.33
+  resolution: "@types/tmp@npm:0.0.33"
+  checksum: b6963af74092bd56a1a9a7936a1a6de45ddbd5e774f9fc904f16b7e2ada79da8a769e0c5b9df083064b8080bb260c4973ba4307640b7b7a75ed1c47bda8c4110
   languageName: node
   linkType: hard
 
@@ -13089,6 +13143,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"form-data@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "form-data@npm:3.0.1"
+  dependencies:
+    asynckit: ^0.4.0
+    combined-stream: ^1.0.8
+    mime-types: ^2.1.12
+  checksum: b019e8d35c8afc14a2bd8a7a92fa4f525a4726b6d5a9740e8d2623c30e308fbb58dc8469f90415a856698933c8479b01646a9dff33c87cc4e76d72aedbbf860d
+  languageName: node
+  linkType: hard
+
 "form-data@npm:^4.0.0":
   version: 4.0.0
   resolution: "form-data@npm:4.0.0"
@@ -13532,7 +13597,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.0.0, glob@npm:^7.0.5, glob@npm:^7.1.1, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6, glob@npm:^7.1.7":
+"glob@npm:^7.0.0, glob@npm:^7.0.5, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6, glob@npm:^7.1.7":
   version: 7.2.3
   resolution: "glob@npm:7.2.3"
   dependencies:
@@ -18004,6 +18069,20 @@ __metadata:
     encoding:
       optional: true
   checksum: acb04f9ce7224965b2b59e71b33c639794d8991efd73855b0b250921382b38331ffc9d61bce502571f6cc6e11a8905ca9b1b6d4aeb586ab093e2756a1fd190d0
+  languageName: node
+  linkType: hard
+
+"node-fetch@npm:^2.3.0":
+  version: 2.6.11
+  resolution: "node-fetch@npm:2.6.11"
+  dependencies:
+    whatwg-url: ^5.0.0
+  peerDependencies:
+    encoding: ^0.1.0
+  peerDependenciesMeta:
+    encoding:
+      optional: true
+  checksum: 249d0666a9497553384d46b5ab296ba223521ac88fed4d8a17d6ee6c2efb0fc890f3e8091cafe7f9fba8151a5b8d925db2671543b3409a56c3cd522b468b47b3
   languageName: node
   linkType: hard
 
@@ -22729,7 +22808,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shell-quote@npm:^1.7.3":
+"shell-quote@npm:^1.6.1, shell-quote@npm:^1.7.3":
   version: 1.8.1
   resolution: "shell-quote@npm:1.8.1"
   checksum: 5f01201f4ef504d4c6a9d0d283fa17075f6770bfbe4c5850b074974c68062f37929ca61700d95ad2ac8822e14e8c4b990ca0e6e9272e64befd74ce5e19f0736b
