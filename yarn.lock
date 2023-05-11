@@ -4543,14 +4543,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oozcitak/dom@npm:1.15.8":
-  version: 1.15.8
-  resolution: "@oozcitak/dom@npm:1.15.8"
+"@oozcitak/dom@npm:1.15.10":
+  version: 1.15.10
+  resolution: "@oozcitak/dom@npm:1.15.10"
   dependencies:
     "@oozcitak/infra": 1.0.8
     "@oozcitak/url": 1.0.4
     "@oozcitak/util": 8.3.8
-  checksum: 01725ee17b9e1f618971f2190d57bf90a866b7af8e4e41f3f6dfb24201767a9843da4a63b4225d92bcdb0394b95a56dac67049eb6b074119fe97df83728ab04d
+  checksum: c83f5dc778b12f8e52e35fac0aa741bfac074faf3f3b60345723de46cba4c8ef0dced2839379fb93e21007f52336f875cf9ddfff6c598020b0688cb7d6f03ec7
   languageName: node
   linkType: hard
 
@@ -15760,19 +15760,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:3.14.0":
-  version: 3.14.0
-  resolution: "js-yaml@npm:3.14.0"
-  dependencies:
-    argparse: ^1.0.7
-    esprima: ^4.0.0
-  bin:
-    js-yaml: bin/js-yaml.js
-  checksum: a1a47c912ba20956f96cb0998dea2e74c7f7129d831fe33d3c5a16f3f83712ce405172a8dd1c26bf2b3ad74b54016d432ff727928670ae5a50a57a677c387949
-  languageName: node
-  linkType: hard
-
-"js-yaml@npm:^3.13.1, js-yaml@npm:^3.14.0":
+"js-yaml@npm:3.14.1, js-yaml@npm:^3.13.1, js-yaml@npm:^3.14.0":
   version: 3.14.1
   resolution: "js-yaml@npm:3.14.1"
   dependencies:
@@ -20050,14 +20038,14 @@ __metadata:
     "@bn-digital/projen": ^0.9.2
     "@bn-digital/vault-env": ^1.4.0
     "@types/node": ^20.1.0
-    projen: ^0.71.46
+    projen: ^0.71.52
     typescript: ^5.0.4
   languageName: unknown
   linkType: soft
 
-"projen@npm:^0.71.46":
-  version: 0.71.46
-  resolution: "projen@npm:0.71.46"
+"projen@npm:^0.71.52":
+  version: 0.71.52
+  resolution: "projen@npm:0.71.52"
   dependencies:
     "@iarna/toml": ^2.2.5
     case: ^1.6.3
@@ -20069,12 +20057,12 @@ __metadata:
     ini: ^2.0.0
     semver: ^7.5.0
     shx: ^0.3.4
-    xmlbuilder2: ^2.4.1
+    xmlbuilder2: ^3.1.1
     yaml: ^2.2.2
     yargs: ^17.7.2
   bin:
     projen: bin/projen
-  checksum: 454f7c9823a1032f52c5d0fceb335b6d66502348fdd7da80241f8a102d50fc28490cf72d00d55f78bda4398aa191fc0a6ea7c89ed215dd1c5ece0217bd1a5200
+  checksum: 49519960423c60f32dbe19fd075bbfd784390e3e1ee6d95e1579f7ade7c56487dd2d86791759d0f019de06d34cc333d65066d229ecc7ec6526eb9de7376c270d
   languageName: node
   linkType: hard
 
@@ -26283,16 +26271,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"xmlbuilder2@npm:^2.4.1":
-  version: 2.4.1
-  resolution: "xmlbuilder2@npm:2.4.1"
+"xmlbuilder2@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "xmlbuilder2@npm:3.1.1"
   dependencies:
-    "@oozcitak/dom": 1.15.8
+    "@oozcitak/dom": 1.15.10
     "@oozcitak/infra": 1.0.8
     "@oozcitak/util": 8.3.8
-    "@types/node": "*"
-    js-yaml: 3.14.0
-  checksum: 1e00a96ac49e462f4d1a3790b63554b9421363bfdef971f5d54c8b34bfd7d00cd26fffbf8ff47cad85bb826dcb9bd0ed4714f5e59607b02878717dab3ca399f4
+    js-yaml: 3.14.1
+  checksum: fdcd38d271f1571972ec1facda5bb0d441c4d7d4fa0696cb591a1804549527c462479937194329a453ae5efcd5110c6d3a3d6cf98e210afa2c78bd0400fc6d3c
   languageName: node
   linkType: hard
 

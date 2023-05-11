@@ -36,7 +36,7 @@
     "@bn-digital/projen": "^0.9.2",
     "@bn-digital/vault-env": "^1.4.0",
     "@types/node": "^20.1.0",
-    "projen": "^0.71.46",
+    "projen": "^0.71.52",
     "typescript": "^5.0.4"
   },
   "scripts": {
