@@ -9,5 +9,5 @@ on:
  
 jobs:
   secrets:
-    uses: bn-digital/infrastructure/.github/workflows/sync.yml@latest
+    uses: bn-digital/vault/.github/workflows/sync.yml@latest
     secrets: inherit
