@@ -5,7 +5,9 @@ on:
       environment:
         type: choice
         default: staging
-        description: "Environment to transfer to. Warning: that will purge target environment database and all related CMS data!"
+        description: |
+          Environment to transfer to.
+          Warning: that will purge target environment database and all related CMS data!
         options:
           - "development ➔ staging"
           - "staging ➔ production"
