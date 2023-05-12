@@ -1,4 +1,5 @@
 import { FullStackProject } from "@bn-digital/projen"
+
 const name = process.env.APP_NAME
 name &&
   new FullStackProject({
