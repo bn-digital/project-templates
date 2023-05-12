@@ -27,7 +27,10 @@ COPY --from=build --chown=node /usr/local/src/packages/website/build public
 COPY --from=busybox /bin/wget /bin/wget
 ENV NODE_ENV=production \
     HOST=0.0.0.0 \
-    PORT=5000
+    PORT=5000 \
+    STRAPI_TELEMETRY_DISABLED=true \
+    BROWSER=false \
+
 EXPOSE $PORT
 ENTRYPOINT ["npx"]
 CMD ["strapi", "start"]
