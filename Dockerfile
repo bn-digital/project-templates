@@ -1,14 +1,14 @@
 # syntax=docker/dockerfile:latest
-ARG version=3.5.0
+ARG version=3.6.0
 FROM dcr.bndigital.dev/library/yarn:${version} AS build
 COPY .yarn .yarn
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY packages/cms/package.json packages/cms/package.json
 COPY packages/website/package.json packages/website/package.json
+ENV d
 RUN yarn
 COPY packages packages
-RUN --mount=type=cache,target=/var/cache/yarn \
-    yarn build \
+RUN yarn build \
  && rm -rf packages/cms/tsconfig.json \
  && rm -rf packages/cms/src/* \
  && rm -rf packages/cms/config \
@@ -17,8 +17,7 @@ RUN --mount=type=cache,target=/var/cache/yarn \
  && yarn workspaces focus --production --all
 
 FROM dcr.bndigital.dev/library/nodejs:${version}
-LABEL org.opencontainers.image.source=https://github.com/bn-digital/project-templates \
-      org.opencontainers.image.authors="BN Digital <dev@bndigital.co>"
+LABEL org.opencontainers.image.authors="BN Digital <dev@bndigital.co>"
 USER node
 WORKDIR /usr/local/src
 COPY --from=build --chown=node /usr/local/src/node_modules /usr/local/src/node_modules
@@ -29,8 +28,7 @@ ENV NODE_ENV=production \
     HOST=0.0.0.0 \
     PORT=5000 \
     STRAPI_TELEMETRY_DISABLED=true \
-    BROWSER=false \
-
+    BROWSER=false
 EXPOSE $PORT
 ENTRYPOINT ["npx"]
 CMD ["strapi", "start"]
