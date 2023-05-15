@@ -5,7 +5,7 @@ COPY .yarn .yarn
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY packages/cms/package.json packages/cms/package.json
 COPY packages/website/package.json packages/website/package.json
-ENV d
+ENV YARN_NM_HOISTING_LIMITS=workspaces
 RUN yarn
 COPY packages packages
 RUN yarn build \
