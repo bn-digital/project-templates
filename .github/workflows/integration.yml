@@ -24,6 +24,5 @@ on:
 
 jobs:
   build:
-    needs: [ secrets ]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
     secrets: inherit
