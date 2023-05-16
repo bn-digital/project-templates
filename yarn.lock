@@ -1945,9 +1945,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/eslint-config@npm:^2.2.4":
-  version: 2.2.4
-  resolution: "@bn-digital/eslint-config@npm:2.2.4"
+"@bn-digital/eslint-config@npm:^2.2.5":
+  version: 2.2.5
+  resolution: "@bn-digital/eslint-config@npm:2.2.5"
   dependencies:
     "@babel/eslint-parser": ^7.21.8
     "@eslint/create-config": ^0.4.3
@@ -1961,13 +1961,12 @@ __metadata:
     eslint: ^8.40.0
     eslint-config-prettier: ^8.8.0
     eslint-plugin-import: ^2.27.5
-    eslint-plugin-jsx-a11y: ^6.7.1
     eslint-plugin-node: ^11.1.0
     eslint-plugin-react: ^7.32.2
     eslint-plugin-react-hooks: ^4.6.0
     eslint-plugin-react-refresh: ^0.4.1
     eslint-plugin-unicorn: ^47.0.0
-  checksum: 0a124f0d97450fb485400927ef9d66ba5a66ca9833ad30d6f43887331532fd0b605ffd2dad7eac1a4c4903109200e3a6b09090a16a45613878ea69d47baa138b
+  checksum: 0fd9f869d39557326a0d7375a5cf89937b6a731abc94a726e3b227f38ae4a1399fafac911d888a4b8ea65e6f0555eae50fce6d4d4976d7f395232e3253eefd7e
   languageName: node
   linkType: hard
 
@@ -2160,11 +2159,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/vite@npm:^2.3.8":
-  version: 2.3.8
-  resolution: "@bn-digital/vite@npm:2.3.8"
+"@bn-digital/vite@npm:^2.3.10":
+  version: 2.3.10
+  resolution: "@bn-digital/vite@npm:2.3.10"
   dependencies:
-    "@bn-digital/eslint-config": ^2.2.4
+    "@bn-digital/eslint-config": ^2.2.5
     "@bn-digital/graphql-config": ^2.3.2
     "@bn-digital/postcss-config": ^2.0.13
     "@bn-digital/stylelint-config": ^2.2.0
@@ -2183,7 +2182,7 @@ __metadata:
     vite-plugin-radar: ^0.9.0
     vite-plugin-svgr: ^3.2.0
     vite-tsconfig-paths: ^4.2.0
-  checksum: 5ea896eaf4125efb0177751479f588bb751bb676e67364bfca945163807e6bd68b1a216ed2f1b99a8640fe46d90319b8f1ecea5574c841b8f1632baebc88175c
+  checksum: 1984c7e568ec205ee39833791324bcdf19fb56213c92227721e1a481e99b27e3db04713e3efbacc33072fc99d51d5123d9570e19312f2a901877fd3757845893
   languageName: node
   linkType: hard
 
@@ -4975,7 +4974,7 @@ __metadata:
   resolution: "@project-templates/website@workspace:packages/website"
   dependencies:
     "@apollo/client": ^3.7.14
-    "@bn-digital/vite": ^2.3.8
+    "@bn-digital/vite": ^2.3.10
     "@types/react": ^18.2.6
     "@types/react-dom": ^18.2.4
     antd: 4.24.10
