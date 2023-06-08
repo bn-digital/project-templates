@@ -9,7 +9,31 @@ class RouteResolver {
     this.ctx = ctx
   }
 
-  static fromContext(ctx: Context): RouteResolver {
+  public get shouldRedirectToIndex(): boolean {
+    return !this.isStrapiInternal && !this.isGraphql && !this.isStatic && !this.isWellKnown && this.spaEntryExists
+  }
+
+  private get isGraphql(): boolean {
+    return this.strapiRoutePrefixes().some(prefix => this.ctx.url.startsWith(prefix))
+  }
+
+  private get isStrapiInternal(): boolean {
+    return this.strapiRoutePrefixes().some(prefix => this.ctx.url.startsWith(prefix))
+  }
+
+  private get isStatic(): boolean {
+    return new RegExp(/[0-9a-z_-]+\.[a-z0-9]{2,5}/i).test(this.ctx.url) || this.ctx.method.toLowerCase() !== "get"
+  }
+
+  private get isWellKnown(): boolean {
+    return this.ctx.response.status !== 404
+  }
+
+  private get spaEntryExists(): boolean {
+    return existsSync(join(strapi.dirs.static.public, `index.html`))
+  }
+
+  public static fromContext(ctx: Context): RouteResolver {
     return new RouteResolver(ctx)
   }
 
@@ -40,40 +64,17 @@ class RouteResolver {
       .filter(this.distinctValues)
       .filter(this.urlPrefixMatcher)
   }
-
-  private get isGraphql(): boolean {
-    return this.strapiRoutePrefixes().some(prefix => this.ctx.url.startsWith(prefix))
-  }
-
-  private get isStrapiInternal(): boolean {
-    return this.strapiRoutePrefixes().some(prefix => this.ctx.url.startsWith(prefix))
-  }
-
-  private get isStatic(): boolean {
-    return new RegExp(/[0-9a-z_-]+\.[a-z0-9]{2,5}/i).test(this.ctx.url) || this.ctx.method.toLowerCase() !== "get"
-  }
-
-  private get isWellKnown(): boolean {
-    return this.ctx.response.status !== 404
-  }
-
-  private get spaEntryExists(): boolean {
-    return existsSync(join(strapi.dirs.static.public, `index.html`))
-  }
-
-  get shouldRedirectToIndex(): boolean {
-    return !this.isStrapiInternal && !this.isGraphql && !this.isStatic && !this.isWellKnown && this.spaEntryExists
-  }
 }
 
-export default () => (ctx: Context, next: Next) => {
-  const resolver = RouteResolver.fromContext(ctx)
-  if (!resolver.shouldRedirectToIndex) {
-    return next()
-  } else {
-    ctx.url = "/index.html"
-    ctx.type = "html"
-    ctx.status = 200
-    ctx.body = readFileSync(join(strapi.dirs.static.public, `index.html`))
+export default () =>
+  (ctx: Context, next: Next): void | Promise<unknown> => {
+    const resolver = RouteResolver.fromContext(ctx)
+    if (!resolver.shouldRedirectToIndex) {
+      return next()
+    } else {
+      ctx.url = "/index.html"
+      ctx.type = "html"
+      ctx.status = 200
+      ctx.body = readFileSync(join(strapi.dirs.static.public, `index.html`))
+    }
   }
-}

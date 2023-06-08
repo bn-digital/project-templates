@@ -1,10 +1,10 @@
 import { ComponentPreview, Previews } from "@react-buddy/ide-toolbox"
-
+import { FC } from "react"
 import { DefaultLayout, Footer, Header } from "../components/layout"
 import { Logo } from "../components/logo"
 import { PaletteTree } from "./PaletteTree"
 
-const ComponentPreviews = () => {
+const ComponentPreviews: FC = () => {
   return (
     <Previews palette={<PaletteTree />}>
       <ComponentPreview path={"/PaletteTree"}>

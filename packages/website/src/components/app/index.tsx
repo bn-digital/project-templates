@@ -1,12 +1,11 @@
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from "@apollo/client"
-import { onError } from "@apollo/client/link/error"
 import { ConfigProvider } from "antd"
 import { createContext, memo, useContext, type FC, type PropsWithChildren } from "react"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import introspection from "src/graphql"
-import routes from "src/pages"
-import theme from "src/themes"
 import { version } from "../../../package.json"
+import introspection from "../../graphql"
+import routes from "../../pages"
+import theme from "../../themes"
 
 type ContextProps = {
   app: { version: string }
@@ -20,24 +19,13 @@ const ContextProvider: FC<PropsWithChildren<ContextProps>> = ({ children, ...pro
   return <Context.Provider value={{ ...props }}>{children}</Context.Provider>
 }
 
-const useApp = () => useContext(Context)
+const useApp: () => ContextProps = () => useContext(Context)
 
 const client = new ApolloClient({
-  link: onError(error => {
-    error = {
-      ...error,
-      response: {
-        ...error.response,
-        data: { home: { data: { attributes: { hero: { heading: { title: "Fallback" } } } } } },
-      },
-    }
-    console.log(error)
-  }).concat(
-    createHttpLink({
-      uri: `${import.meta.env.WEBSITE_API_URL ?? "/graphql"}`,
-      credentials: "same-origin",
-    })
-  ),
+  link: createHttpLink({
+    uri: `${import.meta.env.WEBSITE_API_URL ?? "/graphql"}`,
+    credentials: "same-origin",
+  }),
   connectToDevTools: import.meta.env.DEV,
   queryDeduplication: true,
   assumeImmutableResults: true,

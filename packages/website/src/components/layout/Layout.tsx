@@ -1,9 +1,8 @@
+import { DevSupport } from "@react-buddy/ide-toolbox"
 import { Layout } from "antd"
 import { FC, PropsWithChildren, Suspense } from "react"
 import { Outlet } from "react-router-dom"
-
-import { DevSupport } from "@react-buddy/ide-toolbox"
-import { ComponentPreviews, useInitial } from "src/dev"
+import { ComponentPreviews, useInitial } from "../../dev"
 import { HeaderMenu } from "../menu"
 import { Footer } from "./Footer"
 import { Header } from "./Header"
@@ -24,7 +23,7 @@ const DefaultLayout: FC = () => (
   </Layout>
 )
 
-function withDevSupport<T extends PropsWithChildren = PropsWithChildren>(Wrapped: FC<T>) {
+function withDevSupport<T extends PropsWithChildren = PropsWithChildren>(Wrapped: FC<T>): FC<T> {
   return (props: T) =>
     import.meta.env.PROD ? (
       <Wrapped {...props} />

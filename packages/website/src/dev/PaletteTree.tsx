@@ -1,10 +1,9 @@
 import { Category, Component, Palette, Variant } from "@react-buddy/ide-toolbox"
-
+import { FC } from "react"
 import { Footer, Header, Loader } from "../components/layout"
-
 import { Logo } from "../components/logo"
 
-export const PaletteTree = () => (
+export const PaletteTree: FC = () => (
   <Palette>
     <Category name={"App"}>
       <Component name={"Loader"}>

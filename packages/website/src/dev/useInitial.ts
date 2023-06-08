@@ -1,7 +1,8 @@
+import { InitialHookStatus } from "@react-buddy/ide-toolbox"
 import { useState } from "react"
 
-export const useInitial = () => {
-  const [status] = useState({
+export const useInitial = (): InitialHookStatus => {
+  const [status] = useState<InitialHookStatus>({
     loading: false,
     error: false,
   })

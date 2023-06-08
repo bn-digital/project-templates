@@ -1,7 +1,7 @@
 {
   "name": "@project-templates/cms",
   "description": "CMS & API provided by Strapi",
-  "version": "2023.5.23",
+  "version": "2023.6.8",
   "scripts": {
     "env": "npx vault-env generate",
     "build": "strapi build",

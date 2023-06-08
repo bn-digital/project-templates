@@ -1,7 +1,7 @@
 {
   "name": "@project-templates/website",
   "description": "Frontend application based on Ant Design React components",
-  "version": "2023.5.23",
+  "version": "2023.6.8",
   "scripts": {
     "env": "npx vault-env",
     "build": "npx vite build",

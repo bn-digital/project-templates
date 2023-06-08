@@ -1,7 +1,7 @@
 {
   "name": "project-templates",
   "description": "Includes all required tools and packages to bootstrap full-stack app development using NodeJS stack",
-  "version": "2023.5.23",
+  "version": "2023.6.8",
   "private": true,
   "license": "proprietary",
   "maintainers": [
@@ -32,12 +32,14 @@
     "extends": "@bn-digital/stylelint-config"
   },
   "eslintConfig": {
-    "extends": "@bn-digital/eslint-config"
+    "extends": "@bn-digital/eslint-config",
+    "ignorePatterns": [
+      "webpack.config.ts"
+    ]
   },
   "devDependencies": {
     "@bn-digital/cosmiconfig": "1.1.x",
     "@bn-digital/vault-env": "1.5.x",
-    "@types/node": "20.2.x",
     "pm2": "5.3.x",
     "typescript": "5.1.x"
   },

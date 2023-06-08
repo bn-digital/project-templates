@@ -4,7 +4,7 @@ export default {
       favicon: null,
     },
   },
-  bootstrap() {
+  bootstrap(): void {
     console.log()
   },
 }
