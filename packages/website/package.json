@@ -1,24 +1,26 @@
 {
   "name": "@project-templates/website",
   "description": "Frontend application based on Ant Design React components",
+  "version": "2023.5.23",
   "scripts": {
     "env": "npx vault-env",
     "build": "npx vite build",
-    "start": "npx vite serve"
+    "start": "npx vite serve --host"
   },
   "proxy": "http://127.0.0.1:1337",
   "dependencies": {
-    "@apollo/client": "^3.7.14",
-    "antd": "4.24.10",
+    "@apollo/client": "^3.7.15",
+    "@react-buddy/ide-toolbox": "^2.3.1",
+    "antd": "^5.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-responsive": "^9.0.2",
-    "react-router": "^6.11.1",
-    "react-router-dom": "^6.11.1"
+    "react-router": "^6.12.0",
+    "react-router-dom": "^6.12.0"
   },
   "devDependencies": {
-    "@bn-digital/vite": "^2.3.8",
-    "@types/react": "^18.2.6",
+    "@bn-digital/vite": "^2.4.4",
+    "@types/react": "^18.2.9",
     "@types/react-dom": "^18.2.4"
   }
 }

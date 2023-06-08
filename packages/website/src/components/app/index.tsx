@@ -1,50 +1,64 @@
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from "@apollo/client"
-import { createContext, memo, type FC, type PropsWithChildren } from "react"
+import { onError } from "@apollo/client/link/error"
+import { ConfigProvider } from "antd"
+import { createContext, memo, useContext, type FC, type PropsWithChildren } from "react"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import introspection from "src/graphql"
+import routes from "src/pages"
+import theme from "src/themes"
+import { version } from "../../../package.json"
 
-import introspection from "../../graphql"
-import PageProvider from "../../pages"
-
-type AppProps = {
-  app: { api: boolean }
+type ContextProps = {
+  app: { version: string }
 }
 
-const defaultValue: AppProps = {
-  app: { api: false },
+const app: ContextProps["app"] = { version }
+
+const Context = createContext({ app })
+
+const ContextProvider: FC<PropsWithChildren<ContextProps>> = ({ children, ...props }) => {
+  return <Context.Provider value={{ ...props }}>{children}</Context.Provider>
 }
 
-const Context = createContext(defaultValue)
+const useApp = () => useContext(Context)
 
-type ContextProviderProps = PropsWithChildren<Partial<AppProps>>
-
-const ContextProvider: FC<ContextProviderProps> = ({ children, ...props }) => {
-  return <Context.Provider value={{ ...defaultValue, ...props }}>{children}</Context.Provider>
-}
-
-const apiUrl = `${import.meta.env.WEBSITE_API_URL ?? "/graphql"}` as const
-
-const clientOptions: ConstructorParameters<typeof ApolloClient>[0] = {
-  link: createHttpLink({
-    uri: apiUrl,
-    credentials: "same-origin",
-  }),
+const client = new ApolloClient({
+  link: onError(error => {
+    error = {
+      ...error,
+      response: {
+        ...error.response,
+        data: { home: { data: { attributes: { hero: { heading: { title: "Fallback" } } } } } },
+      },
+    }
+    console.log(error)
+  }).concat(
+    createHttpLink({
+      uri: `${import.meta.env.WEBSITE_API_URL ?? "/graphql"}`,
+      credentials: "same-origin",
+    })
+  ),
   connectToDevTools: import.meta.env.DEV,
   queryDeduplication: true,
+  assumeImmutableResults: true,
   cache: new InMemoryCache({
     resultCaching: import.meta.env.PROD,
     possibleTypes: introspection.possibleTypes,
   }),
-}
+})
 
-const apolloClient = new ApolloClient(clientOptions)
+const router = createBrowserRouter(routes)
 
 const App: FC = memo(() => (
-  <ApolloProvider client={apolloClient}>
-    <ContextProvider>
-      <PageProvider />
+  <ApolloProvider client={client}>
+    <ContextProvider app={app}>
+      <ConfigProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ConfigProvider>
     </ContextProvider>
   </ApolloProvider>
 ))
 
-export { ContextProvider }
+export { useApp }
 
 export default App

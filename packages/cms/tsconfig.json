@@ -6,7 +6,7 @@
     "strictNullChecks": false,
     "resolveJsonModule": true
   },
-  "include": ["src", "config", "./src/**/*.json"],
+  "include": ["./src", "config", "./src/**/*.json"],
   "exclude": [
     "node_modules/",
     "build/",

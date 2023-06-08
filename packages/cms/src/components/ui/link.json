@@ -16,14 +16,13 @@
     },
     "target": {
       "type": "enumeration",
-      "enum": [
-        "blank",
-        "self",
-        "parent",
-        "top"
-      ],
+      "enum": ["blank", "self", "parent", "top"],
       "default": "self",
       "required": true
+    },
+    "icon": {
+      "type": "customField",
+      "customField": "plugin::react-icons.icon"
     }
   }
 }

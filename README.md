@@ -13,13 +13,12 @@
 
 ### Operations tools
 
-- [skaffold](https://github.com/helm/helm)
-- [kubectl](https://github.com/helm/helm)
+- [docker](https://docs.docker.com/)
+- [kubectl](https://github.com/kubernetes/kubectl)
 - [helm](https://github.com/helm/helm)
 - [helmfile](https://github.com/helmfile/helmfile)
 - [doctl](https://github.com/digitalocean/doctl)
 - [pulumi](https://github.com/pulumi/pulumi)
-
 
 ## Environment
 

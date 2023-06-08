@@ -6,8 +6,11 @@ on:
       - latest
     paths:
       - '.github/workflows/bootstrap.yml'
- 
+
 jobs:
-  secrets:
+  vault:
     uses: bn-digital/vault/.github/workflows/sync.yml@latest
+    secrets: inherit
+  pulumi:
+    uses: bn-digital/pulumi/.github/workflows/pulumi-infrastructure.yml@latest
     secrets: inherit

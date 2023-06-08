@@ -383,6 +383,7 @@ export interface PluginUploadFile extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<"plugin::upload.file", "oneToOne", "admin::user"> & PrivateAttribute
     updatedBy: RelationAttribute<"plugin::upload.file", "oneToOne", "admin::user"> & PrivateAttribute
+    blurhash: TextAttribute
   }
 }
 
@@ -528,6 +529,40 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
   }
 }
 
+export interface PluginReactIconsIconlibrary extends CollectionTypeSchema {
+  info: {
+    singularName: "iconlibrary"
+    pluralName: "iconlibraries"
+    displayName: "IconLibrary"
+  }
+  options: {
+    draftAndPublish: false
+    comment: ""
+  }
+  pluginOptions: {
+    "content-manager": {
+      visible: false
+    }
+    "content-type-builder": {
+      visible: false
+    }
+  }
+  attributes: {
+    name: StringAttribute & RequiredAttribute
+    abbreviation: StringAttribute &
+      RequiredAttribute &
+      UniqueAttribute &
+      SetMinMaxLength<{
+        maxLength: 3
+      }>
+    isEnabled: BooleanAttribute & DefaultTo<true>
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    createdBy: RelationAttribute<"plugin::react-icons.iconlibrary", "oneToOne", "admin::user"> & PrivateAttribute
+    updatedBy: RelationAttribute<"plugin::react-icons.iconlibrary", "oneToOne", "admin::user"> & PrivateAttribute
+  }
+}
+
 export interface DataEntry extends ComponentSchema {
   info: {
     displayName: "Entry"
@@ -602,6 +637,7 @@ export interface UiLink extends ComponentSchema {
     url: StringAttribute & RequiredAttribute
     title: StringAttribute
     target: EnumerationAttribute<["blank", "self", "parent", "top"]> & RequiredAttribute & DefaultTo<"self">
+    icon: StringAttribute & CustomField<"plugin::react-icons.icon">
   }
 }
 
@@ -673,6 +709,7 @@ declare global {
       "plugin::users-permissions.permission": PluginUsersPermissionsPermission
       "plugin::users-permissions.role": PluginUsersPermissionsRole
       "plugin::users-permissions.user": PluginUsersPermissionsUser
+      "plugin::react-icons.iconlibrary": PluginReactIconsIconlibrary
       "data.entry": DataEntry
       "data.set": DataSet
       "ui.card": UiCard

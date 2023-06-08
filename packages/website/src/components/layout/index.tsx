@@ -1,3 +1,4 @@
-import "./index.less"
-
-export { default as DefaultLayout } from "./DefaultLayout"
+export { Footer } from "./Footer"
+export { Header } from "./Header"
+export { default as DefaultLayout } from "./Layout"
+export { Loader } from "./Loader"

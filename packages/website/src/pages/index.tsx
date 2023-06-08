@@ -1,8 +1,7 @@
-import { FC, lazy, memo } from "react"
-import { Outlet, RouteObject, RouterProvider, createBrowserRouter } from "react-router-dom"
+import { FC, lazy } from "react"
+import { Outlet, RouteObject } from "react-router-dom"
 
-import { DefaultLayout } from "../components/layout"
-import { Loader } from "../components/layout/Loader"
+import { DefaultLayout, Loader } from "../components/layout"
 
 const Home = lazy<FC>(() => import("./home"))
 
@@ -24,8 +23,4 @@ const routes: RouteObject[] = [
   },
 ]
 
-const router = createBrowserRouter(routes)
-
-const PageProvider = memo(() => <RouterProvider router={router} />)
-
-export default PageProvider
+export default routes
