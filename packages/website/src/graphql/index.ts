@@ -1,5 +1,6 @@
 import * as Apollo from "@apollo/client"
 import { gql } from "@apollo/client"
+
 const defaultOptions = {} as const
 
 export type PossibleTypesResultData = {
@@ -16,7 +17,7 @@ export type PossibleTypesResultData = {
       "ComponentUiTab",
       "ComponentUiText",
       "Home",
-      "Layout", "ReactIconsIconlibrary",
+      "Layout",
       "UploadFile",
       "UploadFolder",
       "UsersPermissionsPermission",
@@ -39,7 +40,7 @@ const result: PossibleTypesResultData = {
       "ComponentUiTab",
       "ComponentUiText",
       "Home",
-      "Layout", "ReactIconsIconlibrary",
+      "Layout",
       "UploadFile",
       "UploadFolder",
       "UsersPermissionsPermission",
@@ -138,10 +139,12 @@ export const HomeDocument = gql`
   ${CardFragmentDoc}
   ${FileFragmentDoc}
 `
+
 export function useHomeQuery(baseOptions?: Apollo.QueryHookOptions<HomeQuery, HomeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<HomeQuery, HomeQueryVariables>(HomeDocument, option)
+  return Apollo.useQuery<HomeQuery, HomeQueryVariables>(HomeDocument, options)
 }
+
 export function useHomeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HomeQuery, HomeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<HomeQuery, HomeQueryVariables>(HomeDocument, options)
@@ -157,15 +160,17 @@ export const MeDocument = gql`
     }
   }
 `
+
 export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options)
+}
 
-  export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
+export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options)
 }
 
-  export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
-  export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
-  export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
+export type MeQueryHookResult = ReturnType<typeof useMeQuery>
+export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>
+export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>

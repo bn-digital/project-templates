@@ -1,8 +1,9 @@
 root = true
 
 [*]
+charset = utf-8
+end_of_line = unset
 indent_size = tab
+indent_style = space
+max_line_length = 160
 tab_width = 2
-max_line_length = 140
-ij_any_blank_lines_after_imports = 0
-ij_any_keep_line_breaks = false

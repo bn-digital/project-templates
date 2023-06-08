@@ -5,7 +5,7 @@ import { HeroSection } from "../../components/section"
 import { useHomeQuery } from "../../graphql"
 
 const Home: FC = () => {
-  const { data, loading, error, client } = useHomeQuery()
+  const { data, loading } = useHomeQuery()
   const props = data?.home?.data?.attributes?.hero
   return (
     <Skeleton loading={loading} avatar={false}>
