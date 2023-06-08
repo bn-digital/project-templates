@@ -9,4 +9,9 @@
       </DevServerState>
     </option>
   </component>
+  <component name="StorybookProjectConfigState">
+    <option name="componentSubDirectory" value="components" />
+    <option name="useCSF7plus" value="false" />
+    <option name="useComponentSubDirectory" value="true" />
+  </component>
 </project>

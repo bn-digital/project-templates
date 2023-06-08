@@ -1,5 +1,3 @@
-import "./Navigation.less"
-
 import { Menu, MenuProps } from "antd"
 import { FC } from "react"
 

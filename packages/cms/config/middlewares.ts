@@ -1,19 +1,11 @@
-import { cspDirectives } from "../src/hooks"
+import { cspConfig, publicConfig } from "../src/hooks/config"
 
 export default () => {
   return [
     { name: "strapi::errors" },
     {
       name: "strapi::security",
-      config: {
-        contentSecurityPolicy: {
-          useDefaults: false,
-          directives: {
-            upgradeInsecureRequests: null,
-            ...cspDirectives,
-          },
-        },
-      },
+      config: cspConfig,
     },
     { name: "strapi::logger" },
     { name: "strapi::cors" },
@@ -21,6 +13,9 @@ export default () => {
     { name: "strapi::body" },
     { name: "strapi::favicon" },
     { name: "global::website" },
-    { name: "strapi::public", config: { defer: true } },
+    {
+      name: "strapi::public",
+      config: publicConfig,
+    },
   ]
 }

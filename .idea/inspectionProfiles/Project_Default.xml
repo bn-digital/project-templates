@@ -4077,6 +4077,8 @@
     <inspection_tool class="com.haulmont.jpb.SpringDataPageableParameterMissing" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="com.haulmont.jpb.UnsupportedTypeWithoutConverterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="com.haulmont.rcb.ArrayToJSXMapInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="com.haulmont.rcb.ConvertUnresolvedToStateInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="com.haulmont.rcb.EmptyAttributeInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="com.haulmont.rcb.EmptyHandlerLocalInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="com.haulmont.rcb.EmptyRefInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="com.haulmont.rcb.ExhaustiveDepsInspection" enabled="false" level="WARNING" enabled_by_default="false" />

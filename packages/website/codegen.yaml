@@ -5,7 +5,8 @@ documents:
   - src/graphql/**/*.graphql
 hooks:
   afterAllFileWrite:
-    - npx lint tsx --fix
+    - npx lint ts --fix
+emitLegacyCommonJSImports: true
 config:
   namingConvention:
     transformUnderscore: true
@@ -21,19 +22,19 @@ config:
     Time: string
     Upload: unknown
 generates:
-  src/graphql/index.ts:
+  "src/graphql/index.ts":
     plugins:
       - fragment-matcher:
           useExplicitTyping: true
+          module: es2015
       - typescript-react-apollo:
           dedupeFragments: true
-          reactApolloVersion: 3
+          optimizeDocumentNode: true
           addDocBlocks: false
           withComponent: false
-          optimizeDocumentNode: true
           withHooks: true
           withMutationOptionsType: false
-  src/types/graphql.d.ts:
+  "src/types/graphql.d.ts":
     config:
       noExport: true
       skipTypename: true

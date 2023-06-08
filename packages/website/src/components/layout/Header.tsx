@@ -2,13 +2,15 @@ import { Col, Row } from "antd"
 import { FC } from "react"
 
 import { Logo } from "../logo"
-const Header: FC<{ renderMenu: FC }> = ({ renderMenu: HorizontalMenu }) => {
+import { HeaderMenu } from "../menu"
+
+const Header: FC<{ renderMenu?: FC }> = ({ renderMenu: HorizontalMenu = HeaderMenu }) => {
   return (
-    <Row wrap={false} align={"middle"} justify={"start"}>
+    <Row align={"middle"} justify={"start"}>
       <Col>
         <Logo />
       </Col>
-      <Col span={24}>
+      <Col>
         <HorizontalMenu />
       </Col>
     </Row>

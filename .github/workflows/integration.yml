@@ -23,6 +23,10 @@ on:
       - 'packages/cms/database/**/*'
 
 jobs:
+  setup:
+    uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
+    secrets: inherit
   build:
+    needs: [ setup ]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
     secrets: inherit

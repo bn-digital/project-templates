@@ -1,2 +1,0 @@
-description: PaC-based integration tests to validate an AWS EKS cluster.
-runtime: nodejs

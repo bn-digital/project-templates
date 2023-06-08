@@ -12,6 +12,7 @@ export default ({ env }: Strapi.Env): Knex.Config => {
               ...(env<string>("DATABASE_FILENAME") ?? ["database", `${env("NODE_ENV")}.sqlite`])
             ),
           },
+          jsonbSupport: true,
           useNullAsDefault: true,
         }
       : {

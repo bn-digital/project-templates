@@ -1,0 +1,14 @@
+apps:
+  - script: bin/app.js
+    env:
+      HOST: '0.0.0.0'
+      PORT: '5000'
+      STRAPI_DISABLE_UPDATE_NOTIFICATION: 'true'
+      STRAPI_HIDE_STARTUP_MESSAGE: 'true'
+      STRAPI_TELEMETRY_DISABLED: 'true'
+      BROWSER: 'false'
+    watch: false
+    source_map_support: true
+    exec_mode: cluster
+    instances: 1
+    name: app

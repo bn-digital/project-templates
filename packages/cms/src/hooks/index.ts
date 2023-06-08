@@ -1,5 +1,4 @@
 import { join } from "path"
-
 import packageMetadata from "../../package.json"
 import { generateSecret } from "./config"
 

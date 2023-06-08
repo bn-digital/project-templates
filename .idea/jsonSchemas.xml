@@ -43,6 +43,22 @@
             </SchemaInfo>
           </value>
         </entry>
+        <entry key="TSConfig">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="TSConfig" />
+              <option name="relativePathToSchema" value="http://json.schemastore.org/tsconfig" />
+              <option name="applicationDefined" value="true" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value="packages/cms/tsconfig.json" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
         <entry key="skaffold.yaml">
           <value>
             <SchemaInfo>
