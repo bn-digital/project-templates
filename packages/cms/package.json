@@ -16,7 +16,7 @@
     "@bn-digital/typescript-config": "^1.3.6",
     "@notum-cz/strapi-plugin-content-versioning": "^0.4.7",
     "@strapi/plugin-graphql": "^4.11.0",
-    "@strapi/plugin-users-permissions": "^4.11.0",
+    "@strapi/plugin-users-permissions": "^4.11.1",
     "@strapi/provider-email-nodemailer": "^4.11.0",
     "@strapi/provider-upload-aws-s3": "^4.11.0",
     "@strapi/strapi": "^4.11.0",
