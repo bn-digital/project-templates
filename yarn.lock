@@ -5457,7 +5457,7 @@ __metadata:
     "@bn-digital/strapi-types": ^1.0.64
     "@bn-digital/typescript-config": ^1.3.6
     "@notum-cz/strapi-plugin-content-versioning": ^0.4.7
-    "@strapi/plugin-graphql": ^4.11.0
+    "@strapi/plugin-graphql": ^4.11.2
     "@strapi/plugin-users-permissions": ^4.11.0
     "@strapi/provider-email-nodemailer": ^4.11.0
     "@strapi/provider-upload-aws-s3": ^4.11.0
@@ -7180,6 +7180,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/helper-plugin@npm:4.11.2":
+  version: 4.11.2
+  resolution: "@strapi/helper-plugin@npm:4.11.2"
+  dependencies:
+    axios: 1.4.0
+    date-fns: 2.30.0
+    formik: ^2.4.0
+    immer: 9.0.19
+    lodash: 4.17.21
+    prop-types: ^15.8.1
+    qs: 6.11.1
+    react-helmet: ^6.1.0
+    react-intl: 6.4.1
+    react-select: 5.7.0
+  peerDependencies:
+    "@strapi/design-system": 1.8.0
+    "@strapi/icons": 1.8.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^5.3.4
+    styled-components: ^5.3.3
+  checksum: b5009b88f7a4dcca8b12137a510b5540049abffb05a1374ab6d53b51e30aef7dcbd1a5c72ac249a35e7dd6f57cc646eac7639abb546aebad66cd3625bd2551da
+  languageName: node
+  linkType: hard
+
 "@strapi/icons@npm:1.7.5, @strapi/icons@npm:^1.6.6":
   version: 1.7.5
   resolution: "@strapi/icons@npm:1.7.5"
@@ -7370,16 +7395,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/plugin-graphql@npm:^4.11.0":
-  version: 4.11.0
-  resolution: "@strapi/plugin-graphql@npm:4.11.0"
+"@strapi/plugin-graphql@npm:^4.11.2":
+  version: 4.11.2
+  resolution: "@strapi/plugin-graphql@npm:4.11.2"
   dependencies:
     "@graphql-tools/schema": 8.5.1
     "@graphql-tools/utils": ^8.13.1
     "@strapi/design-system": 1.8.0
-    "@strapi/helper-plugin": 4.11.0
+    "@strapi/helper-plugin": 4.11.2
     "@strapi/icons": 1.8.0
-    "@strapi/utils": 4.11.0
+    "@strapi/utils": 4.11.2
     apollo-server-core: 3.12.0
     apollo-server-koa: 3.10.0
     glob: ^7.1.7
@@ -7398,7 +7423,7 @@ __metadata:
     react-dom: ^17.0.0 || ^18.0.0
     react-router-dom: 5.3.4
     styled-components: 5.3.3
-  checksum: fc65a2847ef0be265812a4259d4b0a1cd0a7d95f0a2eeaf2fa22536b0a0e79a71f260a8bfbff96fa6311b4259232e6a18375c7c97730b66a654fce7a14326255
+  checksum: 904ca02e79ecd9185019bb78efc5dc77bb7f5dea2a32243f454914173cd48bd5f0d909c9ded3bbfd8448fe9b1e1952fcc29726cc967a762307d731113461be12
   languageName: node
   linkType: hard
 
@@ -7869,6 +7894,20 @@ __metadata:
     p-map: 4.0.0
     yup: 0.32.9
   checksum: c05bb1e30ce81bee37eea73e2a5c44e24d889a04a8d07b8fcac0444f479e38e52e827e7eea9500241e74ee34643079947f9f074a2cd2381f7b0ab4555099390c
+  languageName: node
+  linkType: hard
+
+"@strapi/utils@npm:4.11.2":
+  version: 4.11.2
+  resolution: "@strapi/utils@npm:4.11.2"
+  dependencies:
+    "@sindresorhus/slugify": 1.1.0
+    date-fns: 2.30.0
+    http-errors: 1.8.1
+    lodash: 4.17.21
+    p-map: 4.0.0
+    yup: 0.32.9
+  checksum: 8431a920413e0a830dc389d3d47695f6e3b47eb487abd3c8c0b538a809516639e18940ff292f533e20d8cb9183e4004e8f4f2319a1e3f8f45415ca692f064b77
   languageName: node
   linkType: hard
 
