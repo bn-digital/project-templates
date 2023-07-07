@@ -4,7 +4,8 @@
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",
     "strictNullChecks": false,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["@bn-digital/strapi-types", "@strapi/strapi"]
   },
   "include": ["./src", "config", "./src/**/*.json"],
   "exclude": [
