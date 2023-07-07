@@ -106,6 +106,7 @@ export interface NexusGenInputs {
   ComponentUiLinkFiltersInput: {
     // input type
     and?: Array<NexusGenInputs["ComponentUiLinkFiltersInput"] | null> | null // [ComponentUiLinkFiltersInput]
+    icon?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
     not?: NexusGenInputs["ComponentUiLinkFiltersInput"] | null // ComponentUiLinkFiltersInput
     or?: Array<NexusGenInputs["ComponentUiLinkFiltersInput"] | null> | null // [ComponentUiLinkFiltersInput]
     target?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
@@ -114,6 +115,7 @@ export interface NexusGenInputs {
   }
   ComponentUiLinkInput: {
     // input type
+    icon?: string | null // String
     id?: string | null // ID
     target?: NexusGenEnums["ENUM_COMPONENTUILINK_TARGET"] | null // ENUM_COMPONENTUILINK_TARGET
     title?: string | null // String
@@ -384,6 +386,24 @@ export interface NexusGenInputs {
     pageSize?: number | null // Int
     start?: number | null // Int
   }
+  ReactIconsIconlibraryFiltersInput: {
+    // input type
+    abbreviation?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
+    and?: Array<NexusGenInputs["ReactIconsIconlibraryFiltersInput"] | null> | null // [ReactIconsIconlibraryFiltersInput]
+    createdAt?: NexusGenInputs["DateTimeFilterInput"] | null // DateTimeFilterInput
+    id?: NexusGenInputs["IDFilterInput"] | null // IDFilterInput
+    isEnabled?: NexusGenInputs["BooleanFilterInput"] | null // BooleanFilterInput
+    name?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
+    not?: NexusGenInputs["ReactIconsIconlibraryFiltersInput"] | null // ReactIconsIconlibraryFiltersInput
+    or?: Array<NexusGenInputs["ReactIconsIconlibraryFiltersInput"] | null> | null // [ReactIconsIconlibraryFiltersInput]
+    updatedAt?: NexusGenInputs["DateTimeFilterInput"] | null // DateTimeFilterInput
+  }
+  ReactIconsIconlibraryInput: {
+    // input type
+    abbreviation?: string | null // String
+    isEnabled?: boolean | null // Boolean
+    name?: string | null // String
+  }
   StringFilterInput: {
     // input type
     and?: Array<string | null> | null // [String]
@@ -436,6 +456,7 @@ export interface NexusGenInputs {
     // input type
     alternativeText?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
     and?: Array<NexusGenInputs["UploadFileFiltersInput"] | null> | null // [UploadFileFiltersInput]
+    blurhash?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
     caption?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
     createdAt?: NexusGenInputs["DateTimeFilterInput"] | null // DateTimeFilterInput
     ext?: NexusGenInputs["StringFilterInput"] | null // StringFilterInput
@@ -460,6 +481,7 @@ export interface NexusGenInputs {
   UploadFileInput: {
     // input type
     alternativeText?: string | null // String
+    blurhash?: string | null // String
     caption?: string | null // String
     ext?: string | null // String
     folder?: string | null // ID
@@ -635,6 +657,7 @@ export interface NexusGenObjects {
   }
   ComponentUiLink: {
     // root type
+    icon?: string | null // String
     id: string // ID!
     target: NexusGenEnums["ENUM_COMPONENTUILINK_TARGET"] // ENUM_COMPONENTUILINK_TARGET!
     title?: string | null // String
@@ -692,10 +715,23 @@ export interface NexusGenObjects {
     total: number // Int!
   }
   Query: {}
+  ReactIconsIconlibrary: {
+    // root type
+    abbreviation: string // String!
+    createdAt?: NexusGenScalars["DateTime"] | null // DateTime
+    isEnabled?: boolean | null // Boolean
+    name: string // String!
+    updatedAt?: NexusGenScalars["DateTime"] | null // DateTime
+  }
+  ReactIconsIconlibraryEntity: {}
+  ReactIconsIconlibraryEntityResponse: {}
+  ReactIconsIconlibraryEntityResponseCollection: {}
+  ReactIconsIconlibraryRelationResponseCollection: {}
   ResponseCollectionMeta: {}
   UploadFile: {
     // root type
     alternativeText?: string | null // String
+    blurhash?: string | null // String
     caption?: string | null // String
     createdAt?: NexusGenScalars["DateTime"] | null // DateTime
     ext?: string | null // String
@@ -820,6 +856,7 @@ export interface NexusGenUnions {
     | NexusGenRootTypes["ComponentUiText"]
     | NexusGenRootTypes["Home"]
     | NexusGenRootTypes["Layout"]
+    | NexusGenRootTypes["ReactIconsIconlibrary"]
     | NexusGenRootTypes["UploadFile"]
     | NexusGenRootTypes["UploadFolder"]
     | NexusGenRootTypes["UsersPermissionsPermission"]
@@ -865,6 +902,7 @@ export interface NexusGenFieldTypes {
   }
   ComponentUiLink: {
     // field return type
+    icon: string | null // String
     id: string // ID!
     target: NexusGenEnums["ENUM_COMPONENTUILINK_TARGET"] // ENUM_COMPONENTUILINK_TARGET!
     title: string | null // String
@@ -951,11 +989,13 @@ export interface NexusGenFieldTypes {
   Mutation: {
     // field return type
     changePassword: NexusGenRootTypes["UsersPermissionsLoginPayload"] | null // UsersPermissionsLoginPayload
+    createReactIconsIconlibrary: NexusGenRootTypes["ReactIconsIconlibraryEntityResponse"] | null // ReactIconsIconlibraryEntityResponse
     createUploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     createUsersPermissionsRole: NexusGenRootTypes["UsersPermissionsCreateRolePayload"] | null // UsersPermissionsCreateRolePayload
     createUsersPermissionsUser: NexusGenRootTypes["UsersPermissionsUserEntityResponse"] // UsersPermissionsUserEntityResponse!
     deleteHome: NexusGenRootTypes["HomeEntityResponse"] | null // HomeEntityResponse
     deleteLayout: NexusGenRootTypes["LayoutEntityResponse"] | null // LayoutEntityResponse
+    deleteReactIconsIconlibrary: NexusGenRootTypes["ReactIconsIconlibraryEntityResponse"] | null // ReactIconsIconlibraryEntityResponse
     deleteUploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     deleteUsersPermissionsRole: NexusGenRootTypes["UsersPermissionsDeleteRolePayload"] | null // UsersPermissionsDeleteRolePayload
     deleteUsersPermissionsUser: NexusGenRootTypes["UsersPermissionsUserEntityResponse"] // UsersPermissionsUserEntityResponse!
@@ -969,6 +1009,7 @@ export interface NexusGenFieldTypes {
     updateFileInfo: NexusGenRootTypes["UploadFileEntityResponse"] // UploadFileEntityResponse!
     updateHome: NexusGenRootTypes["HomeEntityResponse"] | null // HomeEntityResponse
     updateLayout: NexusGenRootTypes["LayoutEntityResponse"] | null // LayoutEntityResponse
+    updateReactIconsIconlibrary: NexusGenRootTypes["ReactIconsIconlibraryEntityResponse"] | null // ReactIconsIconlibraryEntityResponse
     updateUploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     updateUsersPermissionsRole: NexusGenRootTypes["UsersPermissionsUpdateRolePayload"] | null // UsersPermissionsUpdateRolePayload
     updateUsersPermissionsUser: NexusGenRootTypes["UsersPermissionsUserEntityResponse"] // UsersPermissionsUserEntityResponse!
@@ -986,12 +1027,40 @@ export interface NexusGenFieldTypes {
     home: NexusGenRootTypes["HomeEntityResponse"] | null // HomeEntityResponse
     layout: NexusGenRootTypes["LayoutEntityResponse"] | null // LayoutEntityResponse
     me: NexusGenRootTypes["UsersPermissionsUser"] | null // UsersPermissionsUser
+    reactIconsIconlibraries: NexusGenRootTypes["ReactIconsIconlibraryEntityResponseCollection"] | null // ReactIconsIconlibraryEntityResponseCollection
+    reactIconsIconlibrary: NexusGenRootTypes["ReactIconsIconlibraryEntityResponse"] | null // ReactIconsIconlibraryEntityResponse
     uploadFile: NexusGenRootTypes["UploadFileEntityResponse"] | null // UploadFileEntityResponse
     uploadFiles: NexusGenRootTypes["UploadFileEntityResponseCollection"] | null // UploadFileEntityResponseCollection
     usersPermissionsRole: NexusGenRootTypes["UsersPermissionsRoleEntityResponse"] | null // UsersPermissionsRoleEntityResponse
     usersPermissionsRoles: NexusGenRootTypes["UsersPermissionsRoleEntityResponseCollection"] | null // UsersPermissionsRoleEntityResponseCollection
     usersPermissionsUser: NexusGenRootTypes["UsersPermissionsUserEntityResponse"] | null // UsersPermissionsUserEntityResponse
     usersPermissionsUsers: NexusGenRootTypes["UsersPermissionsUserEntityResponseCollection"] | null // UsersPermissionsUserEntityResponseCollection
+  }
+  ReactIconsIconlibrary: {
+    // field return type
+    abbreviation: string // String!
+    createdAt: NexusGenScalars["DateTime"] | null // DateTime
+    isEnabled: boolean | null // Boolean
+    name: string // String!
+    updatedAt: NexusGenScalars["DateTime"] | null // DateTime
+  }
+  ReactIconsIconlibraryEntity: {
+    // field return type
+    attributes: NexusGenRootTypes["ReactIconsIconlibrary"] | null // ReactIconsIconlibrary
+    id: string | null // ID
+  }
+  ReactIconsIconlibraryEntityResponse: {
+    // field return type
+    data: NexusGenRootTypes["ReactIconsIconlibraryEntity"] | null // ReactIconsIconlibraryEntity
+  }
+  ReactIconsIconlibraryEntityResponseCollection: {
+    // field return type
+    data: NexusGenRootTypes["ReactIconsIconlibraryEntity"][] // [ReactIconsIconlibraryEntity!]!
+    meta: NexusGenRootTypes["ResponseCollectionMeta"] // ResponseCollectionMeta!
+  }
+  ReactIconsIconlibraryRelationResponseCollection: {
+    // field return type
+    data: NexusGenRootTypes["ReactIconsIconlibraryEntity"][] // [ReactIconsIconlibraryEntity!]!
   }
   ResponseCollectionMeta: {
     // field return type
@@ -1000,6 +1069,7 @@ export interface NexusGenFieldTypes {
   UploadFile: {
     // field return type
     alternativeText: string | null // String
+    blurhash: string | null // String
     caption: string | null // String
     createdAt: NexusGenScalars["DateTime"] | null // DateTime
     ext: string | null // String
@@ -1221,6 +1291,7 @@ export interface NexusGenFieldTypeNames {
   }
   ComponentUiLink: {
     // field return type name
+    icon: "String"
     id: "ID"
     target: "ENUM_COMPONENTUILINK_TARGET"
     title: "String"
@@ -1307,11 +1378,13 @@ export interface NexusGenFieldTypeNames {
   Mutation: {
     // field return type name
     changePassword: "UsersPermissionsLoginPayload"
+    createReactIconsIconlibrary: "ReactIconsIconlibraryEntityResponse"
     createUploadFile: "UploadFileEntityResponse"
     createUsersPermissionsRole: "UsersPermissionsCreateRolePayload"
     createUsersPermissionsUser: "UsersPermissionsUserEntityResponse"
     deleteHome: "HomeEntityResponse"
     deleteLayout: "LayoutEntityResponse"
+    deleteReactIconsIconlibrary: "ReactIconsIconlibraryEntityResponse"
     deleteUploadFile: "UploadFileEntityResponse"
     deleteUsersPermissionsRole: "UsersPermissionsDeleteRolePayload"
     deleteUsersPermissionsUser: "UsersPermissionsUserEntityResponse"
@@ -1325,6 +1398,7 @@ export interface NexusGenFieldTypeNames {
     updateFileInfo: "UploadFileEntityResponse"
     updateHome: "HomeEntityResponse"
     updateLayout: "LayoutEntityResponse"
+    updateReactIconsIconlibrary: "ReactIconsIconlibraryEntityResponse"
     updateUploadFile: "UploadFileEntityResponse"
     updateUsersPermissionsRole: "UsersPermissionsUpdateRolePayload"
     updateUsersPermissionsUser: "UsersPermissionsUserEntityResponse"
@@ -1342,12 +1416,40 @@ export interface NexusGenFieldTypeNames {
     home: "HomeEntityResponse"
     layout: "LayoutEntityResponse"
     me: "UsersPermissionsUser"
+    reactIconsIconlibraries: "ReactIconsIconlibraryEntityResponseCollection"
+    reactIconsIconlibrary: "ReactIconsIconlibraryEntityResponse"
     uploadFile: "UploadFileEntityResponse"
     uploadFiles: "UploadFileEntityResponseCollection"
     usersPermissionsRole: "UsersPermissionsRoleEntityResponse"
     usersPermissionsRoles: "UsersPermissionsRoleEntityResponseCollection"
     usersPermissionsUser: "UsersPermissionsUserEntityResponse"
     usersPermissionsUsers: "UsersPermissionsUserEntityResponseCollection"
+  }
+  ReactIconsIconlibrary: {
+    // field return type name
+    abbreviation: "String"
+    createdAt: "DateTime"
+    isEnabled: "Boolean"
+    name: "String"
+    updatedAt: "DateTime"
+  }
+  ReactIconsIconlibraryEntity: {
+    // field return type name
+    attributes: "ReactIconsIconlibrary"
+    id: "ID"
+  }
+  ReactIconsIconlibraryEntityResponse: {
+    // field return type name
+    data: "ReactIconsIconlibraryEntity"
+  }
+  ReactIconsIconlibraryEntityResponseCollection: {
+    // field return type name
+    data: "ReactIconsIconlibraryEntity"
+    meta: "ResponseCollectionMeta"
+  }
+  ReactIconsIconlibraryRelationResponseCollection: {
+    // field return type name
+    data: "ReactIconsIconlibraryEntity"
   }
   ResponseCollectionMeta: {
     // field return type name
@@ -1356,6 +1458,7 @@ export interface NexusGenFieldTypeNames {
   UploadFile: {
     // field return type name
     alternativeText: "String"
+    blurhash: "String"
     caption: "String"
     createdAt: "DateTime"
     ext: "String"
@@ -1575,6 +1678,10 @@ export interface NexusGenArgTypes {
       password: string // String!
       passwordConfirmation: string // String!
     }
+    createReactIconsIconlibrary: {
+      // args
+      data: NexusGenInputs["ReactIconsIconlibraryInput"] // ReactIconsIconlibraryInput!
+    }
     createUploadFile: {
       // args
       data: NexusGenInputs["UploadFileInput"] // UploadFileInput!
@@ -1586,6 +1693,10 @@ export interface NexusGenArgTypes {
     createUsersPermissionsUser: {
       // args
       data: NexusGenInputs["UsersPermissionsUserInput"] // UsersPermissionsUserInput!
+    }
+    deleteReactIconsIconlibrary: {
+      // args
+      id: string // ID!
     }
     deleteUploadFile: {
       // args
@@ -1645,6 +1756,11 @@ export interface NexusGenArgTypes {
       // args
       data: NexusGenInputs["LayoutInput"] // LayoutInput!
     }
+    updateReactIconsIconlibrary: {
+      // args
+      data: NexusGenInputs["ReactIconsIconlibraryInput"] // ReactIconsIconlibraryInput!
+      id: string // ID!
+    }
     updateUploadFile: {
       // args
       data: NexusGenInputs["UploadFileInput"] // UploadFileInput!
@@ -1670,6 +1786,16 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
+    reactIconsIconlibraries: {
+      // args
+      filters?: NexusGenInputs["ReactIconsIconlibraryFiltersInput"] | null // ReactIconsIconlibraryFiltersInput
+      pagination: NexusGenInputs["PaginationArg"] | null // PaginationArg
+      sort: Array<string | null> | null // [String]
+    }
+    reactIconsIconlibrary: {
+      // args
+      id?: string | null // ID
+    }
     uploadFile: {
       // args
       id?: string | null // ID
@@ -1745,6 +1871,7 @@ export interface NexusGenAbstractTypeMembers {
     | "ComponentUiText"
     | "Home"
     | "Layout"
+    | "ReactIconsIconlibrary"
     | "UploadFile"
     | "UploadFolder"
     | "UsersPermissionsPermission"
@@ -1811,9 +1938,14 @@ export interface NexusGenTypes {
 
 declare global {
   interface NexusGenPluginTypeConfig<TypeName extends string> {}
+
   interface NexusGenPluginInputTypeConfig<TypeName extends string> {}
+
   interface NexusGenPluginFieldConfig<TypeName extends string, FieldName extends string> {}
+
   interface NexusGenPluginInputFieldConfig<TypeName extends string, FieldName extends string> {}
+
   interface NexusGenPluginSchemaConfig {}
+
   interface NexusGenPluginArgConfig {}
 }

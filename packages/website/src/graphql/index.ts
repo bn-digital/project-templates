@@ -18,11 +18,12 @@ export type PossibleTypesResultData = {
       "ComponentUiText",
       "Home",
       "Layout",
+      "ReactIconsIconlibrary",
       "UploadFile",
       "UploadFolder",
       "UsersPermissionsPermission",
       "UsersPermissionsRole",
-      "UsersPermissionsUser"
+      "UsersPermissionsUser",
     ]
   }
 }
@@ -41,6 +42,7 @@ const result: PossibleTypesResultData = {
       "ComponentUiText",
       "Home",
       "Layout",
+      "ReactIconsIconlibrary",
       "UploadFile",
       "UploadFolder",
       "UsersPermissionsPermission",
@@ -139,17 +141,14 @@ export const HomeDocument = gql`
   ${CardFragmentDoc}
   ${FileFragmentDoc}
 `
-
 export function useHomeQuery(baseOptions?: Apollo.QueryHookOptions<HomeQuery, HomeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<HomeQuery, HomeQueryVariables>(HomeDocument, options)
 }
-
 export function useHomeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HomeQuery, HomeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<HomeQuery, HomeQueryVariables>(HomeDocument, options)
 }
-
 export type HomeQueryHookResult = ReturnType<typeof useHomeQuery>
 export type HomeLazyQueryHookResult = ReturnType<typeof useHomeLazyQuery>
 export type HomeQueryResult = Apollo.QueryResult<HomeQuery, HomeQueryVariables>
@@ -160,12 +159,10 @@ export const MeDocument = gql`
     }
   }
 `
-
 export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options)
 }
-
 export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options)

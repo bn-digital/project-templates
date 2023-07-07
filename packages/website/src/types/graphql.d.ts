@@ -3,6 +3,8 @@ type InputMaybe<T> = T | null | undefined
 type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
 type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> }
 type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> }
+type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never }
+type Incremental<T> = T | { [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never }
 /** All built-in and custom scalars, mapped to their actual values */
 type Scalars = {
   ID: string
@@ -119,7 +121,7 @@ type ComponentUiGrid = {
 type ComponentUiGridChildrenArgs = {
   filters?: InputMaybe<ComponentDataEntryFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>> | InputMaybe<Scalars["String"]>>
 }
 
 type ComponentUiGridFiltersInput = {
@@ -157,6 +159,7 @@ type ComponentUiHeadlineInput = {
 }
 
 type ComponentUiLink = {
+  icon?: Maybe<Scalars["String"]>
   id: Scalars["ID"]
   target: EnumComponentuilinkTarget
   title?: Maybe<Scalars["String"]>
@@ -165,6 +168,7 @@ type ComponentUiLink = {
 
 type ComponentUiLinkFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentUiLinkFiltersInput>>>
+  icon?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentUiLinkFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentUiLinkFiltersInput>>>
   target?: InputMaybe<StringFilterInput>
@@ -173,6 +177,7 @@ type ComponentUiLinkFiltersInput = {
 }
 
 type ComponentUiLinkInput = {
+  icon?: InputMaybe<Scalars["String"]>
   id?: InputMaybe<Scalars["ID"]>
   target?: InputMaybe<EnumComponentuilinkTarget>
   title?: InputMaybe<Scalars["String"]>
@@ -248,7 +253,7 @@ type ComponentUiText = {
 type ComponentUiTextChildrenArgs = {
   filters?: InputMaybe<ComponentUiParagraphFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>> | InputMaybe<Scalars["String"]>>
 }
 
 type ComponentUiTextFiltersInput = {
@@ -363,6 +368,7 @@ type GenericMorph =
   | ComponentUiText
   | Home
   | Layout
+  | ReactIconsIconlibrary
   | UploadFile
   | UploadFolder
   | UsersPermissionsPermission
@@ -490,7 +496,7 @@ type Layout = {
 type LayoutHeaderMenuArgs = {
   filters?: InputMaybe<ComponentUiLinkFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>> | InputMaybe<Scalars["String"]>>
 }
 
 type LayoutEntity = {
@@ -551,6 +557,7 @@ type LongFilterInput = {
 type Mutation = {
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>
+  createReactIconsIconlibrary?: Maybe<ReactIconsIconlibraryEntityResponse>
   createUploadFile?: Maybe<UploadFileEntityResponse>
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
@@ -558,6 +565,7 @@ type Mutation = {
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
   deleteHome?: Maybe<HomeEntityResponse>
   deleteLayout?: Maybe<LayoutEntityResponse>
+  deleteReactIconsIconlibrary?: Maybe<ReactIconsIconlibraryEntityResponse>
   deleteUploadFile?: Maybe<UploadFileEntityResponse>
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>
@@ -577,6 +585,7 @@ type Mutation = {
   updateFileInfo: UploadFileEntityResponse
   updateHome?: Maybe<HomeEntityResponse>
   updateLayout?: Maybe<LayoutEntityResponse>
+  updateReactIconsIconlibrary?: Maybe<ReactIconsIconlibraryEntityResponse>
   updateUploadFile?: Maybe<UploadFileEntityResponse>
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>
@@ -591,6 +600,10 @@ type MutationChangePasswordArgs = {
   passwordConfirmation: Scalars["String"]
 }
 
+type MutationCreateReactIconsIconlibraryArgs = {
+  data: ReactIconsIconlibraryInput
+}
+
 type MutationCreateUploadFileArgs = {
   data: UploadFileInput
 }
@@ -601,6 +614,10 @@ type MutationCreateUsersPermissionsRoleArgs = {
 
 type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput
+}
+
+type MutationDeleteReactIconsIconlibraryArgs = {
+  id: Scalars["ID"]
 }
 
 type MutationDeleteUploadFileArgs = {
@@ -629,7 +646,7 @@ type MutationLoginArgs = {
 
 type MutationMultipleUploadArgs = {
   field?: InputMaybe<Scalars["String"]>
-  files: Array<InputMaybe<Scalars["Upload"]>>
+  files: Array<InputMaybe<Scalars["Upload"]>> | InputMaybe<Scalars["Upload"]>
   ref?: InputMaybe<Scalars["String"]>
   refId?: InputMaybe<Scalars["ID"]>
 }
@@ -659,6 +676,11 @@ type MutationUpdateHomeArgs = {
 
 type MutationUpdateLayoutArgs = {
   data: LayoutInput
+}
+
+type MutationUpdateReactIconsIconlibraryArgs = {
+  data: ReactIconsIconlibraryInput
+  id: Scalars["ID"]
 }
 
 type MutationUpdateUploadFileArgs = {
@@ -704,12 +726,24 @@ type Query = {
   home?: Maybe<HomeEntityResponse>
   layout?: Maybe<LayoutEntityResponse>
   me?: Maybe<UsersPermissionsUser>
+  reactIconsIconlibraries?: Maybe<ReactIconsIconlibraryEntityResponseCollection>
+  reactIconsIconlibrary?: Maybe<ReactIconsIconlibraryEntityResponse>
   uploadFile?: Maybe<UploadFileEntityResponse>
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>
   usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>
+}
+
+type QueryReactIconsIconlibrariesArgs = {
+  filters?: InputMaybe<ReactIconsIconlibraryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>> | InputMaybe<Scalars["String"]>>
+}
+
+type QueryReactIconsIconlibraryArgs = {
+  id?: InputMaybe<Scalars["ID"]>
 }
 
 type QueryUploadFileArgs = {
@@ -719,7 +753,7 @@ type QueryUploadFileArgs = {
 type QueryUploadFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>> | InputMaybe<Scalars["String"]>>
 }
 
 type QueryUsersPermissionsRoleArgs = {
@@ -729,7 +763,7 @@ type QueryUsersPermissionsRoleArgs = {
 type QueryUsersPermissionsRolesArgs = {
   filters?: InputMaybe<UsersPermissionsRoleFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>> | InputMaybe<Scalars["String"]>>
 }
 
 type QueryUsersPermissionsUserArgs = {
@@ -739,7 +773,51 @@ type QueryUsersPermissionsUserArgs = {
 type QueryUsersPermissionsUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>> | InputMaybe<Scalars["String"]>>
+}
+
+type ReactIconsIconlibrary = {
+  abbreviation: Scalars["String"]
+  createdAt?: Maybe<Scalars["DateTime"]>
+  isEnabled?: Maybe<Scalars["Boolean"]>
+  name: Scalars["String"]
+  updatedAt?: Maybe<Scalars["DateTime"]>
+}
+
+type ReactIconsIconlibraryEntity = {
+  attributes?: Maybe<ReactIconsIconlibrary>
+  id?: Maybe<Scalars["ID"]>
+}
+
+type ReactIconsIconlibraryEntityResponse = {
+  data?: Maybe<ReactIconsIconlibraryEntity>
+}
+
+type ReactIconsIconlibraryEntityResponseCollection = {
+  data: Array<ReactIconsIconlibraryEntity>
+  meta: ResponseCollectionMeta
+}
+
+type ReactIconsIconlibraryFiltersInput = {
+  abbreviation?: InputMaybe<StringFilterInput>
+  and?: InputMaybe<Array<InputMaybe<ReactIconsIconlibraryFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  isEnabled?: InputMaybe<BooleanFilterInput>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ReactIconsIconlibraryFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ReactIconsIconlibraryFiltersInput>>>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+type ReactIconsIconlibraryInput = {
+  abbreviation?: InputMaybe<Scalars["String"]>
+  isEnabled?: InputMaybe<Scalars["Boolean"]>
+  name?: InputMaybe<Scalars["String"]>
+}
+
+type ReactIconsIconlibraryRelationResponseCollection = {
+  data: Array<ReactIconsIconlibraryEntity>
 }
 
 type ResponseCollectionMeta = {
@@ -796,6 +874,7 @@ type TimeFilterInput = {
 
 type UploadFile = {
   alternativeText?: Maybe<Scalars["String"]>
+  blurhash?: Maybe<Scalars["String"]>
   caption?: Maybe<Scalars["String"]>
   createdAt?: Maybe<Scalars["DateTime"]>
   ext?: Maybe<Scalars["String"]>
@@ -831,6 +910,7 @@ type UploadFileEntityResponseCollection = {
 type UploadFileFiltersInput = {
   alternativeText?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<UploadFileFiltersInput>>>
+  blurhash?: InputMaybe<StringFilterInput>
   caption?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   ext?: InputMaybe<StringFilterInput>
@@ -855,6 +935,7 @@ type UploadFileFiltersInput = {
 
 type UploadFileInput = {
   alternativeText?: InputMaybe<Scalars["String"]>
+  blurhash?: InputMaybe<Scalars["String"]>
   caption?: InputMaybe<Scalars["String"]>
   ext?: InputMaybe<Scalars["String"]>
   folder?: InputMaybe<Scalars["ID"]>
@@ -890,13 +971,13 @@ type UploadFolder = {
 type UploadFolderChildrenArgs = {
   filters?: InputMaybe<UploadFolderFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>> | InputMaybe<Scalars["String"]>>
 }
 
 type UploadFolderFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>> | InputMaybe<Scalars["String"]>>
 }
 
 type UploadFolderEntity = {
@@ -1040,13 +1121,13 @@ type UsersPermissionsRole = {
 type UsersPermissionsRolePermissionsArgs = {
   filters?: InputMaybe<UsersPermissionsPermissionFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>> | InputMaybe<Scalars["String"]>>
 }
 
 type UsersPermissionsRoleUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>> | InputMaybe<Scalars["String"]>>
 }
 
 type UsersPermissionsRoleEntity = {

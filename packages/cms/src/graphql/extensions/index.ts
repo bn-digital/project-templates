@@ -1,4 +1,5 @@
 import resolvers, { resolversConfig } from "../resolvers"
+
 const readOnlyEntities = [
   "plugin::users-permissions.permission",
   "plugin::users-permissions.role",

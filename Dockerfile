@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:latest
-ARG version=3.6.0
+ARG version=3.7.0
 FROM dcr.bndigital.dev/library/yarn:${version} AS build
 COPY .yarn .yarn
 COPY package.json yarn.lock .yarnrc.yml ./
@@ -15,10 +15,15 @@ RUN yarn build \
  && mv -v packages/cms/dist/* packages/cms \
  && yarn workspaces focus --production --all
 
+FROM dcr.bndigital.dev/library/nodejs:${version} AS website
+WORKDIR /usr/local/src
+COPY --from=build --chown=node /usr/local/src/packages/website/build .
+ENTRYPOINT ["http-server"]
+CMD ["--proxy", "http://localhost:5000?"]
+
 FROM dcr.bndigital.dev/library/nodejs:${version}
 WORKDIR /usr/local/src
 COPY --from=build --chown=node /usr/local/src/packages/cms .
 COPY --from=build --chown=node /usr/local/src/packages/website/build public
-COPY bin bin
-ENTRYPOINT ["pm2-runtime"]
-CMD ["start", "bin/app.js"]
+ENTRYPOINT ["node"]
+CMD ["node_modules/@strapi/strapi/bin/strapi.js", "start"]
