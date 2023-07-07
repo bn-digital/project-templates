@@ -1,12 +1,16 @@
-import path from "node:path"
+import utils from "@strapi/typescript-utils"
+import * as path from "path"
 
-import { generators } from "@strapi/typescript-utils"
-
-import app from "./index"
+import app from "."
 
 function generateTypeDefinitions(strapi: StrapiGlobal["strapi"]): void {
-  generators
-    .generateSchemasDefinitions({ strapi, file: "schema.d.ts", outDir: path.join(app.workingDir, "src", "types") })
+  utils.generators
+    .generate({
+      strapi,
+      rootDir: path.join("src", "types"),
+      pwd: app.workingDir,
+      artifacts: { contentTypes: true, components: true },
+    })
     .then(() => strapi.log.info("[typescript] Type definitions were generated"))
     .catch(strapi.log.error)
 }

@@ -16,7 +16,7 @@ export default ({ env }: Strapi.Env): Config.Plugin => {
         generateArtifacts: app.env.development,
         artifacts: {
           schema: join(app.workingDir, "src", "graphql", "schema.graphql"),
-          typegen: join(app.workingDir, "src", "types", "graphql.d.ts"),
+          typegen: join(app.workingDir, "src", "types", "generated", "graphql.d.ts"),
         },
         apolloServer: {
           introspection: !app.env.production,

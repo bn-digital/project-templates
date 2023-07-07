@@ -1,5 +1,13 @@
-/// <reference types="@strapi/strapi" />
-/// <reference types="@bn-digital/strapi-types/index" />
+declare module "@strapi/typescript-utils" {
+  export const generators: {
+    generate: (config: {
+      strapi: StrapiGlobal["strapi"]
+      pwd: string
+      rootDir?: string
+      artifacts?: { contentTypes?: boolean; components?: boolean }
+    }) => Promise<void>
+  }
+}
 
 declare namespace App {
   type Mode = "development" | "staging" | "production" | "test"
@@ -19,6 +27,7 @@ declare namespace App {
     database?: "sqlite" | "postgres" | "mysql"
   } & { [key: string]: unknown }
 }
+
 declare interface StrapiGlobal {
   strapi: Omit<Global["strapi"], keyof Strapi.Strapi> & Strapi.Strapi
 }

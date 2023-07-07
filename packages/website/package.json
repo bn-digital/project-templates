@@ -3,7 +3,7 @@
   "description": "Frontend application based on Ant Design React components",
   "version": "2023.7.7",
   "scripts": {
-    "env": "npx vault-env",
+    "env": "npx vault-env generate",
     "build": "npx vite build",
     "start": "npx vite serve --host"
   },
