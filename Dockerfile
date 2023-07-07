@@ -15,12 +15,14 @@ RUN yarn build \
  && mv -v packages/cms/dist/* packages/cms \
  && yarn workspaces focus --production --all
 
-FROM dcr.bndigital.dev/library/nodejs:${version} AS website
-WORKDIR /usr/local/src
-COPY --from=build --chown=node /usr/local/src/packages/website/build .
-ENTRYPOINT ["http-server"]
-CMD ["--proxy", "http://localhost:5000?"]
+## Uncomment the following lines to build a frontend-only image
+#FROM dcr.bndigital.dev/library/nodejs:${version}
+#WORKDIR /usr/local/src
+#COPY --from=build --chown=node /usr/local/src/packages/website/build .
+#ENTRYPOINT ["http-server"]
+#CMD ["--proxy", "http://localhost:5000?"]
 
+## Comment the following lines to build a frontend-only image
 FROM dcr.bndigital.dev/library/nodejs:${version}
 WORKDIR /usr/local/src
 COPY --from=build --chown=node /usr/local/src/packages/cms .
