@@ -1983,14 +1983,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/cosmiconfig@npm:1.2.0":
-  version: 1.2.0
-  resolution: "@bn-digital/cosmiconfig@npm:1.2.0"
+"@bn-digital/cosmiconfig@npm:1.2.1":
+  version: 1.2.1
+  resolution: "@bn-digital/cosmiconfig@npm:1.2.1"
   dependencies:
     "@bn-digital/commitlint-config": ^2.0.4
     "@bn-digital/eslint-config": ^2.5.0
     "@bn-digital/graphql-config": ^2.5.0
-    "@bn-digital/prettier-config": ^2.4.0
+    "@bn-digital/prettier-config": ^2.4.1
     "@bn-digital/stylelint-config": ^2.4.2
     "@bn-digital/typescript-config": ^1.4.0
     "@types/node": ^20.4.0
@@ -1999,7 +1999,7 @@ __metadata:
     typescript: ^5.1.6
   bin:
     lint: ./bin/lint.js
-  checksum: a7c7a0304331090d375b5703e747d215fc9242c8ff7f7c28f99cd27db562612a45cba7cc62c288a99a1e68a9fa7845ee4bdf424c384708b544122215398ecc56
+  checksum: fe046520bfdcc0cba5b2f9a12a519a579b199dc24ff00b90b1b0736ec7837643dda06187f9a246fd0ccf5d96a182a7b34ac7c6c8387d39814f9013ae363a6f68
   languageName: node
   linkType: hard
 
@@ -2067,9 +2067,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bn-digital/prettier-config@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "@bn-digital/prettier-config@npm:2.4.0"
+"@bn-digital/prettier-config@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "@bn-digital/prettier-config@npm:2.4.1"
   dependencies:
     "@prettier/plugin-pug": ^2.5.1
     "@prettier/plugin-xml": ^3.0.0
@@ -2077,7 +2077,7 @@ __metadata:
     prettier-plugin-organize-imports: ^3.2.2
     prettier-plugin-prisma: ^4.13.0
     typescript: ^5.1.6
-  checksum: 37f7466f92e516964d67c3f7c1e71f9115821b74c6b5a171d99452b7efb9fa908f390fa9a31203814c90121a77f44d87d917d6e440d5ce921f74423f653c21da
+  checksum: d1887495aaab8cef78643949fe416a568f8ef45eac1f1fe1e2480813da6acf0cc77e4bdae6d91c2795a007a6f987b84c3aee7281dd39fb0917e11ff3fb0d669b
   languageName: node
   linkType: hard
 
@@ -22660,7 +22660,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "project-templates@workspace:."
   dependencies:
-    "@bn-digital/cosmiconfig": 1.2.0
+    "@bn-digital/cosmiconfig": 1.2.1
     "@bn-digital/vault-env": 1.5.6
     pm2: 5.3.0
     typescript: 5.1.6

@@ -23,7 +23,7 @@ export type PossibleTypesResultData = {
       "UploadFolder",
       "UsersPermissionsPermission",
       "UsersPermissionsRole",
-      "UsersPermissionsUser"
+      "UsersPermissionsUser",
     ]
   }
 }
@@ -143,13 +143,12 @@ export const HomeDocument = gql`
 `
 export function useHomeQuery(baseOptions?: Apollo.QueryHookOptions<HomeQuery, HomeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<HomeQuery, HomeQueryVariables>(HomeDocument, option)
+  return Apollo.useQuery<HomeQuery, HomeQueryVariables>(HomeDocument, options)
 }
 export function useHomeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HomeQuery, HomeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<HomeQuery, HomeQueryVariables>(HomeDocument, options)
 }
-
 export type HomeQueryHookResult = ReturnType<typeof useHomeQuery>
 export type HomeLazyQueryHookResult = ReturnType<typeof useHomeLazyQuery>
 export type HomeQueryResult = Apollo.QueryResult<HomeQuery, HomeQueryVariables>
@@ -163,12 +162,12 @@ export const MeDocument = gql`
 export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options)
-
+}
 export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options)
 }
 
-export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
-export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
-export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
+export type MeQueryHookResult = ReturnType<typeof useMeQuery>
+export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>
+export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>
