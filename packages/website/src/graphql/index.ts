@@ -18,6 +18,7 @@ export type PossibleTypesResultData = {
       "ComponentUiText",
       "Home",
       "Layout",
+      "ReactIconsIconlibrary",
       "UploadFile",
       "UploadFolder",
       "UsersPermissionsPermission",
@@ -41,6 +42,7 @@ const result: PossibleTypesResultData = {
       "ComponentUiText",
       "Home",
       "Layout",
+      "ReactIconsIconlibrary",
       "UploadFile",
       "UploadFolder",
       "UsersPermissionsPermission",
@@ -139,12 +141,10 @@ export const HomeDocument = gql`
   ${CardFragmentDoc}
   ${FileFragmentDoc}
 `
-
 export function useHomeQuery(baseOptions?: Apollo.QueryHookOptions<HomeQuery, HomeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<HomeQuery, HomeQueryVariables>(HomeDocument, options)
+  return Apollo.useQuery<HomeQuery, HomeQueryVariables>(HomeDocument, option)
 }
-
 export function useHomeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HomeQuery, HomeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<HomeQuery, HomeQueryVariables>(HomeDocument, options)
@@ -160,17 +160,15 @@ export const MeDocument = gql`
     }
   }
 `
-
 export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options)
-}
 
 export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options)
 }
 
-export type MeQueryHookResult = ReturnType<typeof useMeQuery>
-export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>
-export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>
+export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
+export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
+export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;

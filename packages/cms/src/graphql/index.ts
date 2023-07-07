@@ -3,8 +3,8 @@ import { readOnlyEntities, schemaExtension, writeOnlyEntities } from "./extensio
 function extendSchema(strapi: Strapi.Strapi) {
   const extensionService = getExtensionService(strapi)
   // Disabling CRUD operations for public-facing APIs
-  readOnlyEntities.forEach((entity: Strapi.SingleTypeUIDs) => extensionService.shadowCRUD(entity).disableMutations())
-  writeOnlyEntities.forEach((entity: Strapi.SingleTypeUIDs) => extensionService.shadowCRUD(entity).disableQueries())
+  readOnlyEntities.forEach(entity => extensionService.shadowCRUD(entity).disableMutations())
+  writeOnlyEntities.forEach(entity => extensionService.shadowCRUD(entity).disableQueries())
   // Decorating schema with custom fields, resolvers and extensions
   extensionService.use(schemaExtension)
 }

@@ -1,7 +1,7 @@
 import { FC, lazy } from "react"
 import { Outlet, RouteObject } from "react-router-dom"
 
-import { DefaultLayout, Loader } from "../components/layout"
+import DefaultLayout, { Loader } from "../components/layout"
 
 const Home = lazy<FC>(() => import("./home"))
 
