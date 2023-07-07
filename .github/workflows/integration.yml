@@ -9,7 +9,6 @@ on:
       - latest
     paths:
       - '.github/workflows/integration.yml'
-      - 'skaffold.yaml'
       - 'helmfile.*'
       - '**/*/.env.*'
       - 'Dockerfile'
