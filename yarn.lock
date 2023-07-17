@@ -5141,7 +5141,7 @@ __metadata:
     better-sqlite3: ^8.4.0
     pg: ^8.11.1
     strapi-blurhash: ^1.1.1
-    strapi-plugin-react-icons: ^0.1.6
+    strapi-plugin-react-icons: ^0.1.7
   languageName: unknown
   linkType: soft
 
@@ -24776,9 +24776,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strapi-plugin-react-icons@npm:^0.1.6":
-  version: 0.1.6
-  resolution: "strapi-plugin-react-icons@npm:0.1.6"
+"strapi-plugin-react-icons@npm:^0.1.7":
+  version: 0.1.7
+  resolution: "strapi-plugin-react-icons@npm:0.1.7"
   dependencies:
     "@strapi/design-system": ^1.6.3
     "@strapi/helper-plugin": ^4.6.0
@@ -24787,11 +24787,11 @@ __metadata:
     react-icons: 4.8.0
   peerDependencies:
     "@strapi/strapi": ^4.10.6
-    react: ^17.0.2
-    react-dom: ^17.0.2
+    react: ^18.2.0
+    react-dom: ^18.2.0
     react-router-dom: ^5.3.4
     styled-components: ^5.3.6
-  checksum: 9347efaae36bb59d3faab5b12a7633faad0c37f992fd99295050bacdc6f3f98cf288cd325051ae26db9a6bfa333ac3b2be4d8514159cb01c54fa4e0545ffa434
+  checksum: ccb62c75204be03c1d4b35a2b4ab8d45a9d8d305c063891216d7be33349407c0c46cba3a58a86dc4822c9029bd3d662bec2e546a38ba4f6ab7852b1d3eeebcec
   languageName: node
   linkType: hard
 
