@@ -5133,7 +5133,7 @@ __metadata:
     "@bn-digital/typescript-config": ^1.4.0
     "@notum-cz/strapi-plugin-content-versioning": ^0.4.7
     "@strapi/plugin-graphql": ^4.11.4
-    "@strapi/plugin-users-permissions": ^4.11.4
+    "@strapi/plugin-users-permissions": ^4.11.5
     "@strapi/provider-email-nodemailer": ^4.11.4
     "@strapi/provider-upload-aws-s3": ^4.11.4
     "@strapi/strapi": ^4.11.4
@@ -6576,6 +6576,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/helper-plugin@npm:4.11.5":
+  version: 4.11.5
+  resolution: "@strapi/helper-plugin@npm:4.11.5"
+  dependencies:
+    axios: 1.4.0
+    date-fns: 2.30.0
+    formik: ^2.4.0
+    immer: 9.0.19
+    lodash: 4.17.21
+    prop-types: ^15.8.1
+    qs: 6.11.1
+    react-helmet: ^6.1.0
+    react-intl: 6.4.1
+    react-query: 3.39.3
+    react-select: 5.7.0
+  peerDependencies:
+    "@strapi/design-system": 1.8.1
+    "@strapi/icons": 1.8.1
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^5.3.4
+    styled-components: ^5.3.3
+  checksum: 2d042fab889f4254d4ea6b43e2a62c90aebab3b1d39ac83b5d5ce4bc325608e235f63efb1171983efa1e0c1f23227c7864048a098f6c3787eed8edf7ab8b38bb
+  languageName: node
+  linkType: hard
+
 "@strapi/icons@npm:1.8.1, @strapi/icons@npm:^1.6.6":
   version: 1.8.1
   resolution: "@strapi/icons@npm:1.8.1"
@@ -6742,14 +6768,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/plugin-users-permissions@npm:^4.11.4":
-  version: 4.11.4
-  resolution: "@strapi/plugin-users-permissions@npm:4.11.4"
+"@strapi/plugin-users-permissions@npm:^4.11.5":
+  version: 4.11.5
+  resolution: "@strapi/plugin-users-permissions@npm:4.11.5"
   dependencies:
     "@strapi/design-system": 1.8.1
-    "@strapi/helper-plugin": 4.11.4
+    "@strapi/helper-plugin": 4.11.5
     "@strapi/icons": 1.8.1
-    "@strapi/utils": 4.11.4
+    "@strapi/utils": 4.11.5
     bcryptjs: 2.4.3
     formik: 2.4.0
     grant-koa: 5.4.8
@@ -6763,7 +6789,7 @@ __metadata:
     purest: 4.0.2
     react-intl: 6.4.1
     react-query: 3.39.3
-    react-redux: 8.0.5
+    react-redux: 8.1.1
     url-join: 4.0.1
     yup: ^0.32.9
   peerDependencies:
@@ -6771,7 +6797,7 @@ __metadata:
     react-dom: ^17.0.0 || ^18.0.0
     react-router-dom: 5.3.4
     styled-components: 5.3.3
-  checksum: c1cdbf70564cfdaca613a5066c9dd537a49be0f9c12cc8b4179f7bb735ed967bdc1fc901afa560d4bc1b00432394738d37c8a4993c558a0f0024e61f7ce35348
+  checksum: 5ee5e8ebacce277b08efae3ba59736b25a21dad510eff17039c33165c8d5cda3c0ca31df695a04faba5c08402687d947bfd1031411796c929e1c217edb5047e6
   languageName: node
   linkType: hard
 
@@ -6945,6 +6971,20 @@ __metadata:
     p-map: 4.0.0
     yup: 0.32.9
   checksum: 720c6bb5804ba9d0847e73e8c859032aac95d880867ebed67897aec226f9c6b0548720831e0add7b0b77ccae10e1854d1cdc28a8b76fae41387e00ec76bac60b
+  languageName: node
+  linkType: hard
+
+"@strapi/utils@npm:4.11.5":
+  version: 4.11.5
+  resolution: "@strapi/utils@npm:4.11.5"
+  dependencies:
+    "@sindresorhus/slugify": 1.1.0
+    date-fns: 2.30.0
+    http-errors: 1.8.1
+    lodash: 4.17.21
+    p-map: 4.0.0
+    yup: 0.32.9
+  checksum: ec743d74261897fa02190412b19014872257c4d5188478c658abc50657bc0f7b5957487e4069ac1a28ee9d01c532528b7a0af9e7ff370418ebb4a97576fbb942
   languageName: node
   linkType: hard
 
@@ -22540,6 +22580,38 @@ __metadata:
     redux:
       optional: true
   checksum: a108f4f7ead6ac005e656d46051474a2bbdb31ede481bbbb3d8d779c1a35e1940b8655577cc5021313411864d305f67fc719aa48d6e5ed8288cf9cbe8b7042e4
+  languageName: node
+  linkType: hard
+
+"react-redux@npm:8.1.1":
+  version: 8.1.1
+  resolution: "react-redux@npm:8.1.1"
+  dependencies:
+    "@babel/runtime": ^7.12.1
+    "@types/hoist-non-react-statics": ^3.3.1
+    "@types/use-sync-external-store": ^0.0.3
+    hoist-non-react-statics: ^3.3.2
+    react-is: ^18.0.0
+    use-sync-external-store: ^1.0.0
+  peerDependencies:
+    "@types/react": ^16.8 || ^17.0 || ^18.0
+    "@types/react-dom": ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+    react-native: ">=0.59"
+    redux: ^4 || ^5.0.0-beta.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+    redux:
+      optional: true
+  checksum: 370676330727764d78f35e9c5a0ed0591d79482fe9b70fffcab4aa6bcccc6194e4f1ebd818b4b390351dea5557e70d3bd4d95d7a0ac9baa1f45d6bf2230ee713
   languageName: node
   linkType: hard
 
