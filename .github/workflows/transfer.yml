@@ -13,11 +13,16 @@ on:
           - "staging ➔ production"
 
 jobs:
-  strapi:
+  strapit-transfer:
     runs-on: self-hosted
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
+        
+      - name: Node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
       - name: Setup CMS
         env:
@@ -29,4 +34,4 @@ jobs:
         if: ${{ inputs.environment == 'development ➔ staging' }}
         working-directory: packages/cms
         run: |
-          yarn strapi transfer --to=https://${{ github.event.repository.name }}.bndigital.dev/admin --to-token=${{ secrets.STRAPI_STAGING_TRANSFER_TOKEN }} --force
+          NODE_ENV=development yarn strapi transfer --to=https://${{ github.event.repository.name }}.bndigital.dev/admin --to-token=${{ secrets.STRAPI_STAGING_TRANSFER_TOKEN }} --force
