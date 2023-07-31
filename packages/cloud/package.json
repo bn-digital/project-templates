@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@bn-digital/pulumi": "1.7.51",
-    "@pulumi/pulumi": "3.69.x"
+    "@pulumi/pulumi": "3.76.x"
   },
   "devDependencies": {
     "@bn-digital/typescript-config": "^1.3.6",
