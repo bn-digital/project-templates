@@ -34,7 +34,6 @@ jobs:
             -Dsonar.sources=packages/cms/src,packages/website/src
             -Dsonar.projectName=${{ github.event.repository.name }}
             -Dsonar.projectBaseDir=.
-            -Dsonar.branch.name=latest
             -Dsonar.organization=bn-digital
 
       - name: SonarQube Quality Gate check
