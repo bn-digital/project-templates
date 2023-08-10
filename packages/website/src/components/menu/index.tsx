@@ -15,5 +15,4 @@ const HeaderMenu: FC = () => {
     />
   )
 }
-1
 export { HeaderMenu }
