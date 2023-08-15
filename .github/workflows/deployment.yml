@@ -20,9 +20,11 @@ on:
 
 jobs:
   secrets:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
     secrets: inherit
   deploy:
-    needs: [ secrets ]
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    needs: [secrets]
     uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
     secrets: inherit

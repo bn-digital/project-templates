@@ -23,9 +23,11 @@ on:
 
 jobs:
   setup:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
     secrets: inherit
   build:
-    needs: [ setup ]
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    needs: [setup]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
     secrets: inherit
