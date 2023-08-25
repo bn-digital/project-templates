@@ -44,10 +44,8 @@ services:
       traefik.http.routers.app.rule: 'Host(`$DOMAIN`) || Host(`www.$DOMAIN`)'
       traefik.http.routers.app.tls.domains[0].main: $DOMAIN
       traefik.http.routers.app.tls.domains[0].sans: www.$DOMAIN
-      traefik.http.routers.app.middlewares: 'compress,www-alias'
+      traefik.http.routers.app.middlewares: 'compress'
       traefik.http.middlewares.compress.compress: 'true'
-      traefik.http.middlewares.www-alias.redirectregex.regex: '^http(s?)://$$DOMAIN.com/(.*)'
-      traefik.http.middlewares.www-alias.redirectregex.replacement: 'https://www.$$DOMAIN/$${2}'
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_NAME: ${DATABASE_NAME:-app}
