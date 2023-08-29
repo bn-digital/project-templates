@@ -23,4 +23,5 @@
 **/dist
 **/.cache
 **/.env.*
+!/packages/website/.env.production
 /.yarn/install-state.gz
