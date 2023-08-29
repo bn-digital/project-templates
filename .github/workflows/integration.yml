@@ -2,9 +2,7 @@
 name: Integration
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *'
-  pull_request:
+  push:
     branches:
       - latest
     paths:
