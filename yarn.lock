@@ -5139,6 +5139,7 @@ __metadata:
     "@strapi/strapi": ^4.11.4
     "@strapi/typescript-utils": ^4.11.4
     better-sqlite3: ^8.4.0
+    nexus: ^1.3.0
     pg: ^8.11.1
     strapi-blurhash: ^1.1.1
     strapi-plugin-react-icons: ^0.1.6
@@ -18994,7 +18995,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nexus@npm:1.3.0":
+"nexus@npm:1.3.0, nexus@npm:^1.3.0":
   version: 1.3.0
   resolution: "nexus@npm:1.3.0"
   dependencies:
