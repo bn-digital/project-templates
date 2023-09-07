@@ -1,5 +1,5 @@
 ---
-name: Delivery
+name: Production Deployment
 on:
   push:
     tags:
@@ -9,31 +9,27 @@ jobs:
   secrets:
     uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
     secrets: inherit
-    with:
-      secrets: |
-        projects/data/${{ github.event.repository.name }}/production/pulumi               passphrase    | PULUMI_CONFIG_PASSPHRASE ;
-  provision:
-    needs: [ secrets ]
-    uses: bn-digital/pulumi/.github/workflows/provision-infrastructure.yml@latest
-    secrets: inherit
-    with:
-      environment: production
   build:
     needs: [ secrets ]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
     secrets: inherit
     with:
       environment: production
+      version: ${{ github.ref_name }}
   deploy:
     needs: [ build ]
     uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
     secrets: inherit
     with:
       environment: production
-      version: ${{ github.ref_name }}
       secrets: |
         projects/data/${{ github.event.repository.name }}/production/digitalocean       domain          | DOMAIN ;
         projects/data/${{ github.event.repository.name }}/production/digitalocean       kubernetes      | KUBERNETES_CLUSTER ;
         projects/data/${{ github.event.repository.name }}/production/digitalocean       token           | DIGITALOCEAN_TOKEN ;
+        projects/data/${{ github.event.repository.name }}/production/database           password        | DATABASE_PASSWORD ;
+        projects/data/${{ github.event.repository.name }}/production/database           root-password   | DATABASE_ROOT_PASSWORD ;
+        projects/data/${{ github.event.repository.name }}/production/database           enabled         | DATABASE_ENABLED ;
+        projects/data/${{ github.event.repository.name }}/production/database           database        | DATABASE_NAME ;
+        projects/data/${{ github.event.repository.name }}/production/database           username        | DATABASE_USERNAME ;
         projects/data/${{ github.event.repository.name }}/production/database           password        | DATABASE_PASSWORD ;
         projects/data/${{ github.event.repository.name }}/production/database           root-password   | DATABASE_ROOT_PASSWORD ;

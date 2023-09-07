@@ -2,7 +2,18 @@
 name: Quality
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
+#  push:
+#    branches:
+#      - latest
+#    paths-ignore:
+#      - 'helmfile.*'
+#      - 'Dockerfile'
+#      - 'docker-compose.yml'
+#      - '.git*'
+#      - '.dockerignore'
+#      - '.github/**'
+
 
 jobs:
   sonar-quality-check:
@@ -39,3 +50,6 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+      - name: Scan overview
+        run: echo "https://sonarqube.bndigital.dev/dashboard?id=${{ github.event.repository.name }}"

@@ -1,11 +1,7 @@
 ---
 name: Bootstrap
 on:
-  push:
-    branches:
-      - latest
-    paths:
-      - '.github/workflows/bootstrap.yml'
+  workflow_dispatch: {}
 
 jobs:
   vault:

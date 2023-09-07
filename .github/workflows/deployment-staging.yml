@@ -1,28 +1,27 @@
 ---
-name: Deployment
+name: Staging Deployment
 on:
   workflow_dispatch: {}
   push:
     branches:
       - latest
-    paths:
-      - '.github/workflows/deployment.yml'
-      - 'skaffold.yaml'
+    paths-ignore:
       - 'helmfile.*'
-      - '**/*/.env.*'
       - 'Dockerfile'
+      - 'docker-compose.yml'
+      - '.git*'
       - '.dockerignore'
-      - 'yarn.lock'
-      - 'packages/website/public/**/*'
-      - 'packages/website/src/**/*'
-      - 'packages/cms/config/**/*'
-      - 'packages/cms/src/**/*'
+      - '.github/**'
 
 jobs:
   secrets:
     uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
     secrets: inherit
-  deploy:
+  build:
     needs: [ secrets ]
+    uses: bn-digital/docker/.github/workflows/build-images.yml@latest
+    secrets: inherit
+  deploy:
+    needs: [ build ]
     uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
     secrets: inherit
