@@ -140,7 +140,7 @@ export interface UiText extends Schema.Component {
 }
 
 declare module "@strapi/strapi" {
-  export namespace Shared {
+  export module Shared {
     export interface Components {
       "data.entry": DataEntry
       "data.set": DataSet
