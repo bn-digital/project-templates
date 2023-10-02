@@ -5138,7 +5138,7 @@ __metadata:
     "@strapi/provider-upload-aws-s3": ^4.11.4
     "@strapi/strapi": ^4.11.4
     "@strapi/typescript-utils": ^4.11.4
-    better-sqlite3: ^8.4.0
+    better-sqlite3: ^8.7.0
     pg: ^8.11.1
     strapi-blurhash: ^1.1.1
     strapi-plugin-react-icons: ^0.1.6
@@ -9684,14 +9684,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"better-sqlite3@npm:^8.4.0":
-  version: 8.4.0
-  resolution: "better-sqlite3@npm:8.4.0"
+"better-sqlite3@npm:^8.7.0":
+  version: 8.7.0
+  resolution: "better-sqlite3@npm:8.7.0"
   dependencies:
     bindings: ^1.5.0
     node-gyp: latest
-    prebuild-install: ^7.1.0
-  checksum: f8b180c26428a2d381482e83b4519d0d81a918e00f92cafd255f42eb9583f49b2fed1015121ad49ebe1f3f790cc8c6f4697d1e805193d65e70dacf2e8abbd6af
+    prebuild-install: ^7.1.1
+  checksum: f1fa38a9a0e4fcd59ececb67c60371b9638d29c19ce9af034421e8a56c9a77e799bb1411b1c3cb08bb9678e15dfb8985553a9ef4098cf5558e7207a3e019f211
   languageName: node
   linkType: hard
 
@@ -21286,7 +21286,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prebuild-install@npm:^7.1.0, prebuild-install@npm:^7.1.1":
+"prebuild-install@npm:^7.1.1":
   version: 7.1.1
   resolution: "prebuild-install@npm:7.1.1"
   dependencies:
