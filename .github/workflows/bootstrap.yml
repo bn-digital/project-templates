@@ -4,9 +4,38 @@ on:
   workflow_dispatch: {}
 
 jobs:
-  vault:
-    uses: bn-digital/vault/.github/workflows/sync.yml@latest
+  secrets:
+    uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
     secrets: inherit
-  pulumi:
-    uses: bn-digital/pulumi/.github/workflows/pulumi-infrastructure.yml@latest
-    secrets: inherit
+
+  database:
+    needs: [secrets]
+    runs-on: self-hosted
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Import Vault secrets
+        uses: hashicorp/vault-action@v2.5.0
+        with:
+          url: ${{ secrets.VAULT_ENDPOINT }}
+          token: ${{ secrets.VAULT_TOKEN }}
+          secrets: |
+            infrastructure/data/digitalocean  token     | DIGITALOCEAN_TOKEN ;
+            infrastructure/data/kubernetes    cluster   | KUBERNETES_CLUSTER ;
+            infrastructure/data/postgresql    password  | PGPASSWORD;
+      - name: Setup DigitalOcean cli
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ env.DIGITALOCEAN_TOKEN }}
+
+      - name: Configure Kubernetes context
+        run: doctl kubernetes cluster kubeconfig save ${{ env.KUBERNETES_CLUSTER }} --set-current-context
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Create DB
+        env:
+          DB_NAME: ${{ github.event.repository.name }}
+        run: kubectl -n staging exec -it postgresql-0 -- /bin/bash -c "export PGPASSWORD='${{ env.PGPASSWORD }}' && createdb -U bn '${{ env.DB_NAME }}'"
