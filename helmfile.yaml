@@ -1,6 +1,9 @@
 helmfiles:
   - path: git::https://github.com/bn-digital/helm.git@helmfiles/load-balancer.yaml?ref=latest
-  - path: git::https://github.com/bn-digital/helm.git@helmfiles/nodejs.yaml?ref=latest
+    values:
+      - ingressShim:
+          defaultACMEChallengeType: http01
+  - path: git::https://github.com/bn-digital/helm.git@helmfiles/nodejs.yaml?ref={{ requiredEnv "HELM_REF" }}
 
 helmDefaults:
   createNamespace: true
