@@ -8,14 +8,12 @@
 
 ## CI/CD Workflows
 
-### Bootstrap checklist
+### Secrets checklist
 
-- [ ] Github Secrets created for `VAULT_TOKEN` and `VAULT_ENDPOINT` (see: https://vault.bndigital.dev)
+To ensure that WFs are working properly, add these GH Secrets right after project creation:
+- [ ] Secrets for `VAULT_TOKEN` and `VAULT_ENDPOINT` (copy `github-token` and `url` from [https://vault.bndigital.dev](https://vault.bndigital.dev/ui/vault/secrets/infrastructure/show/vault))
+- [ ] Secret for `GH_TOKEN` (copy `github-token` from [https://vault.bndigital.dev](https://vault.bndigital.dev/ui/vault/secrets/accounts/show/github/bn-enginseer))
 
-### Integration Checklist
-
-- [ ] Docker Repository created with same name as Github repository (see: https://dcr.bndigital.dev)
-- [ ] Postgres Database created with same name as Github repository (see: jdbc:postgresql://bndigital.dev:5432/)
 
 ## Documentation & References
 
