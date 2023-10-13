@@ -16,7 +16,7 @@ To ensure that WFs are working properly, add these GH Secrets right after projec
 
 ## Staging Rollout
 
-- After setting up secrets, perform these actions:
+After setting up secrets, perform these actions:
 - [ ] Create new project in [https://dcr.bndigital.dev/] (click `+ New project`, in pop-up window only enter `Project Name`, left other fields unchanged and click `OK` (credentials are here: [https://vault.bndigital.dev](https://vault.bndigital.dev/ui/vault/secrets/accounts/show/dcr.bndigital.dev))
 - [ ] In the `Actions` tab, find WF named `Bootstrap` in the left pane
 - [ ] Click on the button `Run workflow` in the top-right corner and in pop-up window click green button `Run workflow`
