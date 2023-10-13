@@ -11,7 +11,7 @@
   "dependencies": {
     "@pulumi/digitalocean": "^4.17.0",
     "@pulumi/kubernetes": "^3.23.1",
-    "@pulumi/pulumi": "^3.62.0",
+    "@pulumi/pulumi": "^3.88.1",
     "@pulumi/vault": "^5.8.0",
     "dotenv": "^16.0.3"
   },
