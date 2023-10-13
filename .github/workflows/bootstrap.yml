@@ -24,7 +24,6 @@ jobs:
             infrastructure/data/digitalocean  token     | DIGITALOCEAN_TOKEN ;
             infrastructure/data/kubernetes    cluster   | KUBERNETES_CLUSTER ;
             infrastructure/data/postgresql    password  | PGPASSWORD;
-            accounts/data/dcr.bndigital.dev   api_token | HARBOR_TOKEN;
 
       - name: Create project in Harbor
         run: |
