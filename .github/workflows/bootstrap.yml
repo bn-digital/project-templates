@@ -8,7 +8,7 @@ jobs:
     uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
     secrets: inherit
 
-  database:
+  bootstrap:
     needs: [secrets]
     runs-on: self-hosted
     steps:
@@ -24,6 +24,19 @@ jobs:
             infrastructure/data/digitalocean  token     | DIGITALOCEAN_TOKEN ;
             infrastructure/data/kubernetes    cluster   | KUBERNETES_CLUSTER ;
             infrastructure/data/postgresql    password  | PGPASSWORD;
+            accounts/data/dcr.bndigital.dev   api_token | HARBOR_TOKEN;
+
+      - name: Create project in Harbor
+        run: |
+          curl -X 'POST' \
+            'https://dcr.bndigital.dev/api/v2.0/projects' \
+            -H 'authorization: Basic ${{ secrets.HARBOR_TOKEN }}' \
+            -H 'Content-Type: application/json' \
+            -d '{
+            "project_name": "${{ github.event.repository.name }}",
+            "public": false,
+            "storage_limit": 10737418240
+          }'
       - name: Setup DigitalOcean cli
         uses: digitalocean/action-doctl@v2
         with:

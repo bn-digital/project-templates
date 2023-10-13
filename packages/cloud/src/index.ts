@@ -1,7 +1,7 @@
-import { configure, providers, stacks } from "@bn-digital/pulumi"
-import { Config } from "@pulumi/pulumi"
-import "./types"
+import { config } from "dotenv"
 
-const spec = new Config("project").requireObject<ConfigSpec>("spec")
+import { run } from "./digitalocean"
 
-configure(spec).cloud(stacks.digitalocean.CloudNativeWebApp).deploy(providers.helm.WebAppDeployment).release()
+config()
+
+run().then()
