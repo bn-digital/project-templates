@@ -12,6 +12,7 @@ on:
       - '.git*'
       - '.dockerignore'
       - '.github/**'
+      - '*.md'
 
 jobs:
   secrets:
