@@ -20,7 +20,7 @@ To ensure that WFs are working properly, add these GH Secrets right after projec
 After setting up **_all_**(!) required secrets, perform these actions:
 - [ ] In the `Actions` tab, find WF named `Bootstrap` in the left pane
 - [ ] Click on the button `Run workflow` in the top-right corner and in pop-up window click green button `Run workflow`
-- [ ] After that replace all occurrences of `"project-templates"` in all `package.json` files with the name of your project, run `yarn install` from root, then commit and push these changes
+- [ ] After that open code editor of your choice and replace all occurrences of `"project-templates"` in all `package.json` files with the name of your project, run `yarn install` from every location where you have made changes, then commit and push these changes
 - [ ] Wait for the `Staging Deployment` workflow to run and check your staging at `REPO_NAME.bndigital.dev`
 - [ ] Go to `REPO_NAME.bndigital.dev/admin` and set up Strapi Admin with [these](https://vault.bndigital.dev/ui/vault/secrets/templates/show/project/staging/strapi) credentials
 - [ ] Click on the `Settings` option in the menu on the left and on the page that appeared click `Transfer tokens` and then `+ Create new Transfer Token` button inn the top-right corner
