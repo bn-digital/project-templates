@@ -23,7 +23,7 @@ After setting up **_all_**(!) required secrets, perform these actions:
 - [ ] After that open code editor of your choice and replace all occurrences of `"project-templates"` in all `package.json` files with the name of your project, run `yarn install` from project root, then commit and push these changes
 - [ ] Wait for the `Staging Deployment` workflow to run and check your staging at `REPO_NAME.bndigital.dev`
 - [ ] Go to `REPO_NAME.bndigital.dev/admin` and set up Strapi Admin with [these](https://vault.bndigital.dev/ui/vault/secrets/templates/show/project/staging/strapi) credentials
-- [ ] Click on the `Settings` option in the menu on the left and on the page that appeared click `Transfer tokens` and then `+ Create new Transfer Token` button inn the top-right corner
+- [ ] Click on the `Settings` option in the menu on the left and on the page that appeared click `Transfer tokens` and then `+ Create new Transfer Token` button in the top-right corner
 - [ ] In the appeared window enter these values:
 - For `Name` any name you like (e.g staging_token)
 - For `Token duration` select `30 days`
