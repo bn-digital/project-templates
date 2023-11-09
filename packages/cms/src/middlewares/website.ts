@@ -22,7 +22,7 @@ class RouteResolver {
   }
 
   private get isStatic(): boolean {
-    return new RegExp(/[0-9a-z_-]+\.[a-z0-9]{2,5}/i).test(this.ctx.url) || this.ctx.method.toLowerCase() !== "get"
+    return new RegExp(/[0-9a-z_-]+\.[a-z0-9]{2,5}/i).test(this.ctx.path) || this.ctx.method.toLowerCase() !== "get"
   }
 
   private get isWellKnown(): boolean {
