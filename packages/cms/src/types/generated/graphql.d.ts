@@ -28,6 +28,7 @@ export interface NexusGenInputs {
     lt?: boolean | null; // Boolean
     lte?: boolean | null; // Boolean
     ne?: boolean | null; // Boolean
+    nei?: boolean | null; // Boolean
     not?: NexusGenInputs['BooleanFilterInput'] | null; // BooleanFilterInput
     notContains?: boolean | null; // Boolean
     notContainsi?: boolean | null; // Boolean
@@ -176,6 +177,7 @@ export interface NexusGenInputs {
     lt?: NexusGenScalars['Date'] | null; // Date
     lte?: NexusGenScalars['Date'] | null; // Date
     ne?: NexusGenScalars['Date'] | null; // Date
+    nei?: NexusGenScalars['Date'] | null; // Date
     not?: NexusGenInputs['DateFilterInput'] | null; // DateFilterInput
     notContains?: NexusGenScalars['Date'] | null; // Date
     notContainsi?: NexusGenScalars['Date'] | null; // Date
@@ -199,6 +201,7 @@ export interface NexusGenInputs {
     lt?: NexusGenScalars['DateTime'] | null; // DateTime
     lte?: NexusGenScalars['DateTime'] | null; // DateTime
     ne?: NexusGenScalars['DateTime'] | null; // DateTime
+    nei?: NexusGenScalars['DateTime'] | null; // DateTime
     not?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
     notContains?: NexusGenScalars['DateTime'] | null; // DateTime
     notContainsi?: NexusGenScalars['DateTime'] | null; // DateTime
@@ -227,6 +230,7 @@ export interface NexusGenInputs {
     lt?: number | null; // Float
     lte?: number | null; // Float
     ne?: number | null; // Float
+    nei?: number | null; // Float
     not?: NexusGenInputs['FloatFilterInput'] | null; // FloatFilterInput
     notContains?: number | null; // Float
     notContainsi?: number | null; // Float
@@ -263,6 +267,7 @@ export interface NexusGenInputs {
     lt?: string | null; // ID
     lte?: string | null; // ID
     ne?: string | null; // ID
+    nei?: string | null; // ID
     not?: NexusGenInputs['IDFilterInput'] | null; // IDFilterInput
     notContains?: string | null; // ID
     notContainsi?: string | null; // ID
@@ -286,6 +291,7 @@ export interface NexusGenInputs {
     lt?: number | null; // Int
     lte?: number | null; // Int
     ne?: number | null; // Int
+    nei?: number | null; // Int
     not?: NexusGenInputs['IntFilterInput'] | null; // IntFilterInput
     notContains?: number | null; // Int
     notContainsi?: number | null; // Int
@@ -309,6 +315,7 @@ export interface NexusGenInputs {
     lt?: NexusGenScalars['JSON'] | null; // JSON
     lte?: NexusGenScalars['JSON'] | null; // JSON
     ne?: NexusGenScalars['JSON'] | null; // JSON
+    nei?: NexusGenScalars['JSON'] | null; // JSON
     not?: NexusGenInputs['JSONFilterInput'] | null; // JSONFilterInput
     notContains?: NexusGenScalars['JSON'] | null; // JSON
     notContainsi?: NexusGenScalars['JSON'] | null; // JSON
@@ -343,6 +350,7 @@ export interface NexusGenInputs {
     lt?: NexusGenScalars['Long'] | null; // Long
     lte?: NexusGenScalars['Long'] | null; // Long
     ne?: NexusGenScalars['Long'] | null; // Long
+    nei?: NexusGenScalars['Long'] | null; // Long
     not?: NexusGenInputs['LongFilterInput'] | null; // LongFilterInput
     notContains?: NexusGenScalars['Long'] | null; // Long
     notContainsi?: NexusGenScalars['Long'] | null; // Long
@@ -388,6 +396,7 @@ export interface NexusGenInputs {
     lt?: string | null; // String
     lte?: string | null; // String
     ne?: string | null; // String
+    nei?: string | null; // String
     not?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     notContains?: string | null; // String
     notContainsi?: string | null; // String
@@ -411,6 +420,7 @@ export interface NexusGenInputs {
     lt?: NexusGenScalars['Time'] | null; // Time
     lte?: NexusGenScalars['Time'] | null; // Time
     ne?: NexusGenScalars['Time'] | null; // Time
+    nei?: NexusGenScalars['Time'] | null; // Time
     not?: NexusGenInputs['TimeFilterInput'] | null; // TimeFilterInput
     notContains?: NexusGenScalars['Time'] | null; // Time
     notContainsi?: NexusGenScalars['Time'] | null; // Time
