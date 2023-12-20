@@ -5,7 +5,7 @@
   "scripts": {
     "build": "strapi build",
     "env": "npx vault-env generate",
-    "start": "yarn env && strapi develop"
+    "start": "yarn env && strapi ts:generate-types && strapi develop"
   },
   "dependencies": {
     "@bn-digital/strapi-types": "^1.0.64",
