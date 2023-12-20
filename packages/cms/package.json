@@ -8,10 +8,8 @@
     "start": "yarn env && strapi develop"
   },
   "dependencies": {
-    "@bn-digital/strapi-plugin-field-uuid": "^1.2.12",
     "@bn-digital/strapi-types": "^1.0.64",
     "@bn-digital/typescript-config": "^1.4.0",
-    "@notum-cz/strapi-plugin-content-versioning": "^0.4.7",
     "@strapi/plugin-graphql": "4.15.5",
     "@strapi/plugin-users-permissions": "4.15.5",
     "@strapi/provider-email-nodemailer": "4.15.5",
@@ -24,7 +22,6 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^5.2.0",
     "strapi-blurhash": "^1.1.1",
-    "strapi-plugin-react-icons": "^0.1.6",
     "styled-components": "^5.2.1"
   },
   "strapi": {

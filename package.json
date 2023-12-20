@@ -12,9 +12,9 @@
     }
   ],
   "author": {
-    "name": "Vlad Volkov",
-    "email": "vlad.volkov@bndigital.co",
-    "url": "https://github.com/vladyslavvolkov"
+    "name": "BN Digital",
+    "email": "hello@bndigital.co",
+    "url": "https://github.com/bn-digital/"
   },
   "workspaces": [
     "packages/*"
