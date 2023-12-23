@@ -25,10 +25,10 @@
     "react-dom": "^18.2.0",
     "react-responsive": "^9.0.2",
     "react-router": "^6.14.1",
-    "react-router-dom": "^6.14.1"
+    "react-router-dom": "^6.14.1",
+    "sharp": "^0.33.1"
   },
   "devDependencies": {
-    "@bn-digital/vite": "^2.5.0",
     "@types/lodash": "^4.14.202",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
