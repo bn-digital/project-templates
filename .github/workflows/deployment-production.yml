@@ -34,8 +34,6 @@ jobs:
         projects/data/${{ github.event.repository.name }}/production/database           enabled         | DATABASE_ENABLED ;
         projects/data/${{ github.event.repository.name }}/production/database           database        | DATABASE_NAME ;
         projects/data/${{ github.event.repository.name }}/production/database           username        | DATABASE_USERNAME ;
-        projects/data/${{ github.event.repository.name }}/production/database           password        | DATABASE_PASSWORD ;
-        projects/data/${{ github.event.repository.name }}/production/database           root-password   | DATABASE_ROOT_PASSWORD ;
       helmRef: optimize-delivery
       nodePool: production
 
