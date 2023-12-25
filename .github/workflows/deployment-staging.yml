@@ -13,6 +13,7 @@ on:
       - '.dockerignore'
       - '.github/**'
       - '*.md'
+      - 'packages/cms/.env.production'
 
 jobs:
   secrets:
