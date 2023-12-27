@@ -31,12 +31,6 @@
   "stylelint": {
     "extends": "@bn-digital/stylelint-config"
   },
-  "eslintConfig": {
-    "extends": "@bn-digital/eslint-config",
-    "ignorePatterns": [
-      "webpack.config.ts"
-    ]
-  },
   "devDependencies": {
     "@bn-digital/cosmiconfig": "1.2.1",
     "@bn-digital/vault-env": "1.5.6",
