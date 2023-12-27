@@ -9,6 +9,7 @@ jobs:
   secrets:
     uses: bn-digital/vault/.github/workflows/import-secrets.yml@latest
     secrets: inherit
+
   build:
     needs: [ secrets ]
     uses: bn-digital/docker/.github/workflows/build-images.yml@latest
@@ -16,6 +17,8 @@ jobs:
     with:
       environment: production
       version: ${{ github.ref_name }}
+
+# Comment this job and uncomment next one to enable deployment to vm
   deploy:
     needs: [ build ]
     uses: bn-digital/helm/.github/workflows/deploy-charts.yml@latest
@@ -33,3 +36,35 @@ jobs:
         projects/data/${{ github.event.repository.name }}/production/database           username        | DATABASE_USERNAME ;
       helmRef: optimize-delivery
       nodePool: production
+
+#  deploy:
+#    needs: [ build ]
+#    runs-on: self-hosted
+#    steps:
+#      - name: Checkout sources
+#        uses: actions/checkout@v4
+#
+#      - name: Import Vault secrets
+#        uses: hashicorp/vault-action@v2.5.0
+#        with:
+#          url: ${{ secrets.VAULT_ENDPOINT }}
+#          token: ${{ secrets.VAULT_TOKEN }}
+#          secrets: |
+#            projects/data/${{ github.event.repository.name }}/production/vm     host        | HOST ;
+#            projects/data/${{ github.event.repository.name }}/production/vm     username    | USERNAME ;
+#            projects/data/${{ github.event.repository.name }}/production/vm     password    | PASSWORD;
+#
+#      - name: SSH into machine
+#        uses: appleboy/ssh-action@v1.0.0
+#        with:
+#          host: ${{ env.HOST }}
+#          username: ${{ env.USERNAME }}
+#          password: ${{ env.PASSWORD }}
+#          script: |
+#            source .env
+#            docker compose stop app
+#            docker compose rm app --force
+#            docker rmi dcr.bndigital.dev/${{ github.event.repository.name }}/app:$APP_VERSION
+#            export APP_VERSION=${{ github.ref_name }}
+#            docker compose pull app
+#            docker compose up app -d
