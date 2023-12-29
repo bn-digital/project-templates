@@ -4,7 +4,6 @@ import type { ReactNode } from 'react';
 
 import ExternalLink from '@/components/ExternalLink';
 import Section from '@/components/Section';
-import { useEffect } from "react"
 
 export type WelcomeClientProps = {
   children: ReactNode
@@ -13,9 +12,6 @@ export type WelcomeClientProps = {
 export function WelcomeClient({
   children,
 }: WelcomeClientProps) {
-  useEffect(() => {
-
-  }, [])
   return (
     <Section
       title="Welcome"
