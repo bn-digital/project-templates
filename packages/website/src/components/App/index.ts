@@ -1,3 +1,4 @@
+import type { ApolloProviderProps } from './ApolloProvider';
 import { App, AppProps } from './App';
 import type {
   ConfigProviderProps,
@@ -17,6 +18,7 @@ export type {
   AppThemeToken,
   ThemeConfig,
   StyleProvideProps,
+  ApolloProviderProps,
 };
 
 export default App;

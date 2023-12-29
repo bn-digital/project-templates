@@ -1,3 +1,5 @@
+'use client';
+
 import { Alert } from 'antd';
 import { ReactElement } from 'react';
 

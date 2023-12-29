@@ -1,3 +1,5 @@
+'use client';
+
 import { Typography } from 'antd';
 import { ComponentProps } from 'react';
 
