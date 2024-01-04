@@ -1,16 +1,11 @@
-import ExternalLink from '@/components/ExternalLink';
-import Section from '@/components/Section';
+import { WelcomeServer } from '@/sections/Welcome/Welcome.server';
+
+import { WelcomeClient } from './Welcome.client';
 
 export function Welcome() {
   return (
-    <Section
-      title="Welcome"
-      titleLevel={1}
-      subtitle="This is the home page"
-    >
-      <ExternalLink href="https://www.google.com">
-        Google
-      </ExternalLink>
-    </Section>
+    <WelcomeClient>
+      <WelcomeServer />
+    </WelcomeClient>
   );
 }

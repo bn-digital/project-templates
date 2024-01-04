@@ -1,5 +1,3 @@
-'use client';
-
 import Layout from '@/components/Layout';
 import Welcome from '@/sections/Welcome';
 

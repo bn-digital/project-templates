@@ -1,3 +1,6 @@
-import { ApolloProvider } from './ApolloProvider';
+import { ApolloProvider, ApolloProviderProps } from './ApolloProvider';
 
+export type {
+  ApolloProviderProps,
+};
 export default ApolloProvider;

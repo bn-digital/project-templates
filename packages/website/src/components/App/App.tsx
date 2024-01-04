@@ -2,6 +2,7 @@
 
 import { ReactElement } from 'react';
 
+import ApolloProvider from './ApolloProvider';
 import { AppContext, AppProvider, useAppContext } from './App.context';
 import ConfigProvider from './ConfigProvider';
 import EmotionProvider from './EmotionProvider';
@@ -18,19 +19,22 @@ App.useContext = useAppContext;
 App.ThemeProvider = EmotionProvider;
 App.ConfigProvider = ConfigProvider;
 App.ErrorBoundary = ErrorBoundary;
+App.ApolloProvider = ApolloProvider;
 
 export function App({
   children,
 }: AppProps) {
   return (
     <App.ErrorBoundary>
-      <App.Provider>
-        <StyleProvider>
-          <ConfigProvider includeGlobalStyles>
-            {children}
-          </ConfigProvider>
-        </StyleProvider>
-      </App.Provider>
+      <App.ApolloProvider>
+        <App.Provider>
+          <StyleProvider>
+            <ConfigProvider includeGlobalStyles>
+              {children}
+            </ConfigProvider>
+          </StyleProvider>
+        </App.Provider>
+      </App.ApolloProvider>
     </App.ErrorBoundary>
   );
 }

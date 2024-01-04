@@ -1,3 +1,5 @@
+'use client';
+
 import { Layout as AntdLayout, LayoutProps as AntdLayoutProps } from 'antd';
 
 import App from '@/components/App';
