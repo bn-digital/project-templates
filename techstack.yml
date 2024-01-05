@@ -1,7 +1,8 @@
 repo_name: bn-digital/project-templates
-report_id: 8bf83e2648abc838e3c12abd90e1aaa0
+report_id: 4d0d1bda3176a8334e39a460bac13258
+version: 0.1
 repo_type: Public
-timestamp: '2023-12-14T10:17:16+00:00'
+timestamp: '2024-01-05T08:55:38+00:00'
 requested_by: ozhyhin-nikita
 provider: github
 branch: latest
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/bn-digital/project-templates
   detection_source: Repo Metadata
 - name: TypeScript
   description: A superset of JavaScript that compiles to clean JavaScript output
@@ -26,6 +28,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: https://github.com/bn-digital/project-templates
   detection_source: Repo Metadata
 - name: Ant Design
   description: A set of high-quality React components
@@ -50,6 +53,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/cloud/package.json
   detection_source: packages/cloud/package.json
   last_updated_by: Vlad Volkov
   last_updated_on: 2022-10-12 03:43:47.000000000 Z
@@ -90,6 +94,7 @@ tools:
   category: Data Stores
   sub_category: PostgreSQL as a Service
   image_url: https://img.stackshare.io/service/2516/original.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/docker-compose.yml
   detection_source: docker-compose.yml
   last_updated_by: Vlad Volkov
   last_updated_on: 2023-05-01 15:34:53.000000000 Z
@@ -114,6 +119,7 @@ tools:
   category: Data Stores
   sub_category: Database Tools
   image_url: https://img.stackshare.io/service/109221/default_b888cdf5617d936aa6aacf130911906955508639.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/website/public/robots.txt
   detection_source: packages/website/public/robots.txt
   last_updated_by: Vlad Volkov
   last_updated_on: 2022-08-30 21:28:52.000000000 Z
@@ -126,6 +132,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Virtual Machine Platforms & Containers
   image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/bn-digital/project-templates
   detection_source: Repo Metadata
 - name: Dotenv
   description: Loads environment variables from .env for Nodejs projects
@@ -136,6 +143,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Server Configuration and Automation
   image_url: https://img.stackshare.io/service/8067/default_90dcb1286af7685c68df319c764b80704df1155b.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/cloud/package.json
   detection_source: packages/cloud/package.json
   last_updated_by: Nikita Ozhyhin
   last_updated_on: 2023-10-13 15:50:07.000000000 Z
@@ -147,6 +155,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/bn-digital/project-templates
   detection_source: Repo Metadata
 - name: GitHub Actions
   description: Automate your workflow from idea to production
@@ -156,6 +165,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/.github/workflows/bootstrap.yml
   detection_source: ".github/workflows/bootstrap.yml"
   last_updated_by: Nikita Ozhyhin
   last_updated_on: 2023-10-13 15:50:07.000000000 Z
@@ -181,6 +191,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Infrastructure Build Tools
   image_url: https://img.stackshare.io/service/9053/pulumi_mark_flat_onPurple.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/cloud/package.json
   detection_source: packages/cloud/package.json
   last_updated_by: Nikita Ozhyhin
   last_updated_on: 2023-10-13 15:50:07.000000000 Z
@@ -206,6 +217,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Front End Package Manager
   image_url: https://img.stackshare.io/service/5848/44mC-kJ3.jpg
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
   detection_source: yarn.lock
   last_updated_by: BDenysovets
   last_updated_on: 2021-10-30 11:06:23.000000000 Z
@@ -217,6 +229,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Front End Package Manager
   image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/website/package.json
   detection_source: packages/website/package.json
   last_updated_by: Vlad Volkov
   last_updated_on: 2021-08-16 03:34:05.000000000 Z
@@ -229,6 +242,7 @@ tools:
   category: Application Hosting
   sub_category: Platform as a Service
   image_url: https://img.stackshare.io/service/139/s01TMTGn.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/docker-compose.yml
   detection_source: docker-compose.yml
   last_updated_by: Vlad Volkov
   last_updated_on: 2022-05-13 03:13:33.000000000 Z
@@ -238,6 +252,7 @@ tools:
   open_source: false
   hosted_saas: false
   image_url: https://img.stackshare.io/service/2270/no-img-open-source.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/website/index.html
   detection_source: packages/website/index.html
   last_updated_by: Vlad Volkov
   last_updated_on: 2021-08-16 03:34:05.000000000 Z
@@ -249,6 +264,7 @@ tools:
   category: Communications
   sub_category: Large Language Model Tools
   image_url: https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/website/public/robots.txt
   detection_source: packages/website/public/robots.txt
   last_updated_by: Vlad Volkov
   last_updated_on: 2022-08-30 21:28:52.000000000 Z
@@ -261,6 +277,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/bn-digital/project-templates
   detection_source: Repo Metadata
 - name: "@types/node"
   description: TypeScript definitions for Node.js
