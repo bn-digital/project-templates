@@ -14,12 +14,13 @@ on:
           - "staging ➔ production"
 
 jobs:
-  strapi-transfer:
+  staging-transfer:
+    if: ${{ inputs.environment == 'development ➔ staging' }}
     runs-on: self-hosted
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
-        
+
       - name: Node version
         uses: actions/setup-node@v3
         with:
@@ -32,7 +33,39 @@ jobs:
           yarn workspaces focus @${{ github.event.repository.name }}/cms
 
       - name: Staging DB transfer
-        if: ${{ inputs.environment == 'development ➔ staging' }}
         working-directory: packages/cms
         run: |
           NODE_ENV=development yarn strapi transfer --to=https://${{ github.event.repository.name }}.bndigital.dev/admin --to-token=${{ secrets.STRAPI_STAGING_TRANSFER_TOKEN }} --force
+
+  production-transfer:
+    if: ${{ inputs.environment == 'staging ➔ production' }}
+    runs-on: self-hosted
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Import Vault secrets
+        uses: hashicorp/vault-action@v2.5.0
+        with:
+          url: ${{ secrets.VAULT_ENDPOINT }}
+          token: ${{ secrets.VAULT_TOKEN }}
+          secrets: |
+            infrastructure/data/digitalocean                                   token   | DIGITALOCEAN_TOKEN ;
+            infrastructure/data/kubernetes                                     cluster | KUBERNETES_CLUSTER ;
+            projects/data/${{ github.event.repository.name }}/production/vm    domain  | DOMAIN;
+
+      - name: Setup DigitalOcean cli
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ env.DIGITALOCEAN_TOKEN }}
+
+      - name: Configure Kubernetes context
+        run: doctl kubernetes cluster kubeconfig save ${{ env.KUBERNETES_CLUSTER }} --set-current-context
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Production DB transfer
+        run: |
+          export POD_NAME=$(kubectl get pods | awk '{print $1}' | grep -e "${{ github.event.repository.name }}")
+          kubectl -n staging exec -it $POD_NAME -- /bin/bash -c "yarn strapi transfer --to=https://${{ env.DOMAIN }}/admin --to-token=${{ secrets.STRAPI_PRODUCTION_TRANSFER_TOKEN }} --force"

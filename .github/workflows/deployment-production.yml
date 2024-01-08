@@ -62,9 +62,10 @@ jobs:
 #          password: ${{ env.PASSWORD }}
 #          script: |
 #            source .env
+#            export CONTAINER_ID=$(docker ps | grep -e ${{ github.event.repository.name }}-app | awk '{print $1}')
 #            docker compose stop app
 #            docker compose rm app --force
-#            docker rmi dcr.bndigital.dev/${{ github.event.repository.name }}/app:$APP_VERSION
+#            docker rmi $CONTAINER_ID
 #            export APP_VERSION=${{ github.ref_name }}
 #            docker compose pull app
 #            docker compose up app -d
