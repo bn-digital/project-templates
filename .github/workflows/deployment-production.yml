@@ -62,10 +62,11 @@ jobs:
 #          password: ${{ env.PASSWORD }}
 #          script: |
 #            source .env
-#            export CONTAINER_ID=$(docker ps | grep -e ${{ github.event.repository.name }}-app | awk '{print $1}')
+#            export CONTAINER_ID=$(docker ps | grep -e ${{ env.USERNAME }}-app | awk '{print $1}')
+#            export IMAGE_ID=$(docker inspect --format='{{.Image}}' $CONTAINER_ID)
 #            docker compose stop app
-#            docker compose rm app --force
-#            docker rmi $CONTAINER_ID
+#            docker rm $CONTAINER_ID --force
+#            docker rmi $IMAGE_ID --force
 #            export APP_VERSION=${{ github.ref_name }}
 #            docker compose pull app
 #            docker compose up app -d
