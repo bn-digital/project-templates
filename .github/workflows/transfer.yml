@@ -67,5 +67,5 @@ jobs:
 
       - name: Production DB transfer
         run: |
-          export POD_NAME=$(kubectl get pods | awk '{print $1}' | grep -e "${{ github.event.repository.name }}")
+          export POD_NAME=$(kubectl get pods -n staging | awk '{print $1}' | grep -e "${{ github.event.repository.name }}")
           kubectl -n staging exec -it $POD_NAME -- /bin/bash -c "yarn strapi transfer --to=https://${{ env.DOMAIN }}/admin --to-token=${{ secrets.STRAPI_PRODUCTION_TRANSFER_TOKEN }} --force"
