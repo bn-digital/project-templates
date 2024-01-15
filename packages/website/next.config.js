@@ -16,7 +16,7 @@ const nextConfig = {
     // },
     experimental: {
         typedRoutes: true,
-        optimizePackageImports: ['antd'],
+    //    optimizePackageImports: ['antd'],
         webVitalsAttribution: ['CLS', 'LCP', 'FCP']
     },
     webpack(config) {

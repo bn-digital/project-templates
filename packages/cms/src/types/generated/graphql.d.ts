@@ -271,6 +271,20 @@ export interface NexusGenInputs {
     pageSize?: number | null; // Int
     start?: number | null; // Int
   }
+  StaticPageFiltersInput: { // input type
+    and?: Array<NexusGenInputs['StaticPageFiltersInput'] | null> | null; // [StaticPageFiltersInput]
+    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    id?: NexusGenInputs['IDFilterInput'] | null; // IDFilterInput
+    not?: NexusGenInputs['StaticPageFiltersInput'] | null; // StaticPageFiltersInput
+    or?: Array<NexusGenInputs['StaticPageFiltersInput'] | null> | null; // [StaticPageFiltersInput]
+    slug?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    title?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+  }
+  StaticPageInput: { // input type
+    slug?: string | null; // String
+    title?: string | null; // String
+  }
   StringFilterInput: { // input type
     and?: Array<string | null> | null; // [String]
     between?: Array<string | null> | null; // [String]
@@ -322,7 +336,6 @@ export interface NexusGenInputs {
   UploadFileFiltersInput: { // input type
     alternativeText?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     and?: Array<NexusGenInputs['UploadFileFiltersInput'] | null> | null; // [UploadFileFiltersInput]
-    blurhash?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     caption?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     createdAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
     ext?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
@@ -346,7 +359,6 @@ export interface NexusGenInputs {
   }
   UploadFileInput: { // input type
     alternativeText?: string | null; // String
-    blurhash?: string | null; // String
     caption?: string | null; // String
     ext?: string | null; // String
     folder?: string | null; // ID
@@ -520,9 +532,18 @@ export interface NexusGenObjects {
   }
   Query: {};
   ResponseCollectionMeta: {};
+  StaticPage: { // root type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    slug?: string | null; // String
+    title: string; // String!
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  StaticPageEntity: {};
+  StaticPageEntityResponse: {};
+  StaticPageEntityResponseCollection: {};
+  StaticPageRelationResponseCollection: {};
   UploadFile: { // root type
     alternativeText?: string | null; // String
-    blurhash?: string | null; // String
     caption?: string | null; // String
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     ext?: string | null; // String
@@ -623,7 +644,7 @@ export interface NexusGenInterfaces {
 }
 
 export interface NexusGenUnions {
-  GenericMorph: NexusGenRootTypes['ComponentDataEntry'] | NexusGenRootTypes['ComponentDataSet'] | NexusGenRootTypes['ContentReleasesRelease'] | NexusGenRootTypes['ContentReleasesReleaseAction'] | NexusGenRootTypes['UploadFile'] | NexusGenRootTypes['UploadFolder'] | NexusGenRootTypes['UsersPermissionsPermission'] | NexusGenRootTypes['UsersPermissionsRole'] | NexusGenRootTypes['UsersPermissionsUser'];
+  GenericMorph: NexusGenRootTypes['ComponentDataEntry'] | NexusGenRootTypes['ComponentDataSet'] | NexusGenRootTypes['ContentReleasesRelease'] | NexusGenRootTypes['ContentReleasesReleaseAction'] | NexusGenRootTypes['StaticPage'] | NexusGenRootTypes['UploadFile'] | NexusGenRootTypes['UploadFolder'] | NexusGenRootTypes['UsersPermissionsPermission'] | NexusGenRootTypes['UsersPermissionsRole'] | NexusGenRootTypes['UsersPermissionsUser'];
 }
 
 export type NexusGenRootTypes = NexusGenObjects & NexusGenUnions
@@ -691,11 +712,13 @@ export interface NexusGenFieldTypes {
     changePassword: NexusGenRootTypes['UsersPermissionsLoginPayload'] | null; // UsersPermissionsLoginPayload
     createContentReleasesRelease: NexusGenRootTypes['ContentReleasesReleaseEntityResponse'] | null; // ContentReleasesReleaseEntityResponse
     createContentReleasesReleaseAction: NexusGenRootTypes['ContentReleasesReleaseActionEntityResponse'] | null; // ContentReleasesReleaseActionEntityResponse
+    createStaticPage: NexusGenRootTypes['StaticPageEntityResponse'] | null; // StaticPageEntityResponse
     createUploadFile: NexusGenRootTypes['UploadFileEntityResponse'] | null; // UploadFileEntityResponse
     createUsersPermissionsRole: NexusGenRootTypes['UsersPermissionsCreateRolePayload'] | null; // UsersPermissionsCreateRolePayload
     createUsersPermissionsUser: NexusGenRootTypes['UsersPermissionsUserEntityResponse']; // UsersPermissionsUserEntityResponse!
     deleteContentReleasesRelease: NexusGenRootTypes['ContentReleasesReleaseEntityResponse'] | null; // ContentReleasesReleaseEntityResponse
     deleteContentReleasesReleaseAction: NexusGenRootTypes['ContentReleasesReleaseActionEntityResponse'] | null; // ContentReleasesReleaseActionEntityResponse
+    deleteStaticPage: NexusGenRootTypes['StaticPageEntityResponse'] | null; // StaticPageEntityResponse
     deleteUploadFile: NexusGenRootTypes['UploadFileEntityResponse'] | null; // UploadFileEntityResponse
     deleteUsersPermissionsRole: NexusGenRootTypes['UsersPermissionsDeleteRolePayload'] | null; // UsersPermissionsDeleteRolePayload
     deleteUsersPermissionsUser: NexusGenRootTypes['UsersPermissionsUserEntityResponse']; // UsersPermissionsUserEntityResponse!
@@ -709,6 +732,7 @@ export interface NexusGenFieldTypes {
     updateContentReleasesRelease: NexusGenRootTypes['ContentReleasesReleaseEntityResponse'] | null; // ContentReleasesReleaseEntityResponse
     updateContentReleasesReleaseAction: NexusGenRootTypes['ContentReleasesReleaseActionEntityResponse'] | null; // ContentReleasesReleaseActionEntityResponse
     updateFileInfo: NexusGenRootTypes['UploadFileEntityResponse']; // UploadFileEntityResponse!
+    updateStaticPage: NexusGenRootTypes['StaticPageEntityResponse'] | null; // StaticPageEntityResponse
     updateUploadFile: NexusGenRootTypes['UploadFileEntityResponse'] | null; // UploadFileEntityResponse
     updateUsersPermissionsRole: NexusGenRootTypes['UsersPermissionsUpdateRolePayload'] | null; // UsersPermissionsUpdateRolePayload
     updateUsersPermissionsUser: NexusGenRootTypes['UsersPermissionsUserEntityResponse']; // UsersPermissionsUserEntityResponse!
@@ -726,6 +750,8 @@ export interface NexusGenFieldTypes {
     contentReleasesReleaseActions: NexusGenRootTypes['ContentReleasesReleaseActionEntityResponseCollection'] | null; // ContentReleasesReleaseActionEntityResponseCollection
     contentReleasesReleases: NexusGenRootTypes['ContentReleasesReleaseEntityResponseCollection'] | null; // ContentReleasesReleaseEntityResponseCollection
     me: NexusGenRootTypes['UsersPermissionsUser'] | null; // UsersPermissionsUser
+    staticPage: NexusGenRootTypes['StaticPageEntityResponse'] | null; // StaticPageEntityResponse
+    staticPages: NexusGenRootTypes['StaticPageEntityResponseCollection'] | null; // StaticPageEntityResponseCollection
     uploadFile: NexusGenRootTypes['UploadFileEntityResponse'] | null; // UploadFileEntityResponse
     uploadFiles: NexusGenRootTypes['UploadFileEntityResponseCollection'] | null; // UploadFileEntityResponseCollection
     usersPermissionsRole: NexusGenRootTypes['UsersPermissionsRoleEntityResponse'] | null; // UsersPermissionsRoleEntityResponse
@@ -736,9 +762,28 @@ export interface NexusGenFieldTypes {
   ResponseCollectionMeta: { // field return type
     pagination: NexusGenRootTypes['Pagination']; // Pagination!
   }
+  StaticPage: { // field return type
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    slug: string | null; // String
+    title: string; // String!
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  StaticPageEntity: { // field return type
+    attributes: NexusGenRootTypes['StaticPage'] | null; // StaticPage
+    id: string | null; // ID
+  }
+  StaticPageEntityResponse: { // field return type
+    data: NexusGenRootTypes['StaticPageEntity'] | null; // StaticPageEntity
+  }
+  StaticPageEntityResponseCollection: { // field return type
+    data: NexusGenRootTypes['StaticPageEntity'][]; // [StaticPageEntity!]!
+    meta: NexusGenRootTypes['ResponseCollectionMeta']; // ResponseCollectionMeta!
+  }
+  StaticPageRelationResponseCollection: { // field return type
+    data: NexusGenRootTypes['StaticPageEntity'][]; // [StaticPageEntity!]!
+  }
   UploadFile: { // field return type
     alternativeText: string | null; // String
-    blurhash: string | null; // String
     caption: string | null; // String
     createdAt: NexusGenScalars['DateTime'] | null; // DateTime
     ext: string | null; // String
@@ -955,11 +1000,13 @@ export interface NexusGenFieldTypeNames {
     changePassword: 'UsersPermissionsLoginPayload'
     createContentReleasesRelease: 'ContentReleasesReleaseEntityResponse'
     createContentReleasesReleaseAction: 'ContentReleasesReleaseActionEntityResponse'
+    createStaticPage: 'StaticPageEntityResponse'
     createUploadFile: 'UploadFileEntityResponse'
     createUsersPermissionsRole: 'UsersPermissionsCreateRolePayload'
     createUsersPermissionsUser: 'UsersPermissionsUserEntityResponse'
     deleteContentReleasesRelease: 'ContentReleasesReleaseEntityResponse'
     deleteContentReleasesReleaseAction: 'ContentReleasesReleaseActionEntityResponse'
+    deleteStaticPage: 'StaticPageEntityResponse'
     deleteUploadFile: 'UploadFileEntityResponse'
     deleteUsersPermissionsRole: 'UsersPermissionsDeleteRolePayload'
     deleteUsersPermissionsUser: 'UsersPermissionsUserEntityResponse'
@@ -973,6 +1020,7 @@ export interface NexusGenFieldTypeNames {
     updateContentReleasesRelease: 'ContentReleasesReleaseEntityResponse'
     updateContentReleasesReleaseAction: 'ContentReleasesReleaseActionEntityResponse'
     updateFileInfo: 'UploadFileEntityResponse'
+    updateStaticPage: 'StaticPageEntityResponse'
     updateUploadFile: 'UploadFileEntityResponse'
     updateUsersPermissionsRole: 'UsersPermissionsUpdateRolePayload'
     updateUsersPermissionsUser: 'UsersPermissionsUserEntityResponse'
@@ -990,6 +1038,8 @@ export interface NexusGenFieldTypeNames {
     contentReleasesReleaseActions: 'ContentReleasesReleaseActionEntityResponseCollection'
     contentReleasesReleases: 'ContentReleasesReleaseEntityResponseCollection'
     me: 'UsersPermissionsUser'
+    staticPage: 'StaticPageEntityResponse'
+    staticPages: 'StaticPageEntityResponseCollection'
     uploadFile: 'UploadFileEntityResponse'
     uploadFiles: 'UploadFileEntityResponseCollection'
     usersPermissionsRole: 'UsersPermissionsRoleEntityResponse'
@@ -1000,9 +1050,28 @@ export interface NexusGenFieldTypeNames {
   ResponseCollectionMeta: { // field return type name
     pagination: 'Pagination'
   }
+  StaticPage: { // field return type name
+    createdAt: 'DateTime'
+    slug: 'String'
+    title: 'String'
+    updatedAt: 'DateTime'
+  }
+  StaticPageEntity: { // field return type name
+    attributes: 'StaticPage'
+    id: 'ID'
+  }
+  StaticPageEntityResponse: { // field return type name
+    data: 'StaticPageEntity'
+  }
+  StaticPageEntityResponseCollection: { // field return type name
+    data: 'StaticPageEntity'
+    meta: 'ResponseCollectionMeta'
+  }
+  StaticPageRelationResponseCollection: { // field return type name
+    data: 'StaticPageEntity'
+  }
   UploadFile: { // field return type name
     alternativeText: 'String'
-    blurhash: 'String'
     caption: 'String'
     createdAt: 'DateTime'
     ext: 'String'
@@ -1178,6 +1247,9 @@ export interface NexusGenArgTypes {
     createContentReleasesReleaseAction: { // args
       data: NexusGenInputs['ContentReleasesReleaseActionInput']; // ContentReleasesReleaseActionInput!
     }
+    createStaticPage: { // args
+      data: NexusGenInputs['StaticPageInput']; // StaticPageInput!
+    }
     createUploadFile: { // args
       data: NexusGenInputs['UploadFileInput']; // UploadFileInput!
     }
@@ -1191,6 +1263,9 @@ export interface NexusGenArgTypes {
       id: string; // ID!
     }
     deleteContentReleasesReleaseAction: { // args
+      id: string; // ID!
+    }
+    deleteStaticPage: { // args
       id: string; // ID!
     }
     deleteUploadFile: { // args
@@ -1240,6 +1315,10 @@ export interface NexusGenArgTypes {
       id: string; // ID!
       info?: NexusGenInputs['FileInfoInput'] | null; // FileInfoInput
     }
+    updateStaticPage: { // args
+      data: NexusGenInputs['StaticPageInput']; // StaticPageInput!
+      id: string; // ID!
+    }
     updateUploadFile: { // args
       data: NexusGenInputs['UploadFileInput']; // UploadFileInput!
       id: string; // ID!
@@ -1274,6 +1353,14 @@ export interface NexusGenArgTypes {
     }
     contentReleasesReleases: { // args
       filters?: NexusGenInputs['ContentReleasesReleaseFiltersInput'] | null; // ContentReleasesReleaseFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      sort: Array<string | null> | null; // [String]
+    }
+    staticPage: { // args
+      id?: string | null; // ID
+    }
+    staticPages: { // args
+      filters?: NexusGenInputs['StaticPageFiltersInput'] | null; // StaticPageFiltersInput
       pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
       sort: Array<string | null> | null; // [String]
     }
@@ -1329,7 +1416,7 @@ export interface NexusGenArgTypes {
 }
 
 export interface NexusGenAbstractTypeMembers {
-  GenericMorph: "ComponentDataEntry" | "ComponentDataSet" | "ContentReleasesRelease" | "ContentReleasesReleaseAction" | "UploadFile" | "UploadFolder" | "UsersPermissionsPermission" | "UsersPermissionsRole" | "UsersPermissionsUser"
+  GenericMorph: "ComponentDataEntry" | "ComponentDataSet" | "ContentReleasesRelease" | "ContentReleasesReleaseAction" | "StaticPage" | "UploadFile" | "UploadFolder" | "UsersPermissionsPermission" | "UsersPermissionsRole" | "UsersPermissionsUser"
 }
 
 export interface NexusGenTypeInterfaces {

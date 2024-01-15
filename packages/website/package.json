@@ -4,6 +4,7 @@
   "version": "2023.7.7",
   "scripts": {
     "env": "npx vault-env generate",
+    "graphqlgen": "graphql-codegen --config codegen.yaml",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -19,6 +20,7 @@
     "@emotion/styled": "^11.11.0",
     "@svgr/webpack": "^8.1.0",
     "antd": "^5.12.4",
+    "graphql": "^16.8.1",
     "lodash": "^4.17.21",
     "next": "14.0.4",
     "react": "^18.2.0",
@@ -30,6 +32,9 @@
     "sharp": "^0.33.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/fragment-matcher": "^5.0.0",
+    "@graphql-codegen/typescript-react-apollo": "^4.1.0",
     "@types/lodash": "^4.14.202",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",

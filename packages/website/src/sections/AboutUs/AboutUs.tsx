@@ -3,14 +3,13 @@
 import Image from '@/components/Image';
 import Section from '@/components/Section';
 import Title from '@/components/Title';
-import { HomeDocument } from '@/graphql';
 import { useQuery } from '@apollo/experimental-nextjs-app-support/ssr';
 
 import aboutUsImg from './assets/about-us.jpg';
+import { StaticPageFragmentDoc } from "@/graphql"
 
 export function AboutUs() {
-  const { data } = useQuery<HomeQuery, HomeQueryVariables>(HomeDocument);
-  // const {data} = useHomeQuery();
+  //const { data } = useQuery<StaticPageQuery>(StaticPageFragmentDoc);
 
   return (
     <Section
@@ -23,7 +22,7 @@ export function AboutUs() {
         Title below was rendered on the client
       </Title>
       <Title level={3}>
-        {data?.home?.data?.attributes?.hero?.heading?.title}
+        {/*{data?.staticPage?.data?.attributes?.title}*/}
       </Title>
       <Image
         src={aboutUsImg}
