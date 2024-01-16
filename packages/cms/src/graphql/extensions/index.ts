@@ -1,5 +1,5 @@
+import { core } from "nexus"
 import resolvers, { resolversConfig } from "../resolvers"
-
 const readOnlyEntities = [
   "plugin::users-permissions.permission",
   "plugin::users-permissions.role",
@@ -9,7 +9,7 @@ const readOnlyEntities = [
 
 const writeOnlyEntities = ["plugin::upload.folder"]
 
-const schemaExtension: Graphql.ExtensionCallback = ({ nexus }) => ({
+const schemaExtension: Graphql.ExtensionCallback = ({ nexus }: { nexus: typeof core }) => ({
   types: [
     nexus.extendType({
       type: "Query",
@@ -19,7 +19,7 @@ const schemaExtension: Graphql.ExtensionCallback = ({ nexus }) => ({
         })
       },
     }),
-    nexus.extendType<"UsersPermissionsUser">({
+    nexus.extendType({
       type: "UsersPermissionsUser",
       definition: t => {
         t.nonNull.id("id")
