@@ -3,24 +3,24 @@
 ## Tech Stack
 bn-digital/project-templates is built on the following main stack:
 
-- [Google App Engine](https://developers.google.com/appengine) – Platform as a Service
-- [Node.js](http://nodejs.org/) – Frameworks (Full Stack)
-- [React](https://reactjs.org/) – Javascript UI Libraries
-- [PostgreSQL](http://www.postgresql.org/) – Databases
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
 - [TypeScript](http://www.typescriptlang.org) – Languages
-- [PM2](https://github.com/Unitech/pm2) – Node.js Process Manager
-- [Heroku Postgres](https://www.heroku.com/postgres) – PostgreSQL as a Service
-- [React Router](https://github.com/rackt/react-router) – JavaScript Framework Components
-- [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
-- [Traefik](https://traefik.io/) – Load Balancer / Reverse Proxy
-- [Yarn](https://yarnpkg.com/) – Front End Package Manager
 - [Ant Design](https://ant.design) – JavaScript Framework Components
-- [Pulumi](https://www.pulumi.com/) – Infrastructure Build Tools
-- [GitHub Actions](https://github.com/features/actions) – Continuous Integration
-- [LangChain](https://github.com/hwchase17/langchain) – Large Language Model Tools
+- [Node.js](http://nodejs.org/) – Frameworks (Full Stack)
+- [React](https://reactjs.org/) – Javascript UI Libraries
+- [React Router](https://github.com/rackt/react-router) – JavaScript Framework Components
+- [Heroku Postgres](https://www.heroku.com/postgres) – PostgreSQL as a Service
+- [PostgreSQL](http://www.postgresql.org/) – Databases
 - [pgvector](https://github.com/pgvector/pgvector/) – Database Tools
 - [Docker](https://www.docker.com/) – Virtual Machine Platforms & Containers
+- [GitHub Actions](https://github.com/features/actions) – Continuous Integration
+- [PM2](https://github.com/Unitech/pm2) – Node.js Process Manager
+- [Pulumi](https://www.pulumi.com/) – Infrastructure Build Tools
+- [Traefik](https://traefik.io/) – Load Balancer / Reverse Proxy
+- [Yarn](https://yarnpkg.com/) – Front End Package Manager
+- [Google App Engine](https://developers.google.com/appengine) – Platform as a Service
+- [LangChain](https://github.com/hwchase17/langchain) – Large Language Model Tools
+- [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
 
 Full tech stack [here](/techstack.md)
 
@@ -30,24 +30,24 @@ Full tech stack [here](/techstack.md)
 ## Tech Stack
 bn-digital/project-templates is built on the following main stack:
 
-- <img width='25' height='25' src='https://img.stackshare.io/service/139/s01TMTGn.png' alt='Google App Engine'/> [Google App Engine](https://developers.google.com/appengine) – Platform as a Service
-- <img width='25' height='25' src='https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png' alt='Node.js'/> [Node.js](http://nodejs.org/) – Frameworks (Full Stack)
-- <img width='25' height='25' src='https://img.stackshare.io/service/1020/OYIaJ1KK.png' alt='React'/> [React](https://reactjs.org/) – Javascript UI Libraries
-- <img width='25' height='25' src='https://img.stackshare.io/service/1028/ASOhU5xJ.png' alt='PostgreSQL'/> [PostgreSQL](http://www.postgresql.org/) – Databases
 - <img width='25' height='25' src='https://img.stackshare.io/service/1209/javascript.jpeg' alt='JavaScript'/> [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
 - <img width='25' height='25' src='https://img.stackshare.io/service/1612/bynNY5dJ.jpg' alt='TypeScript'/> [TypeScript](http://www.typescriptlang.org) – Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/2237/757747.png' alt='PM2'/> [PM2](https://github.com/Unitech/pm2) – Node.js Process Manager
-- <img width='25' height='25' src='https://img.stackshare.io/service/2516/original.png' alt='Heroku Postgres'/> [Heroku Postgres](https://www.heroku.com/postgres) – PostgreSQL as a Service
-- <img width='25' height='25' src='https://img.stackshare.io/service/3350/8261421.png' alt='React Router'/> [React Router](https://github.com/rackt/react-router) – JavaScript Framework Components
-- <img width='25' height='25' src='https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png' alt='Shell'/> [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
-- <img width='25' height='25' src='https://img.stackshare.io/service/5126/default_0a34be001ec8247c641508aa468564fb386bc50c.png' alt='Traefik'/> [Traefik](https://traefik.io/) – Load Balancer / Reverse Proxy
-- <img width='25' height='25' src='https://img.stackshare.io/service/5848/44mC-kJ3.jpg' alt='Yarn'/> [Yarn](https://yarnpkg.com/) – Front End Package Manager
 - <img width='25' height='25' src='https://img.stackshare.io/service/6112/12101536.png' alt='Ant Design'/> [Ant Design](https://ant.design) – JavaScript Framework Components
-- <img width='25' height='25' src='https://img.stackshare.io/service/9053/pulumi_mark_flat_onPurple.png' alt='Pulumi'/> [Pulumi](https://www.pulumi.com/) – Infrastructure Build Tools
-- <img width='25' height='25' src='https://img.stackshare.io/service/11563/actions.png' alt='GitHub Actions'/> [GitHub Actions](https://github.com/features/actions) – Continuous Integration
-- <img width='25' height='25' src='https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg' alt='LangChain'/> [LangChain](https://github.com/hwchase17/langchain) – Large Language Model Tools
+- <img width='25' height='25' src='https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png' alt='Node.js'/> [Node.js](http://nodejs.org/) – Frameworks (Full Stack)
+- <img width='25' height='25' src='https://img.stackshare.io/service/1020/OYIaJ1KK.png' alt='React'/> [React](https://reactjs.org/) – Javascript UI Libraries
+- <img width='25' height='25' src='https://img.stackshare.io/service/3350/8261421.png' alt='React Router'/> [React Router](https://github.com/rackt/react-router) – JavaScript Framework Components
+- <img width='25' height='25' src='https://img.stackshare.io/service/2516/original.png' alt='Heroku Postgres'/> [Heroku Postgres](https://www.heroku.com/postgres) – PostgreSQL as a Service
+- <img width='25' height='25' src='https://img.stackshare.io/service/1028/ASOhU5xJ.png' alt='PostgreSQL'/> [PostgreSQL](http://www.postgresql.org/) – Databases
 - <img width='25' height='25' src='https://img.stackshare.io/service/109221/default_b888cdf5617d936aa6aacf130911906955508639.png' alt='pgvector'/> [pgvector](https://github.com/pgvector/pgvector/) – Database Tools
 - <img width='25' height='25' src='https://img.stackshare.io/service/586/n4u37v9t_400x400.png' alt='Docker'/> [Docker](https://www.docker.com/) – Virtual Machine Platforms & Containers
+- <img width='25' height='25' src='https://img.stackshare.io/service/11563/actions.png' alt='GitHub Actions'/> [GitHub Actions](https://github.com/features/actions) – Continuous Integration
+- <img width='25' height='25' src='https://img.stackshare.io/service/2237/757747.png' alt='PM2'/> [PM2](https://github.com/Unitech/pm2) – Node.js Process Manager
+- <img width='25' height='25' src='https://img.stackshare.io/service/9053/pulumi_mark_flat_onPurple.png' alt='Pulumi'/> [Pulumi](https://www.pulumi.com/) – Infrastructure Build Tools
+- <img width='25' height='25' src='https://img.stackshare.io/service/5126/default_0a34be001ec8247c641508aa468564fb386bc50c.png' alt='Traefik'/> [Traefik](https://traefik.io/) – Load Balancer / Reverse Proxy
+- <img width='25' height='25' src='https://img.stackshare.io/service/5848/44mC-kJ3.jpg' alt='Yarn'/> [Yarn](https://yarnpkg.com/) – Front End Package Manager
+- <img width='25' height='25' src='https://img.stackshare.io/service/139/s01TMTGn.png' alt='Google App Engine'/> [Google App Engine](https://developers.google.com/appengine) – Platform as a Service
+- <img width='25' height='25' src='https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg' alt='LangChain'/> [LangChain](https://github.com/hwchase17/langchain) – Large Language Model Tools
+- <img width='25' height='25' src='https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png' alt='Shell'/> [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
 
 Full tech stack [here](/techstack.md)
 
@@ -58,7 +58,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [bn-digital/project-templates](https://github.com/bn-digital/project-templates)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|30<br/>Tools used|01/05/24 <br/>Report generated|
+|30<br/>Tools used|02/29/24 <br/>Report generated|
 |------|------|
 </div>
 
