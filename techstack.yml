@@ -1,0 +1,393 @@
+repo_name: bn-digital/project-templates
+report_id: 4d0d1bda3176a8334e39a460bac13258
+version: 0.1
+repo_type: Public
+timestamp: '2024-02-29T18:34:04+00:00'
+requested_by: ozhyhin-nikita
+provider: github
+branch: latest
+detected_tools_count: 30
+tools:
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/bn-digital/project-templates
+  detection_source: Repo Metadata
+- name: TypeScript
+  description: A superset of JavaScript that compiles to clean JavaScript output
+  website_url: http://www.typescriptlang.org
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: https://github.com/bn-digital/project-templates
+  detection_source: Repo Metadata
+- name: Ant Design
+  description: A set of high-quality React components
+  website_url: https://ant.design
+  version: 5.6.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: JavaScript Framework Components
+  image_url: https://img.stackshare.io/service/6112/12101536.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: packages/website/package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2022-09-30 21:10:11.000000000 Z
+- name: Node.js
+  description: A platform built on Chrome's JavaScript runtime for easily building
+    fast, scalable network applications
+  website_url: http://nodejs.org/
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/cloud/package.json
+  detection_source: packages/cloud/package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2022-10-12 03:43:47.000000000 Z
+- name: React
+  description: A JavaScript library for building user interfaces
+  website_url: https://reactjs.org/
+  version: 17.0.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/1020/OYIaJ1KK.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: packages/website/package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2023-07-07 10:14:24.000000000 Z
+- name: React Router
+  description: A complete routing solution for React.js
+  website_url: https://github.com/rackt/react-router
+  version: 5.3.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: JavaScript Framework Components
+  image_url: https://img.stackshare.io/service/3350/8261421.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: packages/website/package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2023-07-07 10:14:24.000000000 Z
+- name: Heroku Postgres
+  description: Heroku's Database-as-a-Service. Based on the most powerful open-source
+    database, PostgreSQL
+  website_url: https://www.heroku.com/postgres
+  open_source: false
+  hosted_saas: true
+  category: Data Stores
+  sub_category: PostgreSQL as a Service
+  image_url: https://img.stackshare.io/service/2516/original.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/docker-compose.yml
+  detection_source: docker-compose.yml
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2023-05-01 15:34:53.000000000 Z
+- name: PostgreSQL
+  description: A powerful, open source object-relational database system
+  website_url: http://www.postgresql.org/
+  version: '15.2'
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/1028/ASOhU5xJ.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/docker-compose.yml
+  detection_source: docker-compose.yml
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2023-05-01 15:34:53.000000000 Z
+- name: pgvector
+  description: Open-source vector similarity search for Postgres
+  website_url: https://github.com/pgvector/pgvector/
+  open_source: false
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Database Tools
+  image_url: https://img.stackshare.io/service/109221/default_b888cdf5617d936aa6aacf130911906955508639.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/website/public/robots.txt
+  detection_source: packages/website/public/robots.txt
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2022-08-30 21:28:52.000000000 Z
+- name: Docker
+  description: Enterprise Container Platform for High-Velocity Innovation.
+  website_url: https://www.docker.com/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Virtual Machine Platforms & Containers
+  image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/bn-digital/project-templates
+  detection_source: Repo Metadata
+- name: Dotenv
+  description: Loads environment variables from .env for Nodejs projects
+  website_url: https://github.com/motdotla/dotenv
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Server Configuration and Automation
+  image_url: https://img.stackshare.io/service/8067/default_90dcb1286af7685c68df319c764b80704df1155b.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/cloud/package.json
+  detection_source: packages/cloud/package.json
+  last_updated_by: Nikita Ozhyhin
+  last_updated_on: 2023-10-13 15:50:07.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/bn-digital/project-templates
+  detection_source: Repo Metadata
+- name: GitHub Actions
+  description: Automate your workflow from idea to production
+  website_url: https://github.com/features/actions
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/.github/workflows/bootstrap.yml
+  detection_source: ".github/workflows/bootstrap.yml"
+  last_updated_by: Nikita Ozhyhin
+  last_updated_on: 2023-10-13 15:50:07.000000000 Z
+- name: PM2
+  description: Ease-to-use Node.js process manager, like forever
+  website_url: https://github.com/Unitech/pm2
+  version: 5.3.0
+  open_source: true
+  hosted_saas: false
+  category: Monitoring
+  sub_category: Node.js Process Manager
+  image_url: https://img.stackshare.io/service/2237/757747.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2021-01-25 15:53:04.000000000 Z
+- name: Pulumi
+  description: Modern Infrastructure as Code
+  website_url: https://www.pulumi.com/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Infrastructure Build Tools
+  image_url: https://img.stackshare.io/service/9053/pulumi_mark_flat_onPurple.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/cloud/package.json
+  detection_source: packages/cloud/package.json
+  last_updated_by: Nikita Ozhyhin
+  last_updated_on: 2023-10-13 15:50:07.000000000 Z
+- name: Traefik
+  description: The Cloud Native Edge Router
+  website_url: https://traefik.io/
+  version: '3.0'
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Load Balancer / Reverse Proxy
+  image_url: https://img.stackshare.io/service/5126/default_0a34be001ec8247c641508aa468564fb386bc50c.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/docker-compose.yml
+  detection_source: docker-compose.yml
+  last_updated_by: Nikita Ozhyhin
+  last_updated_on: 2023-08-25 14:15:58.000000000 Z
+- name: Yarn
+  description: A new package manager for JavaScript
+  website_url: https://yarnpkg.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/5848/44mC-kJ3.jpg
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: yarn.lock
+  last_updated_by: BDenysovets
+  last_updated_on: 2021-10-30 11:06:23.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/website/package.json
+  detection_source: packages/website/package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2021-08-16 03:34:05.000000000 Z
+- name: Google App Engine
+  description: Build web applications on the same scalable systems that power Google
+    applications
+  website_url: https://developers.google.com/appengine
+  open_source: false
+  hosted_saas: true
+  category: Application Hosting
+  sub_category: Platform as a Service
+  image_url: https://img.stackshare.io/service/139/s01TMTGn.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/docker-compose.yml
+  detection_source: docker-compose.yml
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2022-05-13 03:13:33.000000000 Z
+- name: HTML
+  description: Hypertext Markup Language for creating web pages.
+  website_url: http://
+  open_source: false
+  hosted_saas: false
+  image_url: https://img.stackshare.io/service/2270/no-img-open-source.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/website/index.html
+  detection_source: packages/website/index.html
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2021-08-16 03:34:05.000000000 Z
+- name: LangChain
+  description: Build AI apps with LLMs through composability
+  website_url: https://github.com/hwchase17/langchain
+  open_source: true
+  hosted_saas: false
+  category: Communications
+  sub_category: Large Language Model Tools
+  image_url: https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/packages/website/public/robots.txt
+  detection_source: packages/website/public/robots.txt
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2022-08-30 21:28:52.000000000 Z
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/bn-digital/project-templates
+  detection_source: Repo Metadata
+- name: "@types/node"
+  description: TypeScript definitions for Node.js
+  package_url: https://www.npmjs.com/@types/node
+  version: 20.4.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15809/default_5e5e8ac63beda29f31f1844df64d4b8247570a66.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: packages/cloud/package.json
+  last_updated_by: Nikita Ozhyhin
+  last_updated_on: 2023-10-13 15:50:07.000000000 Z
+- name: "@types/react"
+  description: TypeScript definitions for React
+  package_url: https://www.npmjs.com/@types/react
+  version: 18.2.14
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15894/default_1d65e37e65b7f80761374f0202776043277d505d.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: packages/website/package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2023-07-07 10:14:24.000000000 Z
+- name: "@types/react-dom"
+  description: TypeScript definitions for React
+  package_url: https://www.npmjs.com/@types/react-dom
+  version: 18.2.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15946/default_54b691c123fc8979741e800e4dcd3936c0f3b246.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: packages/website/package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2023-07-07 10:14:24.000000000 Z
+- name: antd
+  description: An enterprise-class UI design language and React components implementation
+  package_url: https://www.npmjs.com/antd
+  version: 5.6.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16201/default_b4f5b6f31c5ab1ffee4bacf20842cd41a8f2658d.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: packages/website/package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2023-07-07 10:14:24.000000000 Z
+- name: pg
+  description: PostgreSQL client - pure javascript &amp; libpq with the same API
+  package_url: https://www.npmjs.com/pg
+  version: 8.11.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16197/default_3d197518f6bb529bfcc1b685e2cefbdfe83ff108.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: packages/cms/package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2021-03-15 09:44:18.000000000 Z
+- name: react-dom
+  description: React package for working with the DOM
+  package_url: https://www.npmjs.com/react-dom
+  version: 17.0.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15808/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: packages/website/package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2023-07-07 10:14:24.000000000 Z
+- name: react-router
+  description: A complete routing library for React
+  package_url: https://www.npmjs.com/react-router
+  version: 5.3.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16058/default_261820f5687b4c88a3e8f95c71b5e8dccd34c1d7.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: packages/website/package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2023-07-07 10:14:24.000000000 Z
+- name: react-router-dom
+  description: DOM bindings for React Router
+  package_url: https://www.npmjs.com/react-router-dom
+  version: 5.3.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16025/default_e25d1fbb04a118c79fb444294461417342bd03bf.png
+  detection_source_url: https://github.com/bn-digital/project-templates/blob/latest/yarn.lock
+  detection_source: packages/website/package.json
+  last_updated_by: Vlad Volkov
+  last_updated_on: 2023-07-07 10:14:24.000000000 Z
